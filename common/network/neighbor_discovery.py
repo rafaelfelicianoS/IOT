@@ -145,13 +145,15 @@ class NeighborDiscovery:
         """
         logger.info("A iniciar scan de vizinhos...")
 
-        # Pequeno delay entre scans para limpar cache BLE
+        # Delay entre scans para garantir estado limpo do adaptador BLE
+        # Após conexões, o adaptador precisa de tempo para estabilizar
         import time
         if self._last_scan > 0:
             time_since_last = time.time() - self._last_scan
-            if time_since_last < 2.0:
-                delay = 2.0 - time_since_last
-                logger.debug(f"Aguardando {delay:.1f}s para limpar cache BLE...")
+            min_delay = 3.0  # 3 segundos mínimo entre scans
+            if time_since_last < min_delay:
+                delay = min_delay - time_since_last
+                logger.debug(f"Aguardando {delay:.1f}s para estabilizar adaptador BLE...")
                 time.sleep(delay)
 
         # Limpar cache do scanner antes de novo scan
