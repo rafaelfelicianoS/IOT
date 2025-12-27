@@ -1,0 +1,165 @@
+2025-12-27 20:05:16.776 | INFO     | __main__:main:33 | ======================================================================
+2025-12-27 20:05:16.776 | INFO     | __main__:main:34 |   Test: Heartbeat Notifications
+2025-12-27 20:05:16.776 | INFO     | __main__:main:35 | ======================================================================
+2025-12-27 20:05:16.776 | INFO     | __main__:main:36 | 
+2025-12-27 20:05:16.790 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_200516.log
+2025-12-27 20:05:16.791 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 20:05:16.791 | INFO     | common.ble.gatt_client:__init__:428 | BLE Client iniciado
+2025-12-27 20:05:16.791 | INFO     | __main__:main:51 | 🔍 A fazer scan de dispositivos IoT...
+2025-12-27 20:05:16.792 | INFO     | common.ble.gatt_client:scan:121 | A fazer scan BLE durante 5000ms...
+2025-12-27 20:05:16.792 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251227_200516-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 20:05:21.907 | INFO     | common.ble.gatt_client:scan:161 | Scan concluído: 0 dispositivos encontrados
+2025-12-27 20:05:21.909 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251227_200516-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-27 20:05:21.910 | WARNING  | __main__:main:55 | ⚠️  Nenhum dispositivo IoT encontrado
+2025-12-27 20:05:21.911 | INFO     | __main__:main:56 | Certifica-te que o GATT Server está a correr:
+2025-12-27 20:05:21.912 | INFO     | __main__:main:57 |   sudo python3 examples/test_gatt_server.py hci0
+2025-12-27 20:05:30.137 | INFO     | __main__:main:33 | ======================================================================
+2025-12-27 20:05:30.137 | INFO     | __main__:main:34 |   Test: Heartbeat Notifications
+2025-12-27 20:05:30.137 | INFO     | __main__:main:35 | ======================================================================
+2025-12-27 20:05:30.138 | INFO     | __main__:main:36 | 
+2025-12-27 20:05:30.152 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_200530.log
+2025-12-27 20:05:30.153 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 20:05:30.153 | INFO     | common.ble.gatt_client:__init__:428 | BLE Client iniciado
+2025-12-27 20:05:30.153 | INFO     | __main__:main:51 | 🔍 A fazer scan de dispositivos IoT...
+2025-12-27 20:05:30.154 | INFO     | common.ble.gatt_client:scan:121 | A fazer scan BLE durante 5000ms...
+2025-12-27 20:05:30.155 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251227_200530-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 20:05:35.271 | INFO     | common.ble.gatt_client:scan:161 | Scan concluído: 1 dispositivos encontrados
+2025-12-27 20:05:35.272 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251227_200530-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-27 20:05:35.273 | INFO     | __main__:main:60 | ✅ Encontrados 1 dispositivos IoT
+2025-12-27 20:05:35.274 | INFO     | __main__:main:61 |    Conectando ao primeiro: E0:D3:62:D6:EE:A0
+2025-12-27 20:05:35.276 | INFO     | __main__:main:62 | 
+2025-12-27 20:05:35.279 | INFO     | common.ble.gatt_client:connect:203 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-27 20:05:35.280 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251227_200530-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-27 20:05:39.026 | INFO     | common.ble.gatt_client:connect:213 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-27 20:05:39.027 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251227_200530-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3741.79ms
+2025-12-27 20:05:39.028 | INFO     | __main__:main:70 | ✅ Conectado com sucesso!
+2025-12-27 20:05:39.029 | INFO     | __main__:main:71 | 
+2025-12-27 20:05:39.030 | INFO     | common.protocol.heartbeat:__init__:272 | HeartbeatMonitor iniciado (timeout após 3 heartbeats)
+2025-12-27 20:05:39.031 | INFO     | __main__:main:75 | 💓 Heartbeat Monitor iniciado
+2025-12-27 20:05:39.033 | INFO     | __main__:main:76 | 
+2025-12-27 20:05:39.035 | INFO     | __main__:main:142 | ======================================================================
+2025-12-27 20:05:39.036 | INFO     | __main__:main:143 | 📡 A subscrever notificações de NetworkPacket...
+2025-12-27 20:05:39.038 | INFO     | __main__:main:144 | ======================================================================
+2025-12-27 20:05:39.040 | INFO     | __main__:main:145 | 
+2025-12-27 20:05:39.549 | INFO     | common.ble.gatt_client:subscribe_notifications:372 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-27 20:05:39.551 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251227_200530-0005] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-27 20:05:39.551 | INFO     | __main__:main:157 | ✅ Subscrição bem-sucedida!
+2025-12-27 20:05:39.552 | INFO     | __main__:main:158 | 
+2025-12-27 20:05:39.553 | INFO     | __main__:main:159 | ======================================================================
+2025-12-27 20:05:39.556 | INFO     | __main__:main:160 | 📝 AGUARDANDO HEARTBEATS:
+2025-12-27 20:05:39.557 | INFO     | __main__:main:161 | ======================================================================
+2025-12-27 20:05:39.559 | INFO     | __main__:main:162 | 
+2025-12-27 20:05:39.561 | INFO     | __main__:main:163 | O servidor deve enviar heartbeats a cada 5 segundos.
+2025-12-27 20:05:39.563 | INFO     | __main__:main:164 | Este cliente irá:
+2025-12-27 20:05:39.564 | INFO     | __main__:main:165 |   1. Receber notificações via NetworkPacketCharacteristic
+2025-12-27 20:05:39.565 | INFO     | __main__:main:166 |   2. Parsear os pacotes
+2025-12-27 20:05:39.566 | INFO     | __main__:main:167 |   3. Identificar heartbeats
+2025-12-27 20:05:39.566 | INFO     | __main__:main:168 |   4. Monitorizar timeouts
+2025-12-27 20:05:39.567 | INFO     | __main__:main:169 | 
+2025-12-27 20:05:39.569 | INFO     | __main__:main:170 | ======================================================================
+2025-12-27 20:05:39.569 | INFO     | __main__:main:171 | ⏳ A aguardar heartbeats (pressiona Ctrl+C para terminar)...
+2025-12-27 20:05:39.570 | INFO     | __main__:main:172 | ======================================================================
+2025-12-27 20:05:39.572 | INFO     | __main__:main:173 | 
+2025-12-27 20:05:40.454 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251227_200530-0006] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 28d3cdcfec814499b7804c7faca4afe828d3cdcfec814499b7804c7faca4afe80201000000060000000000000000000000000000000000000000000000000000 | ASCII: (.....D...L.....(.....D...L..................................... [TRUNCATED]
+2025-12-27 20:05:40.455 | INFO     | __main__:notification_handler:89 | 
+2025-12-27 20:05:40.456 | INFO     | __main__:notification_handler:90 | 🔔 NOTIFICAÇÃO #1 RECEBIDA!
+2025-12-27 20:05:40.457 | INFO     | __main__:notification_handler:91 |    📊 Dados completos (158 bytes): 28d3cdcfec814499b7804c7faca4afe828d3cdcfec814499b7804c7faca4afe8...
+2025-12-27 20:05:40.459 | INFO     | __main__:notification_handler:96 |    📦 Pacote parseado:
+2025-12-27 20:05:40.460 | INFO     | __main__:notification_handler:97 |       Source: 28d3cdcf...
+2025-12-27 20:05:40.461 | INFO     | __main__:notification_handler:98 |       Destination: 28d3cdcf...
+2025-12-27 20:05:40.462 | INFO     | __main__:notification_handler:99 |       Type: 2 (0x02)
+2025-12-27 20:05:40.463 | INFO     | __main__:notification_handler:100 |       TTL: 1
+2025-12-27 20:05:40.464 | INFO     | __main__:notification_handler:101 |       Sequence: 6
+2025-12-27 20:05:40.465 | INFO     | __main__:notification_handler:102 |       Payload size: 88 bytes
+2025-12-27 20:05:40.470 | INFO     | __main__:notification_handler:110 |    💓 HEARTBEAT DETECTADO!
+2025-12-27 20:05:40.472 | INFO     | __main__:notification_handler:111 |       Sink NID: 28d3cdcf...
+2025-12-27 20:05:40.472 | INFO     | __main__:notification_handler:112 |       Timestamp: 1766865940.40
+2025-12-27 20:05:40.473 | INFO     | __main__:notification_handler:113 |       Age: 0.08s
+2025-12-27 20:05:40.473 | INFO     | __main__:notification_handler:114 |       Signature: <signed>
+2025-12-27 20:05:40.475 | INFO     | __main__:notification_handler:128 |    📊 Monitor Stats:
+2025-12-27 20:05:40.475 | INFO     | __main__:notification_handler:129 |       Total heartbeats: 1
+2025-12-27 20:05:40.475 | INFO     | __main__:notification_handler:130 |       Time since last: 0.08s
+2025-12-27 20:05:40.476 | INFO     | __main__:notification_handler:131 |       Missed count: 0
+2025-12-27 20:05:40.476 | INFO     | __main__:notification_handler:139 | 
+2025-12-27 20:05:45.454 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251227_200530-0007] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 28d3cdcfec814499b7804c7faca4afe828d3cdcfec814499b7804c7faca4afe80201000000070000000000000000000000000000000000000000000000000000 | ASCII: (.....D...L.....(.....D...L..................................... [TRUNCATED]
+2025-12-27 20:05:45.455 | INFO     | __main__:notification_handler:89 | 
+2025-12-27 20:05:45.456 | INFO     | __main__:notification_handler:90 | 🔔 NOTIFICAÇÃO #2 RECEBIDA!
+2025-12-27 20:05:45.456 | INFO     | __main__:notification_handler:91 |    📊 Dados completos (158 bytes): 28d3cdcfec814499b7804c7faca4afe828d3cdcfec814499b7804c7faca4afe8...
+2025-12-27 20:05:45.457 | INFO     | __main__:notification_handler:96 |    📦 Pacote parseado:
+2025-12-27 20:05:45.458 | INFO     | __main__:notification_handler:97 |       Source: 28d3cdcf...
+2025-12-27 20:05:45.459 | INFO     | __main__:notification_handler:98 |       Destination: 28d3cdcf...
+2025-12-27 20:05:45.464 | INFO     | __main__:notification_handler:99 |       Type: 2 (0x02)
+2025-12-27 20:05:45.465 | INFO     | __main__:notification_handler:100 |       TTL: 1
+2025-12-27 20:05:45.466 | INFO     | __main__:notification_handler:101 |       Sequence: 7
+2025-12-27 20:05:45.468 | INFO     | __main__:notification_handler:102 |       Payload size: 88 bytes
+2025-12-27 20:05:45.470 | INFO     | __main__:notification_handler:110 |    💓 HEARTBEAT DETECTADO!
+2025-12-27 20:05:45.473 | INFO     | __main__:notification_handler:111 |       Sink NID: 28d3cdcf...
+2025-12-27 20:05:45.475 | INFO     | __main__:notification_handler:112 |       Timestamp: 1766865945.40
+2025-12-27 20:05:45.476 | INFO     | __main__:notification_handler:113 |       Age: 0.08s
+2025-12-27 20:05:45.477 | INFO     | __main__:notification_handler:114 |       Signature: <signed>
+2025-12-27 20:05:45.478 | INFO     | __main__:notification_handler:122 |       ✅ Sequência correta (7)
+2025-12-27 20:05:45.479 | INFO     | __main__:notification_handler:128 |    📊 Monitor Stats:
+2025-12-27 20:05:45.481 | INFO     | __main__:notification_handler:129 |       Total heartbeats: 2
+2025-12-27 20:05:45.483 | INFO     | __main__:notification_handler:130 |       Time since last: 0.08s
+2025-12-27 20:05:45.484 | INFO     | __main__:notification_handler:131 |       Missed count: 0
+2025-12-27 20:05:45.485 | INFO     | __main__:notification_handler:139 | 
+2025-12-27 20:05:45.574 | INFO     | __main__:main:182 | ⏱️  Status: 2 notificações, 2 heartbeats
+2025-12-27 20:05:50.453 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251227_200530-0008] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 28d3cdcfec814499b7804c7faca4afe828d3cdcfec814499b7804c7faca4afe80201000000080000000000000000000000000000000000000000000000000000 | ASCII: (.....D...L.....(.....D...L..................................... [TRUNCATED]
+2025-12-27 20:05:50.454 | INFO     | __main__:notification_handler:89 | 
+2025-12-27 20:05:50.455 | INFO     | __main__:notification_handler:90 | 🔔 NOTIFICAÇÃO #3 RECEBIDA!
+2025-12-27 20:05:50.456 | INFO     | __main__:notification_handler:91 |    📊 Dados completos (158 bytes): 28d3cdcfec814499b7804c7faca4afe828d3cdcfec814499b7804c7faca4afe8...
+2025-12-27 20:05:50.457 | INFO     | __main__:notification_handler:96 |    📦 Pacote parseado:
+2025-12-27 20:05:50.458 | INFO     | __main__:notification_handler:97 |       Source: 28d3cdcf...
+2025-12-27 20:05:50.461 | INFO     | __main__:notification_handler:98 |       Destination: 28d3cdcf...
+2025-12-27 20:05:50.463 | INFO     | __main__:notification_handler:99 |       Type: 2 (0x02)
+2025-12-27 20:05:50.464 | INFO     | __main__:notification_handler:100 |       TTL: 1
+2025-12-27 20:05:50.465 | INFO     | __main__:notification_handler:101 |       Sequence: 8
+2025-12-27 20:05:50.466 | INFO     | __main__:notification_handler:102 |       Payload size: 88 bytes
+2025-12-27 20:05:50.470 | INFO     | __main__:notification_handler:110 |    💓 HEARTBEAT DETECTADO!
+2025-12-27 20:05:50.473 | INFO     | __main__:notification_handler:111 |       Sink NID: 28d3cdcf...
+2025-12-27 20:05:50.473 | INFO     | __main__:notification_handler:112 |       Timestamp: 1766865950.40
+2025-12-27 20:05:50.473 | INFO     | __main__:notification_handler:113 |       Age: 0.07s
+2025-12-27 20:05:50.474 | INFO     | __main__:notification_handler:114 |       Signature: <signed>
+2025-12-27 20:05:50.474 | INFO     | __main__:notification_handler:122 |       ✅ Sequência correta (8)
+2025-12-27 20:05:50.474 | INFO     | __main__:notification_handler:128 |    📊 Monitor Stats:
+2025-12-27 20:05:50.475 | INFO     | __main__:notification_handler:129 |       Total heartbeats: 3
+2025-12-27 20:05:50.475 | INFO     | __main__:notification_handler:130 |       Time since last: 0.07s
+2025-12-27 20:05:50.477 | INFO     | __main__:notification_handler:131 |       Missed count: 0
+2025-12-27 20:05:50.479 | INFO     | __main__:notification_handler:139 | 
+2025-12-27 20:05:55.453 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251227_200530-0009] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 28d3cdcfec814499b7804c7faca4afe828d3cdcfec814499b7804c7faca4afe80201000000090000000000000000000000000000000000000000000000000000 | ASCII: (.....D...L.....(.....D...L..................................... [TRUNCATED]
+2025-12-27 20:05:55.454 | INFO     | __main__:notification_handler:89 | 
+2025-12-27 20:05:55.455 | INFO     | __main__:notification_handler:90 | 🔔 NOTIFICAÇÃO #4 RECEBIDA!
+2025-12-27 20:05:55.456 | INFO     | __main__:notification_handler:91 |    📊 Dados completos (158 bytes): 28d3cdcfec814499b7804c7faca4afe828d3cdcfec814499b7804c7faca4afe8...
+2025-12-27 20:05:55.457 | INFO     | __main__:notification_handler:96 |    📦 Pacote parseado:
+2025-12-27 20:05:55.457 | INFO     | __main__:notification_handler:97 |       Source: 28d3cdcf...
+2025-12-27 20:05:55.458 | INFO     | __main__:notification_handler:98 |       Destination: 28d3cdcf...
+2025-12-27 20:05:55.459 | INFO     | __main__:notification_handler:99 |       Type: 2 (0x02)
+2025-12-27 20:05:55.460 | INFO     | __main__:notification_handler:100 |       TTL: 1
+2025-12-27 20:05:55.463 | INFO     | __main__:notification_handler:101 |       Sequence: 9
+2025-12-27 20:05:55.465 | INFO     | __main__:notification_handler:102 |       Payload size: 88 bytes
+2025-12-27 20:05:55.469 | INFO     | __main__:notification_handler:110 |    💓 HEARTBEAT DETECTADO!
+2025-12-27 20:05:55.473 | INFO     | __main__:notification_handler:111 |       Sink NID: 28d3cdcf...
+2025-12-27 20:05:55.474 | INFO     | __main__:notification_handler:112 |       Timestamp: 1766865955.40
+2025-12-27 20:05:55.475 | INFO     | __main__:notification_handler:113 |       Age: 0.07s
+2025-12-27 20:05:55.476 | INFO     | __main__:notification_handler:114 |       Signature: <signed>
+2025-12-27 20:05:55.476 | INFO     | __main__:notification_handler:122 |       ✅ Sequência correta (9)
+2025-12-27 20:05:55.477 | INFO     | __main__:notification_handler:128 |    📊 Monitor Stats:
+2025-12-27 20:05:55.477 | INFO     | __main__:notification_handler:129 |       Total heartbeats: 4
+2025-12-27 20:05:55.479 | INFO     | __main__:notification_handler:130 |       Time since last: 0.08s
+2025-12-27 20:05:55.480 | INFO     | __main__:notification_handler:131 |       Missed count: 0
+2025-12-27 20:05:55.480 | INFO     | __main__:notification_handler:139 | 
+2025-12-27 20:05:57.770 | INFO     | __main__:main:190 | 
+2025-12-27 20:05:57.772 | INFO     | __main__:main:191 | ======================================================================
+2025-12-27 20:05:57.773 | INFO     | __main__:main:192 | 👋 A terminar...
+2025-12-27 20:05:57.774 | INFO     | __main__:main:193 | ======================================================================
+2025-12-27 20:05:57.774 | INFO     | __main__:main:194 | 
+2025-12-27 20:05:57.775 | INFO     | __main__:main:195 | 📊 RESUMO:
+2025-12-27 20:05:57.776 | INFO     | __main__:main:196 |    Total de notificações: 4
+2025-12-27 20:05:57.777 | INFO     | __main__:main:197 |    Total de heartbeats: 4
+2025-12-27 20:05:57.779 | INFO     | __main__:main:202 |    Último heartbeat: 2.38s atrás
+2025-12-27 20:05:57.781 | INFO     | __main__:main:203 |    Sink NID: 28d3cdcf...
+2025-12-27 20:05:57.782 | INFO     | __main__:main:205 | 
+2025-12-27 20:05:59.850 | INFO     | common.ble.gatt_client:disconnect:232 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-27 20:05:59.851 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251227_200530-0010] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-27 20:05:59.852 | INFO     | __main__:main:209 | ✅ Desconectado
+2025-12-27 20:05:59.852 | INFO     | __main__:main:210 | 
