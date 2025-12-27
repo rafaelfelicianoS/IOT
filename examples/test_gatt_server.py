@@ -21,6 +21,8 @@ from common.ble.gatt_services import IoTNetworkService
 from common.ble.advertising import Advertisement, register_advertisement
 from common.utils.nid import NID
 from common.utils.logger import setup_logger
+from common.protocol.heartbeat import create_heartbeat_packet
+from common.utils.constants import HEARTBEAT_INTERVAL
 
 # Setup logger
 logger = setup_logger("test_gatt_server")
@@ -157,10 +159,11 @@ def main(argv):
     logger.info(f"📡 A registar advertisement...")
     register_advertisement(adv, adapter_name)
 
-    # Timer para simular mudanças na neighbor table (para testar notificações)
+    # Timers para simular mudanças periódicas
     from gi.repository import GLib
 
     neighbor_update_count = 0
+    heartbeat_sequence = 0
 
     def simulate_neighbor_change():
         """Simula mudanças periódicas na neighbor table."""
@@ -180,9 +183,32 @@ def main(argv):
 
         return True  # Continuar timer
 
-    # Agendar mudanças a cada 10 segundos
+    def send_heartbeat():
+        """Envia heartbeat periódico via NetworkPacketCharacteristic."""
+        nonlocal heartbeat_sequence
+        heartbeat_sequence += 1
+
+        # Criar pacote de heartbeat
+        heartbeat_packet = create_heartbeat_packet(
+            sink_nid=device_nid,
+            sequence=heartbeat_sequence,
+        )
+
+        # Serializar e enviar via notify
+        packet_bytes = heartbeat_packet.to_bytes()
+        service.get_packet_characteristic().notify_packet(packet_bytes)
+
+        logger.info(f"💓 Heartbeat enviado: seq={heartbeat_sequence}, size={len(packet_bytes)} bytes")
+
+        return True  # Continuar timer
+
+    # Agendar mudanças a cada 10 segundos (neighbor table)
     GLib.timeout_add_seconds(10, simulate_neighbor_change)
     logger.info("⏲️  Timer configurado: neighbor table será atualizada a cada 10 segundos")
+
+    # Agendar heartbeats a cada HEARTBEAT_INTERVAL segundos
+    GLib.timeout_add_seconds(HEARTBEAT_INTERVAL, send_heartbeat)
+    logger.info(f"💓 Timer configurado: heartbeats serão enviados a cada {HEARTBEAT_INTERVAL} segundos")
 
     # Setup signal handler
     signal.signal(signal.SIGINT, signal_handler)
