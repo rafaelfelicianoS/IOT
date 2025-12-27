@@ -146,3 +146,150 @@ Dispositivo visível e disponível para conexões BLE.
 2025-12-27 19:25:25.114 | INFO     | __main__:main:175 | 
 2025-12-27 19:25:25.123 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
 2025-12-27 19:25:25.130 | INFO     | common.ble.advertising:<lambda>:242 | ✅ Advertisement registado com sucesso!
+2025-12-27 20:13:10.160 | INFO     | __main__:main:82 | ============================================================
+2025-12-27 20:13:10.161 | INFO     | __main__:main:83 |   GATT Server Test - IoT Network Service
+2025-12-27 20:13:10.161 | INFO     | __main__:main:84 | ============================================================
+2025-12-27 20:13:10.161 | INFO     | __main__:main:88 | 
+📱 Device NID: 39de2162-96c7-48c9-a6e5-1785e5c6c056
+2025-12-27 20:13:10.161 | INFO     | __main__:main:89 |    Short: 39de2162...
+2025-12-27 20:13:10.162 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-27 20:13:10.162 | INFO     | __main__:main:100 | 
+🔧 A criar IoTNetworkService...
+2025-12-27 20:13:10.162 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot/service0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-27 20:13:10.163 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-27 20:13:10.163 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-27 20:13:10.163 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=39de2162..., type=node
+2025-12-27 20:13:10.163 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-27 20:13:10.163 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-27 20:13:10.163 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-27 20:13:10.163 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot/service0
+2025-12-27 20:13:10.163 | INFO     | __main__:main:126 | 
+✅ Application criada com sucesso!
+2025-12-27 20:13:10.163 | INFO     | __main__:main:127 |    Service UUID: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-27 20:13:10.164 | INFO     | __main__:main:128 |    Characteristics: 4
+2025-12-27 20:13:10.164 | INFO     | __main__:main:131 | 
+📡 A registar application no adaptador hci0...
+2025-12-27 20:13:10.164 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-27 20:13:10.164 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-27 20:13:10.164 | INFO     | __main__:main:144 | 
+📢 A criar BLE Advertisement...
+2025-12-27 20:13:10.165 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-27 20:13:10.165 | INFO     | __main__:main:155 |    Service UUID: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-27 20:13:10.165 | INFO     | __main__:main:156 |    Local Name: IoT-Node
+2025-12-27 20:13:10.165 | INFO     | __main__:main:159 | 📡 A registar advertisement...
+2025-12-27 20:13:10.165 | INFO     | common.ble.advertising:register_advertisement:232 | A registar advertisement no adaptador: /org/bluez/hci0
+2025-12-27 20:13:10.166 | INFO     | __main__:main:207 | ⏲️  Timer configurado: neighbor table será atualizada a cada 10 segundos
+2025-12-27 20:13:10.166 | INFO     | __main__:main:211 | 💓 Timer configurado: heartbeats serão enviados a cada 5 segundos
+2025-12-27 20:13:10.166 | INFO     | __main__:main:217 | 
+============================================================
+2025-12-27 20:13:10.167 | INFO     | __main__:main:218 |   ✅ GATT Server a correr com Advertising!
+2025-12-27 20:13:10.167 | INFO     | __main__:main:219 | ============================================================
+2025-12-27 20:13:10.167 | INFO     | __main__:main:220 | 
+Dispositivo visível e disponível para conexões BLE.
+2025-12-27 20:13:10.167 | INFO     | __main__:main:221 | Pressione Ctrl+C para terminar.
+
+2025-12-27 20:13:10.168 | INFO     | __main__:main:223 | 📱 Para testar com bluetoothctl:
+2025-12-27 20:13:10.168 | INFO     | __main__:main:224 |    1. bluetoothctl
+2025-12-27 20:13:10.168 | INFO     | __main__:main:225 |    2. scan on  → deve aparecer 'IoT-Node'
+2025-12-27 20:13:10.168 | INFO     | __main__:main:226 |    3. connect <MAC_ADDRESS>
+2025-12-27 20:13:10.169 | INFO     | __main__:main:227 |    4. list-attributes
+2025-12-27 20:13:10.169 | INFO     | __main__:main:228 | 
+2025-12-27 20:13:10.176 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
+2025-12-27 20:13:10.279 | INFO     | common.ble.advertising:<lambda>:242 | ✅ Advertisement registado com sucesso!
+2025-12-27 20:13:15.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=1, size=158 bytes
+2025-12-27 20:13:20.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 2 vizinhos (update #1)
+2025-12-27 20:13:20.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=2, size=158 bytes
+2025-12-27 20:13:25.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=3, size=158 bytes
+2025-12-27 20:13:30.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 3 vizinhos (update #2)
+2025-12-27 20:13:30.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=4, size=158 bytes
+2025-12-27 20:13:35.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=5, size=158 bytes
+2025-12-27 20:13:40.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 4 vizinhos (update #3)
+2025-12-27 20:13:40.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=6, size=158 bytes
+2025-12-27 20:13:45.398 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=7, size=158 bytes
+2025-12-27 20:13:50.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 1 vizinhos (update #4)
+2025-12-27 20:13:50.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=8, size=158 bytes
+2025-12-27 20:13:55.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=9, size=158 bytes
+2025-12-27 20:14:00.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 2 vizinhos (update #5)
+2025-12-27 20:14:00.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=10, size=158 bytes
+2025-12-27 20:14:05.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=11, size=158 bytes
+2025-12-27 20:14:10.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 3 vizinhos (update #6)
+2025-12-27 20:14:10.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=12, size=158 bytes
+2025-12-27 20:14:15.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=13, size=158 bytes
+2025-12-27 20:14:20.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 4 vizinhos (update #7)
+2025-12-27 20:14:20.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=14, size=158 bytes
+2025-12-27 20:14:25.397 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=15, size=158 bytes
+2025-12-27 20:14:30.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 1 vizinhos (update #8)
+2025-12-27 20:14:30.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=16, size=158 bytes
+2025-12-27 20:14:35.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=17, size=158 bytes
+2025-12-27 20:14:40.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 2 vizinhos (update #9)
+2025-12-27 20:14:40.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=18, size=158 bytes
+2025-12-27 20:14:45.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=19, size=158 bytes
+2025-12-27 20:14:50.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 3 vizinhos (update #10)
+2025-12-27 20:14:50.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=20, size=158 bytes
+2025-12-27 20:14:55.397 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=21, size=158 bytes
+2025-12-27 20:15:00.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 4 vizinhos (update #11)
+2025-12-27 20:15:00.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=22, size=158 bytes
+2025-12-27 20:15:05.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=23, size=158 bytes
+2025-12-27 20:15:10.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 1 vizinhos (update #12)
+2025-12-27 20:15:10.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=24, size=158 bytes
+2025-12-27 20:15:15.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=25, size=158 bytes
+2025-12-27 20:15:20.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 2 vizinhos (update #13)
+2025-12-27 20:15:20.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=26, size=158 bytes
+2025-12-27 20:15:25.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=27, size=158 bytes
+2025-12-27 20:15:30.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 3 vizinhos (update #14)
+2025-12-27 20:15:30.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=28, size=158 bytes
+2025-12-27 20:15:35.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=29, size=158 bytes
+2025-12-27 20:15:40.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 4 vizinhos (update #15)
+2025-12-27 20:15:40.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=30, size=158 bytes
+2025-12-27 20:15:45.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=31, size=158 bytes
+2025-12-27 20:15:50.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 1 vizinhos (update #16)
+2025-12-27 20:15:50.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=32, size=158 bytes
+2025-12-27 20:15:55.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=33, size=158 bytes
+2025-12-27 20:16:00.396 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 2 vizinhos (update #17)
+2025-12-27 20:16:00.397 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=34, size=158 bytes
+2025-12-27 20:16:05.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=35, size=158 bytes
+2025-12-27 20:16:10.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 3 vizinhos (update #18)
+2025-12-27 20:16:10.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=36, size=158 bytes
+2025-12-27 20:16:15.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=37, size=158 bytes
+2025-12-27 20:16:20.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 4 vizinhos (update #19)
+2025-12-27 20:16:20.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=38, size=158 bytes
+2025-12-27 20:16:25.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=39, size=158 bytes
+2025-12-27 20:16:30.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 1 vizinhos (update #20)
+2025-12-27 20:16:30.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=40, size=158 bytes
+2025-12-27 20:16:35.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=41, size=158 bytes
+2025-12-27 20:16:40.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 2 vizinhos (update #21)
+2025-12-27 20:16:40.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=42, size=158 bytes
+2025-12-27 20:16:45.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=43, size=158 bytes
+2025-12-27 20:16:50.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 3 vizinhos (update #22)
+2025-12-27 20:16:50.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=44, size=158 bytes
+2025-12-27 20:16:55.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=45, size=158 bytes
+2025-12-27 20:17:00.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 4 vizinhos (update #23)
+2025-12-27 20:17:00.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=46, size=158 bytes
+2025-12-27 20:17:05.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=47, size=158 bytes
+2025-12-27 20:17:10.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 1 vizinhos (update #24)
+2025-12-27 20:17:10.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=48, size=158 bytes
+2025-12-27 20:17:15.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=49, size=158 bytes
+2025-12-27 20:17:20.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 2 vizinhos (update #25)
+2025-12-27 20:17:20.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=50, size=158 bytes
+2025-12-27 20:17:25.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=51, size=158 bytes
+2025-12-27 20:17:30.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 3 vizinhos (update #26)
+2025-12-27 20:17:30.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=52, size=158 bytes
+2025-12-27 20:17:35.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=53, size=158 bytes
+2025-12-27 20:17:40.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 4 vizinhos (update #27)
+2025-12-27 20:17:40.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=54, size=158 bytes
+2025-12-27 20:17:45.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=55, size=158 bytes
+2025-12-27 20:17:50.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 1 vizinhos (update #28)
+2025-12-27 20:17:50.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=56, size=158 bytes
+2025-12-27 20:17:55.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=57, size=158 bytes
+2025-12-27 20:18:00.396 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 2 vizinhos (update #29)
+2025-12-27 20:18:00.397 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=58, size=158 bytes
+2025-12-27 20:18:05.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=59, size=158 bytes
+2025-12-27 20:18:10.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 3 vizinhos (update #30)
+2025-12-27 20:18:10.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=60, size=158 bytes
+2025-12-27 20:18:15.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=61, size=158 bytes
+2025-12-27 20:18:20.400 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 4 vizinhos (update #31)
+2025-12-27 20:18:20.401 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=62, size=158 bytes
+2025-12-27 20:18:25.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=63, size=158 bytes
+2025-12-27 20:18:30.401 | INFO     | __main__:simulate_neighbor_change:182 | 🔄 Neighbor table atualizada: 1 vizinhos (update #32)
+2025-12-27 20:18:30.402 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=64, size=158 bytes
+2025-12-27 20:18:35.400 | INFO     | __main__:send_heartbeat:201 | 💓 Heartbeat enviado: seq=65, size=158 bytes

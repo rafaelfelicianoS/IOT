@@ -145,6 +145,21 @@ class NeighborDiscovery:
         """
         logger.info("A iniciar scan de vizinhos...")
 
+        # Pequeno delay entre scans para limpar cache BLE
+        import time
+        if self._last_scan > 0:
+            time_since_last = time.time() - self._last_scan
+            if time_since_last < 2.0:
+                delay = 2.0 - time_since_last
+                logger.debug(f"Aguardando {delay:.1f}s para limpar cache BLE...")
+                time.sleep(delay)
+
+        # Limpar cache do scanner antes de novo scan
+        try:
+            self.client.scanner.clear_cache()
+        except Exception as e:
+            logger.debug(f"Erro ao limpar cache (ignorado): {e}")
+
         # Scan de dispositivos IoT
         devices = self.client.scan_iot_devices(duration_ms=self.scan_duration)
         logger.info(f"Scan concluído: {len(devices)} dispositivos IoT encontrados")

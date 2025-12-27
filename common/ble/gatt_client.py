@@ -107,6 +107,20 @@ class BLEScanner:
         self.ble_log = get_ble_logger(self.adapter.address())
         logger.info(f"Scanner BLE iniciado: {self.adapter.identifier()} ({self.adapter.address()})")
 
+    def clear_cache(self):
+        """
+        Limpa o cache de scan do adaptador BLE.
+
+        SimpleBLE pode manter resultados antigos em cache.
+        Este método faz um scan curto para forçar refresh.
+        """
+        logger.debug("A limpar cache de scan BLE...")
+        # Scan curto (100ms) para refresh
+        self.adapter.scan_for(100)
+        # Descartar resultados
+        _ = self.adapter.scan_get_results()
+        logger.debug("Cache de scan limpo")
+
     def scan(self, duration_ms: int = 5000, filter_iot: bool = False) -> List[ScannedDevice]:
         """
         Faz scan de dispositivos BLE.
