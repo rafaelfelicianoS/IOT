@@ -1,0 +1,16 @@
+2025-12-27 19:12:54.929 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_191254.log
+2025-12-27 19:12:54.929 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 19:12:54.930 | INFO     | BLE Client iniciado
+2025-12-27 19:12:54.930 | INFO     | 🔍 A fazer scan de dispositivos IoT...
+2025-12-27 19:12:54.930 | INFO     |    (aguarda 5 segundos)
+2025-12-27 19:12:54.931 | INFO     | 
+2025-12-27 19:12:54.931 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 19:12:54.931 | INFO     | [OP-20251227_191254-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 19:12:59.948 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-27 19:12:59.949 | INFO     | [OP-20251227_191254-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-27 19:12:59.950 | WARNING  | ⚠️  Nenhum dispositivo IoT encontrado
+2025-12-27 19:12:59.950 | INFO     | 
+2025-12-27 19:12:59.950 | INFO     | Certifica-te que:
+2025-12-27 19:12:59.951 | INFO     |   1. O GATT Server está a correr (test_gatt_server.py)
+2025-12-27 19:12:59.951 | INFO     |   2. O advertising está ativo
+2025-12-27 19:12:59.951 | INFO     |   3. O dispositivo está próximo

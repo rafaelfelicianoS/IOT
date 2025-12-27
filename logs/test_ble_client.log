@@ -52,3 +52,23 @@
 2025-12-27 18:52:01.920 | INFO     | __main__:main:72 |   1. O GATT Server está a correr (test_gatt_server.py)
 2025-12-27 18:52:01.921 | INFO     | __main__:main:73 |   2. O advertising está ativo
 2025-12-27 18:52:01.922 | INFO     | __main__:main:74 |   3. O dispositivo está próximo
+2025-12-27 19:12:54.914 | INFO     | __main__:main:34 | ============================================================
+2025-12-27 19:12:54.915 | INFO     | __main__:main:35 |   BLE Client Test - IoT Network Scanner
+2025-12-27 19:12:54.915 | INFO     | __main__:main:36 | ============================================================
+2025-12-27 19:12:54.915 | INFO     | __main__:main:37 | 
+2025-12-27 19:12:54.929 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_191254.log
+2025-12-27 19:12:54.929 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 19:12:54.930 | INFO     | common.ble.gatt_client:__init__:428 | BLE Client iniciado
+2025-12-27 19:12:54.930 | INFO     | __main__:main:62 | 🔍 A fazer scan de dispositivos IoT...
+2025-12-27 19:12:54.930 | INFO     | __main__:main:63 |    (aguarda 5 segundos)
+2025-12-27 19:12:54.931 | INFO     | __main__:main:64 | 
+2025-12-27 19:12:54.931 | INFO     | common.ble.gatt_client:scan:121 | A fazer scan BLE durante 5000ms...
+2025-12-27 19:12:54.931 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251227_191254-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 19:12:59.948 | INFO     | common.ble.gatt_client:scan:161 | Scan concluído: 0 dispositivos encontrados
+2025-12-27 19:12:59.949 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251227_191254-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-27 19:12:59.950 | WARNING  | __main__:main:69 | ⚠️  Nenhum dispositivo IoT encontrado
+2025-12-27 19:12:59.950 | INFO     | __main__:main:70 | 
+2025-12-27 19:12:59.950 | INFO     | __main__:main:71 | Certifica-te que:
+2025-12-27 19:12:59.951 | INFO     | __main__:main:72 |   1. O GATT Server está a correr (test_gatt_server.py)
+2025-12-27 19:12:59.951 | INFO     | __main__:main:73 |   2. O advertising está ativo
+2025-12-27 19:12:59.951 | INFO     | __main__:main:74 |   3. O dispositivo está próximo
