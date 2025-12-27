@@ -96,3 +96,53 @@ Dispositivo visível e disponível para conexões BLE.
 2025-12-27 19:18:03.925 | INFO     | __main__:main:175 | 
 2025-12-27 19:18:03.931 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
 2025-12-27 19:18:03.938 | INFO     | common.ble.advertising:<lambda>:242 | ✅ Advertisement registado com sucesso!
+2025-12-27 19:25:16.548 | INFO     | __main__:signal_handler:34 | 
+A terminar...
+2025-12-27 19:25:25.105 | INFO     | __main__:main:80 | ============================================================
+2025-12-27 19:25:25.105 | INFO     | __main__:main:81 |   GATT Server Test - IoT Network Service
+2025-12-27 19:25:25.105 | INFO     | __main__:main:82 | ============================================================
+2025-12-27 19:25:25.105 | INFO     | __main__:main:86 | 
+📱 Device NID: 0a9ec11b-834d-4f5d-b63e-9e501417be0a
+2025-12-27 19:25:25.105 | INFO     | __main__:main:87 |    Short: 0a9ec11b...
+2025-12-27 19:25:25.106 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-27 19:25:25.106 | INFO     | __main__:main:98 | 
+🔧 A criar IoTNetworkService...
+2025-12-27 19:25:25.106 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot/service0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-27 19:25:25.106 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-27 19:25:25.106 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-27 19:25:25.107 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=0a9ec11b..., type=node
+2025-12-27 19:25:25.107 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-27 19:25:25.107 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-27 19:25:25.107 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-27 19:25:25.107 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot/service0
+2025-12-27 19:25:25.108 | INFO     | __main__:main:124 | 
+✅ Application criada com sucesso!
+2025-12-27 19:25:25.108 | INFO     | __main__:main:125 |    Service UUID: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-27 19:25:25.108 | INFO     | __main__:main:126 |    Characteristics: 4
+2025-12-27 19:25:25.109 | INFO     | __main__:main:129 | 
+📡 A registar application no adaptador hci0...
+2025-12-27 19:25:25.109 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-27 19:25:25.110 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-27 19:25:25.110 | INFO     | __main__:main:142 | 
+📢 A criar BLE Advertisement...
+2025-12-27 19:25:25.110 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-27 19:25:25.111 | INFO     | __main__:main:153 |    Service UUID: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-27 19:25:25.111 | INFO     | __main__:main:154 |    Local Name: IoT-Node
+2025-12-27 19:25:25.111 | INFO     | __main__:main:157 | 📡 A registar advertisement...
+2025-12-27 19:25:25.111 | INFO     | common.ble.advertising:register_advertisement:232 | A registar advertisement no adaptador: /org/bluez/hci0
+2025-12-27 19:25:25.112 | INFO     | __main__:main:164 | 
+============================================================
+2025-12-27 19:25:25.112 | INFO     | __main__:main:165 |   ✅ GATT Server a correr com Advertising!
+2025-12-27 19:25:25.112 | INFO     | __main__:main:166 | ============================================================
+2025-12-27 19:25:25.113 | INFO     | __main__:main:167 | 
+Dispositivo visível e disponível para conexões BLE.
+2025-12-27 19:25:25.113 | INFO     | __main__:main:168 | Pressione Ctrl+C para terminar.
+
+2025-12-27 19:25:25.113 | INFO     | __main__:main:170 | 📱 Para testar com bluetoothctl:
+2025-12-27 19:25:25.113 | INFO     | __main__:main:171 |    1. bluetoothctl
+2025-12-27 19:25:25.114 | INFO     | __main__:main:172 |    2. scan on  → deve aparecer 'IoT-Node'
+2025-12-27 19:25:25.114 | INFO     | __main__:main:173 |    3. connect <MAC_ADDRESS>
+2025-12-27 19:25:25.114 | INFO     | __main__:main:174 |    4. list-attributes
+2025-12-27 19:25:25.114 | INFO     | __main__:main:175 | 
+2025-12-27 19:25:25.123 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
+2025-12-27 19:25:25.130 | INFO     | common.ble.advertising:<lambda>:242 | ✅ Advertisement registado com sucesso!

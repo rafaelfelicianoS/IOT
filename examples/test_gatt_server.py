@@ -157,6 +157,33 @@ def main(argv):
     logger.info(f"📡 A registar advertisement...")
     register_advertisement(adv, adapter_name)
 
+    # Timer para simular mudanças na neighbor table (para testar notificações)
+    from gi.repository import GLib
+
+    neighbor_update_count = 0
+
+    def simulate_neighbor_change():
+        """Simula mudanças periódicas na neighbor table."""
+        nonlocal neighbor_update_count
+        neighbor_update_count += 1
+
+        # Alternar entre diferentes números de vizinhos
+        num_neighbors = (neighbor_update_count % 4) + 1  # 1, 2, 3, 4, 1, 2, ...
+
+        new_neighbors = [
+            {'nid': NID.generate(), 'hop_count': i}
+            for i in range(num_neighbors)
+        ]
+
+        service.get_neighbor_characteristic().update_neighbors(new_neighbors)
+        logger.info(f"🔄 Neighbor table atualizada: {num_neighbors} vizinhos (update #{neighbor_update_count})")
+
+        return True  # Continuar timer
+
+    # Agendar mudanças a cada 10 segundos
+    GLib.timeout_add_seconds(10, simulate_neighbor_change)
+    logger.info("⏲️  Timer configurado: neighbor table será atualizada a cada 10 segundos")
+
     # Setup signal handler
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
