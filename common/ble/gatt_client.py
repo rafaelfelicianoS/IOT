@@ -1,0 +1,498 @@
+"""
+BLE Client implementation using SimpleBLE.
+
+Permite a um dispositivo:
+- Fazer scan de dispositivos BLE nearby
+- Conectar a outros dispositivos BLE
+- Ler/Escrever em características GATT
+- Subscrever a notificações
+"""
+
+import time
+from typing import List, Optional, Callable, Dict, Any
+from dataclasses import dataclass
+
+try:
+    import simplepyble as simpleble
+    SIMPLEBLE_AVAILABLE = True
+except ImportError:
+    SIMPLEBLE_AVAILABLE = False
+    print("⚠️  SimpleBLE não está disponível. Instalar com: pip install simplepyble")
+
+from common.utils.logger import get_logger
+from common.utils.constants import IOT_NETWORK_SERVICE_UUID
+
+logger = get_logger("gatt_client")
+
+
+# ============================================================================
+# Data Classes
+# ============================================================================
+
+@dataclass
+class ScannedDevice:
+    """
+    Representa um dispositivo encontrado durante o scan.
+    """
+    address: str
+    identifier: str
+    rssi: int
+    name: Optional[str] = None
+    service_uuids: List[str] = None
+    manufacturer_data: Dict[int, bytes] = None
+
+    def __post_init__(self):
+        if self.service_uuids is None:
+            self.service_uuids = []
+        if self.manufacturer_data is None:
+            self.manufacturer_data = {}
+
+    def __str__(self):
+        return f"{self.name or 'Unknown'} ({self.address}) RSSI: {self.rssi} dBm"
+
+    def has_iot_service(self) -> bool:
+        """Verifica se o dispositivo anuncia o serviço IoT Network."""
+        return IOT_NETWORK_SERVICE_UUID.lower() in [uuid.lower() for uuid in self.service_uuids]
+
+
+@dataclass
+class GATTService:
+    """Representa um GATT Service."""
+    uuid: str
+    characteristics: List['GATTCharacteristic']
+
+    def get_characteristic(self, uuid: str) -> Optional['GATTCharacteristic']:
+        """Retorna uma característica pelo UUID."""
+        for char in self.characteristics:
+            if char.uuid.lower() == uuid.lower():
+                return char
+        return None
+
+
+@dataclass
+class GATTCharacteristic:
+    """Representa uma GATT Characteristic."""
+    uuid: str
+    capabilities: List[str]  # ['read', 'write', 'notify', 'indicate']
+
+
+# ============================================================================
+# BLE Scanner
+# ============================================================================
+
+class BLEScanner:
+    """
+    Scanner BLE para descobrir dispositivos nearby.
+    """
+
+    def __init__(self, adapter_index: int = 0):
+        """
+        Inicializa o scanner BLE.
+
+        Args:
+            adapter_index: Índice do adaptador BLE (0 = hci0, 1 = hci1, etc.)
+        """
+        if not SIMPLEBLE_AVAILABLE:
+            raise RuntimeError("SimpleBLE não está disponível")
+
+        adapters = simpleble.Adapter.get_adapters()
+        if not adapters:
+            raise RuntimeError("Nenhum adaptador BLE encontrado")
+
+        if adapter_index >= len(adapters):
+            raise RuntimeError(f"Adaptador {adapter_index} não existe")
+
+        self.adapter = adapters[adapter_index]
+        logger.info(f"Scanner BLE iniciado: {self.adapter.identifier()} ({self.adapter.address()})")
+
+    def scan(self, duration_ms: int = 5000, filter_iot: bool = False) -> List[ScannedDevice]:
+        """
+        Faz scan de dispositivos BLE.
+
+        Args:
+            duration_ms: Duração do scan em milissegundos
+            filter_iot: Se True, retorna apenas dispositivos com IoT Network Service
+
+        Returns:
+            Lista de dispositivos encontrados
+        """
+        logger.info(f"A fazer scan BLE durante {duration_ms}ms...")
+
+        self.adapter.scan_for(duration_ms)
+        peripherals = self.adapter.scan_get_results()
+
+        devices = []
+        for peripheral in peripherals:
+            # Extrair service UUIDs
+            service_uuids = []
+            manufacturer_data = {}
+
+            try:
+                # Tentar obter service UUIDs (nem todos os dispositivos anunciam)
+                if hasattr(peripheral, 'services'):
+                    service_uuids = [str(uuid) for uuid in peripheral.services()]
+
+                # Tentar obter manufacturer data
+                if hasattr(peripheral, 'manufacturer_data'):
+                    for mfr_id, data in peripheral.manufacturer_data().items():
+                        manufacturer_data[mfr_id] = bytes(data)
+            except Exception as e:
+                logger.debug(f"Erro ao obter dados do periférico {peripheral.address()}: {e}")
+
+            device = ScannedDevice(
+                address=peripheral.address(),
+                identifier=peripheral.identifier(),
+                rssi=peripheral.rssi(),
+                name=peripheral.identifier() if peripheral.identifier() else None,
+                service_uuids=service_uuids,
+                manufacturer_data=manufacturer_data,
+            )
+
+            # Filtrar por IoT Network Service se pedido
+            if filter_iot and not device.has_iot_service():
+                continue
+
+            devices.append(device)
+            logger.debug(f"  Encontrado: {device}")
+
+        logger.info(f"Scan concluído: {len(devices)} dispositivos encontrados")
+        return devices
+
+
+# ============================================================================
+# BLE Connection
+# ============================================================================
+
+class BLEConnection:
+    """
+    Representa uma conexão BLE a um dispositivo remoto.
+    """
+
+    def __init__(self, peripheral):
+        """
+        Inicializa a conexão BLE.
+
+        Args:
+            peripheral: SimpleBLE Peripheral object
+        """
+        self.peripheral = peripheral
+        self.address = peripheral.address()
+        self.is_connected = False
+        self._notification_callbacks: Dict[str, Callable] = {}
+
+        logger.debug(f"BLEConnection criada para {self.address}")
+
+    def connect(self, timeout_ms: int = 5000) -> bool:
+        """
+        Conecta ao dispositivo remoto.
+
+        Args:
+            timeout_ms: Timeout em milissegundos
+
+        Returns:
+            True se conectado com sucesso
+        """
+        try:
+            logger.info(f"A conectar a {self.address}...")
+            self.peripheral.connect()
+            self.is_connected = self.peripheral.is_connected()
+
+            if self.is_connected:
+                logger.info(f"✅ Conectado a {self.address}")
+                return True
+            else:
+                logger.error(f"❌ Falha ao conectar a {self.address}")
+                return False
+
+        except Exception as e:
+            logger.error(f"Erro ao conectar a {self.address}: {e}")
+            return False
+
+    def disconnect(self):
+        """Desconecta do dispositivo."""
+        if self.is_connected:
+            try:
+                self.peripheral.disconnect()
+                self.is_connected = False
+                logger.info(f"Desconectado de {self.address}")
+            except Exception as e:
+                logger.error(f"Erro ao desconectar de {self.address}: {e}")
+
+    def get_services(self) -> List[GATTService]:
+        """
+        Retorna todos os serviços GATT do dispositivo.
+
+        Returns:
+            Lista de serviços GATT
+        """
+        if not self.is_connected:
+            logger.error("Não conectado - não é possível obter serviços")
+            return []
+
+        services = []
+        for service in self.peripheral.services():
+            characteristics = []
+            for char in service.characteristics():
+                # Converter capabilities para lista de strings
+                caps = []
+                if char.can_read():
+                    caps.append('read')
+                if char.can_write_request() or char.can_write_command():
+                    caps.append('write')
+                if char.can_notify():
+                    caps.append('notify')
+                if char.can_indicate():
+                    caps.append('indicate')
+
+                characteristics.append(GATTCharacteristic(
+                    uuid=str(char.uuid()),
+                    capabilities=caps,
+                ))
+
+            services.append(GATTService(
+                uuid=str(service.uuid()),
+                characteristics=characteristics,
+            ))
+
+        return services
+
+    def read_characteristic(self, service_uuid: str, char_uuid: str) -> Optional[bytes]:
+        """
+        Lê o valor de uma característica.
+
+        Args:
+            service_uuid: UUID do serviço
+            char_uuid: UUID da característica
+
+        Returns:
+            Valor lido (bytes) ou None se erro
+        """
+        if not self.is_connected:
+            logger.error("Não conectado - não é possível ler")
+            return None
+
+        try:
+            data = self.peripheral.read(service_uuid, char_uuid)
+            logger.debug(f"Read {char_uuid}: {len(data)} bytes")
+            return bytes(data)
+        except Exception as e:
+            logger.error(f"Erro ao ler {char_uuid}: {e}")
+            return None
+
+    def write_characteristic(
+        self,
+        service_uuid: str,
+        char_uuid: str,
+        data: bytes,
+        with_response: bool = True
+    ) -> bool:
+        """
+        Escreve um valor numa característica.
+
+        Args:
+            service_uuid: UUID do serviço
+            char_uuid: UUID da característica
+            data: Dados a escrever
+            with_response: Se True, usa write request (com resposta)
+
+        Returns:
+            True se escrita bem-sucedida
+        """
+        if not self.is_connected:
+            logger.error("Não conectado - não é possível escrever")
+            return False
+
+        try:
+            if with_response:
+                self.peripheral.write_request(service_uuid, char_uuid, data)
+            else:
+                self.peripheral.write_command(service_uuid, char_uuid, data)
+
+            logger.debug(f"Write {char_uuid}: {len(data)} bytes")
+            return True
+        except Exception as e:
+            logger.error(f"Erro ao escrever em {char_uuid}: {e}")
+            return False
+
+    def subscribe_notifications(
+        self,
+        service_uuid: str,
+        char_uuid: str,
+        callback: Callable[[bytes], None]
+    ) -> bool:
+        """
+        Subscreve a notificações de uma característica.
+
+        Args:
+            service_uuid: UUID do serviço
+            char_uuid: UUID da característica
+            callback: Função chamada quando recebe notificação (recebe bytes)
+
+        Returns:
+            True se subscrição bem-sucedida
+        """
+        if not self.is_connected:
+            logger.error("Não conectado - não é possível subscrever")
+            return False
+
+        try:
+            # Wrapper para converter SimpleBLE bytearray para bytes
+            def notification_wrapper(data):
+                callback(bytes(data))
+
+            self.peripheral.notify(service_uuid, char_uuid, notification_wrapper)
+            self._notification_callbacks[char_uuid] = callback
+            logger.info(f"✅ Subscrito a notificações: {char_uuid}")
+            return True
+
+        except Exception as e:
+            logger.error(f"Erro ao subscrever {char_uuid}: {e}")
+            return False
+
+    def unsubscribe_notifications(self, service_uuid: str, char_uuid: str) -> bool:
+        """
+        Remove subscrição de notificações.
+
+        Args:
+            service_uuid: UUID do serviço
+            char_uuid: UUID da característica
+
+        Returns:
+            True se remoção bem-sucedida
+        """
+        if not self.is_connected:
+            return False
+
+        try:
+            self.peripheral.unsubscribe(service_uuid, char_uuid)
+            if char_uuid in self._notification_callbacks:
+                del self._notification_callbacks[char_uuid]
+            logger.info(f"Cancelada subscrição: {char_uuid}")
+            return True
+        except Exception as e:
+            logger.error(f"Erro ao cancelar subscrição {char_uuid}: {e}")
+            return False
+
+
+# ============================================================================
+# BLE Client (High-Level)
+# ============================================================================
+
+class BLEClient:
+    """
+    Cliente BLE de alto nível para interagir com dispositivos IoT.
+    """
+
+    def __init__(self, adapter_index: int = 0):
+        """
+        Inicializa o cliente BLE.
+
+        Args:
+            adapter_index: Índice do adaptador BLE
+        """
+        if not SIMPLEBLE_AVAILABLE:
+            raise RuntimeError("SimpleBLE não está disponível")
+
+        self.scanner = BLEScanner(adapter_index)
+        self.connections: Dict[str, BLEConnection] = {}
+
+        logger.info("BLE Client iniciado")
+
+    def scan_iot_devices(self, duration_ms: int = 5000) -> List[ScannedDevice]:
+        """
+        Faz scan de dispositivos IoT Network.
+
+        Args:
+            duration_ms: Duração do scan
+
+        Returns:
+            Lista de dispositivos IoT encontrados
+        """
+        return self.scanner.scan(duration_ms=duration_ms, filter_iot=True)
+
+    def connect_to_device(self, device: ScannedDevice) -> Optional[BLEConnection]:
+        """
+        Conecta a um dispositivo.
+
+        Args:
+            device: Dispositivo a conectar
+
+        Returns:
+            BLEConnection se sucesso, None se falha
+        """
+        # Se já estamos conectados, retornar conexão existente
+        if device.address in self.connections:
+            conn = self.connections[device.address]
+            if conn.is_connected:
+                logger.info(f"Já conectado a {device.address}")
+                return conn
+
+        # Obter peripheral do scanner
+        adapters = simpleble.Adapter.get_adapters()
+        if not adapters:
+            return None
+
+        adapter = adapters[0]
+        peripherals = adapter.scan_get_results()
+
+        peripheral = None
+        for p in peripherals:
+            if p.address() == device.address:
+                peripheral = p
+                break
+
+        if not peripheral:
+            logger.error(f"Dispositivo {device.address} não encontrado")
+            return None
+
+        # Criar e conectar
+        conn = BLEConnection(peripheral)
+        if conn.connect():
+            self.connections[device.address] = conn
+            return conn
+        else:
+            return None
+
+    def disconnect_from_device(self, address: str):
+        """
+        Desconecta de um dispositivo.
+
+        Args:
+            address: Endereço BLE do dispositivo
+        """
+        if address in self.connections:
+            self.connections[address].disconnect()
+            del self.connections[address]
+
+    def disconnect_all(self):
+        """Desconecta de todos os dispositivos."""
+        for address in list(self.connections.keys()):
+            self.disconnect_from_device(address)
+
+    def get_connection(self, address: str) -> Optional[BLEConnection]:
+        """
+        Retorna a conexão para um dispositivo.
+
+        Args:
+            address: Endereço BLE
+
+        Returns:
+            BLEConnection ou None
+        """
+        return self.connections.get(address)
+
+
+# ============================================================================
+# Exemplo de Uso
+# ============================================================================
+
+if __name__ == '__main__':
+    logger.info("BLE Client - Module")
+    logger.info("Este módulo fornece funcionalidade de BLE client.")
+    logger.info("")
+    logger.info("Exemplo:")
+    logger.info("  from common.ble.gatt_client import BLEClient")
+    logger.info("")
+    logger.info("  client = BLEClient()")
+    logger.info("  devices = client.scan_iot_devices()")
+    logger.info("  conn = client.connect_to_device(devices[0])")

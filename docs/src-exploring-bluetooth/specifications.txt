@@ -1,0 +1,6 @@
+A simpleble deverá funcionar bem para implementar a parte cliente das comunicações.
+
+Para a parte servidora têm de interagir com o dispositivo via D-Bus, usando o esqueleto de serviço que foi explicado nas aulas.
+
+
+A Bluez usa diretamente a interface HCI, e poderá criar conflitos com interfaces de mais alto nível como via D-Bus.
