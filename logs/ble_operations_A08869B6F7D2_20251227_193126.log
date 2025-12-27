@@ -1,0 +1,97 @@
+2025-12-27 19:31:26.738 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_193126.log
+2025-12-27 19:31:26.739 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 19:31:26.740 | INFO     | BLE Client iniciado
+2025-12-27 19:31:26.740 | INFO     | 🔍 A fazer scan de dispositivos IoT...
+2025-12-27 19:31:26.741 | INFO     |    (aguarda 5 segundos)
+2025-12-27 19:31:26.742 | INFO     | 
+2025-12-27 19:31:26.742 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 19:31:26.743 | INFO     | [OP-20251227_193126-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 19:31:31.763 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -53 dBm
+2025-12-27 19:31:31.763 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-27 19:31:31.764 | INFO     | [OP-20251227_193126-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-27 19:31:31.764 | DEBUG    | [OP-20251227_193126-0002]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -53 dBm | Services: 4
+2025-12-27 19:31:31.764 | INFO     | ✅ Encontrados 1 dispositivos IoT:
+2025-12-27 19:31:31.764 | INFO     | 
+2025-12-27 19:31:31.765 | INFO     |   1. IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -53 dBm
+2025-12-27 19:31:31.765 | INFO     |      Address: E0:D3:62:D6:EE:A0
+2025-12-27 19:31:31.765 | INFO     |      RSSI: -53 dBm
+2025-12-27 19:31:31.766 | INFO     |      Services: 4
+2025-12-27 19:31:31.766 | INFO     | 
+2025-12-27 19:31:31.766 | INFO     | ============================================================
+2025-12-27 19:31:31.766 | INFO     | 🔗 A conectar ao primeiro dispositivo: E0:D3:62:D6:EE:A0
+2025-12-27 19:31:31.767 | INFO     | ============================================================
+2025-12-27 19:31:31.767 | INFO     | 
+2025-12-27 19:31:31.767 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-27 19:31:31.767 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-27 19:31:31.768 | INFO     | [OP-20251227_193126-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-27 19:31:31.776 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-27 19:31:31.776 | INFO     | [OP-20251227_193126-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 7.12ms
+2025-12-27 19:31:31.777 | INFO     | ✅ Conectado com sucesso!
+2025-12-27 19:31:31.777 | INFO     | 
+2025-12-27 19:31:31.778 | INFO     | 🔍 A explorar serviços GATT...
+2025-12-27 19:31:31.780 | INFO     |    Encontrados 4 serviços:
+2025-12-27 19:31:31.780 | INFO     | 
+2025-12-27 19:31:31.780 | INFO     |    📦 Service: 00001801-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.781 | INFO     |       - Characteristic: 00002a05-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.782 | INFO     |         Capabilities: indicate
+2025-12-27 19:31:31.782 | INFO     |       - Characteristic: 00002b29-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.783 | INFO     |         Capabilities: read, write
+2025-12-27 19:31:31.784 | INFO     |       - Characteristic: 00002b2a-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.788 | INFO     |         Capabilities: read
+2025-12-27 19:31:31.788 | INFO     | 
+2025-12-27 19:31:31.789 | INFO     |    📦 Service: 0000180a-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.791 | INFO     |       - Characteristic: 00002a50-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.791 | INFO     |         Capabilities: read
+2025-12-27 19:31:31.791 | INFO     | 
+2025-12-27 19:31:31.792 | INFO     |    📦 Service: 03b80e5a-ede8-4b33-a751-6ce34ec4c700
+2025-12-27 19:31:31.792 | INFO     |       - Characteristic: 7772e5db-3868-4112-a1a9-f2669d106bf3
+2025-12-27 19:31:31.792 | INFO     |         Capabilities: read, write, notify
+2025-12-27 19:31:31.793 | INFO     | 
+2025-12-27 19:31:31.798 | INFO     |    📦 Service: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.799 | INFO     |       - Characteristic: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.800 | INFO     |         Capabilities: write, notify
+2025-12-27 19:31:31.801 | INFO     |       - Characteristic: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.802 | INFO     |         Capabilities: read
+2025-12-27 19:31:31.803 | INFO     |       - Characteristic: 12340003-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.803 | INFO     |         Capabilities: read, notify
+2025-12-27 19:31:31.804 | INFO     |       - Characteristic: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.805 | INFO     |         Capabilities: write, indicate
+2025-12-27 19:31:31.806 | INFO     | 
+2025-12-27 19:31:31.806 | INFO     | ============================================================
+2025-12-27 19:31:31.806 | INFO     | 📖 A ler DeviceInfo Characteristic...
+2025-12-27 19:31:31.807 | INFO     | ============================================================
+2025-12-27 19:31:31.808 | INFO     | 
+2025-12-27 19:31:31.809 | DEBUG    | [OP-20251227_193126-0005] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.898 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-27 19:31:31.898 | INFO     | [OP-20251227_193126-0006] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 0a9ec11b834d4f5db63e9e501417be0a0100 | ASCII: .....MO].>.P......
+2025-12-27 19:31:31.899 | INFO     | ✅ DeviceInfo lida: 18 bytes
+2025-12-27 19:31:31.899 | INFO     |    Dados (hex): 0a9ec11b834d4f5db63e9e501417be0a0100
+2025-12-27 19:31:31.900 | INFO     | 
+2025-12-27 19:31:31.900 | INFO     |    📱 NID: 0a9ec11b-834d-4f5d-b63e-9e501417be0a
+2025-12-27 19:31:31.900 | INFO     |       Short: 0a9ec11b...
+2025-12-27 19:31:31.900 | INFO     |    🔢 Hop Count: 1
+2025-12-27 19:31:31.901 | INFO     |    🏷️  Device Type: sink
+2025-12-27 19:31:31.901 | INFO     | 
+2025-12-27 19:31:31.901 | INFO     | ============================================================
+2025-12-27 19:31:31.901 | INFO     | 📖 A ler NeighborTable Characteristic...
+2025-12-27 19:31:31.902 | INFO     | ============================================================
+2025-12-27 19:31:31.902 | INFO     | 
+2025-12-27 19:31:31.902 | DEBUG    | [OP-20251227_193126-0007] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340003-0000-1000-8000-00805f9b34fb
+2025-12-27 19:31:31.998 | DEBUG    | Read 12340003-0000-1000-8000-00805f9b34fb: 37 bytes
+2025-12-27 19:31:31.998 | INFO     | [OP-20251227_193126-0008] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340003-0000-1000-8000-00805f9b34fb | Data: 37 bytes | Hex: 022e6a632c3a4d45dabf88367caa472e8e0000dc22010527c14d70acd5d90ec47240940100 | ASCII: ..jc,:ME...6|.G....."..'.Mp.....r@...
+2025-12-27 19:31:31.999 | INFO     | ✅ NeighborTable lida: 37 bytes
+2025-12-27 19:31:31.999 | INFO     |    Dados (hex): 022e6a632c3a4d45dabf88367caa472e8e0000dc22010527c14d70acd5d90ec47240940100
+2025-12-27 19:31:31.999 | INFO     |    👥 Número de vizinhos: 2
+2025-12-27 19:31:32.000 | INFO     | 
+2025-12-27 19:31:32.000 | INFO     |    1. NID: 2e6a632c...
+2025-12-27 19:31:32.000 | INFO     |       Hop Count: 0
+2025-12-27 19:31:32.001 | INFO     |    2. NID: 00dc2201...
+2025-12-27 19:31:32.001 | INFO     |       Hop Count: 148
+2025-12-27 19:31:32.002 | INFO     | 
+2025-12-27 19:31:32.002 | INFO     | ============================================================
+2025-12-27 19:31:32.002 | INFO     | 👋 A desconectar...
+2025-12-27 19:31:32.002 | INFO     | ============================================================
+2025-12-27 19:31:33.857 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-27 19:31:33.860 | INFO     | [OP-20251227_193126-0009] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-27 19:31:33.861 | INFO     | ✅ Desconectado
+2025-12-27 19:31:33.863 | INFO     | 
