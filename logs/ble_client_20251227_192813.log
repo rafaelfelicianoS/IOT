@@ -1,0 +1,27 @@
+[32m19:28:14[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m============================================================[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m  BLE Client Test - IoT Network Scanner[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m============================================================[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36mcommon.utils.ble_logger[0m:[36m__init__[0m | [1mBLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_192814.log[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36mcommon.ble.gatt_client[0m:[36m__init__[0m | [1mScanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36mcommon.ble.gatt_client[0m:[36m__init__[0m | [1mBLE Client iniciado[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m🔍 A fazer scan de dispositivos IoT...[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m   (aguarda 5 segundos)[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36mcommon.ble.gatt_client[0m:[36mscan[0m | [1mA fazer scan BLE durante 5000ms...[0m
+[32m19:28:14[0m | [1mINFO    [0m | [36mcommon.utils.ble_logger[0m:[36mlog_scan_start[0m | [1m[OP-20251227_192814-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36mcommon.ble.gatt_client[0m:[36mscan[0m | [1mScan concluído: 1 dispositivos encontrados[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36mcommon.utils.ble_logger[0m:[36mlog_scan_result[0m | [1m[OP-20251227_192814-0002] SCAN_RESULT | Devices_Found: 1[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m✅ Encontrados 1 dispositivos IoT:[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m  1. IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -58 dBm[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m     Address: E0:D3:62:D6:EE:A0[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m     RSSI: -58 dBm[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m     Services: 4[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m============================================================[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m🔗 A conectar ao primeiro dispositivo: E0:D3:62:D6:EE:A0[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m============================================================[0m
+[32m19:28:19[0m | [1mINFO    [0m | [36m__main__[0m:[36mmain[0m | [1m[0m
+[32m19:28:19[0m | [31m[1mERROR   [0m | [36mcommon.ble.gatt_client[0m:[36mconnect_to_device[0m | [31m[1mDispositivo E0:D3:62:D6:EE:A0 não encontrado[0m
+[32m19:28:19[0m | [31m[1mERROR   [0m | [36m__main__[0m:[36mmain[0m | [31m[1m❌ Falha ao conectar[0m

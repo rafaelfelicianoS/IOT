@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/rafa/IOT/IOT/examples/test_ble_client.py", line 18, in <module>
+    from common.ble.gatt_client import BLEClient, SIMPLEBLE_AVAILABLE
+  File "/home/rafa/IOT/IOT/common/ble/gatt_client.py", line 22, in <module>
+    from common.utils.logger import get_logger
+  File "/home/rafa/IOT/IOT/common/utils/logger.py", line 9, in <module>
+    from loguru import logger
+ModuleNotFoundError: No module named 'loguru'

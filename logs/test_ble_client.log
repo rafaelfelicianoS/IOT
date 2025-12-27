@@ -72,3 +72,57 @@
 2025-12-27 19:12:59.951 | INFO     | __main__:main:72 |   1. O GATT Server está a correr (test_gatt_server.py)
 2025-12-27 19:12:59.951 | INFO     | __main__:main:73 |   2. O advertising está ativo
 2025-12-27 19:12:59.951 | INFO     | __main__:main:74 |   3. O dispositivo está próximo
+2025-12-27 19:28:14.391 | INFO     | __main__:main:34 | ============================================================
+2025-12-27 19:28:14.392 | INFO     | __main__:main:35 |   BLE Client Test - IoT Network Scanner
+2025-12-27 19:28:14.392 | INFO     | __main__:main:36 | ============================================================
+2025-12-27 19:28:14.392 | INFO     | __main__:main:37 | 
+2025-12-27 19:28:14.420 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_192814.log
+2025-12-27 19:28:14.421 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 19:28:14.422 | INFO     | common.ble.gatt_client:__init__:428 | BLE Client iniciado
+2025-12-27 19:28:14.422 | INFO     | __main__:main:62 | 🔍 A fazer scan de dispositivos IoT...
+2025-12-27 19:28:14.422 | INFO     | __main__:main:63 |    (aguarda 5 segundos)
+2025-12-27 19:28:14.423 | INFO     | __main__:main:64 | 
+2025-12-27 19:28:14.424 | INFO     | common.ble.gatt_client:scan:121 | A fazer scan BLE durante 5000ms...
+2025-12-27 19:28:14.425 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251227_192814-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 19:28:19.442 | INFO     | common.ble.gatt_client:scan:161 | Scan concluído: 1 dispositivos encontrados
+2025-12-27 19:28:19.442 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251227_192814-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-27 19:28:19.443 | INFO     | __main__:main:78 | ✅ Encontrados 1 dispositivos IoT:
+2025-12-27 19:28:19.443 | INFO     | __main__:main:79 | 
+2025-12-27 19:28:19.444 | INFO     | __main__:main:81 |   1. IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -58 dBm
+2025-12-27 19:28:19.444 | INFO     | __main__:main:82 |      Address: E0:D3:62:D6:EE:A0
+2025-12-27 19:28:19.444 | INFO     | __main__:main:83 |      RSSI: -58 dBm
+2025-12-27 19:28:19.444 | INFO     | __main__:main:85 |      Services: 4
+2025-12-27 19:28:19.445 | INFO     | __main__:main:86 | 
+2025-12-27 19:28:19.445 | INFO     | __main__:main:89 | ============================================================
+2025-12-27 19:28:19.445 | INFO     | __main__:main:90 | 🔗 A conectar ao primeiro dispositivo: E0:D3:62:D6:EE:A0
+2025-12-27 19:28:19.445 | INFO     | __main__:main:91 | ============================================================
+2025-12-27 19:28:19.446 | INFO     | __main__:main:92 | 
+2025-12-27 19:28:19.446 | ERROR    | common.ble.gatt_client:connect_to_device:474 | Dispositivo E0:D3:62:D6:EE:A0 não encontrado
+2025-12-27 19:28:19.446 | ERROR    | __main__:main:96 | ❌ Falha ao conectar
+2025-12-27 19:29:16.521 | INFO     | __main__:main:34 | ============================================================
+2025-12-27 19:29:16.521 | INFO     | __main__:main:35 |   BLE Client Test - IoT Network Scanner
+2025-12-27 19:29:16.521 | INFO     | __main__:main:36 | ============================================================
+2025-12-27 19:29:16.522 | INFO     | __main__:main:37 | 
+2025-12-27 19:29:16.543 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_192916.log
+2025-12-27 19:29:16.543 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 19:29:16.544 | INFO     | common.ble.gatt_client:__init__:428 | BLE Client iniciado
+2025-12-27 19:29:16.544 | INFO     | __main__:main:62 | 🔍 A fazer scan de dispositivos IoT...
+2025-12-27 19:29:16.544 | INFO     | __main__:main:63 |    (aguarda 5 segundos)
+2025-12-27 19:29:16.545 | INFO     | __main__:main:64 | 
+2025-12-27 19:29:16.546 | INFO     | common.ble.gatt_client:scan:121 | A fazer scan BLE durante 5000ms...
+2025-12-27 19:29:16.549 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251227_192916-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 19:29:21.573 | INFO     | common.ble.gatt_client:scan:161 | Scan concluído: 1 dispositivos encontrados
+2025-12-27 19:29:21.574 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251227_192916-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-27 19:29:21.575 | INFO     | __main__:main:78 | ✅ Encontrados 1 dispositivos IoT:
+2025-12-27 19:29:21.576 | INFO     | __main__:main:79 | 
+2025-12-27 19:29:21.576 | INFO     | __main__:main:81 |   1. IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -55 dBm
+2025-12-27 19:29:21.577 | INFO     | __main__:main:82 |      Address: E0:D3:62:D6:EE:A0
+2025-12-27 19:29:21.577 | INFO     | __main__:main:83 |      RSSI: -55 dBm
+2025-12-27 19:29:21.578 | INFO     | __main__:main:85 |      Services: 4
+2025-12-27 19:29:21.578 | INFO     | __main__:main:86 | 
+2025-12-27 19:29:21.579 | INFO     | __main__:main:89 | ============================================================
+2025-12-27 19:29:21.579 | INFO     | __main__:main:90 | 🔗 A conectar ao primeiro dispositivo: E0:D3:62:D6:EE:A0
+2025-12-27 19:29:21.581 | INFO     | __main__:main:91 | ============================================================
+2025-12-27 19:29:21.584 | INFO     | __main__:main:92 | 
+2025-12-27 19:29:21.589 | ERROR    | common.ble.gatt_client:connect_to_device:474 | Dispositivo E0:D3:62:D6:EE:A0 não encontrado
+2025-12-27 19:29:21.591 | ERROR    | __main__:main:96 | ❌ Falha ao conectar
