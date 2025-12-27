@@ -1,0 +1,45 @@
+2025-12-27 19:18:14.267 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D6EEA0_20251227_191814.log
+2025-12-27 19:18:14.267 | INFO     | Scanner BLE iniciado: hci0 (E0:D3:62:D6:EE:A0)
+2025-12-27 19:18:14.268 | INFO     | ✅ Scanner iniciado: hci0 (E0:D3:62:D6:EE:A0)
+2025-12-27 19:18:14.268 | INFO     | 
+2025-12-27 19:18:14.268 | INFO     | 🔍 Tentativa 1/3 - A fazer scan de 5 segundos...
+2025-12-27 19:18:14.268 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 19:18:14.268 | INFO     | [OP-20251227_191814-0001] SCAN_START | Duration: 5000ms | Filter_IoT: False
+2025-12-27 19:18:19.281 | DEBUG    |   Encontrado: [TV] Samsung 7 Series (65) (FC:03:9F:1D:14:49) RSSI: -100 dBm
+2025-12-27 19:18:19.281 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-27 19:18:19.281 | INFO     | [OP-20251227_191814-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-27 19:18:19.282 | DEBUG    | [OP-20251227_191814-0002]   Device_1: Name: [TV] Samsung 7 Series (65) | Address: FC:03:9F:1D:14:49 | RSSI: -100 dBm | Services: 0
+2025-12-27 19:18:19.282 | INFO     |    Encontrados: 1 dispositivos
+2025-12-27 19:18:19.282 | INFO     |    'IoT-Node' não encontrado. A tentar novamente...
+
+2025-12-27 19:18:20.282 | INFO     | 🔍 Tentativa 2/3 - A fazer scan de 5 segundos...
+2025-12-27 19:18:20.283 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 19:18:20.283 | INFO     | [OP-20251227_191814-0003] SCAN_START | Duration: 5000ms | Filter_IoT: False
+2025-12-27 19:18:25.297 | DEBUG    |   Encontrado: Unknown (73:8C:06:0A:57:D0) RSSI: -100 dBm
+2025-12-27 19:18:25.298 | DEBUG    |   Encontrado: [TV] Samsung 7 Series (65) (FC:03:9F:1D:14:49) RSSI: -100 dBm
+2025-12-27 19:18:25.298 | INFO     | Scan concluído: 2 dispositivos encontrados
+2025-12-27 19:18:25.299 | INFO     | [OP-20251227_191814-0004] SCAN_RESULT | Devices_Found: 2
+2025-12-27 19:18:25.299 | DEBUG    | [OP-20251227_191814-0004]   Device_1: Name: Unknown | Address: 73:8C:06:0A:57:D0 | RSSI: -100 dBm | Services: 0
+2025-12-27 19:18:25.299 | DEBUG    | [OP-20251227_191814-0004]   Device_2: Name: [TV] Samsung 7 Series (65) | Address: FC:03:9F:1D:14:49 | RSSI: -100 dBm | Services: 0
+2025-12-27 19:18:25.299 | INFO     |    Encontrados: 2 dispositivos
+2025-12-27 19:18:25.300 | INFO     |    'IoT-Node' não encontrado. A tentar novamente...
+
+2025-12-27 19:18:26.300 | INFO     | 🔍 Tentativa 3/3 - A fazer scan de 5 segundos...
+2025-12-27 19:18:26.300 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 19:18:26.301 | INFO     | [OP-20251227_191814-0005] SCAN_START | Duration: 5000ms | Filter_IoT: False
+2025-12-27 19:18:31.312 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-27 19:18:31.313 | INFO     | [OP-20251227_191814-0006] SCAN_RESULT | Devices_Found: 0
+2025-12-27 19:18:31.313 | INFO     |    Encontrados: 0 dispositivos
+2025-12-27 19:18:31.314 | ERROR    | 
+2025-12-27 19:18:31.314 | ERROR    | ❌ 'IoT-Node' NÃO ENCONTRADO em 3 tentativas!
+2025-12-27 19:18:31.315 | ERROR    | 
+2025-12-27 19:18:31.315 | ERROR    | Possíveis causas:
+2025-12-27 19:18:31.315 | ERROR    |   1. GATT Server não está a correr
+2025-12-27 19:18:31.316 | ERROR    |      → Executa: sudo python3 examples/test_gatt_server.py hci0
+2025-12-27 19:18:31.316 | ERROR    | 
+2025-12-27 19:18:31.316 | ERROR    |   2. Advertising não foi registado com sucesso
+2025-12-27 19:18:31.317 | ERROR    |      → Verifica se o servidor mostrou: '✅ GATT Server a correr com Advertising!'
+2025-12-27 19:18:31.317 | ERROR    | 
+2025-12-27 19:18:31.318 | ERROR    |   3. Problema com BlueZ/D-Bus
+2025-12-27 19:18:31.318 | ERROR    |      → sudo systemctl restart bluetooth
+2025-12-27 19:18:31.318 | ERROR    | 
