@@ -424,54 +424,9 @@ class LinkManager:
             'downlinks': [str(link) for link in self.downlinks.values()],
         }
 
-    def connect_to_neighbor(self, address: str, neighbor_info) -> bool:
+    def disconnect_neighbor(self, address: str):
         """
-        Conecta a um vizinho específico (para uso manual/CLI).
-
-        Args:
-            address: Endereço BLE do vizinho
-            neighbor_info: NeighborInfo com informações do vizinho
-
-        Returns:
-            True se conectou com sucesso, False caso contrário
-        """
-        try:
-            # Criar device fictício para conectar
-            from common.ble.gatt_client import ScannedDevice
-            device = ScannedDevice(
-                address=address,
-                identifier=address,
-                rssi=neighbor_info.rssi,
-                name=None,
-                service_uuids=[],
-                manufacturer_data={},
-            )
-
-            # Conectar
-            connection = self.client.connect_to_device(device)
-            if not connection:
-                logger.error(f"Falha ao conectar a {address}")
-                return False
-
-            # Criar DeviceInfo
-            device_info = DeviceInfo(
-                nid=neighbor_info.nid,
-                hop_count=neighbor_info.hop_count,
-                device_type=neighbor_info.device_type,
-            )
-
-            # Adicionar como uplink
-            self.set_uplink(connection, device_info)
-            logger.info(f"Conectado manualmente a {address} como uplink")
-            return True
-
-        except Exception as e:
-            logger.error(f"Erro ao conectar a {address}: {e}")
-            return False
-
-    def disconnect_from_neighbor(self, address: str):
-        """
-        Desconecta de um vizinho específico (para uso manual/CLI).
+        Desconecta de um vizinho específico por endereço.
 
         Args:
             address: Endereço BLE do vizinho

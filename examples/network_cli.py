@@ -69,7 +69,7 @@ Digite 'exit' ou Ctrl+D para sair.
         logger.info("NeighborDiscovery criado")
 
         # Criar LinkManager
-        self.link_manager = LinkManager(client=self.client)
+        self.link_manager = LinkManager()
         logger.info("LinkManager criado")
 
         print("✅ Sistema inicializado com sucesso!\n")
@@ -189,15 +189,38 @@ Digite 'exit' ou Ctrl+D para sair.
         print(f"   RSSI: {neighbor.rssi}dBm\n")
 
         try:
-            # Conectar via LinkManager
-            success = self.link_manager.connect_to_neighbor(address, neighbor)
+            # Criar ScannedDevice para conectar
+            from common.ble.gatt_client import ScannedDevice
+            device = ScannedDevice(
+                address=address,
+                identifier=address,
+                rssi=neighbor.rssi,
+                name=None,
+                service_uuids=[],
+                manufacturer_data={},
+            )
 
-            if success:
-                # Marcar como conectado no discovery
-                self.discovery.mark_connected(address, True)
-                print(f"✅ Conectado com sucesso a {address}!\n")
-            else:
+            # Conectar via BLE Client
+            connection = self.client.connect_to_device(device)
+            if not connection:
                 print(f"❌ Falha ao conectar a {address}.\n")
+                return
+
+            # Criar DeviceInfo
+            from common.network.link_manager import DeviceInfo
+            device_info = DeviceInfo(
+                nid=neighbor.nid,
+                hop_count=neighbor.hop_count,
+                device_type=neighbor.device_type,
+            )
+
+            # Adicionar como uplink no LinkManager
+            self.link_manager.set_uplink(connection, device_info)
+
+            # Marcar como conectado no discovery
+            self.discovery.mark_connected(address, True)
+
+            print(f"✅ Conectado com sucesso a {address}!\n")
 
         except Exception as e:
             print(f"❌ Erro ao conectar: {e}\n")
@@ -226,7 +249,7 @@ Digite 'exit' ou Ctrl+D para sair.
 
         try:
             # Desconectar via LinkManager
-            self.link_manager.disconnect_from_neighbor(address)
+            self.link_manager.disconnect_neighbor(address)
 
             # Marcar como desconectado no discovery
             self.discovery.mark_connected(address, False)
