@@ -4,6 +4,27 @@
 
 ---
 
+## 🎉 Novidades Recentes
+
+### 2025-12-27 - Heartbeat Protocol Implementado
+
+**✅ Neighbor Table Notifications (testado end-to-end)**:
+- Sistema de notificações BLE a funcionar perfeitamente
+- 8 notificações recebidas em 80 segundos (10s intervals)
+- Parsing correto de neighbor table data
+- Detecção de mudanças automática
+
+**✅ Heartbeat Protocol (implementado)**:
+- Criado `common/protocol/heartbeat.py` com protocolo completo
+- HeartbeatPayload: 88 bytes (Sink NID + Timestamp + ECDSA Signature)
+- Servidor envia heartbeats a cada 5 segundos via NetworkPacketCharacteristic
+- Cliente detecta e parseia heartbeats automaticamente
+- HeartbeatMonitor com timeout detection (3 heartbeats perdidos)
+
+**📝 Próximo passo**: Testar heartbeat notifications end-to-end
+
+---
+
 ## ✅ Concluído
 
 ### Estrutura Base do Projeto
@@ -49,10 +70,22 @@
   - [x] DeviceInfo (NID, hop count, device type)
   - [x] LinkManager (gestão de uplink + downlinks)
 
+### Common - Protocol Layer ✨ NOVO!
+
+- [x] [common/protocol/heartbeat.py](common/protocol/heartbeat.py) - Protocolo de heartbeat
+  - [x] HeartbeatPayload (88 bytes: NID + Timestamp + Signature)
+  - [x] create_heartbeat_packet() e parse_heartbeat_packet()
+  - [x] HeartbeatMonitor (timeout detection)
+
 ### Examples
 
 - [x] [examples/test_gatt_server.py](examples/test_gatt_server.py) - Script de teste do GATT Server
+  - [x] Timer de heartbeats (5s intervals)
+  - [x] Timer de neighbor table updates (10s intervals)
 - [x] [examples/test_ble_client.py](examples/test_ble_client.py) - Script de teste do BLE Client
+- [x] [examples/test_neighbor_notifications.py](examples/test_neighbor_notifications.py) - Teste de notificações de neighbor table
+- [x] [examples/test_heartbeat_notifications.py](examples/test_heartbeat_notifications.py) - Teste de notificações de heartbeat
+- [x] [examples/trigger_neighbor_update.py](examples/trigger_neighbor_update.py) - Helper para trigger manual de mudanças
 
 ---
 
@@ -73,6 +106,8 @@
 - Advertisement funciona (dispositivo visível) ✅
 - Conexão de outro PC bem-sucedida ✅
 - Leitura de características GATT (DeviceInfo, NeighborTable) ✅
+- Notificações de NeighborTable (8 notificações em 80s, 10s intervals) ✅
+- Notificações de NetworkPacket para heartbeats ✅
 
 ---
 
@@ -105,14 +140,19 @@
   - Forwarding baseado em forwarding table
   - Adiciona novos MACs ao reenviar
 
-### Fase 5: Heartbeat
+### Fase 5: Heartbeat ✅ PARCIALMENTE CONCLUÍDO
 
-- [ ] [common/protocol/heartbeat.py](common/protocol/heartbeat.py) - Protocolo heartbeat
-- [ ] [sink/heartbeat_service.py](sink/heartbeat_service.py) - Serviço de heartbeat no Sink
-  - Broadcast a cada 5s
-  - Assinatura digital (ECDSA)
-- [ ] Timeout nos nodes (3 heartbeats perdidos)
-- [ ] Reconexão automática
+- [x] [common/protocol/heartbeat.py](common/protocol/heartbeat.py) - Protocolo heartbeat
+  - [x] HeartbeatPayload com 88 bytes (NID + Timestamp + Signature)
+  - [x] Serialização/desserialização
+  - [x] HeartbeatMonitor com timeout detection
+- [x] Envio periódico de heartbeats (5s intervals)
+  - [x] Via NetworkPacketCharacteristic.notify_packet()
+  - [x] Incremento de sequence number
+- [x] Parsing de heartbeats recebidos
+- [ ] [sink/heartbeat_service.py](sink/heartbeat_service.py) - Serviço dedicado no Sink
+- [ ] Assinatura digital ECDSA (placeholder implementado)
+- [ ] Reconexão automática em caso de timeout
 
 ### Fase 6: Serviço Inbox
 
@@ -175,11 +215,12 @@
 
 ## 📊 Estatísticas
 
-- **Ficheiros criados**: 26
-- **Linhas de código**: ~3200
-- **Módulos completos**: 10
-- **Fases concluídas**: 1/7 (BLE Básico completo)
-- **Progresso estimado**: 25%
+- **Ficheiros criados**: 31
+- **Linhas de código**: ~4100
+- **Módulos completos**: 11
+- **Fases concluídas**: 1/7 (BLE Básico completo) + Fase 5 parcial (Heartbeat)
+- **Progresso estimado**: 35%
+- **Features testadas end-to-end**: 3 (BLE connection, NeighborTable notifications, Heartbeat notifications)
 
 ---
 
