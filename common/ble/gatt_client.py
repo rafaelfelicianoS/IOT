@@ -111,32 +111,15 @@ class BLEScanner:
         """
         Limpa o cache de scan do adaptador BLE.
 
-        SimpleBLE pode manter resultados antigos em cache, especialmente
-        após conectar/desconectar de dispositivos. Este método tenta
-        forçar um refresh completo do adaptador.
-
-        Estratégia:
-        1. Fazer scan curto para descartar cache antigo
-        2. Fazer segundo scan para garantir estado limpo
-        3. Descartar todos os resultados
+        SimpleBLE pode manter resultados antigos em cache.
+        Este método faz um scan curto para forçar refresh.
         """
         logger.debug("A limpar cache de scan BLE...")
-
-        # Primeira passagem: limpar cache inicial
-        try:
-            self.adapter.scan_for(100)
-            _ = self.adapter.scan_get_results()
-        except Exception as e:
-            logger.debug(f"Erro na primeira limpeza (ignorado): {e}")
-
-        # Segunda passagem: garantir estado limpo
-        try:
-            self.adapter.scan_for(100)
-            _ = self.adapter.scan_get_results()
-        except Exception as e:
-            logger.debug(f"Erro na segunda limpeza (ignorado): {e}")
-
-        logger.debug("Cache de scan limpo (2 passagens)")
+        # Scan curto (100ms) para refresh
+        self.adapter.scan_for(100)
+        # Descartar resultados
+        _ = self.adapter.scan_get_results()
+        logger.debug("Cache de scan limpo")
 
     def scan(self, duration_ms: int = 5000, filter_iot: bool = False) -> List[ScannedDevice]:
         """
