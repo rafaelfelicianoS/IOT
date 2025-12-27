@@ -20,6 +20,7 @@ except ImportError:
     print("⚠️  SimpleBLE não está disponível. Instalar com: pip install simplepyble")
 
 from common.utils.logger import get_logger
+from common.utils.ble_logger import get_ble_logger
 from common.utils.constants import IOT_NETWORK_SERVICE_UUID
 
 logger = get_logger("gatt_client")
@@ -103,6 +104,7 @@ class BLEScanner:
             raise RuntimeError(f"Adaptador {adapter_index} não existe")
 
         self.adapter = adapters[adapter_index]
+        self.ble_log = get_ble_logger(self.adapter.address())
         logger.info(f"Scanner BLE iniciado: {self.adapter.identifier()} ({self.adapter.address()})")
 
     def scan(self, duration_ms: int = 5000, filter_iot: bool = False) -> List[ScannedDevice]:
@@ -117,6 +119,7 @@ class BLEScanner:
             Lista de dispositivos encontrados
         """
         logger.info(f"A fazer scan BLE durante {duration_ms}ms...")
+        self.ble_log.log_scan_start(duration_ms, filter_iot)
 
         self.adapter.scan_for(duration_ms)
         peripherals = self.adapter.scan_get_results()
@@ -156,6 +159,7 @@ class BLEScanner:
             logger.debug(f"  Encontrado: {device}")
 
         logger.info(f"Scan concluído: {len(devices)} dispositivos encontrados")
+        self.ble_log.log_scan_result(len(devices), devices)
         return devices
 
 
@@ -179,6 +183,7 @@ class BLEConnection:
         self.address = peripheral.address()
         self.is_connected = False
         self._notification_callbacks: Dict[str, Callable] = {}
+        self.ble_log = get_ble_logger()
 
         logger.debug(f"BLEConnection criada para {self.address}")
 
@@ -192,20 +197,30 @@ class BLEConnection:
         Returns:
             True se conectado com sucesso
         """
+        import time
+
         try:
             logger.info(f"A conectar a {self.address}...")
+            self.ble_log.log_connection_attempt(self.address)
+
+            start_time = time.time()
             self.peripheral.connect()
+            connection_time_ms = (time.time() - start_time) * 1000
+
             self.is_connected = self.peripheral.is_connected()
 
             if self.is_connected:
                 logger.info(f"✅ Conectado a {self.address}")
+                self.ble_log.log_connection_success(self.address, connection_time_ms)
                 return True
             else:
                 logger.error(f"❌ Falha ao conectar a {self.address}")
+                self.ble_log.log_connection_failed(self.address, "Connection failed")
                 return False
 
         except Exception as e:
             logger.error(f"Erro ao conectar a {self.address}: {e}")
+            self.ble_log.log_connection_failed(self.address, str(e))
             return False
 
     def disconnect(self):
@@ -215,8 +230,10 @@ class BLEConnection:
                 self.peripheral.disconnect()
                 self.is_connected = False
                 logger.info(f"Desconectado de {self.address}")
+                self.ble_log.log_disconnection(self.address, "normal")
             except Exception as e:
                 logger.error(f"Erro ao desconectar de {self.address}: {e}")
+                self.ble_log.log_disconnection(self.address, f"error: {e}")
 
     def get_services(self) -> List[GATTService]:
         """
@@ -272,11 +289,15 @@ class BLEConnection:
             return None
 
         try:
+            self.ble_log.log_read_request(self.address, service_uuid, char_uuid)
             data = self.peripheral.read(service_uuid, char_uuid)
-            logger.debug(f"Read {char_uuid}: {len(data)} bytes")
-            return bytes(data)
+            data_bytes = bytes(data)
+            logger.debug(f"Read {char_uuid}: {len(data_bytes)} bytes")
+            self.ble_log.log_read_response(self.address, service_uuid, char_uuid, data_bytes, success=True)
+            return data_bytes
         except Exception as e:
             logger.error(f"Erro ao ler {char_uuid}: {e}")
+            self.ble_log.log_read_response(self.address, service_uuid, char_uuid, b"", success=False)
             return None
 
     def write_characteristic(
@@ -303,15 +324,19 @@ class BLEConnection:
             return False
 
         try:
+            self.ble_log.log_write_request(self.address, service_uuid, char_uuid, data, with_response)
+
             if with_response:
                 self.peripheral.write_request(service_uuid, char_uuid, data)
             else:
                 self.peripheral.write_command(service_uuid, char_uuid, data)
 
             logger.debug(f"Write {char_uuid}: {len(data)} bytes")
+            self.ble_log.log_write_response(self.address, char_uuid, success=True)
             return True
         except Exception as e:
             logger.error(f"Erro ao escrever em {char_uuid}: {e}")
+            self.ble_log.log_write_response(self.address, char_uuid, success=False, error=str(e))
             return False
 
     def subscribe_notifications(
@@ -336,17 +361,21 @@ class BLEConnection:
             return False
 
         try:
-            # Wrapper para converter SimpleBLE bytearray para bytes
+            # Wrapper para converter SimpleBLE bytearray para bytes E fazer logging
             def notification_wrapper(data):
-                callback(bytes(data))
+                data_bytes = bytes(data)
+                self.ble_log.log_notification(self.address, char_uuid, data_bytes)
+                callback(data_bytes)
 
             self.peripheral.notify(service_uuid, char_uuid, notification_wrapper)
             self._notification_callbacks[char_uuid] = callback
             logger.info(f"✅ Subscrito a notificações: {char_uuid}")
+            self.ble_log.log_subscribe(self.address, char_uuid, success=True)
             return True
 
         except Exception as e:
             logger.error(f"Erro ao subscrever {char_uuid}: {e}")
+            self.ble_log.log_subscribe(self.address, char_uuid, success=False)
             return False
 
     def unsubscribe_notifications(self, service_uuid: str, char_uuid: str) -> bool:
