@@ -1,0 +1,134 @@
+2025-12-27 20:28:14.131 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_202814.log
+2025-12-27 20:28:14.132 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 20:28:14.132 | INFO     | BLE Client iniciado
+2025-12-27 20:28:14.133 | INFO     | ✅ BLE Client criado
+2025-12-27 20:28:14.133 | INFO     | 
+2025-12-27 20:28:14.133 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-27 20:28:14.136 | INFO     | ✅ NeighborDiscovery criado
+2025-12-27 20:28:14.136 | INFO     |    Scan interval: 30s
+2025-12-27 20:28:14.136 | INFO     |    Scan duration: 5000ms
+2025-12-27 20:28:14.137 | INFO     |    Neighbor timeout: 120s
+2025-12-27 20:28:14.137 | INFO     | 
+2025-12-27 20:28:14.138 | INFO     | ======================================================================
+2025-12-27 20:28:14.139 | INFO     | 🔍 A fazer primeiro scan...
+2025-12-27 20:28:14.139 | INFO     | ======================================================================
+2025-12-27 20:28:14.140 | INFO     | 
+2025-12-27 20:28:14.141 | INFO     | A iniciar scan de vizinhos...
+2025-12-27 20:28:14.143 | DEBUG    | A limpar cache de scan BLE...
+2025-12-27 20:28:14.459 | DEBUG    | Cache de scan limpo (2 passagens)
+2025-12-27 20:28:14.459 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 20:28:14.460 | INFO     | [OP-20251227_202814-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 20:28:19.580 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -52 dBm
+2025-12-27 20:28:19.581 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-27 20:28:19.581 | INFO     | [OP-20251227_202814-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-27 20:28:19.582 | DEBUG    | [OP-20251227_202814-0002]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -52 dBm | Services: 1
+2025-12-27 20:28:19.582 | INFO     | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-27 20:28:19.583 | DEBUG    | A conectar a E0:D3:62:D6:EE:A0 para ler DeviceInfo...
+2025-12-27 20:28:19.583 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-27 20:28:19.583 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-27 20:28:19.584 | INFO     | [OP-20251227_202814-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-27 20:28:22.827 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-27 20:28:22.829 | INFO     | [OP-20251227_202814-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3240.19ms
+2025-12-27 20:28:22.830 | DEBUG    | [OP-20251227_202814-0005] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-27 20:28:23.328 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-27 20:28:23.329 | INFO     | [OP-20251227_202814-0006] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: aaf3a2eeabe447ac83c8e888f58fca430100 | ASCII: ......G........C..
+2025-12-27 20:28:23.330 | INFO     | Vizinho descoberto: E0:D3:62:D6:EE:A0 (aaf3a2ee...) hop=1 rssi=-52dBm type=node disconnected seen=0.0s ago
+2025-12-27 20:28:25.892 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-27 20:28:25.893 | INFO     | [OP-20251227_202814-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-27 20:28:25.895 | INFO     | 
+2025-12-27 20:28:25.897 | INFO     | 🆕 NOVO VIZINHO DESCOBERTO!
+2025-12-27 20:28:25.898 | INFO     |    Address: E0:D3:62:D6:EE:A0
+2025-12-27 20:28:25.899 | INFO     |    NID: aaf3a2ee...
+2025-12-27 20:28:25.899 | INFO     |    Hop Count: 1
+2025-12-27 20:28:25.900 | INFO     |    Device Type: node
+2025-12-27 20:28:25.901 | INFO     |    RSSI: -52 dBm
+2025-12-27 20:28:25.901 | INFO     | 
+2025-12-27 20:28:25.902 | INFO     | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-27 20:28:25.903 | INFO     | 
+2025-12-27 20:28:25.903 | INFO     | ======================================================================
+2025-12-27 20:28:25.903 | INFO     | 📊 RESULTADO DO SCAN
+2025-12-27 20:28:25.904 | INFO     | ======================================================================
+2025-12-27 20:28:25.904 | INFO     | Total de vizinhos descobertos: 1
+2025-12-27 20:28:25.905 | INFO     | 
+2025-12-27 20:28:25.905 | INFO     | Lista de vizinhos:
+2025-12-27 20:28:25.906 | INFO     |   1. E0:D3:62:D6:EE:A0 (aaf3a2ee...) hop=1 rssi=-52dBm type=node disconnected seen=2.6s ago
+2025-12-27 20:28:25.906 | INFO     | 
+2025-12-27 20:28:25.907 | INFO     | 🏆 Melhor vizinho (menor hop count):
+2025-12-27 20:28:25.908 | INFO     |    E0:D3:62:D6:EE:A0 (aaf3a2ee...) hop=1 rssi=-52dBm type=node disconnected seen=2.6s ago
+2025-12-27 20:28:25.909 | INFO     | 
+2025-12-27 20:28:25.910 | INFO     | 📊 Estatísticas:
+2025-12-27 20:28:25.910 | INFO     |    Total de vizinhos: 1
+2025-12-27 20:28:25.911 | INFO     |    Vizinhos conectados: 0
+2025-12-27 20:28:25.911 | INFO     |    Melhor hop count: 1
+2025-12-27 20:28:25.912 | INFO     |    Última scan: 0.0s atrás
+2025-12-27 20:28:25.912 | INFO     |    Vizinhos por hop count:
+2025-12-27 20:28:25.913 | INFO     |       hop=1: 1 vizinhos
+2025-12-27 20:28:25.913 | INFO     | 
+2025-12-27 20:28:25.913 | INFO     | ======================================================================
+2025-12-27 20:28:25.914 | INFO     | 🔄 MODO CONTÍNUO
+2025-12-27 20:28:25.914 | INFO     | ======================================================================
+2025-12-27 20:28:25.916 | INFO     | 
+2025-12-27 20:28:25.916 | INFO     | Vou fazer scan a cada 30s.
+2025-12-27 20:28:25.916 | INFO     | Pressiona Ctrl+C para terminar.
+2025-12-27 20:28:25.917 | INFO     | 
+2025-12-27 20:28:55.917 | INFO     | ======================================================================
+2025-12-27 20:28:55.919 | INFO     | 🔍 Scan #2
+2025-12-27 20:28:55.920 | INFO     | ======================================================================
+2025-12-27 20:28:55.926 | INFO     | 
+2025-12-27 20:28:55.930 | INFO     | A iniciar scan de vizinhos...
+2025-12-27 20:28:55.930 | DEBUG    | A limpar cache de scan BLE...
+2025-12-27 20:28:56.248 | DEBUG    | Cache de scan limpo (2 passagens)
+2025-12-27 20:28:56.248 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 20:28:56.248 | INFO     | [OP-20251227_202814-0008] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 20:29:01.359 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-27 20:29:01.359 | INFO     | [OP-20251227_202814-0009] SCAN_RESULT | Devices_Found: 0
+2025-12-27 20:29:01.360 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-27 20:29:01.360 | INFO     | Scan concluído: 0 vizinhos encontrados
+2025-12-27 20:29:01.361 | INFO     | Total de vizinhos conhecidos: 1
+2025-12-27 20:29:01.362 | INFO     | Melhor rota: E0:D3:62:D6:EE:A0 (hop=1)
+2025-12-27 20:29:01.362 | INFO     | 
+2025-12-27 20:29:31.363 | INFO     | ======================================================================
+2025-12-27 20:29:31.364 | INFO     | 🔍 Scan #3
+2025-12-27 20:29:31.365 | INFO     | ======================================================================
+2025-12-27 20:29:31.366 | INFO     | 
+2025-12-27 20:29:31.367 | INFO     | A iniciar scan de vizinhos...
+2025-12-27 20:29:31.368 | DEBUG    | A limpar cache de scan BLE...
+2025-12-27 20:29:31.693 | DEBUG    | Cache de scan limpo (2 passagens)
+2025-12-27 20:29:31.694 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 20:29:31.695 | INFO     | [OP-20251227_202814-0010] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 20:29:36.718 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-27 20:29:36.719 | INFO     | [OP-20251227_202814-0011] SCAN_RESULT | Devices_Found: 0
+2025-12-27 20:29:36.720 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-27 20:29:36.722 | INFO     | Scan concluído: 0 vizinhos encontrados
+2025-12-27 20:29:36.724 | INFO     | Total de vizinhos conhecidos: 1
+2025-12-27 20:29:36.726 | INFO     | Melhor rota: E0:D3:62:D6:EE:A0 (hop=1)
+2025-12-27 20:29:36.727 | INFO     | 
+2025-12-27 20:30:06.730 | INFO     | ======================================================================
+2025-12-27 20:30:06.731 | INFO     | 🔍 Scan #4
+2025-12-27 20:30:06.732 | INFO     | ======================================================================
+2025-12-27 20:30:06.733 | INFO     | 
+2025-12-27 20:30:06.734 | INFO     | A iniciar scan de vizinhos...
+2025-12-27 20:30:06.735 | DEBUG    | A limpar cache de scan BLE...
+2025-12-27 20:30:07.130 | DEBUG    | Cache de scan limpo (2 passagens)
+2025-12-27 20:30:07.131 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 20:30:07.132 | INFO     | [OP-20251227_202814-0012] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 20:30:12.248 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-27 20:30:12.250 | INFO     | [OP-20251227_202814-0013] SCAN_RESULT | Devices_Found: 0
+2025-12-27 20:30:12.251 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-27 20:30:12.252 | INFO     | Scan concluído: 0 vizinhos encontrados
+2025-12-27 20:30:12.255 | INFO     | Total de vizinhos conhecidos: 1
+2025-12-27 20:30:12.257 | INFO     | Melhor rota: E0:D3:62:D6:EE:A0 (hop=1)
+2025-12-27 20:30:12.258 | INFO     | 
+2025-12-27 20:30:28.586 | INFO     | 
+2025-12-27 20:30:28.587 | INFO     | ======================================================================
+2025-12-27 20:30:28.590 | INFO     | 👋 A terminar...
+2025-12-27 20:30:28.591 | INFO     | ======================================================================
+2025-12-27 20:30:28.592 | INFO     | 
+2025-12-27 20:30:28.594 | INFO     | 📊 RESUMO FINAL:
+2025-12-27 20:30:28.595 | INFO     |    Total de vizinhos descobertos: 1
+2025-12-27 20:30:28.596 | INFO     | 
+2025-12-27 20:30:28.597 | INFO     |    Lista final de vizinhos:
+2025-12-27 20:30:28.598 | INFO     |       E0:D3:62:D6:EE:A0 (aaf3a2ee...) hop=1 rssi=-52dBm type=node disconnected seen=125.3s ago
+2025-12-27 20:30:28.601 | INFO     | 
+2025-12-27 20:30:28.602 | INFO     |    Melhor rota: E0:D3:62:D6:EE:A0 (hop=1)
+2025-12-27 20:30:28.603 | INFO     | 
