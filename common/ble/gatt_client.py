@@ -456,13 +456,8 @@ class BLEClient:
                 logger.info(f"Já conectado a {device.address}")
                 return conn
 
-        # Obter peripheral do scanner
-        adapters = simpleble.Adapter.get_adapters()
-        if not adapters:
-            return None
-
-        adapter = adapters[0]
-        peripherals = adapter.scan_get_results()
+        # Obter peripheral do scanner (usar o mesmo adapter que fez o scan)
+        peripherals = self.scanner.adapter.scan_get_results()
 
         peripheral = None
         for p in peripherals:
