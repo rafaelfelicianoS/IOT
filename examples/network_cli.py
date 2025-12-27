@@ -260,7 +260,7 @@ Digite 'exit' ou Ctrl+D para sair.
             print(f"   NID: {uplink.device_info.nid}")
             print(f"   Hop count: {uplink.device_info.hop_count}")
             print(f"   Type: {uplink.device_info.device_type}")
-            print(f"   Estado: {'🟢 Conectado' if uplink.is_connected else '🔴 Desconectado'}")
+            print(f"   Estado: {'🟢 Conectado' if uplink.connection.is_connected else '🔴 Desconectado'}")
         else:
             print("🔼 UPLINK: Nenhum")
 
@@ -271,7 +271,7 @@ Digite 'exit' ou Ctrl+D para sair.
         if downlinks:
             print(f"🔽 DOWNLINKS ({len(downlinks)}):")
             for link in downlinks:
-                status = "🟢 Conectado" if link.is_connected else "🔴 Desconectado"
+                status = "🟢 Conectado" if link.connection.is_connected else "🔴 Desconectado"
                 print(f"   • {link.address} - hop={link.device_info.hop_count} - {status}")
         else:
             print("🔽 DOWNLINKS: Nenhum")
