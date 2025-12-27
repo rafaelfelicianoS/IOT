@@ -105,8 +105,9 @@ def main():
             logger.info(f"      RSSI: {device.rssi} dBm")
             logger.info(f"      Service UUIDs anunciados:")
             for uuid in device.service_uuids:
-                marker = "  ← IoT Network Service" if uuid.lower() == IOT_NETWORK_SERVICE_UUID.lower() else ""
-                logger.info(f"        - {uuid}{marker}")
+                uuid_str = str(uuid)
+                marker = "  ← IoT Network Service" if uuid_str.lower() == IOT_NETWORK_SERVICE_UUID.lower() else ""
+                logger.info(f"        - {uuid_str}{marker}")
             if device.manufacturer_data:
                 logger.info(f"      Manufacturer Data: {len(device.manufacturer_data)} entries")
             logger.info("")
@@ -127,7 +128,9 @@ def main():
             if device.service_uuids:
                 logger.info(f"      Service UUIDs anunciados: {len(device.service_uuids)}")
                 for uuid in device.service_uuids:
-                    logger.info(f"        - {uuid}")
+                    uuid_str = str(uuid)
+                    marker = "  ← IoT Network Service" if uuid_str.lower() == IOT_NETWORK_SERVICE_UUID.lower() else ""
+                    logger.info(f"        - {uuid_str}{marker}")
             else:
                 logger.info(f"      Service UUIDs: <nenhum UUID anunciado>")
 
