@@ -133,7 +133,7 @@ class BLEScanner:
             try:
                 # Tentar obter service UUIDs (nem todos os dispositivos anunciam)
                 if hasattr(peripheral, 'services'):
-                    service_uuids = [str(uuid) for uuid in peripheral.services()]
+                    service_uuids = [str(service.uuid()) for service in peripheral.services()]
 
                 # Tentar obter manufacturer data
                 if hasattr(peripheral, 'manufacturer_data'):
