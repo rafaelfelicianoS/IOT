@@ -69,7 +69,7 @@ Digite 'exit' ou Ctrl+D para sair.
         logger.info("NeighborDiscovery criado")
 
         # Criar LinkManager
-        self.link_manager = LinkManager()
+        self.link_manager = LinkManager(client=self.client)
         logger.info("LinkManager criado")
 
         print("✅ Sistema inicializado com sucesso!\n")
@@ -189,33 +189,12 @@ Digite 'exit' ou Ctrl+D para sair.
         print(f"   RSSI: {neighbor.rssi}dBm\n")
 
         try:
-            # Criar ScannedDevice para conectar
-            from common.ble.gatt_client import ScannedDevice
-            device = ScannedDevice(
-                address=address,
-                identifier=address,
-                rssi=neighbor.rssi,
-                name=None,
-                service_uuids=[],
-                manufacturer_data={},
-            )
+            # Conectar via LinkManager
+            link = self.link_manager.connect_to_neighbor(address, neighbor)
 
-            # Conectar via BLE Client
-            connection = self.client.connect_to_device(device)
-            if not connection:
+            if not link:
                 print(f"❌ Falha ao conectar a {address}.\n")
                 return
-
-            # Criar DeviceInfo
-            from common.network.link_manager import DeviceInfo
-            device_info = DeviceInfo(
-                nid=neighbor.nid,
-                hop_count=neighbor.hop_count,
-                device_type=neighbor.device_type,
-            )
-
-            # Adicionar como uplink no LinkManager
-            self.link_manager.set_uplink(connection, device_info)
 
             # Marcar como conectado no discovery
             self.discovery.mark_connected(address, True)

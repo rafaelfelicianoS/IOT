@@ -135,11 +135,20 @@ class LinkManager:
     Responsável por:
     - Gerir o uplink (conexão ao parent)
     - Gerir downlinks (conexões de children)
+    - Conectar/desconectar de vizinhos
     - Notificar eventos (novo link, link perdido)
     """
 
-    def __init__(self):
-        """Inicializa o Link Manager."""
+    def __init__(self, client: 'BLEClient'):
+        """
+        Inicializa o Link Manager.
+
+        Args:
+            client: BLE Client para operações de conexão
+        """
+        from common.ble.gatt_client import BLEClient
+
+        self.client: BLEClient = client
         self.uplink: Optional[Link] = None
         self.downlinks: Dict[str, Link] = {}  # address -> Link
 
@@ -208,6 +217,57 @@ class LinkManager:
         # Notificar callbacks
         if old_link:
             self._notify_lost_link(old_link)
+
+    # ========================================================================
+    # Connection Management
+    # ========================================================================
+
+    def connect_to_neighbor(self, address: str, neighbor_info) -> Optional[Link]:
+        """
+        Conecta a um vizinho e cria um uplink.
+
+        Args:
+            address: Endereço BLE do vizinho
+            neighbor_info: NeighborInfo do vizinho
+
+        Returns:
+            Link criado ou None se falhar
+        """
+        logger.info(f"A conectar a vizinho {address}...")
+
+        try:
+            # Criar ScannedDevice
+            device = ScannedDevice(
+                address=address,
+                identifier=address,
+                rssi=neighbor_info.rssi,
+                name=None,
+                service_uuids=[],
+                manufacturer_data={},
+            )
+
+            # Conectar via BLE Client
+            connection = self.client.connect_to_device(device)
+            if not connection:
+                logger.error(f"Falha ao conectar a {address}")
+                return None
+
+            # Criar DeviceInfo
+            device_info = DeviceInfo(
+                nid=neighbor_info.nid,
+                hop_count=neighbor_info.hop_count,
+                device_type=neighbor_info.device_type,
+            )
+
+            # Adicionar como uplink
+            link = self.set_uplink(connection, device_info)
+            logger.info(f"✅ Conectado a {address} e uplink estabelecido")
+
+            return link
+
+        except Exception as e:
+            logger.error(f"Erro ao conectar a {address}: {e}")
+            return None
 
     # ========================================================================
     # Downlink Management
