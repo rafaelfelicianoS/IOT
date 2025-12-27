@@ -1,0 +1,45 @@
+2025-12-27 20:45:39.141 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_204539.log
+2025-12-27 20:45:39.141 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 20:45:39.142 | INFO     | BLE Client iniciado
+2025-12-27 20:45:39.142 | INFO     | BLE Client criado
+2025-12-27 20:45:39.143 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-27 20:45:39.143 | INFO     | NeighborDiscovery criado
+2025-12-27 20:45:39.143 | INFO     | Link Manager iniciado
+2025-12-27 20:45:39.144 | INFO     | LinkManager criado
+2025-12-27 20:46:06.546 | INFO     | A iniciar scan de vizinhos...
+2025-12-27 20:46:06.547 | DEBUG    | A limpar cache de scan BLE...
+2025-12-27 20:46:06.753 | DEBUG    | Cache de scan limpo
+2025-12-27 20:46:06.754 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 20:46:06.755 | INFO     | [OP-20251227_204539-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 20:46:11.779 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -56 dBm
+2025-12-27 20:46:11.780 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-27 20:46:11.782 | INFO     | [OP-20251227_204539-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-27 20:46:11.783 | DEBUG    | [OP-20251227_204539-0002]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -56 dBm | Services: 1
+2025-12-27 20:46:11.784 | INFO     | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-27 20:46:11.785 | DEBUG    | A conectar a E0:D3:62:D6:EE:A0 para ler DeviceInfo...
+2025-12-27 20:46:11.785 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-27 20:46:11.786 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-27 20:46:11.789 | INFO     | [OP-20251227_204539-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-27 20:46:15.304 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-27 20:46:15.305 | INFO     | [OP-20251227_204539-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3510.17ms
+2025-12-27 20:46:15.307 | DEBUG    | [OP-20251227_204539-0005] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-27 20:46:15.800 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-27 20:46:15.801 | INFO     | [OP-20251227_204539-0006] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: aaf3a2eeabe447ac83c8e888f58fca430100 | ASCII: ......G........C..
+2025-12-27 20:46:15.802 | INFO     | Vizinho descoberto: E0:D3:62:D6:EE:A0 (aaf3a2ee...) hop=1 rssi=-56dBm type=node disconnected seen=0.0s ago
+2025-12-27 20:46:17.856 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-27 20:46:17.857 | INFO     | [OP-20251227_204539-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-27 20:46:17.859 | INFO     | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-27 20:46:48.572 | INFO     | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-27 20:46:48.573 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-27 20:46:48.574 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-27 20:46:48.575 | INFO     | [OP-20251227_204539-0008] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-27 20:46:48.585 | ERROR    | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2025-12-27 20:46:48.587 | ERROR    | [OP-20251227_204539-0009] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
+2025-12-27 20:46:48.589 | ERROR    | Falha ao conectar a E0:D3:62:D6:EE:A0
+2025-12-27 20:47:17.150 | INFO     | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-27 20:47:17.152 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-27 20:47:17.152 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-27 20:47:17.154 | INFO     | [OP-20251227_204539-0010] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-27 20:47:17.162 | ERROR    | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2025-12-27 20:47:17.164 | ERROR    | [OP-20251227_204539-0011] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
+2025-12-27 20:47:17.165 | ERROR    | Falha ao conectar a E0:D3:62:D6:EE:A0
