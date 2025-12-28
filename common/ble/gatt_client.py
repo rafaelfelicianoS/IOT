@@ -271,17 +271,30 @@ class BLEConnection:
 
                 # IMPORTANTE: Descobrir serviços GATT após conexão
                 # SimpleBLE requer esta chamada para popular a lista de serviços
-                # Aguardar um pouco para dar tempo ao sistema de descobrir serviços
+                # Aguardar e tentar múltiplas vezes se necessário
                 logger.debug("A aguardar descoberta de serviços GATT...")
-                time.sleep(1.0)  # Aguardar 1 segundo para descoberta de serviços
 
-                try:
-                    services = self.peripheral.services()
-                    logger.debug(f"Serviços descobertos: {len(services)}")
-                    for svc in services:
-                        logger.debug(f"  - {svc.uuid()} ({len(svc.characteristics())} características)")
-                except Exception as e:
-                    logger.warning(f"Aviso ao descobrir serviços: {e}")
+                services = []
+                max_retries = 3
+                for attempt in range(max_retries):
+                    time.sleep(2.0)  # Aguardar 2 segundos entre tentativas
+
+                    try:
+                        services = self.peripheral.services()
+                        logger.debug(f"Tentativa {attempt + 1}/{max_retries}: {len(services)} serviços descobertos")
+
+                        if len(services) > 0:
+                            # Serviços encontrados, mostrar detalhes
+                            for svc in services:
+                                logger.debug(f"  - {svc.uuid()} ({len(svc.characteristics())} características)")
+                            break
+                        elif attempt < max_retries - 1:
+                            logger.debug("  Nenhum serviço ainda, a tentar novamente...")
+                    except Exception as e:
+                        logger.warning(f"Aviso ao descobrir serviços (tentativa {attempt + 1}): {e}")
+
+                if len(services) == 0:
+                    logger.warning("⚠️  Nenhum serviço GATT descoberto após múltiplas tentativas")
 
                 return True
             else:
