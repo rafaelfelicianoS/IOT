@@ -55,12 +55,25 @@ class ScannedDevice:
         """
         Verifica se o dispositivo anuncia o serviço IoT Network.
 
-        Verifica múltiplas formas do UUID porque o BlueZ pode usar versões curtas:
-        - UUID completo de 128 bits: 12340000-0000-1000-8000-00805f9b34fb
-        - UUID curto expandido: 0000000012340000-0000-1000-8000-00805f9b34fb
-        - Apenas os primeiros 8 dígitos hex: 12340000
+        SimpleBLE não expõe Service UUIDs do advertising packet, então verificamos:
+        1. Manufacturer Data (método principal - sempre funciona)
+        2. Service UUIDs (fallback - só funciona se SimpleBLE os expuser)
         """
-        from common.utils.constants import IOT_NETWORK_SERVICE_UUID
+        from common.utils.constants import (
+            IOT_NETWORK_SERVICE_UUID,
+            IOT_MANUFACTURER_ID,
+            IOT_MANUFACTURER_DATA_MAGIC
+        )
+
+        # 1. Verificar manufacturer data (MÉTODO PRINCIPAL)
+        if self.manufacturer_data and IOT_MANUFACTURER_ID in self.manufacturer_data:
+            data = self.manufacturer_data[IOT_MANUFACTURER_ID]
+            if data == IOT_MANUFACTURER_DATA_MAGIC:
+                return True
+
+        # 2. Verificar service UUIDs (FALLBACK - pode não funcionar com SimpleBLE)
+        if not self.service_uuids:
+            return False
 
         # Normalizar UUIDs do dispositivo (remover hífens e lowercase)
         device_uuids = [uuid.lower().replace('-', '') for uuid in self.service_uuids]

@@ -18,6 +18,11 @@ IOT_NETWORK_SERVICE_UUID = "12340000-0000-1000-8000-00805f9b34fb"
 IOT_NETWORK_SERVICE_UUID_SHORT_32 = "0000000012340000"  # 32-bit form
 IOT_NETWORK_SERVICE_UUID_SHORT_16 = "1234"  # 16-bit form (se couber)
 
+# Manufacturer ID para advertising (identificar dispositivos IoT via manufacturer_data)
+# Usando um ID custom (0xFFFF é reservado para testes/desenvolvimento)
+IOT_MANUFACTURER_ID = 0x1234
+IOT_MANUFACTURER_DATA_MAGIC = b'IoT'  # Magic bytes para identificar
+
 # Characteristics UUIDs
 CHAR_NETWORK_PACKET_UUID = "12340001-0000-1000-8000-00805f9b34fb"
 CHAR_DEVICE_INFO_UUID = "12340002-0000-1000-8000-00805f9b34fb"

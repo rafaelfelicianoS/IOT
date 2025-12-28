@@ -208,7 +208,13 @@ def main():
         print("5️⃣  A criar BLE Advertisement...")
         adv = Advertisement(bus, 0, Advertisement.TYPE_PERIPHERAL)
         adv.add_service_uuid(service.uuid)
+
+        # Adicionar manufacturer data para identificação (SimpleBLE não expõe advertising service UUIDs)
+        from common.utils.constants import IOT_MANUFACTURER_ID, IOT_MANUFACTURER_DATA_MAGIC
+        adv.add_manufacturer_data(IOT_MANUFACTURER_ID, IOT_MANUFACTURER_DATA_MAGIC)
+
         print(f"   ✅ Advertisement criado com serviço {service.uuid}")
+        print(f"   ✅ Manufacturer data adicionado: ID={hex(IOT_MANUFACTURER_ID)}, data={IOT_MANUFACTURER_DATA_MAGIC}")
         print()
 
         print("6️⃣  A registar Advertisement...")

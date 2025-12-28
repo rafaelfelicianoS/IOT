@@ -64,7 +64,12 @@ def main():
                 for uuid in device.service_uuids:
                     normalized = uuid.lower().replace('-', '')
                     print(f"      {normalized}")
-            print(f"   Manufacturer Data: {device.manufacturer_data if device.manufacturer_data else 'Nenhum'}")
+
+            print(f"   Manufacturer Data: {len(device.manufacturer_data) if device.manufacturer_data else 0} entries")
+            if device.manufacturer_data:
+                for mfr_id, data in device.manufacturer_data.items():
+                    print(f"      ID {hex(mfr_id)}: {data} (hex: {data.hex() if isinstance(data, bytes) else data})")
+
             print(f"   Tem IoT Service? {device.has_iot_service()}")
             print()
 
