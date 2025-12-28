@@ -1,0 +1,6 @@
+2025-12-28 00:07:09.033 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251228_000709.log
+2025-12-28 00:07:09.033 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-28 00:07:09.034 | INFO     | common.ble.gatt_client:__init__:442 | BLE Client iniciado
+2025-12-28 00:08:35.577 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251228_000835.log
+2025-12-28 00:08:35.578 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-28 00:08:35.579 | INFO     | common.ble.gatt_client:__init__:442 | BLE Client iniciado
