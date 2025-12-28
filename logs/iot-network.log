@@ -4,3 +4,24 @@
 2025-12-28 00:08:35.577 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251228_000835.log
 2025-12-28 00:08:35.578 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
 2025-12-28 00:08:35.579 | INFO     | common.ble.gatt_client:__init__:442 | BLE Client iniciado
+2025-12-28 13:22:56.604 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_132256.log
+2025-12-28 13:22:56.605 | INFO     | common.ble.gatt_client:__init__:150 | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 13:22:56.605 | INFO     | common.ble.gatt_client:__init__:495 | BLE Client iniciado
+2025-12-28 13:22:56.608 | INFO     | common.ble.gatt_client:scan:177 | A fazer scan BLE durante 5000ms...
+2025-12-28 13:22:56.613 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_132256-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-28 13:23:20.310 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251228_132320.log
+2025-12-28 13:23:20.311 | INFO     | common.ble.gatt_client:__init__:150 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-28 13:23:20.312 | INFO     | common.ble.gatt_client:__init__:495 | BLE Client iniciado
+2025-12-28 13:23:20.313 | INFO     | common.ble.gatt_client:scan:177 | A fazer scan BLE durante 5000ms...
+2025-12-28 13:23:20.314 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_132320-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-28 13:23:25.430 | INFO     | common.ble.gatt_client:scan:217 | Scan concluído: 1 dispositivos encontrados
+2025-12-28 13:23:25.431 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251228_132320-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-28 13:23:25.433 | INFO     | common.ble.gatt_client:connect:259 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-28 13:23:25.434 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251228_132320-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-28 13:23:31.664 | INFO     | common.ble.gatt_client:connect:269 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-28 13:23:31.665 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251228_132320-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 6227.40ms
+2025-12-28 13:24:28.154 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_132428.log
+2025-12-28 13:24:28.155 | INFO     | common.ble.gatt_client:__init__:150 | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 13:24:28.155 | INFO     | common.ble.gatt_client:__init__:495 | BLE Client iniciado
+2025-12-28 13:24:28.156 | INFO     | common.ble.gatt_client:scan:177 | A fazer scan BLE durante 5000ms...
+2025-12-28 13:24:28.157 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_132428-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
