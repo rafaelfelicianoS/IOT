@@ -99,7 +99,8 @@ class Advertisement(dbus.service.Object):
         """
         if uuid not in self.service_uuids:
             self.service_uuids.append(uuid)
-            logger.debug(f"Service UUID adicionado ao advertising: {uuid}")
+            logger.info(f"✅ Service UUID adicionado ao advertising: {uuid}")
+            logger.info(f"   Lista atual de UUIDs: {self.service_uuids}")
 
     def add_manufacturer_data(self, manufacturer_id: int, data: bytes):
         """
@@ -152,10 +153,13 @@ class Advertisement(dbus.service.Object):
         }
 
         if self.service_uuids:
+            logger.info(f"📡 Advertising com ServiceUUIDs: {self.service_uuids}")
             properties['ServiceUUIDs'] = dbus.Array(
                 self.service_uuids,
                 signature='s'
             )
+        else:
+            logger.warning(f"⚠️  Advertising SEM ServiceUUIDs! Lista vazia: {self.service_uuids}")
 
         if self.solicit_uuids:
             properties['SolicitUUIDs'] = dbus.Array(

@@ -1,0 +1,96 @@
+2025-12-28 00:52:43.750 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 2b443d2a...
+2025-12-28 00:52:43.752 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 00:54:17.575 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 3a1419f2...
+2025-12-28 00:54:17.577 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 00:54:17.577 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-28 00:54:17.577 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-28 00:54:17.577 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-28 00:54:17.577 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=3a1419f2..., type=node
+2025-12-28 00:54:17.578 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-28 00:54:17.578 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-28 00:54:17.578 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-28 00:55:29.559 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 95ab9694...
+2025-12-28 00:55:29.561 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 00:55:29.561 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-28 00:55:29.562 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-28 00:55:29.562 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-28 00:55:29.562 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=95ab9694..., type=node
+2025-12-28 00:55:29.562 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-28 00:55:29.563 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-28 00:55:29.563 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-28 00:55:29.563 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot0
+2025-12-28 00:57:39.352 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID a9284c28...
+2025-12-28 00:58:31.024 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 94940895...
+2025-12-28 00:58:31.025 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 00:58:31.025 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-28 00:58:31.025 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-28 00:58:31.025 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-28 00:58:31.025 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=94940895..., type=node
+2025-12-28 00:58:31.026 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-28 00:58:31.026 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-28 00:58:31.026 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-28 00:58:31.026 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot0
+2025-12-28 00:58:31.026 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-28 00:58:31.027 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-28 00:58:31.032 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
+2025-12-28 01:15:34.487 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 95955165...
+2025-12-28 01:15:34.489 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 01:15:34.489 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-28 01:15:34.489 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-28 01:15:34.490 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-28 01:15:34.490 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=95955165..., type=node
+2025-12-28 01:15:34.490 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-28 01:15:34.491 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-28 01:15:34.491 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-28 01:15:34.491 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot0
+2025-12-28 01:15:34.491 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-28 01:15:34.492 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-28 01:15:34.492 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-28 01:17:07.886 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 8be6f042...
+2025-12-28 01:17:07.887 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 01:17:07.887 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-28 01:17:07.887 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-28 01:17:07.887 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-28 01:17:07.887 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=8be6f042..., type=node
+2025-12-28 01:17:07.888 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-28 01:17:07.888 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-28 01:17:07.888 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-28 01:17:07.888 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot0
+2025-12-28 01:17:07.889 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-28 01:17:07.889 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-28 01:17:07.889 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-28 01:17:07.890 | INFO     | common.ble.advertising:register_advertisement:232 | A registar advertisement no adaptador: /org/bluez/hci0
+2025-12-28 01:17:07.896 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
+2025-12-28 01:17:07.998 | INFO     | common.ble.advertising:<lambda>:242 | ✅ Advertisement registado com sucesso!
+2025-12-28 01:23:29.801 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 40f36335...
+2025-12-28 01:23:29.802 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 01:23:29.803 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-28 01:23:29.803 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-28 01:23:29.803 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-28 01:23:29.803 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=40f36335..., type=node
+2025-12-28 01:23:29.804 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-28 01:23:29.804 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-28 01:23:29.804 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-28 01:23:29.805 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot0
+2025-12-28 01:23:29.806 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-28 01:23:29.807 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-28 01:23:29.808 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-28 01:23:29.808 | INFO     | common.ble.advertising:register_advertisement:232 | A registar advertisement no adaptador: /org/bluez/hci0
+2025-12-28 01:23:29.815 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
+2025-12-28 01:23:29.918 | INFO     | common.ble.advertising:<lambda>:242 | ✅ Advertisement registado com sucesso!
+2025-12-28 01:28:14.355 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 38d0ec8e...
+2025-12-28 01:28:14.356 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 01:28:14.356 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-28 01:28:14.356 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-28 01:28:14.357 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-28 01:28:14.357 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=38d0ec8e..., type=node
+2025-12-28 01:28:14.357 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-28 01:28:14.357 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-28 01:28:14.357 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-28 01:28:14.358 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot0
+2025-12-28 01:28:14.459 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-28 01:28:14.461 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-28 01:28:14.462 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-28 01:28:14.462 | INFO     | common.ble.advertising:register_advertisement:232 | A registar advertisement no adaptador: /org/bluez/hci0
+2025-12-28 01:28:14.477 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
+2025-12-28 01:28:14.485 | INFO     | common.ble.advertising:<lambda>:242 | ✅ Advertisement registado com sucesso!
