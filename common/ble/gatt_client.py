@@ -422,6 +422,9 @@ class BLEConnection:
         Returns:
             True se escrita bem-sucedida
         """
+        # Atualizar estado de conexão antes de escrever
+        self.is_connected = self.peripheral.is_connected()
+
         if not self.is_connected:
             logger.error("Não conectado - não é possível escrever")
             return False
@@ -443,6 +446,10 @@ class BLEConnection:
             except Exception as simpleble_error:
                 # SimpleBLE falhou - tentar D-Bus
                 logger.warning(f"SimpleBLE falhou ({simpleble_error}), a tentar via D-Bus...")
+
+                # Aguardar um pouco para dar tempo ao BlueZ de descobrir serviços via D-Bus
+                import time
+                time.sleep(1.0)
 
                 success = self.dbus_helper.write_characteristic(
                     self.address,

@@ -61,19 +61,35 @@ class DBusGATTHelper:
 
             objects = obj_manager.GetManagedObjects()
 
+            # Debug: mostrar todos os paths do dispositivo
+            device_paths = [p for p in objects.keys() if p.startswith(device_path)]
+            logger.debug(f"Paths D-Bus encontrados para {device_path}: {len(device_paths)}")
+            for p in device_paths[:10]:  # Mostrar primeiros 10
+                logger.debug(f"  {p}")
+
             # Procurar características do dispositivo
             char_uuid_lower = char_uuid.lower()
+            characteristics_found = []
+
             for path, interfaces in objects.items():
                 if not path.startswith(device_path):
                     continue
 
                 if self.GATT_CHARACTERISTIC_IFACE in interfaces:
                     props = interfaces[self.GATT_CHARACTERISTIC_IFACE]
-                    if props.get('UUID', '').lower() == char_uuid_lower:
-                        logger.debug(f"Característica encontrada: {path}")
+                    uuid = props.get('UUID', '').lower()
+                    characteristics_found.append((path, uuid))
+
+                    if uuid == char_uuid_lower:
+                        logger.debug(f"✅ Característica encontrada: {path}")
                         return path
 
+            # Debug: mostrar características encontradas
             logger.warning(f"Característica {char_uuid} não encontrada em {device_path}")
+            logger.debug(f"Características disponíveis ({len(characteristics_found)}):")
+            for path, uuid in characteristics_found[:10]:
+                logger.debug(f"  {uuid} -> {path}")
+
             return None
 
         except dbus.exceptions.DBusException as e:
