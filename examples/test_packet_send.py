@@ -57,23 +57,46 @@ def main():
     print()
 
     # Fazer scan
-    print(f"2️⃣  A fazer scan para encontrar {TARGET_SERVER}...")
-    devices = client.scanner.scan(duration_ms=5000, filter_iot=False)
+    print(f"2️⃣  A fazer scan para encontrar servidores IoT...")
+    devices = client.scanner.scan(duration_ms=5000, filter_iot=True)
     print(f"   ✅ Scan concluído: {len(devices)} dispositivos encontrados")
     print()
 
-    # Procurar o servidor
+    if len(devices) == 0:
+        print("❌ Nenhum servidor IoT encontrado!")
+        print()
+        print("Certifica-te que:")
+        print("  1. O servidor está a correr (sudo python3 test_packet_receive.py hci0)")
+        print("  2. O servidor está noutra máquina (não podes conectar a ti próprio)")
+        print("  3. Os dispositivos estão próximos")
+        return 1
+
+    # Mostrar dispositivos encontrados
+    print("📱 Servidores IoT encontrados:")
+    print()
+    for i, dev in enumerate(devices):
+        print(f"  [{i}] {dev.address}")
+        if dev.name:
+            print(f"      Nome: {dev.name}")
+        print(f"      RSSI: {dev.rssi} dBm")
+        print(f"      Serviços: {len(dev.service_uuids)}")
+        print()
+
+    # Procurar o servidor TARGET ou usar o primeiro
     target = None
     for dev in devices:
         if dev.address.upper() == TARGET_SERVER.upper():
             target = dev
+            print(f"✅ Servidor alvo {TARGET_SERVER} encontrado!")
             break
 
     if not target:
-        print(f"❌ Servidor {TARGET_SERVER} NÃO encontrado no scan!")
-        return 1
+        print(f"⚠️  Servidor alvo {TARGET_SERVER} não encontrado")
+        print(f"   A usar o primeiro servidor disponível: {devices[0].address}")
+        target = devices[0]
 
-    print(f"✅ Servidor encontrado: {target.address}")
+    print()
+    print(f"🎯 A conectar a: {target.address}")
     print()
 
     # Conectar

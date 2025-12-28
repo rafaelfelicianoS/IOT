@@ -18,6 +18,7 @@ import signal
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from common.ble.gatt_server import Application, Service, register_application
+from common.ble.advertising import Advertisement, register_advertisement
 from common.ble.gatt_services import (
     IoTNetworkService,
     NetworkPacketCharacteristic,
@@ -183,7 +184,22 @@ def main():
         print()
 
         # Registar application e obter mainloop
+        print("3️⃣  A registar GATT application...")
         mainloop = register_application(app, adapter_name=adapter_name)
+        print(f"   ✅ GATT Application registada")
+        print()
+
+        # Criar e registar Advertisement
+        print("4️⃣  A criar BLE Advertisement...")
+        adv = Advertisement(bus, 0, Advertisement.TYPE_PERIPHERAL)
+        adv.add_service_uuid(service.get_uuid())
+        print(f"   ✅ Advertisement criado com serviço {service.get_uuid()}")
+        print()
+
+        print("5️⃣  A registar Advertisement...")
+        register_advertisement(adv, adapter_name)
+        print(f"   ✅ Advertisement registado - dispositivo agora é visível!")
+        print()
 
         # Aguardar até Ctrl+C
         try:
