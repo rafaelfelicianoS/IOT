@@ -1,0 +1,18 @@
+2025-12-28 13:28:55.480 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251228_132855.log
+2025-12-28 13:28:55.481 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-28 13:28:55.481 | INFO     | BLE Client iniciado
+2025-12-28 13:28:55.482 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-28 13:28:55.483 | INFO     | [OP-20251228_132855-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-28 13:29:00.600 | DEBUG    |   Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0) RSSI: -48 dBm
+2025-12-28 13:29:00.602 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-28 13:29:00.604 | INFO     | [OP-20251228_132855-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-28 13:29:00.606 | DEBUG    | [OP-20251228_132855-0002]   Device_1: Name: rafa-ubuntu | Address: E0:D3:62:D6:EE:A0 | RSSI: -48 dBm | Services: 1
+2025-12-28 13:29:00.607 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-28 13:29:00.607 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-28 13:29:00.608 | INFO     | [OP-20251228_132855-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-28 13:29:07.082 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-28 13:29:07.084 | INFO     | [OP-20251228_132855-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 6469.25ms
+2025-12-28 13:29:07.085 | DEBUG    | A aguardar descoberta de serviços GATT...
+2025-12-28 13:29:08.088 | DEBUG    | Serviços descobertos: 0
+2025-12-28 13:29:10.920 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-28 13:29:10.921 | INFO     | [OP-20251228_132855-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
