@@ -34,6 +34,38 @@ class DeviceInfo:
     def __str__(self):
         return f"{self.device_type.upper()} NID={self.nid} hop={self.hop_count}"
 
+    @classmethod
+    def from_bytes(cls, data: bytes) -> 'DeviceInfo':
+        """
+        Deserializa DeviceInfo a partir de bytes.
+        
+        Formato: NID (16 bytes) + hop_count (1 byte) + device_type (1 byte)
+        
+        Args:
+            data: Bytes lidos da característica DeviceInfo
+            
+        Returns:
+            DeviceInfo deserializado
+            
+        Raises:
+            ValueError: Se os dados estiverem em formato inválido
+        """
+        if len(data) < 18:
+            raise ValueError(f"DeviceInfo precisa de pelo menos 18 bytes, recebido {len(data)}")
+        
+        # Parse dos campos
+        nid_bytes = data[:16]
+        hop_count = data[16]
+        device_type_byte = data[17]
+        
+        # Criar NID
+        nid = NID(nid_bytes)
+        
+        # Mapear device_type
+        device_type = 'sink' if device_type_byte == 0 else 'node'
+        
+        return cls(nid=nid, hop_count=hop_count, device_type=device_type)
+
 
 class Link:
     """

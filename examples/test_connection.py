@@ -73,7 +73,7 @@ def main():
     print("4️⃣  A ler DeviceInfo...")
     try:
         from common.utils.constants import IOT_NETWORK_SERVICE_UUID, CHAR_DEVICE_INFO_UUID
-        from common.network.types import DeviceInfo
+        from common.network.link_manager import DeviceInfo
 
         # Ler a característica DeviceInfo
         data = conn.read_characteristic(IOT_NETWORK_SERVICE_UUID, CHAR_DEVICE_INFO_UUID)
