@@ -134,6 +134,10 @@ def main():
     print("2️⃣  A criar servidor GATT...")
     try:
         import dbus
+        import dbus.mainloop.glib
+
+        # Setup D-Bus mainloop ANTES de criar objetos D-Bus
+        dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 
         # Get system bus
         bus = dbus.SystemBus()
