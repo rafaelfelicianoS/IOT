@@ -188,8 +188,8 @@ class LinkManager:
         self._new_downlink_callbacks: List[Callable[[Link], None]] = []
         self._lost_link_callbacks: List[Callable[[Link], None]] = []
 
-        # Lock para thread safety
-        self._lock = threading.Lock()
+        # Lock para thread safety (RLock permite re-entrada na mesma thread)
+        self._lock = threading.RLock()
 
         logger.info("Link Manager iniciado")
 
