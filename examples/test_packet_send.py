@@ -32,14 +32,27 @@ TEST_SHARED_KEY = b'test_key_1234567890_32bytes!!!'
 
 
 def main():
+    # Verificar argumentos
+    if len(sys.argv) < 2:
+        print("Uso: python3 test_packet_send.py <hci_interface>")
+        print("Exemplo: python3 test_packet_send.py hci0")
+        print("         python3 test_packet_send.py hci1")
+        return 1
+
+    adapter_name = sys.argv[1]
+    # Converter hciX para índice (hci0 -> 0, hci1 -> 1, etc.)
+    adapter_index = int(adapter_name.replace('hci', ''))
+
     print("=" * 70)
     print("  TEST PACKET SEND - Enviar pacote para o servidor")
+    print("=" * 70)
+    print(f"  Adaptador: {adapter_name} (índice {adapter_index})")
     print("=" * 70)
     print()
 
     # Criar cliente
     print("1️⃣  A criar cliente BLE...")
-    client = BLEClient()
+    client = BLEClient(adapter_index=adapter_index)
     print(f"   ✅ Cliente criado: {client.scanner.adapter.identifier()}")
     print()
 

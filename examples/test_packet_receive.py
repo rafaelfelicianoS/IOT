@@ -44,8 +44,19 @@ def signal_handler(sig, frame):
 
 
 def main():
+    # Verificar argumentos
+    if len(sys.argv) < 2:
+        print("Uso: sudo python3 test_packet_receive.py <hci_interface>")
+        print("Exemplo: sudo python3 test_packet_receive.py hci0")
+        print("         sudo python3 test_packet_receive.py hci1")
+        return 1
+
+    adapter_name = sys.argv[1]
+
     print("=" * 70)
     print("  TEST PACKET RECEIVE - Receber pacotes no servidor")
+    print("=" * 70)
+    print(f"  Adaptador: {adapter_name}")
     print("=" * 70)
     print()
 
@@ -172,7 +183,7 @@ def main():
         print()
 
         # Registar application e obter mainloop
-        mainloop = register_application(app, adapter_name='hci0')
+        mainloop = register_application(app, adapter_name=adapter_name)
 
         # Aguardar até Ctrl+C
         try:
