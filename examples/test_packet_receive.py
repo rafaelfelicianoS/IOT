@@ -147,6 +147,7 @@ def main():
         # Criar IoT Network Service
         service = IoTNetworkService(
             bus=bus,
+            path="/org/bluez/iot",
             index=0,
             device_nid=local_nid,
             device_type="node"
