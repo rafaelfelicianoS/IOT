@@ -59,6 +59,11 @@ def main():
             print(f"{i}. {device.address} ({device.name or 'Unknown'})")
             print(f"   RSSI: {device.rssi} dBm")
             print(f"   Service UUIDs: {device.service_uuids if device.service_uuids else 'NENHUM!'}")
+            if device.service_uuids:
+                print(f"   UUIDs normalizados (sem hífens):")
+                for uuid in device.service_uuids:
+                    normalized = uuid.lower().replace('-', '')
+                    print(f"      {normalized}")
             print(f"   Manufacturer Data: {device.manufacturer_data if device.manufacturer_data else 'Nenhum'}")
             print(f"   Tem IoT Service? {device.has_iot_service()}")
             print()
