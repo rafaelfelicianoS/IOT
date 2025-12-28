@@ -19,3 +19,17 @@
 2025-12-28 01:02:55.916 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_010255-0001] SCAN_START | Duration: 5000ms | Filter_IoT: False
 2025-12-28 01:03:01.117 | INFO     | common.ble.gatt_client:scan:175 | Scan concluído: 0 dispositivos encontrados
 2025-12-28 01:03:01.118 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251228_010255-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-28 01:11:00.721 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_011100.log
+2025-12-28 01:11:00.721 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 01:11:00.722 | INFO     | common.ble.gatt_client:__init__:442 | BLE Client iniciado
+2025-12-28 01:11:00.723 | INFO     | common.ble.gatt_client:scan:135 | A fazer scan BLE durante 5000ms...
+2025-12-28 01:11:00.723 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_011100-0001] SCAN_START | Duration: 5000ms | Filter_IoT: False
+2025-12-28 01:11:05.837 | INFO     | common.ble.gatt_client:scan:175 | Scan concluído: 2 dispositivos encontrados
+2025-12-28 01:11:05.839 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251228_011100-0002] SCAN_RESULT | Devices_Found: 2
+2025-12-28 01:11:20.079 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_011120.log
+2025-12-28 01:11:20.079 | INFO     | common.ble.gatt_client:__init__:108 | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 01:11:20.080 | INFO     | common.ble.gatt_client:__init__:442 | BLE Client iniciado
+2025-12-28 01:11:20.080 | INFO     | common.ble.gatt_client:scan:135 | A fazer scan BLE durante 5000ms...
+2025-12-28 01:11:20.080 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_011120-0001] SCAN_START | Duration: 5000ms | Filter_IoT: False
+2025-12-28 01:11:25.290 | INFO     | common.ble.gatt_client:scan:175 | Scan concluído: 1 dispositivos encontrados
+2025-12-28 01:11:25.291 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251228_011120-0002] SCAN_RESULT | Devices_Found: 1
