@@ -154,7 +154,8 @@ def main():
         )
 
         # Configurar callback para pacotes recebidos
-        packet_char = service.get_characteristic(0)  # NetworkPacketCharacteristic
+        characteristics = service.get_characteristics()
+        packet_char = characteristics[0]  # NetworkPacketCharacteristic é a primeira
         if isinstance(packet_char, NetworkPacketCharacteristic):
             packet_char.set_packet_callback(on_packet_received)
             print(f"   ✅ Callback de pacotes configurado")
