@@ -22,6 +22,7 @@ except ImportError:
 from common.utils.logger import get_logger
 from common.utils.ble_logger import get_ble_logger
 from common.utils.constants import IOT_NETWORK_SERVICE_UUID
+from common.ble.dbus_gatt_helper import DBusGATTHelper
 
 logger = get_logger("gatt_client")
 
@@ -228,18 +229,20 @@ class BLEConnection:
     Representa uma conexão BLE a um dispositivo remoto.
     """
 
-    def __init__(self, peripheral):
+    def __init__(self, peripheral, adapter_name: str = "hci0"):
         """
         Inicializa a conexão BLE.
 
         Args:
             peripheral: SimpleBLE Peripheral object
+            adapter_name: Nome do adaptador BLE (para D-Bus helper)
         """
         self.peripheral = peripheral
         self.address = peripheral.address()
         self.is_connected = False
         self._notification_callbacks: Dict[str, Callable] = {}
         self.ble_log = get_ble_logger()
+        self.dbus_helper = DBusGATTHelper(adapter_name)  # Helper para quando SimpleBLE falhar
 
         logger.debug(f"BLEConnection criada para {self.address}")
 
@@ -426,14 +429,35 @@ class BLEConnection:
         try:
             self.ble_log.log_write_request(self.address, service_uuid, char_uuid, data, with_response)
 
-            if with_response:
-                self.peripheral.write_request(service_uuid, char_uuid, data)
-            else:
-                self.peripheral.write_command(service_uuid, char_uuid, data)
+            # Tentar SimpleBLE primeiro
+            try:
+                if with_response:
+                    self.peripheral.write_request(service_uuid, char_uuid, data)
+                else:
+                    self.peripheral.write_command(service_uuid, char_uuid, data)
 
-            logger.debug(f"Write {char_uuid}: {len(data)} bytes")
-            self.ble_log.log_write_response(self.address, char_uuid, success=True)
-            return True
+                logger.debug(f"✅ Write via SimpleBLE: {char_uuid} ({len(data)} bytes)")
+                self.ble_log.log_write_response(self.address, char_uuid, success=True)
+                return True
+
+            except Exception as simpleble_error:
+                # SimpleBLE falhou - tentar D-Bus
+                logger.warning(f"SimpleBLE falhou ({simpleble_error}), a tentar via D-Bus...")
+
+                success = self.dbus_helper.write_characteristic(
+                    self.address,
+                    service_uuid,
+                    char_uuid,
+                    data
+                )
+
+                if success:
+                    logger.debug(f"✅ Write via D-Bus: {char_uuid} ({len(data)} bytes)")
+                    self.ble_log.log_write_response(self.address, char_uuid, success=True)
+                    return True
+                else:
+                    raise Exception("Falha tanto em SimpleBLE quanto em D-Bus")
+
         except Exception as e:
             logger.error(f"Erro ao escrever em {char_uuid}: {e}")
             self.ble_log.log_write_response(self.address, char_uuid, success=False, error=str(e))
@@ -524,6 +548,7 @@ class BLEClient:
 
         self.scanner = BLEScanner(adapter_index)
         self.connections: Dict[str, BLEConnection] = {}
+        self.adapter_name = f"hci{adapter_index}"  # Para D-Bus helper
 
         logger.info("BLE Client iniciado")
 
@@ -570,7 +595,7 @@ class BLEClient:
             return None
 
         # Criar e conectar
-        conn = BLEConnection(peripheral)
+        conn = BLEConnection(peripheral, adapter_name=self.adapter_name)
         if conn.connect():
             self.connections[device.address] = conn
             return conn
