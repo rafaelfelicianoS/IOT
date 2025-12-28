@@ -11,8 +11,12 @@ Define UUIDs, message types, configurações default, etc.
 # Base UUID (Bluetooth SIG base)
 BASE_UUID = "00000000-0000-1000-8000-00805f9b34fb"
 
-# IoT Network Service UUID
+# IoT Network Service UUID (128-bit full form)
 IOT_NETWORK_SERVICE_UUID = "12340000-0000-1000-8000-00805f9b34fb"
+
+# Short forms (para advertising - BlueZ pode usar versões curtas)
+IOT_NETWORK_SERVICE_UUID_SHORT_32 = "0000000012340000"  # 32-bit form
+IOT_NETWORK_SERVICE_UUID_SHORT_16 = "1234"  # 16-bit form (se couber)
 
 # Characteristics UUIDs
 CHAR_NETWORK_PACKET_UUID = "12340001-0000-1000-8000-00805f9b34fb"

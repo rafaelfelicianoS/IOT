@@ -52,8 +52,37 @@ class ScannedDevice:
         return f"{self.name or 'Unknown'} ({self.address}) RSSI: {self.rssi} dBm"
 
     def has_iot_service(self) -> bool:
-        """Verifica se o dispositivo anuncia o serviço IoT Network."""
-        return IOT_NETWORK_SERVICE_UUID.lower() in [uuid.lower() for uuid in self.service_uuids]
+        """
+        Verifica se o dispositivo anuncia o serviço IoT Network.
+
+        Verifica múltiplas formas do UUID porque o BlueZ pode usar versões curtas:
+        - UUID completo de 128 bits: 12340000-0000-1000-8000-00805f9b34fb
+        - UUID curto expandido: 0000000012340000-0000-1000-8000-00805f9b34fb
+        - Apenas os primeiros 8 dígitos hex: 12340000
+        """
+        from common.utils.constants import IOT_NETWORK_SERVICE_UUID
+
+        # Normalizar UUIDs do dispositivo (remover hífens e lowercase)
+        device_uuids = [uuid.lower().replace('-', '') for uuid in self.service_uuids]
+
+        # UUID completo normalizado
+        full_uuid_norm = IOT_NETWORK_SERVICE_UUID.lower().replace('-', '')
+
+        # Primeiros 8 caracteres hex (32 bits)
+        short_32 = full_uuid_norm[:8]  # "12340000"
+
+        for uuid in device_uuids:
+            # Verificar match exato com UUID completo
+            if uuid == full_uuid_norm:
+                return True
+            # Verificar se começa com os primeiros 32 bits
+            if uuid.startswith(short_32):
+                return True
+            # Verificar apenas os primeiros 8 chars
+            if uuid == short_32:
+                return True
+
+        return False
 
 
 @dataclass

@@ -113,3 +113,22 @@
 2025-12-28 01:42:14.221 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
 2025-12-28 01:42:14.222 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
 2025-12-28 01:42:14.230 | INFO     | common.ble.advertising:<lambda>:246 | ✅ Advertisement registado com sucesso!
+2025-12-28 01:53:33.011 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID a7ebc41a...
+2025-12-28 01:53:33.012 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-28 01:53:33.012 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-28 01:53:33.012 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-28 01:53:33.013 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-28 01:53:33.013 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=a7ebc41a..., type=node
+2025-12-28 01:53:33.013 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-28 01:53:33.013 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-28 01:53:33.013 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-28 01:53:33.013 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot0
+2025-12-28 01:53:33.114 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-28 01:53:33.116 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-28 01:53:33.116 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-28 01:53:33.117 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-28 01:53:33.118 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-28 01:53:33.118 | INFO     | common.ble.advertising:register_advertisement:236 | A registar advertisement no adaptador: /org/bluez/hci0
+2025-12-28 01:53:33.128 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
+2025-12-28 01:53:33.129 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-28 01:53:33.137 | INFO     | common.ble.advertising:<lambda>:246 | ✅ Advertisement registado com sucesso!
