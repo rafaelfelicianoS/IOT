@@ -268,6 +268,17 @@ class BLEConnection:
             if self.is_connected:
                 logger.info(f"✅ Conectado a {self.address}")
                 self.ble_log.log_connection_success(self.address, connection_time_ms)
+
+                # IMPORTANTE: Descobrir serviços GATT após conexão
+                # SimpleBLE requer esta chamada para popular a lista de serviços
+                try:
+                    services = self.peripheral.services()
+                    logger.debug(f"Serviços descobertos: {len(services)}")
+                    for svc in services:
+                        logger.debug(f"  - {svc.uuid()} ({len(svc.characteristics())} características)")
+                except Exception as e:
+                    logger.warning(f"Aviso ao descobrir serviços: {e}")
+
                 return True
             else:
                 logger.error(f"❌ Falha ao conectar a {self.address}")
