@@ -183,20 +183,35 @@ def main():
         print("=" * 70)
         print()
 
+        # Configurar adaptador como discoverable
+        print("3️⃣  A configurar adaptador BLE...")
+        try:
+            adapter_path = f"/org/bluez/{adapter_name}"
+            adapter_obj = bus.get_object('org.bluez', adapter_path)
+            adapter_props = dbus.Interface(adapter_obj, 'org.freedesktop.DBus.Properties')
+
+            # Ativar Discoverable e Pairable
+            adapter_props.Set('org.bluez.Adapter1', 'Discoverable', dbus.Boolean(True))
+            adapter_props.Set('org.bluez.Adapter1', 'Pairable', dbus.Boolean(True))
+            print(f"   ✅ Adaptador configurado como discoverable e pairable")
+        except Exception as e:
+            print(f"   ⚠️  Aviso: Não foi possível configurar discoverable: {e}")
+        print()
+
         # Registar application e obter mainloop
-        print("3️⃣  A registar GATT application...")
+        print("4️⃣  A registar GATT application...")
         mainloop = register_application(app, adapter_name=adapter_name)
         print(f"   ✅ GATT Application registada")
         print()
 
         # Criar e registar Advertisement
-        print("4️⃣  A criar BLE Advertisement...")
+        print("5️⃣  A criar BLE Advertisement...")
         adv = Advertisement(bus, 0, Advertisement.TYPE_PERIPHERAL)
         adv.add_service_uuid(service.uuid)
         print(f"   ✅ Advertisement criado com serviço {service.uuid}")
         print()
 
-        print("5️⃣  A registar Advertisement...")
+        print("6️⃣  A registar Advertisement...")
         register_advertisement(adv, adapter_name)
         print(f"   ✅ Advertisement registado - dispositivo agora é visível!")
         print()
