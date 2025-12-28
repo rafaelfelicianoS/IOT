@@ -192,8 +192,8 @@ def main():
         # Criar e registar Advertisement
         print("4️⃣  A criar BLE Advertisement...")
         adv = Advertisement(bus, 0, Advertisement.TYPE_PERIPHERAL)
-        adv.add_service_uuid(service.get_uuid())
-        print(f"   ✅ Advertisement criado com serviço {service.get_uuid()}")
+        adv.add_service_uuid(service.uuid)
+        print(f"   ✅ Advertisement criado com serviço {service.uuid}")
         print()
 
         print("5️⃣  A registar Advertisement...")
