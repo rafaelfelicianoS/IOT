@@ -1,0 +1,14 @@
+2025-12-28 13:16:01.557 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_131601.log
+2025-12-28 13:16:01.557 | INFO     | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 13:16:01.558 | INFO     | BLE Client iniciado
+2025-12-28 13:16:01.559 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-28 13:16:01.559 | INFO     | [OP-20251228_131601-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-28 13:16:06.675 | DEBUG    |   Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0) RSSI: -82 dBm
+2025-12-28 13:16:06.676 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-28 13:16:06.678 | INFO     | [OP-20251228_131601-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-28 13:16:06.679 | DEBUG    | [OP-20251228_131601-0002]   Device_1: Name: rafa-ubuntu | Address: E0:D3:62:D6:EE:A0 | RSSI: -82 dBm | Services: 14
+2025-12-28 13:16:06.681 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-28 13:16:06.682 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-28 13:16:06.683 | INFO     | [OP-20251228_131601-0003] CONNECT_ATTEMPT | Local: E0:D3:62:D7:47:03 | Remote: E0:D3:62:D6:EE:A0
+2025-12-28 13:16:09.485 | ERROR    | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2025-12-28 13:16:09.488 | ERROR    | [OP-20251228_131601-0004] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
