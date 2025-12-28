@@ -72,13 +72,25 @@ def main():
     # Ler DeviceInfo
     print("4️⃣  A ler DeviceInfo...")
     try:
-        device_info = client.read_device_info(conn)
-        print(f"   ✅ DeviceInfo lido com sucesso!")
-        print(f"      NID: {device_info.nid}")
-        print(f"      Hop count: {device_info.hop_count}")
-        print(f"      Device type: {device_info.device_type}")
-        print()
-        success = True
+        from common.utils.constants import IOT_NETWORK_SERVICE_UUID, CHAR_DEVICE_INFO_UUID
+        from common.network.types import DeviceInfo
+
+        # Ler a característica DeviceInfo
+        data = conn.read_characteristic(IOT_NETWORK_SERVICE_UUID, CHAR_DEVICE_INFO_UUID)
+
+        if data:
+            # Desserializar
+            device_info = DeviceInfo.from_bytes(data)
+            print(f"   ✅ DeviceInfo lido com sucesso!")
+            print(f"      NID: {device_info.nid}")
+            print(f"      Hop count: {device_info.hop_count}")
+            print(f"      Device type: {device_info.device_type}")
+            print()
+            success = True
+        else:
+            print(f"   ❌ Nenhum dado retornado")
+            success = False
+
     except Exception as e:
         print(f"   ❌ Erro ao ler DeviceInfo: {e}")
         import traceback
