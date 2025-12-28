@@ -271,6 +271,10 @@ class BLEConnection:
 
                 # IMPORTANTE: Descobrir serviços GATT após conexão
                 # SimpleBLE requer esta chamada para popular a lista de serviços
+                # Aguardar um pouco para dar tempo ao sistema de descobrir serviços
+                logger.debug("A aguardar descoberta de serviços GATT...")
+                time.sleep(1.0)  # Aguardar 1 segundo para descoberta de serviços
+
                 try:
                     services = self.peripheral.services()
                     logger.debug(f"Serviços descobertos: {len(services)}")
