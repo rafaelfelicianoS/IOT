@@ -63,3 +63,17 @@
 2025-12-28 13:32:26.603 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251228_133215-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 6427.97ms
 2025-12-28 13:32:32.622 | INFO     | common.ble.gatt_client:disconnect:316 | Desconectado de E0:D3:62:D6:EE:A0
 2025-12-28 13:32:32.624 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251228_133215-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-28 13:34:32.828 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251228_133432.log
+2025-12-28 13:34:32.828 | INFO     | common.ble.gatt_client:__init__:150 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-28 13:34:32.829 | INFO     | common.ble.gatt_client:__init__:528 | BLE Client iniciado
+2025-12-28 13:34:32.829 | INFO     | common.ble.gatt_client:scan:177 | A fazer scan BLE durante 5000ms...
+2025-12-28 13:34:32.830 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_133432-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-28 13:34:37.943 | INFO     | common.ble.gatt_client:scan:217 | Scan concluído: 1 dispositivos encontrados
+2025-12-28 13:34:37.944 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251228_133432-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-28 13:34:37.946 | INFO     | common.ble.gatt_client:connect:259 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-28 13:34:37.947 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251228_133432-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-28 13:34:45.297 | INFO     | common.ble.gatt_client:connect:269 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-28 13:34:45.299 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251228_133432-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 7347.32ms
+2025-12-28 13:34:55.324 | WARNING  | common.ble.gatt_client:connect:313 | ⚠️  Serviços descobertos mas sem características - SimpleBLE pode ter limitações
+2025-12-28 13:34:55.328 | INFO     | common.ble.gatt_client:disconnect:332 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-28 13:34:55.329 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251228_133432-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal

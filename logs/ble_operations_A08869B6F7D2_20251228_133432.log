@@ -1,0 +1,66 @@
+2025-12-28 13:34:32.828 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251228_133432.log
+2025-12-28 13:34:32.828 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-28 13:34:32.829 | INFO     | BLE Client iniciado
+2025-12-28 13:34:32.829 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-28 13:34:32.830 | INFO     | [OP-20251228_133432-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-28 13:34:37.940 | DEBUG    |   Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0) RSSI: -42 dBm
+2025-12-28 13:34:37.943 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-28 13:34:37.944 | INFO     | [OP-20251228_133432-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-28 13:34:37.945 | DEBUG    | [OP-20251228_133432-0002]   Device_1: Name: rafa-ubuntu | Address: E0:D3:62:D6:EE:A0 | RSSI: -42 dBm | Services: 1
+2025-12-28 13:34:37.946 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-28 13:34:37.946 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-28 13:34:37.947 | INFO     | [OP-20251228_133432-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-28 13:34:45.297 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-28 13:34:45.299 | INFO     | [OP-20251228_133432-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 7347.32ms
+2025-12-28 13:34:45.301 | DEBUG    | A aguardar descoberta de serviços GATT...
+2025-12-28 13:34:47.302 | DEBUG    | Tentativa 1/5: 0 serviços, 0 características
+2025-12-28 13:34:47.302 | DEBUG    |   Nenhum serviço ainda, a tentar novamente...
+2025-12-28 13:34:49.305 | DEBUG    | Tentativa 2/5: 0 serviços, 0 características
+2025-12-28 13:34:49.306 | DEBUG    |   Nenhum serviço ainda, a tentar novamente...
+2025-12-28 13:34:51.307 | DEBUG    | Tentativa 3/5: 13 serviços, 0 características
+2025-12-28 13:34:51.308 | DEBUG    |   - 0000110a-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.308 | DEBUG    |   - 0000110b-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.308 | DEBUG    |   - 0000110c-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.308 | DEBUG    |   - 0000110e-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.309 | DEBUG    |   - 0000111e-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.309 | DEBUG    |   - 0000111f-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.309 | DEBUG    |   - 0000112d-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.309 | DEBUG    |   - 00001200-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.309 | DEBUG    |   - 00001800-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.309 | DEBUG    |   - 00001801-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.310 | DEBUG    |   - 0000180a-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.310 | DEBUG    |   - 03b80e5a-ede8-4b33-a751-6ce34ec4c700 (0 características)
+2025-12-28 13:34:51.310 | DEBUG    |   - 12340000-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:51.310 | DEBUG    |   Serviços encontrados mas sem características, a tentar novamente...
+2025-12-28 13:34:53.311 | DEBUG    | Tentativa 4/5: 13 serviços, 0 características
+2025-12-28 13:34:53.312 | DEBUG    |   - 0000110a-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.312 | DEBUG    |   - 0000110b-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.313 | DEBUG    |   - 0000110c-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.313 | DEBUG    |   - 0000110e-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.314 | DEBUG    |   - 0000111e-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.314 | DEBUG    |   - 0000111f-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.315 | DEBUG    |   - 0000112d-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.315 | DEBUG    |   - 00001200-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.316 | DEBUG    |   - 00001800-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.317 | DEBUG    |   - 00001801-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.317 | DEBUG    |   - 0000180a-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.318 | DEBUG    |   - 03b80e5a-ede8-4b33-a751-6ce34ec4c700 (0 características)
+2025-12-28 13:34:53.318 | DEBUG    |   - 12340000-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:53.319 | DEBUG    |   Serviços encontrados mas sem características, a tentar novamente...
+2025-12-28 13:34:55.321 | DEBUG    | Tentativa 5/5: 13 serviços, 0 características
+2025-12-28 13:34:55.321 | DEBUG    |   - 0000110a-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.322 | DEBUG    |   - 0000110b-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.322 | DEBUG    |   - 0000110c-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.322 | DEBUG    |   - 0000110e-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.322 | DEBUG    |   - 0000111e-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.322 | DEBUG    |   - 0000111f-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.323 | DEBUG    |   - 0000112d-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.323 | DEBUG    |   - 00001200-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.323 | DEBUG    |   - 00001800-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.323 | DEBUG    |   - 00001801-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.324 | DEBUG    |   - 0000180a-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.324 | DEBUG    |   - 03b80e5a-ede8-4b33-a751-6ce34ec4c700 (0 características)
+2025-12-28 13:34:55.324 | DEBUG    |   - 12340000-0000-1000-8000-00805f9b34fb (0 características)
+2025-12-28 13:34:55.324 | WARNING  | ⚠️  Serviços descobertos mas sem características - SimpleBLE pode ter limitações
+2025-12-28 13:34:55.328 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-28 13:34:55.329 | INFO     | [OP-20251228_133432-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
