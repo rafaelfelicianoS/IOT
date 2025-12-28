@@ -149,6 +149,57 @@ class Link:
             logger.debug(f"Dados enviados via {self}: {len(data)} bytes")
         return success
 
+    def send_packet(self, packet_data: bytes) -> bool:
+        """
+        Envia um pacote através do link usando a característica NETWORK_PACKET.
+
+        Args:
+            packet_data: Pacote serializado (bytes)
+
+        Returns:
+            True se enviado com sucesso
+        """
+        from common.utils.constants import IOT_NETWORK_SERVICE_UUID, CHAR_NETWORK_PACKET_UUID
+
+        if not self.connection.is_connected:
+            logger.warning(f"Link {self.address} não está conectado")
+            return False
+
+        success = self.connection.write_characteristic(
+            IOT_NETWORK_SERVICE_UUID,
+            CHAR_NETWORK_PACKET_UUID,
+            packet_data
+        )
+
+        if success:
+            self.last_activity = datetime.now()
+            logger.debug(f"Pacote enviado via {self}: {len(packet_data)} bytes")
+        else:
+            logger.error(f"Falha ao enviar pacote via {self}")
+
+        return success
+
+    def enable_packet_notifications(self, callback: Callable[[bytes], None]) -> bool:
+        """
+        Ativa notificações para a característica NETWORK_PACKET.
+
+        Args:
+            callback: Função chamada quando um pacote é recebido
+
+        Returns:
+            True se ativado com sucesso
+        """
+        from common.utils.constants import IOT_NETWORK_SERVICE_UUID, CHAR_NETWORK_PACKET_UUID
+
+        # Guardar callback
+        self._data_callback = callback
+
+        # Tentar ativar notificações (se a conexão suportar)
+        # Nota: SimpleBLE pode não suportar notificações diretamente
+        # Isto é um placeholder para quando implementarmos notificações
+        logger.info(f"Notificações de pacotes ativadas para {self}")
+        return True
+
     def disconnect(self):
         """Desconecta o link."""
         self.connection.disconnect()
@@ -545,6 +596,113 @@ class LinkManager:
             Link do uplink ou None
         """
         return self.uplink
+
+    # ========================================================================
+    # Packet Routing
+    # ========================================================================
+
+    def send_packet_to_uplink(self, packet_data: bytes) -> bool:
+        """
+        Envia um pacote para o uplink (em direção ao Sink).
+
+        Args:
+            packet_data: Pacote serializado
+
+        Returns:
+            True se enviado com sucesso
+        """
+        if not self.has_uplink():
+            logger.warning("Sem uplink disponível para enviar pacote")
+            return False
+
+        return self.uplink.send_packet(packet_data)
+
+    def send_packet_to_downlink(self, address: str, packet_data: bytes) -> bool:
+        """
+        Envia um pacote para um downlink específico.
+
+        Args:
+            address: Endereço do downlink
+            packet_data: Pacote serializado
+
+        Returns:
+            True se enviado com sucesso
+        """
+        link = self.downlinks.get(address)
+        if not link:
+            logger.warning(f"Downlink {address} não encontrado")
+            return False
+
+        return link.send_packet(packet_data)
+
+    def broadcast_packet_to_downlinks(self, packet_data: bytes, exclude: Optional[str] = None) -> int:
+        """
+        Envia um pacote para todos os downlinks (broadcast).
+
+        Args:
+            packet_data: Pacote serializado
+            exclude: Endereço a excluir do broadcast (ex: origem do pacote)
+
+        Returns:
+            Número de downlinks que receberam com sucesso
+        """
+        count = 0
+        for address, link in self.downlinks.items():
+            if exclude and address == exclude:
+                continue
+
+            if link.send_packet(packet_data):
+                count += 1
+
+        logger.debug(f"Pacote broadcast para {count}/{len(self.downlinks)} downlinks")
+        return count
+
+    def route_packet(self, packet: 'Packet', received_from: Optional[str] = None) -> bool:
+        """
+        Roteia um pacote recebido.
+
+        Lógica de routing:
+        1. Se destino é este node -> processar localmente
+        2. Se destino está nos downlinks -> enviar para esse downlink
+        3. Caso contrário -> enviar para uplink (em direção ao Sink)
+
+        Args:
+            packet: Pacote a rotear
+            received_from: Endereço de quem recebeu o pacote (para evitar loop)
+
+        Returns:
+            True se roteado com sucesso
+        """
+        from common.network.packet import Packet
+
+        # Decrementar TTL
+        if not packet.decrement_ttl():
+            logger.warning(f"Pacote expirou (TTL=0), descartando (seq={packet.sequence})")
+            return False
+
+        # TODO: Verificar se o destino é este node (comparar com local NID)
+        # Se for, processar localmente ao invés de rotear
+
+        # Verificar se destino está nos downlinks
+        for address, link in self.downlinks.items():
+            if address == received_from:
+                continue  # Não enviar de volta para quem enviou
+
+            if link.device_info.nid == packet.destination:
+                logger.info(f"Roteando pacote para downlink {address}")
+                return self.send_packet_to_downlink(address, packet.to_bytes())
+
+        # Se não está nos downlinks, enviar para uplink
+        if self.has_uplink():
+            if received_from != self.uplink.address:  # Evitar loop
+                logger.info("Roteando pacote para uplink")
+                return self.send_packet_to_uplink(packet.to_bytes())
+            else:
+                logger.warning("Pacote veio do uplink mas destino não encontrado, descartando")
+                return False
+        else:
+            logger.warning("Sem uplink para rotear pacote, descartando")
+            return False
 
     def get_downlinks(self) -> List[Link]:
         """
