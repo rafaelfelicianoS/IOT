@@ -1,0 +1,19 @@
+2025-12-28 13:08:21.269 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_130821.log
+2025-12-28 13:08:21.270 | INFO     | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 13:08:21.270 | INFO     | BLE Client iniciado
+2025-12-28 13:08:21.271 | INFO     | A fazer scan BLE durante 10000ms...
+2025-12-28 13:08:21.271 | INFO     | [OP-20251228_130821-0001] SCAN_START | Duration: 10000ms | Filter_IoT: False
+2025-12-28 13:08:31.382 | DEBUG    |   Encontrado: Unknown (45:27:89:EB:1D:DB) RSSI: -100 dBm
+2025-12-28 13:08:31.384 | DEBUG    |   Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0) RSSI: -54 dBm
+2025-12-28 13:08:31.387 | DEBUG    |   Encontrado: [TV] Samsung 7 Series (65) (FC:03:9F:1D:14:49) RSSI: -92 dBm
+2025-12-28 13:08:31.387 | INFO     | Scan concluído: 3 dispositivos encontrados
+2025-12-28 13:08:31.388 | INFO     | [OP-20251228_130821-0002] SCAN_RESULT | Devices_Found: 3
+2025-12-28 13:08:31.389 | DEBUG    | [OP-20251228_130821-0002]   Device_1: Name: Unknown | Address: 45:27:89:EB:1D:DB | RSSI: -100 dBm | Services: 0
+2025-12-28 13:08:31.389 | DEBUG    | [OP-20251228_130821-0002]   Device_2: Name: rafa-ubuntu | Address: E0:D3:62:D6:EE:A0 | RSSI: -54 dBm | Services: 5
+2025-12-28 13:08:31.389 | DEBUG    | [OP-20251228_130821-0002]   Device_3: Name: [TV] Samsung 7 Series (65) | Address: FC:03:9F:1D:14:49 | RSSI: -92 dBm | Services: 5
+2025-12-28 13:08:31.393 | INFO     | A fazer scan BLE durante 10000ms...
+2025-12-28 13:08:31.394 | INFO     | [OP-20251228_130821-0003] SCAN_START | Duration: 10000ms | Filter_IoT: True
+2025-12-28 13:08:41.514 | DEBUG    |   Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0) RSSI: -56 dBm
+2025-12-28 13:08:41.517 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-28 13:08:41.518 | INFO     | [OP-20251228_130821-0004] SCAN_RESULT | Devices_Found: 1
+2025-12-28 13:08:41.520 | DEBUG    | [OP-20251228_130821-0004]   Device_1: Name: rafa-ubuntu | Address: E0:D3:62:D6:EE:A0 | RSSI: -56 dBm | Services: 5
