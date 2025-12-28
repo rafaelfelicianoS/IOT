@@ -17,7 +17,7 @@ import signal
 # Adicionar o diretório raiz ao path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from common.ble.gatt_server import Application, Service
+from common.ble.gatt_server import Application, Service, register_application
 from common.ble.gatt_services import (
     IoTNetworkService,
     NetworkPacketCharacteristic,
@@ -134,11 +134,8 @@ def main():
     print("2️⃣  A criar servidor GATT...")
     try:
         import dbus
-        import dbus.mainloop.glib
-        from gi.repository import GLib
 
-        # Setup D-Bus
-        dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+        # Get system bus
         bus = dbus.SystemBus()
 
         # Criar application
@@ -162,37 +159,20 @@ def main():
 
         # Adicionar service
         app.add_service(service)
-
-        # Registar application
-        app.register()
-        print(f"   ✅ Servidor GATT registado")
         print()
 
         print("=" * 70)
-        print("  🎧 AGUARDANDO PACOTES...")
+        print("  🎧 A REGISTAR SERVIDOR E AGUARDAR PACOTES...")
         print("  Pressione Ctrl+C para terminar")
         print("=" * 70)
         print()
 
-        # Loop principal
-        mainloop = GLib.MainLoop()
-
-        # Run mainloop em thread separada para permitir Ctrl+C
-        import threading
-
-        def run_mainloop():
-            try:
-                mainloop.run()
-            except Exception as e:
-                logger.error(f"Erro no mainloop: {e}")
-
-        mainloop_thread = threading.Thread(target=run_mainloop, daemon=True)
-        mainloop_thread.start()
+        # Registar application e obter mainloop
+        mainloop = register_application(app, adapter_name='hci0')
 
         # Aguardar até Ctrl+C
         try:
-            while running:
-                time.sleep(1)
+            mainloop.run()
         except KeyboardInterrupt:
             pass
 
@@ -207,7 +187,6 @@ def main():
 
         # Cleanup
         mainloop.quit()
-        app.unregister()
 
         return 0
 
