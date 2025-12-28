@@ -99,3 +99,20 @@
 2025-12-28 01:42:36.142 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_014236-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
 2025-12-28 01:42:41.260 | INFO     | common.ble.gatt_client:scan:175 | Scan concluído: 0 dispositivos encontrados
 2025-12-28 01:42:41.262 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251228_014236-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-28 13:13:37.038 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_131337.log
+2025-12-28 13:13:37.039 | INFO     | common.ble.gatt_client:__init__:150 | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 13:13:37.039 | INFO     | common.ble.gatt_client:__init__:484 | BLE Client iniciado
+2025-12-28 13:13:37.040 | INFO     | common.ble.gatt_client:scan:177 | A fazer scan BLE durante 5000ms...
+2025-12-28 13:13:37.040 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251228_131337-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-28 13:13:42.158 | INFO     | common.ble.gatt_client:scan:217 | Scan concluído: 1 dispositivos encontrados
+2025-12-28 13:13:42.159 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251228_131337-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-28 13:13:42.161 | INFO     | common.ble.gatt_client:connect:259 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-28 13:13:42.162 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251228_131337-0003] CONNECT_ATTEMPT | Local: E0:D3:62:D7:47:03 | Remote: E0:D3:62:D6:EE:A0
+2025-12-28 13:13:46.557 | INFO     | common.ble.gatt_client:connect:269 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-28 13:13:46.558 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251228_131337-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 4393.08ms
+2025-12-28 13:13:46.562 | INFO     | common.network.packet_manager:__init__:50 | PacketManager iniciado para NID 0f9c2b96...
+2025-12-28 13:13:46.566 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20251228_131337-0005] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 122 bytes | Hex: 0f9c2b969d734caab3460d8e158ad6cd0fb22742cd3e4e6690abe475010a524f010a00000000bf849623fe8e953b13a4e7f275617fba4729c48be1d1749d0f95 | ASCII: ..+..sL..F........'B.>Nf...u..RO.........#...;....ua..G)....t... [TRUNCATED]
+2025-12-28 13:13:46.571 | ERROR    | common.ble.gatt_client:write_characteristic:394 | Erro ao escrever em 12340001-0000-1000-8000-00805f9b34fb: Service with UUID 12340000-0000-1000-8000-00805f9b34fb not found.
+2025-12-28 13:13:46.573 | ERROR    | common.utils.ble_logger:log_write_response:302 | [OP-20251228_131337-0006] WRITE_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Error: Service with UUID 12340000-0000-1000-8000-00805f9b34fb not found.
+2025-12-28 13:13:48.429 | INFO     | common.ble.gatt_client:disconnect:288 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-28 13:13:48.432 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251228_131337-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
