@@ -1078,3 +1078,48 @@
 2025-12-29 20:10:57.306 | INFO     | common.network.heartbeat_monitor:stop:91 | HeartbeatMonitor parado
 2025-12-29 20:10:57.308 | WARNING  | common.network.link_manager:_on_heartbeat_timeout:398 | ⚠️  Todos os links desconectados devido a timeout de heartbeat
 2025-12-29 20:10:57.312 | INFO     | common.network.link_manager:_on_heartbeat_timeout:399 |    TODO: Procurar novo uplink automaticamente
+2025-12-29 20:11:16.832 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 20:11:17.043 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 20:11:17.045 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_200730-0042] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 20:11:22.064 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 20:11:22.066 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_200730-0043] SCAN_RESULT | Devices_Found: 1
+2025-12-29 20:11:22.068 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-29 20:11:22.071 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 20:11:22.072 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_200730-0044] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 20:11:25.287 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 20:11:25.289 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_200730-0045] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3210.81ms
+2025-12-29 20:11:25.494 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251229_200730-0047] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 468a1b10818f4604a993da62bf8362a20100 | ASCII: F.....F....b..b...
+2025-12-29 20:11:25.496 | INFO     | common.network.neighbor_discovery:scan_once:210 | Vizinho descoberto: E0:D3:62:D6:EE:A0 (468a1b10...) hop=1 rssi=-47dBm type=node disconnected seen=0.0s ago
+2025-12-29 20:11:27.302 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 20:11:27.304 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_200730-0048] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 20:11:38.114 | INFO     | common.network.link_manager:connect_to_neighbor:436 | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 20:11:38.116 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 20:11:38.118 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_200730-0049] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 20:11:41.137 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 20:11:41.138 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_200730-0050] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3015.31ms
+2025-12-29 20:11:41.140 | INFO     | common.network.link_manager:__init__:110 | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=468a1b10... hop=1 (UPLINK)
+2025-12-29 20:11:41.142 | INFO     | common.network.link_manager:set_uplink:283 | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=468a1b10... hop=1
+2025-12-29 20:11:41.343 | INFO     | common.ble.gatt_client:subscribe_notifications:468 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 20:11:41.344 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251229_200730-0051] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 20:11:41.346 | INFO     | common.network.heartbeat_monitor:start:72 | 💓 HeartbeatMonitor iniciado: verificação a cada 5.0s, timeout após 3 misses
+2025-12-29 20:11:41.346 | INFO     | common.network.link_manager:_start_heartbeat_monitoring:370 | 💓 Monitoramento de heartbeat iniciado
+2025-12-29 20:11:41.347 | INFO     | common.network.link_manager:connect_to_neighbor:464 | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-29 20:11:45.197 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0052] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a20201000000240000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......$.......................... [TRUNCATED]
+2025-12-29 20:11:50.196 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0053] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a20201000000250000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......%.......................... [TRUNCATED]
+2025-12-29 20:11:55.197 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0054] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a20201000000260000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......&.......................... [TRUNCATED]
+2025-12-29 20:12:00.197 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0055] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a20201000000270000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......'.......................... [TRUNCATED]
+2025-12-29 20:12:05.197 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0056] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a20201000000280000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......(.......................... [TRUNCATED]
+2025-12-29 20:12:10.195 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0057] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a20201000000290000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......).......................... [TRUNCATED]
+2025-12-29 20:12:15.198 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0058] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a202010000002a0000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......*.......................... [TRUNCATED]
+2025-12-29 20:12:20.197 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0059] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a202010000002b0000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......+.......................... [TRUNCATED]
+2025-12-29 20:12:25.198 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0060] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a202010000002c0000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......,.......................... [TRUNCATED]
+2025-12-29 20:12:30.197 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251229_200730-0061] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 468a1b10818f4604a993da62bf8362a2468a1b10818f4604a993da62bf8362a202010000002d0000000000000000000000000000000000000000000000000000 | ASCII: F.....F....b..b.F.....F....b..b......-.......................... [TRUNCATED]
+2025-12-29 20:12:34.311 | INFO     | __main__:cleanup:579 | A limpar recursos...
+2025-12-29 20:12:34.312 | INFO     | __main__:cleanup:584 | A desconectar uplink E0:D3:62:D6:EE:A0...
+2025-12-29 20:12:34.313 | INFO     | common.network.link_manager:disconnect_neighbor:696 | A desconectar do uplink E0:D3:62:D6:EE:A0
+2025-12-29 20:12:36.301 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 20:12:36.303 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_200730-0062] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 20:12:36.307 | WARNING  | common.network.link_manager:_on_uplink_disconnected:308 | ⚠️  Uplink desconectado!
+2025-12-29 20:12:36.311 | INFO     | common.network.heartbeat_monitor:stop:91 | HeartbeatMonitor parado
+2025-12-29 20:12:36.313 | INFO     | common.network.link_manager:clear_uplink:296 | Uplink removido
+2025-12-29 20:12:36.313 | INFO     | __main__:cleanup:596 | ✅ Recursos limpos
