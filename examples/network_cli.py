@@ -481,28 +481,35 @@ Digite 'exit' ou Ctrl+D para sair.
 
             # Procurar última linha de heartbeat e estado
             last_heartbeat = None
+            last_heartbeat_time = None
             heartbeat_disabled = False
             heartbeat_enabled = False
 
             for line in reversed(last_lines):
-                if "💓 Heartbeat enviado" in line:
-                    if last_heartbeat is None:
-                        # Extrair timestamp da linha de log
-                        parts = line.split("|")
-                        if len(parts) >= 2:
-                            timestamp_str = parts[0].strip()
-                            last_heartbeat = timestamp_str
-                    break
-                elif "🛑 Heartbeats DESABILITADOS" in line:
+                # Procurar heartbeat enviado
+                if "💓 Heartbeat enviado" in line and last_heartbeat is None:
+                    # Extrair timestamp da linha de log
+                    parts = line.split("|")
+                    if len(parts) >= 2:
+                        timestamp_str = parts[0].strip()
+                        last_heartbeat = timestamp_str
+                        last_heartbeat_time = timestamp_str
+
+                # Procurar estado de controlo
+                if "🛑 Heartbeats DESABILITADOS" in line:
                     heartbeat_disabled = True
                 elif "▶️  Heartbeats HABILITADOS" in line:
                     heartbeat_enabled = True
 
             print("\n📊 Estado dos Heartbeats do Servidor:\n")
 
+            # Determinar estado atual
             if heartbeat_disabled and not heartbeat_enabled:
                 print("   Status: 🛑 PARADOS")
-                print("   Último heartbeat: " + (last_heartbeat if last_heartbeat else "N/A"))
+                if last_heartbeat:
+                    print(f"   Último heartbeat: {last_heartbeat}")
+                else:
+                    print("   Último heartbeat: N/A")
                 print("\n   Use 'resume_heartbeat' para retomar.\n")
             elif last_heartbeat:
                 print("   Status: ✅ ATIVOS")
