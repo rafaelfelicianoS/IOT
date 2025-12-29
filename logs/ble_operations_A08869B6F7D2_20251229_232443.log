@@ -1,0 +1,872 @@
+2025-12-29 23:24:44.002 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_232443.log
+2025-12-29 23:24:44.003 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 23:24:44.005 | INFO     | BLE Client iniciado
+2025-12-29 23:24:44.007 | INFO     | 🔍 A fazer scan de dispositivos IoT...
+2025-12-29 23:24:44.008 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-29 23:24:44.010 | INFO     | [OP-20251229_232443-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 23:24:49.218 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -48 dBm
+2025-12-29 23:24:49.220 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-29 23:24:49.222 | INFO     | [OP-20251229_232443-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 23:24:49.223 | DEBUG    | [OP-20251229_232443-0002]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -48 dBm | Services: 1
+2025-12-29 23:24:49.223 | INFO     | ✅ Encontrados 1 dispositivos IoT
+2025-12-29 23:24:49.224 | INFO     |    Conectando ao primeiro: E0:D3:62:D6:EE:A0
+2025-12-29 23:24:49.225 | INFO     | 
+2025-12-29 23:24:49.226 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-29 23:24:49.227 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 23:24:49.229 | INFO     | [OP-20251229_232443-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 23:24:53.355 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 23:24:53.356 | INFO     | [OP-20251229_232443-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 4122.84ms
+2025-12-29 23:24:53.357 | INFO     | ✅ Conectado com sucesso!
+2025-12-29 23:24:53.358 | INFO     | 
+2025-12-29 23:24:53.359 | INFO     | HeartbeatMonitor iniciado (timeout após 3 heartbeats)
+2025-12-29 23:24:53.362 | INFO     | 💓 Heartbeat Monitor iniciado
+2025-12-29 23:24:53.365 | INFO     | 
+2025-12-29 23:24:53.366 | INFO     | ReplayProtection iniciado (window_size=100)
+2025-12-29 23:24:53.370 | INFO     | 🛡️  Replay Protection iniciado
+2025-12-29 23:24:53.372 | INFO     | 
+2025-12-29 23:24:53.376 | INFO     | ======================================================================
+2025-12-29 23:24:53.377 | INFO     | 📡 A subscrever notificações de NetworkPacket...
+2025-12-29 23:24:53.379 | INFO     | ======================================================================
+2025-12-29 23:24:53.381 | INFO     | 
+2025-12-29 23:24:53.870 | INFO     | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 23:24:53.872 | INFO     | [OP-20251229_232443-0005] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 23:24:53.873 | INFO     | ✅ Subscrição bem-sucedida!
+2025-12-29 23:24:53.874 | INFO     | 
+2025-12-29 23:24:53.875 | INFO     | ======================================================================
+2025-12-29 23:24:53.875 | INFO     | 📝 AGUARDANDO HEARTBEATS:
+2025-12-29 23:24:53.876 | INFO     | ======================================================================
+2025-12-29 23:24:53.881 | INFO     | 
+2025-12-29 23:24:53.883 | INFO     | O servidor deve enviar heartbeats a cada 5 segundos.
+2025-12-29 23:24:53.885 | INFO     | Este cliente irá:
+2025-12-29 23:24:53.886 | INFO     |   1. Receber notificações via NetworkPacketCharacteristic
+2025-12-29 23:24:53.887 | INFO     |   2. Parsear os pacotes
+2025-12-29 23:24:53.889 | INFO     |   3. Identificar heartbeats
+2025-12-29 23:24:53.891 | INFO     |   4. Monitorizar timeouts
+2025-12-29 23:24:53.892 | INFO     | 
+2025-12-29 23:24:53.893 | INFO     | ======================================================================
+2025-12-29 23:24:53.894 | INFO     | ⏳ A aguardar heartbeats (pressiona Ctrl+C para terminar)...
+2025-12-29 23:24:53.895 | INFO     | ======================================================================
+2025-12-29 23:24:53.896 | INFO     | 
+2025-12-29 23:24:58.225 | INFO     | [OP-20251229_232443-0006] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000003f12dba30ca4a9d41b703f0b5002f1193d83a105739c558c376bf | ASCII: q.....Bk.DCS....q.....Bk.DCS...........-.0.J.A...../...:.W9.X.v. [TRUNCATED]
+2025-12-29 23:24:58.226 | INFO     | 
+2025-12-29 23:24:58.227 | INFO     | 🔔 NOTIFICAÇÃO #1 RECEBIDA!
+2025-12-29 23:24:58.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:24:58.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:24:58.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:24:58.231 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:24:58.233 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:24:58.234 | INFO     |       TTL: 1
+2025-12-29 23:24:58.235 | INFO     |       Sequence: 3
+2025-12-29 23:24:58.236 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:24:58.237 | INFO     |       ✅ MAC válido
+2025-12-29 23:24:58.238 | DEBUG    | Novo source 7111f8a5...: seq=3 (primeiro pacote)
+2025-12-29 23:24:58.239 | INFO     |       ✅ Não é replay
+2025-12-29 23:24:58.241 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:24:58.242 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:24:58.242 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:24:58.243 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:24:58.244 | INFO     |       Timestamp: 1767050698.15
+2025-12-29 23:24:58.245 | INFO     |       Age: 0.09s
+2025-12-29 23:24:58.248 | INFO     |       Signature: <signed>
+2025-12-29 23:24:58.250 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:24:58.251 | INFO     |       Total heartbeats: 1
+2025-12-29 23:24:58.252 | INFO     |       Time since last: 0.10s
+2025-12-29 23:24:58.253 | INFO     |       Missed count: 0
+2025-12-29 23:24:58.255 | INFO     | 
+2025-12-29 23:25:00.897 | INFO     | ⏱️  Status: 1 notificações, 1 heartbeats
+2025-12-29 23:25:03.225 | INFO     | [OP-20251229_232443-0007] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000447af7156d840ee4265615e75b65ec9e05c83bb107802cf212ce8 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........G.qV.@.Bea^u.^..\...x..!,. [TRUNCATED]
+2025-12-29 23:25:03.226 | INFO     | 
+2025-12-29 23:25:03.227 | INFO     | 🔔 NOTIFICAÇÃO #2 RECEBIDA!
+2025-12-29 23:25:03.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:03.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:03.231 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:03.233 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:03.234 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:03.235 | INFO     |       TTL: 1
+2025-12-29 23:25:03.236 | INFO     |       Sequence: 4
+2025-12-29 23:25:03.242 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:03.243 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:03.244 | DEBUG    | Source 7111f8a5...: seq=4 (novo highest, window: 2 seqs)
+2025-12-29 23:25:03.244 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:03.245 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:03.246 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:03.246 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:03.247 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:03.249 | INFO     |       Timestamp: 1767050703.16
+2025-12-29 23:25:03.250 | INFO     |       Age: 0.09s
+2025-12-29 23:25:03.252 | INFO     |       Signature: <signed>
+2025-12-29 23:25:03.255 | INFO     |       ✅ Sequência correta (4)
+2025-12-29 23:25:03.257 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:03.259 | INFO     |       Total heartbeats: 2
+2025-12-29 23:25:03.260 | INFO     |       Time since last: 0.10s
+2025-12-29 23:25:03.260 | INFO     |       Missed count: 0
+2025-12-29 23:25:03.261 | INFO     | 
+2025-12-29 23:25:08.225 | INFO     | [OP-20251229_232443-0008] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e0201000000059637a674e8d22837f9e04ea474978a3b2e41f1288ea90fbe2b77 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........7.t..(7..N.t..;.A.(....+w [TRUNCATED]
+2025-12-29 23:25:08.226 | INFO     | 
+2025-12-29 23:25:08.227 | INFO     | 🔔 NOTIFICAÇÃO #3 RECEBIDA!
+2025-12-29 23:25:08.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:08.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:08.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:08.231 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:08.235 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:08.236 | INFO     |       TTL: 1
+2025-12-29 23:25:08.238 | INFO     |       Sequence: 5
+2025-12-29 23:25:08.239 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:08.240 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:08.241 | DEBUG    | Source 7111f8a5...: seq=5 (novo highest, window: 3 seqs)
+2025-12-29 23:25:08.242 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:08.243 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:08.244 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:08.245 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:08.246 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:08.246 | INFO     |       Timestamp: 1767050708.16
+2025-12-29 23:25:08.248 | INFO     |       Age: 0.09s
+2025-12-29 23:25:08.249 | INFO     |       Signature: <signed>
+2025-12-29 23:25:08.249 | INFO     |       ✅ Sequência correta (5)
+2025-12-29 23:25:08.251 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:08.251 | INFO     |       Total heartbeats: 3
+2025-12-29 23:25:08.252 | INFO     |       Time since last: 0.10s
+2025-12-29 23:25:08.253 | INFO     |       Missed count: 0
+2025-12-29 23:25:08.253 | INFO     | 
+2025-12-29 23:25:13.225 | INFO     | [OP-20251229_232443-0009] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e0201000000065e468a09cd9877725a462ba7d0753d0a641ae4043652854cda46 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........^F....wrZF+..u=.d...6R.L.F [TRUNCATED]
+2025-12-29 23:25:13.226 | INFO     | 
+2025-12-29 23:25:13.227 | INFO     | 🔔 NOTIFICAÇÃO #4 RECEBIDA!
+2025-12-29 23:25:13.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:13.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:13.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:13.231 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:13.235 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:13.236 | INFO     |       TTL: 1
+2025-12-29 23:25:13.237 | INFO     |       Sequence: 6
+2025-12-29 23:25:13.238 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:13.239 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:13.240 | DEBUG    | Source 7111f8a5...: seq=6 (novo highest, window: 4 seqs)
+2025-12-29 23:25:13.241 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:13.242 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:13.243 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:13.243 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:13.245 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:13.246 | INFO     |       Timestamp: 1767050713.16
+2025-12-29 23:25:13.249 | INFO     |       Age: 0.09s
+2025-12-29 23:25:13.250 | INFO     |       Signature: <signed>
+2025-12-29 23:25:13.251 | INFO     |       ✅ Sequência correta (6)
+2025-12-29 23:25:13.251 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:13.254 | INFO     |       Total heartbeats: 4
+2025-12-29 23:25:13.254 | INFO     |       Time since last: 0.09s
+2025-12-29 23:25:13.254 | INFO     |       Missed count: 0
+2025-12-29 23:25:13.255 | INFO     | 
+2025-12-29 23:25:15.899 | INFO     | ⏱️  Status: 4 notificações, 4 heartbeats
+2025-12-29 23:25:18.225 | INFO     | [OP-20251229_232443-0010] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000007020c8d41d786a895e4bb5182e9ee79be658cc1f165bffd41ae38 | ASCII: q.....Bk.DCS....q.....Bk.DCS.............A......Q...y.e...e..A.8 [TRUNCATED]
+2025-12-29 23:25:18.226 | INFO     | 
+2025-12-29 23:25:18.227 | INFO     | 🔔 NOTIFICAÇÃO #5 RECEBIDA!
+2025-12-29 23:25:18.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:18.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:18.229 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:18.230 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:18.231 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:18.232 | INFO     |       TTL: 1
+2025-12-29 23:25:18.234 | INFO     |       Sequence: 7
+2025-12-29 23:25:18.236 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:18.239 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:18.242 | DEBUG    | Source 7111f8a5...: seq=7 (novo highest, window: 5 seqs)
+2025-12-29 23:25:18.242 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:18.244 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:18.244 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:18.245 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:18.249 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:18.250 | INFO     |       Timestamp: 1767050718.16
+2025-12-29 23:25:18.251 | INFO     |       Age: 0.10s
+2025-12-29 23:25:18.252 | INFO     |       Signature: <signed>
+2025-12-29 23:25:18.253 | INFO     |       ✅ Sequência correta (7)
+2025-12-29 23:25:18.254 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:18.256 | INFO     |       Total heartbeats: 5
+2025-12-29 23:25:18.256 | INFO     |       Time since last: 0.10s
+2025-12-29 23:25:18.258 | INFO     |       Missed count: 0
+2025-12-29 23:25:18.258 | INFO     | 
+2025-12-29 23:25:23.224 | INFO     | [OP-20251229_232443-0011] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000008739e3432831e32606649879b358d5c822538030fb9720c17abbd | ASCII: q.....Bk.DCS....q.....Bk.DCS..........s.42..2`fI..5.\.%8...r.... [TRUNCATED]
+2025-12-29 23:25:23.226 | INFO     | 
+2025-12-29 23:25:23.227 | INFO     | 🔔 NOTIFICAÇÃO #6 RECEBIDA!
+2025-12-29 23:25:23.229 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:23.231 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:23.232 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:23.233 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:23.234 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:23.235 | INFO     |       TTL: 1
+2025-12-29 23:25:23.236 | INFO     |       Sequence: 8
+2025-12-29 23:25:23.237 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:23.238 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:23.239 | DEBUG    | Source 7111f8a5...: seq=8 (novo highest, window: 6 seqs)
+2025-12-29 23:25:23.240 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:23.241 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:23.241 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:23.244 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:23.245 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:23.245 | INFO     |       Timestamp: 1767050723.15
+2025-12-29 23:25:23.246 | INFO     |       Age: 0.09s
+2025-12-29 23:25:23.246 | INFO     |       Signature: <signed>
+2025-12-29 23:25:23.246 | INFO     |       ✅ Sequência correta (8)
+2025-12-29 23:25:23.247 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:23.250 | INFO     |       Total heartbeats: 6
+2025-12-29 23:25:23.251 | INFO     |       Time since last: 0.09s
+2025-12-29 23:25:23.251 | INFO     |       Missed count: 0
+2025-12-29 23:25:23.252 | INFO     | 
+2025-12-29 23:25:28.225 | INFO     | [OP-20251229_232443-0012] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e0201000000093b9f6a91818d2ecdc6f738da7d710e7c187d56f21004a79d2830 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........;.j.......8.}q.|.}V.....(0 [TRUNCATED]
+2025-12-29 23:25:28.226 | INFO     | 
+2025-12-29 23:25:28.227 | INFO     | 🔔 NOTIFICAÇÃO #7 RECEBIDA!
+2025-12-29 23:25:28.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:28.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:28.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:28.230 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:28.231 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:28.233 | INFO     |       TTL: 1
+2025-12-29 23:25:28.234 | INFO     |       Sequence: 9
+2025-12-29 23:25:28.235 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:28.236 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:28.237 | DEBUG    | Source 7111f8a5...: seq=9 (novo highest, window: 7 seqs)
+2025-12-29 23:25:28.238 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:28.240 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:28.240 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:28.241 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:28.242 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:28.243 | INFO     |       Timestamp: 1767050728.16
+2025-12-29 23:25:28.244 | INFO     |       Age: 0.09s
+2025-12-29 23:25:28.245 | INFO     |       Signature: <signed>
+2025-12-29 23:25:28.245 | INFO     |       ✅ Sequência correta (9)
+2025-12-29 23:25:28.245 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:28.246 | INFO     |       Total heartbeats: 7
+2025-12-29 23:25:28.246 | INFO     |       Time since last: 0.09s
+2025-12-29 23:25:28.246 | INFO     |       Missed count: 0
+2025-12-29 23:25:28.249 | INFO     | 
+2025-12-29 23:25:30.901 | INFO     | ⏱️  Status: 7 notificações, 7 heartbeats
+2025-12-29 23:25:33.224 | INFO     | [OP-20251229_232443-0013] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000ad3e429ea6e472e4b3d45a215fb2dea401d890d20018cbfa4970f | ASCII: q.....Bk.DCS....q.....Bk.DCS............).nG.K=E...-.@... ...... [TRUNCATED]
+2025-12-29 23:25:33.225 | INFO     | 
+2025-12-29 23:25:33.226 | INFO     | 🔔 NOTIFICAÇÃO #8 RECEBIDA!
+2025-12-29 23:25:33.227 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:33.228 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:33.229 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:33.230 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:33.231 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:33.232 | INFO     |       TTL: 1
+2025-12-29 23:25:33.233 | INFO     |       Sequence: 10
+2025-12-29 23:25:33.234 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:33.235 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:33.236 | DEBUG    | Source 7111f8a5...: seq=10 (novo highest, window: 8 seqs)
+2025-12-29 23:25:33.237 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:33.238 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:33.238 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.08s)
+2025-12-29 23:25:33.239 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:33.240 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:33.240 | INFO     |       Timestamp: 1767050733.16
+2025-12-29 23:25:33.242 | INFO     |       Age: 0.09s
+2025-12-29 23:25:33.246 | INFO     |       Signature: <signed>
+2025-12-29 23:25:33.247 | INFO     |       ✅ Sequência correta (10)
+2025-12-29 23:25:33.247 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:33.247 | INFO     |       Total heartbeats: 8
+2025-12-29 23:25:33.248 | INFO     |       Time since last: 0.09s
+2025-12-29 23:25:33.248 | INFO     |       Missed count: 0
+2025-12-29 23:25:33.248 | INFO     | 
+2025-12-29 23:25:38.226 | INFO     | [OP-20251229_232443-0014] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000b913cdf4d7819178c8d4d8f1afd5dbf608b13edc5a38019f129d9 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........<.Mx....M...].`........). [TRUNCATED]
+2025-12-29 23:25:38.227 | INFO     | 
+2025-12-29 23:25:38.228 | INFO     | 🔔 NOTIFICAÇÃO #9 RECEBIDA!
+2025-12-29 23:25:38.229 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:38.230 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:38.231 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:38.232 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:38.233 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:38.234 | INFO     |       TTL: 1
+2025-12-29 23:25:38.235 | INFO     |       Sequence: 11
+2025-12-29 23:25:38.236 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:38.237 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:38.238 | DEBUG    | Source 7111f8a5...: seq=11 (novo highest, window: 9 seqs)
+2025-12-29 23:25:38.239 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:38.242 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:38.242 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:38.243 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:38.244 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:38.245 | INFO     |       Timestamp: 1767050738.15
+2025-12-29 23:25:38.245 | INFO     |       Age: 0.09s
+2025-12-29 23:25:38.246 | INFO     |       Signature: <signed>
+2025-12-29 23:25:38.246 | INFO     |       ✅ Sequência correta (11)
+2025-12-29 23:25:38.246 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:38.247 | INFO     |       Total heartbeats: 9
+2025-12-29 23:25:38.247 | INFO     |       Time since last: 0.09s
+2025-12-29 23:25:38.247 | INFO     |       Missed count: 0
+2025-12-29 23:25:38.247 | INFO     | 
+2025-12-29 23:25:43.226 | INFO     | [OP-20251229_232443-0015] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000ccecdcb1e11bec596b44784f7e3ec4f2a704bad9ee9fc63591158 | ASCII: q.....Bk.DCS....q.....Bk.DCS...................G....O*pK....cY.X [TRUNCATED]
+2025-12-29 23:25:43.227 | INFO     | 
+2025-12-29 23:25:43.228 | INFO     | 🔔 NOTIFICAÇÃO #10 RECEBIDA!
+2025-12-29 23:25:43.229 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:43.230 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:43.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:43.231 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:43.232 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:43.233 | INFO     |       TTL: 1
+2025-12-29 23:25:43.234 | INFO     |       Sequence: 12
+2025-12-29 23:25:43.236 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:43.237 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:43.239 | DEBUG    | Source 7111f8a5...: seq=12 (novo highest, window: 10 seqs)
+2025-12-29 23:25:43.239 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:43.241 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:43.242 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:43.242 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:43.243 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:43.244 | INFO     |       Timestamp: 1767050743.16
+2025-12-29 23:25:43.246 | INFO     |       Age: 0.09s
+2025-12-29 23:25:43.247 | INFO     |       Signature: <signed>
+2025-12-29 23:25:43.250 | INFO     |       ✅ Sequência correta (12)
+2025-12-29 23:25:43.251 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:43.252 | INFO     |       Total heartbeats: 10
+2025-12-29 23:25:43.253 | INFO     |       Time since last: 0.09s
+2025-12-29 23:25:43.253 | INFO     |       Missed count: 0
+2025-12-29 23:25:43.257 | INFO     | 
+2025-12-29 23:25:45.904 | INFO     | ⏱️  Status: 10 notificações, 10 heartbeats
+2025-12-29 23:25:48.226 | INFO     | [OP-20251229_232443-0016] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000d4c64e7507c302c69ee37cfa683d191db4aeeb9518fa0d9aefd14 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........Ld.P|0,i.7......J..Q...... [TRUNCATED]
+2025-12-29 23:25:48.227 | INFO     | 
+2025-12-29 23:25:48.228 | INFO     | 🔔 NOTIFICAÇÃO #11 RECEBIDA!
+2025-12-29 23:25:48.229 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:48.230 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:48.231 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:48.232 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:48.237 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:48.239 | INFO     |       TTL: 1
+2025-12-29 23:25:48.241 | INFO     |       Sequence: 13
+2025-12-29 23:25:48.242 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:48.244 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:48.245 | DEBUG    | Source 7111f8a5...: seq=13 (novo highest, window: 11 seqs)
+2025-12-29 23:25:48.246 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:48.247 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:48.248 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:48.250 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:48.250 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:48.251 | INFO     |       Timestamp: 1767050748.16
+2025-12-29 23:25:48.254 | INFO     |       Age: 0.10s
+2025-12-29 23:25:48.254 | INFO     |       Signature: <signed>
+2025-12-29 23:25:48.255 | INFO     |       ✅ Sequência correta (13)
+2025-12-29 23:25:48.256 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:48.257 | INFO     |       Total heartbeats: 10
+2025-12-29 23:25:48.257 | INFO     |       Time since last: 0.10s
+2025-12-29 23:25:48.259 | INFO     |       Missed count: 0
+2025-12-29 23:25:48.259 | INFO     | 
+2025-12-29 23:25:53.225 | INFO     | [OP-20251229_232443-0017] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000eb28a531f7246e8114d0c5d14ae975bb329293843296e69ab1b25 | ASCII: q.....Bk.DCS....q.....Bk.DCS............S.rF..M.]...[.))8C)ni..% [TRUNCATED]
+2025-12-29 23:25:53.227 | INFO     | 
+2025-12-29 23:25:53.228 | INFO     | 🔔 NOTIFICAÇÃO #12 RECEBIDA!
+2025-12-29 23:25:53.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:53.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:53.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:53.231 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:53.232 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:53.233 | INFO     |       TTL: 1
+2025-12-29 23:25:53.234 | INFO     |       Sequence: 14
+2025-12-29 23:25:53.237 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:53.243 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:53.246 | DEBUG    | Source 7111f8a5...: seq=14 (novo highest, window: 12 seqs)
+2025-12-29 23:25:53.246 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:53.247 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:53.247 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:25:53.247 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:53.249 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:53.250 | INFO     |       Timestamp: 1767050753.16
+2025-12-29 23:25:53.251 | INFO     |       Age: 0.09s
+2025-12-29 23:25:53.252 | INFO     |       Signature: <signed>
+2025-12-29 23:25:53.253 | INFO     |       ✅ Sequência correta (14)
+2025-12-29 23:25:53.254 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:53.255 | INFO     |       Total heartbeats: 10
+2025-12-29 23:25:53.255 | INFO     |       Time since last: 0.10s
+2025-12-29 23:25:53.255 | INFO     |       Missed count: 0
+2025-12-29 23:25:53.256 | INFO     | 
+2025-12-29 23:25:58.324 | INFO     | [OP-20251229_232443-0018] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000eb28a531f7246e8114d0c5d14ae975bb329293843296e69ab1b25 | ASCII: q.....Bk.DCS....q.....Bk.DCS............S.rF..M.]...[.))8C)ni..% [TRUNCATED]
+2025-12-29 23:25:58.326 | INFO     | 
+2025-12-29 23:25:58.327 | INFO     | 🔔 NOTIFICAÇÃO #13 RECEBIDA!
+2025-12-29 23:25:58.328 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:58.330 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:58.330 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:58.334 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:58.335 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:58.336 | INFO     |       TTL: 1
+2025-12-29 23:25:58.337 | INFO     |       Sequence: 14
+2025-12-29 23:25:58.338 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:58.339 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:58.340 | WARNING  | 🚨 REPLAY DETECTADO! Source: 7111f8a5..., seq=14 (já foi visto)
+2025-12-29 23:25:58.341 | WARNING  |       🚨 REPLAY ATTACK DETECTADO! (total: 1)
+2025-12-29 23:25:58.344 | INFO     | [OP-20251229_232443-0019] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000f064a883e8fa99bb66a5b580a830c5b777c6f68441103de1b49e8 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........J.>....j[X...[w|ohD....I. [TRUNCATED]
+2025-12-29 23:25:58.344 | INFO     | 
+2025-12-29 23:25:58.345 | INFO     | 🔔 NOTIFICAÇÃO #14 RECEBIDA!
+2025-12-29 23:25:58.345 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:25:58.345 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:25:58.346 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:25:58.346 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:25:58.348 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:25:58.348 | INFO     |       TTL: 1
+2025-12-29 23:25:58.349 | INFO     |       Sequence: 15
+2025-12-29 23:25:58.349 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:25:58.350 | INFO     |       ✅ MAC válido
+2025-12-29 23:25:58.351 | DEBUG    | Source 7111f8a5...: seq=15 (novo highest, window: 13 seqs)
+2025-12-29 23:25:58.351 | INFO     |       ✅ Não é replay
+2025-12-29 23:25:58.352 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:25:58.352 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.20s)
+2025-12-29 23:25:58.352 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:25:58.353 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:25:58.354 | INFO     |       Timestamp: 1767050758.15
+2025-12-29 23:25:58.354 | INFO     |       Age: 0.20s
+2025-12-29 23:25:58.355 | INFO     |       Signature: <signed>
+2025-12-29 23:25:58.355 | INFO     |       ✅ Sequência correta (15)
+2025-12-29 23:25:58.356 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:25:58.356 | INFO     |       Total heartbeats: 10
+2025-12-29 23:25:58.357 | INFO     |       Time since last: 0.20s
+2025-12-29 23:25:58.358 | INFO     |       Missed count: 0
+2025-12-29 23:25:58.358 | INFO     | 
+2025-12-29 23:26:00.906 | INFO     | ⏱️  Status: 14 notificações, 13 heartbeats
+2025-12-29 23:26:03.274 | INFO     | [OP-20251229_232443-0020] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000000f064a883e8fa99bb66a5b580a830c5b777c6f68441103de1b49e8 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........J.>....j[X...[w|ohD....I. [TRUNCATED]
+2025-12-29 23:26:03.274 | INFO     | 
+2025-12-29 23:26:03.275 | INFO     | 🔔 NOTIFICAÇÃO #15 RECEBIDA!
+2025-12-29 23:26:03.275 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:03.276 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:03.276 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:03.276 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:03.277 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:03.277 | INFO     |       TTL: 1
+2025-12-29 23:26:03.278 | INFO     |       Sequence: 15
+2025-12-29 23:26:03.278 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:03.278 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:03.280 | WARNING  | 🚨 REPLAY DETECTADO! Source: 7111f8a5..., seq=15 (já foi visto)
+2025-12-29 23:26:03.281 | WARNING  |       🚨 REPLAY ATTACK DETECTADO! (total: 2)
+2025-12-29 23:26:03.282 | INFO     | [OP-20251229_232443-0021] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000010813eebc6d2bb62dd50a29b472bbf296c6877f8255f3d81f668a7 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........>....b.P..G+.)lhw.%_=..h. [TRUNCATED]
+2025-12-29 23:26:03.283 | INFO     | 
+2025-12-29 23:26:03.283 | INFO     | 🔔 NOTIFICAÇÃO #16 RECEBIDA!
+2025-12-29 23:26:03.284 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:03.284 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:03.284 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:03.285 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:03.285 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:03.287 | INFO     |       TTL: 1
+2025-12-29 23:26:03.287 | INFO     |       Sequence: 16
+2025-12-29 23:26:03.290 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:03.290 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:03.291 | DEBUG    | Source 7111f8a5...: seq=16 (novo highest, window: 14 seqs)
+2025-12-29 23:26:03.291 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:03.292 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:03.292 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.13s)
+2025-12-29 23:26:03.292 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:03.293 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:03.294 | INFO     |       Timestamp: 1767050763.16
+2025-12-29 23:26:03.296 | INFO     |       Age: 0.14s
+2025-12-29 23:26:03.297 | INFO     |       Signature: <signed>
+2025-12-29 23:26:03.298 | INFO     |       ✅ Sequência correta (16)
+2025-12-29 23:26:03.299 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:03.300 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:03.300 | INFO     |       Time since last: 0.14s
+2025-12-29 23:26:03.301 | INFO     |       Missed count: 0
+2025-12-29 23:26:03.302 | INFO     | 
+2025-12-29 23:26:08.225 | INFO     | [OP-20251229_232443-0022] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000011fddc07f51f15515a1fa0c1c719775c75ac3a0dff9ca0644df75b | ASCII: q.....Bk.DCS....q.....Bk.DCS................QZ.....w\u.:....dM.[ [TRUNCATED]
+2025-12-29 23:26:08.227 | INFO     | 
+2025-12-29 23:26:08.228 | INFO     | 🔔 NOTIFICAÇÃO #17 RECEBIDA!
+2025-12-29 23:26:08.229 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:08.230 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:08.231 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:08.233 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:08.233 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:08.234 | INFO     |       TTL: 1
+2025-12-29 23:26:08.234 | INFO     |       Sequence: 17
+2025-12-29 23:26:08.234 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:08.235 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:08.235 | DEBUG    | Source 7111f8a5...: seq=17 (novo highest, window: 15 seqs)
+2025-12-29 23:26:08.235 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:08.235 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:08.235 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.08s)
+2025-12-29 23:26:08.236 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:08.236 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:08.236 | INFO     |       Timestamp: 1767050768.15
+2025-12-29 23:26:08.236 | INFO     |       Age: 0.08s
+2025-12-29 23:26:08.236 | INFO     |       Signature: <signed>
+2025-12-29 23:26:08.237 | INFO     |       ✅ Sequência correta (17)
+2025-12-29 23:26:08.237 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:08.237 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:08.238 | INFO     |       Time since last: 0.08s
+2025-12-29 23:26:08.238 | INFO     |       Missed count: 0
+2025-12-29 23:26:08.238 | INFO     | 
+2025-12-29 23:26:13.225 | INFO     | [OP-20251229_232443-0023] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000012873eb22add842f1037a7f3a09a1777b4449d2b8f1c88d2203857 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........>.*../.7.....w.D.+.... 8W [TRUNCATED]
+2025-12-29 23:26:13.226 | INFO     | 
+2025-12-29 23:26:13.226 | INFO     | 🔔 NOTIFICAÇÃO #18 RECEBIDA!
+2025-12-29 23:26:13.227 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:13.228 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:13.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:13.232 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:13.235 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:13.235 | INFO     |       TTL: 1
+2025-12-29 23:26:13.236 | INFO     |       Sequence: 18
+2025-12-29 23:26:13.236 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:13.237 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:13.237 | DEBUG    | Source 7111f8a5...: seq=18 (novo highest, window: 16 seqs)
+2025-12-29 23:26:13.238 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:13.239 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:13.239 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.08s)
+2025-12-29 23:26:13.239 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:13.240 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:13.240 | INFO     |       Timestamp: 1767050773.16
+2025-12-29 23:26:13.241 | INFO     |       Age: 0.08s
+2025-12-29 23:26:13.241 | INFO     |       Signature: <signed>
+2025-12-29 23:26:13.242 | INFO     |       ✅ Sequência correta (18)
+2025-12-29 23:26:13.243 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:13.243 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:13.245 | INFO     |       Time since last: 0.09s
+2025-12-29 23:26:13.246 | INFO     |       Missed count: 0
+2025-12-29 23:26:13.248 | INFO     | 
+2025-12-29 23:26:15.909 | INFO     | ⏱️  Status: 18 notificações, 16 heartbeats
+2025-12-29 23:26:18.226 | INFO     | [OP-20251229_232443-0024] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001387d14ef87819d9634861762d0486aac341888c32cc63f354e05a | ASCII: q.....Bk.DCS....q.....Bk.DCS............N.x..cHav-....A..2.c.T.Z [TRUNCATED]
+2025-12-29 23:26:18.227 | INFO     | 
+2025-12-29 23:26:18.227 | INFO     | 🔔 NOTIFICAÇÃO #19 RECEBIDA!
+2025-12-29 23:26:18.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:18.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:18.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:18.230 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:18.231 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:18.232 | INFO     |       TTL: 1
+2025-12-29 23:26:18.232 | INFO     |       Sequence: 19
+2025-12-29 23:26:18.232 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:18.233 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:18.233 | DEBUG    | Source 7111f8a5...: seq=19 (novo highest, window: 17 seqs)
+2025-12-29 23:26:18.233 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:18.234 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:18.234 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.08s)
+2025-12-29 23:26:18.234 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:18.234 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:18.235 | INFO     |       Timestamp: 1767050778.16
+2025-12-29 23:26:18.235 | INFO     |       Age: 0.08s
+2025-12-29 23:26:18.235 | INFO     |       Signature: <signed>
+2025-12-29 23:26:18.236 | INFO     |       ✅ Sequência correta (19)
+2025-12-29 23:26:18.236 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:18.236 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:18.237 | INFO     |       Time since last: 0.08s
+2025-12-29 23:26:18.237 | INFO     |       Missed count: 0
+2025-12-29 23:26:18.237 | INFO     | 
+2025-12-29 23:26:23.225 | INFO     | [OP-20251229_232443-0025] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001416770302631f5fe69ad1f25c65622fcc6e0f9f6a1cb9eac33d45 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........w..c._....\eb/.n..j....=E [TRUNCATED]
+2025-12-29 23:26:23.226 | INFO     | 
+2025-12-29 23:26:23.227 | INFO     | 🔔 NOTIFICAÇÃO #20 RECEBIDA!
+2025-12-29 23:26:23.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:23.232 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:23.233 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:23.234 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:23.234 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:23.235 | INFO     |       TTL: 1
+2025-12-29 23:26:23.235 | INFO     |       Sequence: 20
+2025-12-29 23:26:23.235 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:23.237 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:23.238 | DEBUG    | Source 7111f8a5...: seq=20 (novo highest, window: 18 seqs)
+2025-12-29 23:26:23.238 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:23.239 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:23.239 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.08s)
+2025-12-29 23:26:23.239 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:23.240 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:23.240 | INFO     |       Timestamp: 1767050783.16
+2025-12-29 23:26:23.241 | INFO     |       Age: 0.09s
+2025-12-29 23:26:23.242 | INFO     |       Signature: <signed>
+2025-12-29 23:26:23.243 | INFO     |       ✅ Sequência correta (20)
+2025-12-29 23:26:23.244 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:23.244 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:23.244 | INFO     |       Time since last: 0.09s
+2025-12-29 23:26:23.245 | INFO     |       Missed count: 0
+2025-12-29 23:26:23.245 | INFO     | 
+2025-12-29 23:26:28.227 | INFO     | [OP-20251229_232443-0026] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e0201000000158ae5193ff883273b4aeb91cd2511a601519cc99274244e7d359d | ASCII: q.....Bk.DCS....q.....Bk.DCS.............?..';J...%...Q...t$N}5. [TRUNCATED]
+2025-12-29 23:26:28.228 | INFO     | 
+2025-12-29 23:26:28.229 | INFO     | 🔔 NOTIFICAÇÃO #21 RECEBIDA!
+2025-12-29 23:26:28.230 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:28.231 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:28.232 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:28.232 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:28.233 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:28.235 | INFO     |       TTL: 1
+2025-12-29 23:26:28.236 | INFO     |       Sequence: 21
+2025-12-29 23:26:28.239 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:28.240 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:28.241 | DEBUG    | Source 7111f8a5...: seq=21 (novo highest, window: 19 seqs)
+2025-12-29 23:26:28.242 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:28.243 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:28.243 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:26:28.244 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:28.245 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:28.245 | INFO     |       Timestamp: 1767050788.16
+2025-12-29 23:26:28.246 | INFO     |       Age: 0.09s
+2025-12-29 23:26:28.246 | INFO     |       Signature: <signed>
+2025-12-29 23:26:28.246 | INFO     |       ✅ Sequência correta (21)
+2025-12-29 23:26:28.247 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:28.247 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:28.248 | INFO     |       Time since last: 0.09s
+2025-12-29 23:26:28.249 | INFO     |       Missed count: 0
+2025-12-29 23:26:28.249 | INFO     | 
+2025-12-29 23:26:30.912 | INFO     | ⏱️  Status: 21 notificações, 19 heartbeats
+2025-12-29 23:26:33.274 | INFO     | [OP-20251229_232443-0027] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000016e86d783dcf79cb229ff4ec2af34789e43428028ce86fd9781066 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........mx=.y."...*.G..4(...o.x.f [TRUNCATED]
+2025-12-29 23:26:33.276 | INFO     | 
+2025-12-29 23:26:33.277 | INFO     | 🔔 NOTIFICAÇÃO #22 RECEBIDA!
+2025-12-29 23:26:33.278 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:33.279 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:33.279 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:33.281 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:33.282 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:33.283 | INFO     |       TTL: 1
+2025-12-29 23:26:33.284 | INFO     |       Sequence: 22
+2025-12-29 23:26:33.286 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:33.288 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:33.289 | DEBUG    | Source 7111f8a5...: seq=22 (novo highest, window: 20 seqs)
+2025-12-29 23:26:33.289 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:33.291 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:33.292 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.13s)
+2025-12-29 23:26:33.292 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:33.294 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:33.297 | INFO     |       Timestamp: 1767050793.16
+2025-12-29 23:26:33.297 | INFO     |       Age: 0.14s
+2025-12-29 23:26:33.298 | INFO     |       Signature: <signed>
+2025-12-29 23:26:33.298 | INFO     |       ✅ Sequência correta (22)
+2025-12-29 23:26:33.298 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:33.298 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:33.299 | INFO     |       Time since last: 0.14s
+2025-12-29 23:26:33.300 | INFO     |       Missed count: 0
+2025-12-29 23:26:33.301 | INFO     | 
+2025-12-29 23:26:38.225 | INFO     | [OP-20251229_232443-0028] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000017d38f4a69f058eb9201ded73ad53b12208720c47270b55cc18763 | ASCII: q.....Bk.DCS....q.....Bk.DCS............Ji.X.....:.;. . .rp.\..c [TRUNCATED]
+2025-12-29 23:26:38.227 | INFO     | 
+2025-12-29 23:26:38.228 | INFO     | 🔔 NOTIFICAÇÃO #23 RECEBIDA!
+2025-12-29 23:26:38.230 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:38.233 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:38.234 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:38.235 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:38.236 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:38.237 | INFO     |       TTL: 1
+2025-12-29 23:26:38.238 | INFO     |       Sequence: 23
+2025-12-29 23:26:38.239 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:38.241 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:38.244 | DEBUG    | Source 7111f8a5...: seq=23 (novo highest, window: 21 seqs)
+2025-12-29 23:26:38.244 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:38.245 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:38.245 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:26:38.245 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:38.246 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:38.247 | INFO     |       Timestamp: 1767050798.16
+2025-12-29 23:26:38.248 | INFO     |       Age: 0.09s
+2025-12-29 23:26:38.248 | INFO     |       Signature: <signed>
+2025-12-29 23:26:38.249 | INFO     |       ✅ Sequência correta (23)
+2025-12-29 23:26:38.249 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:38.249 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:38.250 | INFO     |       Time since last: 0.09s
+2025-12-29 23:26:38.250 | INFO     |       Missed count: 0
+2025-12-29 23:26:38.252 | INFO     | 
+2025-12-29 23:26:43.224 | INFO     | [OP-20251229_232443-0029] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001854329836aabc1b7b7832147aaf68b15ce5cc0e6b0c61b4bf5f31 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........T2.6...{x2.z.h.\...k.a.._1 [TRUNCATED]
+2025-12-29 23:26:43.225 | INFO     | 
+2025-12-29 23:26:43.225 | INFO     | 🔔 NOTIFICAÇÃO #24 RECEBIDA!
+2025-12-29 23:26:43.226 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:43.226 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:43.227 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:43.227 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:43.227 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:43.227 | INFO     |       TTL: 1
+2025-12-29 23:26:43.228 | INFO     |       Sequence: 24
+2025-12-29 23:26:43.229 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:43.231 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:43.233 | DEBUG    | Source 7111f8a5...: seq=24 (novo highest, window: 22 seqs)
+2025-12-29 23:26:43.233 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:43.236 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:43.236 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.08s)
+2025-12-29 23:26:43.236 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:43.236 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:43.238 | INFO     |       Timestamp: 1767050803.16
+2025-12-29 23:26:43.238 | INFO     |       Age: 0.08s
+2025-12-29 23:26:43.239 | INFO     |       Signature: <signed>
+2025-12-29 23:26:43.239 | INFO     |       ✅ Sequência correta (24)
+2025-12-29 23:26:43.239 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:43.240 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:43.240 | INFO     |       Time since last: 0.08s
+2025-12-29 23:26:43.240 | INFO     |       Missed count: 0
+2025-12-29 23:26:43.241 | INFO     | 
+2025-12-29 23:26:45.915 | INFO     | ⏱️  Status: 24 notificações, 22 heartbeats
+2025-12-29 23:26:48.275 | INFO     | [OP-20251229_232443-0030] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001854329836aabc1b7b7832147aaf68b15ce5cc0e6b0c61b4bf5f31 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........T2.6...{x2.z.h.\...k.a.._1 [TRUNCATED]
+2025-12-29 23:26:48.276 | INFO     | 
+2025-12-29 23:26:48.277 | INFO     | 🔔 NOTIFICAÇÃO #25 RECEBIDA!
+2025-12-29 23:26:48.278 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:48.280 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:48.281 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:48.282 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:48.282 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:48.283 | INFO     |       TTL: 1
+2025-12-29 23:26:48.283 | INFO     |       Sequence: 24
+2025-12-29 23:26:48.284 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:48.284 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:48.285 | WARNING  | 🚨 REPLAY DETECTADO! Source: 7111f8a5..., seq=24 (já foi visto)
+2025-12-29 23:26:48.285 | WARNING  |       🚨 REPLAY ATTACK DETECTADO! (total: 3)
+2025-12-29 23:26:48.286 | INFO     | [OP-20251229_232443-0031] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e020100000019dd3a0b5e90e2370b7bf74e0446038aafdac5750c74df5c295208 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........:.^..7.{.N.F.....u.t.\)R. [TRUNCATED]
+2025-12-29 23:26:48.287 | INFO     | 
+2025-12-29 23:26:48.288 | INFO     | 🔔 NOTIFICAÇÃO #26 RECEBIDA!
+2025-12-29 23:26:48.288 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:48.288 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:48.289 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:48.289 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:48.289 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:48.290 | INFO     |       TTL: 1
+2025-12-29 23:26:48.290 | INFO     |       Sequence: 25
+2025-12-29 23:26:48.290 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:48.291 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:48.291 | DEBUG    | Source 7111f8a5...: seq=25 (novo highest, window: 23 seqs)
+2025-12-29 23:26:48.291 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:48.291 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:48.292 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.14s)
+2025-12-29 23:26:48.292 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:48.292 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:48.292 | INFO     |       Timestamp: 1767050808.16
+2025-12-29 23:26:48.293 | INFO     |       Age: 0.14s
+2025-12-29 23:26:48.293 | INFO     |       Signature: <signed>
+2025-12-29 23:26:48.298 | INFO     |       ✅ Sequência correta (25)
+2025-12-29 23:26:48.298 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:48.299 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:48.299 | INFO     |       Time since last: 0.14s
+2025-12-29 23:26:48.299 | INFO     |       Missed count: 0
+2025-12-29 23:26:48.300 | INFO     | 
+2025-12-29 23:26:53.227 | INFO     | [OP-20251229_232443-0032] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001a60ba6743e209274bab4e1941d9f42cfa8dc58d6a516972e810f3 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........`.gC..'K.N.A..,....jQir... [TRUNCATED]
+2025-12-29 23:26:53.228 | INFO     | 
+2025-12-29 23:26:53.229 | INFO     | 🔔 NOTIFICAÇÃO #27 RECEBIDA!
+2025-12-29 23:26:53.230 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:53.231 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:53.232 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:53.232 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:53.233 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:53.236 | INFO     |       TTL: 1
+2025-12-29 23:26:53.237 | INFO     |       Sequence: 26
+2025-12-29 23:26:53.241 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:53.243 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:53.245 | DEBUG    | Source 7111f8a5...: seq=26 (novo highest, window: 24 seqs)
+2025-12-29 23:26:53.245 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:53.248 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:53.249 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.10s)
+2025-12-29 23:26:53.249 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:53.249 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:53.250 | INFO     |       Timestamp: 1767050813.15
+2025-12-29 23:26:53.250 | INFO     |       Age: 0.10s
+2025-12-29 23:26:53.251 | INFO     |       Signature: <signed>
+2025-12-29 23:26:53.251 | INFO     |       ✅ Sequência correta (26)
+2025-12-29 23:26:53.252 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:53.252 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:53.255 | INFO     |       Time since last: 0.10s
+2025-12-29 23:26:53.255 | INFO     |       Missed count: 0
+2025-12-29 23:26:53.256 | INFO     | 
+2025-12-29 23:26:58.225 | INFO     | [OP-20251229_232443-0033] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001b3c1200a50ecf06a0decac1ee2223a2e12859bd1e84520808ea59 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........<..........."#..(Y...R...Y [TRUNCATED]
+2025-12-29 23:26:58.226 | INFO     | 
+2025-12-29 23:26:58.227 | INFO     | 🔔 NOTIFICAÇÃO #28 RECEBIDA!
+2025-12-29 23:26:58.228 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:26:58.228 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:26:58.229 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:26:58.230 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:26:58.230 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:26:58.231 | INFO     |       TTL: 1
+2025-12-29 23:26:58.234 | INFO     |       Sequence: 27
+2025-12-29 23:26:58.235 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:26:58.235 | INFO     |       ✅ MAC válido
+2025-12-29 23:26:58.236 | DEBUG    | Source 7111f8a5...: seq=27 (novo highest, window: 25 seqs)
+2025-12-29 23:26:58.237 | INFO     |       ✅ Não é replay
+2025-12-29 23:26:58.237 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:26:58.237 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.08s)
+2025-12-29 23:26:58.237 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:26:58.240 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:26:58.240 | INFO     |       Timestamp: 1767050818.16
+2025-12-29 23:26:58.242 | INFO     |       Age: 0.09s
+2025-12-29 23:26:58.243 | INFO     |       Signature: <signed>
+2025-12-29 23:26:58.244 | INFO     |       ✅ Sequência correta (27)
+2025-12-29 23:26:58.245 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:26:58.246 | INFO     |       Total heartbeats: 10
+2025-12-29 23:26:58.248 | INFO     |       Time since last: 0.09s
+2025-12-29 23:26:58.248 | INFO     |       Missed count: 0
+2025-12-29 23:26:58.249 | INFO     | 
+2025-12-29 23:27:00.917 | INFO     | ⏱️  Status: 28 notificações, 25 heartbeats
+2025-12-29 23:27:03.227 | INFO     | [OP-20251229_232443-0034] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001cc1a5133103394616e3ac7793d4243ee868024f31bd73a9c07112 | ASCII: q.....Bk.DCS....q.....Bk.DCS.............1.9F...w..$>.h.O1.s..q. [TRUNCATED]
+2025-12-29 23:27:03.228 | INFO     | 
+2025-12-29 23:27:03.229 | INFO     | 🔔 NOTIFICAÇÃO #29 RECEBIDA!
+2025-12-29 23:27:03.230 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:27:03.231 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:27:03.232 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:27:03.233 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:27:03.234 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:27:03.237 | INFO     |       TTL: 1
+2025-12-29 23:27:03.238 | INFO     |       Sequence: 28
+2025-12-29 23:27:03.239 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:27:03.240 | INFO     |       ✅ MAC válido
+2025-12-29 23:27:03.241 | DEBUG    | Source 7111f8a5...: seq=28 (novo highest, window: 26 seqs)
+2025-12-29 23:27:03.242 | INFO     |       ✅ Não é replay
+2025-12-29 23:27:03.243 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:27:03.243 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:27:03.244 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:27:03.245 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:27:03.246 | INFO     |       Timestamp: 1767050823.16
+2025-12-29 23:27:03.247 | INFO     |       Age: 0.09s
+2025-12-29 23:27:03.248 | INFO     |       Signature: <signed>
+2025-12-29 23:27:03.249 | INFO     |       ✅ Sequência correta (28)
+2025-12-29 23:27:03.250 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:27:03.251 | INFO     |       Total heartbeats: 10
+2025-12-29 23:27:03.252 | INFO     |       Time since last: 0.09s
+2025-12-29 23:27:03.253 | INFO     |       Missed count: 0
+2025-12-29 23:27:03.255 | INFO     | 
+2025-12-29 23:27:08.226 | INFO     | [OP-20251229_232443-0035] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001d48dc01b769a99301b1d37bd585fa4c3a94caca008ffb7a0fdcb3 | ASCII: q.....Bk.DCS....q.....Bk.DCS..........H...i.....{...L:......z... [TRUNCATED]
+2025-12-29 23:27:08.227 | INFO     | 
+2025-12-29 23:27:08.229 | INFO     | 🔔 NOTIFICAÇÃO #30 RECEBIDA!
+2025-12-29 23:27:08.230 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:27:08.231 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:27:08.232 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:27:08.234 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:27:08.236 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:27:08.237 | INFO     |       TTL: 1
+2025-12-29 23:27:08.238 | INFO     |       Sequence: 29
+2025-12-29 23:27:08.239 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:27:08.241 | INFO     |       ✅ MAC válido
+2025-12-29 23:27:08.242 | DEBUG    | Source 7111f8a5...: seq=29 (novo highest, window: 27 seqs)
+2025-12-29 23:27:08.242 | INFO     |       ✅ Não é replay
+2025-12-29 23:27:08.242 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:27:08.242 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.09s)
+2025-12-29 23:27:08.243 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:27:08.244 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:27:08.245 | INFO     |       Timestamp: 1767050828.16
+2025-12-29 23:27:08.245 | INFO     |       Age: 0.09s
+2025-12-29 23:27:08.246 | INFO     |       Signature: <signed>
+2025-12-29 23:27:08.246 | INFO     |       ✅ Sequência correta (29)
+2025-12-29 23:27:08.246 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:27:08.247 | INFO     |       Total heartbeats: 10
+2025-12-29 23:27:08.247 | INFO     |       Time since last: 0.09s
+2025-12-29 23:27:08.247 | INFO     |       Missed count: 0
+2025-12-29 23:27:08.248 | INFO     | 
+2025-12-29 23:27:13.227 | INFO     | [OP-20251229_232443-0036] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e02010000001e926aecf30907d530b0a73860bec7ac5fc96acf542d765791fdb3 | ASCII: q.....Bk.DCS....q.....Bk.DCS...........j.....0..8`..._.j.T-vW... [TRUNCATED]
+2025-12-29 23:27:13.227 | INFO     | 
+2025-12-29 23:27:13.228 | INFO     | 🔔 NOTIFICAÇÃO #31 RECEBIDA!
+2025-12-29 23:27:13.229 | INFO     |    📊 Dados completos (158 bytes): 7111f8a5a0e7426b96444353f4eed50e7111f8a5a0e7426b96444353f4eed50e...
+2025-12-29 23:27:13.229 | INFO     |    📦 Pacote parseado:
+2025-12-29 23:27:13.230 | INFO     |       Source: 7111f8a5...
+2025-12-29 23:27:13.230 | INFO     |       Destination: 7111f8a5...
+2025-12-29 23:27:13.230 | INFO     |       Type: 2 (0x02)
+2025-12-29 23:27:13.231 | INFO     |       TTL: 1
+2025-12-29 23:27:13.231 | INFO     |       Sequence: 30
+2025-12-29 23:27:13.231 | INFO     |       Payload size: 88 bytes
+2025-12-29 23:27:13.232 | INFO     |       ✅ MAC válido
+2025-12-29 23:27:13.232 | DEBUG    | Source 7111f8a5...: seq=30 (novo highest, window: 28 seqs)
+2025-12-29 23:27:13.232 | INFO     |       ✅ Não é replay
+2025-12-29 23:27:13.233 | DEBUG    | Verificação de assinatura (placeholder)
+2025-12-29 23:27:13.233 | DEBUG    | Heartbeat recebido: 7111f8a5... (age: 0.08s)
+2025-12-29 23:27:13.233 | INFO     |    💓 HEARTBEAT DETECTADO!
+2025-12-29 23:27:13.234 | INFO     |       Sink NID: 7111f8a5...
+2025-12-29 23:27:13.235 | INFO     |       Timestamp: 1767050833.15
+2025-12-29 23:27:13.235 | INFO     |       Age: 0.08s
+2025-12-29 23:27:13.235 | INFO     |       Signature: <signed>
+2025-12-29 23:27:13.236 | INFO     |       ✅ Sequência correta (30)
+2025-12-29 23:27:13.236 | INFO     |    📊 Monitor Stats:
+2025-12-29 23:27:13.236 | INFO     |       Total heartbeats: 10
+2025-12-29 23:27:13.236 | INFO     |       Time since last: 0.08s
+2025-12-29 23:27:13.237 | INFO     |       Missed count: 0
+2025-12-29 23:27:13.237 | INFO     | 
+2025-12-29 23:27:15.354 | INFO     | 
+2025-12-29 23:27:15.356 | INFO     | ======================================================================
+2025-12-29 23:27:15.358 | INFO     | 👋 A terminar...
+2025-12-29 23:27:15.360 | INFO     | ======================================================================
+2025-12-29 23:27:15.360 | INFO     | 
+2025-12-29 23:27:15.361 | INFO     | 📊 RESUMO:
+2025-12-29 23:27:15.362 | INFO     |    Total de notificações: 31
+2025-12-29 23:27:15.364 | INFO     |    Total de heartbeats: 28
+2025-12-29 23:27:15.365 | INFO     |    Replays detectados: 3
+2025-12-29 23:27:15.367 | INFO     |    Último heartbeat: 2.22s atrás
+2025-12-29 23:27:15.369 | INFO     |    Sink NID: 7111f8a5...
+2025-12-29 23:27:15.370 | INFO     |    Sources tracked: 1
+2025-12-29 23:27:15.372 | INFO     | 
+2025-12-29 23:27:17.331 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 23:27:17.334 | INFO     | [OP-20251229_232443-0037] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 23:27:17.336 | INFO     | ✅ Desconectado
+2025-12-29 23:27:17.340 | INFO     | 
