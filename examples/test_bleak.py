@@ -27,10 +27,12 @@ async def main():
         return
 
     print(f"\n✅ Target found: {target.name} ({target.address})")
+    print(f"   Device details: {target.details}")
     print(f"\n🔌 Connecting...")
 
-    # Force LE (Low Energy) address type to avoid Bluetooth Classic connection
-    async with BleakClient(target.address, address_type="public") as client:
+    # Use the BLEDevice object directly instead of address string
+    # This preserves the correct address type from the scanner
+    async with BleakClient(target) as client:
         print(f"✅ Connected: {client.is_connected}")
 
         print(f"\n📡 Discovering services...")
