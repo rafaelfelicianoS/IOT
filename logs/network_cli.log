@@ -1066,3 +1066,15 @@
 2025-12-29 20:10:39.945 | INFO     | common.network.link_manager:connect_to_neighbor:464 | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
 2025-12-29 20:10:43.876 | INFO     | __main__:do_resume_heartbeat:451 | Comando resume_heartbeat enviado
 2025-12-29 20:10:44.944 | WARNING  | common.network.heartbeat_monitor:_monitor_loop:129 | ⚠️  Heartbeat perdido! Contador: 1/3 (último há 5.0s)
+2025-12-29 20:10:49.946 | WARNING  | common.network.heartbeat_monitor:_monitor_loop:129 | ⚠️  Heartbeat perdido! Contador: 2/3 (último há 10.0s)
+2025-12-29 20:10:54.946 | WARNING  | common.network.heartbeat_monitor:_monitor_loop:129 | ⚠️  Heartbeat perdido! Contador: 3/3 (último há 15.0s)
+2025-12-29 20:10:54.947 | ERROR    | common.network.heartbeat_monitor:_monitor_loop:136 | ❌ TIMEOUT DE HEARTBEAT! Perdidos 3 heartbeats consecutivos
+2025-12-29 20:10:54.948 | ERROR    | common.network.link_manager:_on_heartbeat_timeout:382 | 💔 TIMEOUT DE HEARTBEAT DETETADO!
+2025-12-29 20:10:54.949 | ERROR    | common.network.link_manager:_on_heartbeat_timeout:383 |    Ações: desconectar uplink + todos os downlinks
+2025-12-29 20:10:54.951 | INFO     | common.network.link_manager:_on_heartbeat_timeout:388 |    A desconectar uplink: E0:D3:62:D6:EE:A0
+2025-12-29 20:10:57.302 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 20:10:57.303 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_200730-0041] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 20:10:57.305 | WARNING  | common.network.link_manager:_on_uplink_disconnected:308 | ⚠️  Uplink desconectado!
+2025-12-29 20:10:57.306 | INFO     | common.network.heartbeat_monitor:stop:91 | HeartbeatMonitor parado
+2025-12-29 20:10:57.308 | WARNING  | common.network.link_manager:_on_heartbeat_timeout:398 | ⚠️  Todos os links desconectados devido a timeout de heartbeat
+2025-12-29 20:10:57.312 | INFO     | common.network.link_manager:_on_heartbeat_timeout:399 |    TODO: Procurar novo uplink automaticamente
