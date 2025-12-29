@@ -272,48 +272,10 @@ class BLEConnection:
                 logger.info(f"✅ Conectado a {self.address}")
                 self.ble_log.log_connection_success(self.address, connection_time_ms)
 
-                # IMPORTANTE: Descobrir serviços GATT após conexão
-                # SimpleBLE requer esta chamada para popular a lista de serviços
-                # Aguardar e tentar múltiplas vezes se necessário
-                logger.debug("A aguardar descoberta de serviços GATT...")
-
-                services = []
-                max_retries = 5  # Aumentar para 5 tentativas
-                has_characteristics = False
-
-                for attempt in range(max_retries):
-                    time.sleep(2.0)  # Aguardar 2 segundos entre tentativas
-
-                    try:
-                        services = self.peripheral.services()
-
-                        # Verificar se algum serviço tem características
-                        total_chars = sum(len(svc.characteristics()) for svc in services)
-                        has_characteristics = total_chars > 0
-
-                        logger.debug(f"Tentativa {attempt + 1}/{max_retries}: {len(services)} serviços, {total_chars} características")
-
-                        if len(services) > 0:
-                            # Serviços encontrados, mostrar detalhes
-                            for svc in services:
-                                num_chars = len(svc.characteristics())
-                                logger.debug(f"  - {svc.uuid()} ({num_chars} características)")
-
-                            # Se temos serviços E características, terminar
-                            if has_characteristics:
-                                logger.debug("✅ Serviços e características descobertos com sucesso!")
-                                break
-                            elif attempt < max_retries - 1:
-                                logger.debug("  Serviços encontrados mas sem características, a tentar novamente...")
-                        elif attempt < max_retries - 1:
-                            logger.debug("  Nenhum serviço ainda, a tentar novamente...")
-                    except Exception as e:
-                        logger.warning(f"Aviso ao descobrir serviços (tentativa {attempt + 1}): {e}")
-
-                if len(services) == 0:
-                    logger.warning("⚠️  Nenhum serviço GATT descoberto após múltiplas tentativas")
-                elif not has_characteristics:
-                    logger.warning("⚠️  Serviços descobertos mas sem características - SimpleBLE pode ter limitações")
+                # NOTA: SimpleBLE no Linux tem limitações ao descobrir características.
+                # Vamos pular o discovery extensivo e usar D-Bus fallback para operações GATT.
+                # Isto mantém a conexão ativa e evita timeouts.
+                logger.debug("✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.")
 
                 return True
             else:
