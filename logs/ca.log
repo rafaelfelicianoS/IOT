@@ -1,0 +1,28 @@
+2025-12-29 23:31:41.488 | INFO     | __main__:__init__:63 | CA inicializada: IoT Network CA
+2025-12-29 23:31:41.488 | INFO     | __main__:initialize:228 | ============================================================
+2025-12-29 23:31:41.488 | INFO     | __main__:initialize:229 | Inicializando Certification Authority
+2025-12-29 23:31:41.488 | INFO     | __main__:initialize:230 | ============================================================
+2025-12-29 23:31:41.488 | INFO     | __main__:generate_ca_keypair:72 | A gerar par de chaves ECDSA P-521 para CA...
+2025-12-29 23:31:41.491 | INFO     | __main__:generate_ca_keypair:79 | ✅ Par de chaves gerado
+2025-12-29 23:31:41.491 | INFO     | __main__:create_ca_certificate:92 | A criar certificado auto-assinado da CA...
+2025-12-29 23:31:41.493 | INFO     | __main__:create_ca_certificate:133 | ✅ Certificado CA criado
+2025-12-29 23:31:41.493 | INFO     | __main__:create_ca_certificate:134 |    Serial: 68547696077255802877701625081004405760388346322
+2025-12-29 23:31:41.493 | INFO     | __main__:create_ca_certificate:135 |    Válido até: 2035-12-27 23:31:41
+2025-12-29 23:31:41.493 | INFO     | __main__:initialize:238 | ============================================================
+2025-12-29 23:31:41.493 | INFO     | __main__:initialize:239 | ✅ CA inicializada com sucesso!
+2025-12-29 23:31:41.493 | INFO     | __main__:initialize:240 | ============================================================
+2025-12-29 23:32:19.224 | INFO     | __main__:__init__:63 | CA inicializada: IoT Network CA
+2025-12-29 23:32:19.225 | INFO     | __main__:initialize:228 | ============================================================
+2025-12-29 23:32:19.225 | INFO     | __main__:initialize:229 | Inicializando Certification Authority
+2025-12-29 23:32:19.225 | INFO     | __main__:initialize:230 | ============================================================
+2025-12-29 23:32:19.225 | INFO     | __main__:generate_ca_keypair:72 | A gerar par de chaves ECDSA P-521 para CA...
+2025-12-29 23:32:19.229 | INFO     | __main__:generate_ca_keypair:79 | ✅ Par de chaves gerado
+2025-12-29 23:32:19.229 | INFO     | __main__:create_ca_certificate:92 | A criar certificado auto-assinado da CA...
+2025-12-29 23:32:19.231 | INFO     | __main__:create_ca_certificate:133 | ✅ Certificado CA criado
+2025-12-29 23:32:19.231 | INFO     | __main__:create_ca_certificate:134 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-29 23:32:19.231 | INFO     | __main__:create_ca_certificate:135 |    Válido até: 2035-12-27 23:32:19
+2025-12-29 23:32:19.231 | INFO     | __main__:initialize:238 | ============================================================
+2025-12-29 23:32:19.232 | INFO     | __main__:initialize:239 | ✅ CA inicializada com sucesso!
+2025-12-29 23:32:19.232 | INFO     | __main__:initialize:240 | ============================================================
+2025-12-29 23:32:19.233 | INFO     | __main__:save_ca_files:259 | ✅ Chave privada CA guardada: /home/rafael/repos/iot/certs/ca_private_key.pem
+2025-12-29 23:32:19.233 | INFO     | __main__:save_ca_files:265 | ✅ Certificado CA guardado: /home/rafael/repos/iot/certs/ca_certificate.pem
