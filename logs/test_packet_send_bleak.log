@@ -18,3 +18,49 @@
 2025-12-29 15:07:17.246 | INFO     | __main__:main:65 | 
 🔌 A conectar ao dispositivo com timeout de 30s...
 2025-12-29 15:07:22.006 | ERROR    | __main__:main:143 | ❌ Erro durante conexão: BleakDBusError: [org.bluez.Error.Failed] br-connection-unknown
+2025-12-29 15:10:11.374 | INFO     | __main__:main:36 | ======================================================================
+2025-12-29 15:10:11.375 | INFO     | __main__:main:37 |   Test: Packet Send with Bleak
+2025-12-29 15:10:11.375 | INFO     | __main__:main:38 | ======================================================================
+2025-12-29 15:10:11.375 | INFO     | __main__:main:39 | 
+2025-12-29 15:10:11.375 | INFO     | __main__:main:42 | 🔍 A fazer scan de dispositivos BLE...
+2025-12-29 15:10:16.523 | ERROR    | __main__:main:56 | ❌ Dispositivo E0:D3:62:D6:EE:A0 não encontrado!
+2025-12-29 15:10:16.524 | INFO     | __main__:main:57 | 
+Dispositivos encontrados:
+2025-12-29 15:10:16.524 | INFO     | __main__:main:59 |    - 4E:58:4A:2D:27:7C (Unknown) RSSI: -94
+2025-12-29 15:10:16.524 | INFO     | __main__:main:59 |    - FC:03:9F:1D:14:49 ([TV] Samsung 7 Series (65)) RSSI: -90
+2025-12-29 15:10:16.525 | INFO     | __main__:main:59 |    - 7F:22:D2:59:87:91 (Unknown) RSSI: -96
+2025-12-29 15:10:16.525 | INFO     | __main__:main:59 |    - EF:3B:25:6F:07:7B (Unknown) RSSI: -94
+2025-12-29 15:10:16.526 | INFO     | __main__:main:60 | 
+Certifica-te que o GATT Server está a correr:
+2025-12-29 15:10:16.526 | INFO     | __main__:main:61 |   sudo python3 examples/test_gatt_server.py hci0
+2025-12-29 15:10:27.124 | INFO     | __main__:main:36 | ======================================================================
+2025-12-29 15:10:27.124 | INFO     | __main__:main:37 |   Test: Packet Send with Bleak
+2025-12-29 15:10:27.124 | INFO     | __main__:main:38 | ======================================================================
+2025-12-29 15:10:27.124 | INFO     | __main__:main:39 | 
+2025-12-29 15:10:27.125 | INFO     | __main__:main:42 | 🔍 A fazer scan de dispositivos BLE...
+2025-12-29 15:10:32.278 | ERROR    | __main__:main:56 | ❌ Dispositivo E0:D3:62:D6:EE:A0 não encontrado!
+2025-12-29 15:10:32.279 | INFO     | __main__:main:57 | 
+Dispositivos encontrados:
+2025-12-29 15:10:32.279 | INFO     | __main__:main:59 |    - 4E:58:4A:2D:27:7C (Unknown) RSSI: -94
+2025-12-29 15:10:32.279 | INFO     | __main__:main:59 |    - FC:03:9F:1D:14:49 ([TV] Samsung 7 Series (65)) RSSI: -94
+2025-12-29 15:10:32.280 | INFO     | __main__:main:59 |    - EF:3B:25:6F:07:7B (Unknown) RSSI: -96
+2025-12-29 15:10:32.280 | INFO     | __main__:main:59 |    - DE:00:D2:49:18:6D (AI-05-FM_LE) RSSI: -96
+2025-12-29 15:10:32.281 | INFO     | __main__:main:59 |    - 77:60:C8:71:2F:DF (Unknown) RSSI: -90
+2025-12-29 15:10:32.281 | INFO     | __main__:main:59 |    - E5:1D:FD:72:3D:7A (Unknown) RSSI: -98
+2025-12-29 15:10:32.282 | INFO     | __main__:main:59 |    - 7F:22:D2:59:87:91 (Unknown) RSSI: -94
+2025-12-29 15:10:32.282 | INFO     | __main__:main:59 |    - 38:F5:54:0A:C2:2C (Unknown) RSSI: -94
+2025-12-29 15:10:32.282 | INFO     | __main__:main:60 | 
+Certifica-te que o GATT Server está a correr:
+2025-12-29 15:10:32.283 | INFO     | __main__:main:61 |   sudo python3 examples/test_gatt_server.py hci0
+2025-12-29 15:10:36.851 | INFO     | __main__:main:36 | ======================================================================
+2025-12-29 15:10:36.852 | INFO     | __main__:main:37 |   Test: Packet Send with Bleak
+2025-12-29 15:10:36.852 | INFO     | __main__:main:38 | ======================================================================
+2025-12-29 15:10:36.852 | INFO     | __main__:main:39 | 
+2025-12-29 15:10:36.852 | INFO     | __main__:main:42 | 🔍 A fazer scan de dispositivos BLE...
+2025-12-29 15:10:41.992 | INFO     | __main__:main:51 | ✅ Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0)
+2025-12-29 15:10:41.992 | INFO     | __main__:main:52 |    RSSI: -58
+2025-12-29 15:10:41.992 | INFO     | __main__:main:65 | 
+🔌 A conectar ao dispositivo com timeout de 30s...
+2025-12-29 15:10:41.992 | INFO     | __main__:main:66 |    A usar BLEDevice object em vez de endereço string
+2025-12-29 15:10:41.993 | INFO     | __main__:main:67 |    (Isto preserva o address type correto do scanner)
+2025-12-29 15:11:11.999 | ERROR    | __main__:main:147 | ❌ Erro durante conexão: TimeoutError: 
