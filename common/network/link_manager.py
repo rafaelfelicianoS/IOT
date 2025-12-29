@@ -465,7 +465,7 @@ class LinkManager:
 
         try:
             # Fazer scan de vizinhos
-            neighbors = self.neighbor_discovery.scan_neighbors()
+            neighbors = self.neighbor_discovery.scan_once()
 
             if not neighbors:
                 logger.warning("❌ Nenhum vizinho encontrado no scan")
