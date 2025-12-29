@@ -919,7 +919,7 @@ class LinkManager:
                 if self.uplink:
                     logger.debug(
                         f"📤 Forwarding uplink: {packet.source} → {packet.destination} "
-                        f"(type={packet.msg_type.name})"
+                        f"(type={MessageType.to_string(packet.msg_type)})"
                     )
                     return self._send_packet_via_link(packet, self.uplink)
                 else:
@@ -935,7 +935,7 @@ class LinkManager:
                     target_link = self.forwarding_table[dest_nid]
                     logger.debug(
                         f"📥 Forwarding downlink: {packet.source} → {packet.destination} "
-                        f"via Link[{target_link.address}] (type={packet.msg_type.name})"
+                        f"via Link[{target_link.address}] (type={MessageType.to_string(packet.msg_type)})"
                     )
                     return self._send_packet_via_link(packet, target_link)
                 else:

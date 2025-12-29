@@ -358,8 +358,8 @@ Digite 'exit' ou Ctrl+D para sair.
         print(f"   Tamanho: {len(message)} caracteres\n")
 
         try:
-            # Criar NID de origem (aleatório para este teste)
-            source_nid = NID.generate()
+            # Obter nosso NID (do LinkManager)
+            source_nid = self.link_manager.my_nid
 
             # Criar pacote DATA
             packet = Packet.create(
@@ -371,22 +371,16 @@ Digite 'exit' ou Ctrl+D para sair.
                 ttl=5
             )
 
-            # Enviar via link
-            packet_bytes = packet.to_bytes()
-
-            # Usar a conexão BLE do link para enviar
-            success = link.connection.write_characteristic(
-                IOT_NETWORK_SERVICE_UUID,
-                CHAR_NETWORK_PACKET_UUID,
-                packet_bytes
-            )
+            # Rotear o pacote usando o LinkManager (isso vai aprender rotas)
+            success = self.link_manager.route_packet(packet, from_link=None)
 
             if success:
-                print(f"✅ Pacote enviado com sucesso!")
-                print(f"   Tamanho total: {len(packet_bytes)} bytes")
-                print(f"   Destino NID: {neighbor.nid}\n")
+                print(f"✅ Pacote roteado com sucesso!")
+                print(f"   Origem NID: {source_nid}")
+                print(f"   Destino NID: {neighbor.nid}")
+                print(f"   Mensagem: {message}\n")
             else:
-                print(f"❌ Falha ao enviar pacote.\n")
+                print(f"❌ Falha ao rotear pacote.\n")
 
         except Exception as e:
             print(f"❌ Erro ao enviar: {e}\n")
