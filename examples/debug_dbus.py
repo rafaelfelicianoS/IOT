@@ -106,30 +106,38 @@ def main():
         print("❌ Falha ao conectar!")
         return
 
-    print("✅ Conectado! A aguardar descoberta de serviços...")
+    print("✅ Conectado! A verificar conexão...")
 
-    # Aguardar até 10 segundos para os serviços aparecerem no D-Bus
-    bus = dbus.SystemBus()
-    device_path = f"/org/bluez/hci0/dev_{TARGET_ADDRESS.replace(':', '_')}"
-
+    # Verificar se a conexão se mantém
     for i in range(10):
         time.sleep(1)
-        obj_manager = dbus.Interface(
-            bus.get_object("org.bluez", "/"),
-            "org.freedesktop.DBus.ObjectManager"
-        )
-        objects = obj_manager.GetManagedObjects()
-        device_objects = [(path, interfaces) for path, interfaces in objects.items()
-                          if path.startswith(device_path)]
+        still_connected = conn.is_connected
+        print(f"   Segundo {i+1}/10: SimpleBLE connected={still_connected}")
 
-        print(f"   Tentativa {i+1}/10: {len(device_objects)} objetos D-Bus")
-
-        # Verificar se temos mais do que apenas o device
-        if len(device_objects) > 1:
-            print(f"   ✅ Serviços apareceram no D-Bus!")
+        if not still_connected:
+            print(f"   ❌ Conexão perdida após {i+1} segundos!")
             break
     else:
-        print(f"   ⚠️  Após 10 segundos, ainda só {len(device_objects)} objeto(s)")
+        print(f"   ✅ Conexão manteve-se durante 10 segundos!")
+
+    print()
+
+    # Tentar ler serviços via SimpleBLE
+    print("🔍 A tentar descobrir serviços via SimpleBLE...")
+    try:
+        services = conn.peripheral.services()
+        print(f"   SimpleBLE encontrou {len(services)} serviços:")
+        for svc in services:
+            print(f"      - {svc.uuid()}")
+            try:
+                characteristics = svc.characteristics()
+                print(f"        {len(characteristics)} características")
+                for char in characteristics:
+                    print(f"          - {char.uuid()}")
+            except Exception as e:
+                print(f"        ❌ Erro ao ler características: {e}")
+    except Exception as e:
+        print(f"   ❌ Erro ao ler serviços: {e}")
 
     print()
 
