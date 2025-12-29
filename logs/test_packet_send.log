@@ -199,3 +199,14 @@
 2025-12-29 13:38:51.773 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_133846-0003] CONNECT_ATTEMPT | Local: E0:D3:62:D7:47:03 | Remote: E0:D3:62:D6:EE:A0
 2025-12-29 13:38:54.525 | ERROR    | common.ble.gatt_client:connect:325 | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
 2025-12-29 13:38:54.527 | ERROR    | common.utils.ble_logger:log_connection_failed:172 | [OP-20251229_133846-0004] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
+2025-12-29 13:45:39.417 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251229_134539.log
+2025-12-29 13:45:39.421 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-29 13:45:39.422 | INFO     | common.ble.gatt_client:__init__:560 | BLE Client iniciado
+2025-12-29 13:45:39.422 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 13:45:39.423 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_134539-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 13:45:44.545 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 13:45:44.546 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_134539-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 13:45:44.553 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 13:45:44.554 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_134539-0003] CONNECT_ATTEMPT | Local: E0:D3:62:D7:47:03 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 13:45:47.989 | ERROR    | common.ble.gatt_client:connect:325 | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2025-12-29 13:45:47.991 | ERROR    | common.utils.ble_logger:log_connection_failed:172 | [OP-20251229_134539-0004] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
