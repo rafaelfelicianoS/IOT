@@ -103,3 +103,23 @@
 2025-12-29 14:29:03.080 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_142842-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 15198.24ms
 2025-12-29 14:29:13.148 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
 2025-12-29 14:29:13.149 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_142842-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 14:32:15.897 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_143215.log
+2025-12-29 14:32:15.897 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 14:32:15.898 | INFO     | common.ble.gatt_client:__init__:522 | BLE Client iniciado
+2025-12-29 14:32:15.898 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 14:32:15.898 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_143215-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 14:32:21.105 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-29 14:32:21.106 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_143215-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-29 14:32:26.867 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_143226.log
+2025-12-29 14:32:26.868 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 14:32:26.868 | INFO     | common.ble.gatt_client:__init__:522 | BLE Client iniciado
+2025-12-29 14:32:26.869 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 14:32:26.869 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_143226-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 14:32:32.076 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 14:32:32.077 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_143226-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 14:32:32.081 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 14:32:32.082 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_143226-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 14:32:47.040 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 14:32:47.041 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_143226-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 14954.19ms
+2025-12-29 14:32:57.066 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 14:32:57.067 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_143226-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
