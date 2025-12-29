@@ -164,6 +164,7 @@ def main(argv):
 
     neighbor_update_count = 0
     heartbeat_sequence = 0
+    last_heartbeat_packet = None  # Para testes de replay
 
     def simulate_neighbor_change():
         """Simula mudanças periódicas na neighbor table."""
@@ -185,7 +186,7 @@ def main(argv):
 
     def send_heartbeat():
         """Envia heartbeat periódico via NetworkPacketCharacteristic."""
-        nonlocal heartbeat_sequence
+        nonlocal heartbeat_sequence, last_heartbeat_packet
         heartbeat_sequence += 1
 
         # Criar pacote de heartbeat
@@ -194,18 +195,20 @@ def main(argv):
             sequence=heartbeat_sequence,
         )
 
-        # TESTE: Após 20 heartbeats, enviar com MAC inválido
-        if heartbeat_sequence > 20:
-            # Corromper o MAC para testar detecção de tampering
-            import os
-            heartbeat_packet.mac = os.urandom(32)  # MAC aleatório (inválido)
-            logger.warning(f"⚠️  TESTE: Heartbeat #{heartbeat_sequence} com MAC INVÁLIDO (corrupto)")
-        else:
-            logger.info(f"💓 Heartbeat enviado: seq={heartbeat_sequence} (MAC válido)")
+        # TESTE: Reenviar alguns pacotes para testar replay detection
+        if heartbeat_sequence in [15, 16, 25]:
+            # Reenviar pacote anterior (replay attack)
+            if last_heartbeat_packet is not None:
+                logger.warning(f"⚠️  TESTE: Reenviando heartbeat anterior (REPLAY ATTACK)")
+                packet_bytes = last_heartbeat_packet
+                service.get_packet_characteristic().notify_packet(packet_bytes)
 
-        # Serializar e enviar via notify
+        # Enviar heartbeat normal
         packet_bytes = heartbeat_packet.to_bytes()
         service.get_packet_characteristic().notify_packet(packet_bytes)
+        last_heartbeat_packet = packet_bytes
+
+        logger.info(f"💓 Heartbeat enviado: seq={heartbeat_sequence}")
 
         return True  # Continuar timer
 
