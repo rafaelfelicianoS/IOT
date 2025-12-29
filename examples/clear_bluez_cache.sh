@@ -1,5 +1,6 @@
 #!/bin/bash
 # Script para limpar cache do BlueZ e forçar uso de BLE (LE) em vez de Bluetooth Classic (BR/EDR)
+# Uso: ./clear_bluez_cache.sh [-y]
 
 echo "🧹 A limpar cache do BlueZ..."
 echo ""
@@ -16,13 +17,21 @@ sudo systemctl stop bluetooth
 # 3. Limpar cache do BlueZ (requer sudo)
 echo ""
 echo "3️⃣  A limpar cache /var/lib/bluetooth/..."
-echo "    (Isto vai remover TODOS os dispositivos emparelhados!)"
-read -p "    Confirmar? (y/N): " confirm
-if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+
+# Auto-confirmar se -y for passado
+if [[ "$1" == "-y" ]]; then
+    echo "    A limpar cache automaticamente (-y)..."
     sudo rm -rf /var/lib/bluetooth/*/cache
     echo "    ✅ Cache limpo!"
 else
-    echo "    ⏭️  A saltar limpeza de cache"
+    echo "    (Isto vai remover TODOS os dispositivos emparelhados!)"
+    read -p "    Confirmar? (y/N): " confirm
+    if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+        sudo rm -rf /var/lib/bluetooth/*/cache
+        echo "    ✅ Cache limpo!"
+    else
+        echo "    ⏭️  A saltar limpeza de cache"
+    fi
 fi
 
 # 4. Reiniciar serviço bluetooth
