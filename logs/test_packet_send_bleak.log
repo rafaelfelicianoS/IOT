@@ -64,3 +64,56 @@ Certifica-te que o GATT Server está a correr:
 2025-12-29 15:10:41.992 | INFO     | __main__:main:66 |    A usar BLEDevice object em vez de endereço string
 2025-12-29 15:10:41.993 | INFO     | __main__:main:67 |    (Isto preserva o address type correto do scanner)
 2025-12-29 15:11:11.999 | ERROR    | __main__:main:147 | ❌ Erro durante conexão: TimeoutError: 
+2025-12-29 15:14:48.440 | INFO     | __main__:main:36 | ======================================================================
+2025-12-29 15:14:48.440 | INFO     | __main__:main:37 |   Test: Packet Send with Bleak
+2025-12-29 15:14:48.440 | INFO     | __main__:main:38 | ======================================================================
+2025-12-29 15:14:48.441 | INFO     | __main__:main:39 | 
+2025-12-29 15:14:48.441 | INFO     | __main__:main:42 | 🔍 A fazer scan de dispositivos BLE...
+2025-12-29 15:14:53.588 | INFO     | __main__:main:51 | ✅ Encontrado: IoT-Node (E0:D3:62:D6:EE:A0)
+2025-12-29 15:14:53.589 | INFO     | __main__:main:52 |    RSSI: -64
+2025-12-29 15:14:53.589 | INFO     | __main__:main:65 | 
+🔌 A conectar ao dispositivo com timeout de 30s...
+2025-12-29 15:14:53.589 | INFO     | __main__:main:66 |    A usar BLEDevice object em vez de endereço string
+2025-12-29 15:14:53.590 | INFO     | __main__:main:67 |    (Isto preserva o address type correto do scanner)
+2025-12-29 15:14:56.114 | ERROR    | __main__:main:147 | ❌ Erro durante conexão: BleakError: failed to discover services, device disconnected
+2025-12-29 15:15:04.953 | INFO     | __main__:main:36 | ======================================================================
+2025-12-29 15:15:04.953 | INFO     | __main__:main:37 |   Test: Packet Send with Bleak
+2025-12-29 15:15:04.954 | INFO     | __main__:main:38 | ======================================================================
+2025-12-29 15:15:04.954 | INFO     | __main__:main:39 | 
+2025-12-29 15:15:04.954 | INFO     | __main__:main:42 | 🔍 A fazer scan de dispositivos BLE...
+2025-12-29 15:15:10.114 | INFO     | __main__:main:51 | ✅ Encontrado: IoT-Node (E0:D3:62:D6:EE:A0)
+2025-12-29 15:15:10.115 | INFO     | __main__:main:52 |    RSSI: -56
+2025-12-29 15:15:10.116 | INFO     | __main__:main:65 | 
+🔌 A conectar ao dispositivo com timeout de 30s...
+2025-12-29 15:15:10.116 | INFO     | __main__:main:66 |    A usar BLEDevice object em vez de endereço string
+2025-12-29 15:15:10.117 | INFO     | __main__:main:67 |    (Isto preserva o address type correto do scanner)
+2025-12-29 15:15:13.514 | INFO     | __main__:main:72 | ✅ Conectado: True
+2025-12-29 15:15:13.515 | INFO     | __main__:main:75 | 
+📡 A descobrir serviços...
+2025-12-29 15:15:13.516 | INFO     | __main__:main:79 | ✅ IoT Network Service encontrado: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-29 15:15:13.516 | INFO     | __main__:main:85 | ✅ NETWORK_PACKET Characteristic encontrada: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 15:15:13.517 | INFO     | __main__:main:86 |    Properties: ['write', 'notify']
+2025-12-29 15:15:13.517 | INFO     | __main__:main:94 | 
+📦 A criar pacote de teste...
+2025-12-29 15:15:13.518 | INFO     | __main__:main:100 |    Source NID: 1c6876a3...
+2025-12-29 15:15:13.518 | INFO     | __main__:main:101 |    Dest NID: 42e32754...
+2025-12-29 15:15:13.519 | INFO     | __main__:main:114 |    Packet Type: DATA (0x01)
+2025-12-29 15:15:13.519 | INFO     | __main__:main:115 |    Payload: 56 bytes
+2025-12-29 15:15:13.520 | INFO     | __main__:main:116 |    Total Packet Size: 126 bytes
+2025-12-29 15:15:13.520 | INFO     | __main__:main:120 |    Serialized: 1c6876a34b864556a4cdf8bde04cab3b42e32754133b4f67ae79a6a78912baf1...
+2025-12-29 15:15:13.521 | INFO     | __main__:main:123 | 
+✍️  A enviar pacote via Bleak...
+2025-12-29 15:15:13.523 | INFO     | __main__:main:124 |    Service: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-29 15:15:13.523 | INFO     | __main__:main:125 |    Characteristic: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 15:15:13.525 | INFO     | __main__:main:126 |    Data: 126 bytes
+2025-12-29 15:15:14.054 | INFO     | __main__:main:131 | ✅ SUCESSO! Pacote enviado com sucesso!
+2025-12-29 15:15:14.055 | INFO     | __main__:main:132 |    126 bytes escritos na característica
+2025-12-29 15:15:14.056 | INFO     | __main__:main:141 | 
+⏳ A aguardar 2 segundos antes de desconectar...
+2025-12-29 15:15:16.059 | INFO     | __main__:main:144 | 
+✅ Teste concluído com sucesso!
+2025-12-29 15:15:18.006 | INFO     | __main__:main:152 | 
+2025-12-29 15:15:18.007 | INFO     | __main__:main:153 | ======================================================================
+2025-12-29 15:15:18.008 | INFO     | __main__:main:154 | 👋 Teste terminado
+2025-12-29 15:15:18.009 | INFO     | __main__:main:155 | ======================================================================
+2025-12-29 15:15:18.011 | INFO     | __main__:main:156 | 
