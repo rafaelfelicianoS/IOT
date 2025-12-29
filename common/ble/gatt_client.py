@@ -406,26 +406,29 @@ class BLEConnection:
                 return True
 
             except Exception as simpleble_error:
-                # SimpleBLE falhou - tentar D-Bus
-                logger.warning(f"SimpleBLE falhou ({simpleble_error}), a tentar via D-Bus...")
+                # SimpleBLE falhou - tentar Bleak
+                logger.warning(f"SimpleBLE falhou ({simpleble_error}), a tentar via Bleak...")
 
-                # Aguardar um pouco para dar tempo ao BlueZ de descobrir serviços via D-Bus
-                import time
-                time.sleep(1.0)
+                try:
+                    from common.ble.bleak_helper import BleakWriteHelper
 
-                success = self.dbus_helper.write_characteristic(
-                    self.address,
-                    service_uuid,
-                    char_uuid,
-                    data
-                )
+                    success = BleakWriteHelper.write_characteristic(
+                        self.address,
+                        char_uuid,
+                        data,
+                        timeout=10.0
+                    )
 
-                if success:
-                    logger.debug(f"✅ Write via D-Bus: {char_uuid} ({len(data)} bytes)")
-                    self.ble_log.log_write_response(self.address, char_uuid, success=True)
-                    return True
-                else:
-                    raise Exception("Falha tanto em SimpleBLE quanto em D-Bus")
+                    if success:
+                        logger.debug(f"✅ Write via Bleak: {char_uuid} ({len(data)} bytes)")
+                        self.ble_log.log_write_response(self.address, char_uuid, success=True)
+                        return True
+                    else:
+                        raise Exception("Falha tanto em SimpleBLE quanto em Bleak")
+
+                except ImportError:
+                    logger.error("Bleak não está instalado! pip install bleak")
+                    raise Exception("Bleak não disponível e SimpleBLE falhou")
 
         except Exception as e:
             logger.error(f"Erro ao escrever em {char_uuid}: {e}")
