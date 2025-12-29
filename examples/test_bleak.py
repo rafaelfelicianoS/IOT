@@ -29,7 +29,8 @@ async def main():
     print(f"\n✅ Target found: {target.name} ({target.address})")
     print(f"\n🔌 Connecting...")
 
-    async with BleakClient(target.address) as client:
+    # Force LE (Low Energy) address type to avoid Bluetooth Classic connection
+    async with BleakClient(target.address, address_type="public") as client:
         print(f"✅ Connected: {client.is_connected}")
 
         print(f"\n📡 Discovering services...")
