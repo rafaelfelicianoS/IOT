@@ -77,3 +77,16 @@
 2025-12-28 13:34:55.324 | WARNING  | common.ble.gatt_client:connect:313 | ⚠️  Serviços descobertos mas sem características - SimpleBLE pode ter limitações
 2025-12-28 13:34:55.328 | INFO     | common.ble.gatt_client:disconnect:332 | Desconectado de E0:D3:62:D6:EE:A0
 2025-12-28 13:34:55.329 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251228_133432-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 14:25:03.637 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_142503.log
+2025-12-29 14:25:03.637 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 14:25:03.638 | INFO     | common.ble.gatt_client:__init__:522 | BLE Client iniciado
+2025-12-29 14:25:03.638 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 14:25:03.638 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_142503-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 14:25:08.751 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 14:25:08.752 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_142503-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 14:25:08.754 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 14:25:08.755 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_142503-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 14:25:23.864 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 14:25:23.865 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_142503-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 15105.79ms
+2025-12-29 14:25:29.008 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 14:25:29.009 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_142503-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal

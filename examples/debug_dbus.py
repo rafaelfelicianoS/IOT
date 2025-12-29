@@ -2,9 +2,15 @@
 """
 Script para diagnosticar o que o D-Bus vê após conexão BLE.
 """
+import sys
+from pathlib import Path
+
+# Adicionar o diretório raiz ao path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import dbus
 import time
-from common.ble.gatt_client import GATTClient
+from common.ble.gatt_client import BLEClient
 
 def inspect_dbus_tree(device_address: str):
     """Inspeciona toda a árvore D-Bus do dispositivo."""
@@ -73,19 +79,30 @@ def main():
     TARGET_ADDRESS = "E0:D3:62:D6:EE:A0"
 
     print("🔌 Conectando ao servidor BLE...")
-    client = GATTClient("hci0")
+    client = BLEClient(adapter_index=0)
 
     # Scan
-    devices = client.scan(duration_ms=5000, filter_manufacturer_id=0x1234)
+    devices = client.scanner.scan(duration_ms=5000, filter_iot=True)
     if not devices:
         print("❌ Nenhum dispositivo encontrado!")
         return
 
-    print(f"✅ Dispositivo encontrado: {devices[0].identifier}")
+    print(f"✅ Dispositivo encontrado: {devices[0].address}")
+
+    # Procurar o dispositivo alvo
+    target = None
+    for dev in devices:
+        if dev.address.upper() == TARGET_ADDRESS.upper():
+            target = dev
+            break
+    
+    if not target:
+        print(f"❌ Dispositivo {TARGET_ADDRESS} não encontrado!")
+        return
 
     # Conectar
-    conn = client.create_connection(TARGET_ADDRESS)
-    if not conn.connect(timeout_ms=30000):
+    conn = client.connect_to_device(target)
+    if not conn:
         print("❌ Falha ao conectar!")
         return
 
@@ -98,7 +115,7 @@ def main():
     # Desconectar
     print(f"\n{'='*60}")
     print("🔌 A desconectar...")
-    conn.disconnect()
+    client.disconnect_from_device(TARGET_ADDRESS)
     print("✅ Desconectado!")
 
 if __name__ == "__main__":
