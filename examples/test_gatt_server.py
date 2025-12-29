@@ -194,11 +194,18 @@ def main(argv):
             sequence=heartbeat_sequence,
         )
 
+        # TESTE: Após 20 heartbeats, enviar com MAC inválido
+        if heartbeat_sequence > 20:
+            # Corromper o MAC para testar detecção de tampering
+            import os
+            heartbeat_packet.mac = os.urandom(32)  # MAC aleatório (inválido)
+            logger.warning(f"⚠️  TESTE: Heartbeat #{heartbeat_sequence} com MAC INVÁLIDO (corrupto)")
+        else:
+            logger.info(f"💓 Heartbeat enviado: seq={heartbeat_sequence} (MAC válido)")
+
         # Serializar e enviar via notify
         packet_bytes = heartbeat_packet.to_bytes()
         service.get_packet_characteristic().notify_packet(packet_bytes)
-
-        logger.info(f"💓 Heartbeat enviado: seq={heartbeat_sequence}, size={len(packet_bytes)} bytes")
 
         return True  # Continuar timer
 
