@@ -101,6 +101,14 @@ def main():
             logger.info(f"      Sequence: {packet.sequence}")
             logger.info(f"      Payload size: {len(packet.payload)} bytes")
 
+            # Verificar MAC do pacote
+            mac_valid = packet.verify_mac()
+            if mac_valid:
+                logger.info(f"      ✅ MAC válido")
+            else:
+                logger.warning(f"      ❌ MAC INVÁLIDO - Pacote pode ter sido modificado!")
+                return  # Ignorar pacote com MAC inválido
+
             # Verificar se é heartbeat
             heartbeat = parse_heartbeat_packet(packet)
             if heartbeat:
