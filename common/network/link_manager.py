@@ -351,7 +351,7 @@ class LinkManager:
                 logger.debug(
                     f"📦 Pacote recebido via {link.address}: "
                     f"{packet.source} → {packet.destination} "
-                    f"(type={packet.msg_type.name}, seq={packet.sequence})"
+                    f"(type={MessageType.to_string(packet.msg_type)}, seq={packet.sequence})"
                 )
 
                 # Se é heartbeat, notificar monitor
