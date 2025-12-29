@@ -454,6 +454,68 @@ Digite 'exit' ou Ctrl+D para sair.
             print(f"\n❌ Erro ao enviar comando: {e}\n")
             logger.error(f"Erro em resume_heartbeat: {e}")
 
+    def do_heartbeat_status(self, arg):
+        """
+        Verifica o estado dos heartbeats do servidor.
+
+        Uso: heartbeat_status
+
+        Lê o log do servidor para mostrar se os heartbeats estão ativos
+        e quando foi o último heartbeat enviado.
+        """
+        from pathlib import Path
+        import time
+
+        server_log = Path(__file__).parent.parent / "logs" / "test_gatt_server.log"
+
+        try:
+            if not server_log.exists():
+                print("\n⚠️  Log do servidor não encontrado.")
+                print("   O servidor está a correr?\n")
+                return
+
+            # Ler últimas 50 linhas do log
+            with open(server_log, 'r') as f:
+                lines = f.readlines()
+                last_lines = lines[-50:] if len(lines) > 50 else lines
+
+            # Procurar última linha de heartbeat e estado
+            last_heartbeat = None
+            heartbeat_disabled = False
+            heartbeat_enabled = False
+
+            for line in reversed(last_lines):
+                if "💓 Heartbeat enviado" in line:
+                    if last_heartbeat is None:
+                        # Extrair timestamp da linha de log
+                        parts = line.split("|")
+                        if len(parts) >= 2:
+                            timestamp_str = parts[0].strip()
+                            last_heartbeat = timestamp_str
+                    break
+                elif "🛑 Heartbeats DESABILITADOS" in line:
+                    heartbeat_disabled = True
+                elif "▶️  Heartbeats HABILITADOS" in line:
+                    heartbeat_enabled = True
+
+            print("\n📊 Estado dos Heartbeats do Servidor:\n")
+
+            if heartbeat_disabled and not heartbeat_enabled:
+                print("   Status: 🛑 PARADOS")
+                print("   Último heartbeat: " + (last_heartbeat if last_heartbeat else "N/A"))
+                print("\n   Use 'resume_heartbeat' para retomar.\n")
+            elif last_heartbeat:
+                print("   Status: ✅ ATIVOS")
+                print(f"   Último heartbeat: {last_heartbeat}")
+                print("\n   Use 'stop_heartbeat' para parar.\n")
+            else:
+                print("   Status: ⚠️  Desconhecido")
+                print("   Nenhum heartbeat encontrado no log.\n")
+
+        except Exception as e:
+            print(f"\n❌ Erro ao verificar status: {e}\n")
+            logger.error(f"Erro em heartbeat_status: {e}")
+
     def cleanup(self):
         """Limpa recursos antes de sair."""
         if self._cleanup_done:
