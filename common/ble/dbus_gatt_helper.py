@@ -96,6 +96,46 @@ class DBusGATTHelper:
             logger.error(f"Erro D-Bus ao procurar característica: {e}")
             return None
 
+    def _trigger_service_discovery(self, device_address: str) -> bool:
+        """
+        Força o BlueZ a descobrir serviços GATT do dispositivo.
+
+        Args:
+            device_address: Endereço MAC do dispositivo
+
+        Returns:
+            True se descoberta foi iniciada
+        """
+        try:
+            device_path = self._get_device_path(device_address)
+            device_obj = self.bus.get_object(self.BLUEZ_SERVICE, device_path)
+            device_props = dbus.Interface(device_obj, "org.freedesktop.DBus.Properties")
+
+            # Verificar se ServicesResolved já é True
+            services_resolved = device_props.Get(self.DEVICE_IFACE, "ServicesResolved")
+            logger.debug(f"ServicesResolved antes: {services_resolved}")
+
+            if not services_resolved:
+                logger.debug("A forçar descoberta de serviços GATT via D-Bus...")
+                # O BlueZ descobre automaticamente após connect, mas podemos verificar UUIDs
+                uuids = device_props.Get(self.DEVICE_IFACE, "UUIDs")
+                logger.debug(f"UUIDs anunciados: {len(uuids) if uuids else 0}")
+
+                # Aguardar um pouco para o BlueZ resolver serviços
+                import time
+                for i in range(5):
+                    time.sleep(1)
+                    services_resolved = device_props.Get(self.DEVICE_IFACE, "ServicesResolved")
+                    logger.debug(f"ServicesResolved tentativa {i+1}: {services_resolved}")
+                    if services_resolved:
+                        break
+
+            return services_resolved
+
+        except dbus.exceptions.DBusException as e:
+            logger.warning(f"Erro ao verificar ServicesResolved: {e}")
+            return False
+
     def write_characteristic(
         self,
         device_address: str,
@@ -118,6 +158,9 @@ class DBusGATTHelper:
         try:
             device_path = self._get_device_path(device_address)
             logger.debug(f"Device path: {device_path}")
+
+            # Forçar descoberta de serviços se necessário
+            self._trigger_service_discovery(device_address)
 
             # Procurar característica
             char_path = self._find_characteristic(device_path, char_uuid)
