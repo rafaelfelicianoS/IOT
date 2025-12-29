@@ -1,0 +1,10 @@
+2025-12-29 15:03:31.136 | INFO     | __main__:main:36 | ======================================================================
+2025-12-29 15:03:31.136 | INFO     | __main__:main:37 |   Test: Packet Send with Bleak
+2025-12-29 15:03:31.137 | INFO     | __main__:main:38 | ======================================================================
+2025-12-29 15:03:31.137 | INFO     | __main__:main:39 | 
+2025-12-29 15:03:31.137 | INFO     | __main__:main:42 | 🔍 A fazer scan de dispositivos BLE...
+2025-12-29 15:03:36.291 | INFO     | __main__:main:51 | ✅ Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0)
+2025-12-29 15:03:36.292 | INFO     | __main__:main:52 |    RSSI: -55
+2025-12-29 15:03:36.292 | INFO     | __main__:main:65 | 
+🔌 A conectar ao dispositivo com timeout de 30s...
+2025-12-29 15:04:06.539 | ERROR    | __main__:main:143 | ❌ Erro durante conexão: TimeoutError: 
