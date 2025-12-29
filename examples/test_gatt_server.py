@@ -164,6 +164,29 @@ def main(argv):
 
     neighbor_update_count = 0
     heartbeat_sequence = 0
+    heartbeat_enabled = True  # Flag para controlar heartbeats
+
+    # Arquivo de controlo para heartbeats
+    heartbeat_control_file = Path(__file__).parent.parent / "logs" / "heartbeat_control"
+
+    def check_heartbeat_control():
+        """Verifica arquivo de controlo para ligar/desligar heartbeats."""
+        nonlocal heartbeat_enabled
+        try:
+            if heartbeat_control_file.exists():
+                with open(heartbeat_control_file, 'r') as f:
+                    command = f.read().strip().lower()
+                    if command == "stop":
+                        if heartbeat_enabled:
+                            heartbeat_enabled = False
+                            logger.info("🛑 Heartbeats DESABILITADOS (comando: stop)")
+                    elif command == "start":
+                        if not heartbeat_enabled:
+                            heartbeat_enabled = True
+                            logger.info("▶️  Heartbeats HABILITADOS (comando: start)")
+        except Exception as e:
+            logger.debug(f"Erro ao ler heartbeat_control: {e}")
+        return True  # Continuar timer
 
     def simulate_neighbor_change():
         """Simula mudanças periódicas na neighbor table."""
@@ -185,7 +208,12 @@ def main(argv):
 
     def send_heartbeat():
         """Envia heartbeat periódico via NetworkPacketCharacteristic."""
-        nonlocal heartbeat_sequence
+        nonlocal heartbeat_sequence, heartbeat_enabled
+
+        # Verificar se heartbeats estão habilitados
+        if not heartbeat_enabled:
+            return True  # Continuar timer mas não enviar
+
         heartbeat_sequence += 1
 
         # Criar pacote de heartbeat
@@ -209,6 +237,10 @@ def main(argv):
     # Agendar heartbeats a cada HEARTBEAT_INTERVAL segundos
     GLib.timeout_add_seconds(HEARTBEAT_INTERVAL, send_heartbeat)
     logger.info(f"💓 Timer configurado: heartbeats serão enviados a cada {HEARTBEAT_INTERVAL} segundos")
+
+    # Verificar controlo de heartbeat a cada 1 segundo
+    GLib.timeout_add_seconds(1, check_heartbeat_control)
+    logger.info("🔧 Timer de controlo de heartbeat configurado (verifica a cada 1s)")
 
     # Setup signal handler
     signal.signal(signal.SIGINT, signal_handler)

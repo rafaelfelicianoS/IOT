@@ -401,6 +401,59 @@ Digite 'exit' ou Ctrl+D para sair.
         import os
         os.system('clear' if os.name != 'nt' else 'cls')
 
+    def do_stop_heartbeat(self, arg):
+        """
+        Para o envio de heartbeats do servidor (para testes de timeout).
+
+        Uso: stop_heartbeat
+
+        Este comando cria um arquivo de controlo que o GATT Server verifica
+        periodicamente para desabilitar o envio de heartbeats.
+        Útil para testar detecção de link failure.
+        """
+        from pathlib import Path
+
+        control_file = Path(__file__).parent.parent / "logs" / "heartbeat_control"
+
+        try:
+            control_file.parent.mkdir(parents=True, exist_ok=True)
+            with open(control_file, 'w') as f:
+                f.write("stop")
+
+            print("\n🛑 Comando enviado para PARAR heartbeats do servidor")
+            print("   O servidor vai detetar o comando em ~1 segundo")
+            print("   Use 'resume_heartbeat' para retomar.\n")
+            logger.info("Comando stop_heartbeat enviado")
+
+        except Exception as e:
+            print(f"\n❌ Erro ao enviar comando: {e}\n")
+            logger.error(f"Erro em stop_heartbeat: {e}")
+
+    def do_resume_heartbeat(self, arg):
+        """
+        Retoma o envio de heartbeats do servidor.
+
+        Uso: resume_heartbeat
+
+        Cancela o comando 'stop_heartbeat' e permite que o servidor
+        volte a enviar heartbeats normalmente.
+        """
+        from pathlib import Path
+
+        control_file = Path(__file__).parent.parent / "logs" / "heartbeat_control"
+
+        try:
+            with open(control_file, 'w') as f:
+                f.write("start")
+
+            print("\n▶️  Comando enviado para RETOMAR heartbeats do servidor")
+            print("   O servidor vai detetar o comando em ~1 segundo\n")
+            logger.info("Comando resume_heartbeat enviado")
+
+        except Exception as e:
+            print(f"\n❌ Erro ao enviar comando: {e}\n")
+            logger.error(f"Erro em resume_heartbeat: {e}")
+
     def cleanup(self):
         """Limpa recursos antes de sair."""
         if self._cleanup_done:
