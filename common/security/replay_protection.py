@@ -61,7 +61,7 @@ class ReplayProtection:
         if source_key not in self.tracking:
             self.tracking[source_key] = (sequence, {sequence})
             logger.debug(
-                f"Novo source {source_nid.to_short_string()}: "
+                f"Novo source {source_nid}: "
                 f"seq={sequence} (primeiro pacote)"
             )
             return True
@@ -71,7 +71,7 @@ class ReplayProtection:
         # Verificar se sequence já foi visto (REPLAY!)
         if sequence in seen_seqs:
             logger.warning(
-                f"🚨 REPLAY DETECTADO! Source: {source_nid.to_short_string()}, "
+                f"🚨 REPLAY DETECTADO! Source: {source_nid}, "
                 f"seq={sequence} (já foi visto)"
             )
             return False
@@ -79,7 +79,7 @@ class ReplayProtection:
         # Verificar se sequence está fora da janela (muito antigo)
         if sequence < highest_seq - self.window_size:
             logger.warning(
-                f"🚨 REPLAY DETECTADO! Source: {source_nid.to_short_string()}, "
+                f"🚨 REPLAY DETECTADO! Source: {source_nid}, "
                 f"seq={sequence} (muito antigo, highest={highest_seq}, "
                 f"window={self.window_size})"
             )
@@ -99,7 +99,7 @@ class ReplayProtection:
             self.tracking[source_key] = (new_highest, seen_seqs)
 
             logger.debug(
-                f"Source {source_nid.to_short_string()}: "
+                f"Source {source_nid}: "
                 f"seq={sequence} (novo highest, window: {len(seen_seqs)} seqs)"
             )
         else:
@@ -108,7 +108,7 @@ class ReplayProtection:
             self.tracking[source_key] = (highest_seq, seen_seqs)
 
             logger.debug(
-                f"Source {source_nid.to_short_string()}: "
+                f"Source {source_nid}: "
                 f"seq={sequence} (dentro da janela, highest={highest_seq})"
             )
 
@@ -125,7 +125,7 @@ class ReplayProtection:
 
         if source_key in self.tracking:
             del self.tracking[source_key]
-            logger.info(f"Tracking removido para source: {source_nid.to_short_string()}")
+            logger.info(f"Tracking removido para source: {source_nid}")
 
     def get_stats(self) -> dict:
         """

@@ -1,0 +1,13 @@
+2025-12-29 23:11:09.240 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=10)
+2025-12-29 23:11:34.962 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=10)
+2025-12-29 23:11:34.963 | WARNING  | common.security.replay_protection:check_and_update:73 | 🚨 REPLAY DETECTADO! Source: e6a319ad..., seq=1 (já foi visto)
+2025-12-29 23:11:34.963 | WARNING  | common.security.replay_protection:check_and_update:73 | 🚨 REPLAY DETECTADO! Source: e6a319ad..., seq=2 (já foi visto)
+2025-12-29 23:11:34.963 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=10)
+2025-12-29 23:11:34.963 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=10)
+2025-12-29 23:11:34.963 | WARNING  | common.security.replay_protection:check_and_update:81 | 🚨 REPLAY DETECTADO! Source: f2efe02a..., seq=1 (muito antigo, highest=20, window=10)
+2025-12-29 23:11:34.964 | WARNING  | common.security.replay_protection:check_and_update:81 | 🚨 REPLAY DETECTADO! Source: f2efe02a..., seq=9 (muito antigo, highest=20, window=10)
+2025-12-29 23:11:34.964 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=10)
+2025-12-29 23:11:34.964 | WARNING  | common.security.replay_protection:check_and_update:73 | 🚨 REPLAY DETECTADO! Source: 84afba63..., seq=1 (já foi visto)
+2025-12-29 23:11:34.964 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=10)
+2025-12-29 23:11:34.964 | WARNING  | common.security.replay_protection:check_and_update:73 | 🚨 REPLAY DETECTADO! Source: 3517abdf..., seq=1 (já foi visto)
+2025-12-29 23:11:34.964 | INFO     | common.security.replay_protection:reset_source:128 | Tracking removido para source: 3517abdf...
