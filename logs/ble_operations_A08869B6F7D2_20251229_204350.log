@@ -101,3 +101,54 @@
 2025-12-29 20:45:36.243 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=23)
 2025-12-29 20:45:36.244 | DEBUG    | 💓 Heartbeat recebido: seq=23
 2025-12-29 20:45:36.244 | DEBUG    | 💓 Heartbeat recebido (seq=23)
+2025-12-29 20:45:41.192 | INFO     | [OP-20251229_204350-0026] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c0201000000180000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\................................ [TRUNCATED]
+2025-12-29 20:45:41.192 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=24)
+2025-12-29 20:45:41.192 | DEBUG    | 💓 Heartbeat recebido: seq=24
+2025-12-29 20:45:41.192 | DEBUG    | 💓 Heartbeat recebido (seq=24)
+2025-12-29 20:45:46.191 | INFO     | [OP-20251229_204350-0027] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c0201000000190000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\................................ [TRUNCATED]
+2025-12-29 20:45:46.192 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=25)
+2025-12-29 20:45:46.192 | DEBUG    | 💓 Heartbeat recebido: seq=25
+2025-12-29 20:45:46.193 | DEBUG    | 💓 Heartbeat recebido (seq=25)
+2025-12-29 20:45:51.192 | INFO     | [OP-20251229_204350-0028] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c02010000001a0000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\................................ [TRUNCATED]
+2025-12-29 20:45:51.194 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=26)
+2025-12-29 20:45:51.195 | DEBUG    | 💓 Heartbeat recebido: seq=26
+2025-12-29 20:45:51.195 | DEBUG    | 💓 Heartbeat recebido (seq=26)
+2025-12-29 20:45:56.192 | INFO     | [OP-20251229_204350-0029] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c02010000001b0000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\................................ [TRUNCATED]
+2025-12-29 20:45:56.193 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=27)
+2025-12-29 20:45:56.194 | DEBUG    | 💓 Heartbeat recebido: seq=27
+2025-12-29 20:45:56.194 | DEBUG    | 💓 Heartbeat recebido (seq=27)
+2025-12-29 20:46:01.193 | INFO     | [OP-20251229_204350-0030] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c02010000001c0000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\................................ [TRUNCATED]
+2025-12-29 20:46:01.194 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=28)
+2025-12-29 20:46:01.195 | DEBUG    | 💓 Heartbeat recebido: seq=28
+2025-12-29 20:46:01.195 | DEBUG    | 💓 Heartbeat recebido (seq=28)
+2025-12-29 20:46:06.192 | INFO     | [OP-20251229_204350-0031] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c02010000001d0000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\................................ [TRUNCATED]
+2025-12-29 20:46:06.193 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=29)
+2025-12-29 20:46:06.194 | DEBUG    | 💓 Heartbeat recebido: seq=29
+2025-12-29 20:46:06.194 | DEBUG    | 💓 Heartbeat recebido (seq=29)
+2025-12-29 20:46:10.480 | WARNING  | Vizinho E0:D não está conectado
+2025-12-29 20:46:11.193 | INFO     | [OP-20251229_204350-0032] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c02010000001e0000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\................................ [TRUNCATED]
+2025-12-29 20:46:11.194 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=30)
+2025-12-29 20:46:11.194 | DEBUG    | 💓 Heartbeat recebido: seq=30
+2025-12-29 20:46:11.195 | DEBUG    | 💓 Heartbeat recebido (seq=30)
+2025-12-29 20:46:16.192 | INFO     | [OP-20251229_204350-0033] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c02010000001f0000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\................................ [TRUNCATED]
+2025-12-29 20:46:16.193 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=31)
+2025-12-29 20:46:16.194 | DEBUG    | 💓 Heartbeat recebido: seq=31
+2025-12-29 20:46:16.194 | DEBUG    | 💓 Heartbeat recebido (seq=31)
+2025-12-29 20:46:21.192 | INFO     | [OP-20251229_204350-0034] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c0201000000200000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\..... .......................... [TRUNCATED]
+2025-12-29 20:46:21.193 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=32)
+2025-12-29 20:46:21.193 | DEBUG    | 💓 Heartbeat recebido: seq=32
+2025-12-29 20:46:21.193 | DEBUG    | 💓 Heartbeat recebido (seq=32)
+2025-12-29 20:46:26.194 | INFO     | [OP-20251229_204350-0035] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: 3e023f6c0f6c411b97b6e595e697bb5c3e023f6c0f6c411b97b6e595e697bb5c0201000000210000000000000000000000000000000000000000000000000000 | ASCII: >.?l.lA........\>.?l.lA........\.....!.......................... [TRUNCATED]
+2025-12-29 20:46:26.195 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: 3e023f6c... → 3e023f6c... (type=HEARTBEAT, seq=33)
+2025-12-29 20:46:26.196 | DEBUG    | 💓 Heartbeat recebido: seq=33
+2025-12-29 20:46:26.196 | DEBUG    | 💓 Heartbeat recebido (seq=33)
+2025-12-29 20:46:29.516 | INFO     | A desconectar do uplink E0:D3:62:D6:EE:A0
+2025-12-29 20:46:32.296 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 20:46:32.296 | WARNING  | ⚠️  Heartbeat perdido! Contador: 1/3 (último há 6.1s)
+2025-12-29 20:46:32.301 | INFO     | [OP-20251229_204350-0036] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 20:46:32.303 | WARNING  | ⚠️  Uplink desconectado!
+2025-12-29 20:46:32.308 | INFO     | HeartbeatMonitor parado
+2025-12-29 20:46:32.308 | INFO     | Uplink removido
+2025-12-29 20:46:32.310 | DEBUG    | Vizinho E0:D3:62:D6:EE:A0 marcado como desconectado
+2025-12-29 20:50:19.575 | INFO     | A limpar recursos...
+2025-12-29 20:50:19.577 | INFO     | ✅ Recursos limpos
