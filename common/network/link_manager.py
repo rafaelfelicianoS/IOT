@@ -225,17 +225,27 @@ class LinkManager:
     - Notificar eventos (novo link, link perdido)
     """
 
-    def __init__(self, client: 'BLEClient', my_nid: Optional[NID] = None):
+    def __init__(
+        self,
+        client: 'BLEClient',
+        neighbor_discovery: Optional['NeighborDiscovery'] = None,
+        my_nid: Optional[NID] = None,
+        device_info_char: Optional['DeviceInfoCharacteristic'] = None
+    ):
         """
         Inicializa o Link Manager.
 
         Args:
             client: BLE Client para operações de conexão
+            neighbor_discovery: NeighborDiscovery para scans automáticos (opcional)
             my_nid: NID do dispositivo local (se None, gera um novo)
+            device_info_char: DeviceInfoCharacteristic para atualizar hop count (opcional)
         """
         from common.ble.gatt_client import BLEClient
 
         self.client: BLEClient = client
+        self.neighbor_discovery = neighbor_discovery
+        self.device_info_char = device_info_char
         self.my_nid: NID = my_nid if my_nid else NID.generate()
         self.uplink: Optional[Link] = None
         self.downlinks: Dict[str, Link] = {}  # address -> Link
@@ -253,6 +263,9 @@ class LinkManager:
 
         # Lock para thread safety (RLock permite re-entrada na mesma thread)
         self._lock = threading.RLock()
+
+        # Inicializar hop count como -1 (sem uplink)
+        self._update_hop_count()
 
         logger.info(f"Link Manager iniciado (my_nid={self.my_nid})")
 
@@ -288,6 +301,9 @@ class LinkManager:
             self.uplink = link
             logger.info(f"✅ Uplink definido: {link}")
 
+            # Atualizar hop count (agora temos uplink)
+            self._update_hop_count()
+
             # Iniciar monitoramento de heartbeat
             self._start_heartbeat_monitoring(link)
 
@@ -300,6 +316,9 @@ class LinkManager:
                 self.uplink.disconnect()
                 self.uplink = None
                 logger.info("Uplink removido")
+
+                # Atualizar hop count (agora não temos uplink)
+                self._update_hop_count()
 
     def get_uplink(self) -> Optional[Link]:
         """Retorna o uplink atual."""
@@ -320,6 +339,9 @@ class LinkManager:
             if self.heartbeat_monitor:
                 self.heartbeat_monitor.stop()
                 self.heartbeat_monitor = None
+
+            # Atualizar hop count (agora não temos uplink)
+            self._update_hop_count()
 
         # Notificar callbacks
         if old_link:
@@ -397,8 +419,8 @@ class LinkManager:
         Ações:
         1. Desconectar uplink
         2. Desconectar todos os downlinks
-        3. Marcar hop_count como negativo (TODO)
-        4. Procurar novo uplink (TODO)
+        3. Marcar hop_count como -1 (sem uplink)
+        4. Procurar novo uplink automaticamente
         """
         logger.error("💔 TIMEOUT DE HEARTBEAT DETETADO!")
         logger.error("   Ações: desconectar uplink + todos os downlinks")
@@ -416,8 +438,88 @@ class LinkManager:
                 logger.info(f"   A desconectar downlink: {address}")
                 self.disconnect_downlink(address)
 
+            # Atualizar hop count (agora não temos uplink)
+            self._update_hop_count()
+
         logger.warning("⚠️  Todos os links desconectados devido a timeout de heartbeat")
-        logger.info("   TODO: Procurar novo uplink automaticamente")
+
+        # Procurar novo uplink automaticamente
+        self._start_uplink_search()
+
+    def _start_uplink_search(self):
+        """
+        Procura e conecta automaticamente a um novo uplink.
+
+        Lógica:
+        1. Faz scan de vizinhos
+        2. Filtra vizinhos válidos (hop_count >= 0)
+        3. Escolhe o melhor (menor hop_count)
+        4. Conecta automaticamente
+        """
+        logger.info("🔍 A procurar novo uplink automaticamente...")
+
+        # Verificar se temos NeighborDiscovery disponível
+        if not self.neighbor_discovery:
+            logger.error("❌ NeighborDiscovery não disponível - não é possível procurar uplink")
+            return
+
+        try:
+            # Fazer scan de vizinhos
+            neighbors = self.neighbor_discovery.scan_neighbors()
+
+            if not neighbors:
+                logger.warning("❌ Nenhum vizinho encontrado no scan")
+                return
+
+            # Filtrar vizinhos válidos (hop_count >= 0)
+            valid_neighbors = [n for n in neighbors if n.hop_count >= 0]
+
+            if not valid_neighbors:
+                logger.warning("❌ Nenhum vizinho com hop_count válido (todos têm hop < 0)")
+                return
+
+            # Escolher melhor vizinho (menor hop_count)
+            best_neighbor = min(valid_neighbors, key=lambda n: n.hop_count)
+
+            logger.info(
+                f"✅ Melhor uplink encontrado: {best_neighbor.address} "
+                f"(hop={best_neighbor.hop_count}, rssi={best_neighbor.rssi}dBm)"
+            )
+
+            # Conectar automaticamente
+            link = self.connect_to_neighbor(best_neighbor.address, best_neighbor)
+
+            if link:
+                logger.info(f"✅ Reconexão automática bem-sucedida! Novo uplink: {link.address}")
+            else:
+                logger.error("❌ Falha ao conectar ao novo uplink")
+
+        except Exception as e:
+            logger.error(f"❌ Erro ao procurar novo uplink: {e}")
+
+    def _update_hop_count(self):
+        """
+        Atualiza o hop count no DeviceInfoCharacteristic baseado no estado do uplink.
+
+        Lógica:
+        - Se não tem uplink: hop_count = -1 (sinaliza que não está disponível como uplink)
+        - Se tem uplink: hop_count = uplink.hop_count + 1
+        """
+        if not self.device_info_char:
+            # Se não temos referência para DeviceInfoChar, não podemos atualizar
+            return
+
+        if self.uplink is None:
+            # Sem uplink -> hop_count = -1
+            new_hop_count = -1
+            logger.debug("Hop count atualizado para -1 (sem uplink)")
+        else:
+            # Com uplink -> hop_count = uplink_hop_count + 1
+            new_hop_count = self.uplink.device_info.hop_count + 1
+            logger.debug(f"Hop count atualizado para {new_hop_count} (uplink hop={self.uplink.device_info.hop_count})")
+
+        # Atualizar o characteristic
+        self.device_info_char.update_hop_count(new_hop_count)
 
     def get_heartbeat_status(self) -> dict:
         """

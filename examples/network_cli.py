@@ -79,7 +79,7 @@ Digite 'exit' ou Ctrl+D para sair.
         logger.info("NeighborDiscovery criado")
 
         # Criar LinkManager
-        self.link_manager = LinkManager(client=self.client)
+        self.link_manager = LinkManager(client=self.client, neighbor_discovery=self.discovery)
         logger.info("LinkManager criado")
 
         print("✅ Sistema inicializado com sucesso!\n")
