@@ -169,6 +169,15 @@ def main(argv):
     # Arquivo de controlo para heartbeats
     heartbeat_control_file = Path(__file__).parent.parent / "logs" / "heartbeat_control"
 
+    # Resetar controlo de heartbeat no arranque (começar sempre com heartbeats ativos)
+    try:
+        heartbeat_control_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(heartbeat_control_file, 'w') as f:
+            f.write("start")
+        logger.info("🔧 Controlo de heartbeat resetado: heartbeats ATIVOS por padrão")
+    except Exception as e:
+        logger.warning(f"Erro ao resetar controlo de heartbeat: {e}")
+
     def check_heartbeat_control():
         """Verifica arquivo de controlo para ligar/desligar heartbeats."""
         nonlocal heartbeat_enabled
