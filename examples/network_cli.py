@@ -526,6 +526,49 @@ Digite 'exit' ou Ctrl+D para sair.
             print(f"\n❌ Erro ao verificar status: {e}\n")
             logger.error(f"Erro em heartbeat_status: {e}")
 
+    def do_heartbeat_info(self, arg):
+        """
+        Mostra informações sobre monitoramento de heartbeat (lado cliente).
+
+        Uso: heartbeat_info
+
+        Mostra:
+        - Se está a monitorar heartbeats do uplink
+        - Número de heartbeats perdidos
+        - Tempo desde último heartbeat
+        """
+        try:
+            status = self.link_manager.get_heartbeat_status()
+
+            print("\n💓 Monitoramento de Heartbeat (Cliente):\n")
+
+            if not status['monitoring']:
+                print("   Status: ⚠️  NÃO MONITORANDO")
+                print("   Motivo: Sem uplink ativo\n")
+                return
+
+            print("   Status: ✅ MONITORANDO")
+            print(f"   Heartbeats perdidos: {status['missed_count']}/3")
+
+            if status['time_since_last'] is not None:
+                print(f"   Tempo desde último: {status['time_since_last']:.1f}s")
+            else:
+                print("   Tempo desde último: N/A (nenhum recebido ainda)")
+
+            # Status visual baseado em heartbeats perdidos
+            if status['missed_count'] == 0:
+                print("\n   💚 Uplink saudável\n")
+            elif status['missed_count'] == 1:
+                print("\n   💛 Atenção: 1 heartbeat perdido\n")
+            elif status['missed_count'] == 2:
+                print("\n   🧡 Aviso: 2 heartbeats perdidos!\n")
+            else:
+                print("\n   ❤️  CRÍTICO: 3+ heartbeats perdidos - timeout iminente!\n")
+
+        except Exception as e:
+            print(f"\n❌ Erro ao obter info de heartbeat: {e}\n")
+            logger.error(f"Erro em heartbeat_info: {e}")
+
     def cleanup(self):
         """Limpa recursos antes de sair."""
         if self._cleanup_done:

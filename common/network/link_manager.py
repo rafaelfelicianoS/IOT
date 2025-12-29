@@ -14,6 +14,9 @@ from datetime import datetime
 from common.ble.gatt_client import BLEConnection, ScannedDevice
 from common.utils.nid import NID
 from common.utils.logger import get_logger
+from common.network.heartbeat_monitor import HeartbeatMonitor
+from common.network.packet import Packet, MessageType
+from common.utils.constants import IOT_NETWORK_SERVICE_UUID, CHAR_NETWORK_PACKET_UUID
 
 logger = get_logger("link_manager")
 
@@ -235,6 +238,9 @@ class LinkManager:
         self.uplink: Optional[Link] = None
         self.downlinks: Dict[str, Link] = {}  # address -> Link
 
+        # Heartbeat monitoring
+        self.heartbeat_monitor: Optional[HeartbeatMonitor] = None
+
         # Callbacks
         self._new_downlink_callbacks: List[Callable[[Link], None]] = []
         self._lost_link_callbacks: List[Callable[[Link], None]] = []
@@ -265,12 +271,19 @@ class LinkManager:
                 logger.warning("Uplink já existe - a substituir")
                 self.uplink.disconnect()
 
+            # Parar monitor anterior se existir
+            if self.heartbeat_monitor:
+                self.heartbeat_monitor.stop()
+
             # Criar novo uplink
             link = Link(connection, device_info, is_uplink=True)
             link.set_disconnected_callback(self._on_uplink_disconnected)
 
             self.uplink = link
             logger.info(f"✅ Uplink definido: {link}")
+
+            # Iniciar monitoramento de heartbeat
+            self._start_heartbeat_monitoring(link)
 
             return link
 
@@ -297,9 +310,113 @@ class LinkManager:
             old_link = self.uplink
             self.uplink = None
 
+            # Parar monitor de heartbeat
+            if self.heartbeat_monitor:
+                self.heartbeat_monitor.stop()
+                self.heartbeat_monitor = None
+
         # Notificar callbacks
         if old_link:
             self._notify_lost_link(old_link)
+
+    # ========================================================================
+    # Heartbeat Monitoring
+    # ========================================================================
+
+    def _start_heartbeat_monitoring(self, link: Link):
+        """
+        Inicia monitoramento de heartbeats para o uplink.
+
+        Args:
+            link: Link do uplink para monitorar
+        """
+        # Criar monitor de heartbeat
+        self.heartbeat_monitor = HeartbeatMonitor(
+            heartbeat_interval=5.0,
+            max_missed=3,
+            on_timeout=self._on_heartbeat_timeout
+        )
+
+        # Subscrever notificações de pacotes
+        def on_packet_received(data: bytes):
+            """Callback quando recebe um pacote via notify."""
+            try:
+                # Deserializar pacote
+                packet = Packet.from_bytes(data)
+
+                # Se é heartbeat, notificar monitor
+                if packet.msg_type == MessageType.HEARTBEAT:
+                    logger.debug(f"💓 Heartbeat recebido: seq={packet.sequence}")
+                    self.heartbeat_monitor.on_heartbeat_received(packet.sequence)
+
+                    # TODO: Forward heartbeat para downlinks (flooding)
+
+            except Exception as e:
+                logger.error(f"Erro ao processar pacote recebido: {e}")
+
+        # Subscribe a notificações
+        success = link.connection.subscribe_notifications(
+            IOT_NETWORK_SERVICE_UUID,
+            CHAR_NETWORK_PACKET_UUID,
+            on_packet_received
+        )
+
+        if not success:
+            logger.error("❌ Falha ao subscrever notificações de heartbeat")
+            return
+
+        # Iniciar monitor
+        self.heartbeat_monitor.start()
+        logger.info("💓 Monitoramento de heartbeat iniciado")
+
+    def _on_heartbeat_timeout(self):
+        """
+        Callback quando timeout de heartbeat é detetado.
+
+        Ações:
+        1. Desconectar uplink
+        2. Desconectar todos os downlinks
+        3. Marcar hop_count como negativo (TODO)
+        4. Procurar novo uplink (TODO)
+        """
+        logger.error("💔 TIMEOUT DE HEARTBEAT DETETADO!")
+        logger.error("   Ações: desconectar uplink + todos os downlinks")
+
+        with self._lock:
+            # Desconectar uplink
+            if self.uplink:
+                logger.info(f"   A desconectar uplink: {self.uplink.address}")
+                self.uplink.disconnect()
+                self.uplink = None
+
+            # Desconectar todos os downlinks
+            downlink_addrs = list(self.downlinks.keys())
+            for address in downlink_addrs:
+                logger.info(f"   A desconectar downlink: {address}")
+                self.disconnect_downlink(address)
+
+        logger.warning("⚠️  Todos os links desconectados devido a timeout de heartbeat")
+        logger.info("   TODO: Procurar novo uplink automaticamente")
+
+    def get_heartbeat_status(self) -> dict:
+        """
+        Retorna informações sobre o estado do monitoramento de heartbeat.
+
+        Returns:
+            Dict com status do heartbeat monitor
+        """
+        if not self.heartbeat_monitor:
+            return {
+                'monitoring': False,
+                'missed_count': 0,
+                'time_since_last': None
+            }
+
+        return {
+            'monitoring': self.heartbeat_monitor.is_monitoring(),
+            'missed_count': self.heartbeat_monitor.get_missed_count(),
+            'time_since_last': self.heartbeat_monitor.get_time_since_last()
+        }
 
     # ========================================================================
     # Connection Management
