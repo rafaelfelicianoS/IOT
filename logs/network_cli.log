@@ -400,3 +400,35 @@
 2025-12-29 15:58:35.294 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
 2025-12-29 15:58:35.295 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_155741-0010] SCAN_RESULT | Devices_Found: 0
 2025-12-29 15:58:35.296 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:06:33.798 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_160633.log
+2025-12-29 16:06:33.799 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 16:06:33.800 | INFO     | common.ble.gatt_client:__init__:525 | BLE Client iniciado
+2025-12-29 16:06:33.800 | INFO     | __main__:__init__:64 | BLE Client criado
+2025-12-29 16:06:33.800 | INFO     | common.network.neighbor_discovery:__init__:132 | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 16:06:33.801 | INFO     | __main__:__init__:76 | NeighborDiscovery criado
+2025-12-29 16:06:33.801 | INFO     | common.network.link_manager:__init__:245 | Link Manager iniciado
+2025-12-29 16:06:33.802 | INFO     | __main__:__init__:80 | LinkManager criado
+2025-12-29 16:06:37.768 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:06:37.881 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:06:37.882 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_160633-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:06:42.905 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 16:06:42.907 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_160633-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 16:06:42.908 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-29 16:06:42.914 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:06:42.916 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_160633-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:06:42.927 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:06:42.929 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_160633-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 6.75ms
+2025-12-29 16:06:43.017 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251229_160633-0006] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: a6191889f4ad41ebaddd7230f12e8ba50100 | ASCII: ......A...r0......
+2025-12-29 16:06:43.018 | INFO     | common.network.neighbor_discovery:scan_once:210 | Vizinho descoberto: E0:D3:62:D6:EE:A0 (a6191889...) hop=1 rssi=-55dBm type=node disconnected seen=0.0s ago
+2025-12-29 16:06:45.025 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 16:06:45.028 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_160633-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 16:06:45.033 | INFO     | common.network.neighbor_discovery:scan_once:240 | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-29 16:07:00.479 | INFO     | common.network.link_manager:connect_to_neighbor:319 | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 16:07:00.482 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:07:00.483 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_160633-0008] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:07:03.704 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:07:03.705 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_160633-0009] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3217.43ms
+2025-12-29 16:07:03.707 | INFO     | common.network.link_manager:__init__:107 | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=a6191889... hop=1 (UPLINK)
+2025-12-29 16:07:03.708 | INFO     | common.network.link_manager:set_uplink:273 | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=a6191889... hop=1
+2025-12-29 16:07:03.709 | INFO     | common.network.link_manager:connect_to_neighbor:347 | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-29 16:07:26.462 | ERROR    | __main__:main:428 | Erro fatal: 'LinkManager' object has no attribute 'get_link'

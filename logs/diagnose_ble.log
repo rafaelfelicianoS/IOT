@@ -152,3 +152,56 @@
 2025-12-27 19:28:57.117 | INFO     | __main__:main:152 |    O GATT Server está a anunciar corretamente.
 2025-12-27 19:28:57.118 | INFO     | __main__:main:153 |    Podes usar test_ble_client.py para conectar.
 2025-12-27 19:28:57.119 | INFO     | __main__:main:175 | 
+2025-12-29 16:06:13.413 | INFO     | __main__:main:30 | ======================================================================
+2025-12-29 16:06:13.413 | INFO     | __main__:main:31 |   BLE Diagnostic Tool - Scan ALL Devices
+2025-12-29 16:06:13.413 | INFO     | __main__:main:32 | ======================================================================
+2025-12-29 16:06:13.414 | INFO     | __main__:main:33 | 
+2025-12-29 16:06:13.433 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_160613.log
+2025-12-29 16:06:13.434 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 16:06:13.434 | INFO     | __main__:main:54 | ✅ Scanner BLE iniciado
+2025-12-29 16:06:13.437 | INFO     | __main__:main:55 |    Adaptador: hci0
+2025-12-29 16:06:13.438 | INFO     | __main__:main:56 |    Endereço: A0:88:69:B6:F7:D2
+2025-12-29 16:06:13.439 | INFO     | __main__:main:57 | 
+2025-12-29 16:06:13.441 | INFO     | __main__:main:60 | 🔍 A fazer scan de TODOS os dispositivos BLE...
+2025-12-29 16:06:13.442 | INFO     | __main__:main:61 |    Duração: 10 segundos (scan mais longo para aumentar chances)
+2025-12-29 16:06:13.443 | INFO     | __main__:main:62 |    ATENÇÃO: Sem filtro - vai mostrar tudo!
+2025-12-29 16:06:13.444 | INFO     | __main__:main:63 | 
+2025-12-29 16:06:13.445 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 10000ms...
+2025-12-29 16:06:13.447 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_160613-0001] SCAN_START | Duration: 10000ms | Filter_IoT: False
+2025-12-29 16:06:23.463 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 2 dispositivos encontrados
+2025-12-29 16:06:23.463 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_160613-0002] SCAN_RESULT | Devices_Found: 2
+2025-12-29 16:06:23.467 | INFO     | __main__:main:67 | ======================================================================
+2025-12-29 16:06:23.467 | INFO     | __main__:main:68 | 📊 RESULTADOS DO SCAN
+2025-12-29 16:06:23.469 | INFO     | __main__:main:69 | ======================================================================
+2025-12-29 16:06:23.470 | INFO     | __main__:main:70 | Total de dispositivos BLE encontrados: 2
+2025-12-29 16:06:23.471 | INFO     | __main__:main:71 | 
+2025-12-29 16:06:23.472 | INFO     | __main__:main:100 | ✅ DISPOSITIVOS IoT NETWORK ENCONTRADOS:
+2025-12-29 16:06:23.473 | INFO     | __main__:main:101 | 
+2025-12-29 16:06:23.474 | INFO     | __main__:main:103 |   [1] IoT-Node
+2025-12-29 16:06:23.475 | INFO     | __main__:main:104 |       Endereço BLE: E0:D3:62:D6:EE:A0
+2025-12-29 16:06:23.476 | INFO     | __main__:main:105 |       RSSI: -52 dBm
+2025-12-29 16:06:23.477 | INFO     | __main__:main:106 |       Service UUIDs anunciados:
+2025-12-29 16:06:23.478 | INFO     | __main__:main:110 |         - 00001801-0000-1000-8000-00805f9b34fb
+2025-12-29 16:06:23.482 | INFO     | __main__:main:110 |         - 0000180a-0000-1000-8000-00805f9b34fb
+2025-12-29 16:06:23.483 | INFO     | __main__:main:110 |         - 03b80e5a-ede8-4b33-a751-6ce34ec4c700
+2025-12-29 16:06:23.484 | INFO     | __main__:main:110 |         - 12340000-0000-1000-8000-00805f9b34fb  ← IoT Network Service
+2025-12-29 16:06:23.485 | INFO     | __main__:main:113 | 
+2025-12-29 16:06:23.487 | INFO     | __main__:main:121 | 📱 OUTROS DISPOSITIVOS BLE (não-IoT):
+2025-12-29 16:06:23.488 | INFO     | __main__:main:122 | 
+2025-12-29 16:06:23.489 | INFO     | __main__:main:124 |   [1] [TV] Samsung 7 Series (65)
+2025-12-29 16:06:23.490 | INFO     | __main__:main:125 |       Endereço BLE: FC:03:9F:1D:14:49
+2025-12-29 16:06:23.491 | INFO     | __main__:main:126 |       RSSI: -87 dBm
+2025-12-29 16:06:23.492 | INFO     | __main__:main:135 |       Service UUIDs: <nenhum UUID anunciado>
+2025-12-29 16:06:23.493 | INFO     | __main__:main:138 |       Manufacturer Data: 1 entries
+2025-12-29 16:06:23.495 | INFO     | __main__:main:139 | 
+2025-12-29 16:06:23.496 | INFO     | __main__:main:142 | ======================================================================
+2025-12-29 16:06:23.497 | INFO     | __main__:main:143 | 📋 RESUMO DO DIAGNÓSTICO
+2025-12-29 16:06:23.498 | INFO     | __main__:main:144 | ======================================================================
+2025-12-29 16:06:23.498 | INFO     | __main__:main:145 | Total de dispositivos: 2
+2025-12-29 16:06:23.499 | INFO     | __main__:main:146 | Dispositivos IoT Network: 1
+2025-12-29 16:06:23.499 | INFO     | __main__:main:147 | Outros dispositivos: 1
+2025-12-29 16:06:23.500 | INFO     | __main__:main:148 | 
+2025-12-29 16:06:23.501 | INFO     | __main__:main:151 | ✅ DIAGNÓSTICO: Tudo OK!
+2025-12-29 16:06:23.501 | INFO     | __main__:main:152 |    O GATT Server está a anunciar corretamente.
+2025-12-29 16:06:23.502 | INFO     | __main__:main:153 |    Podes usar test_ble_client.py para conectar.
+2025-12-29 16:06:23.504 | INFO     | __main__:main:175 | 
