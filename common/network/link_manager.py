@@ -225,16 +225,18 @@ class LinkManager:
     - Notificar eventos (novo link, link perdido)
     """
 
-    def __init__(self, client: 'BLEClient'):
+    def __init__(self, client: 'BLEClient', my_nid: Optional[NID] = None):
         """
         Inicializa o Link Manager.
 
         Args:
             client: BLE Client para operações de conexão
+            my_nid: NID do dispositivo local (se None, gera um novo)
         """
         from common.ble.gatt_client import BLEClient
 
         self.client: BLEClient = client
+        self.my_nid: NID = my_nid if my_nid else NID.generate()
         self.uplink: Optional[Link] = None
         self.downlinks: Dict[str, Link] = {}  # address -> Link
 
@@ -252,7 +254,7 @@ class LinkManager:
         # Lock para thread safety (RLock permite re-entrada na mesma thread)
         self._lock = threading.RLock()
 
-        logger.info("Link Manager iniciado")
+        logger.info(f"Link Manager iniciado (my_nid={self.my_nid})")
 
     # ========================================================================
     # Uplink Management
