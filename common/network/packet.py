@@ -23,6 +23,7 @@ from common.utils.constants import (
     PACKET_HEADER_SIZE,
     DEFAULT_TTL,
 )
+from common.security.crypto import calculate_hmac, verify_hmac
 
 
 @dataclass
@@ -213,6 +214,46 @@ class Packet:
         if len(new_mac) != MAC_SIZE:
             raise ValueError(f"MAC deve ter {MAC_SIZE} bytes")
         self.mac = new_mac
+
+    def calculate_and_set_mac(self, key: Optional[bytes] = None):
+        """
+        Calcula e define o MAC do pacote.
+
+        O MAC é calculado sobre o header (sem o campo MAC) + payload.
+
+        Args:
+            key: Chave HMAC (32 bytes). Se None, usa a chave padrão.
+
+        Raises:
+            ValueError: Se a chave não tiver 32 bytes
+        """
+        # Dados para calcular MAC: header sem MAC + payload
+        data = self.get_header_for_mac() + self.payload
+
+        # Calcular MAC
+        mac = calculate_hmac(data, key)
+
+        # Atualizar MAC do pacote
+        self.mac = mac
+
+    def verify_mac(self, key: Optional[bytes] = None) -> bool:
+        """
+        Verifica se o MAC do pacote é válido.
+
+        Args:
+            key: Chave HMAC (32 bytes). Se None, usa a chave padrão.
+
+        Returns:
+            True se o MAC é válido, False caso contrário
+
+        Raises:
+            ValueError: Se a chave não tiver 32 bytes
+        """
+        # Dados para verificar MAC: header sem MAC + payload
+        data = self.get_header_for_mac() + self.payload
+
+        # Verificar MAC
+        return verify_hmac(data, self.mac, key)
 
     def size(self) -> int:
         """
