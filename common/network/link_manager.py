@@ -238,6 +238,10 @@ class LinkManager:
         self.uplink: Optional[Link] = None
         self.downlinks: Dict[str, Link] = {}  # address -> Link
 
+        # Forwarding Table: NID -> Link (para routing)
+        # Aprende de onde vieram os pacotes para saber para onde enviar respostas
+        self.forwarding_table: Dict[NID, Link] = {}  # NID -> Link
+
         # Heartbeat monitoring
         self.heartbeat_monitor: Optional[HeartbeatMonitor] = None
 
@@ -344,12 +348,27 @@ class LinkManager:
                 # Deserializar pacote
                 packet = Packet.from_bytes(data)
 
+                logger.debug(
+                    f"📦 Pacote recebido via {link.address}: "
+                    f"{packet.source} → {packet.destination} "
+                    f"(type={packet.msg_type.name}, seq={packet.sequence})"
+                )
+
                 # Se é heartbeat, notificar monitor
                 if packet.msg_type == MessageType.HEARTBEAT:
                     logger.debug(f"💓 Heartbeat recebido: seq={packet.sequence}")
                     self.heartbeat_monitor.on_heartbeat_received(packet.sequence)
 
                     # TODO: Forward heartbeat para downlinks (flooding)
+
+                # Se é DATA, rotear o pacote
+                elif packet.msg_type == MessageType.DATA:
+                    logger.info(
+                        f"📨 DATA recebido: {packet.source} → {packet.destination} "
+                        f"({len(packet.payload)} bytes)"
+                    )
+                    # Rotear packet (aprende rota + forward se necessário)
+                    self.route_packet(packet, from_link=link)
 
             except Exception as e:
                 logger.error(f"Erro ao processar pacote recebido: {e}")
@@ -843,6 +862,138 @@ class LinkManager:
                 self.remove_downlink(address)
 
         logger.info("Todos os links desconectados")
+    # ========================================================================
+    # Packet Routing (Seção 3.1 do projeto)
+    # ========================================================================
+
+    def learn_route(self, source_nid: NID, from_link: Link):
+        """
+        Aprende a rota para um NID (adiciona à forwarding table).
+
+        Quando recebemos um pacote de source_nid via from_link,
+        memorizamos que para enviar pacotes para source_nid devemos
+        usar from_link.
+
+        Args:
+            source_nid: NID de origem do pacote
+            from_link: Link de onde veio o pacote
+        """
+        with self._lock:
+            if source_nid not in self.forwarding_table:
+                self.forwarding_table[source_nid] = from_link
+                logger.info(f"📚 Rota aprendida: {source_nid} → Link[{from_link.address}]")
+            elif self.forwarding_table[source_nid] != from_link:
+                # Rota mudou (pode acontecer se topologia mudar)
+                old_link = self.forwarding_table[source_nid]
+                self.forwarding_table[source_nid] = from_link
+                logger.info(
+                    f"📚 Rota atualizada: {source_nid} "
+                    f"Link[{old_link.address}] → Link[{from_link.address}]"
+                )
+
+    def route_packet(self, packet: Packet, from_link: Optional[Link] = None) -> bool:
+        """
+        Roteia um pacote recebido.
+
+        Lógica de routing:
+        1. Se destino == meu_nid → processar localmente (não implementado aqui)
+        2. Se veio de downlink → forward uplink (em direção ao Sink)
+        3. Se veio de uplink e temos rota → forward downlink
+        4. Se veio de uplink e não temos rota → drop (não sabemos onde está)
+
+        Args:
+            packet: Pacote a rotear
+            from_link: Link de onde veio o pacote (None se gerado localmente)
+
+        Returns:
+            True se roteado com sucesso
+        """
+        with self._lock:
+            # Aprender rota de retorno (se não for heartbeat)
+            if from_link and packet.msg_type != MessageType.HEARTBEAT:
+                self.learn_route(packet.source, from_link)
+
+            # Caso 1: Pacote veio de downlink (ou gerado localmente)
+            # → Encaminhar uplink em direção ao Sink
+            if from_link is None or (from_link in self.downlinks.values()):
+                if self.uplink:
+                    logger.debug(
+                        f"📤 Forwarding uplink: {packet.source} → {packet.destination} "
+                        f"(type={packet.msg_type.name})"
+                    )
+                    return self._send_packet_via_link(packet, self.uplink)
+                else:
+                    logger.warning(f"⚠️  Não tenho uplink para forward {packet}")
+                    return False
+
+            # Caso 2: Pacote veio de uplink
+            # → Procurar rota na forwarding table e encaminhar downlink
+            elif from_link == self.uplink:
+                dest_nid = packet.destination
+
+                if dest_nid in self.forwarding_table:
+                    target_link = self.forwarding_table[dest_nid]
+                    logger.debug(
+                        f"📥 Forwarding downlink: {packet.source} → {packet.destination} "
+                        f"via Link[{target_link.address}] (type={packet.msg_type.name})"
+                    )
+                    return self._send_packet_via_link(packet, target_link)
+                else:
+                    logger.warning(
+                        f"⚠️  Sem rota para {dest_nid} na forwarding table. "
+                        f"Dropping packet."
+                    )
+                    return False
+
+            else:
+                logger.error(f"❌ Link desconhecido: {from_link}")
+                return False
+
+    def _send_packet_via_link(self, packet: Packet, link: Link) -> bool:
+        """
+        Envia um pacote através de um link específico.
+
+        Args:
+            packet: Pacote a enviar
+            link: Link para enviar
+
+        Returns:
+            True se enviado com sucesso
+        """
+        try:
+            packet_bytes = packet.to_bytes()
+            success = link.connection.write_characteristic(
+                IOT_NETWORK_SERVICE_UUID,
+                CHAR_NETWORK_PACKET_UUID,
+                packet_bytes
+            )
+
+            if success:
+                logger.debug(f"✅ Pacote enviado via Link[{link.address}]: {len(packet_bytes)} bytes")
+            else:
+                logger.error(f"❌ Falha ao enviar pacote via Link[{link.address}]")
+
+            return success
+
+        except Exception as e:
+            logger.error(f"❌ Erro ao enviar pacote via Link[{link.address}]: {e}")
+            return False
+
+    def get_forwarding_table(self) -> Dict[NID, str]:
+        """
+        Retorna a forwarding table (NID -> endereço do link).
+
+        Returns:
+            Dict com NIDs e endereços dos links
+        """
+        with self._lock:
+            return {nid: link.address for nid, link in self.forwarding_table.items()}
+
+    def clear_forwarding_table(self):
+        """Limpa a forwarding table."""
+        with self._lock:
+            self.forwarding_table.clear()
+            logger.info("🗑️  Forwarding table limpa")
 
 
 # ============================================================================

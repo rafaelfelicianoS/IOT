@@ -569,6 +569,37 @@ Digite 'exit' ou Ctrl+D para sair.
             print(f"\n❌ Erro ao obter info de heartbeat: {e}\n")
             logger.error(f"Erro em heartbeat_info: {e}")
 
+    def do_routes(self, arg):
+        """
+        Mostra a tabela de rotas (forwarding table).
+
+        Uso: routes
+
+        Mostra todos os NIDs conhecidos e por qual link devemos
+        enviar pacotes para alcançá-los.
+        """
+        try:
+            routes = self.link_manager.get_forwarding_table()
+
+            if not routes:
+                print("\n📋 Tabela de Rotas: VAZIA\n")
+                print("   Nenhuma rota aprendida ainda.")
+                print("   Rotas são aprendidas automaticamente quando pacotes são recebidos.\n")
+                return
+
+            print(f"\n📋 Tabela de Rotas ({len(routes)} entradas):\n")
+            print(f"   {'NID':<40} → Link")
+            print(f"   {'-'*40}   {'-'*17}")
+
+            for nid, link_address in routes.items():
+                print(f"   {str(nid):<40} → {link_address}")
+
+            print()
+
+        except Exception as e:
+            print(f"\n❌ Erro ao obter tabela de rotas: {e}\n")
+            logger.error(f"Erro em routes: {e}")
+
     def cleanup(self):
         """Limpa recursos antes de sair."""
         if self._cleanup_done:
