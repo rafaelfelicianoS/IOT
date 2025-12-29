@@ -83,7 +83,9 @@ class HeartbeatMonitor:
         self._stop_event.set()
 
         if self._monitor_thread:
-            self._monitor_thread.join(timeout=2.0)
+            # Não fazer join se estamos na própria thread
+            if threading.current_thread() != self._monitor_thread:
+                self._monitor_thread.join(timeout=2.0)
             self._monitor_thread = None
 
         logger.info("HeartbeatMonitor parado")
