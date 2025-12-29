@@ -53,6 +53,9 @@ Digite 'exit' ou Ctrl+D para sair.
         """Inicializa a CLI."""
         super().__init__()
 
+        # Flag para evitar cleanup duplicado
+        self._cleanup_done = False
+
         # Verificar se SimpleBLE está disponível
         if not SIMPLEBLE_AVAILABLE:
             print("❌ ERRO: SimpleBLE não está instalado!")
@@ -398,13 +401,44 @@ Digite 'exit' ou Ctrl+D para sair.
         import os
         os.system('clear' if os.name != 'nt' else 'cls')
 
+    def cleanup(self):
+        """Limpa recursos antes de sair."""
+        if self._cleanup_done:
+            return
+
+        try:
+            # Desconectar de todos os dispositivos
+            logger.info("A limpar recursos...")
+
+            # Desconectar uplink
+            uplink = self.link_manager.get_uplink()
+            if uplink:
+                logger.info(f"A desconectar uplink {uplink.address}...")
+                self.link_manager.disconnect_neighbor(uplink.address)
+
+            # Desconectar downlinks
+            downlinks = self.link_manager.get_downlinks()
+            for link in downlinks:
+                logger.info(f"A desconectar downlink {link.address}...")
+                self.link_manager.disconnect_neighbor(link.address)
+
+            # Cleanup do client BLE
+            self.client.disconnect_all()
+
+            logger.info("✅ Recursos limpos")
+            self._cleanup_done = True
+        except Exception as e:
+            logger.error(f"Erro durante cleanup: {e}")
+
     def do_exit(self, arg):
         """
         Sai da CLI.
 
         Uso: exit
         """
-        print("\n👋 A terminar...\n")
+        print("\n👋 A terminar...")
+        self.cleanup()
+        print()
         return True
 
     def do_EOF(self, arg):
@@ -424,16 +458,27 @@ Digite 'exit' ou Ctrl+D para sair.
 
 def main():
     """Main function."""
+    cli = None
     try:
         cli = NetworkCLI()
         cli.cmdloop()
     except KeyboardInterrupt:
-        print("\n\n👋 A terminar...\n")
+        print("\n\n👋 A terminar...")
+        if cli:
+            cli.cleanup()
+        print()
         return 0
     except Exception as e:
         logger.error(f"Erro fatal: {e}")
         print(f"\n❌ Erro fatal: {e}\n")
         return 1
+    finally:
+        # Garantir cleanup mesmo em caso de exceção
+        if cli:
+            try:
+                cli.cleanup()
+            except:
+                pass
 
     return 0
 
