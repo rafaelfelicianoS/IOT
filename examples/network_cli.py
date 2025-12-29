@@ -338,8 +338,14 @@ Digite 'exit' ou Ctrl+D para sair.
             print(f"   Use 'connect {address}' primeiro.\n")
             return
 
-        # Obter link
-        link = self.link_manager.get_link(address)
+        # Obter link (pode ser uplink ou downlink)
+        link = None
+        uplink = self.link_manager.get_uplink()
+        if uplink and uplink.address == address:
+            link = uplink
+        else:
+            link = self.link_manager.get_downlink(address)
+
         if not link:
             print(f"\n❌ Erro: link para {address} não encontrado.\n")
             return
