@@ -242,13 +242,31 @@ iot-network> status
    Melhor hop count: -1
    Último scan: 10s atrás
 
-# 6. Desconectar
+# 6. Enviar pacote de dados
+iot-network> send E0:D3:62:D6:EE:A0 Hello from CLI!
+
+# Output esperado:
+📤 A enviar mensagem para E0:D3:62:D6:EE:A0...
+   Mensagem: Hello from CLI!
+   Tamanho: 15 caracteres
+
+✅ Pacote enviado com sucesso!
+   Tamanho total: 85 bytes
+   Destino NID: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+
+# No servidor deve aparecer:
+📨 Pacote recebido via WriteNetworkPacket
+   Source: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+   Payload: Hello from CLI!
+   Size: 85 bytes
+
+# 7. Desconectar
 iot-network> disconnect E0:D3:62:D6:EE:A0
 
-# 7. Limpar tela
+# 8. Limpar tela
 iot-network> clear
 
-# 8. Sair
+# 9. Sair
 iot-network> exit
 ```
 
@@ -289,7 +307,8 @@ Marca o que já testaste:
 - [ ] **Test 6**: Network CLI - scan funciona
 - [ ] **Test 7**: Network CLI - connect funciona
 - [ ] **Test 8**: Network CLI - status mostra uplink
-- [ ] **Test 9**: Network CLI - disconnect funciona
+- [ ] **Test 9**: Network CLI - send envia pacote
+- [ ] **Test 10**: Network CLI - disconnect funciona
 
 ---
 

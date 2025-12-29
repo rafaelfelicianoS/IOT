@@ -23,6 +23,13 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from common.ble.gatt_client import BLEClient, SIMPLEBLE_AVAILABLE
 from common.network.neighbor_discovery import NeighborDiscovery, NeighborInfo
 from common.network.link_manager import LinkManager
+from common.network.packet import Packet
+from common.utils.constants import (
+    MessageType,
+    IOT_NETWORK_SERVICE_UUID,
+    CHAR_NETWORK_PACKET_UUID,
+)
+from common.utils.nid import NID
 from common.utils.logger import setup_logger
 
 # Setup logger
@@ -291,6 +298,90 @@ Digite 'exit' ou Ctrl+D para sair.
             print(f"   Último scan: {age_str} atrás")
 
         print()
+
+    def do_send(self, arg):
+        """
+        Envia um pacote de dados para um vizinho.
+
+        Uso: send <address> <message>
+
+        Argumentos:
+            address   Endereço BLE do destino (ex: E0:D3:62:D6:EE:A0)
+            message   Mensagem a enviar (texto)
+
+        Exemplo:
+            send E0:D3:62:D6:EE:A0 Hello World!
+        """
+        if not arg:
+            print("\n❌ Erro: argumentos insuficientes.")
+            print("   Uso: send <address> <message>\n")
+            return
+
+        parts = arg.split(maxsplit=1)
+        if len(parts) < 2:
+            print("\n❌ Erro: mensagem não especificada.")
+            print("   Uso: send <address> <message>\n")
+            return
+
+        address = parts[0].strip().upper()
+        message = parts[1].strip()
+
+        # Verificar se temos conexão com este vizinho
+        neighbor = self.discovery.get_neighbor(address)
+        if not neighbor:
+            print(f"\n⚠️  Vizinho {address} não encontrado.")
+            print("   Use 'scan' para descobrir vizinhos.\n")
+            return
+
+        if not neighbor.is_connected:
+            print(f"\n⚠️  Não estás conectado a {address}.")
+            print(f"   Use 'connect {address}' primeiro.\n")
+            return
+
+        # Obter link
+        link = self.link_manager.get_link(address)
+        if not link:
+            print(f"\n❌ Erro: link para {address} não encontrado.\n")
+            return
+
+        print(f"\n📤 A enviar mensagem para {address}...")
+        print(f"   Mensagem: {message}")
+        print(f"   Tamanho: {len(message)} caracteres\n")
+
+        try:
+            # Criar NID de origem (aleatório para este teste)
+            source_nid = NID.generate()
+
+            # Criar pacote DATA
+            packet = Packet.create(
+                source=source_nid,
+                destination=neighbor.nid,
+                msg_type=MessageType.DATA,
+                payload=message.encode('utf-8'),
+                sequence=1,  # TODO: incrementar sequence number
+                ttl=5
+            )
+
+            # Enviar via link
+            packet_bytes = packet.to_bytes()
+
+            # Usar a conexão BLE do link para enviar
+            success = link.connection.write_characteristic(
+                IOT_NETWORK_SERVICE_UUID,
+                CHAR_NETWORK_PACKET_UUID,
+                packet_bytes
+            )
+
+            if success:
+                print(f"✅ Pacote enviado com sucesso!")
+                print(f"   Tamanho total: {len(packet_bytes)} bytes")
+                print(f"   Destino NID: {neighbor.nid}\n")
+            else:
+                print(f"❌ Falha ao enviar pacote.\n")
+
+        except Exception as e:
+            print(f"❌ Erro ao enviar: {e}\n")
+            logger.error(f"Erro ao enviar pacote para {address}: {e}")
 
     def do_clear(self, arg):
         """
