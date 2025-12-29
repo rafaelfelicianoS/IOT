@@ -22,6 +22,7 @@ from common.utils.constants import IOT_NETWORK_SERVICE_UUID, CHAR_NETWORK_PACKET
 from common.utils.logger import setup_logger
 from common.protocol.heartbeat import parse_heartbeat_packet, HeartbeatMonitor
 from common.network.packet import Packet
+from common.security import ReplayProtection
 
 # Setup logger
 logger = setup_logger("test_heartbeat_notifications")
@@ -75,14 +76,20 @@ def main():
     logger.info("💓 Heartbeat Monitor iniciado")
     logger.info("")
 
+    # Criar protetor de replay
+    replay_protector = ReplayProtection(window_size=100)
+    logger.info("🛡️  Replay Protection iniciado")
+    logger.info("")
+
     # Contador de notificações recebidas
     notification_count = 0
     heartbeat_count = 0
+    replay_count = 0
     last_sequence = None
 
     def notification_handler(data: bytes):
         """Handler para notificações de pacotes."""
-        nonlocal notification_count, heartbeat_count, last_sequence
+        nonlocal notification_count, heartbeat_count, replay_count, last_sequence
 
         notification_count += 1
 
@@ -108,6 +115,15 @@ def main():
             else:
                 logger.warning(f"      ❌ MAC INVÁLIDO - Pacote pode ter sido modificado!")
                 return  # Ignorar pacote com MAC inválido
+
+            # Verificar replay attack
+            is_not_replay = replay_protector.check_and_update(packet.source, packet.sequence)
+            if not is_not_replay:
+                replay_count += 1
+                logger.warning(f"      🚨 REPLAY ATTACK DETECTADO! (total: {replay_count})")
+                return  # Ignorar pacote replay
+
+            logger.info(f"      ✅ Não é replay")
 
             # Verificar se é heartbeat
             heartbeat = parse_heartbeat_packet(packet)
@@ -203,12 +219,17 @@ def main():
         logger.info(f"📊 RESUMO:")
         logger.info(f"   Total de notificações: {notification_count}")
         logger.info(f"   Total de heartbeats: {heartbeat_count}")
+        logger.info(f"   Replays detectados: {replay_count}")
 
         # Estatísticas finais do monitor
         stats = monitor.get_stats()
         if stats['last_heartbeat'] is not None:
             logger.info(f"   Último heartbeat: {stats['time_since_last']:.2f}s atrás")
             logger.info(f"   Sink NID: {stats['sink_nid']}")
+
+        # Estatísticas do protetor de replay
+        replay_stats = replay_protector.get_stats()
+        logger.info(f"   Sources tracked: {replay_stats['tracked_sources']}")
 
         logger.info("")
 
