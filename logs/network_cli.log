@@ -836,3 +836,14 @@
 2025-12-29 19:39:36.323 | WARNING  | common.network.link_manager:_on_uplink_disconnected:295 | ⚠️  Uplink desconectado!
 2025-12-29 19:39:36.325 | INFO     | common.network.link_manager:clear_uplink:283 | Uplink removido
 2025-12-29 19:39:36.326 | INFO     | __main__:cleanup:550 | ✅ Recursos limpos
+2025-12-29 19:41:51.579 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_194151.log
+2025-12-29 19:41:51.579 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 19:41:51.580 | INFO     | common.ble.gatt_client:__init__:525 | BLE Client iniciado
+2025-12-29 19:41:51.580 | INFO     | __main__:__init__:67 | BLE Client criado
+2025-12-29 19:41:51.581 | INFO     | common.network.neighbor_discovery:__init__:132 | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 19:41:51.581 | INFO     | __main__:__init__:79 | NeighborDiscovery criado
+2025-12-29 19:41:51.581 | INFO     | common.network.link_manager:__init__:245 | Link Manager iniciado
+2025-12-29 19:41:51.582 | INFO     | __main__:__init__:83 | LinkManager criado
+2025-12-29 19:42:10.075 | INFO     | __main__:do_stop_heartbeat:426 | Comando stop_heartbeat enviado
+2025-12-29 19:46:06.445 | INFO     | __main__:cleanup:533 | A limpar recursos...
+2025-12-29 19:46:06.447 | INFO     | __main__:cleanup:550 | ✅ Recursos limpos
