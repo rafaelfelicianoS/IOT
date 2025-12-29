@@ -1,0 +1,11 @@
+2025-12-29 23:00:29.030 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_230029.log
+2025-12-29 23:00:29.030 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 23:00:29.031 | INFO     | BLE Client iniciado
+2025-12-29 23:00:29.031 | INFO     | 🔍 A fazer scan de dispositivos IoT...
+2025-12-29 23:00:29.031 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-29 23:00:29.032 | INFO     | [OP-20251229_230029-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 23:00:34.142 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-29 23:00:34.143 | INFO     | [OP-20251229_230029-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-29 23:00:34.143 | WARNING  | ⚠️  Nenhum dispositivo IoT encontrado
+2025-12-29 23:00:34.144 | INFO     | Certifica-te que o GATT Server está a correr:
+2025-12-29 23:00:34.145 | INFO     |   sudo python3 examples/test_gatt_server.py hci0

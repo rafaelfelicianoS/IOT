@@ -212,6 +212,9 @@ def create_heartbeat_packet(
         ttl=1,  # Heartbeats não fazem forwarding
     )
 
+    # Calcular e definir MAC
+    packet.calculate_and_set_mac()
+
     logger.debug(f"Heartbeat packet criado: seq={sequence}, size={packet.size()} bytes")
 
     return packet
