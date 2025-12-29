@@ -1,375 +1,344 @@
-# Guia de Teste - GATT Server
+# Guia de Testes - Feature Integration
 
-Este guia explica como testar o GATT Server que implementámos.
+**Branch**: `feature/integration`
+
+Este guia mostra como testar todas as funcionalidades implementadas.
 
 ---
 
 ## 📋 Pré-requisitos
 
-### Verificar Bluetooth
+### Hardware
+- 2 PCs com Bluetooth BLE (ou dongles BLE)
+- Distância: < 10 metros (idealmente lado a lado)
 
+### Software
 ```bash
-# Ver adaptadores Bluetooth disponíveis
-hciconfig
+# Verificar que estás no branch correto
+git branch --show-current  # deve mostrar: feature/integration
 
-# Deve mostrar algo como:
-# hci0:	Type: Primary  Bus: USB
-#	BD Address: XX:XX:XX:XX:XX:XX  ACL MTU: 1021:8  SCO MTU: 64:1
-#	UP RUNNING
-```
+# Ativar venv
+source venv/bin/activate
 
-Se o adaptador não estiver UP:
-```bash
-sudo hciconfig hci0 up
+# Verificar dependências
+pip list | grep -E "(bleak|simpleble|dbus|loguru)"
 ```
 
 ---
 
-## 🔧 Instalação
+## 🧪 Testes Disponíveis
 
-### Opção 1: Script Automático (Recomendado)
+### 1. GATT Server Básico
+**O que testa**: GATT Server inicia, advertising funciona, características GATT disponíveis
 
+**PC Server**:
 ```bash
-# Executar script de instalação
-sudo bash install_deps.sh
-```
-
-### Opção 2: Manual
-
-```bash
-# 1. Instalar dependências do sistema
-sudo apt-get update
-sudo apt-get install -y bluez bluez-tools libbluetooth-dev \
-    python3-dbus python3-gi libglib2.0-dev \
-    python3-dev python3-pip python3-venv \
-    bluetooth hcitool
-
-# 2. Verificar serviço Bluetooth
-sudo systemctl status bluetooth
-
-# 3. Criar virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# 4. Instalar dependências Python
-pip install --upgrade pip
-pip install loguru python-dotenv typer rich
-```
-
----
-
-## 🧪 Teste 1: Executar GATT Server
-
-### Terminal 1: Servidor
-
-```bash
-# Ativar venv (se ainda não estiver)
-source venv/bin/activate
-
-# Executar servidor GATT (REQUER SUDO!)
 sudo python3 examples/test_gatt_server.py hci0
 ```
 
-**Saída esperada**:
+**Resultado esperado**:
 ```
-============================================================
-  GATT Server Test - IoT Network Service
-============================================================
-
-📱 Device NID: 12345678-1234-5678-1234-567890abcdef
-   Short: 12345678...
-
-🔧 A criar IoTNetworkService...
-✅ Application criada com sucesso!
-   Service UUID: 12340000-0000-1000-8000-00805f9b34fb
-   Characteristics: 4
-
-📡 A registar application no adaptador hci0...
-✅ GATT application registada com sucesso!
-
-============================================================
-  ✅ GATT Server a correr!
-============================================================
-
-Serviço disponível para clientes BLE.
-Pressione Ctrl+C para terminar.
+✅ GATT Server registado com sucesso
+✅ Advertisement registado com sucesso
+✅ Heartbeat timer iniciado (5s intervals)
+✅ Neighbor update timer iniciado (10s intervals)
+📡 A aguardar conexões...
 ```
 
-### Terminal 2: Cliente (bluetoothctl)
-
+**Verificar noutro terminal**:
 ```bash
-# Abrir bluetoothctl
-bluetoothctl
-
-# Comandos dentro do bluetoothctl:
-[bluetooth]# power on
-[bluetooth]# scan on
-
-# Aguardar alguns segundos até ver o dispositivo
-# (pode aparecer como "Unknown" ou com um nome genérico)
-
-# Anotar o MAC address do dispositivo
-# Conectar (substituir XX:XX:XX:XX:XX:XX pelo MAC address)
-[bluetooth]# connect XX:XX:XX:XX:XX:XX
-
-# Se conectar com sucesso, listar serviços
-[bluetooth]# list-attributes
-
-# Deves ver o serviço IoT Network com UUID 12340000-...
-# E as 4 características
-
-# Sair
-[bluetooth]# exit
-```
-
----
-
-## 🧪 Teste 2: Verificar Características GATT
-
-Depois de conectar com `bluetoothctl`, podes explorar as características:
-
-### Ver todas as características
-
-```bash
-[bluetooth]# list-attributes
-```
-
-Deves ver:
-
-```
-Service /org/bluez/hci0/dev_XX_XX_XX_XX_XX_XX/service0XXX
-	12340000-0000-1000-8000-00805f9b34fb
-	IoT Network Service
-Characteristic /org/bluez/hci0/dev_XX_XX_XX_XX_XX_XX/service0XXX/char0XXX
-	12340001-0000-1000-8000-00805f9b34fb
-	NetworkPacket
-Characteristic /org/bluez/hci0/dev_XX_XX_XX_XX_XX_XX/service0XXX/char0XXX
-	12340002-0000-1000-8000-00805f9b34fb
-	DeviceInfo
-Characteristic /org/bluez/hci0/dev_XX_XX_XX_XX_XX_XX/service0XXX/char0XXX
-	12340003-0000-1000-8000-00805f9b34fb
-	NeighborTable
-Characteristic /org/bluez/hci0/dev_XX_XX_XX_XX_XX_XX/service0XXX/char0XXX
-	12340004-0000-1000-8000-00805f9b34fb
-	Auth
-```
-
-### Ler Device Info
-
-```bash
-# Selecionar a characteristic DeviceInfo (UUID 12340002-...)
-[bluetooth]# select-attribute /org/bluez/hci0/dev_XX_XX_XX_XX_XX_XX/service0XXX/char0XXX
-
-# Ler valor
-[bluetooth]# read
-```
-
-Deves ver os bytes do NID + hop count + device type.
-
----
-
-## 🧪 Teste 3: Scan BLE
-
-Verificar se o dispositivo aparece no scan:
-
-```bash
-# Scan simples
+# Ver se dispositivo está visível
 sudo hcitool lescan
 
-# Scan com informação detalhada
-sudo bluetoothctl
-[bluetooth]# scan on
+# Ou usar bluetoothctl
+bluetoothctl
+> scan on
+# Deve aparecer: IoT-Network-XXXX
 ```
+
+---
+
+### 2. BLE Client - Conexão e Leitura
+**O que testa**: Scan, conexão, leitura de características
+
+**PC Client** (com server a correr):
+```bash
+python3 examples/test_ble_client.py
+```
+
+**Resultado esperado**:
+```
+🔍 A fazer scan...
+✅ Encontrado: E0:D3:62:D6:EE:A0
+🔗 A conectar...
+✅ Conectado!
+📡 Services: 13 services encontrados
+📖 A ler DeviceInfo...
+✅ DeviceInfo lido com sucesso
+```
+
+---
+
+### 3. Packet Send via Bleak
+**O que testa**: Envio de pacotes via BLE (write operation)
+
+**PC Client**:
+```bash
+python3 examples/test_packet_send_bleak.py
+```
+
+**Resultado esperado**:
+```
+🔍 A fazer scan de dispositivos BLE...
+✅ Encontrado: IoT-Network (E0:D3:62:D6:EE:A0)
+🔌 A conectar ao dispositivo...
+✅ Conectado: True
+📡 A descobrir serviços...
+✅ IoT Network Service encontrado
+📦 A criar pacote de teste...
+   Total Packet Size: 126 bytes
+✍️  A enviar pacote via Bleak...
+✅ SUCESSO! Pacote enviado com sucesso!
+```
+
+**No server** (terminal onde corre test_gatt_server.py):
+```
+📨 Pacote recebido via WriteNetworkPacket
+   Source: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+   Size: 126 bytes
+```
+
+---
+
+### 4. Heartbeat Notifications
+**O que testa**: Receção de heartbeats via notificações BLE
+
+**PC Client**:
+```bash
+python3 examples/test_heartbeat_notifications.py
+```
+
+**Resultado esperado**:
+```
+🔍 Scanning for BLE devices...
+✅ Found target: E0:D3:62:D6:EE:A0
+🔗 Connecting...
+✅ Connected!
+📡 Subscribing to heartbeat notifications...
+✅ Subscribed to NetworkPacket notifications!
+
+⏳ Listening for 30 seconds...
+
+📨 Heartbeat #1 received!
+   Sink NID: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+   Sequence: 123
+   Timestamp: 1735500000.123
+
+📨 Heartbeat #2 received!
+   ...
+```
+
+**Frequência**: 1 heartbeat a cada ~5 segundos (deve receber 6 heartbeats em 30s)
+
+---
+
+### 5. Neighbor Table Notifications
+**O que testa**: Receção de updates da neighbor table
+
+**PC Client**:
+```bash
+python3 examples/test_neighbor_notifications.py
+```
+
+**Resultado esperado**:
+```
+🔍 Scanning for device...
+✅ Found: E0:D3:62:D6:EE:A0
+🔗 Connecting...
+✅ Connected!
+📡 Subscribing to neighbor table notifications...
+✅ Subscribed!
+
+⏳ Listening for 90 seconds...
+
+📊 Neighbor Table Update #1 (8 bytes)
+   Format: 00 00 00 00 00 00 00 00
+   (2 neighbors found)
+
+📊 Neighbor Table Update #2 (8 bytes)
+   ...
+```
+
+**Frequência**: 1 update a cada ~10 segundos
+
+---
+
+### 6. Network CLI (Interface Completa)
+**O que testa**: Scan, connect, disconnect, status - tudo num interface interativa
+
+**PC Client**:
+```bash
+python3 examples/network_cli.py
+```
+
+**Comandos para experimentar**:
+
+```
+╔═══════════════════════════════════════════════════════════════╗
+║                  IoT Network - CLI Interface                  ║
+╚═══════════════════════════════════════════════════════════════╝
+
+# 1. Ver comandos disponíveis
+iot-network> help
+
+# 2. Fazer scan de vizinhos
+iot-network> scan
+
+# Output esperado:
+🔍 A fazer scan de vizinhos...
+
+✅ Encontrados 1 vizinho(s):
+
+┌─────────────────────┬──────────────┬─────┬────────┬─────────┐
+│ Address             │ NID          │ Hop │ Type   │ RSSI    │
+├─────────────────────┼──────────────┼─────┼────────┼─────────┤
+│ E0:D3:62:D6:EE:A0   │ 12345678...  │  -1 │ sink   │  -60dBm │
+└─────────────────────┴──────────────┴─────┴────────┴─────────┘
+
+🏆 Melhor rota: E0:D3:62:D6:EE:A0 (hop=-1, rssi=-60dBm)
+
+# 3. Ver vizinhos conhecidos (cache)
+iot-network> neighbors
+
+# 4. Conectar a um vizinho
+iot-network> connect E0:D3:62:D6:EE:A0
+
+# Output esperado:
+🔗 A conectar a E0:D3:62:D6:EE:A0...
+   NID: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+   Hop count: -1
+   RSSI: -60dBm
+
+✅ Conectado com sucesso a E0:D3:62:D6:EE:A0!
+
+# 5. Ver status da rede
+iot-network> status
+
+# Output esperado:
+📊 STATUS DA REDE
+
+🔼 UPLINK:
+   Address: E0:D3:62:D6:EE:A0
+   NID: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+   Hop count: -1
+   Type: sink
+   Estado: 🟢 Conectado
+
+🔽 DOWNLINKS: Nenhum
+
+📈 ESTATÍSTICAS:
+   Vizinhos conhecidos: 1
+   Vizinhos conectados: 1
+   Melhor hop count: -1
+   Último scan: 10s atrás
+
+# 6. Desconectar
+iot-network> disconnect E0:D3:62:D6:EE:A0
+
+# 7. Limpar tela
+iot-network> clear
+
+# 8. Sair
+iot-network> exit
+```
+
+---
+
+## 🔧 Configuração BLE (se necessário)
+
+### Se tiveres erro "br-connection-unknown"
+
+**PC Server**:
+```bash
+# Configurar adaptador para LE-only (disable BR/EDR)
+./examples/configure_ble_only.sh hci0
+```
+
+### Se dispositivo não aparecer no scan
+
+**PC Client**:
+```bash
+# Limpar cache BlueZ
+./examples/clear_bluez_cache.sh -y
+
+# Aproximar dispositivos fisicamente
+# Reduzir interferência WiFi
+```
+
+---
+
+## 📊 Checklist de Testes
+
+Marca o que já testaste:
+
+- [ ] **Test 1**: GATT Server inicia sem erros
+- [ ] **Test 2**: BLE Client conecta e lê DeviceInfo
+- [ ] **Test 3**: Packet Send via Bleak (126 bytes)
+- [ ] **Test 4**: Heartbeat notifications (6 heartbeats em 30s)
+- [ ] **Test 5**: Neighbor notifications (8 updates em 90s)
+- [ ] **Test 6**: Network CLI - scan funciona
+- [ ] **Test 7**: Network CLI - connect funciona
+- [ ] **Test 8**: Network CLI - status mostra uplink
+- [ ] **Test 9**: Network CLI - disconnect funciona
 
 ---
 
 ## 🐛 Troubleshooting
 
-### Erro: "Dependency glib-2.0 not found"
-
+### Erro: "SimpleBLE não está instalado"
 ```bash
-sudo apt-get install libglib2.0-dev python3-gi
+pip install simpleble
 ```
 
-### Erro: "Bluetooth stack error"
+### Erro: "Device not found"
+1. Verificar que server está a correr: `sudo python3 examples/test_gatt_server.py hci0`
+2. Verificar scan manual: `sudo hcitool lescan`
+3. Aproximar dispositivos
+4. Limpar cache: `./examples/clear_bluez_cache.sh -y`
 
+### Erro: "br-connection-unknown"
 ```bash
-# Reiniciar serviço Bluetooth
+./examples/configure_ble_only.sh hci0
+```
+
+### Server não inicia
+```bash
+# Parar outros processos bluetooth
 sudo systemctl restart bluetooth
 
-# Verificar status
-sudo systemctl status bluetooth
-```
-
-### Erro: "Permission denied"
-
-O servidor GATT **requer sudo** porque interage diretamente com o BlueZ via D-Bus:
-
-```bash
-sudo python3 examples/test_gatt_server.py hci0
-```
-
-### Adaptador não aparece (hci0)
-
-```bash
-# Listar adaptadores
-hciconfig
-
-# Se não mostrar nada:
-sudo hciconfig hci0 up
-
-# Verificar no sistema
-lsusb | grep -i bluetooth
-```
-
-### "Application already registered"
-
-Se já tens uma aplicação GATT registada:
-
-```bash
-# Parar o servidor anterior (Ctrl+C)
-# Aguardar alguns segundos
-# Tentar novamente
-sudo python3 examples/test_gatt_server.py hci0
+# Verificar permissões
+sudo usermod -aG bluetooth $USER
 ```
 
 ---
 
-## 📊 Logs
+## 📝 Logs
 
-Os logs são guardados em `logs/test_gatt_server.log`:
+Todos os testes geram logs em `logs/`:
+- `logs/iot-network.log` - Log geral
+- `logs/test_gatt_server.log` - Server logs
+- `logs/ble_operations_*.log` - Operações BLE detalhadas
 
+Para ver logs em real-time:
 ```bash
-# Ver logs em tempo real
-tail -f logs/test_gatt_server.log
-
-# Ver últimas 50 linhas
-tail -50 logs/test_gatt_server.log
+tail -f logs/iot-network.log
 ```
 
 ---
 
-## ✅ Checklist de Teste
+## ✅ Próximos Passos
 
-- [ ] Servidor GATT inicia sem erros
-- [ ] Servidor regista com BlueZ (mensagem "✅ GATT application registada")
-- [ ] Dispositivo aparece em scan BLE
-- [ ] Consegues conectar via `bluetoothctl`
-- [ ] Serviço IoT Network (12340000-...) é visível
-- [ ] 4 Características são visíveis
-- [ ] Consegues ler DeviceInfo characteristic
-- [ ] Logs são criados em `logs/`
+Depois de testares tudo:
+1. Reportar resultados (o que funcionou / não funcionou)
+2. Decidir próxima implementação (sugestão: Fase 3 - Security)
 
----
-
-## 🎯 Teste 4: BLE Client (Scanner e Conexão)
-
-### Pré-requisito: SimpleBLE
-
-```bash
-# Instalar SimpleBLE
-pip install simplepyble
-
-# Ou via apt (se disponível)
-sudo apt install python3-simplepyble
-```
-
-### Executar teste do BLE Client
-
-**Terminal 1**: Manter o GATT Server a correr (test_gatt_server.py)
-
-**Terminal 2**: Executar BLE Client
-
-```bash
-# Executar cliente BLE
-python3 examples/test_ble_client.py
-```
-
-**Saída esperada**:
-```
-============================================================
-  BLE Client Test - IoT Network Scanner
-============================================================
-
-🔍 A fazer scan de dispositivos IoT...
-   (aguarda 5 segundos)
-
-✅ Encontrados 1 dispositivos IoT:
-
-  1. IoT-Node (E0:D3:62:D6:EE:A0)
-     Address: E0:D3:62:D6:EE:A0
-     RSSI: -45 dBm
-     Services: 1
-
-============================================================
-🔗 A conectar ao primeiro dispositivo: E0:D3:62:D6:EE:A0
-============================================================
-
-✅ Conectado com sucesso!
-
-🔍 A explorar serviços GATT...
-   Encontrados X serviços:
-
-   📦 Service: 12340000-0000-1000-8000-00805f9b34fb
-      - Characteristic: 12340001-...
-        Capabilities: write, notify
-      - Characteristic: 12340002-...
-        Capabilities: read
-      (...)
-
-============================================================
-📖 A ler DeviceInfo Characteristic...
-============================================================
-
-✅ DeviceInfo lida: 18 bytes
-
-   📱 NID: d18371c1-884c-4265-957d-ce1f01c3a59d
-      Short: d18371c1...
-   🔢 Hop Count: 1
-   🏷️  Device Type: node
-
-============================================================
-📖 A ler NeighborTable Characteristic...
-============================================================
-
-✅ NeighborTable lida: X bytes
-
-   👥 Número de vizinhos: 2
-
-   1. NID: 12345678...
-      Hop Count: 0
-   2. NID: 87654321...
-      Hop Count: 1
-
-============================================================
-👋 A desconectar...
-============================================================
-✅ Desconectado
-```
-
----
-
-## 🎯 Próximos Testes
-
-Depois de confirmar que o BLE Client funciona:
-
-1. **Testar callbacks**: Escrever dados na NetworkPacket characteristic
-2. **Testar notificações**: Subscrever e receber notificações
-3. **Múltiplos clientes**: Conectar 2+ dispositivos simultaneamente
-4. **Neighbor Discovery**: Scan periódico automático
-5. **CLI Interface**: Comandos interativos (scan, connect, status)
-
----
-
-## 📞 Ajuda
-
-Se tiveres problemas:
-
-1. Verifica os logs: `tail -f logs/test_gatt_server.log`
-2. Verifica Bluetooth: `sudo systemctl status bluetooth`
-3. Verifica adaptador: `hciconfig`
-4. Consulta [QUICKSTART.md](QUICKSTART.md) para mais detalhes
-
----
-
-**Boa sorte com os testes! 🚀**
