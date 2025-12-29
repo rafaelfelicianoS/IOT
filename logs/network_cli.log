@@ -847,3 +847,51 @@
 2025-12-29 19:42:10.075 | INFO     | __main__:do_stop_heartbeat:426 | Comando stop_heartbeat enviado
 2025-12-29 19:46:06.445 | INFO     | __main__:cleanup:533 | A limpar recursos...
 2025-12-29 19:46:06.447 | INFO     | __main__:cleanup:550 | ✅ Recursos limpos
+2025-12-29 19:58:31.775 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_195831.log
+2025-12-29 19:58:31.775 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 19:58:31.776 | INFO     | common.ble.gatt_client:__init__:525 | BLE Client iniciado
+2025-12-29 19:58:31.776 | INFO     | __main__:__init__:67 | BLE Client criado
+2025-12-29 19:58:31.777 | INFO     | common.network.neighbor_discovery:__init__:132 | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 19:58:31.777 | INFO     | __main__:__init__:79 | NeighborDiscovery criado
+2025-12-29 19:58:31.778 | INFO     | common.network.link_manager:__init__:251 | Link Manager iniciado
+2025-12-29 19:58:31.778 | INFO     | __main__:__init__:83 | LinkManager criado
+2025-12-29 19:58:35.013 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 19:58:35.223 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 19:58:35.225 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_195831-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 19:58:40.342 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 19:58:40.343 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_195831-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 19:58:40.344 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-29 19:58:40.351 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 19:58:40.353 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_195831-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 19:58:44.079 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 19:58:44.081 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_195831-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3722.37ms
+2025-12-29 19:58:44.583 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251229_195831-0006] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: ecf30aa9df61476c86c704c6859bf17b0100 | ASCII: .....aGl.......{..
+2025-12-29 19:58:44.584 | INFO     | common.network.neighbor_discovery:scan_once:210 | Vizinho descoberto: E0:D3:62:D6:EE:A0 (ecf30aa9...) hop=1 rssi=-49dBm type=node disconnected seen=0.0s ago
+2025-12-29 19:58:47.290 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 19:58:47.292 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_195831-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 19:58:47.296 | INFO     | common.network.neighbor_discovery:scan_once:240 | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-29 19:59:06.602 | INFO     | common.network.link_manager:connect_to_neighbor:436 | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 19:59:06.604 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 19:59:06.606 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_195831-0008] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 19:59:10.150 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 19:59:10.151 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_195831-0009] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3540.28ms
+2025-12-29 19:59:10.153 | INFO     | common.network.link_manager:__init__:110 | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=ecf30aa9... hop=1 (UPLINK)
+2025-12-29 19:59:10.155 | INFO     | common.network.link_manager:set_uplink:283 | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=ecf30aa9... hop=1
+2025-12-29 19:59:10.381 | INFO     | common.ble.gatt_client:subscribe_notifications:468 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 19:59:10.383 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251229_195831-0010] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 19:59:10.385 | INFO     | common.network.heartbeat_monitor:start:72 | 💓 HeartbeatMonitor iniciado: verificação a cada 5.0s, timeout após 3 misses
+2025-12-29 19:59:10.385 | INFO     | common.network.link_manager:_start_heartbeat_monitoring:370 | 💓 Monitoramento de heartbeat iniciado
+2025-12-29 19:59:10.386 | INFO     | common.network.link_manager:connect_to_neighbor:464 | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-29 19:59:15.384 | WARNING  | common.network.heartbeat_monitor:_monitor_loop:127 | ⚠️  Heartbeat perdido! Contador: 1/3 (último há 5.0s)
+2025-12-29 19:59:20.385 | WARNING  | common.network.heartbeat_monitor:_monitor_loop:127 | ⚠️  Heartbeat perdido! Contador: 2/3 (último há 10.0s)
+2025-12-29 19:59:25.387 | WARNING  | common.network.heartbeat_monitor:_monitor_loop:127 | ⚠️  Heartbeat perdido! Contador: 3/3 (último há 15.0s)
+2025-12-29 19:59:25.389 | ERROR    | common.network.heartbeat_monitor:_monitor_loop:134 | ❌ TIMEOUT DE HEARTBEAT! Perdidos 3 heartbeats consecutivos
+2025-12-29 19:59:25.390 | ERROR    | common.network.link_manager:_on_heartbeat_timeout:382 | 💔 TIMEOUT DE HEARTBEAT DETETADO!
+2025-12-29 19:59:25.392 | ERROR    | common.network.link_manager:_on_heartbeat_timeout:383 |    Ações: desconectar uplink + todos os downlinks
+2025-12-29 19:59:25.393 | INFO     | common.network.link_manager:_on_heartbeat_timeout:388 |    A desconectar uplink: E0:D3:62:D6:EE:A0
+2025-12-29 19:59:27.290 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 19:59:27.292 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_195831-0011] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 19:59:27.293 | WARNING  | common.network.link_manager:_on_uplink_disconnected:308 | ⚠️  Uplink desconectado!
+2025-12-29 19:59:27.296 | ERROR    | common.network.heartbeat_monitor:_monitor_loop:144 | Erro no callback de timeout: cannot join current thread
+2025-12-29 19:59:38.412 | INFO     | __main__:cleanup:579 | A limpar recursos...
+2025-12-29 19:59:38.414 | INFO     | __main__:cleanup:596 | ✅ Recursos limpos
