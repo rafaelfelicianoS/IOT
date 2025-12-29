@@ -553,3 +553,42 @@
 2025-12-29 16:47:11.008 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_164510-0016] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
 2025-12-29 16:47:11.010 | WARNING  | common.network.link_manager:_on_uplink_disconnected:295 | ⚠️  Uplink desconectado!
 2025-12-29 16:47:11.012 | INFO     | common.network.link_manager:clear_uplink:283 | Uplink removido
+2025-12-29 16:50:04.212 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_165004.log
+2025-12-29 16:50:04.213 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 16:50:04.213 | INFO     | common.ble.gatt_client:__init__:525 | BLE Client iniciado
+2025-12-29 16:50:04.214 | INFO     | __main__:__init__:64 | BLE Client criado
+2025-12-29 16:50:04.214 | INFO     | common.network.neighbor_discovery:__init__:132 | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 16:50:04.215 | INFO     | __main__:__init__:76 | NeighborDiscovery criado
+2025-12-29 16:50:04.215 | INFO     | common.network.link_manager:__init__:245 | Link Manager iniciado
+2025-12-29 16:50:04.215 | INFO     | __main__:__init__:80 | LinkManager criado
+2025-12-29 16:50:06.022 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:50:06.232 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:50:06.233 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_165004-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:50:11.251 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:50:11.252 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_165004-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:50:11.253 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:50:13.025 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:50:13.368 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:50:13.370 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_165004-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:50:18.397 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 16:50:18.398 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_165004-0004] SCAN_RESULT | Devices_Found: 1
+2025-12-29 16:50:18.399 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-29 16:50:18.408 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:50:18.411 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_165004-0005] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:50:21.596 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:50:21.598 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_165004-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3181.27ms
+2025-12-29 16:50:22.106 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251229_165004-0008] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 32a3f34fe0c34b30b8c7d02af6d71c880100 | ASCII: 2..O..K0...*......
+2025-12-29 16:50:22.107 | INFO     | common.network.neighbor_discovery:scan_once:210 | Vizinho descoberto: E0:D3:62:D6:EE:A0 (32a3f34f...) hop=1 rssi=-50dBm type=node disconnected seen=0.0s ago
+2025-12-29 16:50:24.013 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 16:50:24.015 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_165004-0009] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 16:50:24.017 | INFO     | common.network.neighbor_discovery:scan_once:240 | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-29 16:50:36.800 | INFO     | common.network.link_manager:connect_to_neighbor:319 | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 16:50:36.803 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:50:36.804 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_165004-0010] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:50:40.559 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:50:40.560 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_165004-0011] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3748.93ms
+2025-12-29 16:50:40.562 | INFO     | common.network.link_manager:__init__:107 | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=32a3f34f... hop=1 (UPLINK)
+2025-12-29 16:50:40.563 | INFO     | common.network.link_manager:set_uplink:273 | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=32a3f34f... hop=1
+2025-12-29 16:50:40.565 | INFO     | common.network.link_manager:connect_to_neighbor:347 | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-29 16:51:01.025 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20251229_165004-0012] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 75 bytes | Hex: 351034e1756c4aa6b29ae0cc2eac17ef32a3f34fe0c34b30b8c7d02af6d71c880105000000010000000000000000000000000000000000000000000000000000 | ASCII: 5.4.ulJ.........2..O..K0...*.................................... [TRUNCATED]
+2025-12-29 16:51:01.105 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20251229_165004-0013] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb

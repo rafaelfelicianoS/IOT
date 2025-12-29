@@ -1,0 +1,55 @@
+2025-12-29 16:50:04.212 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_165004.log
+2025-12-29 16:50:04.213 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 16:50:04.213 | INFO     | BLE Client iniciado
+2025-12-29 16:50:04.214 | INFO     | BLE Client criado
+2025-12-29 16:50:04.214 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 16:50:04.215 | INFO     | NeighborDiscovery criado
+2025-12-29 16:50:04.215 | INFO     | Link Manager iniciado
+2025-12-29 16:50:04.215 | INFO     | LinkManager criado
+2025-12-29 16:50:06.022 | INFO     | A iniciar scan de vizinhos...
+2025-12-29 16:50:06.022 | DEBUG    | A limpar cache de scan BLE...
+2025-12-29 16:50:06.231 | DEBUG    | Cache de scan limpo
+2025-12-29 16:50:06.232 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-29 16:50:06.233 | INFO     | [OP-20251229_165004-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:50:11.251 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:50:11.252 | INFO     | [OP-20251229_165004-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:50:11.253 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:50:13.025 | INFO     | A iniciar scan de vizinhos...
+2025-12-29 16:50:13.026 | DEBUG    | Aguardando 0.2s para limpar cache BLE...
+2025-12-29 16:50:13.255 | DEBUG    | A limpar cache de scan BLE...
+2025-12-29 16:50:13.367 | DEBUG    | Cache de scan limpo
+2025-12-29 16:50:13.368 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-29 16:50:13.370 | INFO     | [OP-20251229_165004-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:50:18.394 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -50 dBm
+2025-12-29 16:50:18.397 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-29 16:50:18.398 | INFO     | [OP-20251229_165004-0004] SCAN_RESULT | Devices_Found: 1
+2025-12-29 16:50:18.399 | DEBUG    | [OP-20251229_165004-0004]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -50 dBm | Services: 1
+2025-12-29 16:50:18.399 | INFO     | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-29 16:50:18.403 | DEBUG    | A conectar a E0:D3:62:D6:EE:A0 para ler DeviceInfo...
+2025-12-29 16:50:18.408 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-29 16:50:18.408 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:50:18.411 | INFO     | [OP-20251229_165004-0005] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:50:21.596 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:50:21.598 | INFO     | [OP-20251229_165004-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3181.27ms
+2025-12-29 16:50:21.599 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-29 16:50:21.599 | DEBUG    | [OP-20251229_165004-0007] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-29 16:50:22.105 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-29 16:50:22.106 | INFO     | [OP-20251229_165004-0008] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 32a3f34fe0c34b30b8c7d02af6d71c880100 | ASCII: 2..O..K0...*......
+2025-12-29 16:50:22.107 | INFO     | Vizinho descoberto: E0:D3:62:D6:EE:A0 (32a3f34f...) hop=1 rssi=-50dBm type=node disconnected seen=0.0s ago
+2025-12-29 16:50:24.013 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 16:50:24.015 | INFO     | [OP-20251229_165004-0009] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 16:50:24.017 | INFO     | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-29 16:50:36.800 | INFO     | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 16:50:36.802 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-29 16:50:36.803 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:50:36.804 | INFO     | [OP-20251229_165004-0010] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:50:40.559 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:50:40.560 | INFO     | [OP-20251229_165004-0011] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3748.93ms
+2025-12-29 16:50:40.561 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-29 16:50:40.562 | INFO     | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=32a3f34f... hop=1 (UPLINK)
+2025-12-29 16:50:40.563 | INFO     | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=32a3f34f... hop=1
+2025-12-29 16:50:40.565 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-29 16:50:40.566 | DEBUG    | Vizinho E0:D3:62:D6:EE:A0 marcado como conectado
+2025-12-29 16:51:01.025 | INFO     | [OP-20251229_165004-0012] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 75 bytes | Hex: 351034e1756c4aa6b29ae0cc2eac17ef32a3f34fe0c34b30b8c7d02af6d71c880105000000010000000000000000000000000000000000000000000000000000 | ASCII: 5.4.ulJ.........2..O..K0...*.................................... [TRUNCATED]
+2025-12-29 16:51:01.104 | DEBUG    | ✅ Write via SimpleBLE: 12340001-0000-1000-8000-00805f9b34fb (75 bytes)
+2025-12-29 16:51:01.105 | INFO     | [OP-20251229_165004-0013] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
