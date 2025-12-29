@@ -562,16 +562,52 @@ class BLEClient:
                 peripheral = p
                 break
 
+        # Se peripheral não foi encontrado no cache, fazer scan rápido
         if not peripheral:
-            logger.error(f"Dispositivo {device.address} não encontrado")
+            logger.debug(f"Peripheral {device.address} não está em cache, fazendo scan rápido...")
+            self.scanner.adapter.scan_for(2000)  # 2 segundos
+            peripherals = self.scanner.adapter.scan_get_results()
+
+            for p in peripherals:
+                if p.address() == device.address:
+                    peripheral = p
+                    logger.debug(f"Peripheral {device.address} encontrado após scan")
+                    break
+
+        if not peripheral:
+            logger.error(f"Dispositivo {device.address} não encontrado mesmo após scan")
             return None
 
         # Criar e conectar
         conn = BLEConnection(peripheral, adapter_name=self.adapter_name)
-        if conn.connect():
+        success = conn.connect()
+
+        # Se falhou e o peripheral veio do cache, tentar refresh
+        if not success and peripheral is not None:
+            logger.debug(f"Conexão falhou, tentando refresh do cache e retry...")
+
+            # Fazer scan curto para refresh
+            self.scanner.adapter.scan_for(2000)
+            peripherals = self.scanner.adapter.scan_get_results()
+
+            # Procurar peripheral novamente
+            peripheral = None
+            for p in peripherals:
+                if p.address() == device.address:
+                    peripheral = p
+                    break
+
+            if peripheral:
+                # Retry com peripheral atualizado
+                logger.debug(f"Peripheral refreshed, tentando conectar novamente...")
+                conn = BLEConnection(peripheral, adapter_name=self.adapter_name)
+                success = conn.connect()
+
+        if success:
             self.connections[device.address] = conn
             return conn
         else:
+            logger.error(f"Falha ao conectar a {device.address} após todas as tentativas")
             return None
 
     def disconnect_from_device(self, address: str):
