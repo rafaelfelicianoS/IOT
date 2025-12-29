@@ -474,10 +474,10 @@ Digite 'exit' ou Ctrl+D para sair.
                 print("   O servidor está a correr?\n")
                 return
 
-            # Ler últimas 50 linhas do log
+            # Ler últimas 200 linhas do log
             with open(server_log, 'r') as f:
                 lines = f.readlines()
-                last_lines = lines[-50:] if len(lines) > 50 else lines
+                last_lines = lines[-200:] if len(lines) > 200 else lines
 
             # Procurar última linha de heartbeat e estado
             last_heartbeat = None
@@ -502,6 +502,8 @@ Digite 'exit' ou Ctrl+D para sair.
                     heartbeat_enabled = True
 
             print("\n📊 Estado dos Heartbeats do Servidor:\n")
+            print(f"   Log: {server_log.name}")
+            print(f"   Linhas analisadas: {len(last_lines)}\n")
 
             # Determinar estado atual
             if heartbeat_disabled and not heartbeat_enabled:
@@ -517,7 +519,8 @@ Digite 'exit' ou Ctrl+D para sair.
                 print("\n   Use 'stop_heartbeat' para parar.\n")
             else:
                 print("   Status: ⚠️  Desconhecido")
-                print("   Nenhum heartbeat encontrado no log.\n")
+                print("   Nenhum heartbeat encontrado no log.")
+                print("   O servidor está a correr?\n")
 
         except Exception as e:
             print(f"\n❌ Erro ao verificar status: {e}\n")
