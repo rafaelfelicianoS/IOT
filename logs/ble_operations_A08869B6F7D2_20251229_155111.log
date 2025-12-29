@@ -1,0 +1,43 @@
+2025-12-29 15:51:11.998 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_155111.log
+2025-12-29 15:51:11.999 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 15:51:11.999 | INFO     | BLE Client iniciado
+2025-12-29 15:51:11.999 | INFO     | BLE Client criado
+2025-12-29 15:51:12.000 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 15:51:12.000 | INFO     | NeighborDiscovery criado
+2025-12-29 15:51:12.001 | INFO     | Link Manager iniciado
+2025-12-29 15:51:12.001 | INFO     | LinkManager criado
+2025-12-29 15:51:26.937 | INFO     | A iniciar scan de vizinhos...
+2025-12-29 15:51:26.938 | DEBUG    | A limpar cache de scan BLE...
+2025-12-29 15:51:27.145 | DEBUG    | Cache de scan limpo
+2025-12-29 15:51:27.146 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-29 15:51:27.148 | INFO     | [OP-20251229_155111-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 15:51:32.262 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -59 dBm
+2025-12-29 15:51:32.265 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-29 15:51:32.266 | INFO     | [OP-20251229_155111-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 15:51:32.267 | DEBUG    | [OP-20251229_155111-0002]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -59 dBm | Services: 1
+2025-12-29 15:51:32.267 | INFO     | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-29 15:51:32.269 | DEBUG    | A conectar a E0:D3:62:D6:EE:A0 para ler DeviceInfo...
+2025-12-29 15:51:32.273 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-29 15:51:32.274 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 15:51:32.276 | INFO     | [OP-20251229_155111-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 15:51:36.155 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 15:51:36.157 | INFO     | [OP-20251229_155111-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3874.29ms
+2025-12-29 15:51:36.158 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-29 15:51:36.158 | DEBUG    | [OP-20251229_155111-0005] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-29 15:51:36.660 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-29 15:51:36.661 | INFO     | [OP-20251229_155111-0006] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 768b52b45e54411a8e0a5cda3087c9b20100 | ASCII: v.R.^TA...\.0.....
+2025-12-29 15:51:36.662 | INFO     | Vizinho descoberto: E0:D3:62:D6:EE:A0 (768b52b4...) hop=1 rssi=-59dBm type=node disconnected seen=0.0s ago
+2025-12-29 15:51:39.011 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 15:51:39.012 | INFO     | [OP-20251229_155111-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 15:51:39.013 | INFO     | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-29 15:52:04.065 | INFO     | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 15:52:04.067 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-29 15:52:04.067 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 15:52:04.071 | INFO     | [OP-20251229_155111-0008] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 15:52:07.168 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 15:52:07.169 | INFO     | [OP-20251229_155111-0009] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3093.77ms
+2025-12-29 15:52:07.170 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-29 15:52:07.171 | INFO     | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=768b52b4... hop=1 (UPLINK)
+2025-12-29 15:52:07.172 | INFO     | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=768b52b4... hop=1
+2025-12-29 15:52:07.173 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-29 15:52:07.174 | DEBUG    | Vizinho E0:D3:62:D6:EE:A0 marcado como conectado
