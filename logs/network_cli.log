@@ -432,3 +432,74 @@
 2025-12-29 16:07:03.708 | INFO     | common.network.link_manager:set_uplink:273 | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=a6191889... hop=1
 2025-12-29 16:07:03.709 | INFO     | common.network.link_manager:connect_to_neighbor:347 | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
 2025-12-29 16:07:26.462 | ERROR    | __main__:main:428 | Erro fatal: 'LinkManager' object has no attribute 'get_link'
+2025-12-29 16:11:04.456 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_161104.log
+2025-12-29 16:11:04.457 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 16:11:04.457 | INFO     | common.ble.gatt_client:__init__:525 | BLE Client iniciado
+2025-12-29 16:11:04.457 | INFO     | __main__:__init__:64 | BLE Client criado
+2025-12-29 16:11:04.458 | INFO     | common.network.neighbor_discovery:__init__:132 | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 16:11:04.458 | INFO     | __main__:__init__:76 | NeighborDiscovery criado
+2025-12-29 16:11:04.458 | INFO     | common.network.link_manager:__init__:245 | Link Manager iniciado
+2025-12-29 16:11:04.459 | INFO     | __main__:__init__:80 | LinkManager criado
+2025-12-29 16:11:06.431 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:11:06.542 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:11:06.543 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_161104-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:11:11.555 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:11:11.556 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_161104-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:11:11.557 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:11:13.773 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:11:13.906 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:11:13.907 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_161104-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:11:18.926 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:11:18.927 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_161104-0004] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:11:18.929 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:11:21.202 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:11:21.313 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:11:21.315 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_161104-0005] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:11:26.331 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:11:26.332 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_161104-0006] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:11:26.333 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:11:53.523 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:11:53.656 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:11:53.659 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_161104-0007] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:11:58.682 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 16:11:58.683 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_161104-0008] SCAN_RESULT | Devices_Found: 1
+2025-12-29 16:11:58.685 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-29 16:11:58.693 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:11:58.695 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_161104-0009] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:11:58.705 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:11:58.707 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251229_161104-0010] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 6.86ms
+2025-12-29 16:11:58.776 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251229_161104-0012] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: a8a0f2cf1fb849f28e8e9bdc44d95ca90100 | ASCII: ......I.....D.\...
+2025-12-29 16:11:58.777 | INFO     | common.network.neighbor_discovery:scan_once:210 | Vizinho descoberto: E0:D3:62:D6:EE:A0 (a8a0f2cf...) hop=1 rssi=-51dBm type=node disconnected seen=0.0s ago
+2025-12-29 16:12:01.035 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 16:12:01.036 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251229_161104-0013] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 16:12:01.038 | INFO     | common.network.neighbor_discovery:scan_once:240 | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-29 16:12:39.830 | INFO     | common.network.link_manager:connect_to_neighbor:319 | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 16:12:39.832 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:12:39.834 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_161104-0014] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:12:39.842 | ERROR    | common.ble.gatt_client:connect:287 | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2025-12-29 16:12:39.843 | ERROR    | common.utils.ble_logger:log_connection_failed:172 | [OP-20251229_161104-0015] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
+2025-12-29 16:12:39.844 | ERROR    | common.network.link_manager:connect_to_neighbor:335 | Falha ao conectar a E0:D3:62:D6:EE:A0
+2025-12-29 16:13:01.017 | INFO     | common.network.link_manager:connect_to_neighbor:319 | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 16:13:01.019 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:13:01.020 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_161104-0016] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:13:01.027 | ERROR    | common.ble.gatt_client:connect:287 | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2025-12-29 16:13:01.029 | ERROR    | common.utils.ble_logger:log_connection_failed:172 | [OP-20251229_161104-0017] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
+2025-12-29 16:13:01.030 | ERROR    | common.network.link_manager:connect_to_neighbor:335 | Falha ao conectar a E0:D3:62:D6:EE:A0
+2025-12-29 16:13:10.729 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:13:10.939 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:13:10.941 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_161104-0018] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:13:16.058 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:13:16.059 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_161104-0019] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:13:16.060 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:13:19.109 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:13:19.319 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:13:19.320 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_161104-0020] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:13:24.435 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:13:24.436 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_161104-0021] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:13:24.437 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:13:27.497 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-29 16:13:27.704 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 16:13:27.706 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_161104-0022] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:13:32.722 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:13:32.722 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_161104-0023] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:13:32.724 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
