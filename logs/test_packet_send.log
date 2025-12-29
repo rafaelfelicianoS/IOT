@@ -188,3 +188,14 @@
 2025-12-28 13:42:21.696 | ERROR    | common.utils.ble_logger:log_write_response:302 | [OP-20251228_134200-0006] WRITE_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Error: Falha tanto em SimpleBLE quanto em D-Bus
 2025-12-28 13:42:21.702 | INFO     | common.ble.gatt_client:disconnect:335 | Desconectado de E0:D3:62:D6:EE:A0
 2025-12-28 13:42:21.703 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251228_134200-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 13:38:46.649 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251229_133846.log
+2025-12-29 13:38:46.651 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-29 13:38:46.651 | INFO     | common.ble.gatt_client:__init__:560 | BLE Client iniciado
+2025-12-29 13:38:46.652 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-29 13:38:46.653 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251229_133846-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 13:38:51.767 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-29 13:38:51.768 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251229_133846-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 13:38:51.772 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 13:38:51.773 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251229_133846-0003] CONNECT_ATTEMPT | Local: E0:D3:62:D7:47:03 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 13:38:54.525 | ERROR    | common.ble.gatt_client:connect:325 | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2025-12-29 13:38:54.527 | ERROR    | common.utils.ble_logger:log_connection_failed:172 | [OP-20251229_133846-0004] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
