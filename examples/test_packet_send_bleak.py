@@ -63,8 +63,12 @@ async def main():
 
     # Conectar ao dispositivo
     logger.info(f"\n🔌 A conectar ao dispositivo com timeout de 30s...")
+    logger.info(f"   A usar BLEDevice object em vez de endereço string")
+    logger.info(f"   (Isto preserva o address type correto do scanner)")
     try:
-        async with BleakClient(target.address, timeout=30.0) as client:
+        # Usar o BLEDevice object em vez da string do endereço
+        # Isto preserva o address type (public vs random) do scanner
+        async with BleakClient(target, timeout=30.0) as client:
             logger.info(f"✅ Conectado: {client.is_connected}")
 
             # Descobrir serviços
