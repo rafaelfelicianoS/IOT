@@ -1,0 +1,38 @@
+2025-12-30 00:13:40.482 | INFO     | __main__:main:306 | ============================================================
+2025-12-30 00:13:40.483 | INFO     | __main__:main:307 |   Cliente BLE com Autenticação X.509
+2025-12-30 00:13:40.483 | INFO     | __main__:main:308 | ============================================================
+2025-12-30 00:13:40.483 | INFO     | __main__:main:309 | 
+📱 Client NID: 69f0365f...
+2025-12-30 00:13:40.483 | INFO     | __main__:main:315 | 
+🔐 Carregando certificados...
+2025-12-30 00:13:40.483 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 00:13:40.484 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 00:13:40.484 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-30 00:13:40.484 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-30 00:13:40.484 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-30 00:13:40.484 | ERROR    | common.security.certificate_manager:load_ca_certificate:124 | Certificado da CA não encontrado: /home/rafa/IOT/IOT/certs/ca_certificate.pem
+2025-12-30 00:13:40.485 | ERROR    | __main__:main:319 | ❌ Erro ao carregar certificados
+2025-12-30 00:13:40.485 | ERROR    | __main__:main:320 | 
+Verifique se existem certificados para este dispositivo:
+2025-12-30 00:13:40.485 | ERROR    | __main__:main:321 |   certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-30 00:13:40.485 | ERROR    | __main__:main:322 |   certs/69f0365f-0b47-4449-8c75-558f4537cf85/private_key.pem
+2025-12-30 00:13:40.486 | ERROR    | __main__:main:323 |   certs/ca_certificate.pem
+2025-12-30 00:13:48.792 | INFO     | __main__:main:306 | ============================================================
+2025-12-30 00:13:48.792 | INFO     | __main__:main:307 |   Cliente BLE com Autenticação X.509
+2025-12-30 00:13:48.792 | INFO     | __main__:main:308 | ============================================================
+2025-12-30 00:13:48.793 | INFO     | __main__:main:309 | 
+📱 Client NID: 69f0365f...
+2025-12-30 00:13:48.793 | INFO     | __main__:main:315 | 
+🔐 Carregando certificados...
+2025-12-30 00:13:48.793 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 00:13:48.793 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 00:13:48.794 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-30 00:13:48.794 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-30 00:13:48.794 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-30 00:13:48.795 | ERROR    | common.security.certificate_manager:load_ca_certificate:124 | Certificado da CA não encontrado: /home/rafa/IOT/IOT/certs/ca_certificate.pem
+2025-12-30 00:13:48.795 | ERROR    | __main__:main:319 | ❌ Erro ao carregar certificados
+2025-12-30 00:13:48.796 | ERROR    | __main__:main:320 | 
+Verifique se existem certificados para este dispositivo:
+2025-12-30 00:13:48.796 | ERROR    | __main__:main:321 |   certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-30 00:13:48.796 | ERROR    | __main__:main:322 |   certs/69f0365f-0b47-4449-8c75-558f4537cf85/private_key.pem
+2025-12-30 00:13:48.797 | ERROR    | __main__:main:323 |   certs/ca_certificate.pem

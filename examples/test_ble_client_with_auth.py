@@ -23,16 +23,22 @@ from pathlib import Path
 # Adicionar o diretório raiz ao path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-import simpleble
+try:
+    import simplepyble as simpleble
+except ImportError:
+    print("❌ SimpleBLE não está instalado!")
+    print("   Instale com: pip install simplepyble")
+    sys.exit(1)
 
 from common.utils.nid import NID
 from common.utils.logger import setup_logger
 from common.utils.constants import (
-    SERVICE_IOT_NETWORK_UUID,
+    IOT_NETWORK_SERVICE_UUID,
     CHAR_AUTHENTICATION_UUID,
     CHAR_NETWORK_PACKET_UUID,
 )
-from common.security import CertificateManager, AuthenticationProtocol, AuthState
+from common.security.certificate_manager import CertificateManager
+from common.security.authentication import AuthenticationProtocol, AuthState
 from common.network.packet import Packet
 
 # Setup logger
@@ -164,7 +170,7 @@ def authenticate_with_server(
     auth_service = None
 
     for service in services:
-        if service.uuid() == SERVICE_IOT_NETWORK_UUID:
+        if service.uuid() == IOT_NETWORK_SERVICE_UUID:
             auth_service = service
             for char in service.characteristics():
                 if char.uuid() == CHAR_AUTHENTICATION_UUID:
@@ -363,7 +369,7 @@ def main(argv):
     packet_service = None
 
     for service in services:
-        if service.uuid() == SERVICE_IOT_NETWORK_UUID:
+        if service.uuid() == IOT_NETWORK_SERVICE_UUID:
             packet_service = service
             for char in service.characteristics():
                 if char.uuid() == CHAR_NETWORK_PACKET_UUID:
