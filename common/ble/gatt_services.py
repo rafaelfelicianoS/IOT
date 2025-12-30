@@ -30,6 +30,7 @@ from common.utils.constants import (
 )
 from common.utils.logger import get_logger
 from common.utils.nid import NID
+from common.ble.fragmentation import fragment_message, FragmentReassembler
 
 logger = get_logger("gatt_services")
 
@@ -409,6 +410,9 @@ class AuthCharacteristic(Characteristic):
         self.indicating = False
         self.subscribed_clients = set()
 
+        # FragmentReassemblers por cliente para mensagens fragmentadas
+        self.reassemblers: Dict[str, FragmentReassembler] = {}
+
         logger.info("AuthCharacteristic criada")
 
     def set_auth_callback(self, callback: Callable[[bytes, str], bytes]):
@@ -424,22 +428,45 @@ class AuthCharacteristic(Characteristic):
     @dbus.service.method(GATT_CHARACTERISTIC_IFACE, in_signature='aya{sv}', sender_keyword='sender')
     def WriteValue(self, value: List[int], options: Dict[str, Any], sender=None):
         """
-        Recebe mensagem de autenticação de um cliente.
+        Recebe mensagem de autenticação de um cliente (pode ser fragmentada).
 
         Args:
-            value: Dados de autenticação
+            value: Dados de autenticação (fragmento)
             options: Opções D-Bus
             sender: ID do sender
         """
-        auth_data = bytes(value)
-        logger.debug(f"Auth data recebida de {sender}: {len(auth_data)} bytes")
+        fragment_data = bytes(value)
+        logger.debug(f"Auth data recebida de {sender}: {len(fragment_data)} bytes")
 
-        # Processar autenticação
+        # Obter ou criar reassembler para este cliente
+        if sender not in self.reassemblers:
+            self.reassemblers[sender] = FragmentReassembler()
+            logger.debug(f"Criado reassembler para cliente {sender}")
+
+        # Adicionar fragmento
+        is_complete, auth_data = self.reassemblers[sender].add_fragment(fragment_data)
+
+        if not is_complete:
+            # Mensagem ainda incompleta, aguardar mais fragmentos
+            logger.debug(f"Aguardando mais fragmentos de {sender}")
+            return
+
+        # Mensagem completa, processar autenticação
+        logger.info(f"Mensagem completa recebida de {sender}: {len(auth_data)} bytes")
+
         if self.auth_callback:
             try:
                 response = self.auth_callback(auth_data, sender)
-                # Enviar resposta via Indicate
-                self._indicate_response(response)
+
+                # Fragmentar resposta se necessário
+                if response and len(response) > 0:
+                    response_fragments = fragment_message(response)
+
+                    # Enviar cada fragmento via Indicate
+                    for i, fragment in enumerate(response_fragments):
+                        logger.debug(f"Enviando fragmento {i+1}/{len(response_fragments)} da resposta")
+                        self._indicate_response(fragment)
+
             except Exception as e:
                 logger.error(f"Erro no auth callback: {e}")
 

@@ -40,6 +40,7 @@ from common.utils.constants import (
 from common.security.certificate_manager import CertificateManager
 from common.security.authentication import AuthenticationProtocol, AuthState
 from common.network.packet import Packet
+from common.ble.fragmentation import fragment_message, FragmentReassembler
 
 # Setup logger
 logger = setup_logger("ble_client_auth")
@@ -47,6 +48,9 @@ logger = setup_logger("ble_client_auth")
 # Estado da autenticação
 authentication_complete = False
 authentication_failed = False
+
+# Reassembler para respostas fragmentadas do servidor
+server_reassembler = FragmentReassembler()
 
 
 def scan_for_server(timeout: int = 5) -> list:
@@ -205,27 +209,38 @@ def authenticate_with_server(
     initial_message = auth_protocol.start_authentication()
     logger.info(f"Enviando CERT_OFFER: {len(initial_message)} bytes")
 
+    # Fragmentar mensagem para caber no MTU
+    fragments = fragment_message(initial_message)
+    logger.info(f"📦 Certificado dividido em {len(fragments)} fragmentos")
+
     try:
-        # Tentar write_command primeiro (sem resposta, pode aceitar pacotes maiores)
-        try:
-            peripheral.write_command(
-                auth_service.uuid(),
-                auth_char.uuid(),
-                initial_message
-            )
-            logger.info("✅ Certificado enviado (write_command)")
-        except AttributeError:
-            # Se write_command não existir, usar write_request
-            peripheral.write_request(
-                auth_service.uuid(),
-                auth_char.uuid(),
-                initial_message
-            )
-            logger.info("✅ Certificado enviado (write_request)")
+        # Enviar cada fragmento
+        for i, fragment in enumerate(fragments):
+            logger.info(f"   Enviando fragmento {i+1}/{len(fragments)}: {len(fragment)} bytes")
+
+            try:
+                # Tentar write_command primeiro (sem resposta ACK)
+                peripheral.write_command(
+                    auth_service.uuid(),
+                    auth_char.uuid(),
+                    fragment
+                )
+            except (AttributeError, Exception):
+                # Se write_command não existir ou falhar, usar write_request
+                peripheral.write_request(
+                    auth_service.uuid(),
+                    auth_char.uuid(),
+                    fragment
+                )
+
+            # Pequeno delay entre fragmentos para não sobrecarregar
+            if i < len(fragments) - 1:
+                time.sleep(0.05)
+
+        logger.info("✅ Todos os fragmentos enviados")
+
     except Exception as e:
-        logger.error(f"❌ Erro ao enviar certificado: {e}")
-        logger.info("   Certificado muito grande para MTU atual")
-        logger.info("   Será necessário implementar fragmentação")
+        logger.error(f"❌ Erro ao enviar fragmentos: {e}")
         return False
 
     # Aguardar resposta e continuar handshake
@@ -261,13 +276,25 @@ def authenticate_with_server(
         # Ler resposta do servidor (via indication ou read)
         # SimpleBLE processa indications via callback
         # Precisamos ler a characteristic para obter a resposta
+        # A resposta pode estar fragmentada
 
         try:
-            response = peripheral.read(auth_service.uuid(), auth_char.uuid())
+            response_fragment = peripheral.read(auth_service.uuid(), auth_char.uuid())
 
-            if len(response) > 0:
+            if len(response_fragment) > 0:
+                logger.debug(f"Fragmento recebido: {len(response_fragment)} bytes")
+
+                # Adicionar fragmento ao reassembler
+                is_complete, response = server_reassembler.add_fragment(response_fragment)
+
+                if not is_complete:
+                    # Aguardar mais fragmentos
+                    logger.debug("Aguardando mais fragmentos da resposta...")
+                    continue
+
+                # Resposta completa recebida
                 logger.info(f"\n--- Passo {round_num + 1}: Processar resposta do servidor ---")
-                logger.info(f"Resposta recebida: {len(response)} bytes")
+                logger.info(f"Resposta completa recebida: {len(response)} bytes")
 
                 # Processar com protocolo
                 continue_auth, client_response = auth_protocol.process_message(response)
@@ -277,11 +304,28 @@ def authenticate_with_server(
                 if client_response:
                     logger.info(f"Enviando resposta: {len(client_response)} bytes")
 
-                    peripheral.write_request(
-                        auth_service.uuid(),
-                        auth_char.uuid(),
-                        client_response
-                    )
+                    # Fragmentar e enviar resposta
+                    response_fragments = fragment_message(client_response)
+                    logger.info(f"📦 Resposta dividida em {len(response_fragments)} fragmentos")
+
+                    for i, fragment in enumerate(response_fragments):
+                        logger.debug(f"   Enviando fragmento {i+1}/{len(response_fragments)}: {len(fragment)} bytes")
+
+                        try:
+                            peripheral.write_command(
+                                auth_service.uuid(),
+                                auth_char.uuid(),
+                                fragment
+                            )
+                        except (AttributeError, Exception):
+                            peripheral.write_request(
+                                auth_service.uuid(),
+                                auth_char.uuid(),
+                                fragment
+                            )
+
+                        if i < len(response_fragments) - 1:
+                            time.sleep(0.05)
 
                 if not continue_auth:
                     # Autenticação terminou (sucesso ou falha)

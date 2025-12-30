@@ -26,3 +26,95 @@
 2025-12-29 23:32:19.232 | INFO     | __main__:initialize:240 | ============================================================
 2025-12-29 23:32:19.233 | INFO     | __main__:save_ca_files:259 | ✅ Chave privada CA guardada: /home/rafael/repos/iot/certs/ca_private_key.pem
 2025-12-29 23:32:19.233 | INFO     | __main__:save_ca_files:265 | ✅ Certificado CA guardado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:34:32.365 | INFO     | support.ca:__init__:63 | CA inicializada: IoT Network CA
+2025-12-29 23:34:32.368 | INFO     | support.ca:load_ca_files:284 | ✅ Chave privada CA carregada: /home/rafael/repos/iot/certs/ca_private_key.pem
+2025-12-29 23:34:32.368 | INFO     | support.ca:load_ca_files:292 | ✅ Certificado CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:34:32.370 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 61841fb7...
+2025-12-29 23:34:32.370 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:34:32.371 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:34:32.372 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 727703787732009240186594614222838604928982669919
+2025-12-29 23:34:32.372 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:34:32
+2025-12-29 23:34:32.373 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: b63d2399...
+2025-12-29 23:34:32.373 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:34:32.374 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:34:32.374 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 203249383500628367365386496686540420196053482173
+2025-12-29 23:34:32.374 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:34:32
+2025-12-29 23:34:32.375 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: bfcc1cb3...
+2025-12-29 23:34:32.375 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:34:32.376 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:34:32.376 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 58740366586065740266361694474514604499708409800
+2025-12-29 23:34:32.376 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:34:32
+2025-12-29 23:34:32.377 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 34df3fb5...
+2025-12-29 23:34:32.377 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: SINK
+2025-12-29 23:34:32.378 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:34:32.378 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 117113425702318549699984517905933311722545134377
+2025-12-29 23:34:32.378 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:34:32
+2025-12-29 23:36:49.641 | INFO     | support.ca:__init__:63 | CA inicializada: IoT Network CA
+2025-12-29 23:36:49.645 | INFO     | support.ca:load_ca_files:284 | ✅ Chave privada CA carregada: /home/rafael/repos/iot/certs/ca_private_key.pem
+2025-12-29 23:36:49.646 | INFO     | support.ca:load_ca_files:292 | ✅ Certificado CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:36:49.647 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 1dc5cacc...
+2025-12-29 23:36:49.647 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:36:49.649 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:36:49.649 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 227786493446290314836343333698449269651594345175
+2025-12-29 23:36:49.649 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:36:49
+2025-12-29 23:36:49.650 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 4c36483b...
+2025-12-29 23:36:49.650 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:36:49.651 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:36:49.651 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 530756567568227369384188787997002008274947187766
+2025-12-29 23:36:49.651 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:36:49
+2025-12-29 23:36:49.652 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 38af2684...
+2025-12-29 23:36:49.652 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:36:49.653 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:36:49.653 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 260043898839569421309493541562163286264986247662
+2025-12-29 23:36:49.653 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:36:49
+2025-12-29 23:36:49.654 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 10cfe51b...
+2025-12-29 23:36:49.654 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: SINK
+2025-12-29 23:36:49.655 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:36:49.655 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 319958742355206738058991919730832769412408027876
+2025-12-29 23:36:49.655 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:36:49
+2025-12-29 23:37:58.421 | INFO     | support.ca:__init__:63 | CA inicializada: IoT Network CA
+2025-12-29 23:37:58.424 | INFO     | support.ca:load_ca_files:284 | ✅ Chave privada CA carregada: /home/rafael/repos/iot/certs/ca_private_key.pem
+2025-12-29 23:37:58.424 | INFO     | support.ca:load_ca_files:292 | ✅ Certificado CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:37:58.425 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: b113fa5b...
+2025-12-29 23:37:58.425 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:37:58.426 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:37:58.426 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 224214499682286397170023686528333046819349452290
+2025-12-29 23:37:58.426 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:37:58
+2025-12-29 23:37:58.427 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 8160cdf8...
+2025-12-29 23:37:58.427 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:37:58.427 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:37:58.427 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 259584726765794304495485016397934465017548570385
+2025-12-29 23:37:58.428 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:37:58
+2025-12-29 23:37:58.428 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 8fbaa2fa...
+2025-12-29 23:37:58.428 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:37:58.429 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:37:58.429 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 612077950466959349281627227684358830270180551898
+2025-12-29 23:37:58.429 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:37:58
+2025-12-29 23:37:58.429 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 7e7a451e...
+2025-12-29 23:37:58.429 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: SINK
+2025-12-29 23:37:58.430 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:37:58.430 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 150413898400498753170786282533137644031321913391
+2025-12-29 23:37:58.430 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:37:58
+2025-12-29 23:44:32.258 | INFO     | support.ca:__init__:63 | CA inicializada: IoT Network CA
+2025-12-29 23:44:32.261 | INFO     | support.ca:load_ca_files:284 | ✅ Chave privada CA carregada: /home/rafael/repos/iot/certs/ca_private_key.pem
+2025-12-29 23:44:32.262 | INFO     | support.ca:load_ca_files:292 | ✅ Certificado CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:44:32.263 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: b5938723...
+2025-12-29 23:44:32.263 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:44:32.264 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:44:32.264 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 243998750123139445066954028530054560932245343469
+2025-12-29 23:44:32.265 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:44:32
+2025-12-29 23:44:32.265 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 53a84472...
+2025-12-29 23:44:32.265 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:44:32.266 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:44:32.266 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 701418927242306912909418796521950870560180212138
+2025-12-29 23:44:32.266 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:44:32
+2025-12-29 23:44:32.267 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 323b6aad...
+2025-12-29 23:44:32.267 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: NODE
+2025-12-29 23:44:32.268 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:44:32.268 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 171238034617248609557633614583841277542506298672
+2025-12-29 23:44:32.268 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:44:32
+2025-12-29 23:44:32.268 | INFO     | support.ca:issue_device_certificate:159 | A emitir certificado para dispositivo: 69f0365f...
+2025-12-29 23:44:32.268 | INFO     | support.ca:issue_device_certificate:160 |    Tipo: SINK
+2025-12-29 23:44:32.269 | INFO     | support.ca:issue_device_certificate:218 | ✅ Certificado emitido
+2025-12-29 23:44:32.269 | INFO     | support.ca:issue_device_certificate:219 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-29 23:44:32.269 | INFO     | support.ca:issue_device_certificate:220 |    Válido até: 2035-12-27 23:44:32

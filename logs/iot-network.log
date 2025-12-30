@@ -1,0 +1,159 @@
+2025-12-29 23:44:51.329 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 323b6aad...
+2025-12-29 23:44:51.329 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-29 23:44:51.330 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-29 23:44:51.330 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-29 23:44:51.330 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-29 23:44:51.330 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-29 23:44:51.330 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-29 23:44:51.332 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:44:51.332 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-29 23:44:51.333 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/323b6aad-08bc-4ab7-86c8-e94f6a141fcd/certificate.pem
+2025-12-29 23:44:51.333 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 171238034617248609557633614583841277542506298672
+2025-12-29 23:44:51.333 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-29 23:44:51.333 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-29 23:44:51.333 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-29 23:44:51.333 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-29 23:44:51.333 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-29 23:44:51.333 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-29 23:44:51.334 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:44:51.334 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-29 23:44:51.334 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-29 23:44:51.334 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-29 23:44:51.334 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-29 23:44:51.334 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-29 23:44:51.335 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-29 23:44:51.335 | INFO     | common.security.certificate_manager:validate_certificate:234 | ✅ Certificado validado com sucesso
+2025-12-29 23:44:51.336 | INFO     | common.security.certificate_manager:validate_certificate:234 | ✅ Certificado validado com sucesso
+2025-12-29 23:44:51.337 | WARNING  | common.security.certificate_manager:verify_signature:356 | ❌ Assinatura inválida
+2025-12-29 23:44:51.338 | WARNING  | common.security.certificate_manager:verify_signature:356 | ❌ Assinatura inválida
+2025-12-29 23:50:29.670 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 323b6aad...
+2025-12-29 23:50:29.671 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-29 23:50:29.671 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-29 23:50:29.671 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-29 23:50:29.671 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-29 23:50:29.671 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-29 23:50:29.671 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-29 23:50:29.674 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:50:29.675 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-29 23:50:29.675 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/323b6aad-08bc-4ab7-86c8-e94f6a141fcd/certificate.pem
+2025-12-29 23:50:29.676 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 171238034617248609557633614583841277542506298672
+2025-12-29 23:50:29.676 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-29 23:50:29.676 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-29 23:50:29.676 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-29 23:50:29.676 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-29 23:50:29.676 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-29 23:50:29.677 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-29 23:50:29.677 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:50:29.677 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-29 23:50:29.677 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-29 23:50:29.678 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-29 23:50:29.678 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-29 23:50:29.678 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-29 23:50:29.678 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-29 23:50:29.678 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 323b6aad...
+2025-12-29 23:50:29.678 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 69f0365f...
+2025-12-29 23:50:29.678 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2025-12-29 23:50:29.679 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 883 bytes
+2025-12-29 23:50:29.679 | INFO     | common.security.authentication:handle_cert_offer:163 | 📜 Certificado do peer recebido - validando...
+2025-12-29 23:50:29.680 | INFO     | common.security.certificate_manager:validate_certificate:234 | ✅ Certificado validado com sucesso
+2025-12-29 23:50:29.680 | INFO     | common.security.authentication:handle_cert_offer:181 | ✅ Certificado válido!
+2025-12-29 23:50:29.681 | INFO     | common.security.authentication:handle_cert_offer:182 |    Peer NID: 323b6aad...
+2025-12-29 23:50:29.681 | INFO     | common.security.authentication:handle_cert_offer:183 |    Peer tipo: NODE
+2025-12-29 23:50:29.681 | INFO     | common.security.authentication:handle_cert_offer:192 | 🎲 Enviando challenge: 3245b8dde90f51d746ba808313991e62...
+2025-12-29 23:50:29.681 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2025-12-29 23:50:29.681 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 908 bytes
+2025-12-29 23:50:29.681 | INFO     | common.security.authentication:handle_cert_offer:163 | 📜 Certificado do peer recebido - validando...
+2025-12-29 23:50:29.682 | INFO     | common.security.certificate_manager:validate_certificate:234 | ✅ Certificado validado com sucesso
+2025-12-29 23:50:29.682 | INFO     | common.security.authentication:handle_cert_offer:181 | ✅ Certificado válido!
+2025-12-29 23:50:29.683 | INFO     | common.security.authentication:handle_cert_offer:182 |    Peer NID: 69f0365f...
+2025-12-29 23:50:29.683 | INFO     | common.security.authentication:handle_cert_offer:183 |    Peer tipo: SINK
+2025-12-29 23:50:29.683 | INFO     | common.security.authentication:handle_cert_offer:192 | 🎲 Enviando challenge: df01f00f26e58ba5b5fd78e21fcb8767...
+2025-12-29 23:50:29.683 | INFO     | common.security.authentication:handle_challenge:214 | 🎲 Challenge recebido - gerando response...
+2025-12-29 23:50:29.684 | INFO     | common.security.authentication:handle_challenge:230 | ✍️  Response gerada: 139 bytes
+2025-12-29 23:50:29.684 | INFO     | common.security.authentication:handle_response:248 | 🔍 Response recebida - verificando assinatura...
+2025-12-29 23:50:29.685 | INFO     | common.security.authentication:handle_response:270 | ✅ Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2025-12-29 23:50:29.685 | INFO     | common.security.authentication:handle_response:271 |    Peer 323b6aad... autenticado com sucesso
+2025-12-29 23:50:29.685 | INFO     | common.security.authentication:handle_auth_success:290 | ✅ Peer confirmou autenticação bem sucedida!
+2025-12-29 23:50:29.686 | INFO     | common.security.authentication:handle_challenge:214 | 🎲 Challenge recebido - gerando response...
+2025-12-29 23:50:29.686 | INFO     | common.security.authentication:handle_challenge:230 | ✍️  Response gerada: 138 bytes
+2025-12-29 23:50:29.686 | INFO     | common.security.authentication:handle_response:248 | 🔍 Response recebida - verificando assinatura...
+2025-12-29 23:50:29.687 | INFO     | common.security.authentication:handle_response:270 | ✅ Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2025-12-29 23:50:29.688 | INFO     | common.security.authentication:handle_response:271 |    Peer 69f0365f... autenticado com sucesso
+2025-12-29 23:50:29.688 | INFO     | common.security.authentication:handle_auth_success:290 | ✅ Peer confirmou autenticação bem sucedida!
+2025-12-29 23:56:43.340 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 323b6aad...
+2025-12-29 23:56:43.341 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-29 23:56:43.341 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-29 23:56:43.341 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-29 23:56:43.341 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para b5938723...
+2025-12-29 23:56:43.341 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-29 23:56:43.341 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-29 23:56:43.341 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-29 23:56:43.341 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-29 23:56:43.344 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:56:43.344 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-29 23:56:43.345 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/323b6aad-08bc-4ab7-86c8-e94f6a141fcd/certificate.pem
+2025-12-29 23:56:43.345 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 171238034617248609557633614583841277542506298672
+2025-12-29 23:56:43.345 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-29 23:56:43.345 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-29 23:56:43.345 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-29 23:56:43.345 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-29 23:56:43.345 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-29 23:56:43.345 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-29 23:56:43.346 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:56:43.346 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-29 23:56:43.346 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-29 23:56:43.346 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-29 23:56:43.347 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-29 23:56:43.347 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-29 23:56:43.347 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-29 23:56:43.347 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-29 23:56:43.347 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-29 23:56:43.347 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-29 23:56:43.348 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-29 23:56:43.348 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-29 23:56:43.348 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/b5938723-c0f7-4dc4-a523-17da836dce4c/certificate.pem
+2025-12-29 23:56:43.348 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 243998750123139445066954028530054560932245343469
+2025-12-29 23:56:43.349 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-29 23:56:43.349 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-29 23:56:43.349 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-29 23:56:43.349 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-29 23:56:43.350 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 69f0365f...
+2025-12-29 23:56:43.350 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para b5938723...
+2025-12-29 23:56:43.350 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2025-12-29 23:56:43.350 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 908 bytes
+2025-12-29 23:56:43.350 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de client1:00:11:22:33:44:55: 911 bytes
+2025-12-29 23:56:43.350 | INFO     | common.security.auth_handler:get_or_create_session:71 | Nova sessão de autenticação para cliente: client1:00:11:22:33:44:55
+2025-12-29 23:56:43.350 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 323b6aad...
+2025-12-29 23:56:43.350 | INFO     | common.security.authentication:handle_cert_offer:163 | 📜 Certificado do peer recebido - validando...
+2025-12-29 23:56:43.351 | INFO     | common.security.certificate_manager:validate_certificate:234 | ✅ Certificado validado com sucesso
+2025-12-29 23:56:43.351 | INFO     | common.security.authentication:handle_cert_offer:181 | ✅ Certificado válido!
+2025-12-29 23:56:43.351 | INFO     | common.security.authentication:handle_cert_offer:182 |    Peer NID: 69f0365f...
+2025-12-29 23:56:43.351 | INFO     | common.security.authentication:handle_cert_offer:183 |    Peer tipo: SINK
+2025-12-29 23:56:43.351 | INFO     | common.security.authentication:handle_cert_offer:192 | 🎲 Enviando challenge: 2d4c4dad20d8cffab852ebcdddf6bbcd...
+2025-12-29 23:56:43.352 | INFO     | common.security.authentication:handle_challenge:214 | 🎲 Challenge recebido - gerando response...
+2025-12-29 23:56:43.352 | INFO     | common.security.authentication:handle_challenge:230 | ✍️  Response gerada: 138 bytes
+2025-12-29 23:56:43.352 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de client1:00:11:22:33:44:55: 141 bytes
+2025-12-29 23:56:43.352 | INFO     | common.security.authentication:handle_response:248 | 🔍 Response recebida - verificando assinatura...
+2025-12-29 23:56:43.353 | INFO     | common.security.authentication:handle_response:270 | ✅ Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2025-12-29 23:56:43.353 | INFO     | common.security.authentication:handle_response:271 |    Peer 69f0365f... autenticado com sucesso
+2025-12-29 23:56:43.353 | INFO     | common.security.auth_handler:handle_auth_message:102 | ✅ Cliente client1:00:11:22:33:44:55 AUTENTICADO!
+2025-12-29 23:56:43.353 | INFO     | common.security.authentication:handle_auth_success:290 | ✅ Peer confirmou autenticação bem sucedida!
+2025-12-29 23:56:43.353 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2025-12-29 23:56:43.353 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 883 bytes
+2025-12-29 23:56:43.353 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de client2:00:11:22:33:44:66: 886 bytes
+2025-12-29 23:56:43.354 | INFO     | common.security.auth_handler:get_or_create_session:71 | Nova sessão de autenticação para cliente: client2:00:11:22:33:44:66
+2025-12-29 23:56:43.354 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 323b6aad...
+2025-12-29 23:56:43.354 | INFO     | common.security.authentication:handle_cert_offer:163 | 📜 Certificado do peer recebido - validando...
+2025-12-29 23:56:43.354 | INFO     | common.security.certificate_manager:validate_certificate:234 | ✅ Certificado validado com sucesso
+2025-12-29 23:56:43.354 | INFO     | common.security.authentication:handle_cert_offer:181 | ✅ Certificado válido!
+2025-12-29 23:56:43.354 | INFO     | common.security.authentication:handle_cert_offer:182 |    Peer NID: b5938723...
+2025-12-29 23:56:43.355 | INFO     | common.security.authentication:handle_cert_offer:183 |    Peer tipo: NODE
+2025-12-29 23:56:43.355 | INFO     | common.security.authentication:handle_cert_offer:192 | 🎲 Enviando challenge: 2afad1ae4ad613c2c0adffddb739754d...
+2025-12-29 23:56:43.355 | INFO     | common.security.authentication:handle_challenge:214 | 🎲 Challenge recebido - gerando response...
+2025-12-29 23:56:43.356 | INFO     | common.security.authentication:handle_challenge:230 | ✍️  Response gerada: 138 bytes
+2025-12-29 23:56:43.356 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de client2:00:11:22:33:44:66: 141 bytes
+2025-12-29 23:56:43.356 | INFO     | common.security.authentication:handle_response:248 | 🔍 Response recebida - verificando assinatura...
+2025-12-29 23:56:43.357 | INFO     | common.security.authentication:handle_response:270 | ✅ Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2025-12-29 23:56:43.357 | INFO     | common.security.authentication:handle_response:271 |    Peer b5938723... autenticado com sucesso
+2025-12-29 23:56:43.358 | INFO     | common.security.auth_handler:handle_auth_message:102 | ✅ Cliente client2:00:11:22:33:44:66 AUTENTICADO!
+2025-12-29 23:56:43.358 | INFO     | common.security.authentication:handle_auth_success:290 | ✅ Peer confirmou autenticação bem sucedida!
