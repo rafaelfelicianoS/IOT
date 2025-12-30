@@ -338,6 +338,100 @@ class BLEConnection:
 
         return services
 
+    def discover_services(self) -> bool:
+        """
+        Descobre serviços GATT do dispositivo.
+
+        Note: Com SimpleBLE, os serviços são automaticamente descobertos na conexão.
+        Este método existe para compatibilidade e apenas verifica se há serviços disponíveis.
+
+        Returns:
+            True se serviços foram descobertos com sucesso
+        """
+        if not self.is_connected:
+            logger.error("Não conectado - não é possível descobrir serviços")
+            return False
+
+        try:
+            services = self.peripheral.services()
+            logger.debug(f"Descobertos {len(services)} serviços")
+            return len(services) > 0
+        except Exception as e:
+            logger.error(f"Erro ao descobrir serviços: {e}")
+            return False
+
+    def has_service(self, service_uuid: str) -> bool:
+        """
+        Verifica se o dispositivo tem um serviço específico.
+
+        Args:
+            service_uuid: UUID do serviço a procurar
+
+        Returns:
+            True se o serviço existe
+        """
+        if not self.is_connected:
+            logger.error("Não conectado - não é possível verificar serviços")
+            return False
+
+        try:
+            # Normalizar UUID (remover hífens e converter para maiúsculas)
+            normalized_search = service_uuid.replace('-', '').upper()
+
+            for service in self.peripheral.services():
+                service_uuid_str = str(service.uuid()).replace('-', '').upper()
+                if normalized_search in service_uuid_str or service_uuid_str in normalized_search:
+                    logger.debug(f"Serviço {service_uuid} encontrado")
+                    return True
+
+            logger.debug(f"Serviço {service_uuid} não encontrado")
+            return False
+        except Exception as e:
+            logger.error(f"Erro ao verificar serviço {service_uuid}: {e}")
+            return False
+
+    def read(self, service_uuid: str, char_uuid: str) -> Optional[bytes]:
+        """
+        Alias para read_characteristic() - método de conveniência.
+
+        Args:
+            service_uuid: UUID do serviço
+            char_uuid: UUID da característica
+
+        Returns:
+            Valor lido (bytes) ou None se erro
+        """
+        return self.read_characteristic(service_uuid, char_uuid)
+
+    def write(self, service_uuid: str, char_uuid: str, data: bytes, with_response: bool = True) -> bool:
+        """
+        Alias para write_characteristic() - método de conveniência.
+
+        Args:
+            service_uuid: UUID do serviço
+            char_uuid: UUID da característica
+            data: Dados a escrever
+            with_response: Se True, usa write request (com resposta)
+
+        Returns:
+            True se escrita bem-sucedida
+        """
+        return self.write_characteristic(service_uuid, char_uuid, data, with_response)
+
+    def subscribe(self, service_uuid: str, char_uuid: str, callback: Callable[[bytes], None]) -> bool:
+        """
+        Alias para subscribe_notifications() - método de conveniência.
+
+        Args:
+            service_uuid: UUID do serviço
+            char_uuid: UUID da característica
+            callback: Função a chamar quando notificação é recebida
+
+        Returns:
+            True se subscrição bem-sucedida
+        """
+        return self.subscribe_notifications(service_uuid, char_uuid, callback)
+
     def read_characteristic(self, service_uuid: str, char_uuid: str) -> Optional[bytes]:
         """
         Lê o valor de uma característica.
