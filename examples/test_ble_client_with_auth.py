@@ -19,6 +19,7 @@ Exemplo:
 import sys
 import time
 from pathlib import Path
+from queue import Queue
 
 # Adicionar o diretório raiz ao path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -51,6 +52,9 @@ authentication_failed = False
 
 # Reassembler para respostas fragmentadas do servidor
 server_reassembler = FragmentReassembler()
+
+# Fila para indications recebidas
+indication_queue = Queue()
 
 
 def scan_for_server(timeout: int = 5) -> list:
@@ -139,13 +143,10 @@ def indication_handler(data: bytes):
     Args:
         data: Dados da indication
     """
-    global authentication_complete, authentication_failed
-
     logger.info(f"🔐 Indication de autenticação recebida: {len(data)} bytes")
 
-    # Esta indication é a resposta do servidor ao nosso último passo
-    # Processar com o protocolo de autenticação
-    # (será processado no loop principal)
+    # Adicionar à fila para processamento no loop principal
+    indication_queue.put(data)
 
 
 def authenticate_with_server(
@@ -273,67 +274,66 @@ def authenticate_with_server(
             authentication_failed = True
             return False
 
-        # Ler resposta do servidor (via indication ou read)
-        # SimpleBLE processa indications via callback
-        # Precisamos ler a characteristic para obter a resposta
-        # A resposta pode estar fragmentada
+        # Ler respostas da fila de indications
+        # SimpleBLE processa indications via callback que adiciona à fila
 
         try:
-            response_fragment = peripheral.read(auth_service.uuid(), auth_char.uuid())
+            # Tentar obter indication da fila (timeout de 1 segundo)
+            response_fragment = indication_queue.get(timeout=1.0)
 
-            if len(response_fragment) > 0:
-                logger.debug(f"Fragmento recebido: {len(response_fragment)} bytes")
+            logger.debug(f"Fragmento recebido da fila: {len(response_fragment)} bytes")
 
-                # Adicionar fragmento ao reassembler
-                is_complete, response = server_reassembler.add_fragment(response_fragment)
+            # Adicionar fragmento ao reassembler
+            is_complete, response = server_reassembler.add_fragment(response_fragment)
 
-                if not is_complete:
-                    # Aguardar mais fragmentos
-                    logger.debug("Aguardando mais fragmentos da resposta...")
-                    continue
+            if not is_complete:
+                # Aguardar mais fragmentos
+                logger.debug("Aguardando mais fragmentos da resposta...")
+                continue
 
-                # Resposta completa recebida
-                logger.info(f"\n--- Passo {round_num + 1}: Processar resposta do servidor ---")
-                logger.info(f"Resposta completa recebida: {len(response)} bytes")
+            # Resposta completa recebida
+            logger.info(f"\n--- Passo {round_num + 1}: Processar resposta do servidor ---")
+            logger.info(f"Resposta completa recebida: {len(response)} bytes")
 
-                # Processar com protocolo
-                continue_auth, client_response = auth_protocol.process_message(response)
+            # Processar com protocolo
+            continue_auth, client_response = auth_protocol.process_message(response)
 
-                logger.info(f"Estado atual: {auth_protocol.state.name}")
+            logger.info(f"Estado atual: {auth_protocol.state.name}")
 
-                if client_response:
-                    logger.info(f"Enviando resposta: {len(client_response)} bytes")
+            if client_response:
+                logger.info(f"Enviando resposta: {len(client_response)} bytes")
 
-                    # Fragmentar e enviar resposta
-                    response_fragments = fragment_message(client_response)
-                    logger.info(f"📦 Resposta dividida em {len(response_fragments)} fragmentos")
+                # Fragmentar e enviar resposta
+                response_fragments = fragment_message(client_response)
+                logger.info(f"📦 Resposta dividida em {len(response_fragments)} fragmentos")
 
-                    for i, fragment in enumerate(response_fragments):
-                        logger.debug(f"   Enviando fragmento {i+1}/{len(response_fragments)}: {len(fragment)} bytes")
+                for i, fragment in enumerate(response_fragments):
+                    logger.debug(f"   Enviando fragmento {i+1}/{len(response_fragments)}: {len(fragment)} bytes")
 
-                        try:
-                            peripheral.write_command(
-                                auth_service.uuid(),
-                                auth_char.uuid(),
-                                fragment
-                            )
-                        except (AttributeError, Exception):
-                            peripheral.write_request(
-                                auth_service.uuid(),
-                                auth_char.uuid(),
-                                fragment
-                            )
+                    try:
+                        peripheral.write_command(
+                            auth_service.uuid(),
+                            auth_char.uuid(),
+                            fragment
+                        )
+                    except (AttributeError, Exception):
+                        peripheral.write_request(
+                            auth_service.uuid(),
+                            auth_char.uuid(),
+                            fragment
+                        )
 
-                        if i < len(response_fragments) - 1:
-                            time.sleep(0.05)
+                    if i < len(response_fragments) - 1:
+                        time.sleep(0.05)
 
-                if not continue_auth:
-                    # Autenticação terminou (sucesso ou falha)
-                    break
+            if not continue_auth:
+                # Autenticação terminou (sucesso ou falha)
+                break
 
         except Exception as e:
-            logger.debug(f"Erro ao ler characteristic: {e}")
-            # Pode ser normal se não houver dados ainda
+            logger.debug(f"Timeout aguardando indication: {e}")
+            # Pode ser normal se não houver resposta ainda
+            continue
 
     # Timeout
     if auth_protocol.state != AuthState.AUTHENTICATED:
