@@ -283,3 +283,237 @@ Sinal 2 recebido, a parar...
 2025-12-30 02:14:35.321 | WARNING  | __main__:run:457 | ⚠️  Conexão perdida com Sink
 2025-12-30 02:14:35.323 | INFO     | __main__:stop:476 | A parar Node...
 2025-12-30 02:14:35.324 | INFO     | __main__:stop:486 | ✅ Node parado
+2025-12-30 17:04:24.819 | INFO     | __main__:__init__:78 | A carregar certificados...
+2025-12-30 17:04:24.826 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 53a84472...
+2025-12-30 17:04:24.826 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 17:04:24.827 | INFO     | __main__:__init__:108 | ✅ Certificados carregados com sucesso
+2025-12-30 17:04:24.827 | INFO     | __main__:__init__:116 | Node NID: 53a84472...
+2025-12-30 17:04:24.827 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-30 17:04:24.828 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2025-12-30 17:04:24.843 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_170424.log
+2025-12-30 17:04:24.843 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 17:04:24.843 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2025-12-30 17:04:24.844 | INFO     | __main__:__init__:160 | IoT Node inicializado (adapter=hci0)
+2025-12-30 17:04:24.844 | INFO     | __main__:run:628 | ============================================================
+2025-12-30 17:04:24.844 | INFO     | __main__:run:629 |   A iniciar IoT Node (dual-mode)
+2025-12-30 17:04:24.845 | INFO     | __main__:run:630 | ============================================================
+2025-12-30 17:04:24.845 | INFO     | __main__:setup_gatt_server:164 | A configurar GATT Server...
+2025-12-30 17:04:24.848 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-30 17:04:24.849 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-30 17:04:24.850 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2025-12-30 17:04:24.850 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2025-12-30 17:04:24.852 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=53a84472..., type=node
+2025-12-30 17:04:24.853 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2025-12-30 17:04:24.853 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2025-12-30 17:04:24.854 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2025-12-30 17:04:24.855 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2025-12-30 17:04:24.856 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-30 17:04:24.857 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-30 17:04:24.858 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-30 17:04:24.858 | INFO     | __main__:setup_gatt_server:207 | ✅ GATT Server configurado
+2025-12-30 17:04:24.859 | INFO     | __main__:start_gatt_server:211 | A iniciar GATT Server...
+2025-12-30 17:04:24.862 | INFO     | __main__:start_gatt_server:240 | ✅ GATT Server iniciado em thread separada
+2025-12-30 17:04:24.864 | INFO     | __main__:run:638 | ✅ GATT Server ativo - aguardando downlinks
+2025-12-30 17:04:24.864 | INFO     | __main__:discover_sink:312 | 🔍 A procurar Sink...
+2025-12-30 17:04:24.865 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 17:04:24.865 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_170424-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 17:04:24.999 | INFO     | __main__:<lambda>:223 | ✅ GATT application registada!
+2025-12-30 17:04:25.000 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-30 17:04:25.111 | INFO     | __main__:<lambda>:231 | ✅ Advertisement registado!
+2025-12-30 17:04:30.114 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-30 17:04:30.114 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_170424-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-30 17:04:30.115 | INFO     | __main__:discover_sink:319 | Encontrados 0 dispositivos IoT
+2025-12-30 17:04:30.115 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 17:04:30.115 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_170424-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 17:04:35.136 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-30 17:04:35.137 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_170424-0004] SCAN_RESULT | Devices_Found: 1
+2025-12-30 17:04:35.138 | INFO     | __main__:discover_sink:319 | Encontrados 1 dispositivos IoT
+2025-12-30 17:04:35.141 | INFO     | __main__:discover_sink:336 | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -53 dBm
+2025-12-30 17:04:35.143 | INFO     | __main__:connect_to_sink:356 | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2025-12-30 17:04:35.145 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 17:04:35.146 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_170424-0005] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 17:04:38.527 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 17:04:38.528 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_170424-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3379.71ms
+2025-12-30 17:04:38.529 | INFO     | __main__:connect_to_sink:369 | ✅ Conectado ao Sink via GATT
+2025-12-30 17:04:38.532 | INFO     | __main__:connect_to_sink:382 | ✅ Serviço IoT Network encontrado
+2025-12-30 17:04:38.533 | INFO     | __main__:_subscribe_to_notifications:391 | A subscrever a notificações...
+2025-12-30 17:04:39.014 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 17:04:39.015 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251230_170424-0007] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 17:04:39.017 | INFO     | __main__:_subscribe_to_notifications:400 | ✅ Subscrito a NETWORK_PACKET
+2025-12-30 17:04:39.115 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251230_170424-0009] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
+2025-12-30 17:04:39.116 | INFO     | __main__:_update_hop_count_from_uplink:613 | ✅ Conectado ao Sink - hop_count=0
+2025-12-30 17:04:39.118 | INFO     | __main__:authenticate_with_sink:503 | 🔐 A iniciar autenticação com Sink...
+2025-12-30 17:04:39.119 | WARNING  | __main__:authenticate_with_sink:507 | ⚠️  Autenticação não totalmente implementada - usando placeholder
+2025-12-30 17:04:39.120 | INFO     | __main__:authenticate_with_sink:510 | ✅ Autenticação completada (placeholder)
+2025-12-30 17:04:39.122 | INFO     | __main__:run:668 | ============================================================
+2025-12-30 17:04:39.123 | INFO     | __main__:run:669 | ✅ Node pronto! Uplink conectado (hop=0)
+2025-12-30 17:04:39.124 | INFO     | __main__:run:670 | ============================================================
+2025-12-30 17:04:39.184 | INFO     | __main__:signal_handler:751 | 
+Sinal 15 recebido, a parar...
+2025-12-30 17:04:39.184 | INFO     | __main__:stop:697 | A parar Node...
+2025-12-30 17:04:39.185 | INFO     | __main__:stop_gatt_server:244 | A parar GATT Server...
+2025-12-30 17:04:39.187 | INFO     | __main__:stop_gatt_server:252 | ✅ GATT Server parado
+2025-12-30 17:04:41.767 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 17:04:41.767 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251230_170424-0010] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 17:04:41.768 | INFO     | __main__:stop:710 | ✅ Node parado
+2025-12-30 17:04:41.768 | WARNING  | __main__:run:678 | ⚠️  Conexão perdida com Sink
+2025-12-30 17:04:41.768 | INFO     | __main__:stop:697 | A parar Node...
+2025-12-30 17:04:41.769 | INFO     | __main__:stop_gatt_server:244 | A parar GATT Server...
+2025-12-30 17:04:41.769 | INFO     | __main__:stop_gatt_server:252 | ✅ GATT Server parado
+2025-12-30 17:04:41.769 | INFO     | __main__:stop:710 | ✅ Node parado
+2025-12-30 17:04:49.808 | INFO     | __main__:__init__:78 | A carregar certificados...
+2025-12-30 17:04:49.813 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 53a84472...
+2025-12-30 17:04:49.813 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 17:04:49.814 | INFO     | __main__:__init__:108 | ✅ Certificados carregados com sucesso
+2025-12-30 17:04:49.814 | INFO     | __main__:__init__:116 | Node NID: 53a84472...
+2025-12-30 17:04:49.814 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-30 17:04:49.814 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2025-12-30 17:04:49.830 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_170449.log
+2025-12-30 17:04:49.830 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 17:04:49.830 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2025-12-30 17:04:49.831 | INFO     | __main__:__init__:160 | IoT Node inicializado (adapter=hci0)
+2025-12-30 17:04:49.831 | INFO     | __main__:run:628 | ============================================================
+2025-12-30 17:04:49.831 | INFO     | __main__:run:629 |   A iniciar IoT Node (dual-mode)
+2025-12-30 17:04:49.832 | INFO     | __main__:run:630 | ============================================================
+2025-12-30 17:04:49.832 | INFO     | __main__:setup_gatt_server:164 | A configurar GATT Server...
+2025-12-30 17:04:49.834 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-30 17:04:49.834 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-30 17:04:49.834 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2025-12-30 17:04:49.835 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2025-12-30 17:04:49.836 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=53a84472..., type=node
+2025-12-30 17:04:49.836 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2025-12-30 17:04:49.836 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2025-12-30 17:04:49.837 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2025-12-30 17:04:49.837 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2025-12-30 17:04:49.838 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-30 17:04:49.838 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-30 17:04:49.838 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-30 17:04:49.839 | INFO     | __main__:setup_gatt_server:207 | ✅ GATT Server configurado
+2025-12-30 17:04:49.839 | INFO     | __main__:start_gatt_server:211 | A iniciar GATT Server...
+2025-12-30 17:04:49.841 | INFO     | __main__:start_gatt_server:240 | ✅ GATT Server iniciado em thread separada
+2025-12-30 17:04:49.841 | INFO     | __main__:run:638 | ✅ GATT Server ativo - aguardando downlinks
+2025-12-30 17:04:49.842 | INFO     | __main__:discover_sink:312 | 🔍 A procurar Sink...
+2025-12-30 17:04:49.842 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 17:04:49.842 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_170449-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 17:04:49.925 | INFO     | __main__:<lambda>:223 | ✅ GATT application registada!
+2025-12-30 17:04:49.926 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-30 17:04:49.960 | INFO     | __main__:<lambda>:231 | ✅ Advertisement registado!
+2025-12-30 17:04:54.959 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-30 17:04:54.959 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_170449-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-30 17:04:54.960 | INFO     | __main__:discover_sink:319 | Encontrados 0 dispositivos IoT
+2025-12-30 17:04:54.961 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 17:04:54.961 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_170449-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 17:04:59.987 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-30 17:04:59.989 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_170449-0004] SCAN_RESULT | Devices_Found: 1
+2025-12-30 17:04:59.991 | INFO     | __main__:discover_sink:319 | Encontrados 1 dispositivos IoT
+2025-12-30 17:04:59.994 | INFO     | __main__:discover_sink:336 | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -62 dBm
+2025-12-30 17:04:59.995 | INFO     | __main__:connect_to_sink:356 | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2025-12-30 17:04:59.997 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 17:04:59.997 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_170449-0005] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 17:05:03.329 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 17:05:03.330 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_170449-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3328.62ms
+2025-12-30 17:05:03.331 | INFO     | __main__:connect_to_sink:369 | ✅ Conectado ao Sink via GATT
+2025-12-30 17:05:03.337 | INFO     | __main__:connect_to_sink:382 | ✅ Serviço IoT Network encontrado
+2025-12-30 17:05:03.338 | INFO     | __main__:_subscribe_to_notifications:391 | A subscrever a notificações...
+2025-12-30 17:05:03.516 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 17:05:03.517 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251230_170449-0007] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 17:05:03.517 | INFO     | __main__:_subscribe_to_notifications:400 | ✅ Subscrito a NETWORK_PACKET
+2025-12-30 17:05:03.617 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251230_170449-0009] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
+2025-12-30 17:05:03.617 | INFO     | __main__:_update_hop_count_from_uplink:613 | ✅ Conectado ao Sink - hop_count=0
+2025-12-30 17:05:03.619 | INFO     | __main__:authenticate_with_sink:503 | 🔐 A iniciar autenticação com Sink...
+2025-12-30 17:05:03.620 | WARNING  | __main__:authenticate_with_sink:507 | ⚠️  Autenticação não totalmente implementada - usando placeholder
+2025-12-30 17:05:03.621 | INFO     | __main__:authenticate_with_sink:510 | ✅ Autenticação completada (placeholder)
+2025-12-30 17:05:03.621 | INFO     | __main__:run:668 | ============================================================
+2025-12-30 17:05:03.622 | INFO     | __main__:run:669 | ✅ Node pronto! Uplink conectado (hop=0)
+2025-12-30 17:05:03.623 | INFO     | __main__:run:670 | ============================================================
+2025-12-30 17:05:06.019 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_170449-0010] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000003b7d4d25a53f8a002a29d1112560ad8a8d66caa400926e80f2a888 | ASCII: ..Z..iB}...Q......Z..iB}...Q.........;}M%.?..*)..%`...f....n.... [TRUNCATED]
+2025-12-30 17:05:06.021 | INFO     | __main__:_handle_heartbeat:440 | Sink NID identificado: c5c55ab2...
+2025-12-30 17:05:09.304 | INFO     | __main__:signal_handler:751 | 
+Sinal 2 recebido, a parar...
+2025-12-30 17:05:11.774 | INFO     | __main__:stop:697 | A parar Node...
+2025-12-30 17:05:11.775 | INFO     | __main__:stop_gatt_server:244 | A parar GATT Server...
+2025-12-30 17:05:11.775 | INFO     | __main__:stop_gatt_server:252 | ✅ GATT Server parado
+2025-12-30 17:05:11.775 | INFO     | __main__:stop:710 | ✅ Node parado
+2025-12-30 17:05:11.776 | WARNING  | __main__:run:678 | ⚠️  Conexão perdida com Sink
+2025-12-30 17:05:11.776 | INFO     | __main__:stop:697 | A parar Node...
+2025-12-30 17:05:11.777 | INFO     | __main__:stop_gatt_server:244 | A parar GATT Server...
+2025-12-30 17:05:11.778 | INFO     | __main__:stop_gatt_server:252 | ✅ GATT Server parado
+2025-12-30 17:05:11.778 | INFO     | __main__:stop:710 | ✅ Node parado
+2025-12-30 17:06:02.367 | INFO     | __main__:__init__:78 | A carregar certificados...
+2025-12-30 17:06:02.371 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 53a84472...
+2025-12-30 17:06:02.371 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 17:06:02.371 | INFO     | __main__:__init__:108 | ✅ Certificados carregados com sucesso
+2025-12-30 17:06:02.372 | INFO     | __main__:__init__:116 | Node NID: 53a84472...
+2025-12-30 17:06:02.372 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-30 17:06:02.372 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2025-12-30 17:06:02.387 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_170602.log
+2025-12-30 17:06:02.388 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 17:06:02.388 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2025-12-30 17:06:02.389 | INFO     | __main__:__init__:160 | IoT Node inicializado (adapter=hci0)
+2025-12-30 17:06:02.389 | INFO     | __main__:run:628 | ============================================================
+2025-12-30 17:06:02.389 | INFO     | __main__:run:629 |   A iniciar IoT Node (dual-mode)
+2025-12-30 17:06:02.390 | INFO     | __main__:run:630 | ============================================================
+2025-12-30 17:06:02.391 | INFO     | __main__:setup_gatt_server:164 | A configurar GATT Server...
+2025-12-30 17:06:02.396 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-30 17:06:02.397 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-30 17:06:02.398 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2025-12-30 17:06:02.398 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2025-12-30 17:06:02.400 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=53a84472..., type=node
+2025-12-30 17:06:02.400 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2025-12-30 17:06:02.402 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2025-12-30 17:06:02.403 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2025-12-30 17:06:02.404 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2025-12-30 17:06:02.406 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-30 17:06:02.407 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-30 17:06:02.407 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-30 17:06:02.408 | INFO     | __main__:setup_gatt_server:207 | ✅ GATT Server configurado
+2025-12-30 17:06:02.410 | INFO     | __main__:start_gatt_server:211 | A iniciar GATT Server...
+2025-12-30 17:06:02.413 | INFO     | __main__:start_gatt_server:240 | ✅ GATT Server iniciado em thread separada
+2025-12-30 17:06:02.415 | INFO     | __main__:run:638 | ✅ GATT Server ativo - aguardando downlinks
+2025-12-30 17:06:02.415 | INFO     | __main__:discover_sink:312 | 🔍 A procurar Sink...
+2025-12-30 17:06:02.416 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 17:06:02.417 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_170602-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 17:06:02.520 | INFO     | __main__:<lambda>:223 | ✅ GATT application registada!
+2025-12-30 17:06:02.521 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-30 17:06:02.533 | INFO     | __main__:<lambda>:231 | ✅ Advertisement registado!
+2025-12-30 17:06:07.628 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-30 17:06:07.629 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_170602-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-30 17:06:07.631 | INFO     | __main__:discover_sink:319 | Encontrados 1 dispositivos IoT
+2025-12-30 17:06:07.633 | INFO     | __main__:discover_sink:336 | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -67 dBm
+2025-12-30 17:06:07.634 | INFO     | __main__:connect_to_sink:356 | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2025-12-30 17:06:07.636 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 17:06:07.637 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_170602-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 17:06:11.350 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 17:06:11.351 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_170602-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3709.98ms
+2025-12-30 17:06:11.352 | INFO     | __main__:connect_to_sink:369 | ✅ Conectado ao Sink via GATT
+2025-12-30 17:06:11.359 | INFO     | __main__:connect_to_sink:382 | ✅ Serviço IoT Network encontrado
+2025-12-30 17:06:11.360 | INFO     | __main__:_subscribe_to_notifications:391 | A subscrever a notificações...
+2025-12-30 17:06:11.869 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 17:06:11.870 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251230_170602-0005] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 17:06:11.871 | INFO     | __main__:_subscribe_to_notifications:400 | ✅ Subscrito a NETWORK_PACKET
+2025-12-30 17:06:11.968 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251230_170602-0007] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
+2025-12-30 17:06:11.969 | INFO     | __main__:_update_hop_count_from_uplink:613 | ✅ Conectado ao Sink - hop_count=0
+2025-12-30 17:06:11.969 | INFO     | __main__:authenticate_with_sink:503 | 🔐 A iniciar autenticação com Sink...
+2025-12-30 17:06:11.970 | WARNING  | __main__:authenticate_with_sink:507 | ⚠️  Autenticação não totalmente implementada - usando placeholder
+2025-12-30 17:06:11.970 | INFO     | __main__:authenticate_with_sink:510 | ✅ Autenticação completada (placeholder)
+2025-12-30 17:06:11.971 | INFO     | __main__:run:668 | ============================================================
+2025-12-30 17:06:11.971 | INFO     | __main__:run:669 | ✅ Node pronto! Uplink conectado (hop=0)
+2025-12-30 17:06:11.972 | INFO     | __main__:run:670 | ============================================================
+2025-12-30 17:06:16.072 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_170602-0008] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000004957c916a80081f5c71700342825957ac1852a3489dbb92bed6851 | ASCII: ..Z..iB}...Q......Z..iB}...Q.........IW.........4(%.z..*4...+.hQ [TRUNCATED]
+2025-12-30 17:06:16.073 | INFO     | __main__:_handle_heartbeat:440 | Sink NID identificado: c5c55ab2...
+2025-12-30 17:06:21.074 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_170602-0009] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000004abb208ad0efd7a8c65c1e60e1420ff26a7e10790b8221a64ad6ab | ASCII: ..Z..iB}...Q......Z..iB}...Q.........J. ......\.`.B..j~.y..!.J.. [TRUNCATED]
+2025-12-30 17:06:26.074 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_170602-0010] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000004b535062fe7686f985038024d67dff6bae0735bc5834398e732aa6 | ASCII: ..Z..iB}...Q......Z..iB}...Q.........KSPb.v.....$.}.k..5.X49.s*. [TRUNCATED]
+2025-12-30 17:06:31.073 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_170602-0011] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000004cc7b4197fd7442132b8301a7dceaa759c96fdf75afae9bd7a17ea | ASCII: ..Z..iB}...Q......Z..iB}...Q.........L.....D!2.0.}..u....Z...z.. [TRUNCATED]
+2025-12-30 17:06:31.418 | INFO     | __main__:signal_handler:751 | 
+Sinal 2 recebido, a parar...
+2025-12-30 17:06:31.420 | INFO     | __main__:stop:697 | A parar Node...
+2025-12-30 17:06:31.421 | INFO     | __main__:stop_gatt_server:244 | A parar GATT Server...
+2025-12-30 17:06:31.423 | INFO     | __main__:stop_gatt_server:252 | ✅ GATT Server parado
+2025-12-30 17:06:34.180 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 17:06:34.182 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251230_170602-0012] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 17:06:34.183 | INFO     | __main__:stop:710 | ✅ Node parado
+2025-12-30 17:06:34.185 | WARNING  | __main__:run:678 | ⚠️  Conexão perdida com Sink
+2025-12-30 17:06:34.189 | INFO     | __main__:stop:697 | A parar Node...
+2025-12-30 17:06:34.190 | INFO     | __main__:stop_gatt_server:244 | A parar GATT Server...
+2025-12-30 17:06:34.190 | INFO     | __main__:stop_gatt_server:252 | ✅ GATT Server parado
+2025-12-30 17:06:34.191 | INFO     | __main__:stop:710 | ✅ Node parado

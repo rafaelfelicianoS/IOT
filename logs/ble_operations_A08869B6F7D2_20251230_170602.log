@@ -1,0 +1,106 @@
+2025-12-30 17:06:02.387 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_170602.log
+2025-12-30 17:06:02.388 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 17:06:02.388 | INFO     | BLE Client iniciado
+2025-12-30 17:06:02.389 | INFO     | IoT Node inicializado (adapter=hci0)
+2025-12-30 17:06:02.389 | INFO     | ============================================================
+2025-12-30 17:06:02.389 | INFO     |   A iniciar IoT Node (dual-mode)
+2025-12-30 17:06:02.390 | INFO     | ============================================================
+2025-12-30 17:06:02.391 | INFO     | A configurar GATT Server...
+2025-12-30 17:06:02.396 | INFO     | Application criada: /
+2025-12-30 17:06:02.397 | INFO     | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-30 17:06:02.398 | INFO     | A criar IoTNetworkService...
+2025-12-30 17:06:02.398 | DEBUG    | Characteristic criada: /0/char0 (UUID: 12340001-0000-1000-8000-00805f9b34fb, flags: ['write', 'notify'])
+2025-12-30 17:06:02.398 | INFO     | NetworkPacketCharacteristic criada
+2025-12-30 17:06:02.399 | DEBUG    | Characteristic criada: /0/char1 (UUID: 12340002-0000-1000-8000-00805f9b34fb, flags: ['read'])
+2025-12-30 17:06:02.400 | INFO     | DeviceInfoCharacteristic criada: NID=53a84472..., type=node
+2025-12-30 17:06:02.400 | DEBUG    | Characteristic criada: /0/char2 (UUID: 12340003-0000-1000-8000-00805f9b34fb, flags: ['read', 'notify'])
+2025-12-30 17:06:02.400 | INFO     | NeighborTableCharacteristic criada
+2025-12-30 17:06:02.402 | DEBUG    | Characteristic criada: /0/char3 (UUID: 12340004-0000-1000-8000-00805f9b34fb, flags: ['write', 'indicate'])
+2025-12-30 17:06:02.402 | INFO     | AuthCharacteristic criada
+2025-12-30 17:06:02.402 | DEBUG    | Characteristic adicionada a /0: /0/char0
+2025-12-30 17:06:02.402 | DEBUG    | Characteristic adicionada a /0: /0/char1
+2025-12-30 17:06:02.403 | DEBUG    | Characteristic adicionada a /0: /0/char2
+2025-12-30 17:06:02.403 | DEBUG    | Characteristic adicionada a /0: /0/char3
+2025-12-30 17:06:02.403 | INFO     | ✅ IoTNetworkService criado com sucesso!
+2025-12-30 17:06:02.404 | INFO     | Service adicionado à aplicação: /0
+2025-12-30 17:06:02.405 | DEBUG    | Packet callback definido
+2025-12-30 17:06:02.405 | DEBUG    | Auth callback definido
+2025-12-30 17:06:02.406 | INFO     | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-30 17:06:02.407 | INFO     | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-30 17:06:02.407 | INFO     |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-30 17:06:02.408 | DEBUG    | Local name definido: IoT-Node-53a84472
+2025-12-30 17:06:02.408 | DEBUG    | Manufacturer data adicionado: ID=65535
+2025-12-30 17:06:02.408 | INFO     | ✅ GATT Server configurado
+2025-12-30 17:06:02.410 | INFO     | A iniciar GATT Server...
+2025-12-30 17:06:02.413 | INFO     | ✅ GATT Server iniciado em thread separada
+2025-12-30 17:06:02.415 | INFO     | ✅ GATT Server ativo - aguardando downlinks
+2025-12-30 17:06:02.415 | INFO     | 🔍 A procurar Sink...
+2025-12-30 17:06:02.416 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 17:06:02.417 | INFO     | [OP-20251230_170602-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 17:06:02.418 | DEBUG    | GetManagedObjects called
+2025-12-30 17:06:02.418 | DEBUG    | GetManagedObjects returning 5 objects
+2025-12-30 17:06:02.520 | INFO     | ✅ GATT application registada!
+2025-12-30 17:06:02.521 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2025-12-30 17:06:02.521 | INFO     | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-30 17:06:02.533 | INFO     | ✅ Advertisement registado!
+2025-12-30 17:06:07.627 | DEBUG    |   Encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -67 dBm
+2025-12-30 17:06:07.628 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-30 17:06:07.629 | INFO     | [OP-20251230_170602-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-30 17:06:07.630 | DEBUG    | [OP-20251230_170602-0002]   Device_1: Name: IoT-Sink-c5c55ab2 | Address: E0:D3:62:D6:EE:A0 | RSSI: -67 dBm | Services: 1
+2025-12-30 17:06:07.631 | INFO     | Encontrados 1 dispositivos IoT
+2025-12-30 17:06:07.632 | DEBUG    |   Device: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -67 dBm
+2025-12-30 17:06:07.632 | DEBUG    |     Type=0, HopCount=255
+2025-12-30 17:06:07.633 | INFO     | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -67 dBm
+2025-12-30 17:06:07.634 | INFO     | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2025-12-30 17:06:07.636 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-30 17:06:07.636 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 17:06:07.637 | INFO     | [OP-20251230_170602-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 17:06:11.350 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 17:06:11.351 | INFO     | [OP-20251230_170602-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3709.98ms
+2025-12-30 17:06:11.351 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-30 17:06:11.352 | INFO     | ✅ Conectado ao Sink via GATT
+2025-12-30 17:06:11.354 | DEBUG    | Descobertos 4 serviços
+2025-12-30 17:06:11.358 | DEBUG    | Serviço 12340000-0000-1000-8000-00805f9b34fb encontrado
+2025-12-30 17:06:11.359 | INFO     | ✅ Serviço IoT Network encontrado
+2025-12-30 17:06:11.360 | INFO     | A subscrever a notificações...
+2025-12-30 17:06:11.869 | INFO     | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 17:06:11.870 | INFO     | [OP-20251230_170602-0005] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 17:06:11.871 | INFO     | ✅ Subscrito a NETWORK_PACKET
+2025-12-30 17:06:11.872 | DEBUG    | [OP-20251230_170602-0006] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-30 17:06:11.967 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-30 17:06:11.968 | INFO     | [OP-20251230_170602-0007] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
+2025-12-30 17:06:11.969 | INFO     | ✅ Conectado ao Sink - hop_count=0
+2025-12-30 17:06:11.969 | DEBUG    | Manufacturer data adicionado: ID=65535
+2025-12-30 17:06:11.969 | DEBUG    | Advertisement atualizado: hop_count=0
+2025-12-30 17:06:11.969 | INFO     | 🔐 A iniciar autenticação com Sink...
+2025-12-30 17:06:11.970 | WARNING  | ⚠️  Autenticação não totalmente implementada - usando placeholder
+2025-12-30 17:06:11.970 | INFO     | ✅ Autenticação completada (placeholder)
+2025-12-30 17:06:11.971 | INFO     | ============================================================
+2025-12-30 17:06:11.971 | INFO     | ✅ Node pronto! Uplink conectado (hop=0)
+2025-12-30 17:06:11.972 | INFO     | ============================================================
+2025-12-30 17:06:16.072 | INFO     | [OP-20251230_170602-0008] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000004957c916a80081f5c71700342825957ac1852a3489dbb92bed6851 | ASCII: ..Z..iB}...Q......Z..iB}...Q.........IW.........4(%.z..*4...+.hQ [TRUNCATED]
+2025-12-30 17:06:16.073 | INFO     | Sink NID identificado: c5c55ab2...
+2025-12-30 17:06:16.074 | DEBUG    | Novo source c5c55ab2...: seq=73 (primeiro pacote)
+2025-12-30 17:06:16.075 | DEBUG    | 💓 Heartbeat recebido (seq=73, age=-0.04s)
+2025-12-30 17:06:21.074 | INFO     | [OP-20251230_170602-0009] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000004abb208ad0efd7a8c65c1e60e1420ff26a7e10790b8221a64ad6ab | ASCII: ..Z..iB}...Q......Z..iB}...Q.........J. ......\.`.B..j~.y..!.J.. [TRUNCATED]
+2025-12-30 17:06:21.075 | DEBUG    | Source c5c55ab2...: seq=74 (novo highest, window: 2 seqs)
+2025-12-30 17:06:21.076 | DEBUG    | 💓 Heartbeat recebido (seq=74, age=-0.04s)
+2025-12-30 17:06:26.074 | INFO     | [OP-20251230_170602-0010] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000004b535062fe7686f985038024d67dff6bae0735bc5834398e732aa6 | ASCII: ..Z..iB}...Q......Z..iB}...Q.........KSPb.v.....$.}.k..5.X49.s*. [TRUNCATED]
+2025-12-30 17:06:26.076 | DEBUG    | Source c5c55ab2...: seq=75 (novo highest, window: 3 seqs)
+2025-12-30 17:06:26.076 | DEBUG    | 💓 Heartbeat recebido (seq=75, age=-0.04s)
+2025-12-30 17:06:31.073 | INFO     | [OP-20251230_170602-0011] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000004cc7b4197fd7442132b8301a7dceaa759c96fdf75afae9bd7a17ea | ASCII: ..Z..iB}...Q......Z..iB}...Q.........L.....D!2.0.}..u....Z...z.. [TRUNCATED]
+2025-12-30 17:06:31.075 | DEBUG    | Source c5c55ab2...: seq=76 (novo highest, window: 4 seqs)
+2025-12-30 17:06:31.075 | DEBUG    | 💓 Heartbeat recebido (seq=76, age=-0.04s)
+2025-12-30 17:06:31.418 | INFO     | 
+Sinal 2 recebido, a parar...
+2025-12-30 17:06:31.420 | INFO     | A parar Node...
+2025-12-30 17:06:31.421 | INFO     | A parar GATT Server...
+2025-12-30 17:06:31.423 | INFO     | ✅ GATT Server parado
+2025-12-30 17:06:34.180 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 17:06:34.182 | INFO     | [OP-20251230_170602-0012] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 17:06:34.183 | INFO     | ✅ Node parado
+2025-12-30 17:06:34.185 | WARNING  | ⚠️  Conexão perdida com Sink
+2025-12-30 17:06:34.189 | INFO     | A parar Node...
+2025-12-30 17:06:34.190 | INFO     | A parar GATT Server...
+2025-12-30 17:06:34.190 | INFO     | ✅ GATT Server parado
+2025-12-30 17:06:34.191 | INFO     | ✅ Node parado
