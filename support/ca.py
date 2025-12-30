@@ -163,7 +163,7 @@ class CertificationAuthority:
         subject_attrs = [
             x509.NameAttribute(NameOID.COUNTRY_NAME, "PT"),
             x509.NameAttribute(NameOID.ORGANIZATION_NAME, "IoT Network"),
-            x509.NameAttribute(NameOID.COMMON_NAME, str(device_nid)),
+            x509.NameAttribute(NameOID.COMMON_NAME, device_nid.to_string()),
         ]
 
         # Se for Sink, adicionar atributo especial
