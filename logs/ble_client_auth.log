@@ -85,3 +85,58 @@ Verifique se existem certificados para este dispositivo:
 2025-12-30 00:18:49.294 | ERROR    | __main__:authenticate_with_server:216 | ❌ Erro ao enviar certificado: org.bluez.Error.InvalidArguments: Invalid Length
 [70] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service00c2/char00cb org.bluez.GattCharacteristic1 WriteValue
 2025-12-30 00:18:49.295 | ERROR    | __main__:main:360 | ❌ Autenticação falhou
+2025-12-30 00:22:43.121 | INFO     | __main__:main:318 | ============================================================
+2025-12-30 00:22:43.122 | INFO     | __main__:main:319 |   Cliente BLE com Autenticação X.509
+2025-12-30 00:22:43.122 | INFO     | __main__:main:320 | ============================================================
+2025-12-30 00:22:43.122 | INFO     | __main__:main:321 | 
+📱 Client NID: 69f0365f...
+2025-12-30 00:22:43.122 | INFO     | __main__:main:327 | 
+🔐 Carregando certificados...
+2025-12-30 00:22:43.123 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 00:22:43.123 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 00:22:43.123 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-30 00:22:43.123 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-30 00:22:43.124 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-30 00:22:43.127 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafa/IOT/IOT/certs/ca_certificate.pem
+2025-12-30 00:22:43.128 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-30 00:22:43.130 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafa/IOT/IOT/certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-30 00:22:43.130 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-30 00:22:43.131 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-30 00:22:43.131 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-30 00:22:43.131 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-30 00:22:43.131 | INFO     | __main__:main:339 | 
+🔒 Criando protocolo de autenticação...
+2025-12-30 00:22:43.131 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 69f0365f...
+2025-12-30 00:22:43.132 | INFO     | __main__:main:343 | 
+📡 A escanear por servidores BLE...
+2025-12-30 00:22:43.135 | INFO     | __main__:scan_for_server:69 | Usando adaptador: hci0 [A0:88:69:B6:F7:D2]
+2025-12-30 00:22:43.137 | INFO     | __main__:scan_for_server:71 | A escanear por 5 segundos...
+2025-12-30 00:22:48.344 | INFO     | __main__:scan_for_server:75 | Encontrados 1 dispositivos
+2025-12-30 00:22:48.345 | INFO     | __main__:find_iot_server:102 | Servidor IoT encontrado: IoT-Auth-Server [E0:D3:62:D6:EE:A0]
+2025-12-30 00:22:48.345 | INFO     | __main__:main:361 | 
+🔗 A conectar ao servidor: IoT-Auth-Server [E0:D3:62:D6:EE:A0]
+2025-12-30 00:22:51.989 | INFO     | __main__:main:365 | ✅ Conectado!
+2025-12-30 00:22:51.989 | INFO     | __main__:main:371 | 
+📏 Negociando MTU...
+2025-12-30 00:22:51.990 | INFO     | __main__:main:376 |    MTU será negociado automaticamente pelo BLE
+2025-12-30 00:22:51.991 | INFO     | __main__:main:377 |    Certificados grandes podem precisar de write_command ou fragmentação
+2025-12-30 00:22:51.991 | INFO     | __main__:authenticate_with_server:163 | 
+============================================================
+2025-12-30 00:22:51.991 | INFO     | __main__:authenticate_with_server:164 | 🔐 Iniciando Autenticação
+2025-12-30 00:22:51.992 | INFO     | __main__:authenticate_with_server:165 | ============================================================
+2025-12-30 00:22:51.995 | INFO     | __main__:authenticate_with_server:185 | ✅ AuthCharacteristic encontrada
+2025-12-30 00:22:51.996 | INFO     | __main__:authenticate_with_server:186 |    Service: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-30 00:22:51.997 | INFO     | __main__:authenticate_with_server:187 |    Characteristic: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-30 00:22:51.997 | INFO     | __main__:authenticate_with_server:190 | 
+📡 A subscrever indications de autenticação...
+2025-12-30 00:22:52.691 | INFO     | __main__:authenticate_with_server:198 | ✅ Subscrito a indications
+2025-12-30 00:22:52.691 | INFO     | __main__:authenticate_with_server:204 | 
+--- Passo 1: Enviar certificado ao servidor ---
+2025-12-30 00:22:52.692 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2025-12-30 00:22:52.692 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 908 bytes
+2025-12-30 00:22:52.693 | INFO     | __main__:authenticate_with_server:206 | Enviando CERT_OFFER: 911 bytes
+2025-12-30 00:22:52.697 | ERROR    | __main__:authenticate_with_server:226 | ❌ Erro ao enviar certificado: org.bluez.Error.Failed: Failed to initiate write
+[70] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service00c2/char00cb org.bluez.GattCharacteristic1 WriteValue
+2025-12-30 00:22:52.697 | INFO     | __main__:authenticate_with_server:227 |    Certificado muito grande para MTU atual
+2025-12-30 00:22:52.697 | INFO     | __main__:authenticate_with_server:228 |    Será necessário implementar fragmentação
+2025-12-30 00:22:52.698 | ERROR    | __main__:main:383 | ❌ Autenticação falhou
