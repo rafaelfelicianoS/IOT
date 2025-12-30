@@ -157,3 +157,32 @@
 2025-12-29 23:56:43.357 | INFO     | common.security.authentication:handle_response:271 |    Peer b5938723... autenticado com sucesso
 2025-12-29 23:56:43.358 | INFO     | common.security.auth_handler:handle_auth_message:102 | ✅ Cliente client2:00:11:22:33:44:66 AUTENTICADO!
 2025-12-29 23:56:43.358 | INFO     | common.security.authentication:handle_auth_success:290 | ✅ Peer confirmou autenticação bem sucedida!
+2025-12-30 01:04:26.531 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=10)
+2025-12-30 01:04:26.531 | WARNING  | common.security.replay_protection:check_and_update:73 | 🚨 REPLAY DETECTADO! Source: dcca1fda..., seq=1 (já foi visto)
+2025-12-30 01:04:52.041 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 500 bytes em 3 fragmentos
+2025-12-30 01:04:52.042 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 3 fragmentos
+2025-12-30 01:04:52.042 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 500 bytes (3 fragmentos)
+2025-12-30 01:05:04.357 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 01:05:04.357 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-30 01:05:04.357 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-30 01:05:04.357 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-30 01:05:04.357 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-30 01:05:04.360 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-30 01:05:04.360 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-30 01:05:04.361 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-30 01:05:04.361 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-30 01:05:04.362 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-30 01:05:04.362 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-30 01:05:04.362 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-30 01:05:25.630 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 01:05:25.631 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-30 01:05:25.631 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-30 01:05:25.631 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-30 01:05:25.631 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-30 01:05:25.634 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-30 01:05:25.634 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-30 01:05:25.634 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-30 01:05:25.635 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-30 01:05:25.635 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-30 01:05:25.635 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-30 01:05:25.635 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
