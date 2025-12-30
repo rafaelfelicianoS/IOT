@@ -269,3 +269,142 @@ Verifique se existem certificados para este dispositivo:
 2025-12-30 00:38:20.123 | INFO     | __main__:indication_handler:144 | 🔐 Indication de autenticação recebida: 38 bytes
 2025-12-30 00:38:25.523 | ERROR    | __main__:authenticate_with_server:340 | ❌ Timeout na autenticação
 2025-12-30 00:38:25.524 | ERROR    | __main__:main:427 | ❌ Autenticação falhou
+2025-12-30 00:43:08.583 | INFO     | __main__:main:362 | ============================================================
+2025-12-30 00:43:08.583 | INFO     | __main__:main:363 |   Cliente BLE com Autenticação X.509
+2025-12-30 00:43:08.584 | INFO     | __main__:main:364 | ============================================================
+2025-12-30 00:43:08.584 | INFO     | __main__:main:365 | 
+📱 Client NID: 69f0365f...
+2025-12-30 00:43:08.584 | INFO     | __main__:main:371 | 
+🔐 Carregando certificados...
+2025-12-30 00:43:08.584 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 00:43:08.585 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 00:43:08.585 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-30 00:43:08.585 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-30 00:43:08.585 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-30 00:43:08.589 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafa/IOT/IOT/certs/ca_certificate.pem
+2025-12-30 00:43:08.589 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-30 00:43:08.591 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafa/IOT/IOT/certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-30 00:43:08.591 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-30 00:43:08.592 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-30 00:43:08.592 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-30 00:43:08.593 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-30 00:43:08.593 | INFO     | __main__:main:383 | 
+🔒 Criando protocolo de autenticação...
+2025-12-30 00:43:08.593 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 69f0365f...
+2025-12-30 00:43:08.594 | INFO     | __main__:main:387 | 
+📡 A escanear por servidores BLE...
+2025-12-30 00:43:08.597 | INFO     | __main__:scan_for_server:77 | Usando adaptador: hci0 [A0:88:69:B6:F7:D2]
+2025-12-30 00:43:08.598 | INFO     | __main__:scan_for_server:79 | A escanear por 5 segundos...
+2025-12-30 00:43:13.800 | INFO     | __main__:scan_for_server:83 | Encontrados 0 dispositivos
+2025-12-30 00:43:13.801 | ERROR    | __main__:main:391 | ❌ Nenhum dispositivo encontrado
+2025-12-30 00:43:18.487 | INFO     | __main__:main:362 | ============================================================
+2025-12-30 00:43:18.488 | INFO     | __main__:main:363 |   Cliente BLE com Autenticação X.509
+2025-12-30 00:43:18.488 | INFO     | __main__:main:364 | ============================================================
+2025-12-30 00:43:18.488 | INFO     | __main__:main:365 | 
+📱 Client NID: 69f0365f...
+2025-12-30 00:43:18.488 | INFO     | __main__:main:371 | 
+🔐 Carregando certificados...
+2025-12-30 00:43:18.489 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 00:43:18.489 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 00:43:18.489 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-30 00:43:18.489 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-30 00:43:18.489 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-30 00:43:18.494 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafa/IOT/IOT/certs/ca_certificate.pem
+2025-12-30 00:43:18.494 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-30 00:43:18.496 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafa/IOT/IOT/certs/69f0365f-0b47-4449-8c75-558f4537cf85/certificate.pem
+2025-12-30 00:43:18.496 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 595377818982776629124640282954716968146495279119
+2025-12-30 00:43:18.496 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-30 00:43:18.496 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-30 00:43:18.497 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-30 00:43:18.497 | INFO     | __main__:main:383 | 
+🔒 Criando protocolo de autenticação...
+2025-12-30 00:43:18.497 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 69f0365f...
+2025-12-30 00:43:18.497 | INFO     | __main__:main:387 | 
+📡 A escanear por servidores BLE...
+2025-12-30 00:43:18.499 | INFO     | __main__:scan_for_server:77 | Usando adaptador: hci0 [A0:88:69:B6:F7:D2]
+2025-12-30 00:43:18.500 | INFO     | __main__:scan_for_server:79 | A escanear por 5 segundos...
+2025-12-30 00:43:23.704 | INFO     | __main__:scan_for_server:83 | Encontrados 1 dispositivos
+2025-12-30 00:43:23.705 | INFO     | __main__:find_iot_server:110 | Servidor IoT encontrado: IoT-Auth-Server [E0:D3:62:D6:EE:A0]
+2025-12-30 00:43:23.706 | INFO     | __main__:main:405 | 
+🔗 A conectar ao servidor: IoT-Auth-Server [E0:D3:62:D6:EE:A0]
+2025-12-30 00:43:26.879 | INFO     | __main__:main:409 | ✅ Conectado!
+2025-12-30 00:43:26.880 | INFO     | __main__:main:415 | 
+📏 Negociando MTU...
+2025-12-30 00:43:26.880 | INFO     | __main__:main:420 |    MTU será negociado automaticamente pelo BLE
+2025-12-30 00:43:26.882 | INFO     | __main__:main:421 |    Certificados grandes podem precisar de write_command ou fragmentação
+2025-12-30 00:43:26.883 | INFO     | __main__:authenticate_with_server:168 | 
+============================================================
+2025-12-30 00:43:26.884 | INFO     | __main__:authenticate_with_server:169 | 🔐 Iniciando Autenticação
+2025-12-30 00:43:26.884 | INFO     | __main__:authenticate_with_server:170 | ============================================================
+2025-12-30 00:43:26.889 | INFO     | __main__:authenticate_with_server:190 | ✅ AuthCharacteristic encontrada
+2025-12-30 00:43:26.890 | INFO     | __main__:authenticate_with_server:191 |    Service: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-30 00:43:26.891 | INFO     | __main__:authenticate_with_server:192 |    Characteristic: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-30 00:43:26.892 | INFO     | __main__:authenticate_with_server:195 | 
+📡 A subscrever indications de autenticação...
+2025-12-30 00:43:27.382 | INFO     | __main__:authenticate_with_server:203 | ✅ Subscrito a indications
+2025-12-30 00:43:27.383 | INFO     | __main__:authenticate_with_server:209 | 
+--- Passo 1: Enviar certificado ao servidor ---
+2025-12-30 00:43:27.383 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2025-12-30 00:43:27.384 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 908 bytes
+2025-12-30 00:43:27.385 | INFO     | __main__:authenticate_with_server:211 | Enviando CERT_OFFER: 911 bytes
+2025-12-30 00:43:27.385 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 911 bytes em 6 fragmentos
+2025-12-30 00:43:27.386 | INFO     | __main__:authenticate_with_server:215 | 📦 Certificado dividido em 6 fragmentos
+2025-12-30 00:43:27.387 | INFO     | __main__:authenticate_with_server:220 |    Enviando fragmento 1/6: 183 bytes
+2025-12-30 00:43:27.442 | INFO     | __main__:authenticate_with_server:220 |    Enviando fragmento 2/6: 183 bytes
+2025-12-30 00:43:27.495 | INFO     | __main__:authenticate_with_server:220 |    Enviando fragmento 3/6: 183 bytes
+2025-12-30 00:43:27.547 | INFO     | __main__:authenticate_with_server:220 |    Enviando fragmento 4/6: 183 bytes
+2025-12-30 00:43:27.603 | INFO     | __main__:authenticate_with_server:220 |    Enviando fragmento 5/6: 183 bytes
+2025-12-30 00:43:27.658 | INFO     | __main__:authenticate_with_server:220 |    Enviando fragmento 6/6: 14 bytes
+2025-12-30 00:43:27.661 | INFO     | __main__:authenticate_with_server:241 | ✅ Todos os fragmentos enviados
+2025-12-30 00:43:27.780 | INFO     | __main__:indication_handler:146 | 🔐 Indication de autenticação recebida: 38 bytes
+2025-12-30 00:43:28.662 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 1 fragmentos
+2025-12-30 00:43:28.663 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 35 bytes (1 fragmentos)
+2025-12-30 00:43:28.663 | INFO     | __main__:authenticate_with_server:295 | 
+--- Passo 2: Processar resposta do servidor ---
+2025-12-30 00:43:28.664 | INFO     | __main__:authenticate_with_server:296 | Resposta completa recebida: 35 bytes
+2025-12-30 00:43:28.665 | INFO     | common.security.authentication:handle_challenge:214 | 🎲 Challenge recebido - gerando response...
+2025-12-30 00:43:28.733 | INFO     | common.security.authentication:handle_challenge:230 | ✍️  Response gerada: 139 bytes
+2025-12-30 00:43:28.733 | INFO     | __main__:authenticate_with_server:301 | Estado atual: CHALLENGE_RECEIVED
+2025-12-30 00:43:28.734 | INFO     | __main__:authenticate_with_server:304 | Enviando resposta: 142 bytes
+2025-12-30 00:43:28.734 | INFO     | __main__:authenticate_with_server:308 | 📦 Resposta dividida em 1 fragmentos
+2025-12-30 00:43:28.831 | INFO     | __main__:indication_handler:146 | 🔐 Indication de autenticação recebida: 6 bytes
+2025-12-30 00:43:29.736 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 1 fragmentos
+2025-12-30 00:43:29.738 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 3 bytes (1 fragmentos)
+2025-12-30 00:43:29.739 | INFO     | __main__:authenticate_with_server:295 | 
+--- Passo 3: Processar resposta do servidor ---
+2025-12-30 00:43:29.740 | INFO     | __main__:authenticate_with_server:296 | Resposta completa recebida: 3 bytes
+2025-12-30 00:43:29.740 | INFO     | common.security.authentication:handle_auth_success:290 | ✅ Peer confirmou autenticação bem sucedida!
+2025-12-30 00:43:29.741 | INFO     | __main__:authenticate_with_server:301 | Estado atual: AUTHENTICATED
+2025-12-30 00:43:29.741 | INFO     | __main__:main:432 | 
+💓 A subscrever notificações de heartbeat...
+2025-12-30 00:43:29.832 | INFO     | __main__:main:454 | ✅ Subscrito a heartbeats
+2025-12-30 00:43:29.833 | INFO     | __main__:main:459 | 
+============================================================
+2025-12-30 00:43:29.833 | INFO     | __main__:main:460 | ✅ CLIENTE AUTENTICADO E A RECEBER HEARTBEATS
+2025-12-30 00:43:29.834 | INFO     | __main__:main:461 | ============================================================
+2025-12-30 00:43:29.834 | INFO     | __main__:main:462 | 
+A aguardar heartbeats... (Ctrl+C para sair)
+
+2025-12-30 00:43:31.186 | INFO     | __main__:notification_handler:123 | 💓 Notificação recebida: 158 bytes
+2025-12-30 00:43:31.187 | INFO     | __main__:notification_handler:128 |    Source: 323b6aad...
+2025-12-30 00:43:31.187 | INFO     | __main__:notification_handler:129 |    Destination: 323b6aad...
+2025-12-30 00:43:31.187 | INFO     | __main__:notification_handler:130 |    Type: 2
+2025-12-30 00:43:31.187 | INFO     | __main__:notification_handler:131 |    Sequence: 77
+2025-12-30 00:43:31.188 | INFO     | __main__:notification_handler:132 |    Payload: 88 bytes
+2025-12-30 00:43:36.186 | INFO     | __main__:notification_handler:123 | 💓 Notificação recebida: 158 bytes
+2025-12-30 00:43:36.187 | INFO     | __main__:notification_handler:128 |    Source: 323b6aad...
+2025-12-30 00:43:36.188 | INFO     | __main__:notification_handler:129 |    Destination: 323b6aad...
+2025-12-30 00:43:36.188 | INFO     | __main__:notification_handler:130 |    Type: 2
+2025-12-30 00:43:36.189 | INFO     | __main__:notification_handler:131 |    Sequence: 78
+2025-12-30 00:43:36.190 | INFO     | __main__:notification_handler:132 |    Payload: 88 bytes
+2025-12-30 00:43:41.185 | INFO     | __main__:notification_handler:123 | 💓 Notificação recebida: 158 bytes
+2025-12-30 00:43:41.186 | INFO     | __main__:notification_handler:128 |    Source: 323b6aad...
+2025-12-30 00:43:41.187 | INFO     | __main__:notification_handler:129 |    Destination: 323b6aad...
+2025-12-30 00:43:41.187 | INFO     | __main__:notification_handler:130 |    Type: 2
+2025-12-30 00:43:41.188 | INFO     | __main__:notification_handler:131 |    Sequence: 79
+2025-12-30 00:43:41.188 | INFO     | __main__:notification_handler:132 |    Payload: 88 bytes
+2025-12-30 00:43:44.783 | INFO     | __main__:main:468 | 
+
+A terminar...
+2025-12-30 00:43:44.784 | INFO     | __main__:main:471 | Desconectando...
+2025-12-30 00:43:47.288 | INFO     | __main__:main:473 | ✅ Desconectado
