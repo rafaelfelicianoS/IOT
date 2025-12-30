@@ -1,0 +1,64 @@
+2025-12-30 02:13:58.075 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_021358.log
+2025-12-30 02:13:58.076 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 02:13:58.077 | INFO     | BLE Client iniciado
+2025-12-30 02:13:58.078 | INFO     | IoT Node inicializado (adapter=hci0)
+2025-12-30 02:13:58.079 | INFO     | ============================================================
+2025-12-30 02:13:58.081 | INFO     |   A iniciar IoT Node
+2025-12-30 02:13:58.082 | INFO     | ============================================================
+2025-12-30 02:13:58.082 | INFO     | 🔍 A procurar Sink...
+2025-12-30 02:13:58.083 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 02:13:58.085 | INFO     | [OP-20251230_021358-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 02:14:03.291 | DEBUG    |   Encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -57 dBm
+2025-12-30 02:14:03.292 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-30 02:14:03.292 | INFO     | [OP-20251230_021358-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-30 02:14:03.293 | DEBUG    | [OP-20251230_021358-0002]   Device_1: Name: IoT-Sink-c5c55ab2 | Address: E0:D3:62:D6:EE:A0 | RSSI: -57 dBm | Services: 1
+2025-12-30 02:14:03.293 | INFO     | Encontrados 1 dispositivos IoT
+2025-12-30 02:14:03.293 | DEBUG    |   Device: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -57 dBm
+2025-12-30 02:14:03.293 | DEBUG    |     Type=0, HopCount=255
+2025-12-30 02:14:03.294 | INFO     | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -57 dBm
+2025-12-30 02:14:03.294 | INFO     | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2025-12-30 02:14:03.297 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-30 02:14:03.297 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 02:14:03.298 | INFO     | [OP-20251230_021358-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 02:14:06.684 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 02:14:06.685 | INFO     | [OP-20251230_021358-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3383.91ms
+2025-12-30 02:14:06.687 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-30 02:14:06.687 | INFO     | ✅ Conectado ao Sink via GATT
+2025-12-30 02:14:06.692 | DEBUG    | Descobertos 4 serviços
+2025-12-30 02:14:06.695 | DEBUG    | Serviço 12340000-0000-1000-8000-00805f9b34fb encontrado
+2025-12-30 02:14:06.696 | INFO     | ✅ Serviço IoT Network encontrado
+2025-12-30 02:14:06.697 | INFO     | A subscrever a notificações...
+2025-12-30 02:14:07.203 | INFO     | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 02:14:07.205 | INFO     | [OP-20251230_021358-0005] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 02:14:07.206 | INFO     | ✅ Subscrito a NETWORK_PACKET
+2025-12-30 02:14:07.208 | INFO     | 🔐 A iniciar autenticação com Sink...
+2025-12-30 02:14:07.211 | WARNING  | ⚠️  Autenticação não totalmente implementada - usando placeholder
+2025-12-30 02:14:07.213 | INFO     | ✅ Autenticação completada (placeholder)
+2025-12-30 02:14:07.216 | INFO     | ============================================================
+2025-12-30 02:14:07.218 | INFO     | ✅ Node pronto e conectado ao Sink!
+2025-12-30 02:14:07.220 | INFO     | ============================================================
+2025-12-30 02:14:12.207 | INFO     | [OP-20251230_021358-0006] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000006fe9eef48d8b5c3260f3f26f77e0f51577925973ee11e89af79f8f | ASCII: ..Z..iB}...Q......Z..iB}...Q.........o.....\2`..ow...w.Ys....... [TRUNCATED]
+2025-12-30 02:14:12.208 | INFO     | Sink NID identificado: c5c55ab2...
+2025-12-30 02:14:12.208 | DEBUG    | Novo source c5c55ab2...: seq=111 (primeiro pacote)
+2025-12-30 02:14:12.208 | DEBUG    | 💓 Heartbeat recebido (seq=111, age=0.05s)
+2025-12-30 02:14:17.208 | INFO     | [OP-20251230_021358-0007] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000070aaad4d180cc26cd2fd2bd7583e143fc6600463ecf25477812988 | ASCII: ..Z..iB}...Q......Z..iB}...Q.........p..M...l..+.X>.?.`.c..Tw.). [TRUNCATED]
+2025-12-30 02:14:17.210 | DEBUG    | Source c5c55ab2...: seq=112 (novo highest, window: 2 seqs)
+2025-12-30 02:14:17.210 | DEBUG    | 💓 Heartbeat recebido (seq=112, age=0.06s)
+2025-12-30 02:14:22.208 | INFO     | [OP-20251230_021358-0008] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000007184dea351945ee78131bf72674c2fa0ef16653436723e29344f2e | ASCII: ..Z..iB}...Q......Z..iB}...Q.........q...Q.^..1.rgL/...e46r>)4O. [TRUNCATED]
+2025-12-30 02:14:22.209 | DEBUG    | Source c5c55ab2...: seq=113 (novo highest, window: 3 seqs)
+2025-12-30 02:14:22.210 | DEBUG    | 💓 Heartbeat recebido (seq=113, age=0.05s)
+2025-12-30 02:14:27.208 | INFO     | [OP-20251230_021358-0009] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000072d47a3cc7035390b4642b159b21a856c0753e8359990e479b279e | ASCII: ..Z..iB}...Q......Z..iB}...Q.........r.z<..S..d+..!.V.u>.Y..G.'. [TRUNCATED]
+2025-12-30 02:14:27.210 | DEBUG    | Source c5c55ab2...: seq=114 (novo highest, window: 4 seqs)
+2025-12-30 02:14:27.210 | DEBUG    | 💓 Heartbeat recebido (seq=114, age=0.06s)
+2025-12-30 02:14:32.208 | INFO     | [OP-20251230_021358-0010] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000007322a89c2eacb22da53d79974b4d42123b232252d6945287ca3608 | ASCII: ..Z..iB}...Q......Z..iB}...Q.........s".....-.=y.KMB.;#"R..R..6. [TRUNCATED]
+2025-12-30 02:14:32.210 | DEBUG    | Source c5c55ab2...: seq=115 (novo highest, window: 5 seqs)
+2025-12-30 02:14:32.210 | DEBUG    | 💓 Heartbeat recebido (seq=115, age=0.05s)
+2025-12-30 02:14:32.784 | INFO     | 
+Sinal 2 recebido, a parar...
+2025-12-30 02:14:32.785 | INFO     | A parar Node...
+2025-12-30 02:14:35.314 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 02:14:35.315 | INFO     | [OP-20251230_021358-0011] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 02:14:35.318 | INFO     | ✅ Node parado
+2025-12-30 02:14:35.321 | WARNING  | ⚠️  Conexão perdida com Sink
+2025-12-30 02:14:35.323 | INFO     | A parar Node...
+2025-12-30 02:14:35.324 | INFO     | ✅ Node parado
