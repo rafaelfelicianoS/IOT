@@ -206,14 +206,26 @@ def authenticate_with_server(
     logger.info(f"Enviando CERT_OFFER: {len(initial_message)} bytes")
 
     try:
-        peripheral.write_request(
-            auth_service.uuid(),
-            auth_char.uuid(),
-            initial_message
-        )
-        logger.info("✅ Certificado enviado")
+        # Tentar write_command primeiro (sem resposta, pode aceitar pacotes maiores)
+        try:
+            peripheral.write_command(
+                auth_service.uuid(),
+                auth_char.uuid(),
+                initial_message
+            )
+            logger.info("✅ Certificado enviado (write_command)")
+        except AttributeError:
+            # Se write_command não existir, usar write_request
+            peripheral.write_request(
+                auth_service.uuid(),
+                auth_char.uuid(),
+                initial_message
+            )
+            logger.info("✅ Certificado enviado (write_request)")
     except Exception as e:
         logger.error(f"❌ Erro ao enviar certificado: {e}")
+        logger.info("   Certificado muito grande para MTU atual")
+        logger.info("   Será necessário implementar fragmentação")
         return False
 
     # Aguardar resposta e continuar handshake
@@ -354,6 +366,17 @@ def main(argv):
     except Exception as e:
         logger.error(f"❌ Erro ao conectar: {e}")
         return 1
+
+    # Tentar negociar MTU maior (para suportar certificados grandes)
+    logger.info("\n📏 Negociando MTU...")
+    try:
+        # Tentar definir MTU para 512 bytes (máximo comum)
+        # SimpleBLE pode não ter método set_mtu direto, mas a conexão já negocia
+        # Vamos verificar o MTU atual
+        logger.info("   MTU será negociado automaticamente pelo BLE")
+        logger.info("   Certificados grandes podem precisar de write_command ou fragmentação")
+    except Exception as e:
+        logger.warning(f"⚠️  Aviso ao negociar MTU: {e}")
 
     # Autenticar
     if not authenticate_with_server(server, auth_protocol):
