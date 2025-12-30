@@ -1,0 +1,715 @@
+2025-12-30 00:05:59.243 | INFO     | __main__:main:117 | ============================================================
+2025-12-30 00:05:59.243 | INFO     | __main__:main:118 |   GATT Server com Autenticação X.509
+2025-12-30 00:05:59.244 | INFO     | __main__:main:119 | ============================================================
+2025-12-30 00:05:59.244 | INFO     | __main__:main:120 | 
+📱 Device NID: 323b6aad...
+2025-12-30 00:05:59.244 | INFO     | __main__:main:123 | 
+🔐 Carregando certificados...
+2025-12-30 00:05:59.244 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 323b6aad...
+2025-12-30 00:05:59.244 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-30 00:05:59.244 | INFO     | common.security.certificate_manager:initialize:150 | ============================================================
+2025-12-30 00:05:59.244 | INFO     | common.security.certificate_manager:initialize:151 | A carregar certificados...
+2025-12-30 00:05:59.244 | INFO     | common.security.certificate_manager:initialize:152 | ============================================================
+2025-12-30 00:05:59.246 | INFO     | common.security.certificate_manager:load_ca_certificate:134 | ✅ Certificado da CA carregado: /home/rafael/repos/iot/certs/ca_certificate.pem
+2025-12-30 00:05:59.246 | INFO     | common.security.certificate_manager:load_ca_certificate:135 |    Serial: 390882065628549426367143608417965902030398535790
+2025-12-30 00:05:59.247 | INFO     | common.security.certificate_manager:load_device_certificate:96 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/323b6aad-08bc-4ab7-86c8-e94f6a141fcd/certificate.pem
+2025-12-30 00:05:59.247 | INFO     | common.security.certificate_manager:load_device_certificate:97 |    Serial: 171238034617248609557633614583841277542506298672
+2025-12-30 00:05:59.247 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
+2025-12-30 00:05:59.247 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
+2025-12-30 00:05:59.247 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-30 00:05:59.247 | INFO     | __main__:main:135 | 
+🔒 Criando Authentication Handler...
+2025-12-30 00:05:59.247 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-30 00:05:59.248 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-30 00:05:59.248 | INFO     | __main__:main:149 | 
+🔧 A criar IoTNetworkService...
+2025-12-30 00:05:59.248 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /org/bluez/iot/service0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-30 00:05:59.248 | INFO     | common.ble.gatt_services:__init__:524 | A criar IoTNetworkService...
+2025-12-30 00:05:59.249 | INFO     | common.ble.gatt_services:__init__:74 | NetworkPacketCharacteristic criada
+2025-12-30 00:05:59.249 | INFO     | common.ble.gatt_services:__init__:213 | DeviceInfoCharacteristic criada: NID=323b6aad..., type=node
+2025-12-30 00:05:59.249 | INFO     | common.ble.gatt_services:__init__:287 | NeighborTableCharacteristic criada
+2025-12-30 00:05:59.249 | INFO     | common.ble.gatt_services:__init__:412 | AuthCharacteristic criada
+2025-12-30 00:05:59.250 | INFO     | common.ble.gatt_services:__init__:538 | ✅ IoTNetworkService criado com sucesso!
+2025-12-30 00:05:59.250 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /org/bluez/iot/service0
+2025-12-30 00:05:59.250 | INFO     | __main__:main:181 | 
+✅ Application criada com sucesso!
+2025-12-30 00:05:59.251 | INFO     | __main__:main:182 |    Service UUID: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-30 00:05:59.251 | INFO     | __main__:main:183 |    Characteristics: 4
+2025-12-30 00:05:59.251 | INFO     | __main__:main:186 | 
+📡 A registar application no adaptador hci0...
+2025-12-30 00:05:59.251 | INFO     | common.ble.gatt_server:register_application:440 | A usar adaptador: /org/bluez/hci0
+2025-12-30 00:05:59.252 | INFO     | common.ble.gatt_server:register_application:453 | A registar GATT application...
+2025-12-30 00:05:59.252 | INFO     | __main__:main:199 | 
+📢 A criar BLE Advertisement...
+2025-12-30 00:05:59.252 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-30 00:05:59.252 | INFO     | __main__:main:210 |    Service UUID: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-30 00:05:59.253 | INFO     | __main__:main:211 |    Local Name: IoT-Auth-Server
+2025-12-30 00:05:59.253 | INFO     | __main__:main:214 | 📡 A registar advertisement...
+2025-12-30 00:05:59.253 | INFO     | common.ble.advertising:register_advertisement:232 | A registar advertisement no adaptador: /org/bluez/hci0
+2025-12-30 00:05:59.254 | INFO     | __main__:main:244 | 💓 Timer configurado: heartbeats serão enviados a cada 5 segundos
+2025-12-30 00:05:59.254 | INFO     | __main__:main:250 | 
+============================================================
+2025-12-30 00:05:59.254 | INFO     | __main__:main:251 |   ✅ GATT Server com Autenticação a correr!
+2025-12-30 00:05:59.254 | INFO     | __main__:main:252 | ============================================================
+2025-12-30 00:05:59.254 | INFO     | __main__:main:253 | 
+Dispositivo visível e disponível para conexões BLE.
+2025-12-30 00:05:59.254 | INFO     | __main__:main:254 | Clientes devem autenticar-se antes de trocar pacotes.
+2025-12-30 00:05:59.254 | INFO     | __main__:main:255 | 
+Pressione Ctrl+C para terminar.
+
+2025-12-30 00:05:59.255 | INFO     | __main__:main:257 | 📱 Para testar:
+2025-12-30 00:05:59.255 | INFO     | __main__:main:258 |    1. Usar outro script Python com cliente BLE autenticado
+2025-12-30 00:05:59.255 | INFO     | __main__:main:259 |    2. Ou usar bluetoothctl para conectar e ver características
+2025-12-30 00:05:59.255 | INFO     | __main__:main:260 | 
+2025-12-30 00:05:59.260 | INFO     | common.ble.gatt_server:<lambda>:457 | ✅ GATT application registada com sucesso!
+2025-12-30 00:05:59.363 | INFO     | common.ble.advertising:<lambda>:242 | ✅ Advertisement registado com sucesso!
+2025-12-30 00:06:04.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=1, size=158 bytes
+2025-12-30 00:06:04.154 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=2, size=158 bytes
+2025-12-30 00:06:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=3, size=158 bytes
+2025-12-30 00:06:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=4, size=158 bytes
+2025-12-30 00:06:19.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:24.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=5, size=158 bytes
+2025-12-30 00:06:24.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=6, size=158 bytes
+2025-12-30 00:06:29.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=7, size=158 bytes
+2025-12-30 00:06:34.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=8, size=158 bytes
+2025-12-30 00:06:39.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=9, size=158 bytes
+2025-12-30 00:06:44.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=10, size=158 bytes
+2025-12-30 00:06:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:54.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=11, size=158 bytes
+2025-12-30 00:06:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:06:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=12, size=158 bytes
+2025-12-30 00:06:59.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:04.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=13, size=158 bytes
+2025-12-30 00:07:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:09.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=14, size=158 bytes
+2025-12-30 00:07:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=15, size=158 bytes
+2025-12-30 00:07:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:19.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=16, size=158 bytes
+2025-12-30 00:07:19.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:24.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=17, size=158 bytes
+2025-12-30 00:07:24.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:29.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=18, size=158 bytes
+2025-12-30 00:07:29.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=19, size=158 bytes
+2025-12-30 00:07:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=20, size=158 bytes
+2025-12-30 00:07:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:44.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=21, size=158 bytes
+2025-12-30 00:07:44.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=22, size=158 bytes
+2025-12-30 00:07:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=23, size=158 bytes
+2025-12-30 00:07:54.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:07:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=24, size=158 bytes
+2025-12-30 00:07:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=25, size=158 bytes
+2025-12-30 00:08:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=26, size=158 bytes
+2025-12-30 00:08:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=27, size=158 bytes
+2025-12-30 00:08:14.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:19.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=28, size=158 bytes
+2025-12-30 00:08:19.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=29, size=158 bytes
+2025-12-30 00:08:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:29.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=30, size=158 bytes
+2025-12-30 00:08:29.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:34.153 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=31, size=158 bytes
+2025-12-30 00:08:34.154 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=32, size=158 bytes
+2025-12-30 00:08:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=33, size=158 bytes
+2025-12-30 00:08:44.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:49.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=34, size=158 bytes
+2025-12-30 00:08:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=35, size=158 bytes
+2025-12-30 00:08:54.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:08:59.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=36, size=158 bytes
+2025-12-30 00:08:59.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:04.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=37, size=158 bytes
+2025-12-30 00:09:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=38, size=158 bytes
+2025-12-30 00:09:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=39, size=158 bytes
+2025-12-30 00:09:14.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:19.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=40, size=158 bytes
+2025-12-30 00:09:19.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:24.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=41, size=158 bytes
+2025-12-30 00:09:24.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:29.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=42, size=158 bytes
+2025-12-30 00:09:29.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=43, size=158 bytes
+2025-12-30 00:09:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=44, size=158 bytes
+2025-12-30 00:09:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=45, size=158 bytes
+2025-12-30 00:09:44.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=46, size=158 bytes
+2025-12-30 00:09:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:54.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=47, size=158 bytes
+2025-12-30 00:09:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:09:59.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=48, size=158 bytes
+2025-12-30 00:09:59.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=49, size=158 bytes
+2025-12-30 00:10:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:09.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=50, size=158 bytes
+2025-12-30 00:10:09.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=51, size=158 bytes
+2025-12-30 00:10:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=52, size=158 bytes
+2025-12-30 00:10:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=53, size=158 bytes
+2025-12-30 00:10:24.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=54, size=158 bytes
+2025-12-30 00:10:29.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:34.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=55, size=158 bytes
+2025-12-30 00:10:34.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=56, size=158 bytes
+2025-12-30 00:10:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:44.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=57, size=158 bytes
+2025-12-30 00:10:44.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=58, size=158 bytes
+2025-12-30 00:10:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:54.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=59, size=158 bytes
+2025-12-30 00:10:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:10:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=60, size=158 bytes
+2025-12-30 00:10:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=61, size=158 bytes
+2025-12-30 00:11:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=62, size=158 bytes
+2025-12-30 00:11:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:14.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=63, size=158 bytes
+2025-12-30 00:11:14.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=64, size=158 bytes
+2025-12-30 00:11:19.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:24.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=65, size=158 bytes
+2025-12-30 00:11:24.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:29.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=66, size=158 bytes
+2025-12-30 00:11:29.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=67, size=158 bytes
+2025-12-30 00:11:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=68, size=158 bytes
+2025-12-30 00:11:39.158 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:44.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=69, size=158 bytes
+2025-12-30 00:11:44.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=70, size=158 bytes
+2025-12-30 00:11:49.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:54.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=71, size=158 bytes
+2025-12-30 00:11:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:11:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=72, size=158 bytes
+2025-12-30 00:11:59.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=73, size=158 bytes
+2025-12-30 00:12:04.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=74, size=158 bytes
+2025-12-30 00:12:09.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:14.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=75, size=158 bytes
+2025-12-30 00:12:14.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=76, size=158 bytes
+2025-12-30 00:12:19.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:24.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=77, size=158 bytes
+2025-12-30 00:12:24.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=78, size=158 bytes
+2025-12-30 00:12:29.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:34.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=79, size=158 bytes
+2025-12-30 00:12:34.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=80, size=158 bytes
+2025-12-30 00:12:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=81, size=158 bytes
+2025-12-30 00:12:44.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:49.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=82, size=158 bytes
+2025-12-30 00:12:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:54.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=83, size=158 bytes
+2025-12-30 00:12:54.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:12:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=84, size=158 bytes
+2025-12-30 00:12:59.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=85, size=158 bytes
+2025-12-30 00:13:04.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=86, size=158 bytes
+2025-12-30 00:13:09.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=87, size=158 bytes
+2025-12-30 00:13:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=88, size=158 bytes
+2025-12-30 00:13:19.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=89, size=158 bytes
+2025-12-30 00:13:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=90, size=158 bytes
+2025-12-30 00:13:29.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=91, size=158 bytes
+2025-12-30 00:13:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=92, size=158 bytes
+2025-12-30 00:13:39.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=93, size=158 bytes
+2025-12-30 00:13:44.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=94, size=158 bytes
+2025-12-30 00:13:49.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:54.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=95, size=158 bytes
+2025-12-30 00:13:54.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:13:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=96, size=158 bytes
+2025-12-30 00:13:59.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:04.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=97, size=158 bytes
+2025-12-30 00:14:04.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=98, size=158 bytes
+2025-12-30 00:14:09.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:14.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=99, size=158 bytes
+2025-12-30 00:14:14.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=100, size=158 bytes
+2025-12-30 00:14:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:24.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=101, size=158 bytes
+2025-12-30 00:14:24.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:29.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=102, size=158 bytes
+2025-12-30 00:14:29.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:34.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=103, size=158 bytes
+2025-12-30 00:14:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=104, size=158 bytes
+2025-12-30 00:14:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=105, size=158 bytes
+2025-12-30 00:14:44.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=106, size=158 bytes
+2025-12-30 00:14:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=107, size=158 bytes
+2025-12-30 00:14:54.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:14:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=108, size=158 bytes
+2025-12-30 00:14:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=109, size=158 bytes
+2025-12-30 00:15:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=110, size=158 bytes
+2025-12-30 00:15:09.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=111, size=158 bytes
+2025-12-30 00:15:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=112, size=158 bytes
+2025-12-30 00:15:19.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=113, size=158 bytes
+2025-12-30 00:15:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:29.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=114, size=158 bytes
+2025-12-30 00:15:29.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=115, size=158 bytes
+2025-12-30 00:15:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=116, size=158 bytes
+2025-12-30 00:15:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:44.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=117, size=158 bytes
+2025-12-30 00:15:44.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=118, size=158 bytes
+2025-12-30 00:15:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:54.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=119, size=158 bytes
+2025-12-30 00:15:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:15:59.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=120, size=158 bytes
+2025-12-30 00:15:59.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=121, size=158 bytes
+2025-12-30 00:16:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=122, size=158 bytes
+2025-12-30 00:16:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:14.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=123, size=158 bytes
+2025-12-30 00:16:14.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=124, size=158 bytes
+2025-12-30 00:16:19.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=125, size=158 bytes
+2025-12-30 00:16:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:29.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=126, size=158 bytes
+2025-12-30 00:16:29.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=127, size=158 bytes
+2025-12-30 00:16:34.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=128, size=158 bytes
+2025-12-30 00:16:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=129, size=158 bytes
+2025-12-30 00:16:44.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=130, size=158 bytes
+2025-12-30 00:16:49.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:54.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=131, size=158 bytes
+2025-12-30 00:16:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:16:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=132, size=158 bytes
+2025-12-30 00:16:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=133, size=158 bytes
+2025-12-30 00:17:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:09.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=134, size=158 bytes
+2025-12-30 00:17:09.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=135, size=158 bytes
+2025-12-30 00:17:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=136, size=158 bytes
+2025-12-30 00:17:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:24.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=137, size=158 bytes
+2025-12-30 00:17:24.154 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=138, size=158 bytes
+2025-12-30 00:17:29.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=139, size=158 bytes
+2025-12-30 00:17:34.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=140, size=158 bytes
+2025-12-30 00:17:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:44.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=141, size=158 bytes
+2025-12-30 00:17:44.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=142, size=158 bytes
+2025-12-30 00:17:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:54.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=143, size=158 bytes
+2025-12-30 00:17:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:17:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=144, size=158 bytes
+2025-12-30 00:17:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:04.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=145, size=158 bytes
+2025-12-30 00:18:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=146, size=158 bytes
+2025-12-30 00:18:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=147, size=158 bytes
+2025-12-30 00:18:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=148, size=158 bytes
+2025-12-30 00:18:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:24.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=149, size=158 bytes
+2025-12-30 00:18:24.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=150, size=158 bytes
+2025-12-30 00:18:29.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=151, size=158 bytes
+2025-12-30 00:18:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=152, size=158 bytes
+2025-12-30 00:18:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:44.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=153, size=158 bytes
+2025-12-30 00:18:44.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:48.639 | INFO     | common.ble.gatt_services:StartNotify:454 | Cliente :1.1891 subscreveu auth indications
+2025-12-30 00:18:49.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=154, size=158 bytes
+2025-12-30 00:18:49.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:49.338 | INFO     | common.ble.gatt_services:StopNotify:466 | Cliente :1.1891 cancelou subscrição de auth
+2025-12-30 00:18:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=155, size=158 bytes
+2025-12-30 00:18:54.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:18:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=156, size=158 bytes
+2025-12-30 00:18:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:04.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=157, size=158 bytes
+2025-12-30 00:19:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:09.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=158, size=158 bytes
+2025-12-30 00:19:09.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:14.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=159, size=158 bytes
+2025-12-30 00:19:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=160, size=158 bytes
+2025-12-30 00:19:19.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=161, size=158 bytes
+2025-12-30 00:19:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:29.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=162, size=158 bytes
+2025-12-30 00:19:29.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=163, size=158 bytes
+2025-12-30 00:19:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=164, size=158 bytes
+2025-12-30 00:19:39.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=165, size=158 bytes
+2025-12-30 00:19:44.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=166, size=158 bytes
+2025-12-30 00:19:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=167, size=158 bytes
+2025-12-30 00:19:54.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:19:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=168, size=158 bytes
+2025-12-30 00:19:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=169, size=158 bytes
+2025-12-30 00:20:04.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:09.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=170, size=158 bytes
+2025-12-30 00:20:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=171, size=158 bytes
+2025-12-30 00:20:14.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:19.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=172, size=158 bytes
+2025-12-30 00:20:19.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=173, size=158 bytes
+2025-12-30 00:20:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=174, size=158 bytes
+2025-12-30 00:20:29.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=175, size=158 bytes
+2025-12-30 00:20:34.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=176, size=158 bytes
+2025-12-30 00:20:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=177, size=158 bytes
+2025-12-30 00:20:44.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=178, size=158 bytes
+2025-12-30 00:20:49.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=179, size=158 bytes
+2025-12-30 00:20:54.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:20:59.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=180, size=158 bytes
+2025-12-30 00:20:59.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:04.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=181, size=158 bytes
+2025-12-30 00:21:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=182, size=158 bytes
+2025-12-30 00:21:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=183, size=158 bytes
+2025-12-30 00:21:14.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=184, size=158 bytes
+2025-12-30 00:21:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:24.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=185, size=158 bytes
+2025-12-30 00:21:24.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=186, size=158 bytes
+2025-12-30 00:21:29.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=187, size=158 bytes
+2025-12-30 00:21:34.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=188, size=158 bytes
+2025-12-30 00:21:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:44.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=189, size=158 bytes
+2025-12-30 00:21:44.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=190, size=158 bytes
+2025-12-30 00:21:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=191, size=158 bytes
+2025-12-30 00:21:54.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:21:59.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=192, size=158 bytes
+2025-12-30 00:21:59.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:04.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=193, size=158 bytes
+2025-12-30 00:22:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=194, size=158 bytes
+2025-12-30 00:22:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:14.153 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=195, size=158 bytes
+2025-12-30 00:22:14.154 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=196, size=158 bytes
+2025-12-30 00:22:19.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=197, size=158 bytes
+2025-12-30 00:22:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=198, size=158 bytes
+2025-12-30 00:22:29.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=199, size=158 bytes
+2025-12-30 00:22:34.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=200, size=158 bytes
+2025-12-30 00:22:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=201, size=158 bytes
+2025-12-30 00:22:44.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:49.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=202, size=158 bytes
+2025-12-30 00:22:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:52.550 | INFO     | common.ble.gatt_services:StartNotify:454 | Cliente :1.1891 subscreveu auth indications
+2025-12-30 00:22:52.749 | INFO     | common.ble.gatt_services:StopNotify:466 | Cliente :1.1891 cancelou subscrição de auth
+2025-12-30 00:22:54.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=203, size=158 bytes
+2025-12-30 00:22:54.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:22:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=204, size=158 bytes
+2025-12-30 00:22:59.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:04.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=205, size=158 bytes
+2025-12-30 00:23:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=206, size=158 bytes
+2025-12-30 00:23:09.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:14.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=207, size=158 bytes
+2025-12-30 00:23:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:19.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=208, size=158 bytes
+2025-12-30 00:23:19.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:24.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=209, size=158 bytes
+2025-12-30 00:23:24.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:29.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=210, size=158 bytes
+2025-12-30 00:23:29.154 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=211, size=158 bytes
+2025-12-30 00:23:34.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=212, size=158 bytes
+2025-12-30 00:23:39.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:44.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=213, size=158 bytes
+2025-12-30 00:23:44.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=214, size=158 bytes
+2025-12-30 00:23:49.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:54.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=215, size=158 bytes
+2025-12-30 00:23:54.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:23:59.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=216, size=158 bytes
+2025-12-30 00:23:59.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=217, size=158 bytes
+2025-12-30 00:24:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=218, size=158 bytes
+2025-12-30 00:24:09.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:14.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=219, size=158 bytes
+2025-12-30 00:24:14.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:19.153 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=220, size=158 bytes
+2025-12-30 00:24:19.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:24.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=221, size=158 bytes
+2025-12-30 00:24:24.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:29.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=222, size=158 bytes
+2025-12-30 00:24:29.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:34.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=223, size=158 bytes
+2025-12-30 00:24:34.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=224, size=158 bytes
+2025-12-30 00:24:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:44.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=225, size=158 bytes
+2025-12-30 00:24:44.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=226, size=158 bytes
+2025-12-30 00:24:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=227, size=158 bytes
+2025-12-30 00:24:54.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:24:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=228, size=158 bytes
+2025-12-30 00:24:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:04.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=229, size=158 bytes
+2025-12-30 00:25:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=230, size=158 bytes
+2025-12-30 00:25:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:14.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=231, size=158 bytes
+2025-12-30 00:25:14.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:19.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=232, size=158 bytes
+2025-12-30 00:25:19.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:24.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=233, size=158 bytes
+2025-12-30 00:25:24.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:29.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=234, size=158 bytes
+2025-12-30 00:25:29.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:34.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=235, size=158 bytes
+2025-12-30 00:25:34.154 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=236, size=158 bytes
+2025-12-30 00:25:39.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=237, size=158 bytes
+2025-12-30 00:25:44.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=238, size=158 bytes
+2025-12-30 00:25:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:54.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=239, size=158 bytes
+2025-12-30 00:25:54.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:25:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=240, size=158 bytes
+2025-12-30 00:25:59.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=241, size=158 bytes
+2025-12-30 00:26:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:09.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=242, size=158 bytes
+2025-12-30 00:26:09.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:14.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=243, size=158 bytes
+2025-12-30 00:26:14.152 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=244, size=158 bytes
+2025-12-30 00:26:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=245, size=158 bytes
+2025-12-30 00:26:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=246, size=158 bytes
+2025-12-30 00:26:29.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=247, size=158 bytes
+2025-12-30 00:26:34.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=248, size=158 bytes
+2025-12-30 00:26:39.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=249, size=158 bytes
+2025-12-30 00:26:44.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=250, size=158 bytes
+2025-12-30 00:26:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=251, size=158 bytes
+2025-12-30 00:26:54.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:26:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=252, size=158 bytes
+2025-12-30 00:26:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:04.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=253, size=158 bytes
+2025-12-30 00:27:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=254, size=158 bytes
+2025-12-30 00:27:09.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=255, size=158 bytes
+2025-12-30 00:27:14.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=256, size=158 bytes
+2025-12-30 00:27:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=257, size=158 bytes
+2025-12-30 00:27:24.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=258, size=158 bytes
+2025-12-30 00:27:29.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=259, size=158 bytes
+2025-12-30 00:27:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=260, size=158 bytes
+2025-12-30 00:27:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:44.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=261, size=158 bytes
+2025-12-30 00:27:44.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=262, size=158 bytes
+2025-12-30 00:27:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=263, size=158 bytes
+2025-12-30 00:27:54.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:27:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=264, size=158 bytes
+2025-12-30 00:27:59.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:04.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=265, size=158 bytes
+2025-12-30 00:28:04.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=266, size=158 bytes
+2025-12-30 00:28:09.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:14.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=267, size=158 bytes
+2025-12-30 00:28:14.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=268, size=158 bytes
+2025-12-30 00:28:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:24.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=269, size=158 bytes
+2025-12-30 00:28:24.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:29.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=270, size=158 bytes
+2025-12-30 00:28:29.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=271, size=158 bytes
+2025-12-30 00:28:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=272, size=158 bytes
+2025-12-30 00:28:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:44.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=273, size=158 bytes
+2025-12-30 00:28:44.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=274, size=158 bytes
+2025-12-30 00:28:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=275, size=158 bytes
+2025-12-30 00:28:54.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:28:59.152 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=276, size=158 bytes
+2025-12-30 00:28:59.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:04.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=277, size=158 bytes
+2025-12-30 00:29:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:09.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=278, size=158 bytes
+2025-12-30 00:29:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=279, size=158 bytes
+2025-12-30 00:29:14.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=280, size=158 bytes
+2025-12-30 00:29:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=281, size=158 bytes
+2025-12-30 00:29:24.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:29.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=282, size=158 bytes
+2025-12-30 00:29:29.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:34.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=283, size=158 bytes
+2025-12-30 00:29:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:39.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=284, size=158 bytes
+2025-12-30 00:29:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:44.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=285, size=158 bytes
+2025-12-30 00:29:44.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:49.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=286, size=158 bytes
+2025-12-30 00:29:49.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:54.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=287, size=158 bytes
+2025-12-30 00:29:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:29:59.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=288, size=158 bytes
+2025-12-30 00:29:59.157 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=289, size=158 bytes
+2025-12-30 00:30:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:09.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=290, size=158 bytes
+2025-12-30 00:30:09.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=291, size=158 bytes
+2025-12-30 00:30:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:19.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=292, size=158 bytes
+2025-12-30 00:30:19.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=293, size=158 bytes
+2025-12-30 00:30:24.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:29.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=294, size=158 bytes
+2025-12-30 00:30:29.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:34.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=295, size=158 bytes
+2025-12-30 00:30:34.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:39.154 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=296, size=158 bytes
+2025-12-30 00:30:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:44.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=297, size=158 bytes
+2025-12-30 00:30:44.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:49.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=298, size=158 bytes
+2025-12-30 00:30:49.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:54.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=299, size=158 bytes
+2025-12-30 00:30:54.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:30:59.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=300, size=158 bytes
+2025-12-30 00:30:59.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:04.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=301, size=158 bytes
+2025-12-30 00:31:04.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:09.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=302, size=158 bytes
+2025-12-30 00:31:09.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:14.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=303, size=158 bytes
+2025-12-30 00:31:14.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:19.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=304, size=158 bytes
+2025-12-30 00:31:19.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=305, size=158 bytes
+2025-12-30 00:31:24.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:29.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=306, size=158 bytes
+2025-12-30 00:31:29.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=307, size=158 bytes
+2025-12-30 00:31:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:39.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=308, size=158 bytes
+2025-12-30 00:31:39.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:44.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=309, size=158 bytes
+2025-12-30 00:31:44.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=310, size=158 bytes
+2025-12-30 00:31:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:54.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=311, size=158 bytes
+2025-12-30 00:31:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:31:59.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=312, size=158 bytes
+2025-12-30 00:31:59.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:04.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=313, size=158 bytes
+2025-12-30 00:32:04.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:09.151 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=314, size=158 bytes
+2025-12-30 00:32:09.151 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:14.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=315, size=158 bytes
+2025-12-30 00:32:14.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:19.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=316, size=158 bytes
+2025-12-30 00:32:19.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:24.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=317, size=158 bytes
+2025-12-30 00:32:24.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:29.153 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=318, size=158 bytes
+2025-12-30 00:32:29.153 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:34.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=319, size=158 bytes
+2025-12-30 00:32:34.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:39.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=320, size=158 bytes
+2025-12-30 00:32:39.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:44.156 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=321, size=158 bytes
+2025-12-30 00:32:44.156 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:49.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=322, size=158 bytes
+2025-12-30 00:32:49.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
+2025-12-30 00:32:54.155 | INFO     | __main__:send_heartbeat:237 | 💓 Heartbeat enviado: seq=323, size=158 bytes
+2025-12-30 00:32:54.155 | INFO     | __main__:send_heartbeat:238 |    Clientes autenticados: 0
