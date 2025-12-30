@@ -1,0 +1,19 @@
+2025-12-28 01:55:36.258 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_015536.log
+2025-12-28 01:55:36.258 | INFO     | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 01:55:36.259 | INFO     | BLE Client iniciado
+2025-12-28 01:55:36.261 | INFO     | A fazer scan BLE durante 10000ms...
+2025-12-28 01:55:36.262 | INFO     | [OP-20251228_015536-0001] SCAN_START | Duration: 10000ms | Filter_IoT: False
+2025-12-28 01:55:46.373 | DEBUG    |   Encontrado: Unknown (45:D7:F6:8A:CC:4E) RSSI: -100 dBm
+2025-12-28 01:55:46.374 | DEBUG    |   Encontrado: Unknown (69:82:39:A5:1D:56) RSSI: -96 dBm
+2025-12-28 01:55:46.376 | DEBUG    |   Encontrado: Unknown (6D:AF:8B:37:B6:BA) RSSI: -98 dBm
+2025-12-28 01:55:46.377 | DEBUG    |   Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0) RSSI: -54 dBm
+2025-12-28 01:55:46.378 | INFO     | Scan concluído: 4 dispositivos encontrados
+2025-12-28 01:55:46.379 | INFO     | [OP-20251228_015536-0002] SCAN_RESULT | Devices_Found: 4
+2025-12-28 01:55:46.379 | DEBUG    | [OP-20251228_015536-0002]   Device_1: Name: Unknown | Address: 45:D7:F6:8A:CC:4E | RSSI: -100 dBm | Services: 0
+2025-12-28 01:55:46.379 | DEBUG    | [OP-20251228_015536-0002]   Device_2: Name: Unknown | Address: 69:82:39:A5:1D:56 | RSSI: -96 dBm | Services: 0
+2025-12-28 01:55:46.379 | DEBUG    | [OP-20251228_015536-0002]   Device_3: Name: Unknown | Address: 6D:AF:8B:37:B6:BA | RSSI: -98 dBm | Services: 0
+2025-12-28 01:55:46.379 | DEBUG    | [OP-20251228_015536-0002]   Device_4: Name: rafa-ubuntu | Address: E0:D3:62:D6:EE:A0 | RSSI: -54 dBm | Services: 5
+2025-12-28 01:55:46.384 | INFO     | A fazer scan BLE durante 10000ms...
+2025-12-28 01:55:46.386 | INFO     | [OP-20251228_015536-0003] SCAN_START | Duration: 10000ms | Filter_IoT: True
+2025-12-28 01:55:56.509 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-28 01:55:56.510 | INFO     | [OP-20251228_015536-0004] SCAN_RESULT | Devices_Found: 0

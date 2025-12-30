@@ -1,0 +1,9 @@
+2025-12-28 01:11:20.079 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_011120.log
+2025-12-28 01:11:20.079 | INFO     | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 01:11:20.080 | INFO     | BLE Client iniciado
+2025-12-28 01:11:20.080 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-28 01:11:20.080 | INFO     | [OP-20251228_011120-0001] SCAN_START | Duration: 5000ms | Filter_IoT: False
+2025-12-28 01:11:25.290 | DEBUG    |   Encontrado: Unknown (42:27:12:5B:7B:A2) RSSI: -96 dBm
+2025-12-28 01:11:25.290 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-28 01:11:25.291 | INFO     | [OP-20251228_011120-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-28 01:11:25.292 | DEBUG    | [OP-20251228_011120-0002]   Device_1: Name: Unknown | Address: 42:27:12:5B:7B:A2 | RSSI: -96 dBm | Services: 0

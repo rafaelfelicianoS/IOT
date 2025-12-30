@@ -1,0 +1,11 @@
+2025-12-29 19:41:51.579 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_194151.log
+2025-12-29 19:41:51.579 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 19:41:51.580 | INFO     | BLE Client iniciado
+2025-12-29 19:41:51.580 | INFO     | BLE Client criado
+2025-12-29 19:41:51.581 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 19:41:51.581 | INFO     | NeighborDiscovery criado
+2025-12-29 19:41:51.581 | INFO     | Link Manager iniciado
+2025-12-29 19:41:51.582 | INFO     | LinkManager criado
+2025-12-29 19:42:10.075 | INFO     | Comando stop_heartbeat enviado
+2025-12-29 19:46:06.445 | INFO     | A limpar recursos...
+2025-12-29 19:46:06.447 | INFO     | ✅ Recursos limpos

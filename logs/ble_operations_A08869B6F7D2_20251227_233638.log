@@ -1,0 +1,24 @@
+2025-12-27 23:36:38.355 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_233638.log
+2025-12-27 23:36:38.356 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-27 23:36:38.356 | INFO     | BLE Client iniciado
+2025-12-27 23:36:38.357 | INFO     | BLE Client criado
+2025-12-27 23:36:38.357 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-27 23:36:38.358 | INFO     | NeighborDiscovery criado
+2025-12-27 23:36:38.359 | INFO     | Link Manager iniciado
+2025-12-27 23:36:38.359 | INFO     | LinkManager criado
+2025-12-27 23:36:42.998 | INFO     | A iniciar scan de vizinhos...
+2025-12-27 23:36:42.999 | DEBUG    | A limpar cache de scan BLE...
+2025-12-27 23:36:43.206 | DEBUG    | Cache de scan limpo
+2025-12-27 23:36:43.207 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 23:36:43.208 | INFO     | [OP-20251227_233638-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 23:36:48.236 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-27 23:36:48.237 | INFO     | [OP-20251227_233638-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-27 23:36:48.238 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-27 23:36:53.735 | INFO     | A iniciar scan de vizinhos...
+2025-12-27 23:36:53.736 | DEBUG    | A limpar cache de scan BLE...
+2025-12-27 23:36:53.946 | DEBUG    | Cache de scan limpo
+2025-12-27 23:36:53.947 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-27 23:36:53.948 | INFO     | [OP-20251227_233638-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-27 23:36:59.067 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-27 23:36:59.068 | INFO     | [OP-20251227_233638-0004] SCAN_RESULT | Devices_Found: 0
+2025-12-27 23:36:59.070 | INFO     | Scan concluído: 0 dispositivos IoT encontrados

@@ -1,0 +1,30 @@
+2025-12-29 14:21:21.418 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_142121.log
+2025-12-29 14:21:21.420 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 14:21:21.420 | INFO     | BLE Client iniciado
+2025-12-29 14:21:21.421 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-29 14:21:21.421 | INFO     | [OP-20251229_142121-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 14:21:26.627 | DEBUG    |   Encontrado: rafa-ubuntu (E0:D3:62:D6:EE:A0) RSSI: -61 dBm
+2025-12-29 14:21:26.628 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-29 14:21:26.629 | INFO     | [OP-20251229_142121-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-29 14:21:26.629 | DEBUG    | [OP-20251229_142121-0002]   Device_1: Name: rafa-ubuntu | Address: E0:D3:62:D6:EE:A0 | RSSI: -61 dBm | Services: 1
+2025-12-29 14:21:26.631 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-29 14:21:26.631 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 14:21:26.632 | INFO     | [OP-20251229_142121-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 14:21:42.160 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 14:21:42.162 | INFO     | [OP-20251229_142121-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 15525.05ms
+2025-12-29 14:21:42.163 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-29 14:21:42.165 | INFO     | PacketManager iniciado para NID bd7b762e...
+2025-12-29 14:21:42.167 | DEBUG    | Pacote criado: DATA -> b54b8cab... (seq=0)
+2025-12-29 14:21:42.175 | INFO     | [OP-20251229_142121-0005] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 122 bytes | Hex: bd7b762e6ed54120af1cd29310c6c654b54b8caba383419f86ce475babe09af7010a0000000051d045bb4d0ccdf75982e2cc0db88aa67f51d86e70c71ca69aaf | ASCII: .{v.n.A .......T.K....A...G[..........Q.E.M...Y........Q.np..... [TRUNCATED]
+2025-12-29 14:21:42.180 | WARNING  | SimpleBLE falhou (Service with UUID 12340000-0000-1000-8000-00805f9b34fb not found.), a tentar via D-Bus...
+2025-12-29 14:21:43.181 | DEBUG    | Device path: /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0
+2025-12-29 14:21:43.183 | DEBUG    | ServicesResolved antes: 1
+2025-12-29 14:21:43.186 | DEBUG    | Paths D-Bus encontrados para /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0: 1
+2025-12-29 14:21:43.186 | DEBUG    |   /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0
+2025-12-29 14:21:43.186 | WARNING  | Característica 12340001-0000-1000-8000-00805f9b34fb não encontrada em /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0
+2025-12-29 14:21:43.187 | DEBUG    | Características disponíveis (0):
+2025-12-29 14:21:43.187 | ERROR    | Característica 12340001-0000-1000-8000-00805f9b34fb não encontrada
+2025-12-29 14:21:43.187 | ERROR    | Erro ao escrever em 12340001-0000-1000-8000-00805f9b34fb: Falha tanto em SimpleBLE quanto em D-Bus
+2025-12-29 14:21:43.188 | ERROR    | [OP-20251229_142121-0006] WRITE_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Error: Falha tanto em SimpleBLE quanto em D-Bus
+2025-12-29 14:21:45.073 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 14:21:45.074 | INFO     | [OP-20251229_142121-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal

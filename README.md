@@ -300,40 +300,49 @@ python -m node.iot_node --cert ./certs/node1_cert.pem --key ./keys/node1_key.pem
 
 Implementação faseada conforme recomendado no enunciado:
 
-### ✅ Fase 1: BLE Básico
-- [ ] Criar/destruir conexões Bluetooth
-- [ ] GATT Server (D-Bus)
-- [ ] BLE Client (SimpleBLE)
+### ✅ Fase 1: BLE Básico (CONCLUÍDA)
+- ✅ Criar/destruir conexões Bluetooth
+- ✅ GATT Server (D-Bus + BlueZ)
+- ✅ BLE Client (SimpleBLE + Bleak híbrido)
+  - SimpleBLE: scan e notificações
+  - Bleak: write operations (fallback automático)
+- ✅ Advertising com manufacturer data
+- ✅ Service discovery e characteristic enumeration
 
-### Fase 2: Network Controls
-- [ ] Scan de dispositivos
-- [ ] Mostrar hop count
-- [ ] Conectar manualmente
+### ✅ Fase 2: Network Layer (CONCLUÍDA)
+- ✅ Formato de pacotes (Packet class)
+- ✅ Serialização/desserialização binária
+- ✅ PacketManager (send/receive/validation)
+- ✅ LinkManager (uplink/downlink management)
+- ✅ Neighbor Discovery protocol
+- ✅ Forwarding tables (learning switch style)
+- ✅ Scan de dispositivos IoT
+- ✅ Network controls (CLI)
 
-### Fase 3: Segurança - Certificados
-- [ ] CA para emitir certificados X.509
-- [ ] Provisioning de dispositivos
-- [ ] Autenticação mútua
-- [ ] Negociação de session keys (ECDH)
+### ✅ Fase 3: Heartbeat Protocol (CONCLUÍDA)
+- ✅ Broadcast de heartbeats (5s intervals)
+- ✅ HeartbeatPayload structure
+- ✅ HeartbeatMonitor (timeout detection)
+- ✅ Notification-based delivery
+- ⏳ Assinatura digital (placeholder - falta ECDSA real)
 
-### Fase 4: Routing Básico
-- [ ] Formato de pacotes
-- [ ] Forwarding tables
-- [ ] MACs para integridade
-- [ ] Routing uplink e downlink
+### 🔄 Fase 4: Segurança - Certificados (EM PROGRESSO)
+- ⏳ CA para emitir certificados X.509
+- ⏳ Provisioning de dispositivos
+- ⏳ Autenticação mútua
+- ⏳ Negociação de session keys (ECDH)
+- ⏳ HMAC-SHA256 para packet integrity
+- ❌ DTLS end-to-end (não implementado)
 
-### Fase 5: Heartbeat
-- [ ] Broadcast de heartbeats
-- [ ] Assinatura digital
-- [ ] Timeout e reconexão
+### ⏳ Fase 5: Serviço Inbox (PENDENTE)
+- ❌ Implementar Inbox no Sink
+- ❌ Cliente Inbox nos nodes
 
-### Fase 6: Serviço Inbox
-- [ ] Implementar Inbox no Sink
-- [ ] Cliente Inbox nos nodes
-
-### Fase 7: DTLS End-to-End
-- [ ] DTLS entre IoT ↔ Sink
-- [ ] Integração com router daemon
+### ⏳ Fase 6: Sink & Node Implementation (PENDENTE)
+- ❌ Sink device completo
+- ❌ IoT Node completo com sensores
+- ❌ Router daemon
+- ❌ UIs (sink_ui.py, node_ui.py)
 
 ---
 
@@ -353,6 +362,66 @@ Implementação faseada conforme recomendado no enunciado:
 ## 📝 Licença
 
 Projeto académico para a disciplina de SIC.
+
+---
+
+## 🐛 Issues Conhecidos & Soluções
+
+### SimpleBLE Write Limitation no Linux
+**Problema**: SimpleBLE não consegue escrever em características GATT no Linux devido a limitações da biblioteca.
+
+**Solução Implementada**: Sistema híbrido SimpleBLE + Bleak
+- SimpleBLE: Usado para scan e notificações (funciona perfeitamente)
+- Bleak: Usado automaticamente como fallback para operações de write
+- A transição é transparente - `BLEConnection.write_characteristic()` tenta SimpleBLE primeiro e usa Bleak se falhar
+
+**Configuração necessária no servidor**:
+```bash
+# Configurar adaptador BLE em modo LE-only (evita erro br-connection-unknown)
+./examples/configure_ble_only.sh hci0
+```
+
+### Advertising Intermitente
+**Problema**: Dispositivo aparece/desaparece no scan BLE de forma intermitente.
+
+**Causas**:
+- Advertising intervals (100ms-1000ms)
+- RSSI fraco (-60 a -70 dBm)
+- Interferência WiFi (ambos usam 2.4 GHz)
+- Scan window vs scan interval do BlueZ
+
+**Mitigação**:
+- Aumentar scan timeout (5s→10s)
+- Aproximar dispositivos fisicamente
+- Reduzir interferência WiFi
+
+---
+
+## 📚 Exemplos e Testes
+
+### Testar GATT Server
+```bash
+# PC Servidor
+sudo python3 examples/test_gatt_server.py hci0
+```
+
+### Testar Packet Send (BLE Write)
+```bash
+# PC Cliente (requer GATT server a correr)
+python3 examples/test_packet_send_bleak.py
+```
+
+### Testar Heartbeat Notifications
+```bash
+# PC Cliente (requer GATT server a correr)
+python3 examples/test_heartbeat_notifications.py
+```
+
+### Network CLI
+```bash
+# Scan de dispositivos e gestão de links
+python3 examples/network_cli.py
+```
 
 ---
 

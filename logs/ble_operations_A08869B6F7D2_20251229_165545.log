@@ -1,0 +1,63 @@
+2025-12-29 16:55:45.240 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_165545.log
+2025-12-29 16:55:45.240 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-29 16:55:45.241 | INFO     | BLE Client iniciado
+2025-12-29 16:55:45.241 | INFO     | BLE Client criado
+2025-12-29 16:55:45.241 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-29 16:55:45.242 | INFO     | NeighborDiscovery criado
+2025-12-29 16:55:45.242 | INFO     | Link Manager iniciado
+2025-12-29 16:55:45.243 | INFO     | LinkManager criado
+2025-12-29 16:55:52.624 | INFO     | A iniciar scan de vizinhos...
+2025-12-29 16:55:52.625 | DEBUG    | A limpar cache de scan BLE...
+2025-12-29 16:55:52.736 | DEBUG    | Cache de scan limpo
+2025-12-29 16:55:52.737 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-29 16:55:52.738 | INFO     | [OP-20251229_165545-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:55:57.761 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-29 16:55:57.762 | INFO     | [OP-20251229_165545-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-29 16:55:57.763 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-29 16:55:58.924 | INFO     | A iniciar scan de vizinhos...
+2025-12-29 16:55:58.925 | DEBUG    | Aguardando 0.8s para limpar cache BLE...
+2025-12-29 16:55:59.765 | DEBUG    | A limpar cache de scan BLE...
+2025-12-29 16:55:59.877 | DEBUG    | Cache de scan limpo
+2025-12-29 16:55:59.877 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-29 16:55:59.879 | INFO     | [OP-20251229_165545-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-29 16:56:04.902 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -58 dBm
+2025-12-29 16:56:04.904 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-29 16:56:04.906 | INFO     | [OP-20251229_165545-0004] SCAN_RESULT | Devices_Found: 1
+2025-12-29 16:56:04.907 | DEBUG    | [OP-20251229_165545-0004]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -58 dBm | Services: 4
+2025-12-29 16:56:04.907 | INFO     | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-29 16:56:04.908 | DEBUG    | A conectar a E0:D3:62:D6:EE:A0 para ler DeviceInfo...
+2025-12-29 16:56:04.914 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-29 16:56:04.915 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:56:04.917 | INFO     | [OP-20251229_165545-0005] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:56:04.927 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:56:04.928 | INFO     | [OP-20251229_165545-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 5.79ms
+2025-12-29 16:56:04.929 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-29 16:56:04.929 | DEBUG    | [OP-20251229_165545-0007] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-29 16:56:05.017 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-29 16:56:05.017 | INFO     | [OP-20251229_165545-0008] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 36b2627dec24467aa1fe67d9dbc798440100 | ASCII: 6.b}.$Fz..g....D..
+2025-12-29 16:56:05.018 | INFO     | Vizinho descoberto: E0:D3:62:D6:EE:A0 (36b2627d...) hop=1 rssi=-58dBm type=node disconnected seen=0.0s ago
+2025-12-29 16:56:06.975 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 16:56:06.977 | INFO     | [OP-20251229_165545-0009] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 16:56:06.978 | INFO     | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-29 16:56:24.163 | INFO     | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-29 16:56:24.165 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-29 16:56:24.165 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-29 16:56:24.166 | INFO     | [OP-20251229_165545-0010] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-29 16:56:27.081 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-29 16:56:27.083 | INFO     | [OP-20251229_165545-0011] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 2910.92ms
+2025-12-29 16:56:27.084 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-29 16:56:27.085 | INFO     | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=36b2627d... hop=1 (UPLINK)
+2025-12-29 16:56:27.086 | INFO     | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=36b2627d... hop=1
+2025-12-29 16:56:27.087 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-29 16:56:27.088 | DEBUG    | Vizinho E0:D3:62:D6:EE:A0 marcado como conectado
+2025-12-29 16:56:41.761 | INFO     | [OP-20251229_165545-0012] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 75 bytes | Hex: d195d3c589fb4bb39c64853848706b3136b2627dec24467aa1fe67d9dbc798440105000000010000000000000000000000000000000000000000000000000000 | ASCII: ......K..d.8Hpk16.b}.$Fz..g....D................................ [TRUNCATED]
+2025-12-29 16:56:41.866 | DEBUG    | ✅ Write via SimpleBLE: 12340001-0000-1000-8000-00805f9b34fb (75 bytes)
+2025-12-29 16:56:41.866 | INFO     | [OP-20251229_165545-0013] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-29 16:56:45.228 | INFO     | A limpar recursos...
+2025-12-29 16:56:45.230 | INFO     | A desconectar uplink E0:D3:62:D6:EE:A0...
+2025-12-29 16:56:45.231 | INFO     | A desconectar do uplink E0:D3:62:D6:EE:A0
+2025-12-29 16:56:47.976 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-29 16:56:47.978 | INFO     | [OP-20251229_165545-0014] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-29 16:56:47.981 | WARNING  | ⚠️  Uplink desconectado!
+2025-12-29 16:56:47.982 | INFO     | Uplink removido
+2025-12-29 16:56:47.984 | INFO     | ✅ Recursos limpos

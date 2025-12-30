@@ -22,6 +22,7 @@ except ImportError:
 from common.utils.logger import get_logger
 from common.utils.ble_logger import get_ble_logger
 from common.utils.constants import IOT_NETWORK_SERVICE_UUID
+from common.ble.dbus_gatt_helper import DBusGATTHelper
 
 logger = get_logger("gatt_client")
 
@@ -52,8 +53,50 @@ class ScannedDevice:
         return f"{self.name or 'Unknown'} ({self.address}) RSSI: {self.rssi} dBm"
 
     def has_iot_service(self) -> bool:
-        """Verifica se o dispositivo anuncia o serviço IoT Network."""
-        return IOT_NETWORK_SERVICE_UUID.lower() in [uuid.lower() for uuid in self.service_uuids]
+        """
+        Verifica se o dispositivo anuncia o serviço IoT Network.
+
+        SimpleBLE não expõe Service UUIDs do advertising packet, então verificamos:
+        1. Manufacturer Data (método principal - sempre funciona)
+        2. Service UUIDs (fallback - só funciona se SimpleBLE os expuser)
+        """
+        from common.utils.constants import (
+            IOT_NETWORK_SERVICE_UUID,
+            IOT_MANUFACTURER_ID,
+            IOT_MANUFACTURER_DATA_MAGIC
+        )
+
+        # 1. Verificar manufacturer data (MÉTODO PRINCIPAL)
+        if self.manufacturer_data and IOT_MANUFACTURER_ID in self.manufacturer_data:
+            data = self.manufacturer_data[IOT_MANUFACTURER_ID]
+            if data == IOT_MANUFACTURER_DATA_MAGIC:
+                return True
+
+        # 2. Verificar service UUIDs (FALLBACK - pode não funcionar com SimpleBLE)
+        if not self.service_uuids:
+            return False
+
+        # Normalizar UUIDs do dispositivo (remover hífens e lowercase)
+        device_uuids = [uuid.lower().replace('-', '') for uuid in self.service_uuids]
+
+        # UUID completo normalizado
+        full_uuid_norm = IOT_NETWORK_SERVICE_UUID.lower().replace('-', '')
+
+        # Primeiros 8 caracteres hex (32 bits)
+        short_32 = full_uuid_norm[:8]  # "12340000"
+
+        for uuid in device_uuids:
+            # Verificar match exato com UUID completo
+            if uuid == full_uuid_norm:
+                return True
+            # Verificar se começa com os primeiros 32 bits
+            if uuid.startswith(short_32):
+                return True
+            # Verificar apenas os primeiros 8 chars
+            if uuid == short_32:
+                return True
+
+        return False
 
 
 @dataclass
@@ -106,6 +149,20 @@ class BLEScanner:
         self.adapter = adapters[adapter_index]
         self.ble_log = get_ble_logger(self.adapter.address())
         logger.info(f"Scanner BLE iniciado: {self.adapter.identifier()} ({self.adapter.address()})")
+
+    def clear_cache(self):
+        """
+        Limpa o cache de scan do adaptador BLE.
+
+        SimpleBLE pode manter resultados antigos em cache.
+        Este método faz um scan curto para forçar refresh.
+        """
+        logger.debug("A limpar cache de scan BLE...")
+        # Scan curto (100ms) para refresh
+        self.adapter.scan_for(100)
+        # Descartar resultados
+        _ = self.adapter.scan_get_results()
+        logger.debug("Cache de scan limpo")
 
     def scan(self, duration_ms: int = 5000, filter_iot: bool = False) -> List[ScannedDevice]:
         """
@@ -172,18 +229,20 @@ class BLEConnection:
     Representa uma conexão BLE a um dispositivo remoto.
     """
 
-    def __init__(self, peripheral):
+    def __init__(self, peripheral, adapter_name: str = "hci0"):
         """
         Inicializa a conexão BLE.
 
         Args:
             peripheral: SimpleBLE Peripheral object
+            adapter_name: Nome do adaptador BLE (para D-Bus helper)
         """
         self.peripheral = peripheral
         self.address = peripheral.address()
         self.is_connected = False
         self._notification_callbacks: Dict[str, Callable] = {}
         self.ble_log = get_ble_logger()
+        self.dbus_helper = DBusGATTHelper(adapter_name)  # Helper para quando SimpleBLE falhar
 
         logger.debug(f"BLEConnection criada para {self.address}")
 
@@ -212,6 +271,12 @@ class BLEConnection:
             if self.is_connected:
                 logger.info(f"✅ Conectado a {self.address}")
                 self.ble_log.log_connection_success(self.address, connection_time_ms)
+
+                # NOTA: SimpleBLE no Linux tem limitações ao descobrir características.
+                # Vamos pular o discovery extensivo e usar D-Bus fallback para operações GATT.
+                # Isto mantém a conexão ativa e evita timeouts.
+                logger.debug("✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.")
+
                 return True
             else:
                 logger.error(f"❌ Falha ao conectar a {self.address}")
@@ -319,6 +384,9 @@ class BLEConnection:
         Returns:
             True se escrita bem-sucedida
         """
+        # Atualizar estado de conexão antes de escrever
+        self.is_connected = self.peripheral.is_connected()
+
         if not self.is_connected:
             logger.error("Não conectado - não é possível escrever")
             return False
@@ -326,14 +394,42 @@ class BLEConnection:
         try:
             self.ble_log.log_write_request(self.address, service_uuid, char_uuid, data, with_response)
 
-            if with_response:
-                self.peripheral.write_request(service_uuid, char_uuid, data)
-            else:
-                self.peripheral.write_command(service_uuid, char_uuid, data)
+            # Tentar SimpleBLE primeiro
+            try:
+                if with_response:
+                    self.peripheral.write_request(service_uuid, char_uuid, data)
+                else:
+                    self.peripheral.write_command(service_uuid, char_uuid, data)
 
-            logger.debug(f"Write {char_uuid}: {len(data)} bytes")
-            self.ble_log.log_write_response(self.address, char_uuid, success=True)
-            return True
+                logger.debug(f"✅ Write via SimpleBLE: {char_uuid} ({len(data)} bytes)")
+                self.ble_log.log_write_response(self.address, char_uuid, success=True)
+                return True
+
+            except Exception as simpleble_error:
+                # SimpleBLE falhou - tentar Bleak
+                logger.warning(f"SimpleBLE falhou ({simpleble_error}), a tentar via Bleak...")
+
+                try:
+                    from common.ble.bleak_helper import BleakWriteHelper
+
+                    success = BleakWriteHelper.write_characteristic(
+                        self.address,
+                        char_uuid,
+                        data,
+                        timeout=10.0
+                    )
+
+                    if success:
+                        logger.debug(f"✅ Write via Bleak: {char_uuid} ({len(data)} bytes)")
+                        self.ble_log.log_write_response(self.address, char_uuid, success=True)
+                        return True
+                    else:
+                        raise Exception("Falha tanto em SimpleBLE quanto em Bleak")
+
+                except ImportError:
+                    logger.error("Bleak não está instalado! pip install bleak")
+                    raise Exception("Bleak não disponível e SimpleBLE falhou")
+
         except Exception as e:
             logger.error(f"Erro ao escrever em {char_uuid}: {e}")
             self.ble_log.log_write_response(self.address, char_uuid, success=False, error=str(e))
@@ -424,6 +520,7 @@ class BLEClient:
 
         self.scanner = BLEScanner(adapter_index)
         self.connections: Dict[str, BLEConnection] = {}
+        self.adapter_name = f"hci{adapter_index}"  # Para D-Bus helper
 
         logger.info("BLE Client iniciado")
 
@@ -465,16 +562,52 @@ class BLEClient:
                 peripheral = p
                 break
 
+        # Se peripheral não foi encontrado no cache, fazer scan rápido
         if not peripheral:
-            logger.error(f"Dispositivo {device.address} não encontrado")
+            logger.debug(f"Peripheral {device.address} não está em cache, fazendo scan rápido...")
+            self.scanner.adapter.scan_for(2000)  # 2 segundos
+            peripherals = self.scanner.adapter.scan_get_results()
+
+            for p in peripherals:
+                if p.address() == device.address:
+                    peripheral = p
+                    logger.debug(f"Peripheral {device.address} encontrado após scan")
+                    break
+
+        if not peripheral:
+            logger.error(f"Dispositivo {device.address} não encontrado mesmo após scan")
             return None
 
         # Criar e conectar
-        conn = BLEConnection(peripheral)
-        if conn.connect():
+        conn = BLEConnection(peripheral, adapter_name=self.adapter_name)
+        success = conn.connect()
+
+        # Se falhou e o peripheral veio do cache, tentar refresh
+        if not success and peripheral is not None:
+            logger.debug(f"Conexão falhou, tentando refresh do cache e retry...")
+
+            # Fazer scan curto para refresh
+            self.scanner.adapter.scan_for(2000)
+            peripherals = self.scanner.adapter.scan_get_results()
+
+            # Procurar peripheral novamente
+            peripheral = None
+            for p in peripherals:
+                if p.address() == device.address:
+                    peripheral = p
+                    break
+
+            if peripheral:
+                # Retry com peripheral atualizado
+                logger.debug(f"Peripheral refreshed, tentando conectar novamente...")
+                conn = BLEConnection(peripheral, adapter_name=self.adapter_name)
+                success = conn.connect()
+
+        if success:
             self.connections[device.address] = conn
             return conn
         else:
+            logger.error(f"Falha ao conectar a {device.address} após todas as tentativas")
             return None
 
     def disconnect_from_device(self, address: str):

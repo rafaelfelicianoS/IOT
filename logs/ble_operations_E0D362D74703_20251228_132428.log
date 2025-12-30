@@ -1,0 +1,5 @@
+2025-12-28 13:24:28.154 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D74703_20251228_132428.log
+2025-12-28 13:24:28.155 | INFO     | Scanner BLE iniciado: hci1 (E0:D3:62:D7:47:03)
+2025-12-28 13:24:28.155 | INFO     | BLE Client iniciado
+2025-12-28 13:24:28.156 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-28 13:24:28.157 | INFO     | [OP-20251228_132428-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
