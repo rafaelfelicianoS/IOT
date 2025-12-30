@@ -1,0 +1,113 @@
+2025-12-30 01:10:22.597 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_011022.log
+2025-12-30 01:10:22.597 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 01:10:22.598 | INFO     | BLE Client iniciado
+2025-12-30 01:10:22.598 | INFO     | BLE Client criado
+2025-12-30 01:10:22.599 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-30 01:10:22.599 | INFO     | NeighborDiscovery criado
+2025-12-30 01:10:22.599 | INFO     | Link Manager iniciado (my_nid=18174cb3...)
+2025-12-30 01:10:22.600 | INFO     | LinkManager criado
+2025-12-30 01:10:28.969 | INFO     | A iniciar scan de vizinhos...
+2025-12-30 01:10:28.969 | DEBUG    | A limpar cache de scan BLE...
+2025-12-30 01:10:29.175 | DEBUG    | Cache de scan limpo
+2025-12-30 01:10:29.176 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 01:10:29.177 | INFO     | [OP-20251230_011022-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:10:34.284 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-30 01:10:34.286 | INFO     | [OP-20251230_011022-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-30 01:10:34.289 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-30 01:10:37.075 | INFO     | A iniciar scan de vizinhos...
+2025-12-30 01:10:37.077 | DEBUG    | A limpar cache de scan BLE...
+2025-12-30 01:10:37.284 | DEBUG    | Cache de scan limpo
+2025-12-30 01:10:37.285 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 01:10:37.286 | INFO     | [OP-20251230_011022-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:10:42.398 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-30 01:10:42.399 | INFO     | [OP-20251230_011022-0004] SCAN_RESULT | Devices_Found: 0
+2025-12-30 01:10:42.400 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-30 01:10:45.237 | INFO     | A iniciar scan de vizinhos...
+2025-12-30 01:10:45.239 | DEBUG    | A limpar cache de scan BLE...
+2025-12-30 01:10:45.447 | DEBUG    | Cache de scan limpo
+2025-12-30 01:10:45.448 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 01:10:45.449 | INFO     | [OP-20251230_011022-0005] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:10:50.559 | INFO     | Scan concluído: 0 dispositivos encontrados
+2025-12-30 01:10:50.560 | INFO     | [OP-20251230_011022-0006] SCAN_RESULT | Devices_Found: 0
+2025-12-30 01:10:50.562 | INFO     | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-30 01:10:57.417 | INFO     | A iniciar scan de vizinhos...
+2025-12-30 01:10:57.418 | DEBUG    | A limpar cache de scan BLE...
+2025-12-30 01:10:57.627 | DEBUG    | Cache de scan limpo
+2025-12-30 01:10:57.628 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 01:10:57.631 | INFO     | [OP-20251230_011022-0007] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:11:02.744 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -53 dBm
+2025-12-30 01:11:02.745 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-30 01:11:02.747 | INFO     | [OP-20251230_011022-0008] SCAN_RESULT | Devices_Found: 1
+2025-12-30 01:11:02.748 | DEBUG    | [OP-20251230_011022-0008]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -53 dBm | Services: 1
+2025-12-30 01:11:02.748 | INFO     | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-30 01:11:02.749 | DEBUG    | A conectar a E0:D3:62:D6:EE:A0 para ler DeviceInfo...
+2025-12-30 01:11:02.754 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-30 01:11:02.754 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:02.756 | INFO     | [OP-20251230_011022-0009] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:11:06.654 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:11:06.654 | INFO     | [OP-20251230_011022-0010] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3894.18ms
+2025-12-30 01:11:06.654 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-30 01:11:06.654 | DEBUG    | [OP-20251230_011022-0011] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-30 01:11:07.174 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-30 01:11:07.175 | INFO     | [OP-20251230_011022-0012] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: d2f60c3ce8cd4e639dd4feeada75798c0100 | ASCII: ...<..Nc.....uy...
+2025-12-30 01:11:07.176 | INFO     | Vizinho descoberto: E0:D3:62:D6:EE:A0 (d2f60c3c...) hop=1 rssi=-53dBm type=node disconnected seen=0.0s ago
+2025-12-30 01:11:09.333 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:11:09.336 | INFO     | [OP-20251230_011022-0013] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:11:09.338 | INFO     | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-30 01:11:21.334 | INFO     | A iniciar scan de vizinhos...
+2025-12-30 01:11:21.335 | DEBUG    | A limpar cache de scan BLE...
+2025-12-30 01:11:21.543 | DEBUG    | Cache de scan limpo
+2025-12-30 01:11:21.543 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 01:11:21.545 | INFO     | [OP-20251230_011022-0014] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:11:26.657 | DEBUG    |   Encontrado: IoT-Node (E0:D3:62:D6:EE:A0) RSSI: -72 dBm
+2025-12-30 01:11:26.658 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-30 01:11:26.659 | INFO     | [OP-20251230_011022-0015] SCAN_RESULT | Devices_Found: 1
+2025-12-30 01:11:26.660 | DEBUG    | [OP-20251230_011022-0015]   Device_1: Name: IoT-Node | Address: E0:D3:62:D6:EE:A0 | RSSI: -72 dBm | Services: 5
+2025-12-30 01:11:26.661 | INFO     | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-30 01:11:26.662 | DEBUG    | A conectar a E0:D3:62:D6:EE:A0 para ler DeviceInfo...
+2025-12-30 01:11:26.663 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-30 01:11:26.663 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:26.664 | INFO     | [OP-20251230_011022-0016] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:11:29.644 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:11:29.646 | INFO     | [OP-20251230_011022-0017] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 2975.96ms
+2025-12-30 01:11:29.647 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-30 01:11:29.647 | DEBUG    | [OP-20251230_011022-0018] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-30 01:11:29.875 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-30 01:11:29.875 | INFO     | [OP-20251230_011022-0019] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: d2f60c3ce8cd4e639dd4feeada75798c0100 | ASCII: ...<..Nc.....uy...
+2025-12-30 01:11:29.878 | INFO     | Vizinho descoberto: E0:D3:62:D6:EE:A0 (d2f60c3c...) hop=1 rssi=-72dBm type=node disconnected seen=0.0s ago
+2025-12-30 01:11:32.332 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:11:32.334 | INFO     | [OP-20251230_011022-0020] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:11:42.977 | INFO     | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:42.978 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-30 01:11:42.979 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:42.981 | INFO     | [OP-20251230_011022-0021] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:11:46.163 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:11:46.165 | INFO     | [OP-20251230_011022-0022] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3177.23ms
+2025-12-30 01:11:46.166 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-30 01:11:46.167 | INFO     | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=d2f60c3c... hop=1 (UPLINK)
+2025-12-30 01:11:46.168 | INFO     | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=d2f60c3c... hop=1
+2025-12-30 01:11:46.169 | DEBUG    | HeartbeatMonitor criado: interval=5.0s, max_missed=3
+2025-12-30 01:11:46.374 | INFO     | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:11:46.375 | INFO     | [OP-20251230_011022-0023] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:11:46.377 | INFO     | 💓 HeartbeatMonitor iniciado: verificação a cada 5.0s, timeout após 3 misses
+2025-12-30 01:11:46.378 | INFO     | 💓 Monitoramento de heartbeat iniciado
+2025-12-30 01:11:46.379 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-30 01:11:46.379 | DEBUG    | Vizinho E0:D3:62:D6:EE:A0 marcado como conectado
+2025-12-30 01:11:47.177 | INFO     | [OP-20251230_011022-0024] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: d2f60c3ce8cd4e639dd4feeada75798cd2f60c3ce8cd4e639dd4feeada75798c02010000001be962a2d328e52d98e68f79f5dac7b574531c1f817cfe14fc8ee2 | ASCII: ...<..Nc.....uy....<..Nc.....uy........b..(.-...y....tS...|..... [TRUNCATED]
+2025-12-30 01:11:47.178 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: d2f60c3c... → d2f60c3c... (type=HEARTBEAT, seq=27)
+2025-12-30 01:11:47.178 | DEBUG    | 💓 Heartbeat recebido: seq=27
+2025-12-30 01:11:47.178 | DEBUG    | 💓 Heartbeat recebido (seq=27)
+2025-12-30 01:11:52.179 | INFO     | [OP-20251230_011022-0025] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: d2f60c3ce8cd4e639dd4feeada75798cd2f60c3ce8cd4e639dd4feeada75798c02010000001cebc3f1d7dccfb7e0400418dd5e7f0a779752497099366ae5b17f | ASCII: ...<..Nc.....uy....<..Nc.....uy...............@...^..w.RIp.6j... [TRUNCATED]
+2025-12-30 01:11:52.180 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: d2f60c3c... → d2f60c3c... (type=HEARTBEAT, seq=28)
+2025-12-30 01:11:52.181 | DEBUG    | 💓 Heartbeat recebido: seq=28
+2025-12-30 01:11:52.181 | DEBUG    | 💓 Heartbeat recebido (seq=28)
+2025-12-30 01:11:55.490 | INFO     | A limpar recursos...
+2025-12-30 01:11:55.491 | INFO     | A desconectar uplink E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:55.492 | INFO     | A desconectar do uplink E0:D3:62:D6:EE:A0
+2025-12-30 01:11:57.333 | WARNING  | ⚠️  Heartbeat perdido! Contador: 1/3 (último há 5.2s)
+2025-12-30 01:11:57.334 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:11:57.339 | INFO     | [OP-20251230_011022-0026] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:11:57.341 | WARNING  | ⚠️  Uplink desconectado!
+2025-12-30 01:11:57.344 | INFO     | HeartbeatMonitor parado
+2025-12-30 01:11:57.344 | INFO     | Uplink removido
+2025-12-30 01:11:57.345 | INFO     | ✅ Recursos limpos

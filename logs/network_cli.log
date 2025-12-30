@@ -1400,3 +1400,136 @@
 2025-12-29 20:59:44.330 | INFO     | common.network.heartbeat_monitor:stop:91 | HeartbeatMonitor parado
 2025-12-29 20:59:44.330 | INFO     | common.network.link_manager:clear_uplink:302 | Uplink removido
 2025-12-29 20:59:44.332 | INFO     | __main__:cleanup:621 | ✅ Recursos limpos
+2025-12-30 01:10:22.597 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_011022.log
+2025-12-30 01:10:22.597 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 01:10:22.598 | INFO     | common.ble.gatt_client:__init__:525 | BLE Client iniciado
+2025-12-30 01:10:22.598 | INFO     | __main__:__init__:67 | BLE Client criado
+2025-12-30 01:10:22.599 | INFO     | common.network.neighbor_discovery:__init__:132 | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-30 01:10:22.599 | INFO     | __main__:__init__:79 | NeighborDiscovery criado
+2025-12-30 01:10:22.599 | INFO     | common.network.link_manager:__init__:257 | Link Manager iniciado (my_nid=18174cb3...)
+2025-12-30 01:10:22.600 | INFO     | __main__:__init__:83 | LinkManager criado
+2025-12-30 01:10:28.969 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-30 01:10:29.176 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 01:10:29.177 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_011022-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:10:34.284 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-30 01:10:34.286 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_011022-0002] SCAN_RESULT | Devices_Found: 0
+2025-12-30 01:10:34.289 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-30 01:10:37.075 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-30 01:10:37.285 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 01:10:37.286 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_011022-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:10:42.398 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-30 01:10:42.399 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_011022-0004] SCAN_RESULT | Devices_Found: 0
+2025-12-30 01:10:42.400 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-30 01:10:45.237 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-30 01:10:45.448 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 01:10:45.449 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_011022-0005] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:10:50.559 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2025-12-30 01:10:50.560 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_011022-0006] SCAN_RESULT | Devices_Found: 0
+2025-12-30 01:10:50.562 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 0 dispositivos IoT encontrados
+2025-12-30 01:10:57.417 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-30 01:10:57.628 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 01:10:57.631 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_011022-0007] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:11:02.745 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-30 01:11:02.747 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_011022-0008] SCAN_RESULT | Devices_Found: 1
+2025-12-30 01:11:02.748 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-30 01:11:02.754 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:02.756 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_011022-0009] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:11:06.654 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:11:06.654 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_011022-0010] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3894.18ms
+2025-12-30 01:11:07.175 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251230_011022-0012] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: d2f60c3ce8cd4e639dd4feeada75798c0100 | ASCII: ...<..Nc.....uy...
+2025-12-30 01:11:07.176 | INFO     | common.network.neighbor_discovery:scan_once:210 | Vizinho descoberto: E0:D3:62:D6:EE:A0 (d2f60c3c...) hop=1 rssi=-53dBm type=node disconnected seen=0.0s ago
+2025-12-30 01:11:09.333 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:11:09.336 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251230_011022-0013] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:11:09.338 | INFO     | common.network.neighbor_discovery:scan_once:240 | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-30 01:11:21.334 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-30 01:11:21.543 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 01:11:21.545 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_011022-0014] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:11:26.658 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-30 01:11:26.659 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_011022-0015] SCAN_RESULT | Devices_Found: 1
+2025-12-30 01:11:26.661 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-30 01:11:26.663 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:26.664 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_011022-0016] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:11:29.644 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:11:29.646 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_011022-0017] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 2975.96ms
+2025-12-30 01:11:29.875 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251230_011022-0019] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: d2f60c3ce8cd4e639dd4feeada75798c0100 | ASCII: ...<..Nc.....uy...
+2025-12-30 01:11:29.878 | INFO     | common.network.neighbor_discovery:scan_once:210 | Vizinho descoberto: E0:D3:62:D6:EE:A0 (d2f60c3c...) hop=1 rssi=-72dBm type=node disconnected seen=0.0s ago
+2025-12-30 01:11:32.332 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:11:32.334 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251230_011022-0020] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:11:42.977 | INFO     | common.network.link_manager:connect_to_neighbor:457 | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:42.979 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:42.981 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_011022-0021] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:11:46.163 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:11:46.165 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_011022-0022] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3177.23ms
+2025-12-30 01:11:46.167 | INFO     | common.network.link_manager:__init__:110 | Link criado: Link[E0:D3:62:D6:EE:A0] -> NODE NID=d2f60c3c... hop=1 (UPLINK)
+2025-12-30 01:11:46.168 | INFO     | common.network.link_manager:set_uplink:289 | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> NODE NID=d2f60c3c... hop=1
+2025-12-30 01:11:46.374 | INFO     | common.ble.gatt_client:subscribe_notifications:468 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:11:46.375 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251230_011022-0023] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:11:46.377 | INFO     | common.network.heartbeat_monitor:start:72 | 💓 HeartbeatMonitor iniciado: verificação a cada 5.0s, timeout após 3 misses
+2025-12-30 01:11:46.378 | INFO     | common.network.link_manager:_start_heartbeat_monitoring:391 | 💓 Monitoramento de heartbeat iniciado
+2025-12-30 01:11:46.379 | INFO     | common.network.link_manager:connect_to_neighbor:485 | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-30 01:11:47.177 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_011022-0024] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: d2f60c3ce8cd4e639dd4feeada75798cd2f60c3ce8cd4e639dd4feeada75798c02010000001be962a2d328e52d98e68f79f5dac7b574531c1f817cfe14fc8ee2 | ASCII: ...<..Nc.....uy....<..Nc.....uy........b..(.-...y....tS...|..... [TRUNCATED]
+2025-12-30 01:11:52.179 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_011022-0025] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: d2f60c3ce8cd4e639dd4feeada75798cd2f60c3ce8cd4e639dd4feeada75798c02010000001cebc3f1d7dccfb7e0400418dd5e7f0a779752497099366ae5b17f | ASCII: ...<..Nc.....uy....<..Nc.....uy...............@...^..w.RIp.6j... [TRUNCATED]
+2025-12-30 01:11:55.490 | INFO     | __main__:cleanup:604 | A limpar recursos...
+2025-12-30 01:11:55.491 | INFO     | __main__:cleanup:609 | A desconectar uplink E0:D3:62:D6:EE:A0...
+2025-12-30 01:11:55.492 | INFO     | common.network.link_manager:disconnect_neighbor:717 | A desconectar do uplink E0:D3:62:D6:EE:A0
+2025-12-30 01:11:57.333 | WARNING  | common.network.heartbeat_monitor:_monitor_loop:129 | ⚠️  Heartbeat perdido! Contador: 1/3 (último há 5.2s)
+2025-12-30 01:11:57.334 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:11:57.339 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251230_011022-0026] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:11:57.341 | WARNING  | common.network.link_manager:_on_uplink_disconnected:314 | ⚠️  Uplink desconectado!
+2025-12-30 01:11:57.344 | INFO     | common.network.heartbeat_monitor:stop:91 | HeartbeatMonitor parado
+2025-12-30 01:11:57.344 | INFO     | common.network.link_manager:clear_uplink:302 | Uplink removido
+2025-12-30 01:11:57.345 | INFO     | __main__:cleanup:621 | ✅ Recursos limpos
+2025-12-30 01:50:09.533 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_015009.log
+2025-12-30 01:50:09.534 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 01:50:09.534 | INFO     | common.ble.gatt_client:__init__:525 | BLE Client iniciado
+2025-12-30 01:50:09.534 | INFO     | __main__:__init__:67 | BLE Client criado
+2025-12-30 01:50:09.535 | INFO     | common.network.neighbor_discovery:__init__:132 | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-30 01:50:09.536 | INFO     | __main__:__init__:79 | NeighborDiscovery criado
+2025-12-30 01:50:09.536 | INFO     | common.network.link_manager:__init__:257 | Link Manager iniciado (my_nid=37d14f10...)
+2025-12-30 01:50:09.537 | INFO     | __main__:__init__:83 | LinkManager criado
+2025-12-30 01:50:12.938 | INFO     | common.network.neighbor_discovery:scan_once:146 | A iniciar scan de vizinhos...
+2025-12-30 01:50:13.149 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 01:50:13.151 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_015009-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:50:18.169 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-30 01:50:18.171 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_015009-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-30 01:50:18.172 | INFO     | common.network.neighbor_discovery:scan_once:165 | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-30 01:50:18.178 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:50:18.180 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_015009-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:50:21.617 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:50:21.618 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_015009-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3434.97ms
+2025-12-30 01:50:22.124 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251230_015009-0006] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
+2025-12-30 01:50:22.125 | INFO     | common.network.neighbor_discovery:scan_once:210 | Vizinho descoberto: E0:D3:62:D6:EE:A0 (c5c55ab2...) hop=-1 rssi=-59dBm type=sink disconnected seen=0.0s ago
+2025-12-30 01:50:24.333 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:50:24.335 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251230_015009-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:50:24.337 | INFO     | common.network.neighbor_discovery:scan_once:240 | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-30 01:50:40.287 | INFO     | common.network.link_manager:connect_to_neighbor:457 | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-30 01:50:40.291 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:50:40.292 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_015009-0008] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:50:43.330 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:50:43.331 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_015009-0009] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3032.89ms
+2025-12-30 01:50:43.332 | INFO     | common.network.link_manager:__init__:110 | Link criado: Link[E0:D3:62:D6:EE:A0] -> SINK NID=c5c55ab2... hop=-1 (UPLINK)
+2025-12-30 01:50:43.333 | INFO     | common.network.link_manager:set_uplink:289 | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> SINK NID=c5c55ab2... hop=-1
+2025-12-30 01:50:43.524 | INFO     | common.ble.gatt_client:subscribe_notifications:468 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:50:43.525 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251230_015009-0010] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:50:43.527 | INFO     | common.network.heartbeat_monitor:start:72 | 💓 HeartbeatMonitor iniciado: verificação a cada 5.0s, timeout após 3 misses
+2025-12-30 01:50:43.528 | INFO     | common.network.link_manager:_start_heartbeat_monitoring:391 | 💓 Monitoramento de heartbeat iniciado
+2025-12-30 01:50:43.528 | INFO     | common.network.link_manager:connect_to_neighbor:485 | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-30 01:50:46.128 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_015009-0011] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000000edb55384d44817bfe8841cb3aca897b491bd73b56d55a126e947c | ASCII: ..Z..iB}...Q......Z..iB}...Q...........U8MD.{..A.:..{I..;V.Z.n.| [TRUNCATED]
+2025-12-30 01:50:51.130 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_015009-0012] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000000f642c0b06fb0c48860507b219196105a9d283f60e3a646f6a429e | ASCII: ..Z..iB}...Q......Z..iB}...Q..........d,....H......a......:dojB. [TRUNCATED]
+2025-12-30 01:50:56.127 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_015009-0013] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000010a8aa3e8339f6816f1a93cdaa06497b1c4bccb71c797bbf767c31 | ASCII: ..Z..iB}...Q......Z..iB}...Q............>.9..o.....I{.K...y{.v|1 [TRUNCATED]
+2025-12-30 01:51:01.128 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_015009-0014] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af3800201000000111e5edb4bfc25d87ce4b0b26cc5f9d827aad9d228c456684b3980 | ASCII: ..Z..iB}...Q......Z..iB}...Q...........^.K.%.|...l...'...(.VhK9. [TRUNCATED]
+2025-12-30 01:51:06.128 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_015009-0015] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af3800201000000121f6e6555c43e5286d4b9979478198068ff9ea7d5a505902c1c03 | ASCII: ..Z..iB}...Q......Z..iB}...Q...........neU.>R.....x..h.......,.. [TRUNCATED]
+2025-12-30 01:51:11.127 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_015009-0016] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000013c9f89b2a088ba2a532add6e03464b7c764748f8c93262f386ec5 | ASCII: ..Z..iB}...Q......Z..iB}...Q.............*....2...4d..dt...&/8n. [TRUNCATED]
+2025-12-30 01:51:13.333 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20251230_015009-0017] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 75 bytes | Hex: 37d14f10ecea4cdaad1a6f52941e74dcc5c55ab2c469427db40fbf51ab0af3800105000000010000000000000000000000000000000000000000000000000000 | ASCII: 7.O...L...oR..t...Z..iB}...Q.................................... [TRUNCATED]
+2025-12-30 01:51:13.422 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20251230_015009-0018] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:51:16.129 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_015009-0019] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000014af548dc6d15fbb397bf303663ee216df79ce961c24d293ae6191 | ASCII: ..Z..iB}...Q......Z..iB}...Q...........T..._.9{..f>...y...$...a. [TRUNCATED]
+2025-12-30 01:51:21.128 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251230_015009-0020] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000015f1b05bec78b19c072c1f77f8bde0c36ceecf4f166504822b0e9d | ASCII: ..Z..iB}...Q......Z..iB}...Q............[.x...,.w....l..O.e..+.. [TRUNCATED]
+2025-12-30 01:51:22.257 | INFO     | __main__:cleanup:604 | A limpar recursos...
+2025-12-30 01:51:22.259 | INFO     | __main__:cleanup:609 | A desconectar uplink E0:D3:62:D6:EE:A0...
+2025-12-30 01:51:22.261 | INFO     | common.network.link_manager:disconnect_neighbor:717 | A desconectar do uplink E0:D3:62:D6:EE:A0
+2025-12-30 01:51:24.325 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:51:24.326 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251230_015009-0021] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:51:24.327 | WARNING  | common.network.link_manager:_on_uplink_disconnected:314 | ⚠️  Uplink desconectado!
+2025-12-30 01:51:24.328 | INFO     | common.network.heartbeat_monitor:stop:91 | HeartbeatMonitor parado
+2025-12-30 01:51:24.328 | INFO     | common.network.link_manager:clear_uplink:302 | Uplink removido
+2025-12-30 01:51:24.329 | INFO     | __main__:cleanup:621 | ✅ Recursos limpos

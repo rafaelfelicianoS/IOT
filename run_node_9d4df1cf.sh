@@ -1,12 +1,18 @@
 #!/bin/bash
 # Auto-generated script to run Node with certificates
 
-# Adicionar diretório do projeto ao PYTHONPATH
-export PYTHONPATH="/home/rafael/repos/iot:$PYTHONPATH"
+# Diretório do projeto (usa o diretório onde o script está localizado)
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "A iniciar Node 9d4df1cf..."
-python3 "/home/rafael/repos/iot/node/iot_node.py" \
-    --cert "/home/rafael/repos/iot/certs/node_9d4df1cf_cert.pem" \
-    --key "/home/rafael/repos/iot/certs/node_9d4df1cf_key.pem" \
-    --ca-cert "/home/rafael/repos/iot/certs/ca_certificate.pem" \
+# Adicionar diretório do projeto ao PYTHONPATH
+export PYTHONPATH="$PROJECT_DIR:$PYTHONPATH"
+
+# NID do dispositivo (pode ser alterado)
+NID="53a84472-db22-4eac-b5b3-3ef55b8630a6"
+
+echo "A iniciar Node com NID: $NID..."
+python3 "$PROJECT_DIR/node/iot_node.py" \
+    --cert "$PROJECT_DIR/certs/$NID/certificate.pem" \
+    --key "$PROJECT_DIR/certs/$NID/private_key.pem" \
+    --ca-cert "$PROJECT_DIR/certs/ca_certificate.pem" \
     "$@"

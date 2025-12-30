@@ -1,0 +1,94 @@
+2025-12-30 01:50:09.533 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_015009.log
+2025-12-30 01:50:09.534 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 01:50:09.534 | INFO     | BLE Client iniciado
+2025-12-30 01:50:09.534 | INFO     | BLE Client criado
+2025-12-30 01:50:09.535 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
+2025-12-30 01:50:09.536 | INFO     | NeighborDiscovery criado
+2025-12-30 01:50:09.536 | INFO     | Link Manager iniciado (my_nid=37d14f10...)
+2025-12-30 01:50:09.537 | INFO     | LinkManager criado
+2025-12-30 01:50:12.938 | INFO     | A iniciar scan de vizinhos...
+2025-12-30 01:50:12.940 | DEBUG    | A limpar cache de scan BLE...
+2025-12-30 01:50:13.148 | DEBUG    | Cache de scan limpo
+2025-12-30 01:50:13.149 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 01:50:13.151 | INFO     | [OP-20251230_015009-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 01:50:18.168 | DEBUG    |   Encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -59 dBm
+2025-12-30 01:50:18.169 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-30 01:50:18.171 | INFO     | [OP-20251230_015009-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-30 01:50:18.172 | DEBUG    | [OP-20251230_015009-0002]   Device_1: Name: IoT-Sink-c5c55ab2 | Address: E0:D3:62:D6:EE:A0 | RSSI: -59 dBm | Services: 1
+2025-12-30 01:50:18.172 | INFO     | Scan concluído: 1 dispositivos IoT encontrados
+2025-12-30 01:50:18.173 | DEBUG    | A conectar a E0:D3:62:D6:EE:A0 para ler DeviceInfo...
+2025-12-30 01:50:18.177 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-30 01:50:18.178 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:50:18.180 | INFO     | [OP-20251230_015009-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:50:21.617 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:50:21.618 | INFO     | [OP-20251230_015009-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3434.97ms
+2025-12-30 01:50:21.620 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-30 01:50:21.620 | DEBUG    | [OP-20251230_015009-0005] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-30 01:50:22.123 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-30 01:50:22.124 | INFO     | [OP-20251230_015009-0006] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
+2025-12-30 01:50:22.125 | INFO     | Vizinho descoberto: E0:D3:62:D6:EE:A0 (c5c55ab2...) hop=-1 rssi=-59dBm type=sink disconnected seen=0.0s ago
+2025-12-30 01:50:24.333 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:50:24.335 | INFO     | [OP-20251230_015009-0007] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:50:24.337 | INFO     | Novo vizinho adicionado: E0:D3:62:D6:EE:A0
+2025-12-30 01:50:40.287 | INFO     | A conectar a vizinho E0:D3:62:D6:EE:A0...
+2025-12-30 01:50:40.289 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-30 01:50:40.291 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 01:50:40.292 | INFO     | [OP-20251230_015009-0008] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 01:50:43.330 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 01:50:43.331 | INFO     | [OP-20251230_015009-0009] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3032.89ms
+2025-12-30 01:50:43.332 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-30 01:50:43.332 | INFO     | Link criado: Link[E0:D3:62:D6:EE:A0] -> SINK NID=c5c55ab2... hop=-1 (UPLINK)
+2025-12-30 01:50:43.333 | INFO     | ✅ Uplink definido: Link[E0:D3:62:D6:EE:A0] -> SINK NID=c5c55ab2... hop=-1
+2025-12-30 01:50:43.335 | DEBUG    | HeartbeatMonitor criado: interval=5.0s, max_missed=3
+2025-12-30 01:50:43.524 | INFO     | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:50:43.525 | INFO     | [OP-20251230_015009-0010] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:50:43.527 | INFO     | 💓 HeartbeatMonitor iniciado: verificação a cada 5.0s, timeout após 3 misses
+2025-12-30 01:50:43.528 | INFO     | 💓 Monitoramento de heartbeat iniciado
+2025-12-30 01:50:43.528 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0 e uplink estabelecido
+2025-12-30 01:50:43.529 | DEBUG    | Vizinho E0:D3:62:D6:EE:A0 marcado como conectado
+2025-12-30 01:50:46.128 | INFO     | [OP-20251230_015009-0011] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000000edb55384d44817bfe8841cb3aca897b491bd73b56d55a126e947c | ASCII: ..Z..iB}...Q......Z..iB}...Q...........U8MD.{..A.:..{I..;V.Z.n.| [TRUNCATED]
+2025-12-30 01:50:46.129 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: c5c55ab2... → c5c55ab2... (type=HEARTBEAT, seq=14)
+2025-12-30 01:50:46.130 | DEBUG    | 💓 Heartbeat recebido: seq=14
+2025-12-30 01:50:46.130 | DEBUG    | 💓 Heartbeat recebido (seq=14)
+2025-12-30 01:50:51.130 | INFO     | [OP-20251230_015009-0012] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000000f642c0b06fb0c48860507b219196105a9d283f60e3a646f6a429e | ASCII: ..Z..iB}...Q......Z..iB}...Q..........d,....H......a......:dojB. [TRUNCATED]
+2025-12-30 01:50:51.131 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: c5c55ab2... → c5c55ab2... (type=HEARTBEAT, seq=15)
+2025-12-30 01:50:51.131 | DEBUG    | 💓 Heartbeat recebido: seq=15
+2025-12-30 01:50:51.131 | DEBUG    | 💓 Heartbeat recebido (seq=15)
+2025-12-30 01:50:56.127 | INFO     | [OP-20251230_015009-0013] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000010a8aa3e8339f6816f1a93cdaa06497b1c4bccb71c797bbf767c31 | ASCII: ..Z..iB}...Q......Z..iB}...Q............>.9..o.....I{.K...y{.v|1 [TRUNCATED]
+2025-12-30 01:50:56.129 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: c5c55ab2... → c5c55ab2... (type=HEARTBEAT, seq=16)
+2025-12-30 01:50:56.129 | DEBUG    | 💓 Heartbeat recebido: seq=16
+2025-12-30 01:50:56.130 | DEBUG    | 💓 Heartbeat recebido (seq=16)
+2025-12-30 01:51:01.128 | INFO     | [OP-20251230_015009-0014] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af3800201000000111e5edb4bfc25d87ce4b0b26cc5f9d827aad9d228c456684b3980 | ASCII: ..Z..iB}...Q......Z..iB}...Q...........^.K.%.|...l...'...(.VhK9. [TRUNCATED]
+2025-12-30 01:51:01.129 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: c5c55ab2... → c5c55ab2... (type=HEARTBEAT, seq=17)
+2025-12-30 01:51:01.130 | DEBUG    | 💓 Heartbeat recebido: seq=17
+2025-12-30 01:51:01.130 | DEBUG    | 💓 Heartbeat recebido (seq=17)
+2025-12-30 01:51:06.128 | INFO     | [OP-20251230_015009-0015] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af3800201000000121f6e6555c43e5286d4b9979478198068ff9ea7d5a505902c1c03 | ASCII: ..Z..iB}...Q......Z..iB}...Q...........neU.>R.....x..h.......,.. [TRUNCATED]
+2025-12-30 01:51:06.129 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: c5c55ab2... → c5c55ab2... (type=HEARTBEAT, seq=18)
+2025-12-30 01:51:06.130 | DEBUG    | 💓 Heartbeat recebido: seq=18
+2025-12-30 01:51:06.130 | DEBUG    | 💓 Heartbeat recebido (seq=18)
+2025-12-30 01:51:11.127 | INFO     | [OP-20251230_015009-0016] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000013c9f89b2a088ba2a532add6e03464b7c764748f8c93262f386ec5 | ASCII: ..Z..iB}...Q......Z..iB}...Q.............*....2...4d..dt...&/8n. [TRUNCATED]
+2025-12-30 01:51:11.128 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: c5c55ab2... → c5c55ab2... (type=HEARTBEAT, seq=19)
+2025-12-30 01:51:11.129 | DEBUG    | 💓 Heartbeat recebido: seq=19
+2025-12-30 01:51:11.129 | DEBUG    | 💓 Heartbeat recebido (seq=19)
+2025-12-30 01:51:13.330 | DEBUG    | 📤 Forwarding uplink: 37d14f10... → c5c55ab2... (type=DATA)
+2025-12-30 01:51:13.333 | INFO     | [OP-20251230_015009-0017] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 75 bytes | Hex: 37d14f10ecea4cdaad1a6f52941e74dcc5c55ab2c469427db40fbf51ab0af3800105000000010000000000000000000000000000000000000000000000000000 | ASCII: 7.O...L...oR..t...Z..iB}...Q.................................... [TRUNCATED]
+2025-12-30 01:51:13.422 | DEBUG    | ✅ Write via SimpleBLE: 12340001-0000-1000-8000-00805f9b34fb (75 bytes)
+2025-12-30 01:51:13.422 | INFO     | [OP-20251230_015009-0018] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-30 01:51:13.423 | DEBUG    | ✅ Pacote enviado via Link[E0:D3:62:D6:EE:A0]: 75 bytes
+2025-12-30 01:51:16.129 | INFO     | [OP-20251230_015009-0019] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000014af548dc6d15fbb397bf303663ee216df79ce961c24d293ae6191 | ASCII: ..Z..iB}...Q......Z..iB}...Q...........T..._.9{..f>...y...$...a. [TRUNCATED]
+2025-12-30 01:51:16.130 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: c5c55ab2... → c5c55ab2... (type=HEARTBEAT, seq=20)
+2025-12-30 01:51:16.131 | DEBUG    | 💓 Heartbeat recebido: seq=20
+2025-12-30 01:51:16.131 | DEBUG    | 💓 Heartbeat recebido (seq=20)
+2025-12-30 01:51:21.128 | INFO     | [OP-20251230_015009-0020] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000015f1b05bec78b19c072c1f77f8bde0c36ceecf4f166504822b0e9d | ASCII: ..Z..iB}...Q......Z..iB}...Q............[.x...,.w....l..O.e..+.. [TRUNCATED]
+2025-12-30 01:51:21.130 | DEBUG    | 📦 Pacote recebido via E0:D3:62:D6:EE:A0: c5c55ab2... → c5c55ab2... (type=HEARTBEAT, seq=21)
+2025-12-30 01:51:21.130 | DEBUG    | 💓 Heartbeat recebido: seq=21
+2025-12-30 01:51:21.131 | DEBUG    | 💓 Heartbeat recebido (seq=21)
+2025-12-30 01:51:22.257 | INFO     | A limpar recursos...
+2025-12-30 01:51:22.259 | INFO     | A desconectar uplink E0:D3:62:D6:EE:A0...
+2025-12-30 01:51:22.261 | INFO     | A desconectar do uplink E0:D3:62:D6:EE:A0
+2025-12-30 01:51:24.325 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 01:51:24.326 | INFO     | [OP-20251230_015009-0021] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 01:51:24.327 | WARNING  | ⚠️  Uplink desconectado!
+2025-12-30 01:51:24.328 | INFO     | HeartbeatMonitor parado
+2025-12-30 01:51:24.328 | INFO     | Uplink removido
+2025-12-30 01:51:24.329 | INFO     | ✅ Recursos limpos

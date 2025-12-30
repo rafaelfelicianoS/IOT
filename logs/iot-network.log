@@ -186,3 +186,47 @@
 2025-12-30 01:05:25.635 | INFO     | common.security.certificate_manager:initialize:162 | ============================================================
 2025-12-30 01:05:25.635 | INFO     | common.security.certificate_manager:initialize:163 | ✅ Todos os certificados carregados com sucesso!
 2025-12-30 01:05:25.635 | INFO     | common.security.certificate_manager:initialize:164 | ============================================================
+2025-12-30 02:07:12.702 | INFO     | __main__:__init__:70 | A carregar certificados...
+2025-12-30 02:07:12.703 | ERROR    | __main__:main:537 | Erro ao iniciar IoT Node: [Errno 2] No such file or directory: '/home/rafa/IOT/IOT/certs/node_9d4df1cf_cert.pem'
+2025-12-30 02:08:10.369 | INFO     | __main__:__init__:70 | A carregar certificados...
+2025-12-30 02:08:10.374 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 02:08:10.374 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 02:08:10.374 | INFO     | __main__:__init__:100 | ✅ Certificados carregados com sucesso
+2025-12-30 02:08:10.375 | ERROR    | __main__:main:537 | Erro ao iniciar IoT Node: Certificado fornecido é de um Sink, não de um Node!
+2025-12-30 02:08:18.385 | INFO     | __main__:__init__:70 | A carregar certificados...
+2025-12-30 02:08:18.390 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2025-12-30 02:08:18.390 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 02:08:18.391 | INFO     | __main__:__init__:100 | ✅ Certificados carregados com sucesso
+2025-12-30 02:08:18.391 | ERROR    | __main__:main:537 | Erro ao iniciar IoT Node: Certificado fornecido é de um Sink, não de um Node!
+2025-12-30 02:08:34.751 | INFO     | __main__:__init__:70 | A carregar certificados...
+2025-12-30 02:08:34.755 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 53a84472...
+2025-12-30 02:08:34.755 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2025-12-30 02:08:34.756 | INFO     | __main__:__init__:100 | ✅ Certificados carregados com sucesso
+2025-12-30 02:08:34.756 | INFO     | __main__:__init__:108 | Node NID: 53a84472...
+2025-12-30 02:08:34.757 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-30 02:08:34.758 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2025-12-30 02:08:34.772 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_020834.log
+2025-12-30 02:08:34.772 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 02:08:34.772 | INFO     | common.ble.gatt_client:__init__:525 | BLE Client iniciado
+2025-12-30 02:08:34.773 | INFO     | __main__:__init__:131 | IoT Node inicializado (adapter=hci0)
+2025-12-30 02:08:34.774 | INFO     | __main__:run:424 | ============================================================
+2025-12-30 02:08:34.776 | INFO     | __main__:run:425 |   A iniciar IoT Node
+2025-12-30 02:08:34.777 | INFO     | __main__:run:426 | ============================================================
+2025-12-30 02:08:34.777 | INFO     | __main__:discover_sink:143 | 🔍 A procurar Sink...
+2025-12-30 02:08:34.778 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2025-12-30 02:08:34.778 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251230_020834-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 02:08:39.985 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2025-12-30 02:08:39.986 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251230_020834-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-30 02:08:39.987 | INFO     | __main__:discover_sink:150 | Encontrados 1 dispositivos IoT
+2025-12-30 02:08:39.989 | INFO     | __main__:discover_sink:167 | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -61 dBm
+2025-12-30 02:08:39.990 | INFO     | __main__:connect_to_sink:187 | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2025-12-30 02:08:39.994 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 02:08:39.994 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251230_020834-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 02:08:43.751 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 02:08:43.752 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251230_020834-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3754.69ms
+2025-12-30 02:08:43.752 | INFO     | __main__:connect_to_sink:200 | ✅ Conectado ao Sink via GATT
+2025-12-30 02:08:43.753 | INFO     | __main__:stop:476 | A parar Node...
+2025-12-30 02:08:46.300 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 02:08:46.301 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251230_020834-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 02:08:46.301 | INFO     | __main__:stop:486 | ✅ Node parado
+2025-12-30 02:08:46.302 | ERROR    | __main__:main:537 | Erro ao iniciar IoT Node: 'BLEConnection' object has no attribute 'discover_services'

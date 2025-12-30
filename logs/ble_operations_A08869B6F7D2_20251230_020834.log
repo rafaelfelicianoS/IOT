@@ -1,0 +1,31 @@
+2025-12-30 02:08:34.772 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251230_020834.log
+2025-12-30 02:08:34.772 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-30 02:08:34.772 | INFO     | BLE Client iniciado
+2025-12-30 02:08:34.773 | INFO     | IoT Node inicializado (adapter=hci0)
+2025-12-30 02:08:34.774 | INFO     | ============================================================
+2025-12-30 02:08:34.776 | INFO     |   A iniciar IoT Node
+2025-12-30 02:08:34.777 | INFO     | ============================================================
+2025-12-30 02:08:34.777 | INFO     | 🔍 A procurar Sink...
+2025-12-30 02:08:34.778 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-30 02:08:34.778 | INFO     | [OP-20251230_020834-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-30 02:08:39.984 | DEBUG    |   Encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -61 dBm
+2025-12-30 02:08:39.985 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-30 02:08:39.986 | INFO     | [OP-20251230_020834-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-30 02:08:39.987 | DEBUG    | [OP-20251230_020834-0002]   Device_1: Name: IoT-Sink-c5c55ab2 | Address: E0:D3:62:D6:EE:A0 | RSSI: -61 dBm | Services: 1
+2025-12-30 02:08:39.987 | INFO     | Encontrados 1 dispositivos IoT
+2025-12-30 02:08:39.988 | DEBUG    |   Device: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -61 dBm
+2025-12-30 02:08:39.989 | DEBUG    |     Type=0, HopCount=255
+2025-12-30 02:08:39.989 | INFO     | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -61 dBm
+2025-12-30 02:08:39.990 | INFO     | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2025-12-30 02:08:39.993 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-30 02:08:39.994 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-30 02:08:39.994 | INFO     | [OP-20251230_020834-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-30 02:08:43.751 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-30 02:08:43.752 | INFO     | [OP-20251230_020834-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3754.69ms
+2025-12-30 02:08:43.752 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-30 02:08:43.752 | INFO     | ✅ Conectado ao Sink via GATT
+2025-12-30 02:08:43.753 | INFO     | A parar Node...
+2025-12-30 02:08:46.300 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-30 02:08:46.301 | INFO     | [OP-20251230_020834-0005] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-30 02:08:46.301 | INFO     | ✅ Node parado
+2025-12-30 02:08:46.302 | ERROR    | Erro ao iniciar IoT Node: 'BLEConnection' object has no attribute 'discover_services'
