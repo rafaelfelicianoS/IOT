@@ -333,9 +333,9 @@ class SinkDevice:
         logger.debug(f"Enviando resposta auth: {len(data)} bytes em {len(fragments)} fragmento(s)")
 
         for i, fragment in enumerate(fragments):
-            # Enviar via AUTH characteristic
+            # Enviar via AUTH characteristic usando indication
             if self.auth_char:
-                self.auth_char.send_value(fragment)
+                self.auth_char._indicate_response(fragment)
                 logger.debug(f"  Fragmento {i+1}/{len(fragments)} enviado")
 
                 # Pequeno delay entre fragmentos

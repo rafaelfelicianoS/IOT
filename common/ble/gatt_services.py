@@ -436,7 +436,7 @@ class AuthCharacteristic(Characteristic):
             sender: ID do sender
         """
         fragment_data = bytes(value)
-        logger.debug(f"Auth data recebida de {sender}: {len(fragment_data)} bytes")
+        logger.debug(f"Auth WriteValue de {sender}: {len(fragment_data)} bytes")
 
         # Obter ou criar reassembler para este cliente
         if sender not in self.reassemblers:
@@ -452,20 +452,18 @@ class AuthCharacteristic(Characteristic):
             return
 
         # Mensagem completa, processar autenticação
-        logger.info(f"Mensagem completa recebida de {sender}: {len(auth_data)} bytes")
+        logger.info(f"Mensagem auth completa de {sender}: {len(auth_data)} bytes")
+
+        # Limpar reassembler após uso
+        del self.reassemblers[sender]
 
         if self.auth_callback:
             try:
+                # Processar auth message
                 response = self.auth_callback(auth_data, sender)
 
-                # Fragmentar resposta se necessário
-                if response and len(response) > 0:
-                    response_fragments = fragment_message(response)
-
-                    # Enviar cada fragmento via Indicate
-                    for i, fragment in enumerate(response_fragments):
-                        logger.debug(f"Enviando fragmento {i+1}/{len(response_fragments)} da resposta")
-                        self._indicate_response(fragment)
+                # Se há resposta, será enviada via _send_auth_response no Sink
+                # NÃO enviamos aqui para evitar loops
 
             except Exception as e:
                 logger.error(f"Erro no auth callback: {e}")

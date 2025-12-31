@@ -517,114 +517,142 @@ Sinal 2 recebido, a parar...
 2025-12-30 17:06:34.190 | INFO     | __main__:stop_gatt_server:244 | A parar GATT Server...
 2025-12-30 17:06:34.190 | INFO     | __main__:stop_gatt_server:252 | ✅ GATT Server parado
 2025-12-30 17:06:34.191 | INFO     | __main__:stop:710 | ✅ Node parado
-2025-12-31 01:18:31.656 | INFO     | __main__:__init__:78 | A carregar certificados...
-2025-12-31 01:18:31.661 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 53a84472...
-2025-12-31 01:18:31.661 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
-2025-12-31 01:18:31.661 | INFO     | __main__:__init__:108 | ✅ Certificados carregados com sucesso
-2025-12-31 01:18:31.661 | INFO     | __main__:__init__:116 | Node NID: 53a84472...
-2025-12-31 01:18:31.661 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
-2025-12-31 01:18:31.662 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
-2025-12-31 01:18:31.681 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251231_011831.log
-2025-12-31 01:18:31.682 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
-2025-12-31 01:18:31.682 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
-2025-12-31 01:18:31.682 | INFO     | __main__:__init__:160 | IoT Node inicializado (adapter=hci0)
-2025-12-31 01:18:31.683 | INFO     | __main__:run:738 | ============================================================
-2025-12-31 01:18:31.684 | INFO     | __main__:run:739 |   A iniciar IoT Node (dual-mode)
-2025-12-31 01:18:31.684 | INFO     | __main__:run:740 | ============================================================
-2025-12-31 01:18:31.685 | INFO     | __main__:setup_gatt_server:164 | A configurar GATT Server...
-2025-12-31 01:18:31.687 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
-2025-12-31 01:18:31.688 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
-2025-12-31 01:18:31.688 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
-2025-12-31 01:18:31.688 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
-2025-12-31 01:18:31.689 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=53a84472..., type=node
-2025-12-31 01:18:31.689 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
-2025-12-31 01:18:31.691 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
-2025-12-31 01:18:31.693 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
-2025-12-31 01:18:31.693 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
-2025-12-31 01:18:31.695 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
-2025-12-31 01:18:31.695 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:31.696 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
-2025-12-31 01:18:31.697 | INFO     | __main__:setup_gatt_server:207 | ✅ GATT Server configurado
-2025-12-31 01:18:31.697 | INFO     | __main__:start_gatt_server:211 | A iniciar GATT Server...
-2025-12-31 01:18:31.700 | INFO     | __main__:start_gatt_server:240 | ✅ GATT Server iniciado em thread separada
-2025-12-31 01:18:31.702 | INFO     | __main__:run:748 | ✅ GATT Server ativo - aguardando downlinks
-2025-12-31 01:18:31.703 | INFO     | __main__:discover_sink:312 | 🔍 A procurar Sink...
-2025-12-31 01:18:31.705 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2025-12-31 01:18:31.707 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20251231_011831-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2025-12-31 01:18:31.783 | INFO     | __main__:<lambda>:223 | ✅ GATT application registada!
-2025-12-31 01:18:31.784 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
-2025-12-31 01:18:31.896 | INFO     | __main__:<lambda>:231 | ✅ Advertisement registado!
-2025-12-31 01:18:36.987 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
-2025-12-31 01:18:36.988 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20251231_011831-0002] SCAN_RESULT | Devices_Found: 1
-2025-12-31 01:18:36.989 | INFO     | __main__:discover_sink:319 | Encontrados 1 dispositivos IoT
-2025-12-31 01:18:36.989 | INFO     | __main__:discover_sink:336 | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -47 dBm
-2025-12-31 01:18:36.990 | INFO     | __main__:connect_to_sink:356 | A conectar ao Sink E0:D3:62:D6:EE:A0...
-2025-12-31 01:18:36.991 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
-2025-12-31 01:18:36.992 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20251231_011831-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
-2025-12-31 01:18:40.314 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
-2025-12-31 01:18:40.315 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20251231_011831-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3318.54ms
-2025-12-31 01:18:40.317 | INFO     | __main__:connect_to_sink:369 | ✅ Conectado ao Sink via GATT
-2025-12-31 01:18:40.324 | INFO     | __main__:connect_to_sink:382 | ✅ Serviço IoT Network encontrado
-2025-12-31 01:18:40.327 | INFO     | __main__:_subscribe_to_notifications:391 | A subscrever a notificações...
-2025-12-31 01:18:40.816 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:40.818 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20251231_011831-0005] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:40.819 | INFO     | __main__:_subscribe_to_notifications:400 | ✅ Subscrito a NETWORK_PACKET
-2025-12-31 01:18:40.916 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20251231_011831-0007] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
-2025-12-31 01:18:40.916 | INFO     | __main__:_update_hop_count_from_uplink:723 | ✅ Conectado ao Sink - hop_count=0
-2025-12-31 01:18:40.918 | INFO     | __main__:authenticate_with_sink:503 | 🔐 A iniciar autenticação com Sink...
-2025-12-31 01:18:40.918 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 53a84472...
-2025-12-31 01:18:40.919 | INFO     | __main__:authenticate_with_sink:516 | 📤 Enviando certificado...
-2025-12-31 01:18:40.920 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
-2025-12-31 01:18:40.921 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 887 bytes
-2025-12-31 01:18:40.921 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 890 bytes em 5 fragmentos
-2025-12-31 01:18:40.927 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20251231_011831-0008] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100050103772d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949435954434341634b674177494241674955657479325a6c55354642 | ASCII: .....w-----BEGIN CERTIFICATE-----.MIICYTCCAcKgAwIBAgIUety2ZlU5FB [TRUNCATED]
-2025-12-31 01:18:41.064 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20251231_011831-0009] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:41.069 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251231_011831-0010] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000003feff1c7ff8bebb25fde46d7994510a8bde26b09ecfcc134dc119 | ASCII: ..Z..iB}...Q......Z..iB}...Q.................%..my.Q...&.....M.. [TRUNCATED]
-2025-12-31 01:18:41.069 | INFO     | __main__:_handle_heartbeat:440 | Sink NID identificado: c5c55ab2...
-2025-12-31 01:18:41.167 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20251231_011831-0011] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001054d446b6c765643424f5a58523362334a7249454e424d423458445449314d5449794f54497a4e44517a4d6c6f580a44544d314d5449794e7a497a4e4451 | ASCII: ...MDklvVCBOZXR3b3JrIENBMB4XDTI1MTIyOTIzNDQzMloX.DTM1MTIyNzIzNDQ [TRUNCATED]
-2025-12-31 01:18:41.315 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20251231_011831-0012] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:41.418 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20251231_011831-0013] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000205675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241456a5a664e4f582f456157716c626755424372633971676b43350a | ASCII: ...gZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAEjZfNOX/EaWqlbgUBCrc9qgkC5. [TRUNCATED]
-2025-12-31 01:18:41.565 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20251231_011831-0014] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:41.668 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20251231_011831-0015] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000305322b7557522b624835560a3147525a7964677179532f365a50456b4778617937714d344d44597744415944565230544151482f424149774144414f4267 | ASCII: ...2+uWR+bH5V.1GRZydgqyS/6ZPEkGxay7qM4MDYwDAYDVR0TAQH/BAIwADAOBg [TRUNCATED]
-2025-12-31 01:18:41.815 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20251231_011831-0016] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:41.919 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20251231_011831-0017] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 173 bytes | Hex: 0204057a4233785053466831484d2f79427553464f702f794b5767580a69446f397832696f457134374b4e51567878794859475143516744444c625662666e58 | ASCII: ...zB3xPSFh1HM/yBuSFOp/yKWgX.iDo9x2ioEq47KNQVxxyHYGQCQgDDLbVbfnX [TRUNCATED]
-2025-12-31 01:18:42.015 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20251231_011831-0018] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:42.715 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[143] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:42.716 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0020] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:43.315 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[148] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:43.316 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0022] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:43.915 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[153] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:43.916 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0024] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:44.515 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[158] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:44.516 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0026] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:45.114 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[163] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:45.115 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0028] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:45.715 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[168] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:45.716 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0030] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:46.070 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20251231_011831-0031] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000004a9dc21ceb0c40d6fc6cad7b66f18d08c6e567aefba9a627344ef | ASCII: ..Z..iB}...Q......Z..iB}...Q............!....o....o...nVz...bsD. [TRUNCATED]
-2025-12-31 01:18:46.315 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[174] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:46.316 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0033] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:46.915 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[179] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:46.916 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0035] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:47.515 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[184] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:47.516 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0037] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:48.115 | ERROR    | common.ble.gatt_client:read_characteristic:458 | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
-[189] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
-2025-12-31 01:18:48.116 | ERROR    | common.utils.ble_logger:log_read_response:243 | [OP-20251231_011831-0039] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
-2025-12-31 01:18:48.118 | ERROR    | __main__:authenticate_with_sink:566 | ❌ Autenticação expirou (timeout)
-2025-12-31 01:18:48.119 | ERROR    | __main__:run:775 | ❌ Falha na autenticação
-2025-12-31 01:18:48.121 | INFO     | __main__:stop:807 | A parar Node...
-2025-12-31 01:18:48.122 | INFO     | __main__:stop_gatt_server:244 | A parar GATT Server...
-2025-12-31 01:18:48.125 | INFO     | __main__:stop_gatt_server:252 | ✅ GATT Server parado
-2025-12-31 01:18:50.428 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
-2025-12-31 01:18:50.430 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20251231_011831-0040] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
-2025-12-31 01:18:50.432 | INFO     | __main__:stop:820 | ✅ Node parado
+2025-12-31 01:06:54.239 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para af04ea89...
+2025-12-31 01:06:54.239 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-31 01:06:54.242 | INFO     | common.security.certificate_manager:load_device_certificate:124 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/sink_af04ea89_cert.pem
+2025-12-31 01:06:54.242 | INFO     | common.security.certificate_manager:load_device_certificate:125 |    Serial: 657753686141817138044834278447062871303741911109
+2025-12-31 01:06:54.242 | ERROR    | common.security.certificate_manager:load_device_certificate:130 | NID do certificado (af04ea89...) não corresponde ao NID do dispositivo (af04ea89...)
+2025-12-31 01:07:17.938 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para af04ea89...
+2025-12-31 01:07:17.938 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-31 01:07:17.941 | INFO     | common.security.certificate_manager:load_device_certificate:124 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/sink_af04ea89_cert.pem
+2025-12-31 01:07:17.941 | INFO     | common.security.certificate_manager:load_device_certificate:125 |    Serial: 657753686141817138044834278447062871303741911109
+2025-12-31 01:07:17.950 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 9d4df1cf...
+2025-12-31 01:07:17.951 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-31 01:07:17.951 | INFO     | common.security.certificate_manager:load_device_certificate:124 | ✅ Certificado do dispositivo carregado: /home/rafael/repos/iot/certs/node_9d4df1cf_cert.pem
+2025-12-31 01:07:17.952 | INFO     | common.security.certificate_manager:load_device_certificate:125 |    Serial: 495839917112630735655059758037235971604014579335
+2025-12-31 01:07:39.366 | INFO     | __main__:__init__:82 | A carregar certificados...
+2025-12-31 01:07:39.368 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para c5c55ab2...
+2025-12-31 01:07:39.368 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-31 01:07:39.368 | INFO     | __main__:__init__:112 | ✅ Certificados carregados com sucesso
+2025-12-31 01:07:39.368 | INFO     | __main__:__init__:120 | Sink NID: c5c55ab2...
+2025-12-31 01:07:39.368 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-31 01:07:39.368 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2025-12-31 01:07:39.368 | INFO     | __main__:__init__:143 | Sink Device inicializado (adapter=hci0)
+2025-12-31 01:07:39.368 | INFO     | __main__:start:389 | ============================================================
+2025-12-31 01:07:39.368 | INFO     | __main__:start:390 |   A iniciar Sink Device
+2025-12-31 01:07:39.368 | INFO     | __main__:start:391 | ============================================================
+2025-12-31 01:07:39.369 | INFO     | __main__:setup_gatt_server:147 | A configurar GATT Server...
+2025-12-31 01:07:39.369 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-31 01:07:39.370 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-31 01:07:39.370 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2025-12-31 01:07:39.370 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2025-12-31 01:07:39.370 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=c5c55ab2..., type=sink
+2025-12-31 01:07:39.370 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2025-12-31 01:07:39.370 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2025-12-31 01:07:39.370 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2025-12-31 01:07:39.370 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2025-12-31 01:07:39.370 | INFO     | __main__:setup_gatt_server:185 | ✅ GATT Server configurado
+2025-12-31 01:07:39.370 | INFO     | __main__:start:398 | A registar GATT application no adaptador hci0...
+2025-12-31 01:07:39.371 | INFO     | __main__:setup_advertising:189 | A configurar BLE Advertising...
+2025-12-31 01:07:39.371 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-31 01:07:39.371 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-31 01:07:39.371 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:07:39.371 | INFO     | __main__:setup_advertising:200 | ✅ BLE Advertising configurado
+2025-12-31 01:07:39.371 | INFO     | __main__:start:414 | A registar advertisement no adaptador hci0...
+2025-12-31 01:07:39.372 | INFO     | __main__:start_heartbeat_service:355 | 💓 A iniciar serviço de heartbeat...
+2025-12-31 01:07:39.372 | INFO     | __main__:start_heartbeat_service:385 | ✅ Serviço de heartbeat iniciado
+2025-12-31 01:07:39.372 | INFO     | __main__:start:431 | ✅ Sink Device iniciado - a aguardar conexões...
+2025-12-31 01:07:39.377 | INFO     | __main__:<lambda>:406 | ✅ GATT application registada!
+2025-12-31 01:07:39.378 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:07:39.482 | INFO     | __main__:<lambda>:420 | ✅ Advertisement registado!
+2025-12-31 01:07:49.275 | INFO     | __main__:signal_handler:525 | 
+Sinal 15 recebido, a parar...
+2025-12-31 01:07:49.275 | INFO     | __main__:stop:443 | A parar Sink Device...
+2025-12-31 01:07:49.276 | INFO     | __main__:stop:455 | ✅ Sink Device parado
+2025-12-31 01:11:00.414 | INFO     | __main__:__init__:82 | A carregar certificados...
+2025-12-31 01:11:00.416 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para c5c55ab2...
+2025-12-31 01:11:00.416 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-31 01:11:00.416 | INFO     | __main__:__init__:112 | ✅ Certificados carregados com sucesso
+2025-12-31 01:11:00.416 | INFO     | __main__:__init__:120 | Sink NID: c5c55ab2...
+2025-12-31 01:11:00.416 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-31 01:11:00.417 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2025-12-31 01:11:00.417 | INFO     | __main__:__init__:143 | Sink Device inicializado (adapter=hci0)
+2025-12-31 01:11:00.417 | INFO     | __main__:start:389 | ============================================================
+2025-12-31 01:11:00.417 | INFO     | __main__:start:390 |   A iniciar Sink Device
+2025-12-31 01:11:00.417 | INFO     | __main__:start:391 | ============================================================
+2025-12-31 01:11:00.417 | INFO     | __main__:setup_gatt_server:147 | A configurar GATT Server...
+2025-12-31 01:11:00.418 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-31 01:11:00.418 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-31 01:11:00.418 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2025-12-31 01:11:00.418 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2025-12-31 01:11:00.418 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=c5c55ab2..., type=sink
+2025-12-31 01:11:00.419 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2025-12-31 01:11:00.419 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2025-12-31 01:11:00.419 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2025-12-31 01:11:00.419 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2025-12-31 01:11:00.419 | INFO     | __main__:setup_gatt_server:185 | ✅ GATT Server configurado
+2025-12-31 01:11:00.419 | INFO     | __main__:start:398 | A registar GATT application no adaptador hci0...
+2025-12-31 01:11:00.420 | INFO     | __main__:setup_advertising:189 | A configurar BLE Advertising...
+2025-12-31 01:11:00.420 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-31 01:11:00.420 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-31 01:11:00.420 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:11:00.421 | INFO     | __main__:setup_advertising:200 | ✅ BLE Advertising configurado
+2025-12-31 01:11:00.421 | INFO     | __main__:start:414 | A registar advertisement no adaptador hci0...
+2025-12-31 01:11:00.421 | INFO     | __main__:start_heartbeat_service:355 | 💓 A iniciar serviço de heartbeat...
+2025-12-31 01:11:00.421 | INFO     | __main__:start_heartbeat_service:385 | ✅ Serviço de heartbeat iniciado
+2025-12-31 01:11:00.422 | INFO     | __main__:start:431 | ✅ Sink Device iniciado - a aguardar conexões...
+2025-12-31 01:11:00.427 | INFO     | __main__:<lambda>:406 | ✅ GATT application registada!
+2025-12-31 01:11:00.428 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:11:00.532 | INFO     | __main__:<lambda>:420 | ✅ Advertisement registado!
+2025-12-31 01:11:29.681 | INFO     | common.ble.gatt_services:StartNotify:120 | Cliente :1.1891 subscreveu notificações de pacotes
+2025-12-31 01:12:52.716 | INFO     | common.ble.gatt_services:StopNotify:137 | Cliente :1.1891 cancelou subscrição de pacotes
+2025-12-31 01:13:01.086 | INFO     | __main__:signal_handler:525 | 
+Sinal 2 recebido, a parar...
+2025-12-31 01:13:01.086 | INFO     | __main__:stop:443 | A parar Sink Device...
+2025-12-31 01:13:01.087 | INFO     | __main__:stop:455 | ✅ Sink Device parado
+2025-12-31 01:18:25.547 | INFO     | __main__:__init__:82 | A carregar certificados...
+2025-12-31 01:18:25.553 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para c5c55ab2...
+2025-12-31 01:18:25.553 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-31 01:18:25.553 | INFO     | __main__:__init__:112 | ✅ Certificados carregados com sucesso
+2025-12-31 01:18:25.553 | INFO     | __main__:__init__:120 | Sink NID: c5c55ab2...
+2025-12-31 01:18:25.554 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-31 01:18:25.554 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2025-12-31 01:18:25.554 | INFO     | __main__:__init__:143 | Sink Device inicializado (adapter=hci0)
+2025-12-31 01:18:25.554 | INFO     | __main__:start:440 | ============================================================
+2025-12-31 01:18:25.554 | INFO     | __main__:start:441 |   A iniciar Sink Device
+2025-12-31 01:18:25.554 | INFO     | __main__:start:442 | ============================================================
+2025-12-31 01:18:25.555 | INFO     | __main__:setup_gatt_server:147 | A configurar GATT Server...
+2025-12-31 01:18:25.556 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-31 01:18:25.556 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-31 01:18:25.556 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2025-12-31 01:18:25.557 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2025-12-31 01:18:25.557 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=c5c55ab2..., type=sink
+2025-12-31 01:18:25.557 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2025-12-31 01:18:25.557 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2025-12-31 01:18:25.557 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2025-12-31 01:18:25.557 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2025-12-31 01:18:25.558 | INFO     | __main__:setup_gatt_server:185 | ✅ GATT Server configurado
+2025-12-31 01:18:25.558 | INFO     | __main__:start:449 | A registar GATT application no adaptador hci0...
+2025-12-31 01:18:25.558 | INFO     | __main__:setup_advertising:189 | A configurar BLE Advertising...
+2025-12-31 01:18:25.558 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-31 01:18:25.558 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:25.559 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:18:25.559 | INFO     | __main__:setup_advertising:200 | ✅ BLE Advertising configurado
+2025-12-31 01:18:25.559 | INFO     | __main__:start:465 | A registar advertisement no adaptador hci0...
+2025-12-31 01:18:25.559 | INFO     | __main__:start_heartbeat_service:406 | 💓 A iniciar serviço de heartbeat...
+2025-12-31 01:18:25.560 | INFO     | __main__:start_heartbeat_service:436 | ✅ Serviço de heartbeat iniciado
+2025-12-31 01:18:25.560 | INFO     | __main__:start:482 | ✅ Sink Device iniciado - a aguardar conexões...
+2025-12-31 01:18:25.565 | INFO     | __main__:<lambda>:457 | ✅ GATT application registada!
+2025-12-31 01:18:25.565 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:18:25.668 | INFO     | __main__:<lambda>:471 | ✅ Advertisement registado!
+2025-12-31 01:18:40.776 | INFO     | common.ble.gatt_services:StartNotify:120 | Cliente :1.1891 subscreveu notificações de pacotes
+2025-12-31 01:18:41.026 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 5 fragmentos
+2025-12-31 01:18:41.978 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 890 bytes (5 fragmentos)
+2025-12-31 01:18:41.978 | INFO     | common.ble.gatt_services:WriteValue:455 | Mensagem completa recebida de :1.1891: 890 bytes
+2025-12-31 01:18:41.979 | INFO     | __main__:_on_auth_message:261 | 🔐 Mensagem de autenticação recebida de :1.1891: 890 bytes
+2025-12-31 01:18:41.979 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 119 fragmentos
+2025-12-31 01:18:48.174 | INFO     | common.ble.gatt_services:StopNotify:137 | Cliente :1.1891 cancelou subscrição de pacotes
+2025-12-31 01:19:47.733 | INFO     | __main__:signal_handler:576 | 
+Sinal 2 recebido, a parar...
+2025-12-31 01:19:47.733 | INFO     | __main__:stop:494 | A parar Sink Device...
+2025-12-31 01:19:47.734 | INFO     | __main__:stop:506 | ✅ Sink Device parado
