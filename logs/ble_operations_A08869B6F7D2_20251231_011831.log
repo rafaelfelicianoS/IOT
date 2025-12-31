@@ -1,0 +1,182 @@
+2025-12-31 01:18:31.681 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251231_011831.log
+2025-12-31 01:18:31.682 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2025-12-31 01:18:31.682 | INFO     | BLE Client iniciado
+2025-12-31 01:18:31.682 | INFO     | IoT Node inicializado (adapter=hci0)
+2025-12-31 01:18:31.683 | INFO     | ============================================================
+2025-12-31 01:18:31.684 | INFO     |   A iniciar IoT Node (dual-mode)
+2025-12-31 01:18:31.684 | INFO     | ============================================================
+2025-12-31 01:18:31.685 | INFO     | A configurar GATT Server...
+2025-12-31 01:18:31.687 | INFO     | Application criada: /
+2025-12-31 01:18:31.688 | INFO     | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-31 01:18:31.688 | INFO     | A criar IoTNetworkService...
+2025-12-31 01:18:31.688 | DEBUG    | Characteristic criada: /0/char0 (UUID: 12340001-0000-1000-8000-00805f9b34fb, flags: ['write', 'notify'])
+2025-12-31 01:18:31.688 | INFO     | NetworkPacketCharacteristic criada
+2025-12-31 01:18:31.689 | DEBUG    | Characteristic criada: /0/char1 (UUID: 12340002-0000-1000-8000-00805f9b34fb, flags: ['read'])
+2025-12-31 01:18:31.689 | INFO     | DeviceInfoCharacteristic criada: NID=53a84472..., type=node
+2025-12-31 01:18:31.689 | DEBUG    | Characteristic criada: /0/char2 (UUID: 12340003-0000-1000-8000-00805f9b34fb, flags: ['read', 'notify'])
+2025-12-31 01:18:31.689 | INFO     | NeighborTableCharacteristic criada
+2025-12-31 01:18:31.691 | DEBUG    | Characteristic criada: /0/char3 (UUID: 12340004-0000-1000-8000-00805f9b34fb, flags: ['write', 'indicate'])
+2025-12-31 01:18:31.691 | INFO     | AuthCharacteristic criada
+2025-12-31 01:18:31.692 | DEBUG    | Characteristic adicionada a /0: /0/char0
+2025-12-31 01:18:31.692 | DEBUG    | Characteristic adicionada a /0: /0/char1
+2025-12-31 01:18:31.692 | DEBUG    | Characteristic adicionada a /0: /0/char2
+2025-12-31 01:18:31.693 | DEBUG    | Characteristic adicionada a /0: /0/char3
+2025-12-31 01:18:31.693 | INFO     | ✅ IoTNetworkService criado com sucesso!
+2025-12-31 01:18:31.693 | INFO     | Service adicionado à aplicação: /0
+2025-12-31 01:18:31.694 | DEBUG    | Packet callback definido
+2025-12-31 01:18:31.694 | DEBUG    | Auth callback definido
+2025-12-31 01:18:31.695 | INFO     | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-31 01:18:31.695 | INFO     | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:31.696 | INFO     |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:18:31.696 | DEBUG    | Local name definido: IoT-Node-53a84472
+2025-12-31 01:18:31.696 | DEBUG    | Manufacturer data adicionado: ID=65535
+2025-12-31 01:18:31.697 | INFO     | ✅ GATT Server configurado
+2025-12-31 01:18:31.697 | INFO     | A iniciar GATT Server...
+2025-12-31 01:18:31.700 | INFO     | ✅ GATT Server iniciado em thread separada
+2025-12-31 01:18:31.702 | INFO     | ✅ GATT Server ativo - aguardando downlinks
+2025-12-31 01:18:31.703 | INFO     | 🔍 A procurar Sink...
+2025-12-31 01:18:31.706 | DEBUG    | GetManagedObjects called
+2025-12-31 01:18:31.705 | INFO     | A fazer scan BLE durante 5000ms...
+2025-12-31 01:18:31.707 | DEBUG    | GetManagedObjects returning 5 objects
+2025-12-31 01:18:31.707 | INFO     | [OP-20251231_011831-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2025-12-31 01:18:31.783 | INFO     | ✅ GATT application registada!
+2025-12-31 01:18:31.784 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2025-12-31 01:18:31.784 | INFO     | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:18:31.896 | INFO     | ✅ Advertisement registado!
+2025-12-31 01:18:36.987 | DEBUG    |   Encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -47 dBm
+2025-12-31 01:18:36.987 | INFO     | Scan concluído: 1 dispositivos encontrados
+2025-12-31 01:18:36.988 | INFO     | [OP-20251231_011831-0002] SCAN_RESULT | Devices_Found: 1
+2025-12-31 01:18:36.988 | DEBUG    | [OP-20251231_011831-0002]   Device_1: Name: IoT-Sink-c5c55ab2 | Address: E0:D3:62:D6:EE:A0 | RSSI: -47 dBm | Services: 1
+2025-12-31 01:18:36.989 | INFO     | Encontrados 1 dispositivos IoT
+2025-12-31 01:18:36.989 | DEBUG    |   Device: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -47 dBm
+2025-12-31 01:18:36.989 | DEBUG    |     Type=0, HopCount=255
+2025-12-31 01:18:36.989 | INFO     | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -47 dBm
+2025-12-31 01:18:36.990 | INFO     | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2025-12-31 01:18:36.991 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2025-12-31 01:18:36.991 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2025-12-31 01:18:36.992 | INFO     | [OP-20251231_011831-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2025-12-31 01:18:40.314 | INFO     | ✅ Conectado a E0:D3:62:D6:EE:A0
+2025-12-31 01:18:40.315 | INFO     | [OP-20251231_011831-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3318.54ms
+2025-12-31 01:18:40.317 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2025-12-31 01:18:40.317 | INFO     | ✅ Conectado ao Sink via GATT
+2025-12-31 01:18:40.320 | DEBUG    | Descobertos 4 serviços
+2025-12-31 01:18:40.324 | DEBUG    | Serviço 12340000-0000-1000-8000-00805f9b34fb encontrado
+2025-12-31 01:18:40.324 | INFO     | ✅ Serviço IoT Network encontrado
+2025-12-31 01:18:40.327 | INFO     | A subscrever a notificações...
+2025-12-31 01:18:40.816 | INFO     | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:40.818 | INFO     | [OP-20251231_011831-0005] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:40.819 | INFO     | ✅ Subscrito a NETWORK_PACKET
+2025-12-31 01:18:40.820 | DEBUG    | [OP-20251231_011831-0006] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:40.915 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2025-12-31 01:18:40.916 | INFO     | [OP-20251231_011831-0007] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
+2025-12-31 01:18:40.916 | INFO     | ✅ Conectado ao Sink - hop_count=0
+2025-12-31 01:18:40.917 | DEBUG    | Manufacturer data adicionado: ID=65535
+2025-12-31 01:18:40.918 | DEBUG    | Advertisement atualizado: hop_count=0
+2025-12-31 01:18:40.918 | INFO     | 🔐 A iniciar autenticação com Sink...
+2025-12-31 01:18:40.918 | INFO     | AuthenticationProtocol inicializado para 53a84472...
+2025-12-31 01:18:40.919 | INFO     | 📤 Enviando certificado...
+2025-12-31 01:18:40.920 | INFO     | 🔐 Iniciando autenticação - enviando certificado...
+2025-12-31 01:18:40.921 | INFO     |    Certificado: 887 bytes
+2025-12-31 01:18:40.921 | DEBUG    |    Estado: IDLE → CERT_SENT
+2025-12-31 01:18:40.921 | INFO     | Fragmentando mensagem de 890 bytes em 5 fragmentos
+2025-12-31 01:18:40.924 | DEBUG    |   Fragmento 1/5: 180 bytes, flags=0x01
+2025-12-31 01:18:40.924 | DEBUG    |   Fragmento 2/5: 180 bytes, flags=0x00
+2025-12-31 01:18:40.924 | DEBUG    |   Fragmento 3/5: 180 bytes, flags=0x00
+2025-12-31 01:18:40.925 | DEBUG    |   Fragmento 4/5: 180 bytes, flags=0x00
+2025-12-31 01:18:40.925 | DEBUG    |   Fragmento 5/5: 170 bytes, flags=0x02
+2025-12-31 01:18:40.925 | DEBUG    | Enviando mensagem auth: 890 bytes em 5 fragmento(s)
+2025-12-31 01:18:40.927 | INFO     | [OP-20251231_011831-0008] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100050103772d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949435954434341634b674177494241674955657479325a6c55354642 | ASCII: .....w-----BEGIN CERTIFICATE-----.MIICYTCCAcKgAwIBAgIUety2ZlU5FB [TRUNCATED]
+2025-12-31 01:18:41.064 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2025-12-31 01:18:41.064 | INFO     | [OP-20251231_011831-0009] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:41.065 | DEBUG    |   Fragmento 1/5 enviado
+2025-12-31 01:18:41.069 | INFO     | [OP-20251231_011831-0010] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000003feff1c7ff8bebb25fde46d7994510a8bde26b09ecfcc134dc119 | ASCII: ..Z..iB}...Q......Z..iB}...Q.................%..my.Q...&.....M.. [TRUNCATED]
+2025-12-31 01:18:41.069 | INFO     | Sink NID identificado: c5c55ab2...
+2025-12-31 01:18:41.070 | DEBUG    | Novo source c5c55ab2...: seq=3 (primeiro pacote)
+2025-12-31 01:18:41.070 | DEBUG    | 💓 Heartbeat recebido (seq=3, age=0.02s)
+2025-12-31 01:18:41.167 | INFO     | [OP-20251231_011831-0011] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001054d446b6c765643424f5a58523362334a7249454e424d423458445449314d5449794f54497a4e44517a4d6c6f580a44544d314d5449794e7a497a4e4451 | ASCII: ...MDklvVCBOZXR3b3JrIENBMB4XDTI1MTIyOTIzNDQzMloX.DTM1MTIyNzIzNDQ [TRUNCATED]
+2025-12-31 01:18:41.314 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2025-12-31 01:18:41.315 | INFO     | [OP-20251231_011831-0012] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:41.316 | DEBUG    |   Fragmento 2/5 enviado
+2025-12-31 01:18:41.418 | INFO     | [OP-20251231_011831-0013] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000205675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241456a5a664e4f582f456157716c626755424372633971676b43350a | ASCII: ...gZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAEjZfNOX/EaWqlbgUBCrc9qgkC5. [TRUNCATED]
+2025-12-31 01:18:41.565 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2025-12-31 01:18:41.565 | INFO     | [OP-20251231_011831-0014] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:41.566 | DEBUG    |   Fragmento 3/5 enviado
+2025-12-31 01:18:41.668 | INFO     | [OP-20251231_011831-0015] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000305322b7557522b624835560a3147525a7964677179532f365a50456b4778617937714d344d44597744415944565230544151482f424149774144414f4267 | ASCII: ...2+uWR+bH5V.1GRZydgqyS/6ZPEkGxay7qM4MDYwDAYDVR0TAQH/BAIwADAOBg [TRUNCATED]
+2025-12-31 01:18:41.815 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2025-12-31 01:18:41.815 | INFO     | [OP-20251231_011831-0016] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:41.817 | DEBUG    |   Fragmento 4/5 enviado
+2025-12-31 01:18:41.919 | INFO     | [OP-20251231_011831-0017] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 173 bytes | Hex: 0204057a4233785053466831484d2f79427553464f702f794b5767580a69446f397832696f457134374b4e51567878794859475143516744444c625662666e58 | ASCII: ...zB3xPSFh1HM/yBuSFOp/yKWgX.iDo9x2ioEq47KNQVxxyHYGQCQgDDLbVbfnX [TRUNCATED]
+2025-12-31 01:18:42.014 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (173 bytes)
+2025-12-31 01:18:42.015 | INFO     | [OP-20251231_011831-0018] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:42.016 | DEBUG    |   Fragmento 5/5 enviado
+2025-12-31 01:18:42.116 | DEBUG    | Autenticação round 1/10
+2025-12-31 01:18:42.617 | DEBUG    | [OP-20251231_011831-0019] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:42.715 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[143] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:42.716 | ERROR    | [OP-20251231_011831-0020] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:42.717 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:42.718 | DEBUG    | Autenticação round 2/10
+2025-12-31 01:18:43.218 | DEBUG    | [OP-20251231_011831-0021] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:43.315 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[148] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:43.316 | ERROR    | [OP-20251231_011831-0022] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:43.317 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:43.317 | DEBUG    | Autenticação round 3/10
+2025-12-31 01:18:43.818 | DEBUG    | [OP-20251231_011831-0023] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:43.915 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[153] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:43.916 | ERROR    | [OP-20251231_011831-0024] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:43.917 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:43.918 | DEBUG    | Autenticação round 4/10
+2025-12-31 01:18:44.418 | DEBUG    | [OP-20251231_011831-0025] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:44.515 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[158] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:44.516 | ERROR    | [OP-20251231_011831-0026] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:44.517 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:44.518 | DEBUG    | Autenticação round 5/10
+2025-12-31 01:18:45.018 | DEBUG    | [OP-20251231_011831-0027] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:45.114 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[163] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:45.115 | ERROR    | [OP-20251231_011831-0028] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:45.116 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:45.117 | DEBUG    | Autenticação round 6/10
+2025-12-31 01:18:45.617 | DEBUG    | [OP-20251231_011831-0029] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:45.715 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[168] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:45.716 | ERROR    | [OP-20251231_011831-0030] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:45.716 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:45.716 | DEBUG    | Autenticação round 7/10
+2025-12-31 01:18:46.070 | INFO     | [OP-20251231_011831-0031] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000004a9dc21ceb0c40d6fc6cad7b66f18d08c6e567aefba9a627344ef | ASCII: ..Z..iB}...Q......Z..iB}...Q............!....o....o...nVz...bsD. [TRUNCATED]
+2025-12-31 01:18:46.072 | DEBUG    | Source c5c55ab2...: seq=4 (novo highest, window: 2 seqs)
+2025-12-31 01:18:46.072 | DEBUG    | 💓 Heartbeat recebido (seq=4, age=0.02s)
+2025-12-31 01:18:46.217 | DEBUG    | [OP-20251231_011831-0032] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:46.315 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[174] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:46.316 | ERROR    | [OP-20251231_011831-0033] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:46.317 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:46.317 | DEBUG    | Autenticação round 8/10
+2025-12-31 01:18:46.818 | DEBUG    | [OP-20251231_011831-0034] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:46.915 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[179] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:46.916 | ERROR    | [OP-20251231_011831-0035] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:46.918 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:46.918 | DEBUG    | Autenticação round 9/10
+2025-12-31 01:18:47.419 | DEBUG    | [OP-20251231_011831-0036] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:47.515 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[184] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:47.516 | ERROR    | [OP-20251231_011831-0037] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:47.518 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:47.519 | DEBUG    | Autenticação round 10/10
+2025-12-31 01:18:48.019 | DEBUG    | [OP-20251231_011831-0038] READ_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:48.115 | ERROR    | Erro ao ler 12340004-0000-1000-8000-00805f9b34fb: org.bluez.Error.NotPermitted: Read not permitted
+[189] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D6_EE_A0/service003e/char0047 org.bluez.GattCharacteristic1 ReadValue
+2025-12-31 01:18:48.116 | ERROR    | [OP-20251231_011831-0039] READ_FAILED | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2025-12-31 01:18:48.118 | DEBUG    | Sem resposta ainda, continuando...
+2025-12-31 01:18:48.118 | ERROR    | ❌ Autenticação expirou (timeout)
+2025-12-31 01:18:48.119 | ERROR    | ❌ Falha na autenticação
+2025-12-31 01:18:48.121 | INFO     | A parar Node...
+2025-12-31 01:18:48.122 | INFO     | A parar GATT Server...
+2025-12-31 01:18:48.125 | INFO     | ✅ GATT Server parado
+2025-12-31 01:18:50.428 | INFO     | Desconectado de E0:D3:62:D6:EE:A0
+2025-12-31 01:18:50.430 | INFO     | [OP-20251231_011831-0040] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2025-12-31 01:18:50.432 | INFO     | ✅ Node parado
