@@ -1,7 +1,0 @@
-2025-12-27 20:37:44.421 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251227_203744.log
-2025-12-27 20:37:44.422 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
-2025-12-27 20:37:44.422 | INFO     | BLE Client iniciado
-2025-12-27 20:37:44.423 | INFO     | BLE Client criado
-2025-12-27 20:37:44.423 | INFO     | NeighborDiscovery inicializado: scan_interval=30s, scan_duration=5000ms, timeout=120s
-2025-12-27 20:37:44.423 | INFO     | NeighborDiscovery criado
-2025-12-27 20:37:44.424 | ERROR    | Erro fatal: LinkManager.__init__() got an unexpected keyword argument 'client'

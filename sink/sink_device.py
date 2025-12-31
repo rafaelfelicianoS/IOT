@@ -261,87 +261,35 @@ class SinkDevice:
         logger.info(f"🔐 Mensagem de autenticação recebida de {client_address}: {len(data)} bytes")
 
         try:
-            # Processar autenticação com fragmentação
-            from common.ble.fragmentation import FragmentReassembler
-
-            # Criar reassembler se não existir para este cliente
-            if not hasattr(self, '_auth_reassemblers'):
-                self._auth_reassemblers = {}
-
-            if client_address not in self._auth_reassemblers:
-                self._auth_reassemblers[client_address] = FragmentReassembler()
-
-            reassembler = self._auth_reassemblers[client_address]
-
-            # Adicionar fragmento
-            is_complete, full_message = reassembler.add_fragment(data)
-
-            if not is_complete:
-                logger.debug("Fragmento recebido, aguardando mais fragmentos...")
-                return
-
-            # Mensagem completa recebida
-            logger.info(f"📦 Mensagem completa reconstruída: {len(full_message)} bytes")
-
             # Processar autenticação (usa AuthenticationHandler)
-            response = self.auth_handler.handle_auth_message(full_message, client_address)
+            response = self.auth_handler.handle_auth_message(data, client_address)
 
-            if response:
-                # Enviar resposta via AUTH characteristic com fragmentação
-                logger.debug(f"📤 Enviando resposta ({len(response)} bytes)")
-                self._send_auth_response(response)
+            # Verificar se autenticação completou
+            if self.auth_handler.is_authenticated(client_address):
+                logger.info(f"✅ Cliente {client_address} autenticado com sucesso!")
 
-                # Verificar se autenticação completou
-                if self.auth_handler.is_authenticated(client_address):
-                    logger.info(f"✅ Cliente {client_address} autenticado com sucesso!")
+                # Obter session key
+                peer_info = self.auth_handler.get_peer_info(client_address)
 
-                    # Obter session key
-                    peer_info = self.auth_handler.get_peer_info(client_address)
+                if peer_info and 'session_key' in peer_info:
+                    session_key = peer_info['session_key']
+                    client_nid = peer_info['nid']
 
-                    if peer_info and 'session_key' in peer_info:
-                        session_key = peer_info['session_key']
-                        client_nid = peer_info['nid']
+                    # Guardar session key
+                    self._store_session_key(client_nid, session_key)
 
-                        # Guardar session key
-                        self._store_session_key(client_nid, session_key)
+                    # Adicionar a lista de downlinks
+                    with self.downlinks_lock:
+                        self.downlinks[client_address] = client_nid
 
-                        # Adicionar a lista de downlinks
-                        with self.downlinks_lock:
-                            self.downlinks[client_address] = client_nid
+                    logger.info(f"🔑 Session key armazenada para {client_nid}")
 
-                        logger.info(f"🔑 Session key armazenada para {client_nid}")
-
-                        # Limpar reassembler
-                        del self._auth_reassemblers[client_address]
-            else:
-                logger.debug("Sem resposta necessária (processamento interno)")
+            # Retornar resposta (fragmentação/envio é feito pela AuthCharacteristic)
+            return response if response else b''
 
         except Exception as e:
             logger.error(f"Erro ao processar autenticação: {e}", exc_info=True)
-
-    def _send_auth_response(self, data: bytes):
-        """
-        Envia resposta de autenticação com fragmentação.
-
-        Args:
-            data: Dados a enviar
-        """
-        from common.ble.fragmentation import fragment_message
-
-        fragments = fragment_message(data)
-
-        logger.debug(f"Enviando resposta auth: {len(data)} bytes em {len(fragments)} fragmento(s)")
-
-        for i, fragment in enumerate(fragments):
-            # Enviar via AUTH characteristic usando indication
-            if self.auth_char:
-                self.auth_char._indicate_response(fragment)
-                logger.debug(f"  Fragmento {i+1}/{len(fragments)} enviado")
-
-                # Pequeno delay entre fragmentos
-                if len(fragments) > 1:
-                    import time
-                    time.sleep(0.1)
+            return b''
 
     def _handle_data_packet(self, packet: Packet, client_address: Optional[str]):
         """

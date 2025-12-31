@@ -1,7 +1,0 @@
-2025-12-29 15:18:19.701 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20251229_151819.log
-2025-12-29 15:18:19.703 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
-2025-12-29 15:18:19.703 | INFO     | BLE Client iniciado
-2025-12-29 15:18:19.704 | INFO     | A fazer scan BLE durante 5000ms...
-2025-12-29 15:18:19.705 | INFO     | [OP-20251229_151819-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2025-12-29 15:18:24.929 | INFO     | Scan concluído: 0 dispositivos encontrados
-2025-12-29 15:18:24.930 | INFO     | [OP-20251229_151819-0002] SCAN_RESULT | Devices_Found: 0

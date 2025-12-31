@@ -1,8 +1,0 @@
-2025-12-29 16:03:08.025 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D6EEA0_20251229_160308.log
-2025-12-29 16:03:08.026 | INFO     | Scanner BLE iniciado: hci0 (E0:D3:62:D6:EE:A0)
-2025-12-29 16:03:08.026 | INFO     | BLE Client iniciado
-2025-12-29 16:03:08.026 | INFO     | ✅ BLE Client iniciado
-2025-12-29 16:03:08.026 | INFO     |    Adaptador: hci0
-2025-12-29 16:03:08.026 | INFO     |    Endereço: E0:D3:62:D6:EE:A0
-2025-12-29 16:03:08.026 | INFO     | 
-2025-12-29 16:03:08.026 | INFO     | 🔍 A verificar conexões BLE ativas...
