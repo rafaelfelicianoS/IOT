@@ -502,14 +502,124 @@ class IoTNode:
         """
         logger.info("🔐 A iniciar autenticação com Sink...")
 
-        # TODO: Implementar protocolo de autenticação
-        # Por agora, apenas marcar como autenticado
-        logger.warning("⚠️  Autenticação não totalmente implementada - usando placeholder")
+        if not self.uplink_connection or not self.uplink_connection.is_connected:
+            logger.error("Não conectado ao Sink")
+            return False
 
-        self.authenticated = True
-        logger.info("✅ Autenticação completada (placeholder)")
+        try:
+            # Criar protocolo de autenticação
+            from common.security.authentication import AuthenticationProtocol
 
-        return True
+            auth_protocol = AuthenticationProtocol(self.cert_manager)
+
+            # 1. Iniciar autenticação enviando nosso certificado
+            logger.info("📤 Enviando certificado...")
+            initial_msg = auth_protocol.start_authentication()
+
+            # Enviar via AUTH characteristic com fragmentação se necessário
+            self._send_auth_message(initial_msg)
+
+            # 2. Esperar resposta do Sink e processar protocolo
+            max_rounds = 10  # Máximo de trocas de mensagens
+            for round_num in range(max_rounds):
+                logger.debug(f"Autenticação round {round_num + 1}/{max_rounds}")
+
+                # Esperar resposta (timeout 5s)
+                time.sleep(0.5)
+
+                # Ler resposta do Sink via AUTH characteristic
+                response = self._read_auth_response()
+
+                if not response:
+                    logger.debug("Sem resposta ainda, continuando...")
+                    continue
+
+                # Processar mensagem recebida
+                continue_auth, reply = auth_protocol.process_message(response)
+
+                if reply:
+                    # Enviar resposta
+                    logger.debug(f"📤 Enviando resposta ({len(reply)} bytes)")
+                    self._send_auth_message(reply)
+
+                if not continue_auth:
+                    # Autenticação completou
+                    if auth_protocol.state.name == 'AUTHENTICATED':
+                        logger.info("✅ Autenticação bem-sucedida!")
+
+                        # Obter session key
+                        session_key = auth_protocol.derive_session_key()
+                        if session_key:
+                            with self.uplink_session_key_lock:
+                                self.uplink_session_key = session_key
+                            logger.info("🔑 Session key estabelecida")
+
+                        # Obter NID do Sink
+                        self.uplink_nid = auth_protocol.peer_nid
+
+                        self.authenticated = True
+                        return True
+                    else:
+                        logger.error(f"❌ Autenticação falhou: {auth_protocol.state.name}")
+                        return False
+
+            logger.error("❌ Autenticação expirou (timeout)")
+            return False
+
+        except Exception as e:
+            logger.error(f"❌ Erro durante autenticação: {e}", exc_info=True)
+            return False
+
+    def _send_auth_message(self, data: bytes):
+        """
+        Envia mensagem de autenticação via AUTH characteristic.
+
+        Usa fragmentação se necessário.
+
+        Args:
+            data: Dados a enviar
+        """
+        from common.ble.fragmentation import fragment_message
+
+        # Fragmentar se necessário
+        fragments = fragment_message(data)
+
+        logger.debug(f"Enviando mensagem auth: {len(data)} bytes em {len(fragments)} fragmento(s)")
+
+        for i, fragment in enumerate(fragments):
+            self.uplink_connection.write(
+                IOT_NETWORK_SERVICE_UUID,
+                CHAR_AUTHENTICATION_UUID,
+                fragment
+            )
+            logger.debug(f"  Fragmento {i+1}/{len(fragments)} enviado")
+
+            # Pequeno delay entre fragmentos
+            if len(fragments) > 1:
+                time.sleep(0.1)
+
+    def _read_auth_response(self) -> Optional[bytes]:
+        """
+        Lê resposta de autenticação do Sink via AUTH characteristic.
+
+        Returns:
+            Dados recebidos ou None
+        """
+        try:
+            data = self.uplink_connection.read(
+                IOT_NETWORK_SERVICE_UUID,
+                CHAR_AUTHENTICATION_UUID
+            )
+
+            if data and len(data) > 0:
+                logger.debug(f"Resposta auth recebida: {len(data)} bytes")
+                return data
+
+            return None
+
+        except Exception as e:
+            logger.debug(f"Erro ao ler auth response: {e}")
+            return None
 
     def send_message(self, message: bytes, destination: Optional[NID] = None) -> bool:
         """

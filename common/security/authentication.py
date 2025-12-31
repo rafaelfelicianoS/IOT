@@ -372,11 +372,68 @@ class AuthenticationProtocol:
         if not self.is_authenticated():
             return None
 
-        return {
+        # Incluir session key se disponível
+        info = {
             'nid': self.peer_nid,
             'is_sink': self.peer_is_sink,
             'certificate': self.peer_cert,
         }
+
+        # Derivar session key
+        session_key = self.derive_session_key()
+        if session_key:
+            info['session_key'] = session_key
+
+        return info
+
+    def derive_session_key(self) -> Optional[bytes]:
+        """
+        Deriva uma session key a partir do handshake de autenticação.
+
+        Usa ECDH (Elliptic Curve Diffie-Hellman) para derivar uma chave
+        compartilhada a partir das chaves públicas dos dois peers.
+
+        Returns:
+            Session key de 32 bytes ou None se não disponível
+        """
+        if not self.is_authenticated():
+            logger.warning("Tentativa de derivar session key sem estar autenticado")
+            return None
+
+        if not self.peer_cert or not self.cert_manager.device_private_key:
+            logger.error("Certificados não disponíveis para derivar session key")
+            return None
+
+        try:
+            from cryptography.hazmat.primitives import hashes
+            from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+            from cryptography.hazmat.primitives.asymmetric import ec
+
+            # Obter chave pública do peer
+            peer_public_key = self.peer_cert.public_key()
+
+            # Realizar ECDH
+            shared_secret = self.cert_manager.device_private_key.exchange(
+                ec.ECDH(),
+                peer_public_key
+            )
+
+            # Derivar session key usando HKDF
+            kdf = HKDF(
+                algorithm=hashes.SHA256(),
+                length=32,
+                salt=None,
+                info=b'IoT Network Session Key'
+            )
+
+            session_key = kdf.derive(shared_secret)
+
+            logger.debug(f"🔑 Session key derivada: {len(session_key)} bytes")
+            return session_key
+
+        except Exception as e:
+            logger.error(f"Erro ao derivar session key: {e}")
+            return None
 
     def reset(self):
         """Reset do protocolo para nova autenticação."""
