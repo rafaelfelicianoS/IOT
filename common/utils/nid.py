@@ -99,6 +99,17 @@ class NID:
         """
         return str(self._uuid)
 
+    def to_short_string(self) -> str:
+        """
+        Converte NID para string curta (primeiros 8 hex chars).
+
+        Usado para nomes de ficheiros e identificação curta.
+
+        Returns:
+            String hexadecimal curta (ex: 'af04ea89')
+        """
+        return self.to_hex()[:8]
+
     def __str__(self) -> str:
         """String representation (formato curto para display)."""
         # Mostrar apenas os primeiros 8 caracteres para brevidade

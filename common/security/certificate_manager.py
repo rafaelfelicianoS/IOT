@@ -57,21 +57,49 @@ class CertificateManager:
         logger.info(f"CertificateManager inicializado para {device_nid}")
         logger.info(f"   Diretório de certificados: {self.certs_dir}")
 
-    def load_device_certificate(self) -> bool:
+    def load_device_certificate(self, device_type: str = None) -> bool:
         """
         Carrega o certificado e chave privada do dispositivo.
+
+        Suporta dois formatos:
+        1. Estrutura de diretórios: certs/<full-uuid>/certificate.pem
+        2. Formato flat: certs/{sink|node}_<short-nid>_{cert|key}.pem
+
+        Args:
+            device_type: Tipo do dispositivo ('sink' ou 'node') para formato flat
 
         Returns:
             True se carregado com sucesso, False caso contrário
         """
+        # Tentar formato de diretório primeiro
         device_dir = self.certs_dir / self.device_nid.to_string()
         cert_path = device_dir / "certificate.pem"
         key_path = device_dir / "private_key.pem"
 
+        # Se não existir, tentar formato flat
+        if not cert_path.exists() and device_type:
+            short_nid = self.device_nid.to_short_string()
+            cert_path = self.certs_dir / f"{device_type}_{short_nid}_cert.pem"
+            key_path = self.certs_dir / f"{device_type}_{short_nid}_key.pem"
+            logger.debug(f"Tentando formato flat: {cert_path}")
+
         # Verificar se ficheiros existem
         if not cert_path.exists():
             logger.error(f"Certificado não encontrado: {cert_path}")
-            return False
+            # Tentar auto-detectar tipo se não foi fornecido
+            if not device_type:
+                for dtype in ['sink', 'node']:
+                    short_nid = self.device_nid.to_short_string()
+                    alt_cert_path = self.certs_dir / f"{dtype}_{short_nid}_cert.pem"
+                    if alt_cert_path.exists():
+                        cert_path = alt_cert_path
+                        key_path = self.certs_dir / f"{dtype}_{short_nid}_key.pem"
+                        logger.info(f"Auto-detectado tipo: {dtype}")
+                        break
+                else:
+                    return False
+            else:
+                return False
 
         if not key_path.exists():
             logger.error(f"Chave privada não encontrada: {key_path}")
