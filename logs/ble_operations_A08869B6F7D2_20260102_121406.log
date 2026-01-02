@@ -1,0 +1,60 @@
+2026-01-02 12:14:06.322 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20260102_121406.log
+2026-01-02 12:14:06.322 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2026-01-02 12:14:06.323 | INFO     | BLE Client iniciado
+2026-01-02 12:14:06.323 | DEBUG    | FragmentReassembler inicializado
+2026-01-02 12:14:06.323 | INFO     | IoT Node inicializado (adapter=hci0)
+2026-01-02 12:14:06.325 | INFO     | A configurar GATT Server...
+2026-01-02 12:14:06.327 | INFO     | Application criada: /
+2026-01-02 12:14:06.330 | INFO     | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-02 12:14:06.330 | INFO     | A criar IoTNetworkService...
+2026-01-02 12:14:06.331 | DEBUG    | Characteristic criada: /0/char0 (UUID: 12340001-0000-1000-8000-00805f9b34fb, flags: ['write', 'notify'])
+2026-01-02 12:14:06.331 | INFO     | NetworkPacketCharacteristic criada
+2026-01-02 12:14:06.333 | DEBUG    | Characteristic criada: /0/char1 (UUID: 12340002-0000-1000-8000-00805f9b34fb, flags: ['read'])
+2026-01-02 12:14:06.333 | INFO     | DeviceInfoCharacteristic criada: NID=323b6aad..., type=node
+2026-01-02 12:14:06.334 | DEBUG    | Characteristic criada: /0/char2 (UUID: 12340003-0000-1000-8000-00805f9b34fb, flags: ['read', 'notify'])
+2026-01-02 12:14:06.334 | INFO     | NeighborTableCharacteristic criada
+2026-01-02 12:14:06.336 | DEBUG    | Characteristic criada: /0/char3 (UUID: 12340004-0000-1000-8000-00805f9b34fb, flags: ['write', 'indicate'])
+2026-01-02 12:14:06.336 | INFO     | AuthCharacteristic criada
+2026-01-02 12:14:06.337 | DEBUG    | Characteristic adicionada a /0: /0/char0
+2026-01-02 12:14:06.337 | DEBUG    | Characteristic adicionada a /0: /0/char1
+2026-01-02 12:14:06.337 | DEBUG    | Characteristic adicionada a /0: /0/char2
+2026-01-02 12:14:06.338 | DEBUG    | Characteristic adicionada a /0: /0/char3
+2026-01-02 12:14:06.338 | INFO     | ✅ IoTNetworkService criado com sucesso!
+2026-01-02 12:14:06.340 | INFO     | Service adicionado à aplicação: /0
+2026-01-02 12:14:06.341 | DEBUG    | Packet callback definido
+2026-01-02 12:14:06.341 | DEBUG    | Auth callback definido
+2026-01-02 12:14:06.341 | INFO     | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-02 12:14:06.343 | INFO     | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-02 12:14:06.343 | INFO     |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 12:14:06.347 | DEBUG    | Local name definido: IoT-Node-323b6aad
+2026-01-02 12:14:06.347 | DEBUG    | Manufacturer data adicionado: ID=65535
+2026-01-02 12:14:06.347 | INFO     | ✅ GATT Server configurado
+2026-01-02 12:14:06.348 | INFO     | A iniciar GATT Server...
+2026-01-02 12:14:06.350 | INFO     | ✅ GATT Server iniciado em thread separada
+2026-01-02 12:14:06.351 | INFO     | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-02 12:14:06.354 | DEBUG    | GetManagedObjects called
+2026-01-02 12:14:06.354 | DEBUG    | GetManagedObjects returning 5 objects
+2026-01-02 12:14:06.437 | INFO     | ✅ GATT application registada!
+2026-01-02 12:14:06.438 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2026-01-02 12:14:06.438 | INFO     | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 12:14:06.537 | INFO     | ✅ Advertisement registado!
+2026-01-02 12:14:07.993 | INFO     | 🔍 A procurar Sink...
+2026-01-02 12:14:07.994 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 12:14:07.995 | INFO     | [OP-20260102_121406-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 12:14:13.025 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-02 12:14:13.026 | INFO     | [OP-20260102_121406-0002] SCAN_RESULT | Devices_Found: 0
+2026-01-02 12:14:13.027 | INFO     | Encontrados 0 dispositivos IoT
+2026-01-02 12:14:13.029 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 12:14:13.031 | INFO     | [OP-20260102_121406-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 12:14:18.067 | DEBUG    |   Encontrado: IoT-Sink-af04ea89 (E0:D3:62:D6:EE:A0) RSSI: -45 dBm
+2026-01-02 12:14:18.070 | INFO     | Scan concluído: 1 dispositivos encontrados
+2026-01-02 12:14:18.072 | INFO     | [OP-20260102_121406-0004] SCAN_RESULT | Devices_Found: 1
+2026-01-02 12:14:18.074 | DEBUG    | [OP-20260102_121406-0004]   Device_1: Name: IoT-Sink-af04ea89 | Address: E0:D3:62:D6:EE:A0 | RSSI: -45 dBm | Services: 1
+2026-01-02 12:14:18.074 | INFO     | Encontrados 1 dispositivos IoT
+2026-01-02 12:14:18.077 | DEBUG    |   Device: IoT-Sink-af04ea89 (E0:D3:62:D6:EE:A0) RSSI: -45 dBm
+2026-01-02 12:14:18.077 | DEBUG    |     Type=0, HopCount=255
+2026-01-02 12:14:18.078 | INFO     | ✅ Sink encontrado: IoT-Sink-af04ea89 (E0:D3:62:D6:EE:A0) RSSI: -45 dBm
+2026-01-02 12:14:32.323 | INFO     | A parar Node...
+2026-01-02 12:14:32.325 | INFO     | A parar GATT Server...
+2026-01-02 12:14:32.328 | INFO     | ✅ GATT Server parado
+2026-01-02 12:14:32.329 | INFO     | ✅ Node parado
