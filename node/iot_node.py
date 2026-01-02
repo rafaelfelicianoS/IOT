@@ -161,6 +161,10 @@ class IoTNode:
         self.auth_response_buffer: List[bytes] = []
         self.auth_response_lock = threading.Lock()
 
+        # Reassembler para fragmentos AUTH
+        from common.ble.fragmentation import FragmentReassembler
+        self.auth_reassembler = FragmentReassembler()
+
         logger.info(f"IoT Node inicializado (adapter=hci{adapter_index})")
 
     def setup_gatt_server(self):
@@ -502,12 +506,19 @@ class IoTNode:
         Callback para receber indicações de autenticação do Sink.
 
         Args:
-            data: Dados recebidos via indication
+            data: Dados recebidos via indication (pode ser fragmentado)
         """
         logger.debug(f"🔐 AUTH indication recebida: {len(data)} bytes")
 
-        with self.auth_response_lock:
-            self.auth_response_buffer.append(data)
+        # Defragmentar mensagem
+        is_complete, auth_data = self.auth_reassembler.add_fragment(data)
+
+        if is_complete:
+            logger.debug(f"🔐 AUTH mensagem completa: {len(auth_data)} bytes")
+            with self.auth_response_lock:
+                self.auth_response_buffer.append(auth_data)
+        else:
+            logger.debug(f"🔐 Aguardando mais fragmentos AUTH...")
 
     def authenticate_with_sink(self) -> bool:
         """
