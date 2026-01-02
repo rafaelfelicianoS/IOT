@@ -10,9 +10,9 @@ conectados. Os nodes usam estes heartbeats para:
 Formato do payload do heartbeat:
 ┌───────────────┬──────────────┬────────────┐
 │  Sink NID     │  Timestamp   │  Signature │
-│   16 bytes    │   8 bytes    │  140 bytes │
+│   16 bytes    │   8 bytes    │  142 bytes │
 └───────────────┴──────────────┴────────────┘
-Total: 164 bytes
+Total: 166 bytes
 
 Signature: ECDSA (P-521) do (Sink NID + Timestamp) em formato DER
 """
@@ -35,7 +35,7 @@ logger = get_logger("heartbeat")
 # Tamanhos dos campos (bytes)
 HEARTBEAT_NID_SIZE = 16
 HEARTBEAT_TIMESTAMP_SIZE = 8
-HEARTBEAT_SIGNATURE_SIZE = 140  # ECDSA P-521 DER format (tipicamente 132-139 bytes)
+HEARTBEAT_SIGNATURE_SIZE = 142  # ECDSA P-521 DER format (132-139 bytes + 2 bytes length header)
 HEARTBEAT_PAYLOAD_SIZE = HEARTBEAT_NID_SIZE + HEARTBEAT_TIMESTAMP_SIZE + HEARTBEAT_SIGNATURE_SIZE
 
 
