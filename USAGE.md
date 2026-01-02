@@ -75,7 +75,7 @@ Neste modo, você pode:
 
 Neste modo, você pode:
 - `scan [timeout]` - Procurar Sinks/Nodes disponíveis
-- `connect` - Conectar ao uplink descoberto
+- `connect [num|addr]` - Conectar ao dispositivo escolhido (número ou endereço)
 - `disconnect` - Desconectar do uplink
 - `reconnect` - Reconectar ao uplink
 - `send <msg>` - Enviar mensagem ao Sink
@@ -149,8 +149,8 @@ sink> downlinks        # Ver nodes conectados
 # Terminal 2 - Node interativo
 ./iot-node interactive
 # Depois de iniciar:
-node> scan             # Procurar Sink
-node> connect          # Conectar ao Sink
+node> scan             # Procurar Sinks/Nodes
+node> connect 1        # Conectar ao 1º dispositivo (ou usar endereço)
 node> status           # Ver status da conexão
 node> send Hello!      # Enviar mensagem
 node> ping 5           # Pingar o Sink 5 vezes

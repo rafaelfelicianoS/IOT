@@ -43,7 +43,7 @@ Comandos disponíveis:
 | Comando | Descrição | Exemplo |
 |---------|-----------|---------|
 | `scan [timeout]` | Procura Sinks/Nodes | `scan 10` |
-| `connect` | Conecta ao uplink | `connect` |
+| `connect [num\|addr]` | Conecta ao dispositivo escolhido | `connect 1` ou `connect E0:D3:62:D6:EE:A0` |
 | `disconnect` | Desconecta do uplink | `disconnect` |
 | `reconnect` | Reconecta ao uplink | `reconnect` |
 | `status` | Status completo | `status` |
@@ -129,16 +129,14 @@ node> scan
 
 🔍 A fazer scan por 10s...
 
-✅ Dispositivo encontrado:
+✅ Encontrados 2 dispositivo(s):
 
-   Address: E0:D3:62:D6:EE:A0
-   RSSI: -45 dBm
-   Type: Sink
-   Hop count: -1
+  1. E0:D3:62:D6:EE:A0  | Type: Sink | Hop: -1  | RSSI: -45 dBm
+  2. A1:B2:C3:D4:E5:F6  | Type: Node | Hop: 0   | RSSI: -52 dBm
 
-💡 Use 'connect' para conectar a este dispositivo
+💡 Use 'connect <número>' ou 'connect <endereço>' para conectar
 
-node> connect
+node> connect 1
 
 🔗 A conectar a E0:D3:62:D6:EE:A0...
 

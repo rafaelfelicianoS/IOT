@@ -53,6 +53,7 @@ Comandos principais:
         super().__init__()
         self.node = node
         self.start_time = time.time()
+        self.discovered_devices = []  # Lista de dispositivos encontrados no scan
 
     # ========================================================================
     # COMANDOS DE MONITORAMENTO
@@ -215,42 +216,92 @@ Comandos principais:
 
         print(f"\n🔍 A fazer scan por {timeout}s...\n")
 
-        # Fazer scan
-        sink_device = self.node.discover_sink(timeout_s=timeout)
+        # Fazer scan usando o ble_client diretamente para obter todos os dispositivos
+        import time
+        self.discovered_devices = []
+        end_time = time.time() + timeout
 
-        if not sink_device:
+        while time.time() < end_time:
+            devices = self.node.ble_client.scan_iot_devices(duration_ms=5000)
+
+            # Adicionar novos dispositivos (evitar duplicados por endereço)
+            for device in devices:
+                if not any(d.address == device.address for d in self.discovered_devices):
+                    self.discovered_devices.append(device)
+
+        if not self.discovered_devices:
             print("⚠️  Nenhum Sink/Node encontrado\n")
             print("💡 Certifique-se que há um Sink ou Node a fazer advertising\n")
             return
 
-        print(f"✅ Dispositivo encontrado:\n")
-        print(f"   Address: {sink_device.address}")
-        if hasattr(sink_device, 'rssi'):
-            print(f"   RSSI: {sink_device.rssi} dBm")
-        if sink_device.manufacturer_data and 0xFFFF in sink_device.manufacturer_data:
-            data = sink_device.manufacturer_data[0xFFFF]
-            if len(data) >= 2:
-                device_type = "Sink" if data[0] == 0 else "Node"
-                hop_count = data[1] if data[1] != 255 else -1
-                print(f"   Type: {device_type}")
-                print(f"   Hop count: {hop_count}")
+        # Mostrar lista de dispositivos encontrados
+        print(f"✅ Encontrados {len(self.discovered_devices)} dispositivo(s):\n")
+
+        for i, device in enumerate(self.discovered_devices, 1):
+            device_type = "?"
+            hop_count = "?"
+
+            if device.manufacturer_data and 0xFFFF in device.manufacturer_data:
+                data = device.manufacturer_data[0xFFFF]
+                if len(data) >= 2:
+                    device_type = "Sink" if data[0] == 0 else "Node"
+                    hop_count = data[1] if data[1] != 255 else -1
+
+            rssi_str = f"{device.rssi} dBm" if hasattr(device, 'rssi') else "?"
+
+            print(f"  {i}. {device.address:20} | Type: {device_type:4} | Hop: {str(hop_count):3} | RSSI: {rssi_str}")
+
         print()
-        print(f"💡 Use 'connect' para conectar a este dispositivo\n")
+        print(f"💡 Use 'connect <número>' ou 'connect <endereço>' para conectar\n")
 
     def do_connect(self, arg):
         """
         Conecta ao uplink descoberto.
 
-        Uso: connect
+        Uso: connect [NÚMERO|ENDEREÇO]
 
-        Nota: Primeiro execute 'scan' para descobrir o uplink.
+        Argumentos:
+            NÚMERO     Índice do dispositivo (1, 2, 3...)
+            ENDEREÇO   Endereço BLE (ex: E0:D3:62:D6:EE:A0)
+
+        Nota: Primeiro execute 'scan' para descobrir dispositivos.
         """
-        if not hasattr(self.node, 'sink_device') or not self.node.sink_device:
+        if not self.discovered_devices:
             print("\n⚠️  Nenhum dispositivo descoberto\n")
-            print("   Use 'scan' primeiro para descobrir uplink\n")
+            print("   Use 'scan' primeiro para descobrir dispositivos\n")
             return
 
-        print(f"\n🔗 A conectar a {self.node.sink_device.address}...\n")
+        # Se não foi fornecido argumento, conectar ao primeiro
+        device_to_connect = None
+
+        if not arg:
+            device_to_connect = self.discovered_devices[0]
+            print(f"\n💡 Nenhum dispositivo especificado, conectando ao primeiro...\n")
+        else:
+            # Tentar interpretar como número (índice)
+            try:
+                index = int(arg) - 1  # Converter para 0-based
+                if 0 <= index < len(self.discovered_devices):
+                    device_to_connect = self.discovered_devices[index]
+                else:
+                    print(f"\n❌ Índice inválido. Use um número entre 1 e {len(self.discovered_devices)}\n")
+                    return
+            except ValueError:
+                # Não é um número, tentar como endereço
+                for device in self.discovered_devices:
+                    if device.address.upper() == arg.upper():
+                        device_to_connect = device
+                        break
+
+                if not device_to_connect:
+                    print(f"\n❌ Dispositivo {arg} não encontrado na lista\n")
+                    print("   Use 'scan' para atualizar a lista\n")
+                    return
+
+        # Armazenar o dispositivo escolhido no node
+        self.node.sink_device = device_to_connect
+
+        print(f"🔗 A conectar a {device_to_connect.address}...\n")
 
         # Conectar
         if not self.node.connect_to_sink():
