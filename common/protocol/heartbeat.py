@@ -10,11 +10,11 @@ conectados. Os nodes usam estes heartbeats para:
 Formato do payload do heartbeat:
 ┌───────────────┬──────────────┬────────────┐
 │  Sink NID     │  Timestamp   │  Signature │
-│   16 bytes    │   8 bytes    │  64 bytes  │
+│   16 bytes    │   8 bytes    │  140 bytes │
 └───────────────┴──────────────┴────────────┘
-Total: 88 bytes
+Total: 164 bytes
 
-Signature: ECDSA (P-521) do (Sink NID + Timestamp)
+Signature: ECDSA (P-521) do (Sink NID + Timestamp) em formato DER
 """
 
 import struct
@@ -35,7 +35,7 @@ logger = get_logger("heartbeat")
 # Tamanhos dos campos (bytes)
 HEARTBEAT_NID_SIZE = 16
 HEARTBEAT_TIMESTAMP_SIZE = 8
-HEARTBEAT_SIGNATURE_SIZE = 64
+HEARTBEAT_SIGNATURE_SIZE = 140  # ECDSA P-521 DER format (tipicamente 132-139 bytes)
 HEARTBEAT_PAYLOAD_SIZE = HEARTBEAT_NID_SIZE + HEARTBEAT_TIMESTAMP_SIZE + HEARTBEAT_SIGNATURE_SIZE
 
 
@@ -158,9 +158,17 @@ class HeartbeatPayload:
         data_to_sign = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
 
         # Assinar com ECDSA
-        self.signature = cert_manager.sign_data(data_to_sign)
+        signature_raw = cert_manager.sign_data(data_to_sign)
 
-        logger.debug(f"✍️  Heartbeat assinado: {len(self.signature)} bytes")
+        # Pad para tamanho fixo (140 bytes)
+        # Formato: 2 bytes (length) + signature + padding
+        sig_len = len(signature_raw)
+        if sig_len > HEARTBEAT_SIGNATURE_SIZE - 2:
+            raise ValueError(f"Assinatura muito grande: {sig_len} bytes (máx {HEARTBEAT_SIGNATURE_SIZE - 2})")
+
+        self.signature = struct.pack('!H', sig_len) + signature_raw + b'\x00' * (HEARTBEAT_SIGNATURE_SIZE - 2 - sig_len)
+
+        logger.debug(f"✍️  Heartbeat assinado: {sig_len} bytes (padded para {len(self.signature)})")
 
     def verify_signature(self, cert_manager: 'CertificateManager') -> bool:
         """
@@ -177,13 +185,26 @@ class HeartbeatPayload:
             logger.warning("⚠️  Certificado do Sink não disponível para verificação")
             return False
 
+        # Extrair assinatura real do campo padded
+        # Formato: 2 bytes (length) + signature + padding
+        if len(self.signature) < 2:
+            logger.warning("❌ Assinatura com tamanho inválido")
+            return False
+
+        sig_len = struct.unpack('!H', self.signature[:2])[0]
+        signature_raw = self.signature[2:2+sig_len]
+
+        if len(signature_raw) != sig_len:
+            logger.warning(f"❌ Assinatura truncada: esperado {sig_len} bytes, obtido {len(signature_raw)}")
+            return False
+
         # Dados originais: Sink NID + Timestamp
         data_to_verify = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
 
         # Verificar assinatura
         is_valid = cert_manager.verify_signature(
             data_to_verify,
-            self.signature,
+            signature_raw,
             cert_manager._sink_cert
         )
 
@@ -205,11 +226,18 @@ class HeartbeatPayload:
 
     def __str__(self) -> str:
         """String representation para debugging."""
+        # Verificar se é placeholder (todos zeros)
+        is_placeholder = self.signature == b'\x00' * HEARTBEAT_SIGNATURE_SIZE
+        # Ou se tem length=0
+        has_sig = len(self.signature) >= 2 and struct.unpack('!H', self.signature[:2])[0] > 0
+
+        sig_str = '<placeholder>' if is_placeholder or not has_sig else '<signed>'
+
         return (
             f"HeartbeatPayload(\n"
             f"  sink={self.sink_nid},\n"
             f"  timestamp={self.timestamp:.2f} (age: {self.age():.2f}s),\n"
-            f"  signature={'<placeholder>' if self.signature == b'\\x00' * 64 else '<signed>'}\n"
+            f"  signature={sig_str}\n"
             f")"
         )
 
