@@ -345,10 +345,15 @@ class CertificateManager:
 
         from cryptography.hazmat.primitives import hashes
 
+        logger.debug(f"✍️  Assinando dados:")
+        logger.debug(f"   Data: {len(data)} bytes | {data.hex()[:64]}...")
+
         signature = self.device_private_key.sign(
             data,
             ec.ECDSA(hashes.SHA256())
         )
+
+        logger.debug(f"   Signature: {len(signature)} bytes | {signature.hex()[:64]}...")
 
         return signature
 
@@ -372,16 +377,22 @@ class CertificateManager:
         try:
             from cryptography.hazmat.primitives import hashes
 
+            logger.debug(f"🔍 Verificando assinatura:")
+            logger.debug(f"   Data: {len(data)} bytes | {data.hex()[:64]}...")
+            logger.debug(f"   Signature: {len(signature)} bytes | {signature.hex()[:64]}...")
+
             public_key = cert.public_key()
             public_key.verify(
                 signature,
                 data,
                 ec.ECDSA(hashes.SHA256())
             )
+            logger.debug("✅ Assinatura verificada com sucesso!")
             return True
 
         except InvalidSignature:
             logger.warning("❌ Assinatura inválida")
+            logger.debug(f"   Tentou verificar com cert subject: {cert.subject}")
             return False
         except Exception as e:
             logger.error(f"Erro ao verificar assinatura: {e}")
