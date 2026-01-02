@@ -37,6 +37,7 @@ from common.security import (
     CertificateManager,
     AuthenticationHandler,
     ReplayProtection,
+    DTLSChannel,
     calculate_hmac,
     verify_hmac,
 )
@@ -133,6 +134,9 @@ class IoTNode:
         # Session key com o uplink
         self.uplink_session_key: Optional[bytes] = None
         self.uplink_session_key_lock = threading.Lock()
+
+        # Canal DTLS end-to-end com o Sink
+        self.dtls_channel: Optional[DTLSChannel] = None
 
         # GATT Server (para downlinks)
         self.adapter_name = f"hci{adapter_index}"
@@ -687,6 +691,17 @@ class IoTNode:
                         if auth_protocol.peer_cert:
                             self.cert_manager._sink_cert = auth_protocol.peer_cert
                             logger.info("✅ Certificado do Sink armazenado para verificação de heartbeats")
+
+                        # Estabelecer canal DTLS end-to-end com o Sink
+                        self.dtls_channel = DTLSChannel(
+                            cert_path=self.cert_path,
+                            key_path=self.key_path,
+                            ca_cert_path=self.ca_cert_path,
+                            is_server=False,
+                            peer_nid=self.uplink_nid
+                        )
+                        if self.dtls_channel.establish():
+                            logger.info("🔐 Canal DTLS end-to-end estabelecido com Sink")
 
                         self.authenticated = True
                         return True

@@ -39,6 +39,7 @@ from common.security import (
     CertificateManager,
     AuthenticationHandler,
     ReplayProtection,
+    DTLSManager,
     calculate_hmac,
     verify_hmac,
 )
@@ -125,6 +126,11 @@ class SinkDevice:
         # Componentes de segurança
         self.auth_handler = AuthenticationHandler(self.cert_manager)
         self.replay_protection = ReplayProtection(window_size=100)
+        self.dtls_manager = DTLSManager(
+            cert_path=cert_path,
+            key_path=key_path,
+            ca_cert_path=ca_cert_path
+        )
 
         # Downlinks conectados (address -> client_nid)
         self.downlinks: Dict[str, NID] = {}
@@ -291,6 +297,11 @@ class SinkDevice:
                         self.downlinks[client_address] = client_nid
 
                     logger.info(f"🔑 Session key armazenada para {client_nid}")
+
+                    # Estabelecer canal DTLS end-to-end
+                    dtls_channel = self.dtls_manager.create_channel(client_nid)
+                    if dtls_channel.establish():
+                        logger.info(f"🔐 Canal DTLS estabelecido com {str(client_nid)[:8]}...")
 
             # Retornar resposta (fragmentação/envio é feito pela AuthCharacteristic)
             return response if response else b''
