@@ -78,6 +78,11 @@ class IoTNode:
         self.adapter_index = adapter_index
         self.running = False
 
+        # Armazenar paths dos certificados (necessário para DTLS)
+        self.cert_path = cert_path
+        self.key_path = key_path
+        self.ca_cert_path = ca_cert_path
+
         # Carregar certificados manualmente
         logger.info("A carregar certificados...")
 
