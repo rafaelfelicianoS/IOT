@@ -612,7 +612,7 @@ class IoTNode:
                         # Armazenar certificado do Sink para verificação de assinaturas
                         if auth_protocol.peer_cert:
                             self.cert_manager._sink_cert = auth_protocol.peer_cert
-                            logger.debug("✅ Certificado do Sink armazenado")
+                            logger.info("✅ Certificado do Sink armazenado para verificação de heartbeats")
 
                         self.authenticated = True
                         return True

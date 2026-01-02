@@ -183,6 +183,9 @@ class HeartbeatPayload:
         # Verificar se temos certificado do Sink
         if not hasattr(cert_manager, '_sink_cert') or cert_manager._sink_cert is None:
             logger.warning("⚠️  Certificado do Sink não disponível para verificação")
+            logger.debug(f"   hasattr _sink_cert: {hasattr(cert_manager, '_sink_cert')}")
+            if hasattr(cert_manager, '_sink_cert'):
+                logger.debug(f"   _sink_cert value: {cert_manager._sink_cert}")
             return False
 
         # Extrair assinatura real do campo padded
@@ -194,12 +197,15 @@ class HeartbeatPayload:
         sig_len = struct.unpack('!H', self.signature[:2])[0]
         signature_raw = self.signature[2:2+sig_len]
 
+        logger.debug(f"🔍 Verificando assinatura: sig_len={sig_len}, signature_raw_len={len(signature_raw)}")
+
         if len(signature_raw) != sig_len:
             logger.warning(f"❌ Assinatura truncada: esperado {sig_len} bytes, obtido {len(signature_raw)}")
             return False
 
         # Dados originais: Sink NID + Timestamp
         data_to_verify = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
+        logger.debug(f"🔍 data_to_verify: {len(data_to_verify)} bytes")
 
         # Verificar assinatura
         is_valid = cert_manager.verify_signature(
@@ -212,6 +218,8 @@ class HeartbeatPayload:
             logger.debug("✅ Assinatura de heartbeat válida")
         else:
             logger.warning("❌ Assinatura de heartbeat inválida")
+            logger.debug(f"   Sink NID: {self.sink_nid}")
+            logger.debug(f"   Timestamp: {self.timestamp}")
 
         return is_valid
 
