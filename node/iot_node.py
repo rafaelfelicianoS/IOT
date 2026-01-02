@@ -838,10 +838,18 @@ class IoTNode:
                     logger.warning("⚠️  Conexão perdida com Sink")
                     break
 
-                # Verificar se recebemos heartbeat recentemente (último 10s)
+                # Verificar se recebemos heartbeat recentemente (último 15s)
+                # Heartbeats são enviados a cada 5s, então 15s = 3x o intervalo
                 if self.last_heartbeat_time > 0:
                     time_since_heartbeat = time.time() - self.last_heartbeat_time
-                    if time_since_heartbeat > 10:
+                    if time_since_heartbeat > 15:
+                        logger.error(
+                            f"❌ Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s "
+                            f"(último seq={self.heartbeat_sequence})"
+                        )
+                        logger.warning("⚠️  Desconectando do uplink devido a timeout de heartbeat...")
+                        break
+                    elif time_since_heartbeat > 10:
                         logger.warning(
                             f"⚠️  Sem heartbeat há {time_since_heartbeat:.1f}s "
                             f"(último seq={self.heartbeat_sequence})"
