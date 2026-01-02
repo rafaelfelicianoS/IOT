@@ -185,11 +185,18 @@ class AuthenticationProtocol:
             # Atualizar estado
             self.state = AuthState.CERT_RECEIVED
 
-            # Gerar e enviar challenge
+            # Gerar challenge
             self.outgoing_challenge = os.urandom(CHALLENGE_SIZE)
-            msg = AuthMessage(AuthMessageType.CHALLENGE, self.outgoing_challenge)
 
-            logger.info(f"🎲 Enviando challenge: {self.outgoing_challenge.hex()[:32]}...")
+            # Enviar nosso certificado + challenge (troca bidirecional)
+            # Formato do payload: cert_length(4) + cert_pem + challenge(32)
+            our_cert_pem = self.cert_manager.get_device_certificate_bytes()
+            payload = struct.pack("!I", len(our_cert_pem)) + our_cert_pem + self.outgoing_challenge
+
+            msg = AuthMessage(AuthMessageType.CHALLENGE, payload)
+
+            logger.info(f"🎲 Enviando certificado + challenge: {self.outgoing_challenge.hex()[:32]}...")
+            logger.debug(f"   Certificado: {len(our_cert_pem)} bytes")
             logger.debug(f"   Estado: CERT_RECEIVED → CHALLENGE_SENT")
             self.state = AuthState.CHALLENGE_SENT
 
@@ -201,25 +208,59 @@ class AuthenticationProtocol:
             msg = AuthMessage(AuthMessageType.AUTH_FAILED, str(e).encode())
             return False, msg.to_bytes()
 
-    def handle_challenge(self, challenge: bytes) -> bytes:
+    def handle_challenge(self, payload: bytes) -> bytes:
         """
-        Processa challenge recebido e envia response (assinatura).
+        Processa certificado + challenge recebido e envia response (assinatura).
 
         Args:
-            challenge: Challenge recebido (32 bytes)
+            payload: Certificado PEM + Challenge (cert_length + cert_pem + challenge)
 
         Returns:
             Mensagem RESPONSE serializada
         """
-        logger.info("🎲 Challenge recebido - gerando response...")
+        logger.info("🎲 Challenge recebido - processando certificado + challenge...")
 
-        if len(challenge) != CHALLENGE_SIZE:
-            logger.error(f"❌ Challenge com tamanho inválido: {len(challenge)} bytes")
-            raise ValueError(f"Challenge deve ter {CHALLENGE_SIZE} bytes")
+        try:
+            # Extrair certificado e challenge do payload
+            # Formato: cert_length(4) + cert_pem + challenge(32)
+            if len(payload) < 4 + CHALLENGE_SIZE:
+                logger.error(f"❌ Payload muito curto: {len(payload)} bytes")
+                raise ValueError(f"Payload deve ter pelo menos {4 + CHALLENGE_SIZE} bytes")
 
-        # Guardar challenge
-        self.incoming_challenge = challenge
-        logger.debug(f"   Challenge: {challenge.hex()[:32]}...")
+            cert_length = struct.unpack("!I", payload[:4])[0]
+            cert_pem = payload[4:4+cert_length]
+            challenge = payload[4+cert_length:4+cert_length+CHALLENGE_SIZE]
+
+            if len(challenge) != CHALLENGE_SIZE:
+                logger.error(f"❌ Challenge com tamanho inválido: {len(challenge)} bytes")
+                raise ValueError(f"Challenge deve ter {CHALLENGE_SIZE} bytes")
+
+            # Processar certificado do peer (se ainda não temos)
+            if not self.peer_cert:
+                logger.info("📜 Extraindo certificado do peer do payload...")
+                peer_cert = x509.load_pem_x509_certificate(cert_pem, backend=default_backend())
+
+                # Validar certificado
+                if not self.cert_manager.validate_certificate(peer_cert):
+                    logger.error("❌ Certificado do peer é inválido!")
+                    raise ValueError("Invalid peer certificate")
+
+                # Armazenar informações do peer
+                self.peer_cert = peer_cert
+                self.peer_nid = self.cert_manager.extract_nid_from_cert(peer_cert)
+                self.peer_is_sink = self.cert_manager.is_sink_certificate(peer_cert)
+
+                logger.info(f"✅ Certificado do peer validado!")
+                logger.info(f"   Peer NID: {self.peer_nid}")
+                logger.info(f"   Peer tipo: {'SINK' if self.peer_is_sink else 'NODE'}")
+
+            # Guardar challenge
+            self.incoming_challenge = challenge
+            logger.debug(f"   Challenge: {challenge.hex()[:32]}...")
+
+        except Exception as e:
+            logger.error(f"❌ Erro ao processar payload: {e}")
+            raise
 
         # Assinar challenge com chave privada
         signature = self.cert_manager.sign_data(challenge)
