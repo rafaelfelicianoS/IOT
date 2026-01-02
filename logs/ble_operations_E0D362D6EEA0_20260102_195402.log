@@ -1,0 +1,298 @@
+2026-01-02 19:54:02.316 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D6EEA0_20260102_195402.log
+2026-01-02 19:54:02.316 | INFO     | Scanner BLE iniciado: hci0 (E0:D3:62:D6:EE:A0)
+2026-01-02 19:54:02.317 | INFO     | BLE Client iniciado
+2026-01-02 19:54:02.318 | DEBUG    | FragmentReassembler inicializado
+2026-01-02 19:54:02.318 | INFO     | IoT Node inicializado (adapter=hci0)
+2026-01-02 19:54:02.319 | INFO     | A configurar GATT Server...
+2026-01-02 19:54:02.321 | INFO     | Application criada: /
+2026-01-02 19:54:02.322 | INFO     | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-02 19:54:02.322 | INFO     | A criar IoTNetworkService...
+2026-01-02 19:54:02.323 | DEBUG    | Characteristic criada: /0/char0 (UUID: 12340001-0000-1000-8000-00805f9b34fb, flags: ['write', 'notify'])
+2026-01-02 19:54:02.323 | INFO     | NetworkPacketCharacteristic criada
+2026-01-02 19:54:02.324 | DEBUG    | Characteristic criada: /0/char1 (UUID: 12340002-0000-1000-8000-00805f9b34fb, flags: ['read'])
+2026-01-02 19:54:02.324 | INFO     | DeviceInfoCharacteristic criada: NID=74383752..., type=node
+2026-01-02 19:54:02.325 | DEBUG    | Characteristic criada: /0/char2 (UUID: 12340003-0000-1000-8000-00805f9b34fb, flags: ['read', 'notify'])
+2026-01-02 19:54:02.325 | INFO     | NeighborTableCharacteristic criada
+2026-01-02 19:54:02.325 | DEBUG    | Characteristic criada: /0/char3 (UUID: 12340004-0000-1000-8000-00805f9b34fb, flags: ['write', 'indicate'])
+2026-01-02 19:54:02.325 | INFO     | AuthCharacteristic criada
+2026-01-02 19:54:02.326 | DEBUG    | Characteristic adicionada a /0: /0/char0
+2026-01-02 19:54:02.326 | DEBUG    | Characteristic adicionada a /0: /0/char1
+2026-01-02 19:54:02.326 | DEBUG    | Characteristic adicionada a /0: /0/char2
+2026-01-02 19:54:02.326 | DEBUG    | Characteristic adicionada a /0: /0/char3
+2026-01-02 19:54:02.326 | INFO     | ✅ IoTNetworkService criado com sucesso!
+2026-01-02 19:54:02.326 | INFO     | Service adicionado à aplicação: /0
+2026-01-02 19:54:02.327 | DEBUG    | Packet callback definido
+2026-01-02 19:54:02.327 | DEBUG    | Auth callback definido
+2026-01-02 19:54:02.327 | INFO     | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-02 19:54:02.328 | INFO     | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:02.329 | INFO     |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 19:54:02.329 | DEBUG    | Local name definido: IoT-Node-74383752
+2026-01-02 19:54:02.329 | DEBUG    | Manufacturer data adicionado: ID=65535
+2026-01-02 19:54:02.330 | INFO     | ✅ GATT Server configurado
+2026-01-02 19:54:02.330 | INFO     | A iniciar GATT Server...
+2026-01-02 19:54:02.334 | INFO     | ✅ GATT Server iniciado em thread separada
+2026-01-02 19:54:02.335 | INFO     | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-02 19:54:02.338 | DEBUG    | GetManagedObjects called
+2026-01-02 19:54:02.338 | DEBUG    | GetManagedObjects returning 5 objects
+2026-01-02 19:54:02.603 | INFO     | ✅ GATT application registada!
+2026-01-02 19:54:02.604 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2026-01-02 19:54:02.604 | INFO     | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 19:54:02.705 | INFO     | ✅ Advertisement registado!
+2026-01-02 19:54:32.247 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 19:54:32.249 | INFO     | [OP-20260102_195402-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 19:54:37.369 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-02 19:54:37.370 | INFO     | [OP-20260102_195402-0002] SCAN_RESULT | Devices_Found: 0
+2026-01-02 19:54:37.371 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 19:54:37.372 | INFO     | [OP-20260102_195402-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 19:54:42.401 | DEBUG    |   Encontrado: IoT-Sink-54c225f2 (E0:D3:62:D7:47:03) RSSI: -46 dBm
+2026-01-02 19:54:42.402 | INFO     | Scan concluído: 1 dispositivos encontrados
+2026-01-02 19:54:42.403 | INFO     | [OP-20260102_195402-0004] SCAN_RESULT | Devices_Found: 1
+2026-01-02 19:54:42.405 | DEBUG    | [OP-20260102_195402-0004]   Device_1: Name: IoT-Sink-54c225f2 | Address: E0:D3:62:D7:47:03 | RSSI: -46 dBm | Services: 1
+2026-01-02 19:54:47.758 | INFO     | A conectar ao Sink E0:D3:62:D7:47:03...
+2026-01-02 19:54:47.760 | DEBUG    | BLEConnection criada para E0:D3:62:D7:47:03
+2026-01-02 19:54:47.760 | INFO     | A conectar a E0:D3:62:D7:47:03...
+2026-01-02 19:54:47.762 | INFO     | [OP-20260102_195402-0005] CONNECT_ATTEMPT | Local: E0:D3:62:D6:EE:A0 | Remote: E0:D3:62:D7:47:03
+2026-01-02 19:54:53.514 | INFO     | ✅ Conectado a E0:D3:62:D7:47:03
+2026-01-02 19:54:53.515 | INFO     | [OP-20260102_195402-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D7:47:03 | Time: 5748.60ms
+2026-01-02 19:54:53.516 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2026-01-02 19:54:53.517 | INFO     | ✅ Conectado ao Sink via GATT
+2026-01-02 19:54:53.520 | DEBUG    | Descobertos 4 serviços
+2026-01-02 19:54:53.524 | DEBUG    | Serviço 12340000-0000-1000-8000-00805f9b34fb encontrado
+2026-01-02 19:54:53.525 | INFO     | ✅ Serviço IoT Network encontrado
+2026-01-02 19:54:53.527 | INFO     | A subscrever a notificações...
+2026-01-02 19:54:53.966 | INFO     | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:53.967 | INFO     | [OP-20260102_195402-0007] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:53.968 | INFO     | ✅ Subscrito a NETWORK_PACKET
+2026-01-02 19:54:53.969 | DEBUG    | [OP-20260102_195402-0008] READ_REQUEST | Remote: E0:D3:62:D7:47:03 | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:54.054 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2026-01-02 19:54:54.055 | INFO     | [OP-20260102_195402-0009] READ_RESPONSE | Remote: E0:D3:62:D7:47:03 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 54c225f24e894134bf27c5e9148e17c1ff01 | ASCII: T.%.N.A4.'........
+2026-01-02 19:54:54.056 | INFO     | ✅ Conectado ao Sink - hop_count=0
+2026-01-02 19:54:54.057 | INFO     | 🔐 A iniciar autenticação com Sink...
+2026-01-02 19:54:54.057 | DEBUG    | 📡 A subscrever a AUTH characteristic...
+2026-01-02 19:54:54.144 | INFO     | ✅ Subscrito a notificações: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:54.145 | INFO     | [OP-20260102_195402-0010] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:54.146 | DEBUG    | ✅ Subscrito a AUTH indications
+2026-01-02 19:54:54.146 | INFO     | AuthenticationProtocol inicializado para 74383752...
+2026-01-02 19:54:54.147 | INFO     | 📤 Enviando certificado...
+2026-01-02 19:54:54.147 | INFO     | 🔐 Iniciando autenticação - enviando certificado...
+2026-01-02 19:54:54.148 | INFO     |    Certificado: 887 bytes
+2026-01-02 19:54:54.149 | DEBUG    |    Estado: IDLE → CERT_SENT
+2026-01-02 19:54:54.149 | INFO     | Fragmentando mensagem de 890 bytes em 5 fragmentos
+2026-01-02 19:54:54.149 | DEBUG    |   Fragmento 1/5: 180 bytes, flags=0x01
+2026-01-02 19:54:54.149 | DEBUG    |   Fragmento 2/5: 180 bytes, flags=0x00
+2026-01-02 19:54:54.149 | DEBUG    |   Fragmento 3/5: 180 bytes, flags=0x00
+2026-01-02 19:54:54.150 | DEBUG    |   Fragmento 4/5: 180 bytes, flags=0x00
+2026-01-02 19:54:54.150 | DEBUG    |   Fragmento 5/5: 170 bytes, flags=0x02
+2026-01-02 19:54:54.150 | DEBUG    | Enviando mensagem auth: 890 bytes em 5 fragmento(s)
+2026-01-02 19:54:54.151 | INFO     | [OP-20260102_195402-0011] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100050103772d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949435954434341634b674177494241674955503456317a7156365177 | ASCII: .....w-----BEGIN CERTIFICATE-----.MIICYTCCAcKgAwIBAgIUP4V1zqV6Qw [TRUNCATED]
+2026-01-02 19:54:54.233 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2026-01-02 19:54:54.234 | INFO     | [OP-20260102_195402-0012] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:54.234 | DEBUG    |   Fragmento 1/5 enviado
+2026-01-02 19:54:54.335 | INFO     | [OP-20260102_195402-0013] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001054d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774d6a45794e446b304d316f580a44544d314d54497a4d5445794e446b | ASCII: ...MDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwMjEyNDk0M1oX.DTM1MTIzMTEyNDk [TRUNCATED]
+2026-01-02 19:54:54.413 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2026-01-02 19:54:54.414 | INFO     | [OP-20260102_195402-0014] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:54.414 | DEBUG    |   Fragmento 2/5 enviado
+2026-01-02 19:54:54.516 | INFO     | [OP-20260102_195402-0015] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000205675a7377454159484b6f5a497a6a3043415159464b34454541434d4467595941424145694e696357395555554c7a5a7a31477641556d77426e636f670a | ASCII: ...gZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAEiNicW9UUULzZz1GvAUmwBncog. [TRUNCATED]
+2026-01-02 19:54:54.593 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2026-01-02 19:54:54.594 | INFO     | [OP-20260102_195402-0016] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:54.595 | DEBUG    |   Fragmento 3/5 enviado
+2026-01-02 19:54:54.696 | INFO     | [OP-20260102_195402-0017] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0003056f394a6e616a4d494f760a734344654e443674516a39337452687558446a6d524b4d344d44597744415944565230544151482f424149774144414f4267 | ASCII: ...o9JnajMIOv.sCDeND6tQj93tRhuXDjmRKM4MDYwDAYDVR0TAQH/BAIwADAOBg [TRUNCATED]
+2026-01-02 19:54:54.773 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2026-01-02 19:54:54.774 | INFO     | [OP-20260102_195402-0018] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:54.774 | DEBUG    |   Fragmento 4/5 enviado
+2026-01-02 19:54:54.879 | INFO     | [OP-20260102_195402-0019] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 173 bytes | Hex: 0204056c466935494f443142454578567254414b2b776c774e2b676a0a4e3249572b3450556a78466643654f6152762b794a3734435167452b4654787a433554 | ASCII: ...lFi5IOD1BEExVrTAK+wlwN+gj.N2IW+4PUjxFfCeOaRv+yJ74CQgE+FTxzC5T [TRUNCATED]
+2026-01-02 19:54:54.999 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (173 bytes)
+2026-01-02 19:54:55.002 | INFO     | [OP-20260102_195402-0021] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:55.002 | DEBUG    |   Fragmento 5/5 enviado
+2026-01-02 19:54:55.000 | INFO     | [OP-20260102_195402-0020] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100060203b00000038c2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943634443434164476741774942416749554a787a6b7455 | ASCII: ..........-----BEGIN CERTIFICATE-----.MIICcDCCAdGgAwIBAgIUJxzktU [TRUNCATED]
+2026-01-02 19:54:55.008 | DEBUG    | 🔐 AUTH indication recebida: 183 bytes
+2026-01-02 19:54:55.008 | DEBUG    | Fragmento recebido: seq=0, total=6, payload=180 bytes, flags=0x01
+2026-01-02 19:54:55.008 | INFO     | Iniciando recepção de 6 fragmentos
+2026-01-02 19:54:55.008 | DEBUG    | Fragmento 1/6 armazenado (1 de 6 recebidos)
+2026-01-02 19:54:55.010 | DEBUG    | 🔐 Aguardando mais fragmentos AUTH...
+2026-01-02 19:54:55.090 | INFO     | [OP-20260102_195402-0022] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001065642414d4d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774d6a45794e446b7a4d6c6f580a44544d314d54497a4d5445 | ASCII: ...VBAMMDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwMjEyNDkzMloX.DTM1MTIzMTE [TRUNCATED]
+2026-01-02 19:54:55.091 | DEBUG    | 🔐 AUTH indication recebida: 183 bytes
+2026-01-02 19:54:55.091 | DEBUG    | Fragmento recebido: seq=1, total=6, payload=180 bytes, flags=0x00
+2026-01-02 19:54:55.091 | DEBUG    | Fragmento 2/6 armazenado (2 de 6 recebidos)
+2026-01-02 19:54:55.092 | DEBUG    | 🔐 Aguardando mais fragmentos AUTH...
+2026-01-02 19:54:55.104 | DEBUG    | Autenticação round 1/10
+2026-01-02 19:54:55.182 | INFO     | [OP-20260102_195402-0023] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000206597a45784454414c42674e564241734d42464e70626d7377675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241415377 | ASCII: ...YzExDTALBgNVBAsMBFNpbmswgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAASw [TRUNCATED]
+2026-01-02 19:54:55.186 | DEBUG    | 🔐 AUTH indication recebida: 183 bytes
+2026-01-02 19:54:55.186 | DEBUG    | Fragmento recebido: seq=2, total=6, payload=180 bytes, flags=0x00
+2026-01-02 19:54:55.186 | DEBUG    | Fragmento 3/6 armazenado (3 de 6 recebidos)
+2026-01-02 19:54:55.186 | DEBUG    | 🔐 Aguardando mais fragmentos AUTH...
+2026-01-02 19:54:55.273 | INFO     | [OP-20260102_195402-0024] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000306386e6a795a48523051644f4375300a6f4e41363237777a484f3239624a6f6b67614b4c486e66436d2b505643727934344a64307a434d4e50614d344d44 | ASCII: ...8njyZHR0QdOCu0.oNA627wzHO29bJokgaKLHnfCm+PVCry44Jd0zCMNPaM4MD [TRUNCATED]
+2026-01-02 19:54:55.275 | DEBUG    | 🔐 AUTH indication recebida: 183 bytes
+2026-01-02 19:54:55.276 | DEBUG    | Fragmento recebido: seq=3, total=6, payload=180 bytes, flags=0x00
+2026-01-02 19:54:55.277 | DEBUG    | Fragmento 4/6 armazenado (4 de 6 recebidos)
+2026-01-02 19:54:55.277 | DEBUG    | 🔐 Aguardando mais fragmentos AUTH...
+2026-01-02 19:54:55.361 | INFO     | [OP-20260102_195402-0025] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 00040634706d4967797a644e615a4e4a506a66796561623859385839394141680a6158316663585374655142344b476a74343969626571735a70734d59754675 | ASCII: ...4pmIgyzdNaZNJPjfyeab8Y8X99AAh.aX1fcXSteQB4KGjt49ibeqsZpsMYuFu [TRUNCATED]
+2026-01-02 19:54:55.363 | DEBUG    | 🔐 AUTH indication recebida: 183 bytes
+2026-01-02 19:54:55.364 | DEBUG    | Fragmento recebido: seq=4, total=6, payload=180 bytes, flags=0x00
+2026-01-02 19:54:55.364 | DEBUG    | Fragmento 5/6 armazenado (5 de 6 recebidos)
+2026-01-02 19:54:55.364 | DEBUG    | 🔐 Aguardando mais fragmentos AUTH...
+2026-01-02 19:54:55.451 | INFO     | [OP-20260102_195402-0026] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 50 bytes | Hex: 0205065254494649434154452d2d2d2d2d0a498f7395fe0e4d974e2d98bcba365d8601d4f2f012a41558a8501bbeea73db65 | ASCII: ...RTIFICATE-----.I.s...M.N-...6]........X.P...s.e
+2026-01-02 19:54:55.452 | DEBUG    | 🔐 AUTH indication recebida: 50 bytes
+2026-01-02 19:54:55.452 | DEBUG    | Fragmento recebido: seq=5, total=6, payload=47 bytes, flags=0x02
+2026-01-02 19:54:55.453 | DEBUG    | Fragmento 6/6 armazenado (6 de 6 recebidos)
+2026-01-02 19:54:55.453 | INFO     | ✅ Mensagem reconstruída: 947 bytes (6 fragmentos)
+2026-01-02 19:54:55.454 | DEBUG    | FragmentReassembler resetado
+2026-01-02 19:54:55.454 | DEBUG    | 🔐 AUTH mensagem completa: 947 bytes
+2026-01-02 19:54:55.604 | DEBUG    | Resposta auth lida do buffer: 947 bytes
+2026-01-02 19:54:55.605 | DEBUG    | 📨 Recebido: AuthMessage(type=CHALLENGE, payload=944 bytes)
+2026-01-02 19:54:55.605 | INFO     | 🎲 Challenge recebido - processando certificado + challenge...
+2026-01-02 19:54:55.606 | INFO     | 📜 Extraindo certificado do peer do payload...
+2026-01-02 19:54:55.608 | DEBUG    | ✅ Assinatura da CA válida
+2026-01-02 19:54:55.609 | DEBUG    | ✅ Certificado válido temporalmente (expira em 2035-12-31 12:49:32+00:00)
+2026-01-02 19:54:55.609 | INFO     | ✅ Certificado validado com sucesso
+2026-01-02 19:54:55.609 | INFO     | ✅ Certificado do peer validado!
+2026-01-02 19:54:55.610 | INFO     |    Peer NID: 54c225f2...
+2026-01-02 19:54:55.611 | INFO     |    Peer tipo: SINK
+2026-01-02 19:54:55.611 | DEBUG    |    Challenge: 498f7395fe0e4d974e2d98bcba365d86...
+2026-01-02 19:54:55.611 | INFO     | ✍️  Assinando dados:
+2026-01-02 19:54:55.611 | INFO     |    Data: 32 bytes | 498f7395fe0e4d974e2d98bcba365d8601d4f2f012a41558a8501bbeea73db65...
+2026-01-02 19:54:55.613 | INFO     |    Signature: 139 bytes | 308188024200dbb6fef99de6eb795600fdb9ec614f40d11ef2a96385b2f42488...
+2026-01-02 19:54:55.614 | INFO     | ✍️  Response gerada: 139 bytes
+2026-01-02 19:54:55.614 | DEBUG    |    Estado: CHALLENGE_RECEIVED
+2026-01-02 19:54:55.615 | DEBUG    | 📤 Enviando resposta (142 bytes)
+2026-01-02 19:54:55.615 | DEBUG    | Mensagem pequena (142 bytes), 1 fragmento
+2026-01-02 19:54:55.615 | DEBUG    | Enviando mensagem auth: 142 bytes em 1 fragmento(s)
+2026-01-02 19:54:55.616 | INFO     | [OP-20260102_195402-0027] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 145 bytes | Hex: 03000103008b308188024200dbb6fef99de6eb795600fdb9ec614f40d11ef2a96385b2f42488a8b4447cc2c0e8413d08e0a5e10482ffb930e92973866c6e2854 | ASCII: ......0...B........yV....aO@....c...$...D|...A=........0.)s.ln(T [TRUNCATED]
+2026-01-02 19:54:55.674 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (145 bytes)
+2026-01-02 19:54:55.674 | INFO     | [OP-20260102_195402-0028] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 19:54:55.674 | DEBUG    |   Fragmento 1/1 enviado
+2026-01-02 19:54:55.675 | DEBUG    | Autenticação round 2/10
+2026-01-02 19:54:55.675 | INFO     | [OP-20260102_195402-0029] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 6 bytes | Hex: 030001040000 | ASCII: ......
+2026-01-02 19:54:55.676 | DEBUG    | 🔐 AUTH indication recebida: 6 bytes
+2026-01-02 19:54:55.677 | DEBUG    | Fragmento recebido: seq=0, total=1, payload=3 bytes, flags=0x03
+2026-01-02 19:54:55.677 | INFO     | Iniciando recepção de 1 fragmentos
+2026-01-02 19:54:55.678 | DEBUG    | Fragmento 1/1 armazenado (1 de 1 recebidos)
+2026-01-02 19:54:55.679 | INFO     | ✅ Mensagem reconstruída: 3 bytes (1 fragmentos)
+2026-01-02 19:54:55.679 | DEBUG    | FragmentReassembler resetado
+2026-01-02 19:54:55.680 | DEBUG    | 🔐 AUTH mensagem completa: 3 bytes
+2026-01-02 19:54:56.175 | DEBUG    | Resposta auth lida do buffer: 3 bytes
+2026-01-02 19:54:56.176 | DEBUG    | 📨 Recebido: AuthMessage(type=AUTH_SUCCESS, payload=0 bytes)
+2026-01-02 19:54:56.176 | INFO     | ✅ Peer confirmou autenticação bem sucedida!
+2026-01-02 19:54:56.178 | INFO     | ✅ Autenticação bem-sucedida!
+2026-01-02 19:54:56.212 | DEBUG    | 🔑 Session key derivada: 32 bytes
+2026-01-02 19:54:56.212 | INFO     | 🔑 Session key estabelecida
+2026-01-02 19:54:56.213 | INFO     | ✅ Certificado do Sink armazenado para verificação de heartbeats
+2026-01-02 19:54:58.104 | INFO     | [OP-20260102_195402-0030] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c102010000000c8644d377052cf94d52171feb10cede60225ce13ad21e5d2e8710 | ASCII: T.%.N.A4.'......T.%.N.A4.'.............D.w.,.MR......`"\.:..]... [TRUNCATED]
+2026-01-02 19:54:58.105 | DEBUG    | Novo source 54c225f2...: seq=12 (primeiro pacote)
+2026-01-02 19:54:58.105 | DEBUG    | 🔍 Verificando assinatura: sig_len=138, signature_raw_len=138
+2026-01-02 19:54:58.106 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:54:58.106 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:54:58.106 | INFO     |    Timestamp: 1767383698.3546133
+2026-01-02 19:54:58.107 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608a496b1fc
+2026-01-02 19:54:58.107 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:54:58.108 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608a496b1fc...
+2026-01-02 19:54:58.108 | INFO     |    Signature: 138 bytes | 308187024200d193e008b7a92037781465042199ab1d3987a2c4b96bd4e2a0d9...
+2026-01-02 19:54:58.109 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:54:58.110 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:54:58.111 | DEBUG    | 💓 Heartbeat recebido (seq=12, age=-0.24s)
+2026-01-02 19:55:03.145 | INFO     | [OP-20260102_195402-0031] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c102010000000d65522f31ba7320f94c0ad2aa37b31f6191e22e9f0c79aa94f051 | ASCII: T.%.N.A4.'......T.%.N.A4.'............eR/1.s .L...7..a.....y...Q [TRUNCATED]
+2026-01-02 19:55:03.146 | DEBUG    | Source 54c225f2...: seq=13 (novo highest, window: 2 seqs)
+2026-01-02 19:55:03.146 | DEBUG    | 🔍 Verificando assinatura: sig_len=139, signature_raw_len=139
+2026-01-02 19:55:03.146 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:55:03.147 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:55:03.147 | INFO     |    Timestamp: 1767383703.357253
+2026-01-02 19:55:03.148 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608a5d6dd3c
+2026-01-02 19:55:03.148 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:55:03.149 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608a5d6dd3c...
+2026-01-02 19:55:03.149 | INFO     |    Signature: 139 bytes | 30818802420196c09129755ca7019543a48d017c71366a1e326baa32a8790547...
+2026-01-02 19:55:03.150 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:55:03.151 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:55:03.151 | DEBUG    | 💓 Heartbeat recebido (seq=13, age=-0.21s)
+2026-01-02 19:55:08.140 | INFO     | [OP-20260102_195402-0032] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c102010000000e366fb45298fbe283a238aee9d8624d19e7d9ce6bb4632c8d99b0 | ASCII: T.%.N.A4.'......T.%.N.A4.'............6o.R.....8...bM....k.c,... [TRUNCATED]
+2026-01-02 19:55:08.141 | DEBUG    | Source 54c225f2...: seq=14 (novo highest, window: 3 seqs)
+2026-01-02 19:55:08.142 | DEBUG    | 🔍 Verificando assinatura: sig_len=138, signature_raw_len=138
+2026-01-02 19:55:08.142 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:55:08.143 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:55:08.143 | INFO     |    Timestamp: 1767383708.3572218
+2026-01-02 19:55:08.144 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608a716dcb9
+2026-01-02 19:55:08.148 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:55:08.148 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608a716dcb9...
+2026-01-02 19:55:08.150 | INFO     |    Signature: 138 bytes | 308187024200b0dc4754322ffdd2c491995d8554190ce29a8d614fefdf279b02...
+2026-01-02 19:55:08.151 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:55:08.152 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:55:08.152 | DEBUG    | 💓 Heartbeat recebido (seq=14, age=-0.20s)
+2026-01-02 19:55:13.134 | INFO     | [OP-20260102_195402-0033] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c102010000000fc14fad51f86f3cda37fdae7c6bed4ff75ef7c2e021aaa17e15c5 | ASCII: T.%.N.A4.'......T.%.N.A4.'.............O.Q.o<.7..|k.O.^...!..~.. [TRUNCATED]
+2026-01-02 19:55:13.135 | DEBUG    | Source 54c225f2...: seq=15 (novo highest, window: 4 seqs)
+2026-01-02 19:55:13.135 | DEBUG    | 🔍 Verificando assinatura: sig_len=139, signature_raw_len=139
+2026-01-02 19:55:13.135 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:55:13.135 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:55:13.136 | INFO     |    Timestamp: 1767383713.3572876
+2026-01-02 19:55:13.136 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608a856ddcd
+2026-01-02 19:55:13.137 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:55:13.137 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608a856ddcd...
+2026-01-02 19:55:13.137 | INFO     |    Signature: 139 bytes | 308188024200a8443c37fdb281042504c0935fa77cfb761858ce3bd5f32d3613...
+2026-01-02 19:55:13.139 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:55:13.139 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:55:13.140 | DEBUG    | 💓 Heartbeat recebido (seq=15, age=-0.22s)
+2026-01-02 19:55:18.130 | INFO     | [OP-20260102_195402-0034] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000010dd171275ef6145091fa2db3d5aea0fd11b8d1754ff6597c55f86 | ASCII: T.%.N.A4.'......T.%.N.A4.'...............u.aE....=Z......T.e.._. [TRUNCATED]
+2026-01-02 19:55:18.131 | DEBUG    | Source 54c225f2...: seq=16 (novo highest, window: 5 seqs)
+2026-01-02 19:55:18.131 | DEBUG    | 🔍 Verificando assinatura: sig_len=138, signature_raw_len=138
+2026-01-02 19:55:18.131 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:55:18.132 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:55:18.132 | INFO     |    Timestamp: 1767383718.3566818
+2026-01-02 19:55:18.133 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608a996d3e0
+2026-01-02 19:55:18.133 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:55:18.134 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608a996d3e0...
+2026-01-02 19:55:18.135 | INFO     |    Signature: 138 bytes | 30818702412ed72caa6922172e7c844c8fe44353c11791944794e6e563638cf0...
+2026-01-02 19:55:18.137 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:55:18.138 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:55:18.138 | DEBUG    | 💓 Heartbeat recebido (seq=16, age=-0.22s)
+2026-01-02 19:55:23.124 | INFO     | [OP-20260102_195402-0035] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c102010000001145d8eecd1aafd5a50a652e5ffadd7fd614b9fac7981662c9226a | ASCII: T.%.N.A4.'......T.%.N.A4.'............E........e._..........b."j [TRUNCATED]
+2026-01-02 19:55:23.125 | DEBUG    | Source 54c225f2...: seq=17 (novo highest, window: 6 seqs)
+2026-01-02 19:55:23.126 | DEBUG    | 🔍 Verificando assinatura: sig_len=139, signature_raw_len=139
+2026-01-02 19:55:23.126 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:55:23.127 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:55:23.128 | INFO     |    Timestamp: 1767383723.3572
+2026-01-02 19:55:23.129 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608aad6dc5d
+2026-01-02 19:55:23.130 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:55:23.131 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608aad6dc5d...
+2026-01-02 19:55:23.132 | INFO     |    Signature: 139 bytes | 308188024201307fe54150987a4482070a2a8b33f6c391bed93f5db73ebb1536...
+2026-01-02 19:55:23.136 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:55:23.137 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:55:23.137 | DEBUG    | 💓 Heartbeat recebido (seq=17, age=-0.22s)
+2026-01-02 19:55:28.120 | INFO     | [OP-20260102_195402-0036] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000012d4ecee764eea0042c0ab6a88d59e021119cb702d71aa7514e000 | ASCII: T.%.N.A4.'......T.%.N.A4.'...............vN..B..j.......p-q.u... [TRUNCATED]
+2026-01-02 19:55:28.121 | DEBUG    | Source 54c225f2...: seq=18 (novo highest, window: 7 seqs)
+2026-01-02 19:55:28.122 | DEBUG    | 🔍 Verificando assinatura: sig_len=138, signature_raw_len=138
+2026-01-02 19:55:28.122 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:55:28.123 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:55:28.124 | INFO     |    Timestamp: 1767383728.3530219
+2026-01-02 19:55:28.125 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608ac1697e9
+2026-01-02 19:55:28.126 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:55:28.128 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608ac1697e9...
+2026-01-02 19:55:28.131 | INFO     |    Signature: 138 bytes | 308187024200e7c5572571946d70e5d1c4135b0ac927aa61eecfff3ffa6b150a...
+2026-01-02 19:55:28.137 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:55:28.141 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:55:28.142 | DEBUG    | 💓 Heartbeat recebido (seq=18, age=-0.21s)
+2026-01-02 19:55:33.114 | INFO     | [OP-20260102_195402-0037] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000013895976e3c4b4266299de0750c307f67738a32bda19ceb193bb0e | ASCII: T.%.N.A4.'......T.%.N.A4.'.............Yv...&b...P...w8.+....... [TRUNCATED]
+2026-01-02 19:55:33.114 | DEBUG    | Source 54c225f2...: seq=19 (novo highest, window: 8 seqs)
+2026-01-02 19:55:33.114 | DEBUG    | 🔍 Verificando assinatura: sig_len=139, signature_raw_len=139
+2026-01-02 19:55:33.114 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:55:33.115 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:55:33.115 | INFO     |    Timestamp: 1767383733.3567219
+2026-01-02 19:55:33.115 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608ad56d488
+2026-01-02 19:55:33.116 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:55:33.116 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608ad56d488...
+2026-01-02 19:55:33.116 | INFO     |    Signature: 139 bytes | 30818802420087e2e76af87defd4470877e0d44d3850089636e977ce0324cf50...
+2026-01-02 19:55:33.118 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:55:33.119 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:55:33.119 | DEBUG    | 💓 Heartbeat recebido (seq=19, age=-0.24s)
+2026-01-02 19:55:38.108 | INFO     | [OP-20260102_195402-0038] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000014a079eab908cfa0507f16465e5f440be4b962c8e1f4c132cd5db4 | ASCII: T.%.N.A4.'......T.%.N.A4.'.............y.....P..F^_D...b....2.]. [TRUNCATED]
+2026-01-02 19:55:38.110 | DEBUG    | Source 54c225f2...: seq=20 (novo highest, window: 9 seqs)
+2026-01-02 19:55:38.110 | DEBUG    | 🔍 Verificando assinatura: sig_len=139, signature_raw_len=139
+2026-01-02 19:55:38.111 | INFO     | 💓 Verificando heartbeat:
+2026-01-02 19:55:38.112 | INFO     |    Sink NID: 54c225f24e894134bf27c5e9148e17c1
+2026-01-02 19:55:38.113 | INFO     |    Timestamp: 1767383738.357102
+2026-01-02 19:55:38.113 | INFO     |    Data to verify: 54c225f24e894134bf27c5e9148e17c141da5608ae96dac2
+2026-01-02 19:55:38.117 | INFO     | 🔍 Verificando assinatura:
+2026-01-02 19:55:38.118 | INFO     |    Data: 24 bytes | 54c225f24e894134bf27c5e9148e17c141da5608ae96dac2...
+2026-01-02 19:55:38.120 | INFO     |    Signature: 139 bytes | 308188024201944bdb3320e8e6f470dd4411c468720e1778bba8e4d954dea554...
+2026-01-02 19:55:38.125 | INFO     | ✅ Assinatura verificada com sucesso!
+2026-01-02 19:55:38.128 | DEBUG    | ✅ Assinatura de heartbeat válida
+2026-01-02 19:55:38.128 | DEBUG    | 💓 Heartbeat recebido (seq=20, age=-0.23s)
+2026-01-02 19:55:40.181 | INFO     | A parar Node...
+2026-01-02 19:55:40.181 | INFO     | A parar GATT Server...
