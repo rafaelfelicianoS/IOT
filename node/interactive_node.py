@@ -531,16 +531,34 @@ def main():
         import threading
         import time
 
+        # Flag para rastrear se já mostramos a mensagem de desconexão
+        disconnect_message_shown = [False]  # Usar lista para permitir modificação em closure
+
         def monitor_heartbeat():
             """Thread que monitora timeout de heartbeat."""
+            last_connection_state = None
+
             while node.running:
                 time.sleep(1)
 
                 # Verificar se ainda está conectado
-                if node.uplink_connection and not node.uplink_connection.is_connected:
-                    logger.warning("⚠️  Conexão perdida com Sink")
-                    print("\n⚠️  Conexão perdida com Sink - desconectado do uplink\n")
-                    # Não fazer break aqui, apenas avisar
+                current_connected = node.uplink_connection and node.uplink_connection.is_connected
+
+                # Detectar mudança de estado (conectado -> desconectado)
+                if last_connection_state and not current_connected:
+                    # Mudou de conectado para desconectado - mostrar mensagem UMA VEZ
+                    if not disconnect_message_shown[0]:
+                        logger.warning("⚠️  Conexão perdida com Sink")
+                        print("\n⚠️  Conexão perdida com Sink - desconectado do uplink\n")
+                        disconnect_message_shown[0] = True
+                        # Limpar estado de uplink
+                        node.authenticated = False
+                        node.uplink_nid = None
+                elif current_connected:
+                    # Conectado - resetar flag para próxima desconexão
+                    disconnect_message_shown[0] = False
+
+                last_connection_state = current_connected
 
                 # Verificar timeout de heartbeat (apenas se conectado)
                 if node.uplink_connection and node.uplink_connection.is_connected and node.last_heartbeat_time > 0:
