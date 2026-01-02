@@ -157,6 +157,11 @@ class HeartbeatPayload:
         # Dados a assinar: Sink NID + Timestamp
         data_to_sign = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
 
+        logger.info(f"💓 Assinando heartbeat:")
+        logger.info(f"   Sink NID: {self.sink_nid.to_bytes().hex()}")
+        logger.info(f"   Timestamp: {self.timestamp}")
+        logger.info(f"   Data to sign: {data_to_sign.hex()}")
+
         # Assinar com ECDSA
         signature_raw = cert_manager.sign_data(data_to_sign)
 
@@ -168,7 +173,7 @@ class HeartbeatPayload:
 
         self.signature = struct.pack('!H', sig_len) + signature_raw + b'\x00' * (HEARTBEAT_SIGNATURE_SIZE - 2 - sig_len)
 
-        logger.debug(f"✍️  Heartbeat assinado: {sig_len} bytes (padded para {len(self.signature)})")
+        logger.info(f"✅ Heartbeat assinado: {sig_len} bytes (padded para {len(self.signature)})")
 
     def verify_signature(self, cert_manager: 'CertificateManager') -> bool:
         """
@@ -205,7 +210,11 @@ class HeartbeatPayload:
 
         # Dados originais: Sink NID + Timestamp
         data_to_verify = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
-        logger.debug(f"🔍 data_to_verify: {len(data_to_verify)} bytes")
+
+        logger.info(f"💓 Verificando heartbeat:")
+        logger.info(f"   Sink NID: {self.sink_nid.to_bytes().hex()}")
+        logger.info(f"   Timestamp: {self.timestamp}")
+        logger.info(f"   Data to verify: {data_to_verify.hex()}")
 
         # Verificar assinatura
         is_valid = cert_manager.verify_signature(
