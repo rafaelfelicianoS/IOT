@@ -527,6 +527,46 @@ def main():
         signal.signal(signal.SIGINT, signal_handler)
         signal.signal(signal.SIGTERM, signal_handler)
 
+        # Iniciar thread de monitorização de heartbeat timeout em background
+        import threading
+        import time
+
+        def monitor_heartbeat():
+            """Thread que monitora timeout de heartbeat."""
+            while node.running:
+                time.sleep(1)
+
+                # Verificar se ainda está conectado
+                if node.uplink_connection and not node.uplink_connection.is_connected:
+                    logger.warning("⚠️  Conexão perdida com Sink")
+                    print("\n⚠️  Conexão perdida com Sink - desconectado do uplink\n")
+                    # Não fazer break aqui, apenas avisar
+
+                # Verificar timeout de heartbeat (apenas se conectado)
+                if node.uplink_connection and node.uplink_connection.is_connected and node.last_heartbeat_time > 0:
+                    time_since_heartbeat = time.time() - node.last_heartbeat_time
+                    if time_since_heartbeat > 15:
+                        logger.error(
+                            f"❌ Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s "
+                            f"(último seq={node.heartbeat_sequence})"
+                        )
+                        logger.warning("⚠️  Desconectando do uplink devido a timeout de heartbeat...")
+                        print(f"\n❌ Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s")
+                        print("⚠️  Desconectado do uplink automaticamente\n")
+                        # Desconectar
+                        if node.uplink_connection:
+                            node.uplink_connection.disconnect()
+                        node.authenticated = False
+                        node.uplink_nid = None
+                    elif time_since_heartbeat > 10:
+                        logger.warning(
+                            f"⚠️  Sem heartbeat há {time_since_heartbeat:.1f}s "
+                            f"(último seq={node.heartbeat_sequence})"
+                        )
+
+        heartbeat_monitor_thread = threading.Thread(target=monitor_heartbeat, daemon=True, name="HeartbeatMonitor")
+        heartbeat_monitor_thread.start()
+
         # Run CLI
         cli.cmdloop()
 
