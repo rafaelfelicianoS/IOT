@@ -1929,3 +1929,7 @@ Sinal 2 recebido, a parar...
 2026-01-02 12:34:25.739 | WARNING  | common.security.certificate_manager:verify_signature:394 | ❌ Assinatura inválida
 2026-01-02 12:34:25.740 | WARNING  | common.protocol.heartbeat:verify_signature:220 | ❌ Assinatura de heartbeat inválida
 2026-01-02 12:34:25.742 | ERROR    | node.iot_node:_handle_heartbeat:466 | ❌ Assinatura de heartbeat inválida!
+2026-01-02 12:34:30.729 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260102_123300-0043] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: af04ea89a60e42f5b1e940dfed46b83aaf04ea89a60e42f5b1e940dfed46b83a020100000014a8d5c119ecea569fcc49933a8fa8ef3673618d4de91d09dc6f67 | ASCII: ......B...@..F.:......B...@..F.:............V..I.:...6sa.M....og [TRUNCATED]
+2026-01-02 12:34:30.738 | WARNING  | common.security.certificate_manager:verify_signature:394 | ❌ Assinatura inválida
+2026-01-02 12:34:30.741 | WARNING  | common.protocol.heartbeat:verify_signature:220 | ❌ Assinatura de heartbeat inválida
+2026-01-02 12:34:30.743 | ERROR    | node.iot_node:_handle_heartbeat:466 | ❌ Assinatura de heartbeat inválida!

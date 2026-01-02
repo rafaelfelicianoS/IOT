@@ -341,3 +341,17 @@
 2026-01-02 12:34:25.741 | DEBUG    |    Sink NID: af04ea89...
 2026-01-02 12:34:25.742 | DEBUG    |    Timestamp: 1767357265.6272645
 2026-01-02 12:34:25.742 | ERROR    | ❌ Assinatura de heartbeat inválida!
+2026-01-02 12:34:30.729 | INFO     | [OP-20260102_123300-0043] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: af04ea89a60e42f5b1e940dfed46b83aaf04ea89a60e42f5b1e940dfed46b83a020100000014a8d5c119ecea569fcc49933a8fa8ef3673618d4de91d09dc6f67 | ASCII: ......B...@..F.:......B...@..F.:............V..I.:...6sa.M....og [TRUNCATED]
+2026-01-02 12:34:30.730 | DEBUG    | Source af04ea89...: seq=20 (novo highest, window: 14 seqs)
+2026-01-02 12:34:30.730 | DEBUG    | 🔍 Verificando assinatura: sig_len=138, signature_raw_len=138
+2026-01-02 12:34:30.731 | DEBUG    | 🔍 data_to_verify: 24 bytes
+2026-01-02 12:34:30.731 | DEBUG    | 🔍 Verificando assinatura:
+2026-01-02 12:34:30.731 | DEBUG    |    Data: 24 bytes | af04ea89a60e42f5b1e940dfed46b83a41da55eed5a816ea...
+2026-01-02 12:34:30.734 | DEBUG    |    Signature: 138 bytes | 3081870241177c35d9668abd3784f8cbcc3b9578411f4faea8eabf7c47519ff2...
+2026-01-02 12:34:30.738 | WARNING  | ❌ Assinatura inválida
+2026-01-02 12:34:30.741 | DEBUG    |    Tentou verificar com cert subject: <Name(C=PT,O=IoT Network,CN=af04ea89-a60e-42f5-b1e9-40dfed46b83a,OU=Sink)>
+2026-01-02 12:34:30.741 | WARNING  | ❌ Assinatura de heartbeat inválida
+2026-01-02 12:34:30.743 | DEBUG    |    Sink NID: af04ea89...
+2026-01-02 12:34:30.743 | DEBUG    |    Timestamp: 1767357270.6263986
+2026-01-02 12:34:30.743 | ERROR    | ❌ Assinatura de heartbeat inválida!
+2026-01-02 12:34:34.712 | INFO     | A parar Node...
