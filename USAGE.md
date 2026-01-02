@@ -17,10 +17,29 @@ certs/
 
 ## Iniciar o Sink
 
+### Modo Normal (sem CLI interativo)
+
 **Uso básico (detecta certificados automaticamente):**
 ```bash
 ./iot-sink start hci0
 ```
+
+### Modo Interativo (com CLI de debug)
+
+**Inicia o Sink com um CLI interativo:**
+```bash
+./iot-sink interactive hci0
+```
+
+Neste modo, você pode:
+- `status` - Ver status do Sink (downlinks, heartbeats)
+- `downlinks` - Listar Nodes conectados
+- `send <nid_prefix> <msg>` - Enviar mensagem para um Node
+- `broadcast <msg>` - Enviar mensagem para todos os Nodes
+- `session_keys` - Ver session keys estabelecidas
+- `my_nid` - Ver o NID do Sink
+- `help` - Ver todos os comandos
+- `exit` - Sair e parar o Sink
 
 **Com múltiplos certificados:**
 ```bash
@@ -40,10 +59,33 @@ certs/
 
 ## Iniciar um Node
 
+### Modo Normal (automático)
+
 **Uso básico (detecta certificados automaticamente):**
 ```bash
 ./iot-node start
 ```
+
+### Modo Interativo (com CLI de debug)
+
+**Inicia o Node com um CLI interativo:**
+```bash
+./iot-node interactive
+```
+
+Neste modo, você pode:
+- `scan [timeout]` - Procurar Sinks/Nodes disponíveis
+- `connect` - Conectar ao uplink descoberto
+- `disconnect` - Desconectar do uplink
+- `reconnect` - Reconectar ao uplink
+- `send <msg>` - Enviar mensagem ao Sink
+- `ping [count]` - Pingar o Sink e medir latência
+- `status` - Ver status completo (uplink, downlinks, hop count)
+- `uplink` - Ver detalhes do uplink
+- `downlinks` - Listar Nodes conectados abaixo
+- `my_nid` - Ver o NID do Node
+- `help` - Ver todos os comandos
+- `exit` - Sair e parar o Node
 
 **Com adaptador específico:**
 ```bash
@@ -87,7 +129,7 @@ certs/
 
 ## Exemplos Completos
 
-### Cenário 1: Um Sink e um Node
+### Cenário 1: Um Sink e um Node (Modo Normal)
 ```bash
 # Terminal 1 - Sink
 ./iot-sink start hci0
@@ -96,7 +138,25 @@ certs/
 ./iot-node start
 ```
 
-### Cenário 2: Múltiplos Sinks (diferentes adaptadores)
+### Cenário 2: Um Sink e um Node (Modo Interativo para Debug)
+```bash
+# Terminal 1 - Sink interativo
+./iot-sink interactive hci0
+# Depois de iniciar:
+sink> status           # Ver status
+sink> downlinks        # Ver nodes conectados
+
+# Terminal 2 - Node interativo
+./iot-node interactive
+# Depois de iniciar:
+node> scan             # Procurar Sink
+node> connect          # Conectar ao Sink
+node> status           # Ver status da conexão
+node> send Hello!      # Enviar mensagem
+node> ping 5           # Pingar o Sink 5 vezes
+```
+
+### Cenário 3: Múltiplos Sinks (diferentes adaptadores)
 ```bash
 # Terminal 1 - Sink 1 em hci0
 ./iot-sink start hci0 --cert-index 1
@@ -105,7 +165,7 @@ certs/
 ./iot-sink start hci1 --cert-index 2
 ```
 
-### Cenário 3: Monitorização de Logs
+### Cenário 4: Monitorização de Logs
 ```bash
 # Terminal 1 - Iniciar Sink
 ./iot-sink start hci0
@@ -130,12 +190,19 @@ certs/
 - Execute o comando sem `--cert-index` para ver a lista
 - Use `--cert-index N` para escolher (N começa em 1)
 
-## Vantagens da Auto-Detecção
+## Vantagens
 
+### Auto-Detecção de Certificados
 ✅ **Simplicidade**: Apenas especifique o adaptador BLE
 ✅ **Flexibilidade**: Suporta múltiplos certificados
 ✅ **Segurança**: Certificados organizados em um único diretório
 ✅ **Sem erros**: Não é preciso lembrar os caminhos completos
+
+### CLI Interativo
+✅ **Debug fácil**: Controle manual completo
+✅ **Teste rápido**: Scan, connect, send sem restartar
+✅ **Visibilidade**: Status em tempo real
+✅ **Comandos simples**: Interface amigável tipo shell
 
 ## Migração do Método Antigo
 

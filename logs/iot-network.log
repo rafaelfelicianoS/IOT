@@ -1256,3 +1256,93 @@ Sinal 2 recebido, a parar...
 2026-01-02 11:48:12.415 | INFO     | __main__:<lambda>:409 | ✅ GATT application registada!
 2026-01-02 11:48:12.415 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
 2026-01-02 11:48:12.519 | INFO     | __main__:<lambda>:423 | ✅ Advertisement registado!
+2026-01-02 11:53:14.186 | INFO     | common.ble.gatt_services:StartNotify:120 | Cliente :1.4 subscreveu notificações de pacotes
+2026-01-02 11:53:14.386 | INFO     | common.ble.gatt_services:StartNotify:481 | Cliente :1.4 subscreveu auth indications
+2026-01-02 11:53:14.537 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 5 fragmentos
+2026-01-02 11:53:15.491 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 886 bytes (5 fragmentos)
+2026-01-02 11:53:15.492 | INFO     | common.ble.gatt_services:WriteValue:455 | Mensagem completa recebida de :1.4: 886 bytes
+2026-01-02 11:53:15.493 | INFO     | __main__:_on_auth_message:264 | 🔐 Mensagem de autenticação recebida de :1.4: 886 bytes
+2026-01-02 11:53:15.494 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de :1.4: 886 bytes
+2026-01-02 11:53:15.494 | INFO     | common.security.auth_handler:get_or_create_session:71 | Nova sessão de autenticação para cliente: :1.4
+2026-01-02 11:53:15.495 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para af04ea89...
+2026-01-02 11:53:15.496 | INFO     | common.security.authentication:handle_cert_offer:163 | 📜 Certificado do peer recebido - validando...
+2026-01-02 11:53:15.499 | INFO     | common.security.certificate_manager:validate_certificate:262 | ✅ Certificado validado com sucesso
+2026-01-02 11:53:15.500 | INFO     | common.security.authentication:handle_cert_offer:181 | ✅ Certificado válido!
+2026-01-02 11:53:15.500 | INFO     | common.security.authentication:handle_cert_offer:182 |    Peer NID: 323b6aad...
+2026-01-02 11:53:15.501 | INFO     | common.security.authentication:handle_cert_offer:183 |    Peer tipo: NODE
+2026-01-02 11:53:15.501 | INFO     | common.security.authentication:handle_cert_offer:198 | 🎲 Enviando certificado + challenge: 35e52120436f99498ae828160332c0ca...
+2026-01-02 11:53:15.502 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 943 bytes em 6 fragmentos
+2026-01-02 11:53:16.290 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 1 fragmentos
+2026-01-02 11:53:16.291 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 142 bytes (1 fragmentos)
+2026-01-02 11:53:16.291 | INFO     | common.ble.gatt_services:WriteValue:455 | Mensagem completa recebida de :1.4: 142 bytes
+2026-01-02 11:53:16.292 | INFO     | __main__:_on_auth_message:264 | 🔐 Mensagem de autenticação recebida de :1.4: 142 bytes
+2026-01-02 11:53:16.293 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de :1.4: 142 bytes
+2026-01-02 11:53:16.293 | INFO     | common.security.authentication:handle_response:289 | 🔍 Response recebida - verificando assinatura...
+2026-01-02 11:53:16.295 | INFO     | common.security.authentication:handle_response:311 | ✅ Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2026-01-02 11:53:16.295 | INFO     | common.security.authentication:handle_response:312 |    Peer 323b6aad... autenticado com sucesso
+2026-01-02 11:53:16.295 | INFO     | common.security.auth_handler:handle_auth_message:102 | ✅ Cliente :1.4 AUTENTICADO!
+2026-01-02 11:53:16.296 | INFO     | __main__:_on_auth_message:272 | ✅ Cliente :1.4 autenticado com sucesso!
+2026-01-02 11:53:16.297 | INFO     | __main__:_on_auth_message:288 | 🔑 Session key armazenada para 323b6aad...
+2026-01-02 11:53:18.738 | INFO     | common.ble.gatt_services:StopNotify:137 | Cliente :1.4 cancelou subscrição de pacotes
+2026-01-02 11:53:18.835 | INFO     | common.ble.gatt_services:StopNotify:493 | Cliente :1.4 cancelou subscrição de auth
+2026-01-02 11:53:45.639 | INFO     | common.ble.gatt_services:StartNotify:120 | Cliente :1.4 subscreveu notificações de pacotes
+2026-01-02 11:53:45.838 | INFO     | common.ble.gatt_services:StartNotify:481 | Cliente :1.4 subscreveu auth indications
+2026-01-02 11:53:45.990 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 5 fragmentos
+2026-01-02 11:53:46.941 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 886 bytes (5 fragmentos)
+2026-01-02 11:53:46.941 | INFO     | common.ble.gatt_services:WriteValue:455 | Mensagem completa recebida de :1.4: 886 bytes
+2026-01-02 11:53:46.942 | INFO     | __main__:_on_auth_message:264 | 🔐 Mensagem de autenticação recebida de :1.4: 886 bytes
+2026-01-02 11:53:46.942 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de :1.4: 886 bytes
+2026-01-02 11:53:46.942 | INFO     | common.security.authentication:handle_cert_offer:163 | 📜 Certificado do peer recebido - validando...
+2026-01-02 11:53:46.944 | INFO     | common.security.certificate_manager:validate_certificate:262 | ✅ Certificado validado com sucesso
+2026-01-02 11:53:46.945 | INFO     | common.security.authentication:handle_cert_offer:181 | ✅ Certificado válido!
+2026-01-02 11:53:46.945 | INFO     | common.security.authentication:handle_cert_offer:182 |    Peer NID: 323b6aad...
+2026-01-02 11:53:46.945 | INFO     | common.security.authentication:handle_cert_offer:183 |    Peer tipo: NODE
+2026-01-02 11:53:46.945 | INFO     | common.security.authentication:handle_cert_offer:198 | 🎲 Enviando certificado + challenge: e8cc81cd0b04c360abf165b826c3f1ad...
+2026-01-02 11:53:46.945 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 943 bytes em 6 fragmentos
+2026-01-02 11:53:47.691 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 1 fragmentos
+2026-01-02 11:53:47.691 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 141 bytes (1 fragmentos)
+2026-01-02 11:53:47.692 | INFO     | common.ble.gatt_services:WriteValue:455 | Mensagem completa recebida de :1.4: 141 bytes
+2026-01-02 11:53:47.692 | INFO     | __main__:_on_auth_message:264 | 🔐 Mensagem de autenticação recebida de :1.4: 141 bytes
+2026-01-02 11:53:47.692 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de :1.4: 141 bytes
+2026-01-02 11:53:47.693 | INFO     | common.security.authentication:handle_response:289 | 🔍 Response recebida - verificando assinatura...
+2026-01-02 11:53:47.694 | INFO     | common.security.authentication:handle_response:311 | ✅ Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2026-01-02 11:53:47.695 | INFO     | common.security.authentication:handle_response:312 |    Peer 323b6aad... autenticado com sucesso
+2026-01-02 11:53:47.695 | INFO     | common.security.auth_handler:handle_auth_message:102 | ✅ Cliente :1.4 AUTENTICADO!
+2026-01-02 11:53:47.696 | INFO     | __main__:_on_auth_message:272 | ✅ Cliente :1.4 autenticado com sucesso!
+2026-01-02 11:53:47.697 | INFO     | __main__:_on_auth_message:288 | 🔑 Session key armazenada para 323b6aad...
+2026-01-02 11:54:04.188 | INFO     | common.ble.gatt_services:StopNotify:137 | Cliente :1.4 cancelou subscrição de pacotes
+2026-01-02 11:54:04.288 | INFO     | common.ble.gatt_services:StopNotify:493 | Cliente :1.4 cancelou subscrição de auth
+2026-01-02 12:03:15.228 | INFO     | __main__:signal_handler:528 | 
+Sinal 2 recebido, a parar...
+2026-01-02 12:03:15.228 | INFO     | __main__:stop:446 | A parar Sink Device...
+2026-01-02 12:03:15.228 | INFO     | __main__:stop:458 | ✅ Sink Device parado
+2026-01-02 12:03:31.418 | INFO     | sink.sink_device:__init__:85 | A carregar certificados...
+2026-01-02 12:03:31.420 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para af04ea89...
+2026-01-02 12:03:31.420 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-02 12:03:31.420 | INFO     | sink.sink_device:__init__:115 | ✅ Certificados carregados com sucesso
+2026-01-02 12:03:31.420 | INFO     | sink.sink_device:__init__:123 | Sink NID: af04ea89...
+2026-01-02 12:03:31.420 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-02 12:03:31.420 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-02 12:03:31.420 | INFO     | sink.sink_device:__init__:146 | Sink Device inicializado (adapter=hci1)
+2026-01-02 12:03:31.420 | INFO     | sink.sink_device:setup_gatt_server:150 | A configurar GATT Server...
+2026-01-02 12:03:31.421 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-02 12:03:31.421 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-02 12:03:31.422 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2026-01-02 12:03:31.422 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2026-01-02 12:03:31.422 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=af04ea89..., type=sink
+2026-01-02 12:03:31.422 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2026-01-02 12:03:31.423 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2026-01-02 12:03:31.423 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2026-01-02 12:03:31.423 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-02 12:03:31.423 | INFO     | sink.sink_device:setup_gatt_server:188 | ✅ GATT Server configurado
+2026-01-02 12:03:31.423 | INFO     | sink.sink_device:setup_advertising:192 | A configurar BLE Advertising...
+2026-01-02 12:03:31.423 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-02 12:03:31.424 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-02 12:03:31.424 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 12:03:31.424 | INFO     | sink.sink_device:setup_advertising:203 | ✅ BLE Advertising configurado
+2026-01-02 12:03:31.424 | INFO     | sink.sink_device:start_heartbeat_service:357 | 💓 A iniciar serviço de heartbeat...
+2026-01-02 12:03:31.425 | INFO     | sink.sink_device:start_heartbeat_service:388 | ✅ Serviço de heartbeat iniciado
+2026-01-02 12:03:31.425 | INFO     | __main__:main:346 | ✅ Sink Device iniciado - CLI interativo pronto
+2026-01-02 12:03:31.431 | INFO     | __main__:<lambda>:317 | ✅ GATT application registada!
+2026-01-02 12:03:31.431 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 12:03:31.536 | INFO     | __main__:<lambda>:325 | ✅ Advertisement registado!
