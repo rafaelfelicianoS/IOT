@@ -362,9 +362,10 @@ class SinkDevice:
                 # Incrementar sequence
                 self.heartbeat_sequence += 1
 
-                # Criar pacote de heartbeat
+                # Criar pacote de heartbeat com assinatura
                 heartbeat_packet = create_heartbeat_packet(
                     sink_nid=self.my_nid,
+                    cert_manager=self.cert_manager,
                     sequence=self.heartbeat_sequence,
                 )
 

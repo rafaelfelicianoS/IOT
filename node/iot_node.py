@@ -458,6 +458,11 @@ class IoTNode:
                 logger.error("❌ MAC inválido em heartbeat!")
                 return
 
+            # Verificar assinatura digital do heartbeat
+            if not heartbeat.verify_signature(self.cert_manager):
+                logger.error("❌ Assinatura de heartbeat inválida!")
+                return
+
             # Atualizar timestamp
             self.last_heartbeat_time = time.time()
             self.heartbeat_sequence = packet.sequence
@@ -600,6 +605,11 @@ class IoTNode:
 
                         # Obter NID do Sink
                         self.uplink_nid = auth_protocol.peer_nid
+
+                        # Armazenar certificado do Sink para verificação de assinaturas
+                        if auth_protocol.peer_cert:
+                            self.cert_manager._sink_cert = auth_protocol.peer_cert
+                            logger.debug("✅ Certificado do Sink armazenado")
 
                         self.authenticated = True
                         return True

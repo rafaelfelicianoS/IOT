@@ -19,13 +19,16 @@ Signature: ECDSA (P-521) do (Sink NID + Timestamp)
 
 import struct
 import time
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 from dataclasses import dataclass
 
 from common.utils.nid import NID
 from common.utils.constants import MessageType, HEARTBEAT_INTERVAL
 from common.network.packet import Packet
 from common.utils.logger import get_logger
+
+if TYPE_CHECKING:
+    from common.security.certificate_manager import CertificateManager
 
 logger = get_logger("heartbeat")
 
@@ -144,20 +147,52 @@ class HeartbeatPayload:
             signature=signature,
         )
 
-    def verify_signature(self) -> bool:
+    def sign(self, cert_manager: 'CertificateManager'):
+        """
+        Assina o heartbeat com a chave privada do dispositivo.
+
+        Args:
+            cert_manager: Certificate manager com chave privada carregada
+        """
+        # Dados a assinar: Sink NID + Timestamp
+        data_to_sign = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
+
+        # Assinar com ECDSA
+        self.signature = cert_manager.sign_data(data_to_sign)
+
+        logger.debug(f"✍️  Heartbeat assinado: {len(self.signature)} bytes")
+
+    def verify_signature(self, cert_manager: 'CertificateManager') -> bool:
         """
         Verifica a assinatura digital do heartbeat.
 
+        Args:
+            cert_manager: Certificate manager com certificado do Sink
+
         Returns:
             True se assinatura válida, False caso contrário
-
-        Note:
-            Por agora retorna sempre True (placeholder).
-            TODO: Implementar verificação ECDSA real.
         """
-        # TODO: Implementar verificação ECDSA
-        logger.debug("Verificação de assinatura (placeholder)")
-        return True
+        # Verificar se temos certificado do Sink
+        if not hasattr(cert_manager, '_sink_cert') or cert_manager._sink_cert is None:
+            logger.warning("⚠️  Certificado do Sink não disponível para verificação")
+            return False
+
+        # Dados originais: Sink NID + Timestamp
+        data_to_verify = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
+
+        # Verificar assinatura
+        is_valid = cert_manager.verify_signature(
+            data_to_verify,
+            self.signature,
+            cert_manager._sink_cert
+        )
+
+        if is_valid:
+            logger.debug("✅ Assinatura de heartbeat válida")
+        else:
+            logger.warning("❌ Assinatura de heartbeat inválida")
+
+        return is_valid
 
     def age(self) -> float:
         """
@@ -181,6 +216,7 @@ class HeartbeatPayload:
 
 def create_heartbeat_packet(
     sink_nid: NID,
+    cert_manager: Optional['CertificateManager'] = None,
     broadcast_nid: Optional[NID] = None,
     sequence: int = 0,
 ) -> Packet:
@@ -189,6 +225,7 @@ def create_heartbeat_packet(
 
     Args:
         sink_nid: NID do Sink que envia o heartbeat
+        cert_manager: Certificate manager para assinar (se None, usa placeholder)
         broadcast_nid: NID de broadcast (None = usa sink_nid)
         sequence: Número de sequência
 
@@ -197,6 +234,10 @@ def create_heartbeat_packet(
     """
     # Criar payload
     heartbeat_payload = HeartbeatPayload.create(sink_nid)
+
+    # Assinar se temos certificate manager
+    if cert_manager is not None:
+        heartbeat_payload.sign(cert_manager)
 
     # Broadcast: destination = sink_nid (todos os nodes aceitam)
     if broadcast_nid is None:
