@@ -157,6 +157,10 @@ class IoTNode:
         self.last_heartbeat_time = 0
         self.heartbeat_sequence = 0
 
+        # Buffer para respostas de autenticação recebidas via indication
+        self.auth_response_buffer: List[bytes] = []
+        self.auth_response_lock = threading.Lock()
+
         logger.info(f"IoT Node inicializado (adapter=hci{adapter_index})")
 
     def setup_gatt_server(self):
@@ -493,6 +497,18 @@ class IoTNode:
         # Processar payload
         logger.info(f"✅ Mensagem recebida: {packet.payload!r}")
 
+    def _on_auth_indication(self, data: bytes):
+        """
+        Callback para receber indicações de autenticação do Sink.
+
+        Args:
+            data: Dados recebidos via indication
+        """
+        logger.debug(f"🔐 AUTH indication recebida: {len(data)} bytes")
+
+        with self.auth_response_lock:
+            self.auth_response_buffer.append(data)
+
     def authenticate_with_sink(self) -> bool:
         """
         Realiza autenticação mútua com o Sink.
@@ -507,6 +523,24 @@ class IoTNode:
             return False
 
         try:
+            # Limpar buffer de respostas de autenticações anteriores
+            with self.auth_response_lock:
+                self.auth_response_buffer.clear()
+
+            # Subscrever a AUTH characteristic para receber indicações
+            logger.debug("📡 A subscrever a AUTH characteristic...")
+            success = self.uplink_connection.subscribe(
+                IOT_NETWORK_SERVICE_UUID,
+                CHAR_AUTHENTICATION_UUID,
+                self._on_auth_indication
+            )
+
+            if not success:
+                logger.error("❌ Falha ao subscrever AUTH characteristic")
+                return False
+
+            logger.debug("✅ Subscrito a AUTH indications")
+
             # Criar protocolo de autenticação
             from common.security.authentication import AuthenticationProtocol
 
@@ -600,26 +634,19 @@ class IoTNode:
 
     def _read_auth_response(self) -> Optional[bytes]:
         """
-        Lê resposta de autenticação do Sink via AUTH characteristic.
+        Lê resposta de autenticação do buffer (recebida via indication).
 
         Returns:
             Dados recebidos ou None
         """
-        try:
-            data = self.uplink_connection.read(
-                IOT_NETWORK_SERVICE_UUID,
-                CHAR_AUTHENTICATION_UUID
-            )
-
-            if data and len(data) > 0:
-                logger.debug(f"Resposta auth recebida: {len(data)} bytes")
+        with self.auth_response_lock:
+            if self.auth_response_buffer:
+                # Pegar e remover primeira resposta do buffer
+                data = self.auth_response_buffer.pop(0)
+                logger.debug(f"Resposta auth lida do buffer: {len(data)} bytes")
                 return data
 
-            return None
-
-        except Exception as e:
-            logger.debug(f"Erro ao ler auth response: {e}")
-            return None
+        return None
 
     def send_message(self, message: bytes, destination: Optional[NID] = None) -> bool:
         """
