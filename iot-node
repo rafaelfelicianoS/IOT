@@ -39,20 +39,55 @@ def cmd_start(args):
 
     # Auto-detectar certificados no diretório certs/
     certs_dir = BASE_DIR / "certs"
-
-    # Procurar certificado do Node
-    node_certs = list(certs_dir.glob("node_*_cert.pem"))
-    node_keys = list(certs_dir.glob("node_*_key.pem"))
     ca_cert = certs_dir / "ca_certificate.pem"
+
+    # Procurar certificados em dois formatos:
+    # 1. Formato antigo: node_*_cert.pem diretamente em certs/
+    # 2. Formato novo: certs/<NID>/certificate.pem (onde NID é UUID de Node)
+    
+    node_certs = []
+    node_keys = []
+    
+    # Formato antigo
+    node_certs.extend(certs_dir.glob("node_*_cert.pem"))
+    node_keys.extend(certs_dir.glob("node_*_key.pem"))
+    
+    # Formato novo: procurar em subdiretórios por NID
+    # Verificar se o certificado é de Node (não Sink) usando openssl
+    import subprocess as sp
+    for nid_dir in certs_dir.iterdir():
+        if not nid_dir.is_dir():
+            continue
+        
+        cert_file = nid_dir / "certificate.pem"
+        key_file = nid_dir / "private_key.pem"
+        
+        if cert_file.exists() and key_file.exists():
+            # Verificar se é certificado de Node (não Sink)
+            # Sinks têm "OU = Sink" no subject
+            try:
+                result = sp.run(
+                    ["openssl", "x509", "-in", str(cert_file), "-noout", "-subject"],
+                    capture_output=True, text=True, check=True
+                )
+                subject = result.stdout.strip()
+                
+                # Se NÃO tem "OU = Sink" ou "OU=Sink", é um Node
+                if "OU = Sink" not in subject and "OU=Sink" not in subject:
+                    node_certs.append(cert_file)
+                    node_keys.append(key_file)
+            except Exception:
+                pass
 
     if not node_certs:
         print(f"❌ Nenhum certificado de Node encontrado em {certs_dir}/")
-        print("   Esperado: node_*_cert.pem")
+        print("   Formatos suportados:")
+        print("   - node_*_cert.pem (formato antigo)")
+        print("   - <NID>/certificate.pem (formato novo)")
         return 1
 
     if not node_keys:
         print(f"❌ Nenhuma chave privada de Node encontrada em {certs_dir}/")
-        print("   Esperado: node_*_key.pem")
         return 1
 
     if not ca_cert.exists():
@@ -63,13 +98,16 @@ def cmd_start(args):
     if len(node_certs) > 1:
         print(f"\n⚠️  Múltiplos certificados Node encontrados:")
         for i, cert in enumerate(node_certs, 1):
-            print(f"  {i}. {cert.name}")
+            # Mostrar NID (diretório pai) se disponível
+            nid = cert.parent.name if cert.parent.name != 'certs' else cert.stem
+            print(f"  {i}. {nid}")
 
         if args.cert_index is not None and 0 < args.cert_index <= len(node_certs):
             cert_to_use = node_certs[args.cert_index - 1]
             key_to_use = node_keys[args.cert_index - 1]
         else:
-            print(f"\nUsando o primeiro: {node_certs[0].name}")
+            nid_first = node_certs[0].parent.name if node_certs[0].parent.name != 'certs' else node_certs[0].stem
+            print(f"\nUsando o primeiro: {nid_first}")
             print("(Use --cert-index N para escolher outro)")
             cert_to_use = node_certs[0]
             key_to_use = node_keys[0]
@@ -77,23 +115,40 @@ def cmd_start(args):
         cert_to_use = node_certs[0]
         key_to_use = node_keys[0]
 
+    # Mostrar informação clara sobre o certificado selecionado
+    nid_selected = cert_to_use.parent.name if cert_to_use.parent.name != 'certs' else cert_to_use.stem
     print(f"\n✅ Certificados encontrados:")
-    print(f"   Cert: {cert_to_use.name}")
-    print(f"   Key:  {key_to_use.name}")
+    print(f"   NID:  {nid_selected}")
+    print(f"   Cert: {cert_to_use}")
+    print(f"   Key:  {key_to_use}")
     print(f"   CA:   {ca_cert.name}")
     print()
 
     # Construir comando com os certificados
+    # IMPORTANTE: Usar /usr/bin/python3 do sistema (não do venv)
+    # porque PyGObject (gi) só está disponível no sistema
     cmd = [
-        sys.executable, str(NODE_SCRIPT),
+        "/usr/bin/python3", str(NODE_SCRIPT),
         "--cert", str(cert_to_use),
         "--key", str(key_to_use),
         "--ca-cert", str(ca_cert),
         "--adapter", str(args.adapter)
     ]
 
+    # Configurar PYTHONPATH para incluir o projeto e os pacotes do venv
+    import os
+    env = os.environ.copy()
+    pythonpath_parts = [str(BASE_DIR)]
+    
+    # Adicionar site-packages do venv se existir
+    venv_site_packages = BASE_DIR / "venv" / "lib" / "python3.12" / "site-packages"
+    if venv_site_packages.exists():
+        pythonpath_parts.append(str(venv_site_packages))
+    
+    env['PYTHONPATH'] = ':'.join(pythonpath_parts)
+
     try:
-        subprocess.run(cmd, cwd=str(BASE_DIR))
+        subprocess.run(cmd, cwd=str(BASE_DIR), env=env)
     except KeyboardInterrupt:
         print("\n\n✅ Node parado pelo utilizador")
         return 0
