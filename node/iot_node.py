@@ -159,6 +159,8 @@ class IoTNode:
         self.authenticated = False  # Autenticado com uplink
         self.last_heartbeat_time = 0
         self.heartbeat_sequence = 0
+        self.data_packet_sequence = 0  # Contador de sequence para pacotes DATA
+        self.data_packet_sequence_lock = threading.Lock()
 
         # Buffer para respostas de autenticação recebidas via indication
         self.auth_response_buffer: List[bytes] = []
@@ -761,12 +763,18 @@ class IoTNode:
         if destination is None:
             destination = self.uplink_nid
 
+        # Obter e incrementar sequence number
+        with self.data_packet_sequence_lock:
+            seq = self.data_packet_sequence
+            self.data_packet_sequence += 1
+
         # Criar pacote
         packet = Packet.create(
             source=self.my_nid,
             destination=destination,
             msg_type=MessageType.DATA,
             payload=message,
+            sequence=seq,
         )
 
         # Calcular MAC se temos session key
