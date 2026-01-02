@@ -256,3 +256,91 @@ Sinal 2 recebido, a parar...
 2026-01-02 02:22:01.020 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
 2026-01-02 02:22:01.022 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20260102_022126-0046] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
 2026-01-02 02:22:01.025 | INFO     | __main__:stop:820 | ✅ Node parado
+2026-01-02 02:28:30.496 | INFO     | __main__:__init__:78 | A carregar certificados...
+2026-01-02 02:28:30.500 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 53a84472...
+2026-01-02 02:28:30.501 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-02 02:28:30.501 | INFO     | __main__:__init__:108 | ✅ Certificados carregados com sucesso
+2026-01-02 02:28:30.501 | INFO     | __main__:__init__:116 | Node NID: 53a84472...
+2026-01-02 02:28:30.501 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-02 02:28:30.502 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-02 02:28:30.519 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20260102_022830.log
+2026-01-02 02:28:30.520 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2026-01-02 02:28:30.521 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2026-01-02 02:28:30.521 | INFO     | __main__:__init__:164 | IoT Node inicializado (adapter=hci0)
+2026-01-02 02:28:30.522 | INFO     | __main__:run:765 | ============================================================
+2026-01-02 02:28:30.522 | INFO     | __main__:run:766 |   A iniciar IoT Node (dual-mode)
+2026-01-02 02:28:30.523 | INFO     | __main__:run:767 | ============================================================
+2026-01-02 02:28:30.525 | INFO     | __main__:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-02 02:28:30.527 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-02 02:28:30.528 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-02 02:28:30.528 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2026-01-02 02:28:30.531 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2026-01-02 02:28:30.532 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=53a84472..., type=node
+2026-01-02 02:28:30.533 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2026-01-02 02:28:30.534 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2026-01-02 02:28:30.538 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2026-01-02 02:28:30.539 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-02 02:28:30.540 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-02 02:28:30.542 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:30.543 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 02:28:30.546 | INFO     | __main__:setup_gatt_server:211 | ✅ GATT Server configurado
+2026-01-02 02:28:30.547 | INFO     | __main__:start_gatt_server:215 | A iniciar GATT Server...
+2026-01-02 02:28:30.551 | INFO     | __main__:start_gatt_server:244 | ✅ GATT Server iniciado em thread separada
+2026-01-02 02:28:30.551 | INFO     | __main__:run:775 | ✅ GATT Server ativo - aguardando downlinks
+2026-01-02 02:28:30.553 | INFO     | __main__:discover_sink:316 | 🔍 A procurar Sink...
+2026-01-02 02:28:30.555 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-02 02:28:30.556 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260102_022830-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 02:28:30.631 | INFO     | __main__:<lambda>:227 | ✅ GATT application registada!
+2026-01-02 02:28:30.633 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 02:28:30.745 | INFO     | __main__:<lambda>:235 | ✅ Advertisement registado!
+2026-01-02 02:28:35.836 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2026-01-02 02:28:35.836 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260102_022830-0002] SCAN_RESULT | Devices_Found: 1
+2026-01-02 02:28:35.837 | INFO     | __main__:discover_sink:323 | Encontrados 1 dispositivos IoT
+2026-01-02 02:28:35.838 | INFO     | __main__:discover_sink:340 | ✅ Sink encontrado: IoT-Sink-c5c55ab2 (E0:D3:62:D6:EE:A0) RSSI: -60 dBm
+2026-01-02 02:28:35.839 | INFO     | __main__:connect_to_sink:360 | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2026-01-02 02:28:35.839 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2026-01-02 02:28:35.840 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20260102_022830-0003] CONNECT_ATTEMPT | Local: A0:88:69:B6:F7:D2 | Remote: E0:D3:62:D6:EE:A0
+2026-01-02 02:28:39.042 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D6:EE:A0
+2026-01-02 02:28:39.043 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20260102_022830-0004] CONNECT_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Time: 3199.40ms
+2026-01-02 02:28:39.045 | INFO     | __main__:connect_to_sink:373 | ✅ Conectado ao Sink via GATT
+2026-01-02 02:28:39.053 | INFO     | __main__:connect_to_sink:386 | ✅ Serviço IoT Network encontrado
+2026-01-02 02:28:39.054 | INFO     | __main__:_subscribe_to_notifications:395 | A subscrever a notificações...
+2026-01-02 02:28:39.562 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:39.565 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20260102_022830-0005] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:39.566 | INFO     | __main__:_subscribe_to_notifications:404 | ✅ Subscrito a NETWORK_PACKET
+2026-01-02 02:28:39.663 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20260102_022830-0007] READ_RESPONSE | Remote: E0:D3:62:D6:EE:A0 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380ff01 | ASCII: ..Z..iB}...Q......
+2026-01-02 02:28:39.664 | INFO     | __main__:_update_hop_count_from_uplink:750 | ✅ Conectado ao Sink - hop_count=0
+2026-01-02 02:28:39.666 | INFO     | __main__:authenticate_with_sink:519 | 🔐 A iniciar autenticação com Sink...
+2026-01-02 02:28:39.761 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:39.762 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20260102_022830-0008] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:39.762 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 53a84472...
+2026-01-02 02:28:39.763 | INFO     | __main__:authenticate_with_sink:550 | 📤 Enviando certificado...
+2026-01-02 02:28:39.763 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2026-01-02 02:28:39.763 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 887 bytes
+2026-01-02 02:28:39.764 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 890 bytes em 5 fragmentos
+2026-01-02 02:28:39.766 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260102_022830-0009] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100050103772d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949435954434341634b674177494241674955657479325a6c55354642 | ASCII: .....w-----BEGIN CERTIFICATE-----.MIICYTCCAcKgAwIBAgIUety2ZlU5FB [TRUNCATED]
+2026-01-02 02:28:39.767 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260102_022830-0010] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af380020100000003f72cddbfce556c6bb0474f7203fc157338a84b90110a9a1f252c | ASCII: ..Z..iB}...Q......Z..iB}...Q...........,...Ulk.GOr...s8.K.....%, [TRUNCATED]
+2026-01-02 02:28:39.769 | INFO     | __main__:_handle_heartbeat:444 | Sink NID identificado: c5c55ab2...
+2026-01-02 02:28:39.911 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260102_022830-0011] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:40.014 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260102_022830-0012] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001054d446b6c765643424f5a58523362334a7249454e424d423458445449314d5449794f54497a4e44517a4d6c6f580a44544d314d5449794e7a497a4e4451 | ASCII: ...MDklvVCBOZXR3b3JrIENBMB4XDTI1MTIyOTIzNDQzMloX.DTM1MTIyNzIzNDQ [TRUNCATED]
+2026-01-02 02:28:40.161 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260102_022830-0013] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:40.265 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260102_022830-0014] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000205675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241456a5a664e4f582f456157716c626755424372633971676b43350a | ASCII: ...gZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAEjZfNOX/EaWqlbgUBCrc9qgkC5. [TRUNCATED]
+2026-01-02 02:28:40.413 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260102_022830-0015] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:40.517 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260102_022830-0016] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000305322b7557522b624835560a3147525a7964677179532f365a50456b4778617937714d344d44597744415944565230544151482f424149774144414f4267 | ASCII: ...2+uWR+bH5V.1GRZydgqyS/6ZPEkGxay7qM4MDYwDAYDVR0TAQH/BAIwADAOBg [TRUNCATED]
+2026-01-02 02:28:40.662 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260102_022830-0017] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:40.765 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260102_022830-0018] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 173 bytes | Hex: 0204057a4233785053466831484d2f79427553464f702f794b5767580a69446f397832696f457134374b4e51567878794859475143516744444c625662666e58 | ASCII: ...zB3xPSFh1HM/yBuSFOp/yKWgX.iDo9x2ioEq47KNQVxxyHYGQCQgDDLbVbfnX [TRUNCATED]
+2026-01-02 02:28:40.861 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260102_022830-0019] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:40.863 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260102_022830-0020] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 38 bytes | Hex: 03000102002006b591f9df30b41cd63acda27b12a7154061c2a940bb5240017471a1248523b5 | ASCII: ..... .....0...:..{...@a..@.R@.tq.$.#.
+2026-01-02 02:28:41.464 | INFO     | common.security.authentication:handle_response:248 | 🔍 Response recebida - verificando assinatura...
+2026-01-02 02:28:41.465 | ERROR    | common.security.authentication:handle_response:251 | ❌ Nenhum challenge foi enviado!
+2026-01-02 02:28:41.470 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260102_022830-0021] WRITE_REQUEST | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 23 bytes | Hex: 0300010500114e6f206368616c6c656e67652073656e74 | ASCII: ......No challenge sent
+2026-01-02 02:28:41.561 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260102_022830-0022] WRITE_SUCCESS | Remote: E0:D3:62:D6:EE:A0 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-02 02:28:44.766 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260102_022830-0023] NOTIFICATION | Remote: E0:D3:62:D6:EE:A0 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 158 bytes | Hex: c5c55ab2c469427db40fbf51ab0af380c5c55ab2c469427db40fbf51ab0af38002010000000458de169dd01a56b5ebb6a6296f37d0bba1ed54d26fdb09b5841c | ASCII: ..Z..iB}...Q......Z..iB}...Q..........X.....V....)o7....T.o..... [TRUNCATED]
+2026-01-02 02:28:46.073 | ERROR    | __main__:authenticate_with_sink:600 | ❌ Autenticação expirou (timeout)
+2026-01-02 02:28:46.074 | ERROR    | __main__:run:802 | ❌ Falha na autenticação
+2026-01-02 02:28:46.075 | INFO     | __main__:stop:834 | A parar Node...
+2026-01-02 02:28:46.076 | INFO     | __main__:stop_gatt_server:248 | A parar GATT Server...
+2026-01-02 02:28:46.079 | INFO     | __main__:stop_gatt_server:256 | ✅ GATT Server parado
+2026-01-02 02:28:48.023 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D6:EE:A0
+2026-01-02 02:28:48.026 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20260102_022830-0024] DISCONNECT | Remote: E0:D3:62:D6:EE:A0 | Reason: normal
+2026-01-02 02:28:48.027 | INFO     | __main__:stop:847 | ✅ Node parado
