@@ -1,0 +1,54 @@
+2025-12-31 01:35:53.192 | INFO     | __main__:__init__:82 | A carregar certificados...
+2025-12-31 01:35:53.194 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para c5c55ab2...
+2025-12-31 01:35:53.195 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2025-12-31 01:35:53.195 | INFO     | __main__:__init__:112 | ✅ Certificados carregados com sucesso
+2025-12-31 01:35:53.195 | INFO     | __main__:__init__:120 | Sink NID: c5c55ab2...
+2025-12-31 01:35:53.195 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2025-12-31 01:35:53.195 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2025-12-31 01:35:53.195 | INFO     | __main__:__init__:143 | Sink Device inicializado (adapter=hci0)
+2025-12-31 01:35:53.195 | INFO     | __main__:start:388 | ============================================================
+2025-12-31 01:35:53.195 | INFO     | __main__:start:389 |   A iniciar Sink Device
+2025-12-31 01:35:53.195 | INFO     | __main__:start:390 | ============================================================
+2025-12-31 01:35:53.195 | INFO     | __main__:setup_gatt_server:147 | A configurar GATT Server...
+2025-12-31 01:35:53.196 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2025-12-31 01:35:53.196 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2025-12-31 01:35:53.197 | INFO     | common.ble.gatt_services:__init__:551 | A criar IoTNetworkService...
+2025-12-31 01:35:53.197 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2025-12-31 01:35:53.197 | INFO     | common.ble.gatt_services:__init__:214 | DeviceInfoCharacteristic criada: NID=c5c55ab2..., type=sink
+2025-12-31 01:35:53.197 | INFO     | common.ble.gatt_services:__init__:288 | NeighborTableCharacteristic criada
+2025-12-31 01:35:53.197 | INFO     | common.ble.gatt_services:__init__:416 | AuthCharacteristic criada
+2025-12-31 01:35:53.197 | INFO     | common.ble.gatt_services:__init__:565 | ✅ IoTNetworkService criado com sucesso!
+2025-12-31 01:35:53.197 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2025-12-31 01:35:53.198 | INFO     | __main__:setup_gatt_server:185 | ✅ GATT Server configurado
+2025-12-31 01:35:53.198 | INFO     | __main__:start:397 | A registar GATT application no adaptador hci0...
+2025-12-31 01:35:53.198 | INFO     | __main__:setup_advertising:189 | A configurar BLE Advertising...
+2025-12-31 01:35:53.198 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2025-12-31 01:35:53.198 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2025-12-31 01:35:53.199 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:35:53.199 | INFO     | __main__:setup_advertising:200 | ✅ BLE Advertising configurado
+2025-12-31 01:35:53.199 | INFO     | __main__:start:413 | A registar advertisement no adaptador hci0...
+2025-12-31 01:35:53.199 | INFO     | __main__:start_heartbeat_service:354 | 💓 A iniciar serviço de heartbeat...
+2025-12-31 01:35:53.200 | INFO     | __main__:start_heartbeat_service:384 | ✅ Serviço de heartbeat iniciado
+2025-12-31 01:35:53.200 | INFO     | __main__:start:430 | ✅ Sink Device iniciado - a aguardar conexões...
+2025-12-31 01:35:53.205 | INFO     | __main__:<lambda>:405 | ✅ GATT application registada!
+2025-12-31 01:35:53.205 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2025-12-31 01:35:53.308 | INFO     | __main__:<lambda>:419 | ✅ Advertisement registado!
+2025-12-31 01:36:09.637 | INFO     | common.ble.gatt_services:StartNotify:120 | Cliente :1.1891 subscreveu notificações de pacotes
+2025-12-31 01:36:09.888 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 5 fragmentos
+2025-12-31 01:36:10.841 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 890 bytes (5 fragmentos)
+2025-12-31 01:36:10.842 | INFO     | common.ble.gatt_services:WriteValue:455 | Mensagem completa recebida de :1.1891: 890 bytes
+2025-12-31 01:36:10.842 | INFO     | __main__:_on_auth_message:261 | 🔐 Mensagem de autenticação recebida de :1.1891: 890 bytes
+2025-12-31 01:36:10.843 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de :1.1891: 890 bytes
+2025-12-31 01:36:10.844 | INFO     | common.security.auth_handler:get_or_create_session:71 | Nova sessão de autenticação para cliente: :1.1891
+2025-12-31 01:36:10.844 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para c5c55ab2...
+2025-12-31 01:36:10.845 | INFO     | common.security.authentication:handle_cert_offer:163 | 📜 Certificado do peer recebido - validando...
+2025-12-31 01:36:10.847 | INFO     | common.security.certificate_manager:validate_certificate:262 | ✅ Certificado validado com sucesso
+2025-12-31 01:36:10.848 | INFO     | common.security.authentication:handle_cert_offer:181 | ✅ Certificado válido!
+2025-12-31 01:36:10.848 | INFO     | common.security.authentication:handle_cert_offer:182 |    Peer NID: 53a84472...
+2025-12-31 01:36:10.848 | INFO     | common.security.authentication:handle_cert_offer:183 |    Peer tipo: NODE
+2025-12-31 01:36:10.849 | INFO     | common.security.authentication:handle_cert_offer:192 | 🎲 Enviando challenge: d0ad837562ba0be25994d49ba45c80cf...
+2025-12-31 01:36:17.038 | INFO     | common.ble.gatt_services:StopNotify:137 | Cliente :1.1891 cancelou subscrição de pacotes
+2025-12-31 01:46:02.136 | INFO     | __main__:signal_handler:524 | 
+Sinal 2 recebido, a parar...
+2025-12-31 01:46:02.136 | INFO     | __main__:stop:442 | A parar Sink Device...
+2025-12-31 01:46:02.137 | INFO     | __main__:stop:454 | ✅ Sink Device parado
