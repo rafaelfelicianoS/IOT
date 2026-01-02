@@ -21,6 +21,9 @@ from pathlib import Path
 from typing import Optional, Dict, List
 import threading
 
+# Adicionar diretório raiz ao PYTHONPATH
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 # GLib para mainloop D-Bus (GATT Server)
 from gi.repository import GLib
 
