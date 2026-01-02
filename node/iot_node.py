@@ -452,12 +452,11 @@ class IoTNode:
                 logger.warning(f"⚠️  REPLAY ATTACK detectado em heartbeat!")
                 return
 
-            # Verificar MAC se temos session key
-            with self.uplink_session_key_lock:
-                if self.uplink_session_key:
-                    if not self._verify_packet_mac(packet, self.uplink_session_key):
-                        logger.error("❌ MAC inválido em heartbeat!")
-                        return
+            # Verificar MAC com chave padrão (heartbeats são broadcast)
+            # Heartbeats usam a chave padrão, não session keys (são broadcast)
+            if not packet.verify_mac():
+                logger.error("❌ MAC inválido em heartbeat!")
+                return
 
             # Atualizar timestamp
             self.last_heartbeat_time = time.time()
