@@ -24,6 +24,7 @@ Comandos disponíveis:
 | `status` | Status geral do Sink | `status` |
 | `downlinks` | Lista Nodes conectados | `downlinks` |
 | `heartbeat_stats` | Stats de heartbeats | `heartbeat_stats` |
+| `inbox [limit]` | Mostra mensagens recebidas | `inbox` ou `inbox 50` |
 | `send <nid> <msg>` | Envia mensagem para um Node | `send 53a84 Hello Node!` |
 | `broadcast <msg>` | Broadcast para todos os Nodes | `broadcast Attention!` |
 | `session_keys` | Lista session keys | `session_keys` |
@@ -257,6 +258,30 @@ sink> broadcast Mensagem para todos!
 # Cada Node conectado vai receber a mensagem
 ```
 
+### Exemplo 5: Ver Mensagens Recebidas (Inbox)
+
+```bash
+# Terminal 1 - Sink
+sink> inbox
+
+📥 INBOX - MENSAGENS RECEBIDAS
+
+┌──────────────────────┬──────────────────────┬─────────────────────────────────┐
+│ Timestamp            │ Source NID           │ Message                         │
+├──────────────────────┼──────────────────────┼─────────────────────────────────┤
+│ 2026-01-02 14:32:15  │ 9d4df1cf-0b47-...    │ Hello Sink!                     │
+│ 2026-01-02 14:32:20  │ 9d4df1cf-0b47-...    │ Temperature: 23.5C              │
+│ 2026-01-02 14:32:45  │ a1b2c3d4-5e6f-...    │ Sensor data update              │
+└──────────────────────┴──────────────────────┴─────────────────────────────────┘
+
+📊 Total no inbox: 3 mensagem(ns)
+
+# Ver mais mensagens
+sink> inbox 50
+
+# Mensagens são enviadas pelos Nodes usando o comando 'send'
+```
+
 ## Dicas e Tricks
 
 ### 1. Auto-complete
@@ -336,6 +361,7 @@ ls -la certs/ | grep -E "(sink|node|ca)"
 | `status` | ✅ Implementado | Mostra tudo |
 | `downlinks` | ✅ Implementado | Lista nodes |
 | `heartbeat_stats` | ✅ Implementado | Stats de HB |
+| `inbox` | ✅ Implementado | Mostra mensagens recebidas |
 | `send` | ⚠️ Parcial | Base pronta, falta envio real |
 | `broadcast` | ⚠️ Parcial | Base pronta, falta envio real |
 | `session_keys` | ✅ Implementado | Lista keys |

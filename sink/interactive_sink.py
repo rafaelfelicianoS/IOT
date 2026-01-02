@@ -124,6 +124,65 @@ Digite 'exit' ou Ctrl+D para sair.
         print(f"   Total enviados: ~{self.sink.heartbeat_sequence}")
         print()
 
+    def do_inbox(self, arg):
+        """
+        Mostra mensagens recebidas dos Nodes (Inbox Service).
+
+        Uso: inbox [limit]
+
+        Argumentos:
+            limit    Número máximo de mensagens a mostrar (padrão: 20)
+
+        Exemplo:
+            inbox       - Mostra últimas 20 mensagens
+            inbox 50    - Mostra últimas 50 mensagens
+        """
+        # Determinar limite
+        limit = 20
+        if arg:
+            try:
+                limit = int(arg)
+                if limit <= 0:
+                    print("\n❌ Limite deve ser um número positivo\n")
+                    return
+            except ValueError:
+                print("\n❌ Limite inválido (deve ser um número)\n")
+                return
+
+        print("\n📥 INBOX - MENSAGENS RECEBIDAS\n")
+
+        with self.sink.inbox_lock:
+            if not self.sink.inbox:
+                print("(nenhuma mensagem recebida)\n")
+                return
+
+            # Pegar últimas N mensagens
+            messages = self.sink.inbox[-limit:]
+            total = len(self.sink.inbox)
+
+            if total > limit:
+                print(f"Mostrando {len(messages)} de {total} mensagens (use 'inbox {total}' para ver todas)\n")
+
+            # Cabeçalho da tabela
+            print("┌──────────────────────┬──────────────────────┬─────────────────────────────────┐")
+            print("│ Timestamp            │ Source NID           │ Message                         │")
+            print("├──────────────────────┼──────────────────────┼─────────────────────────────────┤")
+
+            for entry in messages:
+                # Formatar timestamp
+                ts = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(entry['timestamp']))
+                source_nid = entry['source_nid']
+                message = entry['message']
+
+                # Truncar mensagem se for muito longa
+                if len(message) > 31:
+                    message = message[:28] + "..."
+
+                print(f"│ {ts:20} │ {source_nid:20} │ {message:31} │")
+
+            print("└──────────────────────┴──────────────────────┴─────────────────────────────────┘")
+            print(f"\n📊 Total no inbox: {total} mensagem(ns)\n")
+
     # ========================================================================
     # COMANDOS DE CONTROLE
     # ========================================================================

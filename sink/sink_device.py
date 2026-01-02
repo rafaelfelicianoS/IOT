@@ -14,7 +14,7 @@ import sys
 import argparse
 import signal
 from pathlib import Path
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 import threading
 import time
 
@@ -133,6 +133,11 @@ class SinkDevice:
         # Session keys por link (client_nid -> session_key)
         self.session_keys: Dict[NID, bytes] = {}
         self.session_keys_lock = threading.Lock()
+
+        # Inbox: mensagens recebidas dos Nodes
+        # Estrutura: List[Dict] com {timestamp, source_nid, message, client_address}
+        self.inbox: List[Dict] = []
+        self.inbox_lock = threading.Lock()
 
         # GATT Application
         self.app = None
@@ -310,7 +315,32 @@ class SinkDevice:
         # Se destino é o Sink, processar localmente
         if packet.destination == self.my_nid:
             logger.info(f"✅ Pacote destinado ao Sink - payload: {packet.payload!r}")
-            # TODO: Processar mensagem (ex: Inbox service)
+
+            # Inbox Service: armazenar mensagem recebida
+            try:
+                # Decodificar mensagem
+                message = packet.payload.decode('utf-8', errors='replace')
+
+                # Preparar entrada do inbox
+                inbox_entry = {
+                    'timestamp': time.time(),
+                    'source_nid': packet.source.to_bytes().hex()[:16] + '...',  # Primeiros 8 bytes
+                    'message': message,
+                    'client_address': client_address,
+                    'sequence': packet.sequence
+                }
+
+                # Adicionar ao inbox com lock
+                with self.inbox_lock:
+                    self.inbox.append(inbox_entry)
+
+                    # Limitar tamanho do inbox (máximo 100 mensagens)
+                    if len(self.inbox) > 100:
+                        self.inbox.pop(0)  # Remover mensagem mais antiga
+
+                logger.info(f"📥 Mensagem armazenada no inbox: '{message}' (de {inbox_entry['source_nid']})")
+            except Exception as e:
+                logger.error(f"Erro ao armazenar mensagem no inbox: {e}", exc_info=True)
         else:
             # Forward para outro node (se tivermos rota)
             logger.warning(
