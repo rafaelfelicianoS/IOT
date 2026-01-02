@@ -509,8 +509,44 @@ class IoTNode:
             age = heartbeat.age()
             logger.debug(f"💓 Heartbeat recebido (seq={packet.sequence}, age={age:.2f}s)")
 
+            # Heartbeat Flooding: forward para todos os downlinks
+            self._forward_heartbeat_to_downlinks(packet)
+
         except Exception as e:
             logger.error(f"Erro ao processar heartbeat: {e}", exc_info=True)
+
+    def _forward_heartbeat_to_downlinks(self, packet: Packet):
+        """
+        Forward heartbeat recebido para todos os downlinks (Heartbeat Flooding).
+
+        O heartbeat original do Sink é propagado por toda a árvore de Nodes,
+        permitindo que todos os dispositivos detectem perda de conectividade.
+
+        Args:
+            packet: Pacote de heartbeat original recebido do uplink
+        """
+        with self.downlinks_lock:
+            if not self.downlinks:
+                # Sem downlinks - nada a fazer
+                return
+
+            downlink_count = len(self.downlinks)
+            logger.debug(f"🌊 Flooding heartbeat para {downlink_count} downlink(s)")
+
+        # Forward o heartbeat para cada downlink via GATT Server
+        # NOTA: O heartbeat é enviado como notificação através do NETWORK_PACKET characteristic
+        if self.service:
+            try:
+                # Obter a characteristic de NETWORK_PACKET do GATT Server
+                packet_char = self.service.get_characteristic(CHAR_NETWORK_PACKET_UUID)
+                if packet_char:
+                    # Enviar notificação com o heartbeat para todos os clientes conectados
+                    packet_char.notify_packet(packet.to_bytes())
+                    logger.debug(f"✅ Heartbeat forwarded para {downlink_count} downlink(s)")
+                else:
+                    logger.warning("⚠️  NETWORK_PACKET characteristic não encontrada no GATT Server")
+            except Exception as e:
+                logger.error(f"Erro ao forward heartbeat: {e}", exc_info=True)
 
     def _handle_data_packet(self, packet: Packet):
         """
