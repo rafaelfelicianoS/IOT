@@ -1,0 +1,166 @@
+#!/usr/bin/env python3
+"""
+CLI para controlar o IoT Node Device.
+
+Comandos disponíveis:
+  start     - Inicia o Node
+  status    - Verifica status do Node
+  logs      - Mostra logs do Node
+  send      - Envia mensagem para o Sink
+  
+Exemplos:
+  ./iot-node start
+  ./iot-node logs --tail 50
+  ./iot-node logs --follow
+  ./iot-node send "Hello Sink"
+"""
+
+import sys
+import subprocess
+import argparse
+from pathlib import Path
+
+# Diretório base do projeto
+BASE_DIR = Path(__file__).parent.absolute()
+NODE_SCRIPT = BASE_DIR / "node" / "iot_node.py"
+LOG_FILE = BASE_DIR / "logs" / "iot-network.log"
+
+def cmd_start(args):
+    """Inicia o Node Device."""
+    print("="*60)
+    print("  Iniciando IoT Node Device")
+    print("="*60)
+    print()
+    
+    try:
+        subprocess.run([sys.executable, str(NODE_SCRIPT)], cwd=str(BASE_DIR))
+    except KeyboardInterrupt:
+        print("\n\n✅ Node parado pelo utilizador")
+        return 0
+    except Exception as e:
+        print(f"\n❌ Erro ao iniciar Node: {e}")
+        return 1
+    
+    return 0
+
+def cmd_logs(args):
+    """Mostra logs do Node."""
+    if not LOG_FILE.exists():
+        print(f"❌ Arquivo de log não encontrado: {LOG_FILE}")
+        return 1
+    
+    try:
+        if args.follow:
+            # Seguir logs em tempo real
+            print("📋 Monitorando logs (Ctrl+C para parar)...")
+            print()
+            subprocess.run(["tail", "-f", str(LOG_FILE)])
+        elif args.tail:
+            # Mostrar últimas N linhas
+            subprocess.run(["tail", "-n", str(args.tail), str(LOG_FILE)])
+        elif args.grep:
+            # Filtrar logs
+            subprocess.run(["grep", "-i", "--color=auto", args.grep, str(LOG_FILE)])
+        else:
+            # Mostrar últimas 50 linhas por padrão
+            subprocess.run(["tail", "-n", "50", str(LOG_FILE)])
+    except KeyboardInterrupt:
+        print("\n\n✅ Monitoramento parado")
+        return 0
+    
+    return 0
+
+def cmd_status(args):
+    """Verifica status do Node."""
+    print("="*60)
+    print("  Status do IoT Node Device")
+    print("="*60)
+    print()
+    
+    # Verificar se o log existe
+    if LOG_FILE.exists():
+        print(f"✅ Log file: {LOG_FILE}")
+        
+        # Mostrar informações de conexão e autenticação
+        print("\n📋 Status da Conexão:")
+        print("-"*60)
+        subprocess.run([
+            "grep", "-E",
+            "Sink encontrado|Conectado ao Sink|Autenticação|Session key|Node pronto|heartbeat",
+            str(LOG_FILE)
+        ], stderr=subprocess.DEVNULL)
+        
+        # Mostrar últimos heartbeats
+        print("\n💓 Últimos Heartbeats:")
+        print("-"*60)
+        subprocess.run([
+            "grep", "Heartbeat recebido",
+            str(LOG_FILE)
+        ], stderr=subprocess.DEVNULL)
+        subprocess.run(["tail", "-n", "5"])
+    else:
+        print(f"⚠️  Nenhum log encontrado em {LOG_FILE}")
+    
+    return 0
+
+def cmd_send(args):
+    """Envia mensagem para o Sink (funcionalidade futura)."""
+    print("⚠️  Funcionalidade de envio de mensagens ainda não implementada")
+    print(f"    Mensagem a enviar: {args.message}")
+    return 1
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="CLI para controlar o IoT Node Device",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Exemplos de uso:
+  %(prog)s start                    Inicia o Node
+  %(prog)s logs                     Mostra últimos logs
+  %(prog)s logs --tail 100          Mostra últimas 100 linhas
+  %(prog)s logs --follow            Segue logs em tempo real
+  %(prog)s logs --grep auth         Filtra logs por padrão
+  %(prog)s status                   Verifica status do Node
+  %(prog)s send "Hello"             Envia mensagem ao Sink (futuro)
+        """
+    )
+    
+    subparsers = parser.add_subparsers(dest='command', help='Comando a executar')
+    
+    # Comando: start
+    parser_start = subparsers.add_parser('start', help='Inicia o Node Device')
+    
+    # Comando: logs
+    parser_logs = subparsers.add_parser('logs', help='Mostra logs do Node')
+    parser_logs.add_argument('--tail', type=int, metavar='N',
+                            help='Mostra últimas N linhas')
+    parser_logs.add_argument('--follow', '-f', action='store_true',
+                            help='Segue logs em tempo real')
+    parser_logs.add_argument('--grep', type=str, metavar='PATTERN',
+                            help='Filtra logs por padrão')
+    
+    # Comando: status
+    parser_status = subparsers.add_parser('status', help='Verifica status do Node')
+    
+    # Comando: send
+    parser_send = subparsers.add_parser('send', help='Envia mensagem ao Sink')
+    parser_send.add_argument('message', type=str, help='Mensagem a enviar')
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return 1
+    
+    # Executar comando
+    commands = {
+        'start': cmd_start,
+        'logs': cmd_logs,
+        'status': cmd_status,
+        'send': cmd_send,
+    }
+    
+    return commands[args.command](args)
+
+if __name__ == '__main__':
+    sys.exit(main())

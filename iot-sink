@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+"""
+CLI para controlar o IoT Sink Device.
+
+Comandos disponíveis:
+  start     - Inicia o Sink
+  status    - Verifica status do Sink
+  logs      - Mostra logs do Sink
+  
+Exemplos:
+  ./iot-sink start
+  ./iot-sink logs --tail 50
+  ./iot-sink logs --follow
+"""
+
+import sys
+import subprocess
+import argparse
+from pathlib import Path
+
+# Diretório base do projeto
+BASE_DIR = Path(__file__).parent.absolute()
+SINK_SCRIPT = BASE_DIR / "sink" / "sink_device.py"
+LOG_FILE = BASE_DIR / "logs" / "iot-network.log"
+
+def cmd_start(args):
+    """Inicia o Sink Device."""
+    print("="*60)
+    print("  Iniciando IoT Sink Device")
+    print("="*60)
+    print()
+    
+    try:
+        subprocess.run([sys.executable, str(SINK_SCRIPT)], cwd=str(BASE_DIR))
+    except KeyboardInterrupt:
+        print("\n\n✅ Sink parado pelo utilizador")
+        return 0
+    except Exception as e:
+        print(f"\n❌ Erro ao iniciar Sink: {e}")
+        return 1
+    
+    return 0
+
+def cmd_logs(args):
+    """Mostra logs do Sink."""
+    if not LOG_FILE.exists():
+        print(f"❌ Arquivo de log não encontrado: {LOG_FILE}")
+        return 1
+    
+    try:
+        if args.follow:
+            # Seguir logs em tempo real
+            print("📋 Monitorando logs (Ctrl+C para parar)...")
+            print()
+            subprocess.run(["tail", "-f", str(LOG_FILE)])
+        elif args.tail:
+            # Mostrar últimas N linhas
+            subprocess.run(["tail", "-n", str(args.tail), str(LOG_FILE)])
+        elif args.grep:
+            # Filtrar logs
+            subprocess.run(["grep", "-i", "--color=auto", args.grep, str(LOG_FILE)])
+        else:
+            # Mostrar últimas 50 linhas por padrão
+            subprocess.run(["tail", "-n", "50", str(LOG_FILE)])
+    except KeyboardInterrupt:
+        print("\n\n✅ Monitoramento parado")
+        return 0
+    
+    return 0
+
+def cmd_status(args):
+    """Verifica status do Sink."""
+    print("="*60)
+    print("  Status do IoT Sink Device")
+    print("="*60)
+    print()
+    
+    # Verificar se o log existe
+    if LOG_FILE.exists():
+        print(f"✅ Log file: {LOG_FILE}")
+        
+        # Mostrar últimas linhas relevantes
+        print("\n📋 Últimas atividades:")
+        print("-"*60)
+        subprocess.run([
+            "grep", "-E", 
+            "A iniciar|iniciado|conectado|Autenticação|Session key|Heartbeat",
+            str(LOG_FILE)
+        ], stderr=subprocess.DEVNULL)
+    else:
+        print(f"⚠️  Nenhum log encontrado em {LOG_FILE}")
+    
+    return 0
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="CLI para controlar o IoT Sink Device",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Exemplos de uso:
+  %(prog)s start                    Inicia o Sink
+  %(prog)s logs                     Mostra últimos logs
+  %(prog)s logs --tail 100          Mostra últimas 100 linhas
+  %(prog)s logs --follow            Segue logs em tempo real
+  %(prog)s logs --grep heartbeat    Filtra logs por padrão
+  %(prog)s status                   Verifica status do Sink
+        """
+    )
+    
+    subparsers = parser.add_subparsers(dest='command', help='Comando a executar')
+    
+    # Comando: start
+    parser_start = subparsers.add_parser('start', help='Inicia o Sink Device')
+    
+    # Comando: logs
+    parser_logs = subparsers.add_parser('logs', help='Mostra logs do Sink')
+    parser_logs.add_argument('--tail', type=int, metavar='N', 
+                            help='Mostra últimas N linhas')
+    parser_logs.add_argument('--follow', '-f', action='store_true',
+                            help='Segue logs em tempo real')
+    parser_logs.add_argument('--grep', type=str, metavar='PATTERN',
+                            help='Filtra logs por padrão')
+    
+    # Comando: status
+    parser_status = subparsers.add_parser('status', help='Verifica status do Sink')
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return 1
+    
+    # Executar comando
+    commands = {
+        'start': cmd_start,
+        'logs': cmd_logs,
+        'status': cmd_status,
+    }
+    
+    return commands[args.command](args)
+
+if __name__ == '__main__':
+    sys.exit(main())
