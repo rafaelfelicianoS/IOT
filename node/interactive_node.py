@@ -554,6 +554,8 @@ def main():
                         # Limpar estado de uplink
                         node.authenticated = False
                         node.uplink_nid = None
+                        # Chain Reaction Disconnect: desconectar todos os downlinks
+                        node.disconnect_all_downlinks()
                 elif current_connected:
                     # Conectado - resetar flag para próxima desconexão
                     disconnect_message_shown[0] = False
@@ -576,6 +578,8 @@ def main():
                             node.uplink_connection.disconnect()
                         node.authenticated = False
                         node.uplink_nid = None
+                        # Chain Reaction Disconnect: desconectar todos os downlinks
+                        node.disconnect_all_downlinks()
                     elif time_since_heartbeat > 10:
                         logger.warning(
                             f"⚠️  Sem heartbeat há {time_since_heartbeat:.1f}s "

@@ -262,6 +262,42 @@ class IoTNode:
 
         logger.info("✅ GATT Server parado")
 
+    def disconnect_all_downlinks(self):
+        """
+        Desconecta todos os downlinks (Chain Reaction Disconnect).
+
+        Chamado quando este Node perde uplink (desconexão ou heartbeat timeout).
+        Força todos os Nodes conectados abaixo a desconectarem em cascata.
+        """
+        with self.downlinks_lock:
+            if not self.downlinks:
+                logger.debug("Nenhum downlink para desconectar")
+                return
+
+            downlink_count = len(self.downlinks)
+            logger.warning(f"🔻 Chain Reaction Disconnect: desconectando {downlink_count} downlink(s)")
+
+            # Listar downlinks para log
+            for addr, nid in self.downlinks.items():
+                logger.info(f"   Desconectando downlink: {addr} (NID: {nid.to_bytes().hex()[:8]}...)")
+
+            # Limpar downlinks
+            # NOTA: A desconexão física acontece quando o GATT Server para ou
+            # quando os downlinks detectam que perdemos uplink (hop_count = -1 no advertisement)
+            self.downlinks.clear()
+
+        # Limpar session keys dos downlinks
+        with self.downlink_session_keys_lock:
+            self.downlink_session_keys.clear()
+
+        # Atualizar advertisement para hop_count = -1 (desconectado)
+        # Isso fará os downlinks saberem que perdemos uplink
+        with self.hop_count_lock:
+            self.hop_count = -1
+        self.update_advertisement_hop_count()
+
+        logger.info("✅ Todos os downlinks desconectados (chain reaction completada)")
+
     def update_advertisement_hop_count(self):
         """Atualiza o hop_count no advertisement."""
         if not self.advertisement:
@@ -836,6 +872,8 @@ class IoTNode:
                 # Verificar se ainda está conectado
                 if not self.uplink_connection.is_connected:
                     logger.warning("⚠️  Conexão perdida com Sink")
+                    # Chain Reaction Disconnect: desconectar todos os downlinks
+                    self.disconnect_all_downlinks()
                     break
 
                 # Verificar se recebemos heartbeat recentemente (último 15s)
@@ -848,6 +886,8 @@ class IoTNode:
                             f"(último seq={self.heartbeat_sequence})"
                         )
                         logger.warning("⚠️  Desconectando do uplink devido a timeout de heartbeat...")
+                        # Chain Reaction Disconnect: desconectar todos os downlinks
+                        self.disconnect_all_downlinks()
                         break
                     elif time_since_heartbeat > 10:
                         logger.warning(
