@@ -5,6 +5,7 @@ Fornece funcionalidades criptográficas:
 - HMAC-SHA256 para integridade de pacotes
 - Proteção contra replay attacks
 - Certificados X.509 e autenticação mútua
+- DTLS para encriptação end-to-end
 """
 
 # Crypto (HMAC)
@@ -23,6 +24,9 @@ from common.security.authentication import (
 )
 from common.security.auth_handler import AuthenticationHandler
 
+# DTLS End-to-End Encryption
+from common.security.dtls_wrapper import DTLSChannel, DTLSManager
+
 __all__ = [
     # Crypto
     'calculate_hmac',
@@ -36,4 +40,7 @@ __all__ = [
     'AuthMessageType',
     'AuthState',
     'AuthenticationHandler',
+    # DTLS
+    'DTLSChannel',
+    'DTLSManager',
 ]
