@@ -1,0 +1,86 @@
+2026-01-02 02:20:27.649 | INFO     | BLE Operation Logger iniciado: ble_operations_A08869B6F7D2_20260102_022027.log
+2026-01-02 02:20:27.649 | INFO     | Scanner BLE iniciado: hci0 (A0:88:69:B6:F7:D2)
+2026-01-02 02:20:27.650 | INFO     | BLE Client iniciado
+2026-01-02 02:20:27.650 | INFO     | IoT Node inicializado (adapter=hci0)
+2026-01-02 02:20:27.651 | INFO     | ============================================================
+2026-01-02 02:20:27.652 | INFO     |   A iniciar IoT Node (dual-mode)
+2026-01-02 02:20:27.653 | INFO     | ============================================================
+2026-01-02 02:20:27.653 | INFO     | A configurar GATT Server...
+2026-01-02 02:20:27.658 | INFO     | Application criada: /
+2026-01-02 02:20:27.660 | INFO     | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-02 02:20:27.661 | INFO     | A criar IoTNetworkService...
+2026-01-02 02:20:27.663 | DEBUG    | Characteristic criada: /0/char0 (UUID: 12340001-0000-1000-8000-00805f9b34fb, flags: ['write', 'notify'])
+2026-01-02 02:20:27.664 | INFO     | NetworkPacketCharacteristic criada
+2026-01-02 02:20:27.667 | DEBUG    | Characteristic criada: /0/char1 (UUID: 12340002-0000-1000-8000-00805f9b34fb, flags: ['read'])
+2026-01-02 02:20:27.668 | INFO     | DeviceInfoCharacteristic criada: NID=53a84472..., type=node
+2026-01-02 02:20:27.668 | DEBUG    | Characteristic criada: /0/char2 (UUID: 12340003-0000-1000-8000-00805f9b34fb, flags: ['read', 'notify'])
+2026-01-02 02:20:27.669 | INFO     | NeighborTableCharacteristic criada
+2026-01-02 02:20:27.669 | DEBUG    | Characteristic criada: /0/char3 (UUID: 12340004-0000-1000-8000-00805f9b34fb, flags: ['write', 'indicate'])
+2026-01-02 02:20:27.669 | INFO     | AuthCharacteristic criada
+2026-01-02 02:20:27.670 | DEBUG    | Characteristic adicionada a /0: /0/char0
+2026-01-02 02:20:27.670 | DEBUG    | Characteristic adicionada a /0: /0/char1
+2026-01-02 02:20:27.670 | DEBUG    | Characteristic adicionada a /0: /0/char2
+2026-01-02 02:20:27.671 | DEBUG    | Characteristic adicionada a /0: /0/char3
+2026-01-02 02:20:27.671 | INFO     | ✅ IoTNetworkService criado com sucesso!
+2026-01-02 02:20:27.672 | INFO     | Service adicionado à aplicação: /0
+2026-01-02 02:20:27.673 | DEBUG    | Packet callback definido
+2026-01-02 02:20:27.673 | DEBUG    | Auth callback definido
+2026-01-02 02:20:27.674 | INFO     | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-02 02:20:27.675 | INFO     | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-02 02:20:27.676 | INFO     |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 02:20:27.676 | DEBUG    | Local name definido: IoT-Node-53a84472
+2026-01-02 02:20:27.676 | DEBUG    | Manufacturer data adicionado: ID=65535
+2026-01-02 02:20:27.676 | INFO     | ✅ GATT Server configurado
+2026-01-02 02:20:27.677 | INFO     | A iniciar GATT Server...
+2026-01-02 02:20:27.680 | INFO     | ✅ GATT Server iniciado em thread separada
+2026-01-02 02:20:27.681 | INFO     | ✅ GATT Server ativo - aguardando downlinks
+2026-01-02 02:20:27.681 | INFO     | 🔍 A procurar Sink...
+2026-01-02 02:20:27.681 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 02:20:27.682 | INFO     | [OP-20260102_022027-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 02:20:27.684 | DEBUG    | GetManagedObjects called
+2026-01-02 02:20:27.684 | DEBUG    | GetManagedObjects returning 5 objects
+2026-01-02 02:20:27.756 | INFO     | ✅ GATT application registada!
+2026-01-02 02:20:27.757 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2026-01-02 02:20:27.757 | INFO     | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-02 02:20:27.868 | INFO     | ✅ Advertisement registado!
+2026-01-02 02:20:32.866 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-02 02:20:32.867 | INFO     | [OP-20260102_022027-0002] SCAN_RESULT | Devices_Found: 0
+2026-01-02 02:20:32.868 | INFO     | Encontrados 0 dispositivos IoT
+2026-01-02 02:20:32.869 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 02:20:32.870 | INFO     | [OP-20260102_022027-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 02:20:37.979 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-02 02:20:37.979 | INFO     | [OP-20260102_022027-0004] SCAN_RESULT | Devices_Found: 0
+2026-01-02 02:20:37.980 | INFO     | Encontrados 0 dispositivos IoT
+2026-01-02 02:20:37.980 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 02:20:37.980 | INFO     | [OP-20260102_022027-0005] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 02:20:43.091 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-02 02:20:43.093 | INFO     | [OP-20260102_022027-0006] SCAN_RESULT | Devices_Found: 0
+2026-01-02 02:20:43.095 | INFO     | Encontrados 0 dispositivos IoT
+2026-01-02 02:20:43.097 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 02:20:43.099 | INFO     | [OP-20260102_022027-0007] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 02:20:48.208 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-02 02:20:48.210 | INFO     | [OP-20260102_022027-0008] SCAN_RESULT | Devices_Found: 0
+2026-01-02 02:20:48.212 | INFO     | Encontrados 0 dispositivos IoT
+2026-01-02 02:20:48.213 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 02:20:48.214 | INFO     | [OP-20260102_022027-0009] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 02:20:53.321 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-02 02:20:53.323 | INFO     | [OP-20260102_022027-0010] SCAN_RESULT | Devices_Found: 0
+2026-01-02 02:20:53.325 | INFO     | Encontrados 0 dispositivos IoT
+2026-01-02 02:20:53.326 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-02 02:20:53.328 | INFO     | [OP-20260102_022027-0011] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-02 02:20:58.437 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-02 02:20:58.438 | INFO     | [OP-20260102_022027-0012] SCAN_RESULT | Devices_Found: 0
+2026-01-02 02:20:58.440 | INFO     | Encontrados 0 dispositivos IoT
+2026-01-02 02:20:58.441 | WARNING  | ⚠️  Sink não encontrado após timeout
+2026-01-02 02:20:58.443 | ERROR    | ❌ Falha ao descobrir uplink
+2026-01-02 02:20:58.447 | WARNING  | ⚠️  Sem uplink - operando apenas como server
+2026-01-02 02:21:21.463 | INFO     | 
+Sinal 2 recebido, a parar...
+2026-01-02 02:21:21.464 | INFO     | A parar Node...
+2026-01-02 02:21:21.465 | INFO     | A parar GATT Server...
+2026-01-02 02:21:21.467 | INFO     | ✅ GATT Server parado
+2026-01-02 02:21:21.467 | INFO     | ✅ Node parado
+2026-01-02 02:21:22.451 | INFO     | A parar Node...
+2026-01-02 02:21:22.452 | INFO     | A parar GATT Server...
+2026-01-02 02:21:22.454 | INFO     | ✅ GATT Server parado
+2026-01-02 02:21:22.454 | INFO     | ✅ Node parado
