@@ -3,13 +3,15 @@
 CLI para controlar o IoT Node Device.
 
 Comandos disponíveis:
-  start     - Inicia o Node
-  status    - Verifica status do Node
-  logs      - Mostra logs do Node
-  send      - Envia mensagem para o Sink
-  
+  start         - Inicia o Node
+  interactive   - Inicia o Node com CLI interativo
+  status        - Verifica status do Node
+  logs          - Mostra logs do Node
+  send          - Envia mensagem para o Sink
+
 Exemplos:
   ./iot-node start
+  ./iot-node interactive
   ./iot-node start --adapter 1
   ./iot-node start --cert-index 2
   ./iot-node logs --tail 50
@@ -25,6 +27,7 @@ from pathlib import Path
 # Diretório base do projeto
 BASE_DIR = Path(__file__).parent.absolute()
 NODE_SCRIPT = BASE_DIR / "node" / "iot_node.py"
+INTERACTIVE_NODE_SCRIPT = BASE_DIR / "node" / "interactive_node.py"
 LOG_FILE = BASE_DIR / "logs" / "iot-network.log"
 
 # Adicionar diretório base ao PYTHONPATH
@@ -158,6 +161,79 @@ def cmd_start(args):
 
     return 0
 
+def cmd_interactive(args):
+    """Inicia o Node Device com CLI interativo."""
+    print("="*60)
+    print("  Iniciando IoT Node Device (Interactive Mode)")
+    print("="*60)
+    print()
+
+    # Auto-detectar certificados no diretório certs/
+    certs_dir = BASE_DIR / "certs"
+
+    # Procurar certificado do Node
+    node_certs = list(certs_dir.glob("node_*_cert.pem"))
+    node_keys = list(certs_dir.glob("node_*_key.pem"))
+    ca_cert = certs_dir / "ca_certificate.pem"
+
+    if not node_certs:
+        print(f"❌ Nenhum certificado de Node encontrado em {certs_dir}/")
+        print("   Esperado: node_*_cert.pem")
+        return 1
+
+    if not node_keys:
+        print(f"❌ Nenhuma chave privada de Node encontrada em {certs_dir}/")
+        print("   Esperado: node_*_key.pem")
+        return 1
+
+    if not ca_cert.exists():
+        print(f"❌ Certificado CA não encontrado: {ca_cert}")
+        return 1
+
+    # Usar o primeiro encontrado (ou permitir seleção se múltiplos)
+    if len(node_certs) > 1:
+        print(f"\n⚠️  Múltiplos certificados Node encontrados:")
+        for i, cert in enumerate(node_certs, 1):
+            print(f"  {i}. {cert.name}")
+
+        if args.cert_index is not None and 0 < args.cert_index <= len(node_certs):
+            cert_to_use = node_certs[args.cert_index - 1]
+            key_to_use = node_keys[args.cert_index - 1]
+        else:
+            print(f"\nUsando o primeiro: {node_certs[0].name}")
+            print("(Use --cert-index N para escolher outro)")
+            cert_to_use = node_certs[0]
+            key_to_use = node_keys[0]
+    else:
+        cert_to_use = node_certs[0]
+        key_to_use = node_keys[0]
+
+    print(f"\n✅ Certificados encontrados:")
+    print(f"   Cert: {cert_to_use.name}")
+    print(f"   Key:  {key_to_use.name}")
+    print(f"   CA:   {ca_cert.name}")
+    print()
+
+    # Construir comando com os certificados
+    cmd = [
+        sys.executable, str(INTERACTIVE_NODE_SCRIPT),
+        "--cert", str(cert_to_use),
+        "--key", str(key_to_use),
+        "--ca-cert", str(ca_cert),
+        "--adapter", str(args.adapter)
+    ]
+
+    try:
+        subprocess.run(cmd, cwd=str(BASE_DIR))
+    except KeyboardInterrupt:
+        print("\n\n✅ Node parado pelo utilizador")
+        return 0
+    except Exception as e:
+        print(f"\n❌ Erro ao iniciar Node: {e}")
+        return 1
+
+    return 0
+
 def cmd_logs(args):
     """Mostra logs do Node."""
     if not LOG_FILE.exists():
@@ -230,15 +306,17 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Exemplos de uso:
-  %(prog)s start                    Inicia o Node (adapter hci0)
-  %(prog)s start --adapter 1        Inicia no adaptador hci1
-  %(prog)s start --cert-index 2     Usa 2º certificado (se múltiplos)
-  %(prog)s logs                     Mostra últimos logs
-  %(prog)s logs --tail 100          Mostra últimas 100 linhas
-  %(prog)s logs --follow            Segue logs em tempo real
-  %(prog)s logs --grep auth         Filtra logs por padrão
-  %(prog)s status                   Verifica status do Node
-  %(prog)s send "Hello"             Envia mensagem ao Sink (futuro)
+  %(prog)s start                        Inicia o Node (adapter hci0)
+  %(prog)s interactive                  Inicia Node com CLI interativo
+  %(prog)s start --adapter 1            Inicia no adaptador hci1
+  %(prog)s interactive --adapter 1      CLI interativo no adaptador hci1
+  %(prog)s start --cert-index 2         Usa 2º certificado (se múltiplos)
+  %(prog)s logs                         Mostra últimos logs
+  %(prog)s logs --tail 100              Mostra últimas 100 linhas
+  %(prog)s logs --follow                Segue logs em tempo real
+  %(prog)s logs --grep auth             Filtra logs por padrão
+  %(prog)s status                       Verifica status do Node
+  %(prog)s send "Hello"                 Envia mensagem ao Sink (futuro)
         """
     )
     
@@ -250,6 +328,13 @@ Exemplos de uso:
                              help='Índice do adaptador BLE (default: 0 = hci0)')
     parser_start.add_argument('--cert-index', type=int, metavar='N',
                              help='Índice do certificado a usar (se múltiplos)')
+
+    # Comando: interactive
+    parser_interactive = subparsers.add_parser('interactive', help='Inicia Node com CLI interativo')
+    parser_interactive.add_argument('--adapter', type=int, default=0,
+                                   help='Índice do adaptador BLE (default: 0 = hci0)')
+    parser_interactive.add_argument('--cert-index', type=int, metavar='N',
+                                   help='Índice do certificado a usar (se múltiplos)')
     
     # Comando: logs
     parser_logs = subparsers.add_parser('logs', help='Mostra logs do Node')
@@ -276,6 +361,7 @@ Exemplos de uso:
     # Executar comando
     commands = {
         'start': cmd_start,
+        'interactive': cmd_interactive,
         'logs': cmd_logs,
         'status': cmd_status,
         'send': cmd_send,

@@ -3,12 +3,14 @@
 CLI para controlar o IoT Sink Device.
 
 Comandos disponíveis:
-  start     - Inicia o Sink
-  status    - Verifica status do Sink
-  logs      - Mostra logs do Sink
-  
+  start         - Inicia o Sink
+  interactive   - Inicia o Sink com CLI interativo
+  status        - Verifica status do Sink
+  logs          - Mostra logs do Sink
+
 Exemplos:
   ./iot-sink start hci0
+  ./iot-sink interactive hci0
   ./iot-sink start hci0 --cert-index 2
   ./iot-sink logs --tail 50
   ./iot-sink logs --follow
@@ -22,6 +24,7 @@ from pathlib import Path
 # Diretório base do projeto
 BASE_DIR = Path(__file__).parent.absolute()
 SINK_SCRIPT = BASE_DIR / "sink" / "sink_device.py"
+INTERACTIVE_SINK_SCRIPT = BASE_DIR / "sink" / "interactive_sink.py"
 LOG_FILE = BASE_DIR / "logs" / "iot-network.log"
 
 # Adicionar diretório base ao PYTHONPATH
@@ -100,6 +103,79 @@ def cmd_start(args):
 
     return 0
 
+def cmd_interactive(args):
+    """Inicia o Sink Device com CLI interativo."""
+    print("="*60)
+    print("  Iniciando IoT Sink Device (Interactive Mode)")
+    print("="*60)
+    print()
+
+    # Auto-detectar certificados no diretório certs/
+    certs_dir = BASE_DIR / "certs"
+
+    # Procurar certificado do Sink
+    sink_certs = list(certs_dir.glob("sink_*_cert.pem"))
+    sink_keys = list(certs_dir.glob("sink_*_key.pem"))
+    ca_cert = certs_dir / "ca_certificate.pem"
+
+    if not sink_certs:
+        print(f"❌ Nenhum certificado de Sink encontrado em {certs_dir}/")
+        print("   Esperado: sink_*_cert.pem")
+        return 1
+
+    if not sink_keys:
+        print(f"❌ Nenhuma chave privada de Sink encontrada em {certs_dir}/")
+        print("   Esperado: sink_*_key.pem")
+        return 1
+
+    if not ca_cert.exists():
+        print(f"❌ Certificado CA não encontrado: {ca_cert}")
+        return 1
+
+    # Usar o primeiro encontrado (ou permitir seleção se múltiplos)
+    if len(sink_certs) > 1:
+        print(f"\n⚠️  Múltiplos certificados Sink encontrados:")
+        for i, cert in enumerate(sink_certs, 1):
+            print(f"  {i}. {cert.name}")
+
+        if args.cert_index is not None and 0 < args.cert_index <= len(sink_certs):
+            cert_to_use = sink_certs[args.cert_index - 1]
+            key_to_use = sink_keys[args.cert_index - 1]
+        else:
+            print(f"\nUsando o primeiro: {sink_certs[0].name}")
+            print("(Use --cert-index N para escolher outro)")
+            cert_to_use = sink_certs[0]
+            key_to_use = sink_keys[0]
+    else:
+        cert_to_use = sink_certs[0]
+        key_to_use = sink_keys[0]
+
+    print(f"\n✅ Certificados encontrados:")
+    print(f"   Cert: {cert_to_use.name}")
+    print(f"   Key:  {key_to_use.name}")
+    print(f"   CA:   {ca_cert.name}")
+    print()
+
+    # Construir comando com os certificados
+    cmd = [
+        sys.executable, str(INTERACTIVE_SINK_SCRIPT),
+        args.adapter,
+        "--cert", str(cert_to_use),
+        "--key", str(key_to_use),
+        "--ca-cert", str(ca_cert)
+    ]
+
+    try:
+        subprocess.run(cmd, cwd=str(BASE_DIR))
+    except KeyboardInterrupt:
+        print("\n\n✅ Sink parado pelo utilizador")
+        return 0
+    except Exception as e:
+        print(f"\n❌ Erro ao iniciar Sink: {e}")
+        return 1
+
+    return 0
+
 def cmd_logs(args):
     """Mostra logs do Sink."""
     if not LOG_FILE.exists():
@@ -157,13 +233,14 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Exemplos de uso:
-  %(prog)s start hci0               Inicia o Sink no adaptador hci0
+  %(prog)s start hci0                   Inicia o Sink no adaptador hci0
+  %(prog)s interactive hci0             Inicia Sink com CLI interativo
   %(prog)s start hci0 --cert-index 2    Usa 2º certificado (se múltiplos)
-  %(prog)s logs                     Mostra últimos logs
-  %(prog)s logs --tail 100          Mostra últimas 100 linhas
-  %(prog)s logs --follow            Segue logs em tempo real
-  %(prog)s logs --grep heartbeat    Filtra logs por padrão
-  %(prog)s status                   Verifica status do Sink
+  %(prog)s logs                         Mostra últimos logs
+  %(prog)s logs --tail 100              Mostra últimas 100 linhas
+  %(prog)s logs --follow                Segue logs em tempo real
+  %(prog)s logs --grep heartbeat        Filtra logs por padrão
+  %(prog)s status                       Verifica status do Sink
         """
     )
     
@@ -174,6 +251,12 @@ Exemplos de uso:
     parser_start.add_argument('adapter', help='Adaptador BLE (ex: hci0)')
     parser_start.add_argument('--cert-index', type=int, metavar='N',
                              help='Índice do certificado a usar (se múltiplos)')
+
+    # Comando: interactive
+    parser_interactive = subparsers.add_parser('interactive', help='Inicia Sink com CLI interativo')
+    parser_interactive.add_argument('adapter', help='Adaptador BLE (ex: hci0)')
+    parser_interactive.add_argument('--cert-index', type=int, metavar='N',
+                                   help='Índice do certificado a usar (se múltiplos)')
     
     # Comando: logs
     parser_logs = subparsers.add_parser('logs', help='Mostra logs do Sink')
@@ -196,6 +279,7 @@ Exemplos de uso:
     # Executar comando
     commands = {
         'start': cmd_start,
+        'interactive': cmd_interactive,
         'logs': cmd_logs,
         'status': cmd_status,
     }
