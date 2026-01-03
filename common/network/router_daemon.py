@@ -27,6 +27,11 @@ from common.security.crypto import calculate_hmac, verify_hmac
 from common.security.replay_protection import ReplayProtection
 
 
+def _get_msg_type_name(msg_type) -> str:
+    """Helper para obter nome do MessageType (handle int ou enum)."""
+    return msg_type.name if hasattr(msg_type, 'name') else f"MessageType({msg_type})"
+
+
 class RouterDaemon:
     """
     Router Daemon - Serviço de routing para dispositivos IoT.
@@ -100,7 +105,10 @@ class RouterDaemon:
         """
         with self.local_handlers_lock:
             self.local_handlers[msg_type] = handler
-        logger.debug(f"✅ Handler registado para {msg_type.name}")
+
+        # MessageType pode ser int ou enum, handle both
+        type_name = _get_msg_type_name(msg_type)
+        logger.debug(f"✅ Handler registado para {type_name}")
 
     def set_session_key(self, port_id: str, session_key: bytes):
         """
@@ -138,7 +146,7 @@ class RouterDaemon:
             logger.debug(
                 f"📥 Pacote recebido de {port_id}: "
                 f"{packet.source} → {packet.destination} "
-                f"(type={packet.msg_type.name}, ttl={packet.ttl})"
+                f"(type={_get_msg_type_name(packet.msg_type)}, ttl={packet.ttl})"
             )
 
             # 1. Verificar replay protection
@@ -212,7 +220,7 @@ class RouterDaemon:
                 f"❌ MAC verification failed for packet from {port_id}\n"
                 f"   Source: {packet.source}\n"
                 f"   Dest: {packet.destination}\n"
-                f"   Type: {packet.msg_type.name}\n"
+                f"   Type: {_get_msg_type_name(packet.msg_type)}\n"
                 f"   Seq: {packet.sequence}"
             )
 
@@ -227,7 +235,7 @@ class RouterDaemon:
         """
         logger.info(
             f"📨 Entregando localmente: {packet.source} → {packet.destination} "
-            f"(type={packet.msg_type.name}, {len(packet.payload)} bytes)"
+            f"(type={_get_msg_type_name(packet.msg_type)}, {len(packet.payload)} bytes)"
         )
 
         # Encontrar handler para este tipo de mensagem
@@ -242,7 +250,7 @@ class RouterDaemon:
             except Exception as e:
                 logger.error(f"Erro ao processar pacote localmente: {e}", exc_info=True)
         else:
-            logger.warning(f"⚠️  Sem handler para tipo {packet.msg_type.name}")
+            logger.warning(f"⚠️  Sem handler para tipo {_get_msg_type_name(packet.msg_type)}")
 
     def _forward_packet(self, packet: Packet, incoming_port: str):
         """
@@ -390,7 +398,7 @@ class RouterDaemon:
         if success:
             logger.info(
                 f"📤 Enviado: {str(destination)[:8]}... via {next_port} "
-                f"(type={msg_type.name})"
+                f"(type={_get_msg_type_name(msg_type)})"
             )
 
         return success
