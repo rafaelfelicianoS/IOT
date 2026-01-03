@@ -79,9 +79,10 @@ class IoTNode:
         self.running = False
 
         # Armazenar paths dos certificados (necessário para DTLS)
-        self.cert_path = cert_path
-        self.key_path = key_path
-        self.ca_cert_path = ca_cert_path
+        from pathlib import Path as PathLib
+        self.cert_path = PathLib(cert_path) if isinstance(cert_path, str) else cert_path
+        self.key_path = PathLib(key_path) if isinstance(key_path, str) else key_path
+        self.ca_cert_path = PathLib(ca_cert_path) if isinstance(ca_cert_path, str) else ca_cert_path
 
         # Carregar certificados manualmente
         logger.info("A carregar certificados...")
