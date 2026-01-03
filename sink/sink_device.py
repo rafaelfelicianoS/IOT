@@ -329,12 +329,22 @@ class SinkDevice:
 
         # Se destino é o Sink, processar localmente
         if packet.destination == self.my_nid:
-            logger.info(f"✅ Pacote destinado ao Sink - payload: {packet.payload!r}")
+            # DTLS End-to-End: Desencriptar payload
+            decrypted_payload = packet.payload
+            dtls_channel = self.dtls_manager.get_channel(packet.source)
+            if dtls_channel and dtls_channel.established and dtls_channel.aesgcm:
+                decrypted_payload = dtls_channel.unwrap(packet.payload)
+                if decrypted_payload is None:
+                    logger.error("❌ Falha ao desencriptar payload end-to-end - descartando pacote")
+                    return
+                logger.info(f"🔓 Payload desencriptado end-to-end: {len(packet.payload)} → {len(decrypted_payload)} bytes")
+
+            logger.info(f"✅ Pacote destinado ao Sink - payload: {decrypted_payload!r}")
 
             # Inbox Service: armazenar mensagem recebida
             try:
                 # Decodificar mensagem
-                message = packet.payload.decode('utf-8', errors='replace')
+                message = decrypted_payload.decode('utf-8', errors='replace')
 
                 # Preparar entrada do inbox
                 inbox_entry = {

@@ -794,12 +794,18 @@ class IoTNode:
             seq = self.data_packet_sequence
             self.data_packet_sequence += 1
 
+        # DTLS End-to-End: Encriptar payload antes de criar pacote
+        encrypted_payload = message
+        if self.dtls_channel and self.dtls_channel.established and self.dtls_channel.aesgcm:
+            encrypted_payload = self.dtls_channel.wrap(message)
+            logger.info(f"🔐 Payload encriptado end-to-end: {len(message)} → {len(encrypted_payload)} bytes")
+
         # Criar pacote
         packet = Packet.create(
             source=self.my_nid,
             destination=destination,
             msg_type=MessageType.DATA,
-            payload=message,
+            payload=encrypted_payload,
             sequence=seq,
         )
 
