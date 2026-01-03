@@ -6499,3 +6499,187 @@ Sinal 2 recebido, a parar...
 2026-01-03 18:19:46.607 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
 2026-01-03 18:19:47.518 | INFO     | node.iot_node:stop:1087 | A parar Node...
 2026-01-03 18:19:47.519 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
+2026-01-03 18:49:08.507 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-03 18:49:08.508 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-03 18:49:08.508 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-03 18:49:08.597 | INFO     | node.iot_node:__init__:89 | A carregar certificados...
+2026-01-03 18:49:08.634 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 74383752...
+2026-01-03 18:49:08.634 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-03 18:49:08.635 | INFO     | node.iot_node:__init__:119 | ✅ Certificados carregados com sucesso
+2026-01-03 18:49:08.635 | INFO     | node.iot_node:__init__:127 | Node NID: 74383752...
+2026-01-03 18:49:08.635 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-03 18:49:08.636 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-03 18:49:08.653 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D6EEA0_20260103_184908.log
+2026-01-03 18:49:08.654 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (E0:D3:62:D6:EE:A0)
+2026-01-03 18:49:08.654 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2026-01-03 18:49:08.655 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-03 18:49:08.656 | INFO     | common.network.router_daemon:__init__:85 | 🔀 Router Daemon inicializado para NID=74383752...
+2026-01-03 18:49:08.656 | INFO     | node.iot_node:__init__:196 | IoT Node inicializado (adapter=hci0)
+2026-01-03 18:49:08.657 | INFO     | node.iot_node:__init__:197 | ✅ Router Daemon integrado
+2026-01-03 18:49:08.657 | INFO     | node.iot_node:setup_gatt_server:201 | A configurar GATT Server...
+2026-01-03 18:49:08.659 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-03 18:49:08.660 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-03 18:49:08.661 | INFO     | common.ble.gatt_services:__init__:564 | A criar IoTNetworkService...
+2026-01-03 18:49:08.662 | INFO     | common.ble.gatt_services:__init__:75 | NetworkPacketCharacteristic criada
+2026-01-03 18:49:08.662 | INFO     | common.ble.gatt_services:__init__:227 | DeviceInfoCharacteristic criada: NID=74383752..., type=node
+2026-01-03 18:49:08.663 | INFO     | common.ble.gatt_services:__init__:301 | NeighborTableCharacteristic criada
+2026-01-03 18:49:08.664 | INFO     | common.ble.gatt_services:__init__:429 | AuthCharacteristic criada
+2026-01-03 18:49:08.665 | INFO     | common.ble.gatt_services:__init__:578 | ✅ IoTNetworkService criado com sucesso!
+2026-01-03 18:49:08.666 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-03 18:49:08.667 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-03 18:49:08.667 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:08.669 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-03 18:49:08.672 | INFO     | node.iot_node:setup_gatt_server:244 | ✅ GATT Server configurado
+2026-01-03 18:49:08.674 | INFO     | node.iot_node:start_gatt_server:248 | A iniciar GATT Server...
+2026-01-03 18:49:08.676 | INFO     | node.iot_node:start_gatt_server:277 | ✅ GATT Server iniciado em thread separada
+2026-01-03 18:49:08.676 | INFO     | __main__:main:517 | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-03 18:49:08.794 | INFO     | node.iot_node:<lambda>:260 | ✅ GATT application registada!
+2026-01-03 18:49:08.795 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-03 18:49:08.897 | INFO     | node.iot_node:<lambda>:268 | ✅ Advertisement registado!
+2026-01-03 18:49:11.824 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-03 18:49:11.826 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260103_184908-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-03 18:49:17.036 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2026-01-03 18:49:17.037 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260103_184908-0002] SCAN_RESULT | Devices_Found: 0
+2026-01-03 18:49:17.038 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-03 18:49:17.039 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260103_184908-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-03 18:49:22.065 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2026-01-03 18:49:22.066 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260103_184908-0004] SCAN_RESULT | Devices_Found: 1
+2026-01-03 18:49:29.186 | INFO     | node.iot_node:connect_to_sink:524 | A conectar ao Sink E0:D3:62:D7:47:03...
+2026-01-03 18:49:29.189 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D7:47:03...
+2026-01-03 18:49:29.192 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20260103_184908-0005] CONNECT_ATTEMPT | Local: E0:D3:62:D6:EE:A0 | Remote: E0:D3:62:D7:47:03
+2026-01-03 18:49:33.494 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D7:47:03
+2026-01-03 18:49:33.495 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20260103_184908-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D7:47:03 | Time: 4298.38ms
+2026-01-03 18:49:33.497 | INFO     | node.iot_node:connect_to_sink:537 | ✅ Conectado ao Sink via GATT
+2026-01-03 18:49:33.507 | INFO     | node.iot_node:connect_to_sink:550 | ✅ Serviço IoT Network encontrado
+2026-01-03 18:49:33.508 | INFO     | node.iot_node:_subscribe_to_notifications:559 | A subscrever a notificações...
+2026-01-03 18:49:33.937 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:33.938 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20260103_184908-0007] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:33.939 | INFO     | node.iot_node:_subscribe_to_notifications:568 | ✅ Subscrito a NETWORK_PACKET
+2026-01-03 18:49:34.026 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20260103_184908-0009] READ_RESPONSE | Remote: E0:D3:62:D7:47:03 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 54c225f24e894134bf27c5e9148e17c1ff01 | ASCII: T.%.N.A4.'........
+2026-01-03 18:49:34.027 | INFO     | node.iot_node:_update_hop_count_from_uplink:991 | ✅ Conectado ao Sink - hop_count=0
+2026-01-03 18:49:34.029 | INFO     | node.iot_node:authenticate_with_sink:723 | 🔐 A iniciar autenticação com Sink...
+2026-01-03 18:49:34.161 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:34.162 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20260103_184908-0010] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:34.163 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 74383752...
+2026-01-03 18:49:34.164 | INFO     | node.iot_node:authenticate_with_sink:754 | 📤 Enviando certificado...
+2026-01-03 18:49:34.165 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2026-01-03 18:49:34.166 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 887 bytes
+2026-01-03 18:49:34.167 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 890 bytes em 5 fragmentos
+2026-01-03 18:49:34.172 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260103_184908-0011] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100050103772d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949435954434341634b674177494241674955503456317a7156365177 | ASCII: .....w-----BEGIN CERTIFICATE-----.MIICYTCCAcKgAwIBAgIUP4V1zqV6Qw [TRUNCATED]
+2026-01-03 18:49:34.250 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260103_184908-0012] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:34.352 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260103_184908-0013] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001054d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774d6a45794e446b304d316f580a44544d314d54497a4d5445794e446b | ASCII: ...MDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwMjEyNDk0M1oX.DTM1MTIzMTEyNDk [TRUNCATED]
+2026-01-03 18:49:34.430 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260103_184908-0014] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:34.532 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260103_184908-0015] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000205675a7377454159484b6f5a497a6a3043415159464b34454541434d4467595941424145694e696357395555554c7a5a7a31477641556d77426e636f670a | ASCII: ...gZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAEiNicW9UUULzZz1GvAUmwBncog. [TRUNCATED]
+2026-01-03 18:49:34.610 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260103_184908-0016] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:34.712 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260103_184908-0017] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0003056f394a6e616a4d494f760a734344654e443674516a39337452687558446a6d524b4d344d44597744415944565230544151482f424149774144414f4267 | ASCII: ...o9JnajMIOv.sCDeND6tQj93tRhuXDjmRKM4MDYwDAYDVR0TAQH/BAIwADAOBg [TRUNCATED]
+2026-01-03 18:49:34.790 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260103_184908-0018] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:34.892 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260103_184908-0019] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 173 bytes | Hex: 0204056c466935494f443142454578567254414b2b776c774e2b676a0a4e3249572b3450556a78466643654f6152762b794a3734435167452b4654787a433554 | ASCII: ...lFi5IOD1BEExVrTAK+wlwN+gj.N2IW+4PUjxFfCeOaRv+yJ74CQgE+FTxzC5T [TRUNCATED]
+2026-01-03 18:49:35.017 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0020] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100060203b00000038c2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943634443434164476741774942416749554a787a6b7455 | ASCII: ..........-----BEGIN CERTIFICATE-----.MIICcDCCAdGgAwIBAgIUJxzktU [TRUNCATED]
+2026-01-03 18:49:35.018 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260103_184908-0021] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:35.025 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 6 fragmentos
+2026-01-03 18:49:35.106 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0022] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001065642414d4d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774d6a45794e446b7a4d6c6f580a44544d314d54497a4d5445 | ASCII: ...VBAMMDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwMjEyNDkzMloX.DTM1MTIzMTE [TRUNCATED]
+2026-01-03 18:49:35.198 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0023] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000206597a45784454414c42674e564241734d42464e70626d7377675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241415377 | ASCII: ...YzExDTALBgNVBAsMBFNpbmswgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAASw [TRUNCATED]
+2026-01-03 18:49:35.288 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0024] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000306386e6a795a48523051644f4375300a6f4e41363237777a484f3239624a6f6b67614b4c486e66436d2b505643727934344a64307a434d4e50614d344d44 | ASCII: ...8njyZHR0QdOCu0.oNA627wzHO29bJokgaKLHnfCm+PVCry44Jd0zCMNPaM4MD [TRUNCATED]
+2026-01-03 18:49:35.378 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0025] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 00040634706d4967797a644e615a4e4a506a66796561623859385839394141680a6158316663585374655142344b476a74343969626571735a70734d59754675 | ASCII: ...4pmIgyzdNaZNJPjfyeab8Y8X99AAh.aX1fcXSteQB4KGjt49ibeqsZpsMYuFu [TRUNCATED]
+2026-01-03 18:49:35.465 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0026] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 50 bytes | Hex: 0205065254494649434154452d2d2d2d2d0a626b3959d45efb75bca7f30e1f90a7fe9e5b5fb062c20de3f471b48e903bc48c | ASCII: ...RTIFICATE-----.bk9Y.^.u.........[_.b....q...;..
+2026-01-03 18:49:35.466 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 947 bytes (6 fragmentos)
+2026-01-03 18:49:35.626 | INFO     | common.security.authentication:handle_challenge:221 | 🎲 Challenge recebido - processando certificado + challenge...
+2026-01-03 18:49:35.628 | INFO     | common.security.authentication:handle_challenge:240 | 📜 Extraindo certificado do peer do payload...
+2026-01-03 18:49:35.641 | INFO     | common.security.certificate_manager:validate_certificate:262 | ✅ Certificado validado com sucesso
+2026-01-03 18:49:35.642 | INFO     | common.security.authentication:handle_challenge:253 | ✅ Certificado do peer validado!
+2026-01-03 18:49:35.643 | INFO     | common.security.authentication:handle_challenge:254 |    Peer NID: 54c225f2...
+2026-01-03 18:49:35.643 | INFO     | common.security.authentication:handle_challenge:255 |    Peer tipo: SINK
+2026-01-03 18:49:35.644 | INFO     | common.security.certificate_manager:sign_data:348 | ✍️  Assinando dados:
+2026-01-03 18:49:35.645 | INFO     | common.security.certificate_manager:sign_data:349 |    Data: 32 bytes | 626b3959d45efb75bca7f30e1f90a7fe9e5b5fb062c20de3f471b48e903bc48c...
+2026-01-03 18:49:35.648 | INFO     | common.security.certificate_manager:sign_data:356 |    Signature: 138 bytes | 30818702415c835da7f8c7d8a14a2e5ec4078f5fbf934e414f44e542c4e3976c...
+2026-01-03 18:49:35.649 | INFO     | common.security.authentication:handle_challenge:271 | ✍️  Response gerada: 138 bytes
+2026-01-03 18:49:35.652 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260103_184908-0027] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 144 bytes | Hex: 03000103008a30818702415c835da7f8c7d8a14a2e5ec4078f5fbf934e414f44e542c4e3976cccecae93c06a125929c1cb56990778c10ecb3c2fc9e5113ecb2f | ASCII: ......0...A\.].....J.^..._..NAOD.B...l.....j.Y)..V..x...</...>./ [TRUNCATED]
+2026-01-03 18:49:35.735 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260103_184908-0028] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-03 18:49:35.736 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0029] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 6 bytes | Hex: 030001040000 | ASCII: ......
+2026-01-03 18:49:35.737 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 1 fragmentos
+2026-01-03 18:49:35.737 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 3 bytes (1 fragmentos)
+2026-01-03 18:49:36.237 | INFO     | common.security.authentication:handle_auth_success:331 | ✅ Peer confirmou autenticação bem sucedida!
+2026-01-03 18:49:36.239 | INFO     | node.iot_node:authenticate_with_sink:786 | ✅ Autenticação bem-sucedida!
+2026-01-03 18:49:36.243 | INFO     | node.iot_node:authenticate_with_sink:793 | 🔑 Session key estabelecida
+2026-01-03 18:49:36.245 | INFO     | node.iot_node:authenticate_with_sink:797 | 🔀 Session key configurada no Router Daemon
+2026-01-03 18:49:36.247 | INFO     | node.iot_node:authenticate_with_sink:805 | ✅ Certificado do Sink armazenado para verificação de heartbeats
+2026-01-03 18:49:36.249 | INFO     | common.security.dtls_wrapper:__init__:96 | DTLSChannel criado (client) com certificado node_74383752_cert.pem
+2026-01-03 18:49:36.249 | INFO     | common.security.dtls_wrapper:establish:149 | Iniciando handshake DTLS...
+2026-01-03 18:49:36.250 | WARNING  | common.security.dtls_wrapper:establish:152 | DTLS não disponível - operando em modo stub
+2026-01-03 18:49:36.251 | INFO     | common.security.dtls_wrapper:establish:154 | ✅ Canal DTLS (stub) estabelecido
+2026-01-03 18:49:36.252 | INFO     | node.iot_node:authenticate_with_sink:816 | 🔐 Canal DTLS end-to-end estabelecido com Sink
+2026-01-03 18:49:36.256 | INFO     | common.security.dtls_wrapper:derive_encryption_key:137 | 🔑 Chave de encriptação end-to-end derivada (AES-256-GCM)
+2026-01-03 18:49:36.261 | INFO     | node.iot_node:authenticate_with_sink:821 | 🔑 Chave de encriptação end-to-end derivada
+2026-01-03 18:49:37.582 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0030] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000010917c1ad50e1849de1b4d09d4d9f29029e321d44a6bdcbf9b9428 | ASCII: T.%.N.A4.'......T.%.N.A4.'.............|....I..M.....).!.Jk....( [TRUNCATED]
+2026-01-03 18:49:37.585 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 16
+2026-01-03 18:49:37.586 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:49:42.577 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0031] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000011c50949257e797725444877013c6fd5e94e9b6c0e99aee30d4579 | ASCII: T.%.N.A4.'......T.%.N.A4.'..............I%~yw%DHw.<o..N.l.....Ey [TRUNCATED]
+2026-01-03 18:49:42.579 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 17
+2026-01-03 18:49:42.580 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:49:47.572 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0032] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000012b499594c9ab868768bd168a03a9eb783f1053a3121d1cc8a6e26 | ASCII: T.%.N.A4.'......T.%.N.A4.'..............YL..hv..h.:.....:1!...n& [TRUNCATED]
+2026-01-03 18:49:47.575 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 18
+2026-01-03 18:49:47.576 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:49:52.566 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0033] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c102010000001398600202997cd175084926b724c3dfe47375ea4dc11f3aa14c1c | ASCII: T.%.N.A4.'......T.%.N.A4.'.............`...|.u.I&.$...su.M..:.L. [TRUNCATED]
+2026-01-03 18:49:52.567 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 19
+2026-01-03 18:49:52.568 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:49:57.611 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0034] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000014e637349a318b406caeae99fb4b27c1109d298ff00bccf7f6822a | ASCII: T.%.N.A4.'......T.%.N.A4.'.............74.1.@l....K'...).......* [TRUNCATED]
+2026-01-03 18:49:57.612 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 20
+2026-01-03 18:49:57.613 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:50:00.654 | INFO     | node.iot_node:send_message:907 | 🔐 Payload encriptado end-to-end: 6 → 34 bytes
+2026-01-03 18:50:00.661 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260103_184908-0035] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 104 bytes | Hex: 74383752110540b696ca02fb77fc4c7354c225f24e894134bf27c5e9148e17c1010a00000000776c03e191a09909ddb1b2fddaa942c60e223e0c0b72f3e792a3 | ASCII: t87R..@.....w.LsT.%.N.A4.'............wl............B..">..r.... [TRUNCATED]
+2026-01-03 18:50:00.757 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260103_184908-0036] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-03 18:50:00.757 | INFO     | node.iot_node:send_message:940 | ✅ Mensagem enviada para 54c225f2...
+2026-01-03 18:50:02.603 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0037] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c10201000000156f41b159e914785c77011207ce9802ebefd2b13fe54a7c7ca2d0 | ASCII: T.%.N.A4.'......T.%.N.A4.'............oA.Y..x\w..........?.J||.. [TRUNCATED]
+2026-01-03 18:50:02.605 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 21
+2026-01-03 18:50:02.606 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:50:07.598 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0038] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c102010000001677109ef126e963cecfd90451e79dcae1338d4ccf633f110e0dc0 | ASCII: T.%.N.A4.'......T.%.N.A4.'............w...&.c....Q....3.L.c?.... [TRUNCATED]
+2026-01-03 18:50:07.601 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 22
+2026-01-03 18:50:07.602 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:50:12.595 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0039] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000017f73b77cbb5838ad22ab5a28591a9001802f107759eea5a3a751f | ASCII: T.%.N.A4.'......T.%.N.A4.'.............;w.....*..........u..Z:u. [TRUNCATED]
+2026-01-03 18:50:12.597 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 23
+2026-01-03 18:50:12.598 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:50:12.989 | INFO     | node.iot_node:send_message:907 | 🔐 Payload encriptado end-to-end: 9 → 37 bytes
+2026-01-03 18:50:12.996 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260103_184908-0040] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 107 bytes | Hex: 74383752110540b696ca02fb77fc4c7354c225f24e894134bf27c5e9148e17c1010a00000001119271c67c2291913697c4ef94f53e7be44e6b67274bc017d781 | ASCII: t87R..@.....w.LsT.%.N.A4.'..............q.|"..6.....>{.Nkg'K.... [TRUNCATED]
+2026-01-03 18:50:13.085 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260103_184908-0041] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-03 18:50:13.086 | INFO     | node.iot_node:send_message:940 | ✅ Mensagem enviada para 54c225f2...
+2026-01-03 18:50:17.588 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260103_184908-0042] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 54c225f24e894134bf27c5e9148e17c154c225f24e894134bf27c5e9148e17c1020100000018dd4469d2749812e876103640fb27e066b8bd0eab8ed5ef5782d3 | ASCII: T.%.N.A4.'......T.%.N.A4.'.............Di.t...v.6@.'.f.......W.. [TRUNCATED]
+2026-01-03 18:50:17.590 | ERROR    | common.network.router_daemon:_verify_packet_mac:219 | ❌ MAC verification failed for packet from uplink
+   Source: 54c225f2...
+   Dest: 54c225f2...
+   Type: MessageType(2)
+   Seq: 24
+2026-01-03 18:50:17.591 | ERROR    | common.network.router_daemon:receive_packet:164 | ❌ MAC inválido no pacote de uplink
+2026-01-03 18:50:19.064 | INFO     | node.iot_node:stop:1087 | A parar Node...
+2026-01-03 18:50:19.065 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
