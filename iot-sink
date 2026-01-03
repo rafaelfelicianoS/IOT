@@ -1,0 +1,123 @@
+#!/bin/bash
+# Wrapper script para iot-sink com auto-detecção de certificados
+
+set -e
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CERTS_DIR="$SCRIPT_DIR/certs"
+
+# Ativar venv se existir
+if [ -f "$SCRIPT_DIR/venv/bin/activate" ]; then
+    source "$SCRIPT_DIR/venv/bin/activate"
+fi
+
+# Auto-detectar certificados
+echo "============================================================"
+echo "  Iniciando IoT Sink Device (Interactive Mode)"
+echo "============================================================"
+echo ""
+
+# Primeiro argumento pode ser "interactive" ou adaptador
+ADAPTER="hci0"
+START_INDEX=1
+
+if [ "$1" == "interactive" ]; then
+    # Se primeiro argumento é "interactive", segundo deve ser o adaptador
+    if [ -n "$2" ]; then
+        ADAPTER="$2"
+        START_INDEX=3
+    else
+        START_INDEX=2
+    fi
+else
+    # Primeiro argumento é o adaptador (ou nada)
+    if [ -n "$1" ]; then
+        ADAPTER="$1"
+        START_INDEX=2
+    fi
+fi
+
+# Procurar certificado CA
+CA_CERT="$CERTS_DIR/ca_certificate.pem"
+if [ ! -f "$CA_CERT" ]; then
+    echo "❌ Certificado CA não encontrado: $CA_CERT"
+    exit 1
+fi
+
+# Procurar certificados de Sink
+SINK_CERTS=()
+SINK_KEYS=()
+
+# Procurar formato antigo
+for cert in "$CERTS_DIR"/sink_*_cert.pem; do
+    [ -f "$cert" ] || continue
+    basename=$(basename "$cert" _cert.pem)
+    key="$CERTS_DIR/${basename}_key.pem"
+    if [ -f "$key" ]; then
+        SINK_CERTS+=("$cert")
+        SINK_KEYS+=("$key")
+    fi
+done
+
+# Procurar formato novo (UUID directories)
+for dir in "$CERTS_DIR"/*/; do
+    [ -d "$dir" ] || continue
+    cert="$dir/certificate.pem"
+    key="$dir/private_key.pem"
+    if [ -f "$cert" ] && [ -f "$key" ]; then
+        # Verificar se é Sink (tem "Sink" no subject)
+        if openssl x509 -in "$cert" -noout -subject 2>/dev/null | grep -q "Sink"; then
+            SINK_CERTS+=("$cert")
+            SINK_KEYS+=("$key")
+        fi
+    fi
+done
+
+# Verificar se encontrou certificados
+if [ ${#SINK_CERTS[@]} -eq 0 ]; then
+    echo "❌ Nenhum certificado de Sink encontrado em $CERTS_DIR/"
+    echo "   Esperado: sink_*_cert.pem ou <UUID>/certificate.pem com Sink no subject"
+    echo ""
+    echo "💡 Crie um certificado com:"
+    echo "   python -m support.provision_device --nid \$(uuidgen) --type sink"
+    exit 1
+fi
+
+# Se houver múltiplos, mostrar e usar o primeiro
+CERT_INDEX=0
+if [ ${#SINK_CERTS[@]} -gt 1 ]; then
+    echo ""
+    echo "⚠️  Múltiplos certificados Sink encontrados:"
+    for i in "${!SINK_CERTS[@]}"; do
+        basename=$(basename "${SINK_CERTS[$i]}")
+        echo "  $((i+1)). $basename"
+    done
+    echo ""
+    echo "Usando o primeiro: $(basename "${SINK_CERTS[0]}")"
+    echo "(Use --cert e --key para escolher outro)"
+    echo ""
+fi
+
+SELECTED_CERT="${SINK_CERTS[$CERT_INDEX]}"
+SELECTED_KEY="${SINK_KEYS[$CERT_INDEX]}"
+
+echo "✅ Certificados encontrados:"
+echo "   Cert: $SELECTED_CERT"
+echo "   Key:  $SELECTED_KEY"
+echo "   CA:   $CA_CERT"
+echo "   Adapter: $ADAPTER"
+echo ""
+
+# Preparar argumentos extras
+EXTRA_ARGS=()
+if [ $START_INDEX -le $# ]; then
+    EXTRA_ARGS=("${@:$START_INDEX}")
+fi
+
+# Executar o Sink interativo
+exec python3 "$SCRIPT_DIR/sink/interactive_sink.py" \
+    "$ADAPTER" \
+    --cert "$SELECTED_CERT" \
+    --key "$SELECTED_KEY" \
+    --ca-cert "$CA_CERT" \
+    "${EXTRA_ARGS[@]}"
