@@ -303,6 +303,10 @@ class SinkDevice:
                     if dtls_channel.establish():
                         logger.info(f"🔐 Canal DTLS estabelecido com {str(client_nid)[:8]}...")
 
+                        # Derivar chave de encriptação a partir da session key
+                        dtls_channel.derive_encryption_key(session_key)
+                        logger.info(f"🔑 Chave de encriptação end-to-end derivada para {str(client_nid)[:8]}...")
+
             # Retornar resposta (fragmentação/envio é feito pela AuthCharacteristic)
             return response if response else b''
 

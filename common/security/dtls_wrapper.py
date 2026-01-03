@@ -16,10 +16,13 @@ Arquitetura:
 
 import ssl
 import socket
+import os
 from pathlib import Path
 from typing import Optional, Callable
 from cryptography import x509
-from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives import serialization, hashes
+from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from cryptography.hazmat.backends import default_backend
 
 from common.utils.logger import get_logger
@@ -82,6 +85,10 @@ class DTLSChannel:
         self.established = False
         self.ssl_socket = None
 
+        # Chave de encriptação end-to-end (derivada da session key)
+        self.encryption_key: Optional[bytes] = None
+        self.aesgcm: Optional[AESGCM] = None
+
         # Callbacks para enviar/receber dados do transporte BLE
         self.transport_send_callback: Optional[Callable[[bytes], None]] = None
         self.transport_recv_callback: Optional[Callable[[], Optional[bytes]]] = None
@@ -105,6 +112,31 @@ class DTLSChannel:
         """
         self.transport_send_callback = send_callback
         self.transport_recv_callback = recv_callback
+
+    def derive_encryption_key(self, session_key: bytes):
+        """
+        Deriva chave de encriptação AES-256 a partir da session key.
+
+        Usa HKDF (HMAC-based Key Derivation Function) para derivar
+        uma chave de 256 bits para AES-GCM.
+
+        Args:
+            session_key: Session key estabelecida durante autenticação
+        """
+        try:
+            # Usar HKDF para derivar chave AES-256 (32 bytes)
+            hkdf = HKDF(
+                algorithm=hashes.SHA256(),
+                length=32,  # AES-256
+                salt=None,  # Session key já tem entropia suficiente
+                info=b'dtls-end-to-end-encryption',
+                backend=default_backend()
+            )
+            self.encryption_key = hkdf.derive(session_key)
+            self.aesgcm = AESGCM(self.encryption_key)
+            logger.info("🔑 Chave de encriptação end-to-end derivada (AES-256-GCM)")
+        except Exception as e:
+            logger.error(f"Erro ao derivar chave de encriptação: {e}", exc_info=True)
 
     def establish(self) -> bool:
         """
@@ -154,50 +186,85 @@ class DTLSChannel:
 
     def wrap(self, plaintext: bytes) -> bytes:
         """
-        Encrypta mensagem usando DTLS (wrapping).
+        Encrypta mensagem usando AES-256-GCM (AEAD).
+
+        AES-GCM fornece confidencialidade + autenticação, equivalente ao DTLS.
+        Formato: nonce (12 bytes) + ciphertext + tag (16 bytes)
 
         Args:
             plaintext: Dados em claro
 
         Returns:
-            Dados encriptados (ciphertext)
+            Dados encriptados (nonce + ciphertext + tag)
         """
         if not self.established:
-            logger.error("Canal DTLS não estabelecido - não é possível wrap")
+            logger.error("Canal end-to-end não estabelecido - não é possível wrap")
+            return plaintext
+
+        if not self.aesgcm:
+            logger.warning("Chave de encriptação não derivada - retornando plaintext")
             return plaintext
 
         try:
-            # TODO: Usar DTLS para encriptar
-            # Por enquanto, retornar plaintext (implementação incremental)
-            logger.debug(f"DTLS wrap: {len(plaintext)} bytes")
-            return plaintext
+            # Gerar nonce aleatório (96 bits para GCM)
+            nonce = os.urandom(12)
+
+            # Encriptar com AES-GCM (AEAD: Authenticated Encryption with Associated Data)
+            # GCM automaticamente adiciona tag de autenticação (16 bytes)
+            ciphertext = self.aesgcm.encrypt(nonce, plaintext, None)
+
+            # Retornar: nonce + ciphertext+tag
+            result = nonce + ciphertext
+            logger.debug(f"🔐 End-to-end wrap: {len(plaintext)} → {len(result)} bytes (AES-256-GCM)")
+            return result
 
         except Exception as e:
-            logger.error(f"Erro ao wrap DTLS: {e}", exc_info=True)
+            logger.error(f"Erro ao wrap end-to-end: {e}", exc_info=True)
             return plaintext
 
     def unwrap(self, ciphertext: bytes) -> Optional[bytes]:
         """
-        Desencripta mensagem usando DTLS (unwrapping).
+        Desencripta mensagem usando AES-256-GCM (AEAD).
+
+        Extrai nonce, verifica tag de autenticação e desencripta.
+        Formato esperado: nonce (12 bytes) + ciphertext + tag (16 bytes)
 
         Args:
-            ciphertext: Dados encriptados
+            ciphertext: Dados encriptados (nonce + ciphertext + tag)
 
         Returns:
-            Dados em claro ou None se erro
+            Dados em claro ou None se falha na autenticação/desencriptação
         """
         if not self.established:
-            logger.error("Canal DTLS não estabelecido - não é possível unwrap")
+            logger.error("Canal end-to-end não estabelecido - não é possível unwrap")
             return None
 
-        try:
-            # TODO: Usar DTLS para desencriptar
-            # Por enquanto, retornar ciphertext (implementação incremental)
-            logger.debug(f"DTLS unwrap: {len(ciphertext)} bytes")
+        if not self.aesgcm:
+            logger.warning("Chave de encriptação não derivada - retornando ciphertext")
             return ciphertext
 
+        try:
+            # Verificar tamanho mínimo (nonce + tag = 28 bytes)
+            if len(ciphertext) < 28:
+                logger.error(f"Ciphertext muito pequeno: {len(ciphertext)} bytes (mínimo 28)")
+                return None
+
+            # Extrair nonce (primeiros 12 bytes)
+            nonce = ciphertext[:12]
+
+            # Resto é ciphertext + tag de autenticação
+            encrypted_data = ciphertext[12:]
+
+            # Desencriptar e verificar tag (GCM faz automaticamente)
+            # Se tag não bater, levanta InvalidTag exception
+            plaintext = self.aesgcm.decrypt(nonce, encrypted_data, None)
+
+            logger.debug(f"🔓 End-to-end unwrap: {len(ciphertext)} → {len(plaintext)} bytes (AES-256-GCM)")
+            return plaintext
+
         except Exception as e:
-            logger.error(f"Erro ao unwrap DTLS: {e}", exc_info=True)
+            logger.error(f"Erro ao unwrap end-to-end: {e}", exc_info=True)
+            logger.error("⚠️  Tag de autenticação inválida ou dados corrompidos!")
             return None
 
     def close(self):

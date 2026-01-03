@@ -709,6 +709,11 @@ class IoTNode:
                         if self.dtls_channel.establish():
                             logger.info("🔐 Canal DTLS end-to-end estabelecido com Sink")
 
+                            # Derivar chave de encriptação a partir da session key
+                            if session_key:
+                                self.dtls_channel.derive_encryption_key(session_key)
+                                logger.info("🔑 Chave de encriptação end-to-end derivada")
+
                         self.authenticated = True
                         return True
                     else:
