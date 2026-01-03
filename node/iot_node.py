@@ -42,6 +42,7 @@ from common.security import (
     verify_hmac,
 )
 from common.network.packet import Packet, MessageType
+from common.network.router_daemon import RouterDaemon
 from common.protocol.heartbeat import HeartbeatPayload
 from common.utils.constants import (
     IOT_NETWORK_SERVICE_UUID,
@@ -180,7 +181,20 @@ class IoTNode:
         from common.ble.fragmentation import FragmentReassembler
         self.auth_reassembler = FragmentReassembler()
 
+        # Router Daemon (Secção 5.7 - serviço de routing separado)
+        self.router = RouterDaemon(my_nid=self.my_nid)
+        self.router.set_send_callback(self._router_send_callback)
+
+        # Registar handlers locais no router
+        self.router.register_local_handler(MessageType.DATA, self._handle_data_packet_local)
+        self.router.register_local_handler(MessageType.HEARTBEAT, self._handle_heartbeat_packet_local)
+
+        # Contador de mensagens roteadas via uplink (para UI - Secção 6)
+        self.uplink_messages_sent = 0
+        self.uplink_messages_lock = threading.Lock()
+
         logger.info(f"IoT Node inicializado (adapter=hci{adapter_index})")
+        logger.info("✅ Router Daemon integrado")
 
     def setup_gatt_server(self):
         """Configura o GATT Server para aceitar downlinks."""
@@ -310,6 +324,105 @@ class IoTNode:
 
         logger.info("✅ Todos os downlinks desconectados (chain reaction completada)")
 
+    # ========================================================================
+    # ROUTER DAEMON - Callbacks e Handlers
+    # ========================================================================
+
+    def _router_send_callback(self, port_id: str, packet_bytes: bytes) -> bool:
+        """
+        Callback para o Router Daemon enviar pacotes via BLE.
+
+        Args:
+            port_id: "uplink" ou BLE address do downlink
+            packet_bytes: Pacote em formato bytes
+
+        Returns:
+            True se enviou com sucesso
+        """
+        try:
+            if port_id == "uplink":
+                # Enviar para uplink via GATT Client
+                if not self.uplink_connection or not self.uplink_connection.is_connected:
+                    logger.error("❌ Uplink não conectado")
+                    return False
+
+                self.uplink_connection.write(
+                    IOT_NETWORK_SERVICE_UUID,
+                    CHAR_NETWORK_PACKET_UUID,
+                    packet_bytes
+                )
+
+                # Incrementar contador de mensagens enviadas
+                with self.uplink_messages_lock:
+                    self.uplink_messages_sent += 1
+
+                logger.debug(f"📤 Pacote enviado para uplink ({len(packet_bytes)} bytes)")
+                return True
+
+            else:
+                # Enviar para downlink via GATT Server (notify)
+                if not self.service:
+                    logger.error("❌ GATT Service não inicializado")
+                    return False
+
+                packet_char = self.service.get_packet_characteristic()
+                packet_char.notify_packet(packet_bytes)
+
+                logger.debug(f"📤 Pacote enviado para downlink {port_id} ({len(packet_bytes)} bytes)")
+                return True
+
+        except Exception as e:
+            logger.error(f"Erro ao enviar pacote via {port_id}: {e}")
+            return False
+
+    def _handle_data_packet_local(self, packet: Packet):
+        """
+        Handler local para pacotes DATA destinados a este Node.
+
+        Chamado pelo Router Daemon quando packet.destination == my_nid.
+
+        Args:
+            packet: Pacote DATA recebido
+        """
+        logger.info(
+            f"📨 DATA recebido (local): {packet.source} → {packet.destination} "
+            f"({len(packet.payload)} bytes)"
+        )
+
+        # DTLS End-to-End: Desencriptar payload se houver canal estabelecido
+        decrypted_payload = packet.payload
+        if self.dtls_channel and self.dtls_channel.established and self.dtls_channel.aesgcm:
+            try:
+                decrypted_payload = self.dtls_channel.unwrap(packet.payload)
+                logger.info(f"🔓 Payload desencriptado end-to-end: {len(packet.payload)} → {len(decrypted_payload)} bytes")
+            except Exception as e:
+                logger.error(f"❌ Erro ao desencriptar payload: {e}")
+                return
+
+        # Processar mensagem
+        try:
+            message = decrypted_payload.decode('utf-8', errors='replace')
+            logger.info(f"✅ Mensagem recebida de {str(packet.source)[:8]}...: {message!r}")
+        except Exception as e:
+            logger.warning(f"⚠️  Payload não é texto UTF-8: {e}")
+            logger.info(f"✅ Dados binários recebidos: {len(decrypted_payload)} bytes")
+
+    def _handle_heartbeat_packet_local(self, packet: Packet):
+        """
+        Handler local para pacotes HEARTBEAT.
+
+        Chamado pelo Router Daemon.
+
+        Args:
+            packet: Pacote HEARTBEAT recebido
+        """
+        # Reusa lógica existente
+        self._handle_heartbeat(packet)
+
+    # ========================================================================
+    # FIM - ROUTER DAEMON
+    # ========================================================================
+
     def update_advertisement_hop_count(self):
         """Atualiza o hop_count no advertisement."""
         if not self.advertisement:
@@ -331,18 +444,14 @@ class IoTNode:
             data: Dados do pacote recebido
         """
         try:
-            packet = Packet.from_bytes(data)
-            logger.info(f"📥 Pacote recebido de downlink: {packet.source} (type={MessageType(packet.msg_type).name})")
+            # Determinar port_id do downlink
+            # NOTA: Idealmente precisaríamos do BLE address do client,
+            # mas por agora usamos "downlink" genérico
+            # TODO: Melhorar para obter address específico
+            port_id = "downlink"
 
-            # TODO: Implementar routing - se destino não somos nós, forwardar para uplink
-            if packet.destination != self.my_nid:
-                logger.info(f"🔀 Forwarding pacote para uplink (destino: {packet.destination})")
-                # Forwardar para uplink
-                return
-
-            # Processar pacote destinado a nós
-            if packet.msg_type == MessageType.DATA:
-                logger.info(f"📨 Mensagem recebida de {packet.source}: {packet.payload.decode('utf-8', errors='replace')}")
+            # Delegar ao Router Daemon
+            self.router.receive_packet(port_id, data)
 
         except Exception as e:
             logger.error(f"Erro ao processar pacote de downlink: {e}")
@@ -468,16 +577,9 @@ class IoTNode:
             data: Dados do pacote
         """
         try:
-            # Deserializar pacote
-            packet = Packet.from_bytes(data)
-
-            # Verificar tipo
-            if packet.msg_type == MessageType.HEARTBEAT:
-                self._handle_heartbeat(packet)
-            elif packet.msg_type == MessageType.DATA:
-                self._handle_data_packet(packet)
-            else:
-                logger.debug(f"Pacote tipo {MessageType.to_string(packet.msg_type)} recebido")
+            # Delegar ao Router Daemon
+            # Pacotes do uplink vêm da porta "uplink"
+            self.router.receive_packet("uplink", data)
 
         except Exception as e:
             logger.error(f"Erro ao processar notificação: {e}", exc_info=True)
@@ -689,6 +791,10 @@ class IoTNode:
                             with self.uplink_session_key_lock:
                                 self.uplink_session_key = session_key
                             logger.info("🔑 Session key estabelecida")
+
+                            # Configurar session key no Router Daemon
+                            self.router.set_session_key("uplink", session_key)
+                            logger.info("🔀 Session key configurada no Router Daemon")
 
                         # Obter NID do Sink
                         self.uplink_nid = auth_protocol.peer_nid
