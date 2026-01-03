@@ -77,6 +77,9 @@ Digite 'exit' ou Ctrl+D para sair.
         # Heartbeats
         print("💓 HEARTBEATS:")
         print(f"   Sequência atual: {self.sink.heartbeat_sequence}")
+        blocked = self.sink.get_blocked_heartbeat_nodes()
+        if blocked:
+            print(f"   ⚠️  {len(blocked)} node(s) bloqueado(s)")
         print()
 
         # Rede
@@ -289,6 +292,124 @@ Digite 'exit' ou Ctrl+D para sair.
         print(f"\n📍 Meu NID: {self.sink.my_nid}\n")
 
     # ========================================================================
+    # COMANDOS DE SIMULAÇÃO
+    # ========================================================================
+
+    def do_stop_heartbeat(self, arg):
+        """
+        Para envio de heartbeats para um node específico (simula link failure).
+
+        Uso: stop_heartbeat <NID ou índice>
+
+        Exemplos:
+          stop_heartbeat 1                    # Para heartbeats para o primeiro node da lista
+          stop_heartbeat abc123...            # Para heartbeats para node com NID específico
+
+        NOTA: Isto NÃO desconecta o node, apenas para de enviar heartbeats.
+        Após 3 heartbeats perdidos (~15s), o node detectará link failure.
+        """
+        if not arg:
+            print("\n❌ Erro: Especifique o NID ou índice do node\n")
+            print("Uso: stop_heartbeat <NID ou índice>")
+            print("\nNodes conectados:")
+            self._list_downlinks_with_index()
+            return
+
+        # Tentar converter para índice
+        target_nid = None
+        try:
+            index = int(arg.strip())
+            with self.sink.downlinks_lock:
+                downlinks_list = list(self.sink.downlinks.values())
+                if 0 < index <= len(downlinks_list):
+                    target_nid = downlinks_list[index - 1]
+                else:
+                    print(f"\n❌ Erro: Índice {index} inválido (1-{len(downlinks_list)})\n")
+                    return
+        except ValueError:
+            # Não é número, tratar como NID
+            nid_str = arg.strip()
+
+            # Procurar NID que comece com a string fornecida
+            with self.sink.downlinks_lock:
+                for nid in self.sink.downlinks.values():
+                    if str(nid).startswith(nid_str):
+                        target_nid = nid
+                        break
+
+            if not target_nid:
+                print(f"\n❌ Erro: NID '{nid_str}' não encontrado\n")
+                print("Nodes conectados:")
+                self._list_downlinks_with_index()
+                return
+
+        # Bloquear heartbeats para o node
+        self.sink.block_heartbeat(target_nid)
+        nid_short = str(target_nid)[:16]
+        print(f"\n🚫 Heartbeats BLOQUEADOS para {nid_short}...")
+        print(f"   O node detectará link failure após ~15s (3 heartbeats perdidos)\n")
+
+    def do_resume_heartbeat(self, arg):
+        """
+        Resume envio de heartbeats para um node.
+
+        Uso: resume_heartbeat <NID ou índice>
+
+        Exemplos:
+          resume_heartbeat 1                  # Resume heartbeats para o primeiro node bloqueado
+          resume_heartbeat abc123...          # Resume heartbeats para node com NID específico
+        """
+        if not arg:
+            print("\n❌ Erro: Especifique o NID ou índice do node\n")
+            print("Uso: resume_heartbeat <NID ou índice>")
+            print("\nNodes com heartbeat bloqueado:")
+            self._list_blocked_nodes()
+            return
+
+        # Tentar converter para índice
+        target_nid = None
+        try:
+            index = int(arg.strip())
+            blocked = self.sink.get_blocked_heartbeat_nodes()
+            blocked_list = list(blocked)
+            if 0 < index <= len(blocked_list):
+                target_nid = blocked_list[index - 1]
+            else:
+                print(f"\n❌ Erro: Índice {index} inválido (1-{len(blocked_list)})\n")
+                return
+        except ValueError:
+            # Não é número, tratar como NID
+            nid_str = arg.strip()
+
+            # Procurar NID que comece com a string fornecida
+            blocked = self.sink.get_blocked_heartbeat_nodes()
+            for nid in blocked:
+                if str(nid).startswith(nid_str):
+                    target_nid = nid
+                    break
+
+            if not target_nid:
+                print(f"\n❌ Erro: NID '{nid_str}' não encontrado entre os bloqueados\n")
+                print("Nodes com heartbeat bloqueado:")
+                self._list_blocked_nodes()
+                return
+
+        # Desbloquear heartbeats para o node
+        self.sink.unblock_heartbeat(target_nid)
+        nid_short = str(target_nid)[:16]
+        print(f"\n✅ Heartbeats DESBLOQUEADOS para {nid_short}...")
+        print(f"   O node voltará a receber heartbeats no próximo ciclo\n")
+
+    def do_blocked_heartbeats(self, arg):
+        """
+        Lista nodes com heartbeat bloqueado.
+
+        Uso: blocked_heartbeats
+        """
+        print("\n🚫 NODES COM HEARTBEAT BLOQUEADO\n")
+        self._list_blocked_nodes()
+
+    # ========================================================================
     # COMANDOS DE UTILIDADE
     # ========================================================================
 
@@ -316,6 +437,33 @@ Digite 'exit' ou Ctrl+D para sair.
     # ========================================================================
     # MÉTODOS AUXILIARES
     # ========================================================================
+
+    def _list_downlinks_with_index(self):
+        """Lista downlinks com índices para facilitar seleção."""
+        with self.sink.downlinks_lock:
+            if not self.sink.downlinks:
+                print("   (nenhum node conectado)")
+                return
+
+            for idx, (addr, nid) in enumerate(self.sink.downlinks.items(), 1):
+                nid_short = str(nid)[:16]
+                print(f"   {idx}. {nid_short}... (addr: {addr})")
+
+        print()
+
+    def _list_blocked_nodes(self):
+        """Lista nodes com heartbeat bloqueado."""
+        blocked = self.sink.get_blocked_heartbeat_nodes()
+
+        if not blocked:
+            print("   (nenhum node com heartbeat bloqueado)\n")
+            return
+
+        for idx, nid in enumerate(blocked, 1):
+            nid_short = str(nid)[:16]
+            print(f"   {idx}. {nid_short}...")
+
+        print()
 
     def _format_uptime(self, seconds: float) -> str:
         """Formata uptime em formato legível."""

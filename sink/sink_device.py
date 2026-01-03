@@ -145,6 +145,11 @@ class SinkDevice:
         self.inbox: List[Dict] = []
         self.inbox_lock = threading.Lock()
 
+        # Heartbeat blocking: NIDs de nodes que não devem receber heartbeats
+        # Usado para simular link failures
+        self.heartbeat_blocked_nodes: set = set()
+        self.heartbeat_blocked_lock = threading.Lock()
+
         # GATT Application
         self.app = None
         self.advertisement = None
@@ -407,6 +412,34 @@ class SinkDevice:
         with self.session_keys_lock:
             self.session_keys[nid] = session_key
 
+    def block_heartbeat(self, nid: NID):
+        """
+        Bloqueia envio de heartbeats para um node específico.
+        Usado para simular link failures.
+
+        Args:
+            nid: NID do node a bloquear
+        """
+        with self.heartbeat_blocked_lock:
+            self.heartbeat_blocked_nodes.add(nid)
+        logger.info(f"🚫 Heartbeats bloqueados para {nid}")
+
+    def unblock_heartbeat(self, nid: NID):
+        """
+        Desbloqueia envio de heartbeats para um node.
+
+        Args:
+            nid: NID do node a desbloquear
+        """
+        with self.heartbeat_blocked_lock:
+            self.heartbeat_blocked_nodes.discard(nid)
+        logger.info(f"✅ Heartbeats desbloqueados para {nid}")
+
+    def get_blocked_heartbeat_nodes(self) -> set:
+        """Retorna lista de nodes com heartbeat bloqueado."""
+        with self.heartbeat_blocked_lock:
+            return self.heartbeat_blocked_nodes.copy()
+
     def start_heartbeat_service(self):
         """Inicia o serviço de heartbeat (5s intervals)."""
         logger.info("💓 A iniciar serviço de heartbeat...")
@@ -427,10 +460,23 @@ class SinkDevice:
                     sequence=self.heartbeat_sequence,
                 )
 
-                # Enviar via notificação NETWORK_PACKET
-                self.packet_char.notify_packet(heartbeat_packet.to_bytes())
+                # Determinar clientes a excluir (NIDs bloqueados -> endereços)
+                exclude_clients = set()
+                with self.heartbeat_blocked_lock:
+                    if self.heartbeat_blocked_nodes:
+                        # Converter NIDs bloqueados em endereços de clientes
+                        with self.downlinks_lock:
+                            for client_addr, client_nid in self.downlinks.items():
+                                if client_nid in self.heartbeat_blocked_nodes:
+                                    exclude_clients.add(client_addr)
 
-                logger.debug(f"💓 Heartbeat enviado (seq={self.heartbeat_sequence})")
+                # Enviar via notificação NETWORK_PACKET (excluindo clientes bloqueados)
+                self.packet_char.notify_packet(heartbeat_packet.to_bytes(), exclude_clients=exclude_clients)
+
+                if exclude_clients:
+                    logger.debug(f"💓 Heartbeat enviado (seq={self.heartbeat_sequence}, {len(exclude_clients)} bloqueados)")
+                else:
+                    logger.debug(f"💓 Heartbeat enviado (seq={self.heartbeat_sequence})")
 
             except Exception as e:
                 logger.error(f"Erro ao enviar heartbeat: {e}", exc_info=True)

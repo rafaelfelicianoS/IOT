@@ -136,16 +136,24 @@ class NetworkPacketCharacteristic(Characteristic):
 
         logger.info(f"Cliente {sender} cancelou subscrição de pacotes")
 
-    def notify_packet(self, packet_bytes: bytes):
+    def notify_packet(self, packet_bytes: bytes, exclude_clients: set = None):
         """
         Envia notificação de um pacote a todos os clientes subscritos.
 
         Args:
             packet_bytes: Bytes do pacote a notificar
+            exclude_clients: Set de endereços de clientes a excluir (opcional)
         """
         if not self.notifying:
             logger.debug("Nenhum cliente subscrito, pacote não enviado")
             return
+
+        # Se há clientes a excluir e todos estão excluídos, não enviar
+        if exclude_clients:
+            target_clients = self.subscribed_clients - exclude_clients
+            if not target_clients:
+                logger.debug(f"Todos os clientes ({len(self.subscribed_clients)}) estão excluídos, pacote não enviado")
+                return
 
         try:
             # Converter bytes para dbus.Array
@@ -158,7 +166,12 @@ class NetworkPacketCharacteristic(Characteristic):
                 []
             )
 
-            logger.debug(f"Pacote notificado a {len(self.subscribed_clients)} clientes")
+            excluded_count = len(exclude_clients) if exclude_clients else 0
+            total_sent = len(self.subscribed_clients) - excluded_count
+            if exclude_clients and excluded_count > 0:
+                logger.debug(f"Pacote notificado a {total_sent}/{len(self.subscribed_clients)} clientes ({excluded_count} excluídos)")
+            else:
+                logger.debug(f"Pacote notificado a {len(self.subscribed_clients)} clientes")
         except Exception as e:
             logger.error(f"Erro ao notificar pacote: {e}")
 
