@@ -333,6 +333,7 @@ def main():
         ("Packet Forwarding", test_packet_forwarding),
         ("TTL Expiration", test_ttl_expiration),
         ("Statistics Tracking", test_statistics),
+        ("HEARTBEAT with DEFAULT_HMAC_KEY", test_heartbeat_with_default_hmac_key),
     ]
 
     passed = 0
@@ -367,6 +368,70 @@ def main():
     else:
         print("\n⚠️  Some tests failed. Review output above.\n")
         return 1
+
+def test_heartbeat_with_default_hmac_key():
+    """Test that HEARTBEAT packets use DEFAULT_HMAC_KEY for MAC verification."""
+    print("\n" + "="*70)
+    print("TEST 8: HEARTBEAT packets with DEFAULT_HMAC_KEY")
+    print("="*70)
+
+    from common.security.crypto import DEFAULT_HMAC_KEY
+    from common.protocol.heartbeat import create_heartbeat_packet
+
+    # Setup
+    sink_nid = NID(uuid.uuid4())
+    node_nid = NID(uuid.uuid4())
+    router = RouterDaemon(my_nid=node_nid)
+
+    # Configure session key (ECDH key) for uplink
+    ecdh_session_key = b'12345678901234567890123456789012'  # 32 bytes
+    router.set_session_key("uplink", ecdh_session_key)
+
+    # Track received heartbeats
+    received_heartbeats = []
+    def heartbeat_handler(packet):
+        received_heartbeats.append(packet)
+
+    router.register_local_handler(MessageType.HEARTBEAT, heartbeat_handler)
+
+    # Create heartbeat packet (simulating Sink sending it)
+    # This uses DEFAULT_HMAC_KEY internally
+    heartbeat_packet = create_heartbeat_packet(
+        sink_nid=sink_nid,
+        cert_manager=None,  # No signature for this test
+        broadcast_nid=sink_nid,
+        sequence=42,
+    )
+
+    print(f"📤 Created heartbeat packet:")
+    print(f"   Source: {sink_nid}")
+    print(f"   Dest: {sink_nid} (broadcast)")
+    print(f"   Seq: 42")
+    print(f"   MAC uses: DEFAULT_HMAC_KEY")
+
+    # Router receives heartbeat from uplink
+    # Should verify MAC with DEFAULT_HMAC_KEY (NOT session key)
+    router.receive_packet("uplink", heartbeat_packet.to_bytes())
+
+    # Verify heartbeat was delivered locally
+    assert len(received_heartbeats) == 1, f"Expected 1 heartbeat, got {len(received_heartbeats)}"
+
+    received = received_heartbeats[0]
+    assert received.source == sink_nid, "Source mismatch"
+    assert received.msg_type == MessageType.HEARTBEAT, "Type mismatch"
+    assert received.sequence == 42, "Sequence mismatch"
+
+    print(f"✅ Heartbeat received and verified with DEFAULT_HMAC_KEY")
+    print(f"   (despite having ECDH session key configured)")
+
+    # Verify statistics
+    stats = router.get_stats()
+    assert stats['delivered'] == 1, f"Expected 1 delivered, got {stats['delivered']}"
+    assert stats['dropped'] == 0, f"Expected 0 dropped, got {stats['dropped']}"
+
+    print("✅ PASS - HEARTBEAT packets correctly use DEFAULT_HMAC_KEY")
+    return True
+
 
 if __name__ == "__main__":
     sys.exit(main())

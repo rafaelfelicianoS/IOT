@@ -23,7 +23,7 @@ from loguru import logger
 from common.network.packet import Packet, MessageType
 from common.network.forwarding_table import ForwardingTable
 from common.utils.nid import NID
-from common.security.crypto import calculate_hmac, verify_hmac
+from common.security.crypto import calculate_hmac, verify_hmac, DEFAULT_HMAC_KEY
 from common.security.replay_protection import ReplayProtection
 
 
@@ -173,7 +173,14 @@ class RouterDaemon:
             logger.debug(f"📚 Aprendido: {str(packet.source)[:8]}... → {port_id}")
 
             # 4. Decidir: forward ou entregar localmente?
-            if packet.destination == self.my_nid:
+            # HEARTBEAT packets são broadcast - sempre entregar localmente E forward
+            if packet.msg_type == MessageType.HEARTBEAT:
+                # Broadcast: entregar localmente sempre
+                self._deliver_locally(packet)
+                # Se TTL > 1, também fazer forward para downlinks
+                if packet.ttl > 1:
+                    self._forward_packet(packet, incoming_port=port_id)
+            elif packet.destination == self.my_nid:
                 # Para nós - entregar localmente
                 self._deliver_locally(packet)
             else:
@@ -189,6 +196,9 @@ class RouterDaemon:
         """
         Verifica MAC do pacote usando session key da porta.
 
+        HEARTBEAT packets usam DEFAULT_HMAC_KEY (autenticidade garantida por ECDSA signature).
+        DATA packets usam session key ECDH negociada durante autenticação.
+
         Args:
             packet: Pacote recebido
             port_id: Porta de entrada
@@ -196,13 +206,6 @@ class RouterDaemon:
         Returns:
             True se MAC válido
         """
-        with self.session_keys_lock:
-            session_key = self.session_keys.get(port_id)
-
-        if not session_key:
-            logger.warning(f"⚠️  Sem session key para porta {port_id}")
-            return False
-
         # Construir dados para verificação MAC
         mac_data = (
             packet.source.to_bytes() +
@@ -212,7 +215,30 @@ class RouterDaemon:
             packet.payload
         )
 
-        # Verificar MAC
+        # HEARTBEAT packets usam DEFAULT_HMAC_KEY
+        # (autenticidade garantida por ECDSA P-521 signature dentro do payload)
+        if packet.msg_type == MessageType.HEARTBEAT:
+            is_valid = verify_hmac(mac_data, packet.mac, DEFAULT_HMAC_KEY)
+
+            if not is_valid:
+                logger.error(
+                    f"❌ HEARTBEAT MAC verification failed (DEFAULT_HMAC_KEY)\n"
+                    f"   Source: {packet.source}\n"
+                    f"   Dest: {packet.destination}\n"
+                    f"   Seq: {packet.sequence}"
+                )
+
+            return is_valid
+
+        # DATA e outros packets usam session key negociada
+        with self.session_keys_lock:
+            session_key = self.session_keys.get(port_id)
+
+        if not session_key:
+            logger.warning(f"⚠️  Sem session key para porta {port_id}")
+            return False
+
+        # Verificar MAC com session key
         is_valid = verify_hmac(mac_data, packet.mac, session_key)
 
         if not is_valid:
@@ -291,15 +317,6 @@ class RouterDaemon:
             return
 
         # 5. Recalcular MAC para a porta de saída
-        with self.session_keys_lock:
-            next_session_key = self.session_keys.get(next_port)
-
-        if not next_session_key:
-            logger.error(f"❌ Sem session key para porta {next_port}")
-            with self.stats_lock:
-                self.packets_dropped += 1
-            return
-
         # Construir dados para novo MAC
         mac_data = (
             packet.source.to_bytes() +
@@ -309,8 +326,21 @@ class RouterDaemon:
             packet.payload
         )
 
-        # Calcular novo MAC
-        packet.mac = calculate_hmac(mac_data, next_session_key)
+        # HEARTBEAT packets usam DEFAULT_HMAC_KEY, outros usam session key
+        if packet.msg_type == MessageType.HEARTBEAT:
+            packet.mac = calculate_hmac(mac_data, DEFAULT_HMAC_KEY)
+        else:
+            # DATA e outros packets usam session key negociada
+            with self.session_keys_lock:
+                next_session_key = self.session_keys.get(next_port)
+
+            if not next_session_key:
+                logger.error(f"❌ Sem session key para porta {next_port}")
+                with self.stats_lock:
+                    self.packets_dropped += 1
+                return
+
+            packet.mac = calculate_hmac(mac_data, next_session_key)
 
         # 6. Enviar via callback
         if not self.send_callback:
