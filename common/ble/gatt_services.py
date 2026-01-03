@@ -71,6 +71,7 @@ class NetworkPacketCharacteristic(Characteristic):
         self.notifying = False
         self.subscribed_clients = set()
         self.packet_callback: Optional[Callable[[bytes], None]] = None
+        self.disconnect_callback: Optional[Callable[[str], None]] = None
 
         logger.info("NetworkPacketCharacteristic criada")
 
@@ -83,6 +84,16 @@ class NetworkPacketCharacteristic(Characteristic):
         """
         self.packet_callback = callback
         logger.debug("Packet callback definido")
+
+    def set_disconnect_callback(self, callback: Callable[[str], None]):
+        """
+        Define callback chamado quando um cliente desconecta (StopNotify).
+
+        Args:
+            callback: Função que recebe sender D-Bus do cliente desconectado
+        """
+        self.disconnect_callback = callback
+        logger.debug("Disconnect callback definido")
 
     @dbus.service.method(GATT_CHARACTERISTIC_IFACE, in_signature='aya{sv}', sender_keyword='sender')
     def WriteValue(self, value: List[int], options: Dict[str, Any], sender=None):
@@ -135,6 +146,13 @@ class NetworkPacketCharacteristic(Characteristic):
             self.notifying = False
 
         logger.info(f"Cliente {sender} cancelou subscrição de pacotes")
+
+        # Chamar callback de desconexão se definido
+        if self.disconnect_callback:
+            try:
+                self.disconnect_callback(sender)
+            except Exception as e:
+                logger.error(f"Erro no disconnect callback: {e}", exc_info=True)
 
     def notify_packet(self, packet_bytes: bytes, exclude_clients: set = None):
         """

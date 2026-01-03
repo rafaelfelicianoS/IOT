@@ -136,6 +136,10 @@ class SinkDevice:
         self.downlinks: Dict[str, NID] = {}
         self.downlinks_lock = threading.Lock()
 
+        # Mapeamento D-Bus sender -> client_nid (para cleanup em desconexões)
+        self.sender_to_nid: Dict[str, NID] = {}
+        self.sender_to_nid_lock = threading.Lock()
+
         # Session keys por link (client_nid -> session_key)
         self.session_keys: Dict[NID, bytes] = {}
         self.session_keys_lock = threading.Lock()
@@ -196,6 +200,7 @@ class SinkDevice:
 
         # Configurar callbacks
         self.packet_char.set_packet_callback(self._on_packet_received)
+        self.packet_char.set_disconnect_callback(self._cleanup_disconnected_client)
         self.auth_char.set_auth_callback(self._on_auth_message)
 
         # Adicionar serviço
@@ -300,6 +305,10 @@ class SinkDevice:
                     # Adicionar a lista de downlinks
                     with self.downlinks_lock:
                         self.downlinks[client_address] = client_nid
+
+                    # Mapear D-Bus sender para NID (para cleanup em desconexões)
+                    with self.sender_to_nid_lock:
+                        self.sender_to_nid[client_address] = client_nid
 
                     logger.info(f"🔑 Session key armazenada para {client_nid}")
 
@@ -411,6 +420,49 @@ class SinkDevice:
         """Armazena session key para um NID."""
         with self.session_keys_lock:
             self.session_keys[nid] = session_key
+
+    def _cleanup_disconnected_client(self, sender: str):
+        """
+        Remove cliente desconectado de downlinks e session keys.
+
+        Args:
+            sender: D-Bus sender ID do cliente desconectado
+        """
+        # Obter NID do cliente através do mapeamento sender→NID
+        with self.sender_to_nid_lock:
+            client_nid = self.sender_to_nid.pop(sender, None)
+
+        if not client_nid:
+            logger.warning(f"⚠️  Cliente {sender} desconectou mas NID não encontrado")
+            return
+
+        logger.info(f"🔌 Cliente desconectado: {sender} (NID={str(client_nid)[:8]}...)")
+
+        # Remover session key
+        with self.session_keys_lock:
+            if client_nid in self.session_keys:
+                del self.session_keys[client_nid]
+                logger.info(f"   ✅ Session key removida para {str(client_nid)[:8]}...")
+
+        # Remover de downlinks (encontrar address por NID)
+        with self.downlinks_lock:
+            # Encontrar endereço do cliente por NID
+            client_address = None
+            for addr, nid in list(self.downlinks.items()):
+                if nid == client_nid:
+                    client_address = addr
+                    break
+
+            if client_address:
+                del self.downlinks[client_address]
+                logger.info(f"   ✅ Downlink removido: {client_address}")
+
+        # Remover canal DTLS
+        if hasattr(self, 'dtls_manager'):
+            # O DTLSManager já tem cleanup automático, mas podemos forçar
+            logger.debug(f"   DTLS channel para {str(client_nid)[:8]}... será limpo automaticamente")
+
+        logger.info(f"✅ Cleanup completo para cliente {str(client_nid)[:8]}...")
 
     def block_heartbeat(self, nid: NID):
         """
