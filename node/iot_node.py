@@ -549,6 +549,10 @@ class IoTNode:
 
         logger.info("✅ Serviço IoT Network encontrado")
 
+        # Resetar timestamp de heartbeat (nova conexão)
+        self.last_heartbeat_time = 0
+        logger.debug("🔄 Timestamp de heartbeat resetado para nova conexão")
+
         # Subscrever a notificações de pacotes (heartbeats)
         self._subscribe_to_notifications()
 
