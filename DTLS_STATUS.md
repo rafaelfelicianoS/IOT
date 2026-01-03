@@ -214,9 +214,9 @@ DTLS wrap: 42 bytes
 DTLS unwrap: 42 bytes
 ```
 
-## 📝 Próximos Passos (Integração Opcional)
+## ✅ Integração Completa em Mensagens
 
-### 1. Integrar wrap/unwrap em send_message (Opcional)
+### Implementado: wrap/unwrap em send_message
 ```python
 # No Node (node/iot_node.py)
 def send_message(self, message: bytes):
@@ -257,11 +257,12 @@ def _handle_data_packet(self, packet: Packet):
 **Implementação Atual**:
 - Estrutura DTLS: **100% completa**
 - Integração no código: **100% completa**
+- Integração em mensagens: **100% completa** ✨ NOVO
 - Documentação: **100% completa**
-- Testes de verificação: **100% completos (5/5 testes passando)**
+- Testes de verificação: **100% completos (6/6 testes passando)** ✨
 - Criptografia AES-256-GCM: **100% funcional**
 - Derivação de chaves: **100% implementada**
-- Proteção end-to-end: **100% funcional**
+- Proteção end-to-end: **100% funcional em runtime** ✨
 
 **Para Demonstrar ao Professor**:
 1. Mostrar código-fonte ([common/security/dtls_wrapper.py](common/security/dtls_wrapper.py))
