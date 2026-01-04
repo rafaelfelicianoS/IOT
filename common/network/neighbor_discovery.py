@@ -194,7 +194,6 @@ class NeighborDiscovery:
 
                 nid = NID.from_bytes(nid_bytes)
 
-                # Criar NeighborInfo
                 neighbor = NeighborInfo(
                     address=device.address,
                     nid=nid,

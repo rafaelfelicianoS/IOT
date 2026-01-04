@@ -54,7 +54,7 @@ class BleakWriteHelper:
             async with BleakClient(target, timeout=timeout) as client:
                 logger.debug(f"Bleak: Conectado, a escrever {len(data)} bytes em {char_uuid}...")
                 await client.write_gatt_char(char_uuid, data, response=True)
-                logger.debug(f"Bleak: ✅ Escrita bem-sucedida!")
+                logger.debug(f"Bleak:  Escrita bem-sucedida!")
                 return True
 
         except Exception as e:
@@ -80,7 +80,6 @@ class BleakWriteHelper:
         Returns:
             True se escrita bem-sucedida
         """
-        # Criar um novo event loop para esta operação
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         try:

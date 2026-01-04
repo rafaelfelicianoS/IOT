@@ -17200,3 +17200,1071 @@ Sinal 2 recebido, a parar...
 2026-01-04 17:16:22.048 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20260104_170918-0098] DISCONNECT | Remote: E0:D3:62:D7:47:03 | Reason: normal
 2026-01-04 17:16:22.050 | INFO     | node.iot_node:stop:1210 | ✅ Node parado
 >>>>>>> 533cb05 (.)
+2026-01-04 18:37:47.560 | WARNING  | common.security.dtls_wrapper:<module>:43 |   Biblioteca python3-dtls não disponível
+2026-01-04 18:37:47.560 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 18:37:47.560 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 18:37:47.560 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 18:37:47.580 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 18:37:47.582 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 18:37:47.582 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 18:37:47.582 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 18:37:47.582 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 18:37:47.582 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 18:37:47.582 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 18:37:47.582 | INFO     | common.security.dtls_wrapper:__init__:308 | DTLSManager inicializado
+2026-01-04 18:37:47.582 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 18:37:47.582 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 18:37:47.583 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 18:37:47.583 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 18:37:47.583 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 18:37:47.584 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 18:37:47.584 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 18:37:47.584 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 18:37:47.584 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 18:37:47.584 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 18:37:47.584 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 18:37:47.584 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 18:37:47.585 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 18:37:47.585 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 18:37:47.585 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 18:37:47.585 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:37:47.585 | INFO     | sync.sink_device:setup_advertising:221 |  Advertising contínuo configurado (duration=0)
+2026-01-04 18:37:47.585 | INFO     | sync.sink_device:setup_advertising:223 |  BLE Advertising configurado
+2026-01-04 18:37:47.586 | INFO     | sync.sink_device:start_heartbeat_service:502 |  A iniciar serviço de heartbeat...
+2026-01-04 18:37:47.586 | INFO     | sync.sink_device:start_heartbeat_service:540 |  Serviço de heartbeat iniciado
+2026-01-04 18:37:47.587 | INFO     | __main__:main:556 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 18:37:47.592 | INFO     | __main__:<lambda>:527 |  GATT application registada!
+2026-01-04 18:37:47.593 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:37:47.694 | INFO     | __main__:<lambda>:535 |  Advertisement registado!
+2026-01-04 18:37:52.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:37:52.454 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:37:52.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551872.4542308
+2026-01-04 18:37:52.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ace01d121e
+2026-01-04 18:37:52.455 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:37:52.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ace01d121e...
+2026-01-04 18:37:52.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 3081870242016221d94e1a4863d9f82bd128363f6b6cf104822d121cd4f64778...
+2026-01-04 18:37:52.459 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:37:57.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:37:57.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:37:57.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551877.4542975
+2026-01-04 18:37:57.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ace15d1336
+2026-01-04 18:37:57.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:37:57.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ace15d1336...
+2026-01-04 18:37:57.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201aae6760973752204625f1be97319e45517d6c02b0ae26837606a...
+2026-01-04 18:37:57.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:38:02.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:38:02.454 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:38:02.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551882.4542804
+2026-01-04 18:38:02.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ace29d12ee
+2026-01-04 18:38:02.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:38:02.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ace29d12ee...
+2026-01-04 18:38:02.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 308187024200f1a63c57ed5143f83070b0b04e98b1a27f3374e654f6acbcf0a4...
+2026-01-04 18:38:02.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:38:07.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:38:07.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:38:07.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551887.4546714
+2026-01-04 18:38:07.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ace3dd1956
+2026-01-04 18:38:07.457 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:38:07.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ace3dd1956...
+2026-01-04 18:38:07.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 308187024201577cf1f0859721a6a8840357c1aaccb44e5d5b3cad8102ac3c74...
+2026-01-04 18:38:07.459 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:38:10.778 | INFO     | sync.sink_device:stop:604 | A parar Sink Device...
+2026-01-04 18:38:10.779 | INFO     | sync.sink_device:stop:616 |  Sink Device parado
+2026-01-04 18:39:28.122 | WARNING  | common.security.dtls_wrapper:<module>:43 |   Biblioteca python3-dtls não disponível
+2026-01-04 18:39:28.122 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 18:39:28.122 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 18:39:28.122 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 18:39:28.141 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 18:39:28.143 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 18:39:28.143 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 18:39:28.143 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 18:39:28.143 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 18:39:28.143 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 18:39:28.143 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 18:39:28.144 | INFO     | common.security.dtls_wrapper:__init__:308 | DTLSManager inicializado
+2026-01-04 18:39:28.144 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 18:39:28.144 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 18:39:28.144 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 18:39:28.144 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 18:39:28.144 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 18:39:28.144 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 18:39:28.145 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 18:39:28.145 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 18:39:28.145 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 18:39:28.145 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 18:39:28.145 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 18:39:28.145 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 18:39:28.145 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 18:39:28.145 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 18:39:28.145 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 18:39:28.145 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:39:28.145 | INFO     | sync.sink_device:setup_advertising:221 |  Advertising contínuo configurado (duration=0)
+2026-01-04 18:39:28.145 | INFO     | sync.sink_device:setup_advertising:223 |  BLE Advertising configurado
+2026-01-04 18:39:28.145 | INFO     | sync.sink_device:start_heartbeat_service:502 |  A iniciar serviço de heartbeat...
+2026-01-04 18:39:28.146 | INFO     | sync.sink_device:start_heartbeat_service:540 |  Serviço de heartbeat iniciado
+2026-01-04 18:39:28.147 | INFO     | __main__:main:556 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 18:39:28.152 | INFO     | __main__:<lambda>:527 |  GATT application registada!
+2026-01-04 18:39:28.153 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:39:28.252 | INFO     | __main__:<lambda>:535 |  Advertisement registado!
+2026-01-04 18:39:33.455 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:39:33.456 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:39:33.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551973.4551396
+2026-01-04 18:39:33.457 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56acf95d2102
+2026-01-04 18:39:33.457 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:39:33.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56acf95d2102...
+2026-01-04 18:39:33.462 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 3081880242018e58a26585881bcf2b91cf9459fd06cbc94173134b57fe0f7804...
+2026-01-04 18:39:33.462 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:39:38.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:39:38.454 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:39:38.454 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551978.454141
+2026-01-04 18:39:38.454 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56acfa9d10a5
+2026-01-04 18:39:38.454 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:39:38.454 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56acfa9d10a5...
+2026-01-04 18:39:38.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201eac0c2588f6f3162fa8d4f00341e1645382f0d33282bacefd7c1...
+2026-01-04 18:39:38.455 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:39:43.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:39:43.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:39:43.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551983.4548352
+2026-01-04 18:39:43.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56acfbdd1c05
+2026-01-04 18:39:43.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:39:43.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56acfbdd1c05...
+2026-01-04 18:39:43.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 3081880242014aa182d8a66d8f0bb4164c29c17196bc6c1bf79b16a7a28ac3cd...
+2026-01-04 18:39:43.457 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:39:48.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:39:48.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:39:48.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551988.454785
+2026-01-04 18:39:48.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56acfd1d1b33
+2026-01-04 18:39:48.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:39:48.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56acfd1d1b33...
+2026-01-04 18:39:48.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201edc322c41a245a17d7724b1856a9a127e5eac1eeb2369986a909...
+2026-01-04 18:39:48.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:39:53.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:39:53.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:39:53.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767551993.454738
+2026-01-04 18:39:53.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56acfe5d1a6d
+2026-01-04 18:39:53.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:39:53.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56acfe5d1a6d...
+2026-01-04 18:39:53.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201746840f53c3c170e5fe81c87b5876ab7341f0444a6bcb8f5141f...
+2026-01-04 18:39:53.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:39:57.661 | INFO     | sync.sink_device:stop:604 | A parar Sink Device...
+2026-01-04 18:39:57.662 | INFO     | sync.sink_device:stop:616 |  Sink Device parado
+2026-01-04 18:40:00.964 | WARNING  | common.security.dtls_wrapper:<module>:43 |   Biblioteca python3-dtls não disponível
+2026-01-04 18:40:00.964 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 18:40:00.964 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 18:40:00.964 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 18:40:00.983 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 18:40:00.985 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 18:40:00.985 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 18:40:00.985 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 18:40:00.985 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 18:40:00.985 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 18:40:00.985 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 18:40:00.985 | INFO     | common.security.dtls_wrapper:__init__:308 | DTLSManager inicializado
+2026-01-04 18:40:00.985 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 18:40:00.985 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 18:40:00.986 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 18:40:00.987 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 18:40:00.987 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 18:40:00.987 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 18:40:00.987 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 18:40:00.987 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 18:40:00.987 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 18:40:00.987 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 18:40:00.987 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 18:40:00.987 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 18:40:00.987 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 18:40:00.987 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 18:40:00.987 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 18:40:00.987 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:40:00.988 | INFO     | sync.sink_device:setup_advertising:221 |  Advertising contínuo configurado (duration=0)
+2026-01-04 18:40:00.988 | INFO     | sync.sink_device:setup_advertising:223 |  BLE Advertising configurado
+2026-01-04 18:40:00.988 | INFO     | sync.sink_device:start_heartbeat_service:502 |  A iniciar serviço de heartbeat...
+2026-01-04 18:40:00.989 | INFO     | sync.sink_device:start_heartbeat_service:540 |  Serviço de heartbeat iniciado
+2026-01-04 18:40:00.989 | INFO     | __main__:main:556 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 18:40:00.995 | INFO     | __main__:<lambda>:527 |  GATT application registada!
+2026-01-04 18:40:00.995 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:40:01.098 | INFO     | __main__:<lambda>:535 |  Advertisement registado!
+2026-01-04 18:40:04.229 | INFO     | sync.sink_device:stop:604 | A parar Sink Device...
+2026-01-04 18:40:04.230 | INFO     | sync.sink_device:stop:616 |  Sink Device parado
+2026-01-04 18:40:11.054 | WARNING  | common.security.dtls_wrapper:<module>:43 |   Biblioteca python3-dtls não disponível
+2026-01-04 18:40:11.054 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 18:40:11.054 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 18:40:11.054 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 18:40:11.073 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 18:40:11.075 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 18:40:11.075 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 18:40:11.075 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 18:40:11.076 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 18:40:11.076 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 18:40:11.076 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 18:40:11.076 | INFO     | common.security.dtls_wrapper:__init__:308 | DTLSManager inicializado
+2026-01-04 18:40:11.076 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 18:40:11.076 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 18:40:11.077 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 18:40:11.077 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 18:40:11.077 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 18:40:11.077 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 18:40:11.078 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 18:40:11.078 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 18:40:11.078 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 18:40:11.078 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 18:40:11.079 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 18:40:11.079 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 18:40:11.079 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 18:40:11.079 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 18:40:11.079 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 18:40:11.079 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:40:11.080 | INFO     | sync.sink_device:setup_advertising:221 |  Advertising contínuo configurado (duration=0)
+2026-01-04 18:40:11.080 | INFO     | sync.sink_device:setup_advertising:223 |  BLE Advertising configurado
+2026-01-04 18:40:11.080 | INFO     | sync.sink_device:start_heartbeat_service:502 |  A iniciar serviço de heartbeat...
+2026-01-04 18:40:11.081 | INFO     | sync.sink_device:start_heartbeat_service:540 |  Serviço de heartbeat iniciado
+2026-01-04 18:40:11.081 | INFO     | __main__:main:556 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 18:40:11.086 | INFO     | __main__:<lambda>:527 |  GATT application registada!
+2026-01-04 18:40:11.086 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:40:11.188 | INFO     | __main__:<lambda>:535 |  Advertisement registado!
+2026-01-04 18:40:16.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:40:16.454 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:40:16.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552016.4539542
+2026-01-04 18:40:16.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad041d0d96
+2026-01-04 18:40:16.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:40:16.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad041d0d96...
+2026-01-04 18:40:16.460 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024200b903690c2cbbd1503be5d14c3e8b41e05bd9ce1554ca27e476a2...
+2026-01-04 18:40:16.461 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:40:21.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:40:21.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:40:21.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552021.4547703
+2026-01-04 18:40:21.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad055d1af5
+2026-01-04 18:40:21.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:40:21.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad055d1af5...
+2026-01-04 18:40:21.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 308187024101c8c6d9affbb077d19fa7e8586318055c3d263abb7a2ac2267e39...
+2026-01-04 18:40:21.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:40:21.716 | INFO     | sync.sink_device:stop:604 | A parar Sink Device...
+2026-01-04 18:40:21.717 | INFO     | sync.sink_device:stop:616 |  Sink Device parado
+2026-01-04 18:40:32.217 | WARNING  | common.security.dtls_wrapper:<module>:43 |   Biblioteca python3-dtls não disponível
+2026-01-04 18:40:32.218 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 18:40:32.218 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 18:40:32.218 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 18:40:32.236 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 18:40:32.238 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 18:40:32.238 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 18:40:32.239 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 18:40:32.239 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 18:40:32.239 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 18:40:32.239 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 18:40:32.239 | INFO     | common.security.dtls_wrapper:__init__:308 | DTLSManager inicializado
+2026-01-04 18:40:32.239 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 18:40:32.239 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 18:40:32.240 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 18:40:32.240 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 18:40:32.240 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 18:40:32.240 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 18:40:32.240 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 18:40:32.241 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 18:40:32.241 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 18:40:32.241 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 18:40:32.241 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 18:40:32.241 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 18:40:32.241 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 18:40:32.241 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 18:40:32.241 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 18:40:32.241 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:40:32.241 | INFO     | sync.sink_device:setup_advertising:221 |  Advertising contínuo configurado (duration=0)
+2026-01-04 18:40:32.241 | INFO     | sync.sink_device:setup_advertising:223 |  BLE Advertising configurado
+2026-01-04 18:40:32.242 | INFO     | sync.sink_device:start_heartbeat_service:502 |  A iniciar serviço de heartbeat...
+2026-01-04 18:40:32.243 | INFO     | sync.sink_device:start_heartbeat_service:540 |  Serviço de heartbeat iniciado
+2026-01-04 18:40:32.244 | INFO     | __main__:main:556 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 18:40:32.249 | INFO     | __main__:<lambda>:527 |  GATT application registada!
+2026-01-04 18:40:32.249 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:40:32.351 | INFO     | __main__:<lambda>:535 |  Advertisement registado!
+2026-01-04 18:40:37.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:40:37.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:40:37.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552037.454419
+2026-01-04 18:40:37.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad095d1533
+2026-01-04 18:40:37.457 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:40:37.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad095d1533...
+2026-01-04 18:40:37.462 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 3081880242016975bfaf32cde06886cfcc724848834d09ca782d5256c66551cf...
+2026-01-04 18:40:37.462 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:40:42.450 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:40:42.451 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:40:42.453 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552042.4504912
+2026-01-04 18:40:42.453 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad0a9cd4d9
+2026-01-04 18:40:42.454 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:40:42.454 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad0a9cd4d9...
+2026-01-04 18:40:42.456 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 3081870242018694de5bcaadf996567604dff8450d050d8c46196c6230f1bbda...
+2026-01-04 18:40:42.457 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:40:47.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:40:47.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:40:47.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552047.454856
+2026-01-04 18:40:47.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad0bdd1c5c
+2026-01-04 18:40:47.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:40:47.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad0bdd1c5c...
+2026-01-04 18:40:47.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201f63f0597ae40142a9b8d7c0f099fef4e4fc0243717d2d3dcbc01...
+2026-01-04 18:40:47.459 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:40:52.453 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:40:52.454 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:40:52.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552052.453914
+2026-01-04 18:40:52.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad0d1d0ced
+2026-01-04 18:40:52.457 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:40:52.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad0d1d0ced...
+2026-01-04 18:40:52.460 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201b043f48b0e8d44f8828ca3d89ffbf098d1a1da53d15dac701fed...
+2026-01-04 18:40:52.461 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:40:57.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:40:57.456 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:40:57.457 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552057.4548512
+2026-01-04 18:40:57.458 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad0e5d1c48
+2026-01-04 18:40:57.458 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:40:57.459 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad0e5d1c48...
+2026-01-04 18:40:57.460 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 3081870242016cac81a928e0a40a43107662f69dbe98ea1bc748186b5531e82c...
+2026-01-04 18:40:57.460 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:41:02.455 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:02.456 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:02.457 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552062.4549909
+2026-01-04 18:41:02.457 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad0f9d1e92
+2026-01-04 18:41:02.458 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:02.459 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad0f9d1e92...
+2026-01-04 18:41:02.460 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 3081870242013ac7e4e47542f35b025397891f63db1b83569457cb5a979ee850...
+2026-01-04 18:41:02.460 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:41:05.206 | INFO     | common.ble.gatt_services:StartNotify:131 | Cliente :1.4 subscreveu notificações de pacotes
+2026-01-04 18:41:05.387 | INFO     | common.ble.gatt_services:StartNotify:510 | Cliente :1.4 subscreveu auth indications
+2026-01-04 18:41:05.480 | INFO     | common.ble.fragmentation:add_fragment:164 | Iniciando recepção de 5 fragmentos
+2026-01-04 18:41:06.199 | INFO     | common.ble.fragmentation:add_fragment:199 |  Mensagem reconstruída: 890 bytes (5 fragmentos)
+2026-01-04 18:41:06.199 | INFO     | common.ble.gatt_services:WriteValue:485 | Mensagem completa recebida de :1.4: 890 bytes
+2026-01-04 18:41:06.200 | INFO     | sync.sink_device:_on_auth_message:284 |  Mensagem de autenticação recebida de :1.4: 890 bytes
+2026-01-04 18:41:06.200 | INFO     | common.security.auth_handler:handle_auth_message:89 |  Mensagem de autenticação de :1.4: 890 bytes
+2026-01-04 18:41:06.200 | INFO     | common.security.auth_handler:get_or_create_session:71 | Nova sessão de autenticação para cliente: :1.4
+2026-01-04 18:41:06.200 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 4e127252...
+2026-01-04 18:41:06.201 | INFO     | common.security.authentication:handle_cert_offer:162 | 📜 Certificado do peer recebido - validando...
+2026-01-04 18:41:06.202 | INFO     | common.security.certificate_manager:validate_certificate:267 |  Certificado validado com sucesso
+2026-01-04 18:41:06.202 | INFO     | common.security.authentication:handle_cert_offer:179 |  Certificado válido!
+2026-01-04 18:41:06.203 | INFO     | common.security.authentication:handle_cert_offer:180 |    Peer NID: 0abd8260...
+2026-01-04 18:41:06.203 | INFO     | common.security.authentication:handle_cert_offer:181 |    Peer tipo: NODE
+2026-01-04 18:41:06.203 | INFO     | common.security.authentication:handle_cert_offer:195 | 🎲 Enviando certificado + challenge: 1f661352310836901790a9ee993ffce5...
+2026-01-04 18:41:06.203 | INFO     | common.ble.fragmentation:fragment_message:97 | Fragmentando mensagem de 947 bytes em 6 fragmentos
+2026-01-04 18:41:06.965 | INFO     | common.ble.fragmentation:add_fragment:164 | Iniciando recepção de 1 fragmentos
+2026-01-04 18:41:06.966 | INFO     | common.ble.fragmentation:add_fragment:199 |  Mensagem reconstruída: 142 bytes (1 fragmentos)
+2026-01-04 18:41:06.966 | INFO     | common.ble.gatt_services:WriteValue:485 | Mensagem completa recebida de :1.4: 142 bytes
+2026-01-04 18:41:06.967 | INFO     | sync.sink_device:_on_auth_message:284 |  Mensagem de autenticação recebida de :1.4: 142 bytes
+2026-01-04 18:41:06.967 | INFO     | common.security.auth_handler:handle_auth_message:89 |  Mensagem de autenticação de :1.4: 142 bytes
+2026-01-04 18:41:06.968 | INFO     | common.security.authentication:handle_response:284 |  Response recebida - verificando assinatura...
+2026-01-04 18:41:06.969 | INFO     | common.security.certificate_manager:verify_signature:385 |  Verificando assinatura:
+2026-01-04 18:41:06.969 | INFO     | common.security.certificate_manager:verify_signature:386 |    Data: 32 bytes | 1f661352310836901790a9ee993ffce5bc2975b1b7a7929cd204e5abbd3ddf00...
+2026-01-04 18:41:06.970 | INFO     | common.security.certificate_manager:verify_signature:387 |    Signature: 139 bytes | 308188024201c666e37c1d26896c9beb9ce88bedde59428fb88ddc3cb6be4025...
+2026-01-04 18:41:06.971 | INFO     | common.security.certificate_manager:verify_signature:395 |  Assinatura verificada com sucesso!
+2026-01-04 18:41:06.972 | INFO     | common.security.authentication:handle_response:305 |  Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2026-01-04 18:41:06.972 | INFO     | common.security.authentication:handle_response:306 |    Peer 0abd8260... autenticado com sucesso
+2026-01-04 18:41:06.973 | INFO     | common.security.auth_handler:handle_auth_message:101 |  Cliente :1.4 AUTENTICADO!
+2026-01-04 18:41:06.973 | INFO     | sync.sink_device:_on_auth_message:291 |  Cliente :1.4 autenticado com sucesso!
+2026-01-04 18:41:06.975 | INFO     | sync.sink_device:_on_auth_message:310 | 🔑 Session key armazenada para 0abd8260...
+2026-01-04 18:41:06.975 | INFO     | common.security.dtls_wrapper:__init__:96 | DTLSChannel criado (server) com certificado sink_4e127252_cert.pem
+2026-01-04 18:41:06.976 | INFO     | common.security.dtls_wrapper:create_channel:329 | Canal DTLS criado para Node 0abd8260...
+2026-01-04 18:41:06.976 | INFO     | common.security.dtls_wrapper:establish:149 | Iniciando handshake DTLS...
+2026-01-04 18:41:06.976 | WARNING  | common.security.dtls_wrapper:establish:152 | DTLS não disponível - operando em modo stub
+2026-01-04 18:41:06.976 | INFO     | common.security.dtls_wrapper:establish:154 |  Canal DTLS (stub) estabelecido
+2026-01-04 18:41:06.977 | INFO     | sync.sink_device:_on_auth_message:315 |  Canal DTLS estabelecido com 0abd8260...
+2026-01-04 18:41:06.977 | INFO     | common.security.dtls_wrapper:derive_encryption_key:137 | 🔑 Chave de encriptação end-to-end derivada (AES-256-GCM)
+2026-01-04 18:41:06.977 | INFO     | sync.sink_device:_on_auth_message:319 | 🔑 Chave de encriptação end-to-end derivada para 0abd8260...
+2026-01-04 18:41:06.980 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:41:06.987 | INFO     | sync.sink_device:<lambda>:332 |  Advertising re-registado após conexão
+2026-01-04 18:41:07.450 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:07.451 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:07.452 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552067.4503858
+2026-01-04 18:41:07.452 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad10dcd31f
+2026-01-04 18:41:07.453 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:07.453 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad10dcd31f...
+2026-01-04 18:41:07.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702414c99ba9516795756defac10f3e34310c4822da200539699cf62810...
+2026-01-04 18:41:07.456 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:41:12.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:12.456 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:12.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552072.454839
+2026-01-04 18:41:12.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad121d1c15
+2026-01-04 18:41:12.457 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:12.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad121d1c15...
+2026-01-04 18:41:12.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024200ed3c33c997ab00de78618729674fd46bef35a5d66295fa68b9ca...
+2026-01-04 18:41:12.459 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:41:17.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:17.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:17.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552077.454785
+2026-01-04 18:41:17.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad135d1b33
+2026-01-04 18:41:17.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:17.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad135d1b33...
+2026-01-04 18:41:17.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201b9cd3888650e6721bc89f68f7b2786823790c8d47fc2ce5102dc...
+2026-01-04 18:41:17.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:41:22.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:22.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:22.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552082.4548347
+2026-01-04 18:41:22.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad149d1c03
+2026-01-04 18:41:22.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:22.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad149d1c03...
+2026-01-04 18:41:22.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702417b03606ae84155e5272ca3493b50b4b94e6bfc28c3b65e6647c2db...
+2026-01-04 18:41:22.459 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:41:27.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:27.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:27.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552087.4548247
+2026-01-04 18:41:27.457 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad15dd1bd9
+2026-01-04 18:41:27.458 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:27.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad15dd1bd9...
+2026-01-04 18:41:27.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201f0fa9882190d55b7729a99b46d6731b21d36b51c924ed24795c6...
+2026-01-04 18:41:27.459 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:41:32.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:32.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:32.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552092.4547443
+2026-01-04 18:41:32.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad171d1a88
+2026-01-04 18:41:32.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:32.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad171d1a88...
+2026-01-04 18:41:32.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201d2663c42330ccf6f8c26cc35dd9e1255fb3be412f65962b8dac5...
+2026-01-04 18:41:32.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:41:37.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:37.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:37.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552097.4548151
+2026-01-04 18:41:37.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad185d1bb1
+2026-01-04 18:41:37.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:37.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad185d1bb1...
+2026-01-04 18:41:37.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420089a233087e683d10bca393a9a253f6bbcd52cf3e32a0288ff0ba...
+2026-01-04 18:41:37.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:41:42.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:42.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:42.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552102.4547544
+2026-01-04 18:41:42.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad199d1ab2
+2026-01-04 18:41:42.455 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:42.455 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad199d1ab2...
+2026-01-04 18:41:42.456 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201a564453d63e2f9cd6aab91fe9497213e02abdb8e69f292ec3419...
+2026-01-04 18:41:42.456 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:41:47.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:47.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:47.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552107.4548311
+2026-01-04 18:41:47.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad1add1bf4
+2026-01-04 18:41:47.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:47.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad1add1bf4...
+2026-01-04 18:41:47.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201da04da12665edc93a5a95031a04a42ea7efc0cea6f71fe8dd706...
+2026-01-04 18:41:47.460 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:41:52.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:52.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:52.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552112.4548223
+2026-01-04 18:41:52.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad1c1d1bcf
+2026-01-04 18:41:52.457 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:52.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad1c1d1bcf...
+2026-01-04 18:41:52.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420165a3c13fa81dd1fa6d7195dbcf9ff1a636e820ed11b495cbb5b5...
+2026-01-04 18:41:52.459 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:41:57.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:41:57.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:41:57.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552117.4547362
+2026-01-04 18:41:57.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad1d5d1a66
+2026-01-04 18:41:57.455 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:41:57.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad1d5d1a66...
+2026-01-04 18:41:57.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420150f24cfdb5a85c461f80e2b4b1629ab0106b1476219a63254b2c...
+2026-01-04 18:41:57.457 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:42:02.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:42:02.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:42:02.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552122.4548342
+2026-01-04 18:42:02.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad1e9d1c01
+2026-01-04 18:42:02.457 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:42:02.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad1e9d1c01...
+2026-01-04 18:42:02.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 3081870241168b626e0051e094d3c204d48a820b789b7c35aae4c2b4ee526c7d...
+2026-01-04 18:42:02.459 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:42:06.816 | INFO     | sync.sink_device:_on_packet_received:237 |  Pacote recebido de unknown: 0abd8260... → 4e127252... (type=DATA, seq=0)
+2026-01-04 18:42:06.817 | INFO     | sync.sink_device:_handle_data_packet:353 |  DATA recebido: 0abd8260... → 4e127252... (34 bytes)
+2026-01-04 18:42:06.817 | INFO     | sync.sink_device:_handle_data_packet:368 | 🔓 Payload desencriptado end-to-end: 34 → 6 bytes
+2026-01-04 18:42:06.818 | INFO     | sync.sink_device:_handle_data_packet:370 |  Pacote destinado ao Sink - payload: b'teste1'
+2026-01-04 18:42:06.819 | INFO     | sync.sink_device:_handle_data_packet:393 | 📥 Mensagem armazenada no inbox: 'teste1' (de 0abd826034354e24...)
+2026-01-04 18:42:07.450 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:42:07.451 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:42:07.452 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552127.4504251
+2026-01-04 18:42:07.452 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad1fdcd3c4
+2026-01-04 18:42:07.453 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:42:07.454 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad1fdcd3c4...
+2026-01-04 18:42:07.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420105f163fa8295cfe0909ae8b9cc8c588461e388599bd33719bdae...
+2026-01-04 18:42:07.456 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:42:12.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:42:12.454 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:42:12.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552132.453951
+2026-01-04 18:42:12.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad211d0d88
+2026-01-04 18:42:12.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:42:12.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad211d0d88...
+2026-01-04 18:42:12.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201842d4a9ad27e8a88494913105380993da621f1b1de6b99b3a9d1...
+2026-01-04 18:42:12.460 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:42:17.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:42:17.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:42:17.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552137.4547317
+2026-01-04 18:42:17.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad225d1a53
+2026-01-04 18:42:17.456 | INFO     | common.security.certificate_manager:sign_data:353 | ✍  Assinando dados:
+2026-01-04 18:42:17.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad225d1a53...
+2026-01-04 18:42:17.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 308187024120d791b55a4980460c2152acfc79f0580d8c060b5ada55e0e4c421...
+2026-01-04 18:42:17.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:42:18.916 | INFO     | sync.sink_device:stop:604 | A parar Sink Device...
+2026-01-04 18:42:18.917 | INFO     | sync.sink_device:stop:616 |  Sink Device parado
+2026-01-04 18:47:32.698 | WARNING  | common.security.dtls_wrapper:<module>:43 |   Biblioteca python3-dtls não disponível
+2026-01-04 18:47:32.698 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 18:47:32.698 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 18:47:32.698 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 18:47:32.716 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 18:47:32.718 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 18:47:32.719 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 18:47:32.719 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 18:47:32.719 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 18:47:32.719 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 18:47:32.719 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 18:47:32.719 | INFO     | common.security.dtls_wrapper:__init__:308 | DTLSManager inicializado
+2026-01-04 18:47:32.719 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 18:47:32.719 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 18:47:32.720 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 18:47:32.720 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 18:47:32.720 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 18:47:32.720 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 18:47:32.720 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 18:47:32.720 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 18:47:32.720 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 18:47:32.721 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 18:47:32.721 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 18:47:32.721 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 18:47:32.721 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 18:47:32.721 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 18:47:32.721 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 18:47:32.721 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:47:32.721 | INFO     | sync.sink_device:setup_advertising:221 |  Advertising contínuo configurado (duration=0)
+2026-01-04 18:47:32.721 | INFO     | sync.sink_device:setup_advertising:223 |  BLE Advertising configurado
+2026-01-04 18:47:32.722 | INFO     | sync.sink_device:start_heartbeat_service:502 |  A iniciar serviço de heartbeat...
+2026-01-04 18:47:32.722 | INFO     | sync.sink_device:start_heartbeat_service:540 |  Serviço de heartbeat iniciado
+2026-01-04 18:47:32.723 | INFO     | __main__:main:556 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 18:47:32.728 | INFO     | __main__:<lambda>:527 |  GATT application registada!
+2026-01-04 18:47:32.728 | INFO     | common.ble.advertising:get_properties:162 |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:47:32.828 | INFO     | __main__:<lambda>:535 |  Advertisement registado!
+2026-01-04 18:47:38.455 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:47:38.456 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:47:38.457 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552458.4555151
+2026-01-04 18:47:38.457 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad729d2729
+2026-01-04 18:47:38.458 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:47:38.459 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad729d2729...
+2026-01-04 18:47:38.461 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 137 bytes | 30818602416649cdf7685f79f95419ec720ddfe097b51438eff1287898eea819...
+2026-01-04 18:47:38.461 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 137 bytes (padded para 142)
+2026-01-04 18:47:43.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:47:43.454 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:47:43.454 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552463.4541872
+2026-01-04 18:47:43.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad73dd1167
+2026-01-04 18:47:43.455 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:47:43.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad73dd1167...
+2026-01-04 18:47:43.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 137 bytes | 308186024159f0e96298fdf63efcc7d96637f288efceaf10b40e256f264d5d42...
+2026-01-04 18:47:43.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 137 bytes (padded para 142)
+2026-01-04 18:47:48.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:47:48.454 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:47:48.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552468.454192
+2026-01-04 18:47:48.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad751d117b
+2026-01-04 18:47:48.456 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:47:48.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad751d117b...
+2026-01-04 18:47:48.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 3081880242015d650f9cfef68b8a0741277967811286a3d983b33fd41da55033...
+2026-01-04 18:47:48.457 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:47:53.451 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:47:53.451 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:47:53.452 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552473.4513276
+2026-01-04 18:47:53.453 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad765ce28d
+2026-01-04 18:47:53.453 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:47:53.453 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad765ce28d...
+2026-01-04 18:47:53.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702417e2b1d8702db56fd634c58e3eb30c09dce7a80ead78835a1f92f00...
+2026-01-04 18:47:53.455 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:47:58.451 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:47:58.451 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:47:58.451 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552478.4512637
+2026-01-04 18:47:58.451 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad779ce181
+2026-01-04 18:47:58.451 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:47:58.451 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad779ce181...
+2026-01-04 18:47:58.452 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 137 bytes | 30818602411636907826bd6b780135e595467d310e06ae80a6ee6b10a1055c3a...
+2026-01-04 18:47:58.452 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 137 bytes (padded para 142)
+2026-01-04 18:47:59.333 | INFO     | common.ble.gatt_services:StartNotify:131 | Cliente :1.4 subscreveu notificações de pacotes
+2026-01-04 18:47:59.513 | INFO     | common.ble.gatt_services:StartNotify:510 | Cliente :1.4 subscreveu auth indications
+2026-01-04 18:47:59.606 | INFO     | common.ble.fragmentation:add_fragment:164 | Iniciando recepção de 5 fragmentos
+2026-01-04 18:48:00.325 | INFO     | common.ble.fragmentation:add_fragment:199 |  Mensagem reconstruída: 890 bytes (5 fragmentos)
+2026-01-04 18:48:00.326 | INFO     | common.ble.gatt_services:WriteValue:485 | Mensagem completa recebida de :1.4: 890 bytes
+2026-01-04 18:48:00.327 | INFO     | sync.sink_device:_on_auth_message:284 |  Mensagem de autenticação recebida de :1.4: 890 bytes
+2026-01-04 18:48:00.327 | INFO     | common.security.auth_handler:handle_auth_message:89 |  Mensagem de autenticação de :1.4: 890 bytes
+2026-01-04 18:48:00.327 | INFO     | common.security.auth_handler:get_or_create_session:71 | Nova sessão de autenticação para cliente: :1.4
+2026-01-04 18:48:00.328 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 4e127252...
+2026-01-04 18:48:00.328 | INFO     | common.security.authentication:handle_cert_offer:162 |  Certificado do peer recebido - validando...
+2026-01-04 18:48:00.331 | INFO     | common.security.certificate_manager:validate_certificate:267 |  Certificado validado com sucesso
+2026-01-04 18:48:00.331 | INFO     | common.security.authentication:handle_cert_offer:179 |  Certificado válido!
+2026-01-04 18:48:00.331 | INFO     | common.security.authentication:handle_cert_offer:180 |    Peer NID: 0abd8260...
+2026-01-04 18:48:00.332 | INFO     | common.security.authentication:handle_cert_offer:181 |    Peer tipo: NODE
+2026-01-04 18:48:00.332 | INFO     | common.security.authentication:handle_cert_offer:195 |  Enviando certificado + challenge: e451111f4199c9da0998a43c44708501...
+2026-01-04 18:48:00.332 | INFO     | common.ble.fragmentation:fragment_message:97 | Fragmentando mensagem de 947 bytes em 6 fragmentos
+2026-01-04 18:48:01.090 | INFO     | common.ble.fragmentation:add_fragment:164 | Iniciando recepção de 1 fragmentos
+2026-01-04 18:48:01.090 | INFO     | common.ble.fragmentation:add_fragment:199 |  Mensagem reconstruída: 141 bytes (1 fragmentos)
+2026-01-04 18:48:01.090 | INFO     | common.ble.gatt_services:WriteValue:485 | Mensagem completa recebida de :1.4: 141 bytes
+2026-01-04 18:48:01.091 | INFO     | sync.sink_device:_on_auth_message:284 |  Mensagem de autenticação recebida de :1.4: 141 bytes
+2026-01-04 18:48:01.091 | INFO     | common.security.auth_handler:handle_auth_message:89 |  Mensagem de autenticação de :1.4: 141 bytes
+2026-01-04 18:48:01.091 | INFO     | common.security.authentication:handle_response:284 |  Response recebida - verificando assinatura...
+2026-01-04 18:48:01.092 | INFO     | common.security.certificate_manager:verify_signature:385 |  Verificando assinatura:
+2026-01-04 18:48:01.092 | INFO     | common.security.certificate_manager:verify_signature:386 |    Data: 32 bytes | e451111f4199c9da0998a43c44708501d2d44a003dcbc37115230e13bccff4a7...
+2026-01-04 18:48:01.092 | INFO     | common.security.certificate_manager:verify_signature:387 |    Signature: 138 bytes | 3081870242016525c73cc71f8f8ccfc351aeb500e6870c20d4d68e22bd72e79b...
+2026-01-04 18:48:01.093 | INFO     | common.security.certificate_manager:verify_signature:395 |  Assinatura verificada com sucesso!
+2026-01-04 18:48:01.093 | INFO     | common.security.authentication:handle_response:305 |  Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2026-01-04 18:48:01.093 | INFO     | common.security.authentication:handle_response:306 |    Peer 0abd8260... autenticado com sucesso
+2026-01-04 18:48:01.093 | INFO     | common.security.auth_handler:handle_auth_message:101 |  Cliente :1.4 AUTENTICADO!
+2026-01-04 18:48:01.093 | INFO     | sync.sink_device:_on_auth_message:291 |  Cliente :1.4 autenticado com sucesso!
+2026-01-04 18:48:01.094 | INFO     | sync.sink_device:_on_auth_message:310 |  Session key armazenada para 0abd8260...
+2026-01-04 18:48:01.094 | INFO     | common.security.dtls_wrapper:__init__:96 | DTLSChannel criado (server) com certificado sink_4e127252_cert.pem
+2026-01-04 18:48:01.094 | INFO     | common.security.dtls_wrapper:create_channel:329 | Canal DTLS criado para Node 0abd8260...
+2026-01-04 18:48:01.095 | INFO     | common.security.dtls_wrapper:establish:149 | Iniciando handshake DTLS...
+2026-01-04 18:48:01.095 | WARNING  | common.security.dtls_wrapper:establish:152 | DTLS não disponível - operando em modo stub
+2026-01-04 18:48:01.095 | INFO     | common.security.dtls_wrapper:establish:154 |  Canal DTLS (stub) estabelecido
+2026-01-04 18:48:01.095 | INFO     | sync.sink_device:_on_auth_message:315 |  Canal DTLS estabelecido com 0abd8260...
+2026-01-04 18:48:01.095 | INFO     | common.security.dtls_wrapper:derive_encryption_key:137 |  Chave de encriptação end-to-end derivada (AES-256-GCM)
+2026-01-04 18:48:01.095 | INFO     | sync.sink_device:_on_auth_message:319 |  Chave de encriptação end-to-end derivada para 0abd8260...
+2026-01-04 18:48:01.100 | INFO     | common.ble.advertising:get_properties:162 |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 18:48:01.106 | INFO     | sync.sink_device:<lambda>:332 |  Advertising re-registado após conexão
+2026-01-04 18:48:03.451 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:48:03.451 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:48:03.452 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552483.4511712
+2026-01-04 18:48:03.453 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad78dcdffd
+2026-01-04 18:48:03.453 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:48:03.453 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad78dcdffd...
+2026-01-04 18:48:03.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420090081fcba437a9139474b02fec77760f509b6847019b8a77b0b5...
+2026-01-04 18:48:03.455 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:48:08.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:48:08.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:48:08.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552488.454859
+2026-01-04 18:48:08.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad7a1d1c69
+2026-01-04 18:48:08.457 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:48:08.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad7a1d1c69...
+2026-01-04 18:48:08.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 308187024115006d432188ef714ec3314e8d817ae85ae95d623d60d063d39885...
+2026-01-04 18:48:08.460 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:48:13.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:48:13.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:48:13.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552493.454849
+2026-01-04 18:48:13.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad7b5d1c3f
+2026-01-04 18:48:13.457 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:48:13.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad7b5d1c3f...
+2026-01-04 18:48:13.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 308187024201962a102b0442f8d1faa16f558eb4152c76ad81cb36a26794e5fd...
+2026-01-04 18:48:13.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:48:18.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:48:18.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:48:18.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552498.4548373
+2026-01-04 18:48:18.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad7c9d1c0e
+2026-01-04 18:48:18.457 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:48:18.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad7c9d1c0e...
+2026-01-04 18:48:18.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702414ee008ae74b2481e184f9df0883fa2fc06dcf8d2796cf91c259aa4...
+2026-01-04 18:48:18.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 18:48:18.864 | INFO     | common.ble.gatt_services:StopNotify:148 | Cliente :1.4 cancelou subscrição de pacotes
+2026-01-04 18:48:18.865 | INFO     | sync.sink_device:_cleanup_disconnected_client:451 |  Cliente desconectado: :1.4 (NID=0abd8260...)
+2026-01-04 18:48:18.865 | INFO     | sync.sink_device:_cleanup_disconnected_client:457 |     Session key removida para 0abd8260...
+2026-01-04 18:48:18.866 | INFO     | sync.sink_device:_cleanup_disconnected_client:463 |     Downlink removido: :1.4 (NID=0abd8260...)
+2026-01-04 18:48:18.866 | INFO     | sync.sink_device:_cleanup_disconnected_client:470 |  Cleanup completo para cliente 0abd8260...
+2026-01-04 18:48:18.953 | INFO     | common.ble.gatt_services:StopNotify:522 | Cliente :1.4 cancelou subscrição de auth
+2026-01-04 18:48:23.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:48:23.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:48:23.455 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552503.4543474
+2026-01-04 18:48:23.455 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad7ddd1407
+2026-01-04 18:48:23.456 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:48:23.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad7ddd1407...
+2026-01-04 18:48:23.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420096e6a469a513696317f956ec7a33fa0387e1869d05e77a4c0cce...
+2026-01-04 18:48:23.458 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:48:28.454 | INFO     | common.protocol.heartbeat:sign:160 |  Assinando heartbeat:
+2026-01-04 18:48:28.455 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 18:48:28.456 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767552508.4548645
+2026-01-04 18:48:28.456 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56ad7f1d1c80
+2026-01-04 18:48:28.457 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 18:48:28.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56ad7f1d1c80...
+2026-01-04 18:48:28.460 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 3081880242011c42d4f700e09cdc2fe0704c68711805444ec806abbb0ffbd9f5...
+2026-01-04 18:48:28.461 | INFO     | common.protocol.heartbeat:sign:176 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 18:48:28.471 | INFO     | sync.sink_device:stop:604 | A parar Sink Device...
+2026-01-04 18:48:28.471 | INFO     | sync.sink_device:stop:616 |  Sink Device parado
+2026-01-04 19:36:30.805 | WARNING  | common.security.dtls_wrapper:<module>:43 |   Biblioteca python3-dtls não disponível
+2026-01-04 19:36:30.805 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 19:36:30.805 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 19:36:30.805 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 19:36:30.825 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 19:36:30.827 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 19:36:30.827 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 19:36:30.827 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 19:36:30.828 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 19:36:30.828 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 19:36:30.828 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 19:36:30.828 | INFO     | common.security.dtls_wrapper:__init__:307 | DTLSManager inicializado
+2026-01-04 19:36:30.828 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 19:36:30.828 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 19:36:30.829 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 19:36:30.829 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 19:36:30.829 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 19:36:30.829 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 19:36:30.829 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 19:36:30.830 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 19:36:30.830 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 19:36:30.830 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 19:36:30.830 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 19:36:30.830 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 19:36:30.830 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 19:36:30.831 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 19:36:30.831 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 19:36:30.831 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 19:36:30.831 | INFO     | sync.sink_device:setup_advertising:221 |  Advertising contínuo configurado (duration=0)
+2026-01-04 19:36:30.831 | INFO     | sync.sink_device:setup_advertising:223 |  BLE Advertising configurado
+2026-01-04 19:36:30.832 | INFO     | sync.sink_device:start_heartbeat_service:502 |  A iniciar serviço de heartbeat...
+2026-01-04 19:36:30.832 | INFO     | sync.sink_device:start_heartbeat_service:540 |  Serviço de heartbeat iniciado
+2026-01-04 19:36:30.833 | INFO     | __main__:main:556 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 19:36:30.838 | INFO     | __main__:<lambda>:527 |  GATT application registada!
+2026-01-04 19:36:30.838 | INFO     | common.ble.advertising:get_properties:162 |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 19:36:30.940 | INFO     | __main__:<lambda>:535 |  Advertisement registado!
+2026-01-04 19:36:36.455 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 19:36:36.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 19:36:36.455 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767555396.4552581
+2026-01-04 19:36:36.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b0511d22f3
+2026-01-04 19:36:36.456 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 19:36:36.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b0511d22f3...
+2026-01-04 19:36:36.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702412c1469f7b2f0baf95fa297bd887dfc904d7f37cac91251d3d1ef1f...
+2026-01-04 19:36:36.457 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 19:36:37.499 | INFO     | sync.sink_device:stop:604 | A parar Sink Device...
+2026-01-04 19:36:37.500 | INFO     | sync.sink_device:stop:616 |  Sink Device parado
+2026-01-04 19:41:17.895 | WARNING  | common.security.dtls_wrapper:<module>:43 |   Biblioteca python3-dtls não disponível
+2026-01-04 19:41:17.895 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 19:41:17.896 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 19:41:17.896 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 19:41:17.915 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 19:41:17.918 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 19:41:17.918 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 19:41:17.919 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 19:41:17.919 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 19:41:17.919 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 19:41:17.919 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 19:41:17.919 | INFO     | common.security.dtls_wrapper:__init__:307 | DTLSManager inicializado
+2026-01-04 19:41:17.919 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 19:41:17.919 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 19:41:17.920 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 19:41:17.921 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 19:41:17.921 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 19:41:17.921 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 19:41:17.921 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 19:41:17.921 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 19:41:17.922 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 19:41:17.922 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 19:41:17.922 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 19:41:17.922 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 19:41:17.922 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 19:41:17.922 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 19:41:17.923 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 19:41:17.923 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 19:41:17.923 | INFO     | sync.sink_device:setup_advertising:219 | Advertising contínuo configurado
+2026-01-04 19:41:17.923 | INFO     | sync.sink_device:setup_advertising:221 |  BLE Advertising configurado
+2026-01-04 19:41:17.923 | INFO     | sync.sink_device:start_heartbeat_service:499 |  A iniciar serviço de heartbeat...
+2026-01-04 19:41:17.924 | INFO     | sync.sink_device:start_heartbeat_service:528 |  Serviço de heartbeat iniciado
+2026-01-04 19:41:17.924 | INFO     | __main__:main:546 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 19:41:17.929 | INFO     | __main__:<lambda>:517 |  GATT application registada!
+2026-01-04 19:41:17.930 | INFO     | common.ble.advertising:get_properties:162 |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 19:41:18.030 | INFO     | __main__:<lambda>:525 |  Advertisement registado!
+2026-01-04 19:41:23.455 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 19:41:23.456 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 19:41:23.456 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767555683.4553204
+2026-01-04 19:41:23.457 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b098dd23f8
+2026-01-04 19:41:23.457 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 19:41:23.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b098dd23f8...
+2026-01-04 19:41:23.460 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201aebc336bd6d74458e04e4d77e65b3b90cf6b1bd34bc61f1a6640...
+2026-01-04 19:41:23.461 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 19:41:28.453 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 19:41:28.454 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 19:41:28.454 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767555688.4533527
+2026-01-04 19:41:28.454 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b09a1d03bb
+2026-01-04 19:41:28.454 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 19:41:28.454 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b09a1d03bb...
+2026-01-04 19:41:28.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024200fadaebb4d9483caa3e57d0cf5e601fca625721e24a438eb8afaf...
+2026-01-04 19:41:28.456 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 19:41:33.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 19:41:33.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 19:41:33.456 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767555693.454755
+2026-01-04 19:41:33.456 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b09b5d1ab5
+2026-01-04 19:41:33.457 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 19:41:33.458 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b09b5d1ab5...
+2026-01-04 19:41:33.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702412d9d4b0e893388e1d2827a5035f5cf4fca736c14ab59e722c1cfcb...
+2026-01-04 19:41:33.459 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 19:41:38.452 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 19:41:38.452 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 19:41:38.452 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767555698.4523103
+2026-01-04 19:41:38.452 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b09c9cf2a7
+2026-01-04 19:41:38.453 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 19:41:38.453 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b09c9cf2a7...
+2026-01-04 19:41:38.454 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 3081880242018c70cbd5565430563799d67157493a212563e59f943509d1fc08...
+2026-01-04 19:41:38.454 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 19:41:43.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 19:41:43.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 19:41:43.456 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767555703.4547956
+2026-01-04 19:41:43.456 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b09ddd1b5f
+2026-01-04 19:41:43.456 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 19:41:43.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b09ddd1b5f...
+2026-01-04 19:41:43.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420193ce37bfd7b9d88b40c6b30a33435c948632e310ac3cb5d9f42c...
+2026-01-04 19:41:43.457 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 19:41:45.998 | INFO     | sync.sink_device:stop:592 | A parar Sink Device...
+2026-01-04 19:41:45.999 | INFO     | sync.sink_device:stop:604 |  Sink Device parado
+2026-01-04 20:09:01.886 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 20:09:01.888 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 20:09:01.889 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 20:09:01.889 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 20:09:01.889 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 20:09:01.889 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 20:09:01.889 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 20:09:01.889 | INFO     | common.security.dtls_wrapper:__init__:283 | DTLSManager inicializado
+2026-01-04 20:09:01.889 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 20:09:01.889 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 20:09:01.890 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 20:09:01.891 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 20:09:01.891 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 20:09:01.891 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 20:09:01.891 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 20:09:01.891 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 20:09:01.891 | INFO     | sync.sink_device:setup_advertising:219 | Advertising contínuo configurado
+2026-01-04 20:09:01.891 | INFO     | sync.sink_device:setup_advertising:221 |  BLE Advertising configurado
+2026-01-04 20:09:01.891 | INFO     | sync.sink_device:start_heartbeat_service:499 |  A iniciar serviço de heartbeat...
+2026-01-04 20:09:01.892 | INFO     | sync.sink_device:start_heartbeat_service:528 |  Serviço de heartbeat iniciado
+2026-01-04 20:09:01.893 | INFO     | __main__:main:546 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 20:09:01.898 | INFO     | __main__:<lambda>:517 |  GATT application registada!
+2026-01-04 20:09:01.899 | INFO     | common.ble.advertising:get_properties:162 |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 20:09:01.999 | INFO     | __main__:<lambda>:525 |  Advertisement registado!
+2026-01-04 20:09:06.049 | INFO     | sync.sink_device:stop:592 | A parar Sink Device...
+2026-01-04 20:09:06.050 | INFO     | sync.sink_device:stop:604 |  Sink Device parado
+2026-01-04 20:09:46.149 | INFO     | sync.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 20:09:46.151 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 20:09:46.151 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 20:09:46.151 | INFO     | sync.sink_device:__init__:115 |  Certificados carregados com sucesso
+2026-01-04 20:09:46.151 | INFO     | sync.sink_device:__init__:122 | Sink NID: 4e127252...
+2026-01-04 20:09:46.151 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 20:09:46.151 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 20:09:46.151 | INFO     | common.security.dtls_wrapper:__init__:283 | DTLSManager inicializado
+2026-01-04 20:09:46.152 | INFO     | sync.sink_device:__init__:164 | Sink Device inicializado (adapter=hci1)
+2026-01-04 20:09:46.152 | INFO     | sync.sink_device:setup_gatt_server:168 | A configurar GATT Server...
+2026-01-04 20:09:46.152 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 20:09:46.152 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 20:09:46.153 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 20:09:46.153 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 20:09:46.153 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 20:09:46.153 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 20:09:46.153 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 20:09:46.153 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 20:09:46.153 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 20:09:46.153 | INFO     | sync.sink_device:setup_gatt_server:203 |  GATT Server configurado
+2026-01-04 20:09:46.154 | INFO     | sync.sink_device:setup_advertising:207 | A configurar BLE Advertising...
+2026-01-04 20:09:46.154 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 20:09:46.154 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 20:09:46.154 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 20:09:46.154 | INFO     | sync.sink_device:setup_advertising:219 | Advertising contínuo configurado
+2026-01-04 20:09:46.154 | INFO     | sync.sink_device:setup_advertising:221 |  BLE Advertising configurado
+2026-01-04 20:09:46.155 | INFO     | sync.sink_device:start_heartbeat_service:499 |  A iniciar serviço de heartbeat...
+2026-01-04 20:09:46.155 | INFO     | sync.sink_device:start_heartbeat_service:528 |  Serviço de heartbeat iniciado
+2026-01-04 20:09:46.156 | INFO     | __main__:main:546 |  Sink Device iniciado - CLI interativo pronto
+2026-01-04 20:09:46.160 | INFO     | __main__:<lambda>:517 |  GATT application registada!
+2026-01-04 20:09:46.161 | INFO     | common.ble.advertising:get_properties:162 |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 20:09:46.265 | INFO     | __main__:<lambda>:525 |  Advertisement registado!
+2026-01-04 20:09:51.455 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:09:51.456 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:09:51.457 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557391.4552245
+2026-01-04 20:09:51.458 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b243dd2266
+2026-01-04 20:09:51.458 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:09:51.459 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b243dd2266...
+2026-01-04 20:09:51.463 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024200c3786fa9d365835fdd51e66832a85b6d2df0d8f31d53f574f6e5...
+2026-01-04 20:09:51.463 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:09:56.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:09:56.454 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:09:56.455 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557396.454325
+2026-01-04 20:09:56.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2451d13a9
+2026-01-04 20:09:56.455 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:09:56.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2451d13a9...
+2026-01-04 20:09:56.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420126bf297b3f152e0f90a25f11db5001434cd56936ec188b3cdccf...
+2026-01-04 20:09:56.458 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:10:01.452 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:01.453 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:01.454 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557401.452673
+2026-01-04 20:10:01.454 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2465cf898
+2026-01-04 20:10:01.455 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:01.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2465cf898...
+2026-01-04 20:10:01.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024200e156dad71402fe64314f16ba54f28a3198680c509fb433127554...
+2026-01-04 20:10:01.458 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:10:06.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:06.456 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:06.456 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557406.4548786
+2026-01-04 20:10:06.457 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2479d1cbb
+2026-01-04 20:10:06.457 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:06.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2479d1cbb...
+2026-01-04 20:10:06.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024200bc874c5fec197ca71b800dcf4767b950e308bc2244b02395defe...
+2026-01-04 20:10:06.459 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:10:08.787 | INFO     | common.ble.gatt_services:StartNotify:131 | Cliente :1.4 subscreveu notificações de pacotes
+2026-01-04 20:10:08.967 | INFO     | common.ble.gatt_services:StartNotify:510 | Cliente :1.4 subscreveu auth indications
+2026-01-04 20:10:09.060 | INFO     | common.ble.fragmentation:add_fragment:164 | Iniciando recepção de 5 fragmentos
+2026-01-04 20:10:09.780 | INFO     | common.ble.fragmentation:add_fragment:199 |  Mensagem reconstruída: 890 bytes (5 fragmentos)
+2026-01-04 20:10:09.780 | INFO     | common.ble.gatt_services:WriteValue:485 | Mensagem completa recebida de :1.4: 890 bytes
+2026-01-04 20:10:09.781 | INFO     | sync.sink_device:_on_auth_message:282 |  Mensagem de autenticação recebida de :1.4: 890 bytes
+2026-01-04 20:10:09.781 | INFO     | common.security.auth_handler:handle_auth_message:89 |  Mensagem de autenticação de :1.4: 890 bytes
+2026-01-04 20:10:09.782 | INFO     | common.security.auth_handler:get_or_create_session:71 | Nova sessão de autenticação para cliente: :1.4
+2026-01-04 20:10:09.782 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 4e127252...
+2026-01-04 20:10:09.783 | INFO     | common.security.authentication:handle_cert_offer:162 |  Certificado do peer recebido - validando...
+2026-01-04 20:10:09.786 | INFO     | common.security.certificate_manager:validate_certificate:267 |  Certificado validado com sucesso
+2026-01-04 20:10:09.786 | INFO     | common.security.authentication:handle_cert_offer:179 |  Certificado válido!
+2026-01-04 20:10:09.786 | INFO     | common.security.authentication:handle_cert_offer:180 |    Peer NID: 0abd8260...
+2026-01-04 20:10:09.786 | INFO     | common.security.authentication:handle_cert_offer:181 |    Peer tipo: NODE
+2026-01-04 20:10:09.786 | INFO     | common.security.authentication:handle_cert_offer:195 |  Enviando certificado + challenge: b5e13913c72d3a66966973db090a49c8...
+2026-01-04 20:10:09.787 | INFO     | common.ble.fragmentation:fragment_message:97 | Fragmentando mensagem de 947 bytes em 6 fragmentos
+2026-01-04 20:10:10.545 | INFO     | common.ble.fragmentation:add_fragment:164 | Iniciando recepção de 1 fragmentos
+2026-01-04 20:10:10.546 | INFO     | common.ble.fragmentation:add_fragment:199 |  Mensagem reconstruída: 142 bytes (1 fragmentos)
+2026-01-04 20:10:10.546 | INFO     | common.ble.gatt_services:WriteValue:485 | Mensagem completa recebida de :1.4: 142 bytes
+2026-01-04 20:10:10.547 | INFO     | sync.sink_device:_on_auth_message:282 |  Mensagem de autenticação recebida de :1.4: 142 bytes
+2026-01-04 20:10:10.547 | INFO     | common.security.auth_handler:handle_auth_message:89 |  Mensagem de autenticação de :1.4: 142 bytes
+2026-01-04 20:10:10.548 | INFO     | common.security.authentication:handle_response:284 |  Response recebida - verificando assinatura...
+2026-01-04 20:10:10.549 | INFO     | common.security.certificate_manager:verify_signature:385 |  Verificando assinatura:
+2026-01-04 20:10:10.549 | INFO     | common.security.certificate_manager:verify_signature:386 |    Data: 32 bytes | b5e13913c72d3a66966973db090a49c8c73c943fc0df6729382123677f7f6ddf...
+2026-01-04 20:10:10.550 | INFO     | common.security.certificate_manager:verify_signature:387 |    Signature: 139 bytes | 3081880242011e5219d1fd1f36a58fc339f57273ac358b17f99d10f5d903ae6b...
+2026-01-04 20:10:10.551 | INFO     | common.security.certificate_manager:verify_signature:395 |  Assinatura verificada com sucesso!
+2026-01-04 20:10:10.551 | INFO     | common.security.authentication:handle_response:305 |  Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2026-01-04 20:10:10.551 | INFO     | common.security.authentication:handle_response:306 |    Peer 0abd8260... autenticado com sucesso
+2026-01-04 20:10:10.551 | INFO     | common.security.auth_handler:handle_auth_message:101 |  Cliente :1.4 AUTENTICADO!
+2026-01-04 20:10:10.551 | INFO     | sync.sink_device:_on_auth_message:289 |  Cliente :1.4 autenticado com sucesso!
+2026-01-04 20:10:10.552 | INFO     | sync.sink_device:_on_auth_message:308 |  Session key armazenada para 0abd8260...
+2026-01-04 20:10:10.552 | INFO     | common.security.dtls_wrapper:__init__:78 | DTLSChannel criado (server) com certificado sink_4e127252_cert.pem
+2026-01-04 20:10:10.552 | INFO     | common.security.dtls_wrapper:create_channel:304 | Canal DTLS criado para Node 0abd8260...
+2026-01-04 20:10:10.552 | INFO     | common.security.dtls_wrapper:establish:131 | Estabelecendo canal DTLS...
+2026-01-04 20:10:10.553 | INFO     | common.security.dtls_wrapper:establish:154 |  Canal DTLS estabelecido com sucesso
+2026-01-04 20:10:10.553 | INFO     | sync.sink_device:_on_auth_message:313 |  Canal DTLS estabelecido com 0abd8260...
+2026-01-04 20:10:10.554 | INFO     | common.security.dtls_wrapper:derive_encryption_key:119 |  Chave de encriptação end-to-end derivada (AES-256-GCM)
+2026-01-04 20:10:10.554 | INFO     | sync.sink_device:_on_auth_message:317 |  Chave de encriptação end-to-end derivada para 0abd8260...
+2026-01-04 20:10:10.557 | INFO     | common.ble.advertising:get_properties:162 |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 20:10:10.563 | INFO     | sync.sink_device:<lambda>:329 | Advertising re-registado
+2026-01-04 20:10:11.450 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:11.451 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:11.451 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557411.4502196
+2026-01-04 20:10:11.451 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b248dcd066
+2026-01-04 20:10:11.452 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:11.453 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b248dcd066...
+2026-01-04 20:10:11.454 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024200e58f8dccb90387370a40a2fa5341d7ae1ea868d6c2ebdab0bddd...
+2026-01-04 20:10:11.455 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:10:16.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:16.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:16.455 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557416.4548132
+2026-01-04 20:10:16.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b24a1d1ba9
+2026-01-04 20:10:16.456 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:16.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b24a1d1ba9...
+2026-01-04 20:10:16.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702420091a5f69cb7846f74f6b0e971f55148bb96a1c41785e60d526edc...
+2026-01-04 20:10:16.458 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 20:10:19.544 | INFO     | sync.sink_device:_on_packet_received:235 |  Pacote recebido de unknown: 0abd8260... → 4e127252... (type=DATA, seq=0)
+2026-01-04 20:10:19.545 | INFO     | sync.sink_device:_handle_data_packet:350 |  DATA recebido: 0abd8260... → 4e127252... (34 bytes)
+2026-01-04 20:10:19.545 | INFO     | sync.sink_device:_handle_data_packet:365 |  Payload desencriptado end-to-end: 34 → 6 bytes
+2026-01-04 20:10:19.546 | INFO     | sync.sink_device:_handle_data_packet:367 |  Pacote destinado ao Sink - payload: b'teste1'
+2026-01-04 20:10:19.547 | INFO     | sync.sink_device:_handle_data_packet:390 |  Mensagem armazenada no inbox: 'teste1' (de 0abd826034354e24...)
+2026-01-04 20:10:21.451 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:21.452 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:21.452 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557421.4516454
+2026-01-04 20:10:21.452 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b24b5ce7c2
+2026-01-04 20:10:21.452 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:21.453 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b24b5ce7c2...
+2026-01-04 20:10:21.454 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 308187024201edb71f2b55a6c91fc413bc545798b90d795e4a6b7d3e5cf7029d...
+2026-01-04 20:10:21.454 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 20:10:26.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:26.454 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:26.454 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557426.4542532
+2026-01-04 20:10:26.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b24c9d127c
+2026-01-04 20:10:26.455 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:26.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b24c9d127c...
+2026-01-04 20:10:26.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201c382f8a0afc4bde5484904efa3549cc2ea835fc1aa617c846efb...
+2026-01-04 20:10:26.457 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:10:31.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:31.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:31.456 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557431.4547849
+2026-01-04 20:10:31.456 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b24ddd1b32
+2026-01-04 20:10:31.457 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:31.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b24ddd1b32...
+2026-01-04 20:10:31.459 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702420087c91904323aacaa5ed6bf199ee43885cff7b205e6c0b99e0e91...
+2026-01-04 20:10:31.459 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 20:10:36.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:36.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:36.456 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557436.4548306
+2026-01-04 20:10:36.456 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b24f1d1bf2
+2026-01-04 20:10:36.456 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:36.457 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b24f1d1bf2...
+2026-01-04 20:10:36.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 137 bytes | 30818602411c6e05de9e97cdcbdf390ea965c441bda8c6449d860466ee191e27...
+2026-01-04 20:10:36.458 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 137 bytes (padded para 142)
+2026-01-04 20:10:41.451 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:41.452 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:41.452 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557441.4513826
+2026-01-04 20:10:41.452 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2505ce374
+2026-01-04 20:10:41.453 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:41.454 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2505ce374...
+2026-01-04 20:10:41.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 3081880242009befef663c786ec77c3eee195ebac7a025d87c3bdeaecc3fdd22...
+2026-01-04 20:10:41.455 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:10:46.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:46.454 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:46.454 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557446.4547036
+2026-01-04 20:10:46.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2519d19dd
+2026-01-04 20:10:46.455 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:46.455 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2519d19dd...
+2026-01-04 20:10:46.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201df4b1bdeb2f3e3f73a17d122ea238f7289f09dfe87a3df07f744...
+2026-01-04 20:10:46.455 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:10:51.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:51.454 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:51.455 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557451.4547093
+2026-01-04 20:10:51.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b252dd19f5
+2026-01-04 20:10:51.455 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:51.455 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b252dd19f5...
+2026-01-04 20:10:51.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 30818702410b7ff4ac4a2559b57241bd99c86335d47c96c02fac601a20b46c7b...
+2026-01-04 20:10:51.455 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 20:10:55.048 | INFO     | common.ble.gatt_services:StopNotify:148 | Cliente :1.4 cancelou subscrição de pacotes
+2026-01-04 20:10:55.049 | INFO     | sync.sink_device:_cleanup_disconnected_client:448 |  Cliente desconectado: :1.4 (NID=0abd8260...)
+2026-01-04 20:10:55.049 | INFO     | sync.sink_device:_cleanup_disconnected_client:454 |     Session key removida para 0abd8260...
+2026-01-04 20:10:55.050 | INFO     | sync.sink_device:_cleanup_disconnected_client:460 |     Downlink removido: :1.4 (NID=0abd8260...)
+2026-01-04 20:10:55.050 | INFO     | sync.sink_device:_cleanup_disconnected_client:467 |  Cleanup completo para cliente 0abd8260...
+2026-01-04 20:10:55.137 | INFO     | common.ble.gatt_services:StopNotify:522 | Cliente :1.4 cancelou subscrição de auth
+2026-01-04 20:10:56.450 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:10:56.450 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:10:56.450 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557456.450118
+2026-01-04 20:10:56.450 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2541ccebc
+2026-01-04 20:10:56.450 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:10:56.451 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2541ccebc...
+2026-01-04 20:10:56.451 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 3081870242013eca013598f8bf52dc6ad3293fd0ddaec8ee61cfb1c280e213a2...
+2026-01-04 20:10:56.451 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 20:11:01.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:11:01.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:11:01.455 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557461.4547338
+2026-01-04 20:11:01.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2555d1a5c
+2026-01-04 20:11:01.455 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:11:01.455 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2555d1a5c...
+2026-01-04 20:11:01.456 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 30818802420094289dab3171908d1cbe9bd31d31d9347b076ff26ebd3bfa18b7...
+2026-01-04 20:11:01.456 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:11:06.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:11:06.454 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:11:06.455 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557466.4547107
+2026-01-04 20:11:06.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2569d19fb
+2026-01-04 20:11:06.455 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:11:06.455 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2569d19fb...
+2026-01-04 20:11:06.456 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 3081870242011e4a18acc84c0cd908a25f722008709feac910b3d18ad46a2e20...
+2026-01-04 20:11:06.456 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 20:11:11.453 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:11:11.454 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:11:11.454 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557471.4534347
+2026-01-04 20:11:11.454 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b257dd0513
+2026-01-04 20:11:11.454 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:11:11.455 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b257dd0513...
+2026-01-04 20:11:11.456 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 308187024201318bcb1914ba5a685210197d3185f785abb5263379c018733f9e...
+2026-01-04 20:11:11.457 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 20:11:16.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:11:16.454 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:11:16.454 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557476.4541593
+2026-01-04 20:11:16.454 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b2591d10f2
+2026-01-04 20:11:16.454 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:11:16.455 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b2591d10f2...
+2026-01-04 20:11:16.455 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 3081880242011b6735f6b8e9794a5a2ecd1d415243d96da7cb42f277d0db8317...
+2026-01-04 20:11:16.455 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:11:21.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:11:21.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:11:21.455 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557481.4547436
+2026-01-04 20:11:21.456 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b25a5d1a85
+2026-01-04 20:11:21.456 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:11:21.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b25a5d1a85...
+2026-01-04 20:11:21.457 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 139 bytes | 308188024201c27c6403de6f2f63ef0b3ae60a648e303e91161e1f3701cbdc1b...
+2026-01-04 20:11:21.457 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 20:11:26.454 | INFO     | common.protocol.heartbeat:sign:159 |  Assinando heartbeat:
+2026-01-04 20:11:26.455 | INFO     | common.protocol.heartbeat:sign:160 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 20:11:26.455 | INFO     | common.protocol.heartbeat:sign:161 |    Timestamp: 1767557486.4547465
+2026-01-04 20:11:26.455 | INFO     | common.protocol.heartbeat:sign:162 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56b25b9d1a91
+2026-01-04 20:11:26.456 | INFO     | common.security.certificate_manager:sign_data:353 |   Assinando dados:
+2026-01-04 20:11:26.456 | INFO     | common.security.certificate_manager:sign_data:354 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56b25b9d1a91...
+2026-01-04 20:11:26.458 | INFO     | common.security.certificate_manager:sign_data:361 |    Signature: 138 bytes | 3081870242018c5c4c402b92482e606eba1d6e91c2cf120780305899b6285d23...
+2026-01-04 20:11:26.458 | INFO     | common.protocol.heartbeat:sign:175 |  Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 20:11:28.692 | INFO     | sync.sink_device:stop:592 | A parar Sink Device...
+2026-01-04 20:11:28.692 | INFO     | sync.sink_device:stop:604 |  Sink Device parado

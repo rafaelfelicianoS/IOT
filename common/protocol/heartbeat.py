@@ -86,8 +86,7 @@ class HeartbeatPayload:
             timestamp = time.time()
 
         if signature is None:
-            # Placeholder: zeros
-            # TODO: Implementar assinatura digital ECDSA
+            # Placeholder: zeros (use sign() method para assinar)
             signature = b'\x00' * HEARTBEAT_SIGNATURE_SIZE
 
         return cls(
@@ -157,7 +156,7 @@ class HeartbeatPayload:
         # Dados a assinar: Sink NID + Timestamp
         data_to_sign = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
 
-        logger.info(f"💓 Assinando heartbeat:")
+        logger.info(f" Assinando heartbeat:")
         logger.info(f"   Sink NID: {self.sink_nid.to_bytes().hex()}")
         logger.info(f"   Timestamp: {self.timestamp}")
         logger.info(f"   Data to sign: {data_to_sign.hex()}")
@@ -173,7 +172,7 @@ class HeartbeatPayload:
 
         self.signature = struct.pack('!H', sig_len) + signature_raw + b'\x00' * (HEARTBEAT_SIGNATURE_SIZE - 2 - sig_len)
 
-        logger.info(f"✅ Heartbeat assinado: {sig_len} bytes (padded para {len(self.signature)})")
+        logger.info(f" Heartbeat assinado: {sig_len} bytes (padded para {len(self.signature)})")
 
     def verify_signature(self, cert_manager: 'CertificateManager') -> bool:
         """
@@ -185,9 +184,8 @@ class HeartbeatPayload:
         Returns:
             True se assinatura válida, False caso contrário
         """
-        # Verificar se temos certificado do Sink
         if not hasattr(cert_manager, '_sink_cert') or cert_manager._sink_cert is None:
-            logger.warning("⚠️  Certificado do Sink não disponível para verificação")
+            logger.warning("  Certificado do Sink não disponível para verificação")
             logger.debug(f"   hasattr _sink_cert: {hasattr(cert_manager, '_sink_cert')}")
             if hasattr(cert_manager, '_sink_cert'):
                 logger.debug(f"   _sink_cert value: {cert_manager._sink_cert}")
@@ -196,27 +194,26 @@ class HeartbeatPayload:
         # Extrair assinatura real do campo padded
         # Formato: 2 bytes (length) + signature + padding
         if len(self.signature) < 2:
-            logger.warning("❌ Assinatura com tamanho inválido")
+            logger.warning(" Assinatura com tamanho inválido")
             return False
 
         sig_len = struct.unpack('!H', self.signature[:2])[0]
         signature_raw = self.signature[2:2+sig_len]
 
-        logger.debug(f"🔍 Verificando assinatura: sig_len={sig_len}, signature_raw_len={len(signature_raw)}")
+        logger.debug(f" Verificando assinatura: sig_len={sig_len}, signature_raw_len={len(signature_raw)}")
 
         if len(signature_raw) != sig_len:
-            logger.warning(f"❌ Assinatura truncada: esperado {sig_len} bytes, obtido {len(signature_raw)}")
+            logger.warning(f" Assinatura truncada: esperado {sig_len} bytes, obtido {len(signature_raw)}")
             return False
 
         # Dados originais: Sink NID + Timestamp
         data_to_verify = self.sink_nid.to_bytes() + struct.pack('!d', self.timestamp)
 
-        logger.info(f"💓 Verificando heartbeat:")
+        logger.info(f" Verificando heartbeat:")
         logger.info(f"   Sink NID: {self.sink_nid.to_bytes().hex()}")
         logger.info(f"   Timestamp: {self.timestamp}")
         logger.info(f"   Data to verify: {data_to_verify.hex()}")
 
-        # Verificar assinatura
         is_valid = cert_manager.verify_signature(
             data_to_verify,
             signature_raw,
@@ -224,9 +221,9 @@ class HeartbeatPayload:
         )
 
         if is_valid:
-            logger.debug("✅ Assinatura de heartbeat válida")
+            logger.debug(" Assinatura de heartbeat válida")
         else:
-            logger.warning("❌ Assinatura de heartbeat inválida")
+            logger.warning(" Assinatura de heartbeat inválida")
             logger.debug(f"   Sink NID: {self.sink_nid}")
             logger.debug(f"   Timestamp: {self.timestamp}")
 
@@ -243,7 +240,6 @@ class HeartbeatPayload:
 
     def __str__(self) -> str:
         """String representation para debugging."""
-        # Verificar se é placeholder (todos zeros)
         is_placeholder = self.signature == b'\x00' * HEARTBEAT_SIGNATURE_SIZE
         # Ou se tem length=0
         has_sig = len(self.signature) >= 2 and struct.unpack('!H', self.signature[:2])[0] > 0
@@ -277,7 +273,6 @@ def create_heartbeat_packet(
     Returns:
         Pacote de heartbeat pronto a enviar
     """
-    # Criar payload
     heartbeat_payload = HeartbeatPayload.create(sink_nid)
 
     # Assinar se temos certificate manager
@@ -288,7 +283,6 @@ def create_heartbeat_packet(
     if broadcast_nid is None:
         broadcast_nid = sink_nid
 
-    # Criar pacote
     packet = Packet.create(
         source=sink_nid,
         destination=broadcast_nid,
@@ -316,7 +310,6 @@ def parse_heartbeat_packet(packet: Packet) -> Optional[HeartbeatPayload]:
     Returns:
         HeartbeatPayload se válido, None caso contrário
     """
-    # Verificar tipo
     if packet.msg_type != MessageType.HEARTBEAT:
         logger.warning(
             f"Pacote não é heartbeat: type={MessageType.to_string(packet.msg_type)}"
@@ -327,7 +320,6 @@ def parse_heartbeat_packet(packet: Packet) -> Optional[HeartbeatPayload]:
     try:
         heartbeat = HeartbeatPayload.from_bytes(packet.payload)
 
-        # Verificar assinatura
         if not heartbeat.verify_signature():
             logger.warning("Assinatura de heartbeat inválida")
             return None

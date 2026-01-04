@@ -132,12 +132,11 @@ class AuthenticationProtocol:
         Returns:
             Mensagem CERT_OFFER serializada para enviar ao peer
         """
-        logger.info("🔐 Iniciando autenticação - enviando certificado...")
+        logger.info(" Iniciando autenticação - enviando certificado...")
 
         # Obter certificado em formato PEM
         cert_bytes = self.cert_manager.get_device_certificate_bytes()
 
-        # Criar mensagem
         msg = AuthMessage(AuthMessageType.CERT_OFFER, cert_bytes)
 
         # Atualizar estado
@@ -160,15 +159,14 @@ class AuthenticationProtocol:
             - success: True se certificado é válido
             - response_message: Próxima mensagem a enviar (CHALLENGE ou AUTH_FAILED)
         """
-        logger.info("📜 Certificado do peer recebido - validando...")
+        logger.info(" Certificado do peer recebido - validando...")
 
         try:
             # Parsear certificado
             peer_cert = x509.load_pem_x509_certificate(cert_pem, backend=default_backend())
 
-            # Validar certificado
             if not self.cert_manager.validate_certificate(peer_cert):
-                logger.error("❌ Certificado do peer é inválido!")
+                logger.error(" Certificado do peer é inválido!")
                 self.state = AuthState.FAILED
                 msg = AuthMessage(AuthMessageType.AUTH_FAILED, b"Invalid certificate")
                 return False, msg.to_bytes()
@@ -178,7 +176,7 @@ class AuthenticationProtocol:
             self.peer_nid = self.cert_manager.extract_nid_from_cert(peer_cert)
             self.peer_is_sink = self.cert_manager.is_sink_certificate(peer_cert)
 
-            logger.info(f"✅ Certificado válido!")
+            logger.info(f" Certificado válido!")
             logger.info(f"   Peer NID: {self.peer_nid}")
             logger.info(f"   Peer tipo: {'SINK' if self.peer_is_sink else 'NODE'}")
 
@@ -188,14 +186,13 @@ class AuthenticationProtocol:
             # Gerar challenge
             self.outgoing_challenge = os.urandom(CHALLENGE_SIZE)
 
-            # Enviar nosso certificado + challenge (troca bidirecional)
             # Formato do payload: cert_length(4) + cert_pem + challenge(32)
             our_cert_pem = self.cert_manager.get_device_certificate_bytes()
             payload = struct.pack("!I", len(our_cert_pem)) + our_cert_pem + self.outgoing_challenge
 
             msg = AuthMessage(AuthMessageType.CHALLENGE, payload)
 
-            logger.info(f"🎲 Enviando certificado + challenge: {self.outgoing_challenge.hex()[:32]}...")
+            logger.info(f" Enviando certificado + challenge: {self.outgoing_challenge.hex()[:32]}...")
             logger.debug(f"   Certificado: {len(our_cert_pem)} bytes")
             logger.debug(f"   Estado: CERT_RECEIVED → CHALLENGE_SENT")
             self.state = AuthState.CHALLENGE_SENT
@@ -203,7 +200,7 @@ class AuthenticationProtocol:
             return True, msg.to_bytes()
 
         except Exception as e:
-            logger.error(f"❌ Erro ao processar certificado: {e}")
+            logger.error(f" Erro ao processar certificado: {e}")
             self.state = AuthState.FAILED
             msg = AuthMessage(AuthMessageType.AUTH_FAILED, str(e).encode())
             return False, msg.to_bytes()
@@ -218,13 +215,13 @@ class AuthenticationProtocol:
         Returns:
             Mensagem RESPONSE serializada
         """
-        logger.info("🎲 Challenge recebido - processando certificado + challenge...")
+        logger.info(" Challenge recebido - processando certificado + challenge...")
 
         try:
             # Extrair certificado e challenge do payload
             # Formato: cert_length(4) + cert_pem + challenge(32)
             if len(payload) < 4 + CHALLENGE_SIZE:
-                logger.error(f"❌ Payload muito curto: {len(payload)} bytes")
+                logger.error(f" Payload muito curto: {len(payload)} bytes")
                 raise ValueError(f"Payload deve ter pelo menos {4 + CHALLENGE_SIZE} bytes")
 
             cert_length = struct.unpack("!I", payload[:4])[0]
@@ -232,17 +229,16 @@ class AuthenticationProtocol:
             challenge = payload[4+cert_length:4+cert_length+CHALLENGE_SIZE]
 
             if len(challenge) != CHALLENGE_SIZE:
-                logger.error(f"❌ Challenge com tamanho inválido: {len(challenge)} bytes")
+                logger.error(f" Challenge com tamanho inválido: {len(challenge)} bytes")
                 raise ValueError(f"Challenge deve ter {CHALLENGE_SIZE} bytes")
 
             # Processar certificado do peer (se ainda não temos)
             if not self.peer_cert:
-                logger.info("📜 Extraindo certificado do peer do payload...")
+                logger.info(" Extraindo certificado do peer do payload...")
                 peer_cert = x509.load_pem_x509_certificate(cert_pem, backend=default_backend())
 
-                # Validar certificado
                 if not self.cert_manager.validate_certificate(peer_cert):
-                    logger.error("❌ Certificado do peer é inválido!")
+                    logger.error(" Certificado do peer é inválido!")
                     raise ValueError("Invalid peer certificate")
 
                 # Armazenar informações do peer
@@ -250,7 +246,7 @@ class AuthenticationProtocol:
                 self.peer_nid = self.cert_manager.extract_nid_from_cert(peer_cert)
                 self.peer_is_sink = self.cert_manager.is_sink_certificate(peer_cert)
 
-                logger.info(f"✅ Certificado do peer validado!")
+                logger.info(f" Certificado do peer validado!")
                 logger.info(f"   Peer NID: {self.peer_nid}")
                 logger.info(f"   Peer tipo: {'SINK' if self.peer_is_sink else 'NODE'}")
 
@@ -259,16 +255,15 @@ class AuthenticationProtocol:
             logger.debug(f"   Challenge: {challenge.hex()[:32]}...")
 
         except Exception as e:
-            logger.error(f"❌ Erro ao processar payload: {e}")
+            logger.error(f" Erro ao processar payload: {e}")
             raise
 
         # Assinar challenge com chave privada
         signature = self.cert_manager.sign_data(challenge)
 
-        # Criar mensagem de response
         msg = AuthMessage(AuthMessageType.RESPONSE, signature)
 
-        logger.info(f"✍️  Response gerada: {len(signature)} bytes")
+        logger.info(f"  Response gerada: {len(signature)} bytes")
         logger.debug(f"   Estado: CHALLENGE_RECEIVED")
         self.state = AuthState.CHALLENGE_RECEIVED
 
@@ -286,21 +281,20 @@ class AuthenticationProtocol:
             - authenticated: True se assinatura é válida
             - response_message: AUTH_SUCCESS ou AUTH_FAILED
         """
-        logger.info("🔍 Response recebida - verificando assinatura...")
+        logger.info(" Response recebida - verificando assinatura...")
 
         if self.outgoing_challenge is None:
-            logger.error("❌ Nenhum challenge foi enviado!")
+            logger.error(" Nenhum challenge foi enviado!")
             self.state = AuthState.FAILED
             msg = AuthMessage(AuthMessageType.AUTH_FAILED, b"No challenge sent")
             return False, msg.to_bytes()
 
         if self.peer_cert is None:
-            logger.error("❌ Certificado do peer não está carregado!")
+            logger.error(" Certificado do peer não está carregado!")
             self.state = AuthState.FAILED
             msg = AuthMessage(AuthMessageType.AUTH_FAILED, b"No peer certificate")
             return False, msg.to_bytes()
 
-        # Verificar assinatura
         is_valid = self.cert_manager.verify_signature(
             self.outgoing_challenge,
             signature,
@@ -308,14 +302,14 @@ class AuthenticationProtocol:
         )
 
         if is_valid:
-            logger.info("✅ Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!")
+            logger.info(" Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!")
             logger.info(f"   Peer {self.peer_nid} autenticado com sucesso")
             self.state = AuthState.AUTHENTICATED
 
             msg = AuthMessage(AuthMessageType.AUTH_SUCCESS, b"")
             return True, msg.to_bytes()
         else:
-            logger.error("❌ Assinatura inválida - AUTENTICAÇÃO FALHOU!")
+            logger.error(" Assinatura inválida - AUTENTICAÇÃO FALHOU!")
             self.state = AuthState.FAILED
 
             msg = AuthMessage(AuthMessageType.AUTH_FAILED, b"Invalid signature")
@@ -328,7 +322,7 @@ class AuthenticationProtocol:
         Returns:
             True (autenticação completa)
         """
-        logger.info("✅ Peer confirmou autenticação bem sucedida!")
+        logger.info(" Peer confirmou autenticação bem sucedida!")
         self.state = AuthState.AUTHENTICATED
         return True
 
@@ -343,7 +337,7 @@ class AuthenticationProtocol:
             False (autenticação falhou)
         """
         reason_str = reason.decode('utf-8', errors='replace')
-        logger.error(f"❌ Peer rejeitou autenticação: {reason_str}")
+        logger.error(f" Peer rejeitou autenticação: {reason_str}")
         self.state = AuthState.FAILED
         return False
 
@@ -362,7 +356,7 @@ class AuthenticationProtocol:
         try:
             # Parsear mensagem
             msg = AuthMessage.from_bytes(data)
-            logger.debug(f"📨 Recebido: {msg}")
+            logger.debug(f" Recebido: {msg}")
 
             # Processar de acordo com o tipo
             if msg.msg_type == AuthMessageType.CERT_OFFER:
@@ -386,11 +380,11 @@ class AuthenticationProtocol:
                 return False, None  # Terminado com falha
 
             else:
-                logger.error(f"❌ Tipo de mensagem desconhecido: {msg.msg_type}")
+                logger.error(f" Tipo de mensagem desconhecido: {msg.msg_type}")
                 return False, None
 
         except Exception as e:
-            logger.error(f"❌ Erro ao processar mensagem: {e}")
+            logger.error(f" Erro ao processar mensagem: {e}")
             self.state = AuthState.FAILED
             return False, None
 
@@ -469,7 +463,7 @@ class AuthenticationProtocol:
 
             session_key = kdf.derive(shared_secret)
 
-            logger.debug(f"🔑 Session key derivada: {len(session_key)} bytes")
+            logger.debug(f" Session key derivada: {len(session_key)} bytes")
             return session_key
 
         except Exception as e:
@@ -485,4 +479,4 @@ class AuthenticationProtocol:
         self.outgoing_challenge = None
         self.incoming_challenge = None
 
-        logger.debug("🔄 Protocolo de autenticação resetado")
+        logger.debug(" Protocolo de autenticação resetado")

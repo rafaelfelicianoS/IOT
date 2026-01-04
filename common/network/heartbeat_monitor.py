@@ -70,7 +70,7 @@ class HeartbeatMonitor:
         self._monitor_thread.start()
 
         logger.info(
-            f"💓 HeartbeatMonitor iniciado: verificação a cada "
+            f" HeartbeatMonitor iniciado: verificação a cada "
             f"{self.heartbeat_interval}s, timeout após {self.max_missed} misses"
         )
 
@@ -101,11 +101,11 @@ class HeartbeatMonitor:
 
         if self._missed_count > 0:
             logger.info(
-                f"💓 Heartbeat recebido (seq={sequence}), "
+                f" Heartbeat recebido (seq={sequence}), "
                 f"contador resetado (estava em {self._missed_count})"
             )
         else:
-            logger.debug(f"💓 Heartbeat recebido (seq={sequence})")
+            logger.debug(f" Heartbeat recebido (seq={sequence})")
 
         self._missed_count = 0
 
@@ -116,7 +116,6 @@ class HeartbeatMonitor:
             if self._stop_event.wait(timeout=self.heartbeat_interval):
                 break  # Stop foi chamado
 
-            # Verificar se recebemos heartbeat recentemente
             if self._last_heartbeat_time is None:
                 continue  # Ainda não recebemos nenhum heartbeat
 
@@ -127,14 +126,13 @@ class HeartbeatMonitor:
                 self._missed_count += 1
 
                 logger.warning(
-                    f"⚠️  Heartbeat perdido! Contador: {self._missed_count}/{self.max_missed} "
+                    f"  Heartbeat perdido! Contador: {self._missed_count}/{self.max_missed} "
                     f"(último há {time_since_last:.1f}s)"
                 )
 
-                # Verificar se atingimos o máximo
                 if self._missed_count >= self.max_missed:
                     logger.error(
-                        f"❌ TIMEOUT DE HEARTBEAT! Perdidos {self._missed_count} "
+                        f" TIMEOUT DE HEARTBEAT! Perdidos {self._missed_count} "
                         f"heartbeats consecutivos"
                     )
 

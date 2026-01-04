@@ -40,7 +40,7 @@ fi
 # Procurar certificado CA
 CA_CERT="$CERTS_DIR/ca_certificate.pem"
 if [ ! -f "$CA_CERT" ]; then
-    echo "❌ Certificado CA não encontrado: $CA_CERT"
+    echo " Certificado CA não encontrado: $CA_CERT"
     exit 1
 fi
 
@@ -75,10 +75,10 @@ done
 
 # Verificar se encontrou certificados
 if [ ${#SINK_CERTS[@]} -eq 0 ]; then
-    echo "❌ Nenhum certificado de Sink encontrado em $CERTS_DIR/"
+    echo " Nenhum certificado de Sink encontrado em $CERTS_DIR/"
     echo "   Esperado: sink_*_cert.pem ou <UUID>/certificate.pem com Sink no subject"
     echo ""
-    echo "💡 Crie um certificado com:"
+    echo "Crie um certificado com:"
     echo "   python -m support.provision_device --nid \$(uuidgen) --type sink"
     exit 1
 fi
@@ -87,7 +87,7 @@ fi
 CERT_INDEX=0
 if [ ${#SINK_CERTS[@]} -gt 1 ]; then
     echo ""
-    echo "⚠️  Múltiplos certificados Sink encontrados:"
+    echo "AVISO: Múltiplos certificados Sink encontrados:"
     for i in "${!SINK_CERTS[@]}"; do
         basename=$(basename "${SINK_CERTS[$i]}")
         echo "  $((i+1)). $basename"
@@ -101,7 +101,7 @@ fi
 SELECTED_CERT="${SINK_CERTS[$CERT_INDEX]}"
 SELECTED_KEY="${SINK_KEYS[$CERT_INDEX]}"
 
-echo "✅ Certificados encontrados:"
+echo " Certificados encontrados:"
 echo "   Cert: $SELECTED_CERT"
 echo "   Key:  $SELECTED_KEY"
 echo "   CA:   $CA_CERT"
@@ -115,7 +115,7 @@ if [ $START_INDEX -le $# ]; then
 fi
 
 # Executar o Sink interativo
-exec python3 "$SCRIPT_DIR/sink/interactive_sink.py" \
+exec python3 "$SCRIPT_DIR/sync/interactive_sink.py" \
     "$ADAPTER" \
     --cert "$SELECTED_CERT" \
     --key "$SELECTED_KEY" \

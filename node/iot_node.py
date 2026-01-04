@@ -21,10 +21,8 @@ from pathlib import Path
 from typing import Optional, Dict, List
 import threading
 
-# Adicionar diretório raiz ao PYTHONPATH
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-# GLib para mainloop D-Bus (GATT Server)
 from gi.repository import GLib
 
 from common.utils.logger import get_logger
@@ -110,15 +108,13 @@ class IoTNode:
         from common.security.certificate_manager import CertificateManager as CM
         extracted_nid = CM.extract_nid_from_cert(CM, device_cert)
 
-        # Criar CertificateManager com NID extraído
         self.cert_manager = CertificateManager(device_nid=extracted_nid)
         self.cert_manager.device_cert = device_cert
         self.cert_manager.device_private_key = device_key
         self.cert_manager.ca_cert = ca_cert
 
-        logger.info("✅ Certificados carregados com sucesso")
+        logger.info(" Certificados carregados com sucesso")
 
-        # Verificar se NÃO é certificado de Sink
         if self.cert_manager.is_sink_certificate(device_cert):
             raise ValueError("Certificado fornecido é de um Sink, não de um Node!")
 
@@ -194,13 +190,12 @@ class IoTNode:
         self.uplink_messages_lock = threading.Lock()
 
         logger.info(f"IoT Node inicializado (adapter=hci{adapter_index})")
-        logger.info("✅ Router Daemon integrado")
+        logger.info(" Router Daemon integrado")
 
     def setup_gatt_server(self):
         """Configura o GATT Server para aceitar downlinks."""
         logger.info("A configurar GATT Server...")
 
-        # Criar conexão D-Bus com GLib main loop
         import dbus
         import dbus.mainloop.glib
 
@@ -208,10 +203,8 @@ class IoTNode:
         dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
         self.bus = dbus.SystemBus()
 
-        # Criar aplicação GATT
         self.app = Application(self.bus)
 
-        # Criar serviço IoT Network
         self.service = IoTNetworkService(
             bus=self.bus,
             path=self.app.path,
@@ -220,7 +213,6 @@ class IoTNode:
             device_type='node'
         )
 
-        # Adicionar serviço à aplicação
         self.app.add_service(self.service)
 
         # Configurar callbacks do serviço
@@ -230,7 +222,6 @@ class IoTNode:
         packet_char.set_packet_callback(self._on_downlink_packet_received)
         auth_char.set_auth_callback(self._on_downlink_auth_message)
 
-        # Criar advertisement
         self.advertisement = Advertisement(self.bus, 0, 'peripheral')
         self.advertisement.add_service_uuid(self.service.uuid)
         self.advertisement.set_local_name(f"IoT-Node-{str(self.my_nid)[:8]}")
@@ -245,9 +236,9 @@ class IoTNode:
         # Duration=0 significa que o advertising NÃO para quando aceita conexões
         # Isto permite que múltiplos Nodes descubram e conectem a este Node simultaneamente
         self.advertisement.duration = 0  # Advertising contínuo (não para com conexões)
-        logger.info("🔄 Advertising contínuo configurado (duration=0)")
+        logger.info(" Advertising contínuo configurado (duration=0)")
 
-        logger.info("✅ GATT Server configurado")
+        logger.info(" GATT Server configurado")
 
     def start_gatt_server(self):
         """Inicia o GATT Server em thread separada."""
@@ -263,8 +254,8 @@ class IoTNode:
         gatt_manager = dbus.Interface(adapter_obj, 'org.bluez.GattManager1')
         gatt_manager.RegisterApplication(
             self.app.get_path(), {},
-            reply_handler=lambda: logger.info("✅ GATT application registada!"),
-            error_handler=lambda e: logger.error(f"❌ Falha ao registar GATT: {e}")
+            reply_handler=lambda: logger.info(" GATT application registada!"),
+            error_handler=lambda e: logger.error(f" Falha ao registar GATT: {e}")
         )
 
         # Registar advertisement
@@ -273,22 +264,21 @@ class IoTNode:
         # Tentar desregistar primeiro (caso exista de execução anterior)
         try:
             ad_manager.UnregisterAdvertisement(self.advertisement.get_path())
-            logger.debug("🧹 Advertisement anterior desregistado")
+            logger.debug(" Advertisement anterior desregistado")
         except Exception:
             pass  # Ignorar se não existir
 
         ad_manager.RegisterAdvertisement(
             self.advertisement.get_path(), {},
-            reply_handler=lambda: logger.info("✅ Advertisement registado!"),
-            error_handler=lambda e: logger.error(f"❌ Falha ao registar advertisement: {e}")
+            reply_handler=lambda: logger.info(" Advertisement registado!"),
+            error_handler=lambda e: logger.error(f" Falha ao registar advertisement: {e}")
         )
 
-        # Criar e iniciar mainloop em thread separada
         self.mainloop = GLib.MainLoop()
         self.mainloop_thread = threading.Thread(target=self.mainloop.run, daemon=True)
         self.mainloop_thread.start()
 
-        logger.info("✅ GATT Server iniciado em thread separada")
+        logger.info(" GATT Server iniciado em thread separada")
 
     def stop_gatt_server(self):
         """Para o GATT Server."""
@@ -300,7 +290,7 @@ class IoTNode:
         if self.mainloop_thread:
             self.mainloop_thread.join(timeout=2.0)
 
-        logger.info("✅ GATT Server parado")
+        logger.info(" GATT Server parado")
 
     def disconnect_all_downlinks(self):
         """
@@ -315,7 +305,7 @@ class IoTNode:
                 return
 
             downlink_count = len(self.downlinks)
-            logger.warning(f"🔻 Chain Reaction Disconnect: desconectando {downlink_count} downlink(s)")
+            logger.warning(f" Chain Reaction Disconnect: desconectando {downlink_count} downlink(s)")
 
             # Listar downlinks para log
             for addr, nid in self.downlinks.items():
@@ -336,7 +326,7 @@ class IoTNode:
             self.hop_count = -1
         self.update_advertisement_hop_count()
 
-        logger.info("✅ Todos os downlinks desconectados (chain reaction completada)")
+        logger.info(" Todos os downlinks desconectados (chain reaction completada)")
 
     # ========================================================================
     # ROUTER DAEMON - Callbacks e Handlers
@@ -355,9 +345,8 @@ class IoTNode:
         """
         try:
             if port_id == "uplink":
-                # Enviar para uplink via GATT Client
                 if not self.uplink_connection or not self.uplink_connection.is_connected:
-                    logger.error("❌ Uplink não conectado")
+                    logger.error(" Uplink não conectado")
                     return False
 
                 self.uplink_connection.write(
@@ -370,19 +359,18 @@ class IoTNode:
                 with self.uplink_messages_lock:
                     self.uplink_messages_sent += 1
 
-                logger.debug(f"📤 Pacote enviado para uplink ({len(packet_bytes)} bytes)")
+                logger.debug(f" Pacote enviado para uplink ({len(packet_bytes)} bytes)")
                 return True
 
             else:
-                # Enviar para downlink via GATT Server (notify)
                 if not self.service:
-                    logger.error("❌ GATT Service não inicializado")
+                    logger.error(" GATT Service não inicializado")
                     return False
 
                 packet_char = self.service.get_packet_characteristic()
                 packet_char.notify_packet(packet_bytes)
 
-                logger.debug(f"📤 Pacote enviado para downlink {port_id} ({len(packet_bytes)} bytes)")
+                logger.debug(f" Pacote enviado para downlink {port_id} ({len(packet_bytes)} bytes)")
                 return True
 
         except Exception as e:
@@ -399,7 +387,7 @@ class IoTNode:
             packet: Pacote DATA recebido
         """
         logger.info(
-            f"📨 DATA recebido (local): {packet.source} → {packet.destination} "
+            f" DATA recebido (local): {packet.source} → {packet.destination} "
             f"({len(packet.payload)} bytes)"
         )
 
@@ -408,18 +396,18 @@ class IoTNode:
         if self.dtls_channel and self.dtls_channel.established and self.dtls_channel.aesgcm:
             try:
                 decrypted_payload = self.dtls_channel.unwrap(packet.payload)
-                logger.info(f"🔓 Payload desencriptado end-to-end: {len(packet.payload)} → {len(decrypted_payload)} bytes")
+                logger.info(f" Payload desencriptado end-to-end: {len(packet.payload)} → {len(decrypted_payload)} bytes")
             except Exception as e:
-                logger.error(f"❌ Erro ao desencriptar payload: {e}")
+                logger.error(f" Erro ao desencriptar payload: {e}")
                 return
 
         # Processar mensagem
         try:
             message = decrypted_payload.decode('utf-8', errors='replace')
-            logger.info(f"✅ Mensagem recebida de {str(packet.source)[:8]}...: {message!r}")
+            logger.info(f" Mensagem recebida de {str(packet.source)[:8]}...: {message!r}")
         except Exception as e:
-            logger.warning(f"⚠️  Payload não é texto UTF-8: {e}")
-            logger.info(f"✅ Dados binários recebidos: {len(decrypted_payload)} bytes")
+            logger.warning(f"  Payload não é texto UTF-8: {e}")
+            logger.info(f" Dados binários recebidos: {len(decrypted_payload)} bytes")
 
     def _handle_heartbeat_packet_local(self, packet: Packet):
         """
@@ -480,8 +468,8 @@ class IoTNode:
         """
         import dbus
 
-        logger.info(f"🔐 Mensagem de autenticação recebida de downlink (sender: {sender})")
-        logger.warning("⚠️  Autenticação de downlinks não totalmente implementada - usando placeholder")
+        logger.info(f" Mensagem de autenticação recebida de downlink (sender: {sender})")
+        logger.warning("  Autenticação de downlinks não totalmente implementada - usando placeholder")
         # TODO: Implementar autenticação mutual com downlinks
 
         # WORKAROUND: BlueZ para advertising após conexão mesmo com duration=0
@@ -495,17 +483,17 @@ class IoTNode:
             adv_manager.RegisterAdvertisement(
                 self.advertisement.get_path(),
                 {},
-                reply_handler=lambda: logger.info("🔄 Advertising re-registado após conexão downlink"),
-                error_handler=lambda e: logger.warning(f"⚠️  Falha ao re-registar advertising: {e}")
+                reply_handler=lambda: logger.info(" Advertising re-registado após conexão downlink"),
+                error_handler=lambda e: logger.warning(f"  Falha ao re-registar advertising: {e}")
             )
         except Exception as e:
-            logger.warning(f"⚠️  Erro ao re-registar advertising: {e}")
+            logger.warning(f"  Erro ao re-registar advertising: {e}")
 
         # PLACEHOLDER: Retornar mensagem AUTH_SUCCESS vazia
         # Formato AuthMessage: type(1) + payload_length(2) + payload(N)
         # type=0x04 (AUTH_SUCCESS), payload_length=0x0000, payload=vazio
         # Isto permite que a conexão seja estabelecida sem autenticação real
-        logger.info("📤 Enviando resposta AUTH_SUCCESS placeholder (autenticação aceite sem validação)")
+        logger.info(" Enviando resposta AUTH_SUCCESS placeholder (autenticação aceite sem validação)")
         return b"\x04\x00\x00"  # AUTH_SUCCESS com payload vazio
 
     def _restart_advertising_after_uplink_connection(self):
@@ -519,7 +507,7 @@ class IoTNode:
         import time
 
         try:
-            logger.debug("🔄 Re-registando advertising após conexão uplink...")
+            logger.debug(" Re-registando advertising após conexão uplink...")
             adv_manager = dbus.Interface(
                 self.bus.get_object('org.bluez', f'/org/bluez/{self.adapter_name}'),
                 'org.bluez.LEAdvertisingManager1'
@@ -528,7 +516,7 @@ class IoTNode:
             # Tentar desregistar (pode já não estar registado)
             try:
                 adv_manager.UnregisterAdvertisement(self.advertisement.get_path())
-                logger.debug("✅ Advertisement desregistado")
+                logger.debug(" Advertisement desregistado")
             except Exception as e:
                 logger.debug(f"Advertisement já não estava registado: {e}")
 
@@ -543,10 +531,10 @@ class IoTNode:
 
                 # Definir callbacks com attempt fixo
                 def make_reply_handler(attempt_num):
-                    return lambda: logger.info(f"🔄 Advertising re-registado após conexão uplink (tentativa {attempt_num})")
+                    return lambda: logger.info(f" Advertising re-registado após conexão uplink (tentativa {attempt_num})")
 
                 def make_error_handler(attempt_num):
-                    return lambda e: logger.debug(f"⚠️  Tentativa {attempt_num} falhou: {e}")
+                    return lambda e: logger.debug(f"  Tentativa {attempt_num} falhou: {e}")
 
                 try:
                     adv_manager.RegisterAdvertisement(
@@ -563,10 +551,10 @@ class IoTNode:
                     logger.debug(f"Tentativa {attempt} com delay {delays[attempt-1]}s falhou: {e}")
 
             if not success:
-                logger.warning(f"⚠️  Falha ao re-registar advertising após {len(delays)} tentativas")
+                logger.warning(f"  Falha ao re-registar advertising após {len(delays)} tentativas")
 
         except Exception as e:
-            logger.warning(f"⚠️  Erro ao re-registar advertising após uplink: {e}")
+            logger.warning(f"  Erro ao re-registar advertising após uplink: {e}")
 
     def discover_sink(self, timeout_s: int = 10) -> Optional[ScannedDevice]:
         """
@@ -578,7 +566,7 @@ class IoTNode:
         Returns:
             ScannedDevice do Sink ou None se não encontrado
         """
-        logger.info("🔍 A procurar Sink...")
+        logger.info(" A procurar Sink...")
 
         end_time = time.time() + timeout_s
         while time.time() < end_time and self.running:
@@ -591,7 +579,6 @@ class IoTNode:
             for device in devices:
                 logger.debug(f"  Device: {device}")
 
-                # Verificar manufacturer data
                 if device.manufacturer_data and 0xFFFF in device.manufacturer_data:
                     data = device.manufacturer_data[0xFFFF]
                     if len(data) >= 2:
@@ -602,13 +589,13 @@ class IoTNode:
 
                         # Sink tem type=0 e hop_count=255 (representação de -1)
                         if device_type == 0 and hop_count == 255:
-                            logger.info(f"✅ Sink encontrado: {device}")
+                            logger.info(f" Sink encontrado: {device}")
                             return device
 
             if devices:
                 logger.debug("Nenhum Sink encontrado neste scan, tentando novamente...")
 
-        logger.warning("⚠️  Sink não encontrado após timeout")
+        logger.warning("  Sink não encontrado após timeout")
         return None
 
     def connect_to_sink(self) -> bool:
@@ -628,31 +615,30 @@ class IoTNode:
         self.uplink_connection = self.ble_client.connect_to_device(self.sink_device)
 
         if not self.uplink_connection:
-            logger.error("❌ Falha ao conectar ao Sink")
+            logger.error(" Falha ao conectar ao Sink")
             return False
 
         if not self.uplink_connection.is_connected:
-            logger.error("❌ Conexão não está ativa")
+            logger.error(" Conexão não está ativa")
             return False
 
-        logger.info("✅ Conectado ao Sink via GATT")
+        logger.info(" Conectado ao Sink via GATT")
 
         # Descobrir serviços
         success = self.uplink_connection.discover_services()
         if not success:
-            logger.error("❌ Falha ao descobrir serviços")
+            logger.error(" Falha ao descobrir serviços")
             return False
 
-        # Verificar se tem o serviço IoT
         if not self.uplink_connection.has_service(IOT_NETWORK_SERVICE_UUID):
-            logger.error(f"❌ Sink não tem o serviço IoT ({IOT_NETWORK_SERVICE_UUID})")
+            logger.error(f" Sink não tem o serviço IoT ({IOT_NETWORK_SERVICE_UUID})")
             return False
 
-        logger.info("✅ Serviço IoT Network encontrado")
+        logger.info(" Serviço IoT Network encontrado")
 
         # Resetar timestamp de heartbeat (nova conexão)
         self.last_heartbeat_time = 0
-        logger.debug("🔄 Timestamp de heartbeat resetado para nova conexão")
+        logger.debug(" Timestamp de heartbeat resetado para nova conexão")
 
         # Subscrever a notificações de pacotes (heartbeats)
         self._subscribe_to_notifications()
@@ -670,7 +656,7 @@ class IoTNode:
                 CHAR_NETWORK_PACKET_UUID,
                 self._on_packet_notification
             )
-            logger.info("✅ Subscrito a NETWORK_PACKET")
+            logger.info(" Subscrito a NETWORK_PACKET")
         except Exception as e:
             logger.error(f"Erro ao subscrever NETWORK_PACKET: {e}")
 
@@ -705,20 +691,17 @@ class IoTNode:
                 self.uplink_nid = heartbeat.sink_nid
                 logger.info(f"Sink NID identificado: {self.uplink_nid}")
 
-            # Verificar replay
             if not self.replay_protection.check_and_update(heartbeat.sink_nid, packet.sequence):
-                logger.warning(f"⚠️  REPLAY ATTACK detectado em heartbeat!")
+                logger.warning(f"  REPLAY ATTACK detectado em heartbeat!")
                 return
 
-            # Verificar MAC com chave padrão (heartbeats são broadcast)
             # Heartbeats usam a chave padrão, não session keys (são broadcast)
             if not packet.verify_mac():
-                logger.error("❌ MAC inválido em heartbeat!")
+                logger.error(" MAC inválido em heartbeat!")
                 return
 
-            # Verificar assinatura digital do heartbeat
             if not heartbeat.verify_signature(self.cert_manager):
-                logger.error("❌ Assinatura de heartbeat inválida!")
+                logger.error(" Assinatura de heartbeat inválida!")
                 return
 
             # Atualizar timestamp
@@ -726,7 +709,7 @@ class IoTNode:
             self.heartbeat_sequence = packet.sequence
 
             age = heartbeat.age()
-            logger.debug(f"💓 Heartbeat recebido (seq={packet.sequence}, age={age:.2f}s)")
+            logger.debug(f" Heartbeat recebido (seq={packet.sequence}, age={age:.2f}s)")
 
             # Heartbeat Flooding: forward para todos os downlinks
             self._forward_heartbeat_to_downlinks(packet)
@@ -750,7 +733,7 @@ class IoTNode:
                 return
 
             downlink_count = len(self.downlinks)
-            logger.debug(f"🌊 Flooding heartbeat para {downlink_count} downlink(s)")
+            logger.debug(f" Flooding heartbeat para {downlink_count} downlink(s)")
 
         # Forward o heartbeat para cada downlink via GATT Server
         # NOTA: O heartbeat é enviado como notificação através do NETWORK_PACKET characteristic
@@ -759,11 +742,10 @@ class IoTNode:
                 # Obter a characteristic de NETWORK_PACKET do GATT Server
                 packet_char = self.service.get_characteristic(CHAR_NETWORK_PACKET_UUID)
                 if packet_char:
-                    # Enviar notificação com o heartbeat para todos os clientes conectados
                     packet_char.notify_packet(packet.to_bytes())
-                    logger.debug(f"✅ Heartbeat forwarded para {downlink_count} downlink(s)")
+                    logger.debug(f" Heartbeat forwarded para {downlink_count} downlink(s)")
                 else:
-                    logger.warning("⚠️  NETWORK_PACKET characteristic não encontrada no GATT Server")
+                    logger.warning("  NETWORK_PACKET characteristic não encontrada no GATT Server")
             except Exception as e:
                 logger.error(f"Erro ao forward heartbeat: {e}", exc_info=True)
 
@@ -775,29 +757,26 @@ class IoTNode:
             packet: Pacote recebido
         """
         logger.info(
-            f"📨 DATA recebido: {packet.source} → {packet.destination} "
+            f" DATA recebido: {packet.source} → {packet.destination} "
             f"({len(packet.payload)} bytes)"
         )
 
-        # Verificar se é para nós
         if packet.destination != self.my_nid:
             logger.debug(f"Pacote não é para este node (dest={packet.destination})")
             return
 
-        # Verificar replay
         if not self.replay_protection.check_and_update(packet.source, packet.sequence):
-            logger.warning(f"⚠️  REPLAY ATTACK detectado!")
+            logger.warning(f"  REPLAY ATTACK detectado!")
             return
 
-        # Verificar MAC
         with self.uplink_session_key_lock:
             if self.uplink_session_key:
                 if not self._verify_packet_mac(packet, self.uplink_session_key):
-                    logger.error("❌ MAC inválido!")
+                    logger.error(" MAC inválido!")
                     return
 
         # Processar payload
-        logger.info(f"✅ Mensagem recebida: {packet.payload!r}")
+        logger.info(f" Mensagem recebida: {packet.payload!r}")
 
     def _on_auth_indication(self, data: bytes):
         """
@@ -806,17 +785,17 @@ class IoTNode:
         Args:
             data: Dados recebidos via indication (pode ser fragmentado)
         """
-        logger.debug(f"🔐 AUTH indication recebida: {len(data)} bytes")
+        logger.debug(f" AUTH indication recebida: {len(data)} bytes")
 
         # Defragmentar mensagem
         is_complete, auth_data = self.auth_reassembler.add_fragment(data)
 
         if is_complete:
-            logger.debug(f"🔐 AUTH mensagem completa: {len(auth_data)} bytes")
+            logger.debug(f" AUTH mensagem completa: {len(auth_data)} bytes")
             with self.auth_response_lock:
                 self.auth_response_buffer.append(auth_data)
         else:
-            logger.debug(f"🔐 Aguardando mais fragmentos AUTH...")
+            logger.debug(f" Aguardando mais fragmentos AUTH...")
 
     def authenticate_with_sink(self) -> bool:
         """
@@ -825,7 +804,7 @@ class IoTNode:
         Returns:
             True se autenticação bem-sucedida
         """
-        logger.info("🔐 A iniciar autenticação com Sink...")
+        logger.info(" A iniciar autenticação com Sink...")
 
         if not self.uplink_connection or not self.uplink_connection.is_connected:
             logger.error("Não conectado ao Sink")
@@ -837,7 +816,7 @@ class IoTNode:
                 self.auth_response_buffer.clear()
 
             # Subscrever a AUTH characteristic para receber indicações
-            logger.debug("📡 A subscrever a AUTH characteristic...")
+            logger.debug(" A subscrever a AUTH characteristic...")
             success = self.uplink_connection.subscribe(
                 IOT_NETWORK_SERVICE_UUID,
                 CHAR_AUTHENTICATION_UUID,
@@ -845,21 +824,19 @@ class IoTNode:
             )
 
             if not success:
-                logger.error("❌ Falha ao subscrever AUTH characteristic")
+                logger.error(" Falha ao subscrever AUTH characteristic")
                 return False
 
-            logger.debug("✅ Subscrito a AUTH indications")
+            logger.debug(" Subscrito a AUTH indications")
 
-            # Criar protocolo de autenticação
             from common.security.authentication import AuthenticationProtocol
 
             auth_protocol = AuthenticationProtocol(self.cert_manager)
 
             # 1. Iniciar autenticação enviando nosso certificado
-            logger.info("📤 Enviando certificado...")
+            logger.info(" Enviando certificado...")
             initial_msg = auth_protocol.start_authentication()
 
-            # Enviar via AUTH characteristic com fragmentação se necessário
             self._send_auth_message(initial_msg)
 
             # 2. Esperar resposta do Sink e processar protocolo
@@ -881,25 +858,24 @@ class IoTNode:
                 continue_auth, reply = auth_protocol.process_message(response)
 
                 if reply:
-                    # Enviar resposta
-                    logger.debug(f"📤 Enviando resposta ({len(reply)} bytes)")
+                    logger.debug(f" Enviando resposta ({len(reply)} bytes)")
                     self._send_auth_message(reply)
 
                 if not continue_auth:
                     # Autenticação completou
                     if auth_protocol.state.name == 'AUTHENTICATED':
-                        logger.info("✅ Autenticação bem-sucedida!")
+                        logger.info(" Autenticação bem-sucedida!")
 
                         # Obter session key
                         session_key = auth_protocol.derive_session_key()
                         if session_key:
                             with self.uplink_session_key_lock:
                                 self.uplink_session_key = session_key
-                            logger.info("🔑 Session key estabelecida")
+                            logger.info(" Session key estabelecida")
 
                             # Configurar session key no Router Daemon
                             self.router.set_session_key("uplink", session_key)
-                            logger.info("🔀 Session key configurada no Router Daemon")
+                            logger.info(" Session key configurada no Router Daemon")
 
                         # Obter NID do Sink
                         self.uplink_nid = auth_protocol.peer_nid
@@ -907,7 +883,7 @@ class IoTNode:
                         # Armazenar certificado do Sink para verificação de assinaturas
                         if auth_protocol.peer_cert:
                             self.cert_manager._sink_cert = auth_protocol.peer_cert
-                            logger.info("✅ Certificado do Sink armazenado para verificação de heartbeats")
+                            logger.info(" Certificado do Sink armazenado para verificação de heartbeats")
 
                         # Estabelecer canal DTLS end-to-end com o Sink
                         self.dtls_channel = DTLSChannel(
@@ -918,12 +894,12 @@ class IoTNode:
                             peer_nid=self.uplink_nid
                         )
                         if self.dtls_channel.establish():
-                            logger.info("🔐 Canal DTLS end-to-end estabelecido com Sink")
+                            logger.info(" Canal DTLS end-to-end estabelecido com Sink")
 
                             # Derivar chave de encriptação a partir da session key
                             if session_key:
                                 self.dtls_channel.derive_encryption_key(session_key)
-                                logger.info("🔑 Chave de encriptação end-to-end derivada")
+                                logger.info(" Chave de encriptação end-to-end derivada")
 
                         # WORKAROUND: Re-registar advertising após conectar ao Sink como cliente
                         # Alguns adaptadores BLE param de fazer advertising quando atuam como cliente
@@ -933,14 +909,14 @@ class IoTNode:
                         self.authenticated = True
                         return True
                     else:
-                        logger.error(f"❌ Autenticação falhou: {auth_protocol.state.name}")
+                        logger.error(f" Autenticação falhou: {auth_protocol.state.name}")
                         return False
 
-            logger.error("❌ Autenticação expirou (timeout)")
+            logger.error(" Autenticação expirou (timeout)")
             return False
 
         except Exception as e:
-            logger.error(f"❌ Erro durante autenticação: {e}", exc_info=True)
+            logger.error(f" Erro durante autenticação: {e}", exc_info=True)
             return False
 
     def _send_auth_message(self, data: bytes):
@@ -1014,9 +990,8 @@ class IoTNode:
         encrypted_payload = message
         if self.dtls_channel and self.dtls_channel.established and self.dtls_channel.aesgcm:
             encrypted_payload = self.dtls_channel.wrap(message)
-            logger.info(f"🔐 Payload encriptado end-to-end: {len(message)} → {len(encrypted_payload)} bytes")
+            logger.info(f" Payload encriptado end-to-end: {len(message)} → {len(encrypted_payload)} bytes")
 
-        # Criar pacote
         packet = Packet.create(
             source=self.my_nid,
             destination=destination,
@@ -1040,14 +1015,13 @@ class IoTNode:
             else:
                 packet.calculate_and_set_mac()
 
-        # Enviar via NETWORK_PACKET characteristic
         try:
             self.uplink_connection.write(
                 IOT_NETWORK_SERVICE_UUID,
                 CHAR_NETWORK_PACKET_UUID,
                 packet.to_bytes()
             )
-            logger.info(f"✅ Mensagem enviada para {destination}")
+            logger.info(f" Mensagem enviada para {destination}")
             return True
         except Exception as e:
             logger.error(f"Erro ao enviar mensagem: {e}")
@@ -1073,7 +1047,6 @@ class IoTNode:
             packet.payload
         )
 
-        # Verificar MAC
         return verify_hmac(mac_data, packet.mac, session_key)
 
     def _update_hop_count_from_uplink(self):
@@ -1086,7 +1059,7 @@ class IoTNode:
             )
 
             if not device_info_data or len(device_info_data) < 18:
-                logger.warning("⚠️  Não conseguiu ler DeviceInfo do uplink")
+                logger.warning("  Não conseguiu ler DeviceInfo do uplink")
                 with self.hop_count_lock:
                     self.hop_count = 0  # Assumir conexão direta ao Sink
                 return
@@ -1098,10 +1071,10 @@ class IoTNode:
             # Senão, nosso hop = uplink_hop + 1
             if uplink_hop == 255:
                 new_hop = 0
-                logger.info(f"✅ Conectado ao Sink - hop_count=0")
+                logger.info(f" Conectado ao Sink - hop_count=0")
             else:
                 new_hop = uplink_hop + 1
-                logger.info(f"✅ Conectado a Node (hop={uplink_hop}) - nosso hop_count={new_hop}")
+                logger.info(f" Conectado a Node (hop={uplink_hop}) - nosso hop_count={new_hop}")
 
             with self.hop_count_lock:
                 self.hop_count = new_hop
@@ -1123,14 +1096,14 @@ class IoTNode:
             # 0. Configurar e iniciar GATT Server (para aceitar downlinks)
             self.setup_gatt_server()
             self.start_gatt_server()
-            logger.info("✅ GATT Server ativo - aguardando downlinks")
+            logger.info(" GATT Server ativo - aguardando downlinks")
 
             # 1. Descobrir uplink (Sink ou outro Node)
             self.sink_device = self.discover_sink(timeout_s=30)
             if not self.sink_device:
-                logger.error("❌ Falha ao descobrir uplink")
+                logger.error(" Falha ao descobrir uplink")
                 # Continuar mesmo sem uplink - podemos receber downlinks
-                logger.warning("⚠️  Sem uplink - operando apenas como server")
+                logger.warning("  Sem uplink - operando apenas como server")
 
                 # Loop apenas como server
                 while self.running:
@@ -1139,7 +1112,7 @@ class IoTNode:
 
             # 2. Conectar ao uplink
             if not self.connect_to_sink():
-                logger.error("❌ Falha ao conectar ao uplink")
+                logger.error(" Falha ao conectar ao uplink")
                 return
 
             # 3. Atualizar hop_count baseado no uplink
@@ -1150,45 +1123,43 @@ class IoTNode:
 
             # 5. Autenticar
             if not self.authenticate_with_sink():
-                logger.error("❌ Falha na autenticação")
+                logger.error(" Falha na autenticação")
                 return
 
             logger.info("=" * 60)
-            logger.info(f"✅ Node pronto! Uplink conectado (hop={self.hop_count})")
+            logger.info(f" Node pronto! Uplink conectado (hop={self.hop_count})")
             logger.info("=" * 60)
 
             # Loop principal - monitorizar conexão
             while self.running:
                 time.sleep(1)
 
-                # Verificar se ainda está conectado
                 if not self.uplink_connection.is_connected:
-                    logger.warning("⚠️  Conexão perdida com Sink")
+                    logger.warning("  Conexão perdida com Sink")
                     # Chain Reaction Disconnect: desconectar todos os downlinks
                     self.disconnect_all_downlinks()
                     break
 
-                # Verificar se recebemos heartbeat recentemente (último 15s)
                 # Heartbeats são enviados a cada 5s, então 15s = 3x o intervalo
                 if self.last_heartbeat_time > 0:
                     time_since_heartbeat = time.time() - self.last_heartbeat_time
                     if time_since_heartbeat > 15:
                         logger.error(
-                            f"❌ Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s "
+                            f" Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s "
                             f"(último seq={self.heartbeat_sequence})"
                         )
-                        logger.warning("⚠️  Desconectando do uplink devido a timeout de heartbeat...")
+                        logger.warning("  Desconectando do uplink devido a timeout de heartbeat...")
                         # Chain Reaction Disconnect: desconectar todos os downlinks
                         self.disconnect_all_downlinks()
                         break
                     elif time_since_heartbeat > 10:
                         logger.warning(
-                            f"⚠️  Sem heartbeat há {time_since_heartbeat:.1f}s "
+                            f"  Sem heartbeat há {time_since_heartbeat:.1f}s "
                             f"(último seq={self.heartbeat_sequence})"
                         )
 
         except KeyboardInterrupt:
-            logger.info("\n⚠️  Keyboard interrupt recebido")
+            logger.info("\n  Keyboard interrupt recebido")
         finally:
             self.stop()
 
@@ -1207,7 +1178,7 @@ class IoTNode:
         # Desconectar todos os clients
         self.ble_client.disconnect_all()
 
-        logger.info("✅ Node parado")
+        logger.info(" Node parado")
 
 
 def main():
@@ -1237,7 +1208,6 @@ def main():
 
     args = parser.parse_args()
 
-    # Criar Node
     try:
         node = IoTNode(
             cert_path=args.cert,

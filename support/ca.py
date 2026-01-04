@@ -17,7 +17,6 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Optional
 
-# Adicionar o diretório raiz ao path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from cryptography import x509
@@ -76,7 +75,7 @@ class CertificationAuthority:
             backend=default_backend()
         )
 
-        logger.info("✅ Par de chaves gerado")
+        logger.info(" Par de chaves gerado")
         return private_key
 
     def create_ca_certificate(self) -> x509.Certificate:
@@ -130,7 +129,7 @@ class CertificationAuthority:
             .sign(self.ca_private_key, hashes.SHA256(), backend=default_backend())
         )
 
-        logger.info("✅ Certificado CA criado")
+        logger.info(" Certificado CA criado")
         logger.info(f"   Serial: {cert.serial_number}")
         logger.info(f"   Válido até: {cert.not_valid_after}")
 
@@ -177,7 +176,6 @@ class CertificationAuthority:
         # Issuer é a CA
         issuer = self.ca_cert.subject
 
-        # Criar certificado
         cert = (
             x509.CertificateBuilder()
             .subject_name(subject)
@@ -215,7 +213,7 @@ class CertificationAuthority:
             .sign(self.ca_private_key, hashes.SHA256(), backend=default_backend())
         )
 
-        logger.info("✅ Certificado emitido")
+        logger.info(" Certificado emitido")
         logger.info(f"   Serial: {cert.serial_number}")
         logger.info(f"   Válido até: {cert.not_valid_after}")
 
@@ -232,11 +230,10 @@ class CertificationAuthority:
         # Gerar chave privada
         self.ca_private_key = self.generate_ca_keypair()
 
-        # Criar certificado auto-assinado
         self.ca_cert = self.create_ca_certificate()
 
         logger.info("=" * 60)
-        logger.info("✅ CA inicializada com sucesso!")
+        logger.info(" CA inicializada com sucesso!")
         logger.info("=" * 60)
 
     def save_ca_files(self):
@@ -256,13 +253,13 @@ class CertificationAuthority:
                     encryption_algorithm=serialization.NoEncryption(),
                 )
             )
-        logger.info(f"✅ Chave privada CA guardada: {ca_key_path}")
+        logger.info(f" Chave privada CA guardada: {ca_key_path}")
 
         # Guardar certificado CA
         ca_cert_path = CERTS_DIR / "ca_certificate.pem"
         with open(ca_cert_path, "wb") as f:
             f.write(self.ca_cert.public_bytes(serialization.Encoding.PEM))
-        logger.info(f"✅ Certificado CA guardado: {ca_cert_path}")
+        logger.info(f" Certificado CA guardado: {ca_cert_path}")
 
     def load_ca_files(self):
         """
@@ -281,7 +278,7 @@ class CertificationAuthority:
                 password=None,
                 backend=default_backend()
             )
-        logger.info(f"✅ Chave privada CA carregada: {ca_key_path}")
+        logger.info(f" Chave privada CA carregada: {ca_key_path}")
 
         # Carregar certificado
         with open(ca_cert_path, "rb") as f:
@@ -289,7 +286,7 @@ class CertificationAuthority:
                 f.read(),
                 backend=default_backend()
             )
-        logger.info(f"✅ Certificado CA carregado: {ca_cert_path}")
+        logger.info(f" Certificado CA carregado: {ca_cert_path}")
 
 
 def main():
@@ -300,15 +297,13 @@ def main():
     print("=" * 60)
     print()
 
-    # Criar CA
     ca = CertificationAuthority()
 
-    # Verificar se CA já existe
     try:
         ca.load_ca_files()
-        print("✅ CA já existe, certificados carregados")
+        print(" CA já existe, certificados carregados")
     except FileNotFoundError:
-        print("⚠️  CA não existe, a criar nova CA...")
+        print("  CA não existe, a criar nova CA...")
         ca.initialize()
         ca.save_ca_files()
 

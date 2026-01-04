@@ -51,17 +51,14 @@ class Packet:
 
     def __post_init__(self):
         """Validação após inicialização."""
-        # Validar NIDs
         if not isinstance(self.source, NID):
             raise TypeError("source deve ser um NID")
         if not isinstance(self.destination, NID):
             raise TypeError("destination deve ser um NID")
 
-        # Validar TTL
         if not (0 <= self.ttl <= 255):
             raise ValueError(f"TTL deve estar entre 0 e 255, recebeu {self.ttl}")
 
-        # Validar MAC size
         if len(self.mac) != MAC_SIZE:
             raise ValueError(f"MAC deve ter {MAC_SIZE} bytes, recebeu {len(self.mac)}")
 
@@ -155,7 +152,6 @@ class Packet:
             mac,
         ) = struct.unpack(header_format, header_data)
 
-        # Criar NIDs
         source = NID.from_bytes(source_bytes)
         destination = NID.from_bytes(dest_bytes)
 
@@ -252,7 +248,6 @@ class Packet:
         # Dados para verificar MAC: header sem MAC + payload
         data = self.get_header_for_mac() + self.payload
 
-        # Verificar MAC
         return verify_hmac(data, self.mac, key)
 
     def size(self) -> int:

@@ -474,7 +474,6 @@ class AuthCharacteristic(Characteristic):
             self.reassemblers[sender] = FragmentReassembler()
             logger.debug(f"Criado reassembler para cliente {sender}")
 
-        # Adicionar fragmento
         is_complete, auth_data = self.reassemblers[sender].add_fragment(fragment_data)
 
         if not is_complete:
@@ -493,7 +492,6 @@ class AuthCharacteristic(Characteristic):
                 if response and len(response) > 0:
                     response_fragments = fragment_message(response)
 
-                    # Enviar cada fragmento via Indicate
                     for i, fragment in enumerate(response_fragments):
                         logger.debug(f"Enviando fragmento {i+1}/{len(response_fragments)} da resposta")
                         self._indicate_response(fragment)
@@ -587,13 +585,12 @@ class IoTNetworkService(Service):
         self.neighbor_char = NeighborTableCharacteristic(bus, 2, self)
         self.auth_char = AuthCharacteristic(bus, 3, self)
 
-        # Adicionar ao service
         self.add_characteristic(self.packet_char)
         self.add_characteristic(self.device_info_char)
         self.add_characteristic(self.neighbor_char)
         self.add_characteristic(self.auth_char)
 
-        logger.info("✅ IoTNetworkService criado com sucesso!")
+        logger.info(" IoTNetworkService criado com sucesso!")
 
     def get_packet_characteristic(self) -> NetworkPacketCharacteristic:
         """Retorna a NetworkPacketCharacteristic."""

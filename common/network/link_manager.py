@@ -61,7 +61,6 @@ class DeviceInfo:
         hop_count = data[16]
         device_type_byte = data[17]
         
-        # Criar NID
         nid = NID(nid_bytes)
         
         # Mapear device_type
@@ -281,12 +280,11 @@ class LinkManager:
             if self.heartbeat_monitor:
                 self.heartbeat_monitor.stop()
 
-            # Criar novo uplink
             link = Link(connection, device_info, is_uplink=True)
             link.set_disconnected_callback(self._on_uplink_disconnected)
 
             self.uplink = link
-            logger.info(f"✅ Uplink definido: {link}")
+            logger.info(f" Uplink definido: {link}")
 
             # Iniciar monitoramento de heartbeat
             self._start_heartbeat_monitoring(link)
@@ -311,7 +309,7 @@ class LinkManager:
 
     def _on_uplink_disconnected(self):
         """Callback quando uplink é desconectado."""
-        logger.warning("⚠️  Uplink desconectado!")
+        logger.warning("  Uplink desconectado!")
         with self._lock:
             old_link = self.uplink
             self.uplink = None
@@ -336,7 +334,6 @@ class LinkManager:
         Args:
             link: Link do uplink para monitorar
         """
-        # Criar monitor de heartbeat
         self.heartbeat_monitor = HeartbeatMonitor(
             heartbeat_interval=5.0,
             max_missed=3,
@@ -351,22 +348,20 @@ class LinkManager:
                 packet = Packet.from_bytes(data)
 
                 logger.debug(
-                    f"📦 Pacote recebido via {link.address}: "
+                    f" Pacote recebido via {link.address}: "
                     f"{packet.source} → {packet.destination} "
                     f"(type={MessageType.to_string(packet.msg_type)}, seq={packet.sequence})"
                 )
 
                 # Se é heartbeat, notificar monitor
                 if packet.msg_type == MessageType.HEARTBEAT:
-                    logger.debug(f"💓 Heartbeat recebido: seq={packet.sequence}")
+                    logger.debug(f" Heartbeat recebido: seq={packet.sequence}")
                     self.heartbeat_monitor.on_heartbeat_received(packet.sequence)
-
-                    # TODO: Forward heartbeat para downlinks (flooding)
 
                 # Se é DATA, rotear o pacote
                 elif packet.msg_type == MessageType.DATA:
                     logger.info(
-                        f"📨 DATA recebido: {packet.source} → {packet.destination} "
+                        f" DATA recebido: {packet.source} → {packet.destination} "
                         f"({len(packet.payload)} bytes)"
                     )
                     # Rotear packet (aprende rota + forward se necessário)
@@ -383,12 +378,12 @@ class LinkManager:
         )
 
         if not success:
-            logger.error("❌ Falha ao subscrever notificações de heartbeat")
+            logger.error(" Falha ao subscrever notificações de heartbeat")
             return
 
         # Iniciar monitor
         self.heartbeat_monitor.start()
-        logger.info("💓 Monitoramento de heartbeat iniciado")
+        logger.info(" Monitoramento de heartbeat iniciado")
 
     def _on_heartbeat_timeout(self):
         """
@@ -400,7 +395,7 @@ class LinkManager:
         3. Marcar hop_count como negativo (TODO)
         4. Procurar novo uplink (TODO)
         """
-        logger.error("💔 TIMEOUT DE HEARTBEAT DETETADO!")
+        logger.error(" TIMEOUT DE HEARTBEAT DETETADO!")
         logger.error("   Ações: desconectar uplink + todos os downlinks")
 
         with self._lock:
@@ -416,8 +411,7 @@ class LinkManager:
                 logger.info(f"   A desconectar downlink: {address}")
                 self.disconnect_downlink(address)
 
-        logger.warning("⚠️  Todos os links desconectados devido a timeout de heartbeat")
-        logger.info("   TODO: Procurar novo uplink automaticamente")
+        logger.warning("  Todos os links desconectados devido a timeout de heartbeat")
 
     def get_heartbeat_status(self) -> dict:
         """
@@ -457,7 +451,6 @@ class LinkManager:
         logger.info(f"A conectar a vizinho {address}...")
 
         try:
-            # Criar ScannedDevice
             device = ScannedDevice(
                 address=address,
                 identifier=address,
@@ -473,16 +466,14 @@ class LinkManager:
                 logger.error(f"Falha ao conectar a {address}")
                 return None
 
-            # Criar DeviceInfo
             device_info = DeviceInfo(
                 nid=neighbor_info.nid,
                 hop_count=neighbor_info.hop_count,
                 device_type=neighbor_info.device_type,
             )
 
-            # Adicionar como uplink
             link = self.set_uplink(connection, device_info)
-            logger.info(f"✅ Conectado a {address} e uplink estabelecido")
+            logger.info(f" Conectado a {address} e uplink estabelecido")
 
             return link
 
@@ -513,12 +504,11 @@ class LinkManager:
                 logger.warning(f"Downlink {address} já existe - a substituir")
                 self.downlinks[address].disconnect()
 
-            # Criar novo downlink
             link = Link(connection, device_info, is_uplink=False)
             link.set_disconnected_callback(lambda: self._on_downlink_disconnected(address))
 
             self.downlinks[address] = link
-            logger.info(f"✅ Downlink adicionado: {link}")
+            logger.info(f" Downlink adicionado: {link}")
 
         # Notificar callbacks (fora do lock)
         self._notify_new_downlink(link)
@@ -568,7 +558,7 @@ class LinkManager:
         Args:
             address: Endereço do downlink
         """
-        logger.warning(f"⚠️  Downlink desconectado: {address}")
+        logger.warning(f"  Downlink desconectado: {address}")
         self.remove_downlink(address)
 
     # ========================================================================
@@ -712,13 +702,11 @@ class LinkManager:
         Args:
             address: Endereço BLE do vizinho
         """
-        # Verificar se é o uplink
         if self.uplink and self.uplink.address == address:
             logger.info(f"A desconectar do uplink {address}")
             self.clear_uplink()
             return
 
-        # Verificar se é um downlink
         if address in self.downlinks:
             logger.info(f"A desconectar do downlink {address}")
             self.remove_downlink(address)
@@ -821,7 +809,6 @@ class LinkManager:
         # TODO: Verificar se o destino é este node (comparar com local NID)
         # Se for, processar localmente ao invés de rotear
 
-        # Verificar se destino está nos downlinks
         for address, link in self.downlinks.items():
             if address == received_from:
                 continue  # Não enviar de volta para quem enviou
@@ -883,13 +870,13 @@ class LinkManager:
         with self._lock:
             if source_nid not in self.forwarding_table:
                 self.forwarding_table[source_nid] = from_link
-                logger.info(f"📚 Rota aprendida: {source_nid} → Link[{from_link.address}]")
+                logger.info(f" Rota aprendida: {source_nid} → Link[{from_link.address}]")
             elif self.forwarding_table[source_nid] != from_link:
                 # Rota mudou (pode acontecer se topologia mudar)
                 old_link = self.forwarding_table[source_nid]
                 self.forwarding_table[source_nid] = from_link
                 logger.info(
-                    f"📚 Rota atualizada: {source_nid} "
+                    f" Rota atualizada: {source_nid} "
                     f"Link[{old_link.address}] → Link[{from_link.address}]"
                 )
 
@@ -920,12 +907,12 @@ class LinkManager:
             if from_link is None or (from_link in self.downlinks.values()):
                 if self.uplink:
                     logger.debug(
-                        f"📤 Forwarding uplink: {packet.source} → {packet.destination} "
+                        f" Forwarding uplink: {packet.source} → {packet.destination} "
                         f"(type={MessageType.to_string(packet.msg_type)})"
                     )
                     return self._send_packet_via_link(packet, self.uplink)
                 else:
-                    logger.warning(f"⚠️  Não tenho uplink para forward {packet}")
+                    logger.warning(f"  Não tenho uplink para forward {packet}")
                     return False
 
             # Caso 2: Pacote veio de uplink
@@ -936,19 +923,19 @@ class LinkManager:
                 if dest_nid in self.forwarding_table:
                     target_link = self.forwarding_table[dest_nid]
                     logger.debug(
-                        f"📥 Forwarding downlink: {packet.source} → {packet.destination} "
+                        f" Forwarding downlink: {packet.source} → {packet.destination} "
                         f"via Link[{target_link.address}] (type={MessageType.to_string(packet.msg_type)})"
                     )
                     return self._send_packet_via_link(packet, target_link)
                 else:
                     logger.warning(
-                        f"⚠️  Sem rota para {dest_nid} na forwarding table. "
+                        f"  Sem rota para {dest_nid} na forwarding table. "
                         f"Dropping packet."
                     )
                     return False
 
             else:
-                logger.error(f"❌ Link desconhecido: {from_link}")
+                logger.error(f" Link desconhecido: {from_link}")
                 return False
 
     def _send_packet_via_link(self, packet: Packet, link: Link) -> bool:
@@ -971,14 +958,14 @@ class LinkManager:
             )
 
             if success:
-                logger.debug(f"✅ Pacote enviado via Link[{link.address}]: {len(packet_bytes)} bytes")
+                logger.debug(f" Pacote enviado via Link[{link.address}]: {len(packet_bytes)} bytes")
             else:
-                logger.error(f"❌ Falha ao enviar pacote via Link[{link.address}]")
+                logger.error(f" Falha ao enviar pacote via Link[{link.address}]")
 
             return success
 
         except Exception as e:
-            logger.error(f"❌ Erro ao enviar pacote via Link[{link.address}]: {e}")
+            logger.error(f" Erro ao enviar pacote via Link[{link.address}]: {e}")
             return False
 
     def get_forwarding_table(self) -> Dict[NID, str]:
@@ -995,7 +982,7 @@ class LinkManager:
         """Limpa a forwarding table."""
         with self._lock:
             self.forwarding_table.clear()
-            logger.info("🗑️  Forwarding table limpa")
+            logger.info("  Forwarding table limpa")
 
 
 # ============================================================================

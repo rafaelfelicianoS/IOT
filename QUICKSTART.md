@@ -1,242 +1,215 @@
 # Quick Start Guide
 
-Guia rápido para começar a desenvolver o projeto IoT Bluetooth Network.
+Guia rápido para executar o projeto IoT Bluetooth Network.
 
 ---
 
-## 📦 Setup Inicial
+## 📋 Requisitos
 
-### 1. Instalar Dependências do Sistema (Ubuntu)
+- Linux com Bluetooth LE
+- Python 3.8+
+- BlueZ stack
+- 2+ dispositivos BLE (ou máquinas virtuais)
 
-```bash
-# BlueZ stack
-sudo apt-get update
-sudo apt-get install -y bluez bluez-tools libbluetooth-dev
+---
 
-# D-Bus e GLib
-sudo apt-get install -y python3-dbus python3-gi libglib2.0-dev
+## 🚀 Instalação
 
-# Python development
-sudo apt-get install -y python3-dev python3-pip python3-venv
-
-# SimpleBLE dependencies
-sudo apt-get install -y cmake build-essential libdbus-1-dev
-
-# OpenSSL
-sudo apt-get install -y libssl-dev
-
-# Ferramentas úteis
-sudo apt-get install -y bluetooth hcitool bluetoothctl
-```
-
-### 2. Criar Virtual Environment
+### 1. Instalar Dependências
 
 ```bash
-# Criar venv
-python3 -m venv venv
-
-# Ativar
-source venv/bin/activate
-
-# Upgrade pip
-pip install --upgrade pip
+sudo bash install_deps.sh
 ```
 
-### 3. Instalar Dependências Python
+Isso instala:
+- BlueZ e ferramentas Bluetooth
+- Python dependencies (requirements.txt)
+- SimpleBLE para GATT Client
+- Dependências de desenvolvimento
+
+### 2. Gerar Certificados
 
 ```bash
-pip install -r requirements.txt
+# Certificados do Sink
+python3 support/provision_device.py --type sink --nid $(uuidgen)
+
+# Certificados de Nodes (um para cada node)
+python3 support/provision_device.py --type node --nid $(uuidgen)
+python3 support/provision_device.py --type node --nid $(uuidgen)
 ```
 
-**Nota**: Se tiver problemas com `simpleble` ou `pyDTLS`, podemos instalar individualmente depois.
+Os certificados são salvos em `certs/`.
 
-### 4. Configurar Ambiente
-
-```bash
-# Copiar configuração
-cp .env.example .env
-
-# Editar conforme necessário
-nano .env
-```
-
-### 5. Verificar Bluetooth
+### 3. Verificar Bluetooth
 
 ```bash
 # Listar adaptadores
 hciconfig
 
-# Deve mostrar algo como:
-# hci0:	Type: Primary  Bus: USB
-#	BD Address: XX:XX:XX:XX:XX:XX  ACL MTU: 1021:8  SCO MTU: 64:1
-#	UP RUNNING
-```
-
-Se não estiver UP:
-
-```bash
+# Se não estiver UP:
 sudo hciconfig hci0 up
-```
 
----
-
-## 🔍 Verificar Setup
-
-Execute o helper script:
-
-```bash
-python3 dev_helper.py
-```
-
-Deve mostrar:
-- ✅ Todos os diretórios criados
-- Estatísticas do projeto
-- Próximos passos
-
----
-
-## 📚 Estrutura do Projeto
-
-```
-iot-bluetooth-network/
-│
-├── sink/              # Código do Sink (gateway)
-├── node/              # Código dos IoT Nodes
-├── common/            # Código partilhado
-│   ├── ble/          # Camada BLE (GATT)
-│   ├── network/      # Camada de rede (packets, routing)
-│   ├── security/     # Segurança (X.509, ECDH, DTLS)
-│   ├── protocol/     # Protocolos (heartbeat, inbox)
-│   └── utils/        # Utilidades
-├── support/           # Ferramentas (CA, provisioning)
-└── tests/             # Testes
-```
-
----
-
-## 🎯 Roadmap de Implementação
-
-### ✅ Fase 0: Preparação (CONCLUÍDA)
-
-- [x] Estrutura de diretórios
-- [x] Configuração e constantes
-- [x] Classes base (Packet, ForwardingTable, NID)
-- [x] Sistema de logging
-
-### 🚧 Fase 1: BLE Básico (PRÓXIMO)
-
-**Ficheiros a criar**:
-
-1. **[common/ble/gatt_server.py](common/ble/gatt_server.py)** - Servidor GATT (D-Bus)
-   - Adaptar [docs/src-exploring-bluetooth/gatt_server.py](docs/src-exploring-bluetooth/gatt_server.py)
-   - Classes genéricas: `Application`, `Service`, `Characteristic`, `Descriptor`
-
-2. **[common/ble/gatt_services.py](common/ble/gatt_services.py)** - Serviços GATT customizados
-   - `IoTNetworkService` + Characteristics
-
-3. **[common/ble/gatt_client.py](common/ble/gatt_client.py)** - Cliente BLE (SimpleBLE)
-   - Scan, connect, read/write
-
-4. **[common/network/link_manager.py](common/network/link_manager.py)** - Gestão de links
-   - Uplink/downlinks management
-
-**Como começar**:
-
-```bash
-# Começar pelo GATT Server
-# Abrir o exemplo e adaptar
-code docs/src-exploring-bluetooth/gatt_server.py
-code common/ble/gatt_server.py
-```
-
-### 📋 Fases Seguintes
-
-Ver [PROJECT_STATUS.md](PROJECT_STATUS.md) para roadmap completo.
-
----
-
-## 🧪 Testar BLE
-
-### Verificar Dispositivos BLE Nearby
-
-```bash
-# Scan (Ctrl+C para parar)
+# Testar scan
 sudo hcitool lescan
-
-# Ou usar bluetoothctl
-bluetoothctl
-> scan on
-> list
-> exit
-```
-
-### Testar Exemplo Chat Server
-
-```bash
-# Terminal 1: Executar servidor
-sudo python3 docs/src-exploring-bluetooth/gatt_server.py hci0
-
-# Terminal 2: Conectar e testar com bluetoothctl
-bluetoothctl
-> scan on
-> connect [MAC_ADDRESS]
 ```
 
 ---
 
-## 📖 Documentação Importante
+## 🎯 Execução
 
-### Ficheiros de Referência
+### Iniciar Sink (Gateway)
 
-- [README.md](README.md) - Visão geral do projeto
-- [PROJECT_STATUS.md](PROJECT_STATUS.md) - Status e roadmap detalhado
-- [docs/project.pdf](docs/project.pdf) - Especificação completa do projeto
-- [docs/Ex08.pdf](docs/Ex08.pdf) - Guia de laboratório BLE
+```bash
+# Modo interativo com interface hci0
+./iot-sink interactive hci0
+```
 
-### Código de Referência
+Comandos disponíveis no Sink:
+```
+sink> status          # Ver status do Sink
+sink> connections     # Listar nodes conectados
+sink> inbox          # Ver mensagens recebidas
+sink> heartbeat      # Info sobre heartbeats
+sink> help           # Ajuda
+sink> quit           # Sair
+```
 
-- [docs/src-exploring-bluetooth/gatt_server.py](docs/src-exploring-bluetooth/gatt_server.py) - Exemplo GATT Server
+### Iniciar Node (IoT Device)
 
-### Módulos Já Implementados
+```bash
+# Em outro terminal/máquina
+./iot-node interactive
+```
 
-- [common/utils/constants.py](common/utils/constants.py) - Constantes (UUIDs, tipos de mensagens)
-- [common/utils/config.py](common/utils/config.py) - Configuração
-- [common/utils/nid.py](common/utils/nid.py) - Network Identifiers
-- [common/network/packet.py](common/network/packet.py) - Formato de pacotes
-- [common/network/forwarding_table.py](common/network/forwarding_table.py) - Tabela de forwarding
+Comandos disponíveis no Node:
+```
+node> scan           # Procurar Sink/Nodes
+node> connect 1      # Conectar ao device #1
+node> send Hello!    # Enviar mensagem ao Sink
+node> status         # Ver status do node
+node> disconnect     # Desconectar uplink
+node> help          # Ajuda
+node> quit          # Sair
+```
+
+---
+
+## 📝 Exemplo de Uso
+
+### Cenário: Node envia mensagem para Sink
+
+**Terminal 1 - Sink:**
+```bash
+./iot-sink interactive hci0
+
+# Aguardar node conectar
+# Verificar conexões
+sink> connections
+
+# Ver mensagens recebidas
+sink> inbox
+```
+
+**Terminal 2 - Node:**
+```bash
+./iot-node interactive
+
+# Procurar Sink
+node> scan
+
+# Conectar ao Sink (assumindo que aparece como #1)
+node> connect 1
+
+# Aguardar autenticação...
+
+# Enviar mensagem
+node> send Hello from Node!
+
+# Verificar status
+node> status
+```
+
+**Terminal 1 - Sink (verificar):**
+```bash
+sink> inbox
+# Deve mostrar a mensagem "Hello from Node!"
+```
+
+---
+
+## 🏗️ Estrutura do Projeto
+
+```
+iot/
+├── sync/              # Sink (gateway)
+│   ├── sink_device.py        # Lógica principal do Sink
+│   ├── interactive_sink.py   # CLI interativa
+│   └── sink_cli.py           # Parser de comandos
+├── node/              # IoT Nodes
+│   ├── iot_node.py           # Lógica principal do Node
+│   ├── interactive_node.py   # CLI interativa
+│   └── node_cli.py           # Parser de comandos
+├── common/            # Código partilhado
+│   ├── ble/          # GATT Server/Client, Advertising, Fragmentação
+│   ├── network/      # RouterDaemon, Packets, ForwardingTable, HeartbeatMonitor
+│   ├── security/     # X.509, Authentication, DTLS, Replay Protection
+│   ├── protocol/     # Heartbeat Protocol
+│   └── utils/        # NID, Logger, Constants
+├── support/           # CA e provisioning
+│   ├── ca.py                 # Certificate Authority
+│   └── provision_device.py   # Geração de certificados
+├── certs/             # Certificados X.509 (P-521)
+├── keys/              # Diretório para chaves (vazio)
+├── logs/              # Logs de execução
+└── docs/              # Documentação
+    └── specs/         # Especificação do projeto
+```
+
+---
+
+## 🔐 Segurança
+
+O projeto implementa:
+
+- **X.509 Certificates**: P-521 curve, ECDSA + ECDH
+- **Autenticação Mútua**: Challenge-response automático
+- **Session Keys**: ECDH por link (32 bytes)
+- **HMAC-SHA256**: Integridade em todos os pacotes
+- **Replay Protection**: Sequence numbers + window 100
+- **DTLS**: Encriptação end-to-end com AES-256-GCM
+- **Heartbeat Signatures**: ECDSA para autenticidade
+
+---
+
+## 🌐 Topologia
+
+```
+         Sink (hop=-1)
+           /   |   \
+          /    |    \
+    Node A   Node B   Node C
+    (h=0)    (h=0)    (h=0)
+               |
+             /   \
+        Node D   Node E
+        (h=1)    (h=1)
+```
+
+- Sink é o gateway central
+- Nodes selecionam uplink automaticamente (lazy selection)
+- Heartbeats a cada 5 segundos
+- Timeout após 3 heartbeats perdidos (15s)
+- Chain reaction disconnect quando uplink falha
 
 ---
 
 ## 🛠️ Comandos Úteis
 
-### Desenvolvimento
-
-```bash
-# Ver status do projeto
-python3 dev_helper.py
-
-# Executar testes
-pytest
-
-# Executar com coverage
-pytest --cov=common --cov=sink --cov=node
-
-# Formatar código
-black .
-
-# Lint
-flake8 .
-```
-
 ### Bluetooth
 
 ```bash
-# Ver adaptadores
-hciconfig
-
 # Reset adaptador
-sudo hciconfig hci0 down
-sudo hciconfig hci0 up
+sudo hciconfig hci0 down && sudo hciconfig hci0 up
 
 # Scan BLE
 sudo hcitool lescan
@@ -248,42 +221,26 @@ bluetoothctl
 ### Logs
 
 ```bash
-# Ver logs
-tail -f logs/*.log
+# Ver logs em tempo real
+tail -f logs/iot-network.log
 
 # Limpar logs
-rm -rf logs/*.log
+rm -f logs/*.log
+```
+
+### Certificados
+
+```bash
+# Ver certificados gerados
+ls -lh certs/
+
+# Verificar certificado
+openssl x509 -in certs/ca_certificate.pem -text -noout
 ```
 
 ---
 
-## ❓ Troubleshooting
-
-### SimpleBLE não instala
-
-Se tiver problemas com `simpleble`:
-
-```bash
-# Instalar dependências build
-sudo apt-get install -y cmake build-essential libdbus-1-dev
-
-# Tentar instalar novamente
-pip install simpleble
-```
-
-Se continuar a falhar, podemos usar alternativas (Bleak ou PyBluez).
-
-### pyDTLS não instala
-
-```bash
-# Instalar OpenSSL dev
-sudo apt-get install -y libssl-dev
-
-# Tentar novamente
-pip install pyDTLS
-```
-
-Alternativa: implementar DTLS manualmente com `cryptography`.
+## 🐛 Troubleshooting
 
 ### Bluetooth não funciona
 
@@ -291,64 +248,128 @@ Alternativa: implementar DTLS manualmente com `cryptography`.
 # Verificar serviço
 sudo systemctl status bluetooth
 
-# Reiniciar serviço
+# Reiniciar
 sudo systemctl restart bluetooth
 
 # Verificar adaptador
 hciconfig
 ```
 
-### Permissões
-
-Alguns comandos BLE requerem `sudo` ou adicionar user ao grupo `bluetooth`:
+### Erro de permissões
 
 ```bash
+# Adicionar user ao grupo bluetooth
 sudo usermod -a -G bluetooth $USER
+
 # Logout/login para aplicar
 ```
 
----
-
-## 🚀 Começar a Programar
-
-### Criar primeiro módulo: GATT Server
+### SimpleBLE não instala
 
 ```bash
-# Abrir editor
-code common/ble/gatt_server.py
+# Instalar dependências
+sudo apt-get install -y cmake build-essential libdbus-1-dev
 
-# Começar com template baseado no exemplo
-# Ver docs/src-exploring-bluetooth/gatt_server.py
+# Tentar novamente
+pip3 install simpleble
 ```
 
-### Estrutura sugerida:
+### Node não encontra Sink
 
-```python
-"""
-GATT Server implementation using D-Bus and BlueZ.
+1. Verificar se Sink está em modo advertising:
+   ```bash
+   sink> status
+   ```
 
-Based on the example from docs/src-exploring-bluetooth/gatt_server.py
-"""
+2. Verificar se Bluetooth está UP:
+   ```bash
+   hciconfig
+   ```
 
-import dbus
-import dbus.service
-from gi.repository import GLib
-from common.utils.constants import *
-from common.utils.logger import get_logger
+3. Aumentar potência de sinal:
+   ```bash
+   sudo hciconfig hci0 leadv 0
+   ```
 
-logger = get_logger("gatt_server")
+### Autenticação falha
 
-# ... classes Application, Service, Characteristic, Descriptor
+1. Verificar certificados em `certs/`
+2. Gerar novos certificados se necessário
+3. Verificar logs: `tail -f logs/*.log`
+
+---
+
+## 📚 Documentação
+
+- **README.md**: Visão geral e arquitetura
+- **docs/specs/project.txt**: Especificação completa (texto)
+- **docs/specs/project.pdf**: Especificação completa (PDF)
+- **docs/specs/Ex08.pdf**: Guia de laboratório BLE
+- **docs/LOGGING.md**: Sistema de logging detalhado
+
+---
+
+## ✨ Características Implementadas
+
+- ✅ Topologia em árvore com lazy uplink selection
+- ✅ Heartbeat protocol (5s) com ECDSA
+- ✅ Heartbeat forwarding para downlinks
+- ✅ RouterDaemon com forwarding table
+- ✅ NID (128 bits UUID)
+- ✅ X.509 (P-521)
+- ✅ Autenticação mútua
+- ✅ ECDH session keys
+- ✅ HMAC-SHA256
+- ✅ Replay protection
+- ✅ AES-256-GCM (DTLS)
+- ✅ Fragmentação automática (180 bytes)
+- ✅ Serviço Inbox no Sink
+- ✅ Chain reaction disconnect
+- ✅ Timeout detection (15s)
+
+---
+
+## 📞 Comandos Avançados
+
+### Sink CLI
+
+```bash
+# Ver downlinks ativos
+sink> connections
+
+# Bloquear heartbeats para um node
+sink> block_heartbeat <NID>
+
+# Desbloquear heartbeats
+sink> unblock_heartbeat <NID>
+
+# Ver lista de nodes com heartbeat bloqueado
+sink> blocked_nodes
+
+# Estatísticas
+sink> stats
+```
+
+### Node CLI
+
+```bash
+# Informação de uplink
+node> uplink
+
+# Ver downlinks (se for router)
+node> downlinks
+
+# Forçar desconexão do uplink
+node> disconnect
+
+# Reconectar
+node> scan
+node> connect <ID>
+
+# Ver hop count
+node> status
 ```
 
 ---
 
-## 📞 Ajuda
-
-- Consultar [PROJECT_STATUS.md](PROJECT_STATUS.md) para ver o que fazer a seguir
-- Ver exemplos em [docs/src-exploring-bluetooth/](docs/src-exploring-bluetooth/)
-- Ler especificação em [docs/project.pdf](docs/project.pdf)
-
----
-
-**Boa sorte com o desenvolvimento! 🚀**
+**Projeto pronto para execução e testes! 🚀**

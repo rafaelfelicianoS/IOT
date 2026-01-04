@@ -57,12 +57,12 @@ source venv/bin/activate
 pip install --upgrade pip -q
 # Instalar apenas os pacotes que não vêm do sistema
 pip install loguru python-dotenv typer rich cryptography bleak simplepyble -q
-echo "✅ Dependências Python instaladas!"
+echo " Dependências Python instaladas!"
 EOF
 
 echo ""
 echo -e "${GREEN}=================================================="
-echo -e "  ✅ Instalação concluída com sucesso!"
+echo -e "   Instalação concluída com sucesso!"
 echo -e "==================================================${NC}"
 echo ""
 echo "Próximos passos:"

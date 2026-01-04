@@ -83,7 +83,6 @@ class CertificateManager:
             key_path = self.certs_dir / f"{device_type}_{short_nid}_key.pem"
             logger.debug(f"Tentando formato flat: {cert_path}")
 
-        # Verificar se ficheiros existem
         if not cert_path.exists():
             logger.error(f"Certificado não encontrado: {cert_path}")
             # Tentar auto-detectar tipo se não foi fornecido
@@ -121,10 +120,9 @@ class CertificateManager:
                     backend=default_backend()
                 )
 
-            logger.info(f"✅ Certificado do dispositivo carregado: {cert_path}")
+            logger.info(f" Certificado do dispositivo carregado: {cert_path}")
             logger.info(f"   Serial: {self.device_cert.serial_number}")
 
-            # Validar que o NID do certificado corresponde ao esperado
             cert_nid = self.extract_nid_from_cert(self.device_cert)
             if cert_nid != self.device_nid:
                 logger.error(
@@ -159,7 +157,7 @@ class CertificateManager:
                     backend=default_backend()
                 )
 
-            logger.info(f"✅ Certificado da CA carregado: {ca_cert_path}")
+            logger.info(f" Certificado da CA carregado: {ca_cert_path}")
             logger.info(f"   Serial: {self.ca_cert.serial_number}")
 
             return True
@@ -188,7 +186,7 @@ class CertificateManager:
             return False
 
         logger.info("=" * 60)
-        logger.info("✅ Todos os certificados carregados com sucesso!")
+        logger.info(" Todos os certificados carregados com sucesso!")
         logger.info("=" * 60)
 
         return True
@@ -220,10 +218,10 @@ class CertificateManager:
                 cert.tbs_certificate_bytes,
                 ec.ECDSA(cert.signature_hash_algorithm)
             )
-            logger.debug("✅ Assinatura da CA válida")
+            logger.debug(" Assinatura da CA válida")
 
         except InvalidSignature:
-            logger.warning("❌ Assinatura da CA inválida!")
+            logger.warning(" Assinatura da CA inválida!")
             return False
         except Exception as e:
             logger.error(f"Erro ao verificar assinatura: {e}")
@@ -244,14 +242,14 @@ class CertificateManager:
             not_after = cert.not_valid_after.replace(tzinfo=timezone.utc)
 
         if now < not_before:
-            logger.warning(f"❌ Certificado ainda não é válido (válido a partir de {not_before})")
+            logger.warning(f" Certificado ainda não é válido (válido a partir de {not_before})")
             return False
 
         if now > not_after:
-            logger.warning(f"❌ Certificado expirado (expirou em {not_after})")
+            logger.warning(f" Certificado expirado (expirou em {not_after})")
             return False
 
-        logger.debug(f"✅ Certificado válido temporalmente (expira em {not_after})")
+        logger.debug(f" Certificado válido temporalmente (expira em {not_after})")
 
         # 3. Verificar que não é um certificado CA (BasicConstraints ca=False)
         try:
@@ -260,13 +258,13 @@ class CertificateManager:
             ).value
 
             if basic_constraints.ca:
-                logger.warning("❌ Certificado é uma CA (não deveria ser)")
+                logger.warning(" Certificado é uma CA (não deveria ser)")
                 return False
 
         except x509.ExtensionNotFound:
-            logger.warning("⚠️  BasicConstraints não encontrado no certificado")
+            logger.warning("  BasicConstraints não encontrado no certificado")
 
-        logger.info("✅ Certificado validado com sucesso")
+        logger.info(" Certificado validado com sucesso")
         return True
 
     def extract_nid_from_cert(self, cert: x509.Certificate) -> NID:
@@ -352,7 +350,7 @@ class CertificateManager:
 
         from cryptography.hazmat.primitives import hashes
 
-        logger.info(f"✍️  Assinando dados:")
+        logger.info(f"  Assinando dados:")
         logger.info(f"   Data: {len(data)} bytes | {data.hex()[:64]}...")
 
         signature = self.device_private_key.sign(
@@ -384,7 +382,7 @@ class CertificateManager:
         try:
             from cryptography.hazmat.primitives import hashes
 
-            logger.info(f"🔍 Verificando assinatura:")
+            logger.info(f" Verificando assinatura:")
             logger.info(f"   Data: {len(data)} bytes | {data.hex()[:64]}...")
             logger.info(f"   Signature: {len(signature)} bytes | {signature.hex()[:64]}...")
 
@@ -394,11 +392,11 @@ class CertificateManager:
                 data,
                 ec.ECDSA(hashes.SHA256())
             )
-            logger.info("✅ Assinatura verificada com sucesso!")
+            logger.info(" Assinatura verificada com sucesso!")
             return True
 
         except InvalidSignature:
-            logger.warning("❌ Assinatura inválida")
+            logger.warning(" Assinatura inválida")
             logger.info(f"   Tentou verificar com cert subject: {cert.subject}")
             return False
         except Exception as e:

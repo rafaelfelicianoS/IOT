@@ -86,7 +86,7 @@ class AuthenticationHandler:
         Returns:
             Resposta a enviar ao cliente (None se não há resposta)
         """
-        logger.info(f"📨 Mensagem de autenticação de {client_id}: {len(auth_data)} bytes")
+        logger.info(f" Mensagem de autenticação de {client_id}: {len(auth_data)} bytes")
 
         # Obter ou criar sessão
         auth_protocol = self.get_or_create_session(client_id)
@@ -97,9 +97,8 @@ class AuthenticationHandler:
 
             logger.debug(f"   Estado da sessão: {auth_protocol.state.name}")
 
-            # Verificar se autenticação terminou
             if auth_protocol.state == AuthState.AUTHENTICATED:
-                logger.info(f"✅ Cliente {client_id} AUTENTICADO!")
+                logger.info(f" Cliente {client_id} AUTENTICADO!")
 
                 # Chamar callback de sucesso
                 if self.on_authenticated:
@@ -107,7 +106,7 @@ class AuthenticationHandler:
                     self.on_authenticated(client_id, peer_info)
 
             elif auth_protocol.state == AuthState.FAILED:
-                logger.error(f"❌ Autenticação falhou para cliente {client_id}")
+                logger.error(f" Autenticação falhou para cliente {client_id}")
 
                 # Chamar callback de falha
                 if self.on_auth_failed:
@@ -119,7 +118,7 @@ class AuthenticationHandler:
             return response
 
         except Exception as e:
-            logger.error(f"❌ Erro ao processar mensagem de autenticação: {e}")
+            logger.error(f" Erro ao processar mensagem de autenticação: {e}")
             logger.exception(e)
 
             # Limpar sessão com erro

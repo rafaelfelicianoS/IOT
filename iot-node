@@ -20,7 +20,7 @@ echo ""
 # Procurar certificado CA
 CA_CERT="$CERTS_DIR/ca_certificate.pem"
 if [ ! -f "$CA_CERT" ]; then
-    echo "❌ Certificado CA não encontrado: $CA_CERT"
+    echo " Certificado CA não encontrado: $CA_CERT"
     exit 1
 fi
 
@@ -55,10 +55,10 @@ done
 
 # Verificar se encontrou certificados
 if [ ${#NODE_CERTS[@]} -eq 0 ]; then
-    echo "❌ Nenhum certificado de Node encontrado em $CERTS_DIR/"
+    echo " Nenhum certificado de Node encontrado em $CERTS_DIR/"
     echo "   Esperado: node_*_cert.pem ou <UUID>/certificate.pem"
     echo ""
-    echo "💡 Crie um certificado com:"
+    echo "Crie um certificado com:"
     echo "   python -m support.provision_device --nid \$(uuidgen) --type node"
     exit 1
 fi
@@ -67,7 +67,7 @@ fi
 CERT_INDEX=0
 if [ ${#NODE_CERTS[@]} -gt 1 ]; then
     echo ""
-    echo "⚠️  Múltiplos certificados Node encontrados:"
+    echo "AVISO: Múltiplos certificados Node encontrados:"
     for i in "${!NODE_CERTS[@]}"; do
         basename=$(basename "${NODE_CERTS[$i]}")
         echo "  $((i+1)). $basename"
@@ -81,7 +81,7 @@ fi
 SELECTED_CERT="${NODE_CERTS[$CERT_INDEX]}"
 SELECTED_KEY="${NODE_KEYS[$CERT_INDEX]}"
 
-echo "✅ Certificados encontrados:"
+echo " Certificados encontrados:"
 echo "   Cert: $SELECTED_CERT"
 echo "   Key:  $SELECTED_KEY"
 echo "   CA:   $CA_CERT"

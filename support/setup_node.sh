@@ -13,12 +13,12 @@ echo ""
 
 # Verificar se CA existe
 if [ ! -f "$PROJECT_DIR/certs/ca_certificate.pem" ]; then
-    echo "❌ CA não existe! Execute primeiro:"
+    echo " CA não existe! Execute primeiro:"
     echo "   ./support/setup_sink.sh"
     exit 1
 fi
 
-echo "✅ CA encontrada"
+echo " CA encontrada"
 echo ""
 
 # Gerar certificado para o Node
@@ -52,7 +52,7 @@ EOF
 
     echo ""
     echo "========================================================"
-    echo "✅ Setup do Node concluído!"
+    echo " Setup do Node concluído!"
     echo "========================================================"
     echo ""
     echo "Para executar o Node:"
@@ -60,6 +60,6 @@ EOF
 else
     echo ""
     echo "========================================================"
-    echo "✅ Setup do Node concluído!"
+    echo " Setup do Node concluído!"
     echo "========================================================"
 fi

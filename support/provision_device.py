@@ -11,7 +11,6 @@ import sys
 import argparse
 from pathlib import Path
 
-# Adicionar o diretório raiz ao path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from cryptography.hazmat.primitives import serialization
@@ -43,9 +42,9 @@ def provision_device(device_type: str, nid: NID):
     ca = CertificationAuthority()
     try:
         ca.load_ca_files()
-        logger.info("✅ CA carregada")
+        logger.info(" CA carregada")
     except FileNotFoundError:
-        logger.error("❌ CA não encontrada! Execute primeiro:")
+        logger.error(" CA não encontrada! Execute primeiro:")
         logger.error("   python3 support/ca.py")
         return False
 
@@ -56,7 +55,7 @@ def provision_device(device_type: str, nid: NID):
         backend=default_backend()
     )
     device_public_key = device_private_key.public_key()
-    logger.info("✅ Par de chaves gerado")
+    logger.info(" Par de chaves gerado")
 
     # Emitir certificado
     is_sink = (device_type == 'sink')
@@ -76,26 +75,26 @@ def provision_device(device_type: str, nid: NID):
                 encryption_algorithm=serialization.NoEncryption(),
             )
         )
-    logger.info(f"✅ Chave privada guardada: {device_key_path}")
+    logger.info(f" Chave privada guardada: {device_key_path}")
 
     # Guardar certificado
     with open(device_cert_path, "wb") as f:
         f.write(cert.public_bytes(serialization.Encoding.PEM))
-    logger.info(f"✅ Certificado guardado: {device_cert_path}")
+    logger.info(f" Certificado guardado: {device_cert_path}")
 
     logger.info("")
     logger.info("=" * 60)
-    logger.info("✅ Dispositivo provisionado com sucesso!")
+    logger.info(" Dispositivo provisionado com sucesso!")
     logger.info("=" * 60)
     logger.info("")
     logger.info("Para executar o dispositivo, use:")
     if device_type == 'sink':
-        logger.info(f"  sudo python3 examples/run_sink.py hci0 \\")
+        logger.info(f"  sudo ./iot-sink hci0 \\")
         logger.info(f"    --cert {device_cert_path} \\")
         logger.info(f"    --key {device_key_path} \\")
         logger.info(f"    --ca-cert {CERTS_DIR / 'ca_certificate.pem'}")
     else:
-        logger.info(f"  python3 examples/run_node.py \\")
+        logger.info(f"  ./iot-node \\")
         logger.info(f"    --cert {device_cert_path} \\")
         logger.info(f"    --key {device_key_path} \\")
         logger.info(f"    --ca-cert {CERTS_DIR / 'ca_certificate.pem'}")

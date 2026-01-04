@@ -74,7 +74,7 @@ def setup_logger(
         except (PermissionError, OSError) as e:
             # Se não tiver permissões, fazer log apenas para consola
             # (não falhar - continuar sem ficheiro de log)
-            print(f"⚠️  Aviso: Não foi possível criar ficheiro de log: {e}", file=sys.stderr)
+            print(f"  Aviso: Não foi possível criar ficheiro de log: {e}", file=sys.stderr)
             print(f"   Logs apenas na consola.", file=sys.stderr)
 
     return logger

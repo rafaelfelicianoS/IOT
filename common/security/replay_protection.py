@@ -68,18 +68,16 @@ class ReplayProtection:
 
         highest_seq, seen_seqs = self.tracking[source_key]
 
-        # Verificar se sequence já foi visto (REPLAY!)
         if sequence in seen_seqs:
             logger.warning(
-                f"🚨 REPLAY DETECTADO! Source: {source_nid}, "
+                f" REPLAY DETECTADO! Source: {source_nid}, "
                 f"seq={sequence} (já foi visto)"
             )
             return False
 
-        # Verificar se sequence está fora da janela (muito antigo)
         if sequence < highest_seq - self.window_size:
             logger.warning(
-                f"🚨 REPLAY DETECTADO! Source: {source_nid}, "
+                f" REPLAY DETECTADO! Source: {source_nid}, "
                 f"seq={sequence} (muito antigo, highest={highest_seq}, "
                 f"window={self.window_size})"
             )

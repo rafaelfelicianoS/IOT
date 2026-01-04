@@ -121,7 +121,6 @@ class ForwardingTable:
             if entry is None:
                 return None
 
-            # Verificar se a entrada expirou
             if self.timeout and entry.age().total_seconds() > self.timeout:
                 logger.debug(f"Route to {nid} expired (age: {entry.age()})")
                 del self._table[nid]

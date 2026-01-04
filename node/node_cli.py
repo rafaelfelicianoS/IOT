@@ -17,7 +17,6 @@ import time
 from pathlib import Path
 from typing import Optional
 
-# Adicionar o diretório raiz ao path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from common.utils.logger import setup_logger
@@ -30,9 +29,9 @@ class NodeCLI(cmd.Cmd):
     """CLI interativa para monitoramento e controle do Node."""
 
     intro = """
-╔═══════════════════════════════════════════════════════════════╗
-║                    IoT Node - CLI Interface                   ║
-╚═══════════════════════════════════════════════════════════════╝
+===================================================================
+                    IoT Node - CLI Interface                   
+===================================================================
 
 Digite 'help' para ver comandos disponíveis.
 Digite 'exit' ou Ctrl+D para sair.
@@ -51,7 +50,7 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         self.node = None
         self.start_time = time.time()
 
-        print("⚠️  CLI em modo STANDALONE - conecte a um Node real para funcionalidade completa\n")
+        print("  CLI em modo STANDALONE - conecte a um Node real para funcionalidade completa\n")
 
     # ========================================================================
     # COMANDOS DE MONITORAMENTO
@@ -71,18 +70,18 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         - Heartbeat stats
         - Role (Server/Client/Both)
         """
-        print("\n╔═══════════════════════════════════════════════════════════════╗")
-        print("║                  IoT Node - Status (hop=?)                    ║")
-        print("╚═══════════════════════════════════════════════════════════════╝\n")
+        print("\n===================================================================")
+        print("                  IoT Node - Status (hop=?)                    ")
+        print("===================================================================\n")
 
         # Uptime
         uptime_s = time.time() - self.start_time
         uptime_str = self._format_uptime(uptime_s)
-        print(f"⏱️  UPTIME: {uptime_str}\n")
+        print(f"  UPTIME: {uptime_str}\n")
 
         # TODO: Obter dados reais do Node
-        print("🔼 UPLINK:")
-        print("   Status: 🔴 Desconectado")
+        print(" UPLINK:")
+        print("   Status:  Desconectado")
         print("   Tipo: N/A")
         print("   NID: N/A")
         print("   Address: N/A")
@@ -90,29 +89,29 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         print("   Meu hop: ? (desconhecido)")
         print()
 
-        print("🔽 DOWNLINKS:")
+        print(" DOWNLINKS:")
         print("   Total: 0 nodes")
         print("   (nenhum)")
         print()
 
-        print("🌐 PAPEL:")
-        print("   GATT Server: ❓ Desconhecido")
-        print("   GATT Client: ❓ Desconhecido")
+        print(" PAPEL:")
+        print("   GATT Server:  Desconhecido")
+        print("   GATT Client:  Desconhecido")
         print()
 
-        print("🔐 AUTENTICAÇÃO:")
-        print("   Uplink: 🔴 Não autenticado")
-        print("   Session Key: ❌ Não estabelecida")
+        print(" AUTENTICAÇÃO:")
+        print("   Uplink:  Não autenticado")
+        print("   Session Key:  Não estabelecida")
         print()
 
-        print("💓 HEARTBEATS:")
+        print(" HEARTBEATS:")
         print("   Recebidos (uplink): 0")
         print("   Último: N/A")
         print("   Perdidos: 0")
         print("   Enviados (downlinks): 0")
         print()
 
-        print("📊 ROUTING:")
+        print(" ROUTING:")
         print("   Pacotes roteados: 0")
         print("   Pacotes originados: 0")
         print("   Pacotes entregues: 0")
@@ -133,11 +132,11 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         - Tempo de conexão
         - Último heartbeat recebido
         """
-        print("\n🔼 UPLINK DETALHADO\n")
+        print("\n UPLINK DETALHADO\n")
 
         # TODO: Obter dados reais
-        print("Status: 🔴 Desconectado\n")
-        print("⚠️  Sem uplink conectado. Use 'scan' e 'connect' para estabelecer uplink.\n")
+        print("Status:  Desconectado\n")
+        print("  Sem uplink conectado. Use 'scan' e 'connect' para estabelecer uplink.\n")
 
     def do_downlinks(self, arg):
         """
@@ -152,15 +151,15 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         - Status de autenticação
         - Tempo de conexão
         """
-        print("\n🔽 DOWNLINKS CONECTADOS\n")
+        print("\n DOWNLINKS CONECTADOS\n")
 
         # TODO: Obter dados reais
-        print("┌─────────────────────┬──────────────┬─────┬──────────┬──────────┐")
-        print("│ Address             │ NID          │ Hop │ Auth     │ Uptime   │")
-        print("├─────────────────────┼──────────────┼─────┼──────────┼──────────┤")
-        print("│ (nenhum)            │              │     │          │          │")
-        print("└─────────────────────┴──────────────┴─────┴──────────┴──────────┘")
-        print("\n📊 Total: 0 downlinks\n")
+        print("+---------------------+--------------+-----+----------+----------+")
+        print("| Address             | NID          | Hop | Auth     | Uptime   |")
+        print("+---------------------+--------------+-----+----------+----------+")
+        print("| (nenhum)            |              |     |          |          |")
+        print("+---------------------+--------------+-----+----------+----------+")
+        print("\n Total: 0 downlinks\n")
 
     def do_neighbors(self, arg):
         """
@@ -174,15 +173,15 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         - RSSI
         - Recomendação de melhor uplink
         """
-        print("\n📡 VIZINHOS DESCOBERTOS\n")
+        print("\n VIZINHOS DESCOBERTOS\n")
 
         # TODO: Obter dados reais
-        print("┌─────────────────────┬──────────────┬─────┬────────┬─────────┬──────────┐")
-        print("│ Address             │ NID          │ Hop │ Type   │ RSSI    │ Status   │")
-        print("├─────────────────────┼──────────────┼─────┼────────┼─────────┼──────────┤")
-        print("│ (nenhum)            │              │     │        │         │          │")
-        print("└─────────────────────┴──────────────┴─────┴────────┴─────────┴──────────┘")
-        print("\n💡 Use 'scan' para descobrir vizinhos disponíveis.\n")
+        print("+---------------------+--------------+-----+--------+---------+----------+")
+        print("| Address             | NID          | Hop | Type   | RSSI    | Status   |")
+        print("+---------------------+--------------+-----+--------+---------+----------+")
+        print("| (nenhum)            |              |     |        |         |          |")
+        print("+---------------------+--------------+-----+--------+---------+----------+")
+        print("\n Use 'scan' para descobrir vizinhos disponíveis.\n")
 
     def do_topology(self, arg):
         """
@@ -192,8 +191,8 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
 
         Mostra árvore de conexões conhecidas.
         """
-        print("\n🌳 TOPOLOGIA DA REDE\n")
-        print("⚠️  Funcionalidade não implementada ainda.\n")
+        print("\n TOPOLOGIA DA REDE\n")
+        print("  Funcionalidade não implementada ainda.\n")
 
     def do_stats(self, arg):
         """
@@ -207,22 +206,22 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         - Latência média
         - Pacotes roteados
         """
-        print("\n📈 ESTATÍSTICAS DETALHADAS\n")
+        print("\n ESTATÍSTICAS DETALHADAS\n")
 
-        print("📦 PACOTES:")
+        print(" PACOTES:")
         print("   Enviados ao uplink: 0")
         print("   Recebidos do uplink: 0")
         print("   Recebidos de downlinks: 0")
         print("   Forwardados: 0")
         print()
 
-        print("💓 HEARTBEATS:")
+        print(" HEARTBEATS:")
         print("   Recebidos: 0")
         print("   Perdidos: 0 (0.0%)")
         print("   Latência média: N/A")
         print()
 
-        print("🔐 SEGURANÇA:")
+        print(" SEGURANÇA:")
         print("   Replay attacks bloqueados: 0")
         print("   MACs inválidos: 0")
         print()
@@ -239,17 +238,17 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         try:
             n = int(arg) if arg else 10
         except ValueError:
-            print("\n❌ Erro: argumento deve ser um número\n")
+            print("\n Erro: argumento deve ser um número\n")
             return
 
-        print(f"\n�� Últimos {n} Heartbeats Recebidos:\n")
+        print(f"\n Últimos {n} Heartbeats Recebidos:\n")
 
         # TODO: Obter dados reais
-        print("┌─────┬──────────────────────┬──────────┬─────────┐")
-        print("│ Seq │ Timestamp            │ Latency  │ Status  │")
-        print("├─────┼──────────────────────┼──────────┼─────────┤")
-        print("│ (nenhum heartbeat recebido ainda)               │")
-        print("└─────┴──────────────────────┴──────────┴─────────┘")
+        print("+-----+----------------------+----------+---------+")
+        print("| Seq | Timestamp            | Latency  | Status  |")
+        print("+-----+----------------------+----------+---------+")
+        print("| (nenhum heartbeat recebido ainda)               |")
+        print("+-----+----------------------+----------+---------+")
         print()
 
     # ========================================================================
@@ -270,11 +269,11 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         try:
             timeout = int(arg) if arg else 5
         except ValueError:
-            print("\n❌ Erro: argumento deve ser um número\n")
+            print("\n Erro: argumento deve ser um número\n")
             return
 
-        print(f"\n🔍 A fazer scan por {timeout}s...\n")
-        print("⚠️  Funcionalidade não implementada ainda.\n")
+        print(f"\n A fazer scan por {timeout}s...\n")
+        print("  Funcionalidade não implementada ainda.\n")
 
     def do_connect(self, arg):
         """
@@ -289,13 +288,13 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
             connect E0:D3:62:D6:EE:A0
         """
         if not arg:
-            print("\n❌ Erro: especifique o address do uplink\n")
+            print("\n Erro: especifique o address do uplink\n")
             print("   Uso: connect <address>\n")
             return
 
         address = arg.strip().upper()
-        print(f"\n🔗 A conectar a {address}...\n")
-        print("⚠️  Funcionalidade não implementada ainda.\n")
+        print(f"\n A conectar a {address}...\n")
+        print("  Funcionalidade não implementada ainda.\n")
 
     def do_disconnect(self, arg):
         """
@@ -305,14 +304,14 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
 
         AVISO: Isto vai desconectar TODOS os downlinks em cascata!
         """
-        print("\n⚠️  AVISO: Desconectar uplink vai desconectar TODOS os downlinks!")
+        print("\n  AVISO: Desconectar uplink vai desconectar TODOS os downlinks!")
         confirm = input("   Digite 'yes' para confirmar: ")
 
         if confirm.lower() == 'yes':
-            print("\n🔌 Desconectando do uplink...\n")
-            print("⚠️  Funcionalidade não implementada ainda.\n")
+            print("\n Desconectando do uplink...\n")
+            print("  Funcionalidade não implementada ainda.\n")
         else:
-            print("\n❌ Operação cancelada.\n")
+            print("\n Operação cancelada.\n")
 
     def do_reconnect(self, arg):
         """
@@ -322,8 +321,8 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
 
         Desconecta e reconecta ao mesmo uplink.
         """
-        print("\n🔄 A reconectar...\n")
-        print("⚠️  Funcionalidade não implementada ainda.\n")
+        print("\n A reconectar...\n")
+        print("  Funcionalidade não implementada ainda.\n")
 
     # ========================================================================
     # COMANDOS DE COMUNICAÇÃO
@@ -342,13 +341,13 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
             send Hello from Node!
         """
         if not arg:
-            print("\n❌ Erro: mensagem não especificada\n")
+            print("\n Erro: mensagem não especificada\n")
             print("   Uso: send <message>\n")
             return
 
-        print(f"\n📤 Enviando mensagem ao Sink via uplink...")
+        print(f"\n Enviando mensagem ao Sink via uplink...")
         print(f"   Mensagem: {arg}")
-        print("⚠️  Funcionalidade não implementada ainda.\n")
+        print("  Funcionalidade não implementada ainda.\n")
 
     def do_ping(self, arg):
         """
@@ -362,11 +361,11 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         try:
             count = int(arg) if arg else 4
         except ValueError:
-            print("\n❌ Erro: argumento deve ser um número\n")
+            print("\n Erro: argumento deve ser um número\n")
             return
 
-        print(f"\n🏓 Enviando {count} pings ao Sink...\n")
-        print("⚠️  Funcionalidade não implementada ainda.\n")
+        print(f"\n Enviando {count} pings ao Sink...\n")
+        print("  Funcionalidade não implementada ainda.\n")
 
     # ========================================================================
     # COMANDOS DE DEBUGGING
@@ -378,9 +377,9 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
 
         Uso: role
         """
-        print("\n🌐 PAPEL DO NODE\n")
-        print("   GATT Server: ❓ Desconhecido (aceita downlinks)")
-        print("   GATT Client: ❓ Desconhecido (conecta a uplink)")
+        print("\n PAPEL DO NODE\n")
+        print("   GATT Server:  Desconhecido (aceita downlinks)")
+        print("   GATT Client:  Desconhecido (conecta a uplink)")
         print()
 
     def do_hop_count(self, arg):
@@ -389,11 +388,11 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
 
         Uso: hop_count
         """
-        print("\n📏 HOP COUNT\n")
+        print("\n HOP COUNT\n")
         print("   Atual: ? (desconhecido)")
         print("   Uplink hop: N/A")
         print()
-        print("💡 Hop count é calculado baseado no uplink:")
+        print(" Hop count é calculado baseado no uplink:")
         print("   - Conectado ao Sink (hop=255) → meu hop=0")
         print("   - Conectado a Node (hop=N) → meu hop=N+1")
         print()
@@ -404,14 +403,14 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
 
         Uso: routes
         """
-        print("\n🗺️  TABELA DE ROTAS\n")
+        print("\n  TABELA DE ROTAS\n")
 
         # TODO: Obter dados reais
-        print("┌──────────────┬─────────────────────┬─────┬──────────┬──────────┐")
-        print("│ Destino NID  │ Next Hop Address    │ Hop │ Via      │ Learned  │")
-        print("├──────────────┼─────────────────────┼─────┼──────────┼──────────┤")
-        print("│ (nenhuma rota aprendida ainda)                                 │")
-        print("└──────────────┴─────────────────────┴─────┴──────────┴──────────┘")
+        print("+----------------+---------------------+-----+----------+----------+")
+        print("| Destino NID  | Next Hop Address    | Hop | Via      | Learned  |")
+        print("+----------------+---------------------+-----+----------+----------+")
+        print("| (nenhuma rota aprendida ainda)                                 |")
+        print("+----------------+---------------------+-----+----------+----------+")
         print()
 
     def do_inspect_uplink(self, arg):
@@ -420,8 +419,8 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
 
         Uso: inspect_uplink
         """
-        print("\n🔍 DETALHES DO UPLINK\n")
-        print("   Status: 🔴 Desconectado")
+        print("\n DETALHES DO UPLINK\n")
+        print("   Status:  Desconectado")
         print()
 
     def do_cert_info(self, arg):
@@ -436,8 +435,8 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         - Issuer (CA)
         - Se é certificado de Sink ou Node
         """
-        print("\n📜 CERTIFICADO DO NODE\n")
-        print("⚠️  Funcionalidade não implementada ainda.\n")
+        print("\n CERTIFICADO DO NODE\n")
+        print("  Funcionalidade não implementada ainda.\n")
 
     def do_logs(self, arg):
         """
@@ -451,11 +450,11 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
         try:
             n = int(arg) if arg else 20
         except ValueError:
-            print("\n❌ Erro: argumento deve ser um número\n")
+            print("\n Erro: argumento deve ser um número\n")
             return
 
-        print(f"\n📋 Últimos {n} logs:\n")
-        print("⚠️  Funcionalidade não implementada ainda.\n")
+        print(f"\n Últimos {n} logs:\n")
+        print("  Funcionalidade não implementada ainda.\n")
         print("   Use 'tail -f logs/iot-network.log' para ver logs em tempo real.\n")
 
     # ========================================================================
@@ -477,7 +476,7 @@ NOTA: Este CLI está em desenvolvimento. Muitos comandos ainda não
 
         Uso: exit
         """
-        print("\n👋 Até logo!\n")
+        print("\n Até logo!\n")
         return True
 
     def do_quit(self, arg):
@@ -521,7 +520,7 @@ def main():
     try:
         NodeCLI().cmdloop()
     except KeyboardInterrupt:
-        print("\n\n👋 Até logo!\n")
+        print("\n\n Até logo!\n")
         sys.exit(0)
 
 

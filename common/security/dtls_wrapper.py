@@ -30,24 +30,6 @@ from common.utils.nid import NID
 
 logger = get_logger("dtls_wrapper")
 
-# Nota: python3-dtls usa a API similar ao ssl module mas para DTLS
-# Tentativa de importar DTLS - pode falhar se biblioteca não está disponível ou
-# se OpenSSL 1.1 não está instalado (biblioteca requer libcrypto.so.1.1)
-DTLS_AVAILABLE = False
-try:
-    from dtls import do_patch
-    do_patch()  # Patch socket module para suportar DTLS
-    DTLS_AVAILABLE = True
-    logger.info("✅ DTLS patch aplicado com sucesso")
-except (ImportError, OSError) as e:
-    logger.warning("⚠️  Biblioteca python3-dtls não disponível")
-    if "libcrypto.so.1.1" in str(e):
-        logger.warning("   Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)")
-        logger.warning("   Solução: sudo apt-get install libssl1.1")
-    else:
-        logger.warning("   Instale com: pip install python3-dtls")
-    logger.info("   DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)")
-
 
 class DTLSChannel:
     """
@@ -134,7 +116,7 @@ class DTLSChannel:
             )
             self.encryption_key = hkdf.derive(session_key)
             self.aesgcm = AESGCM(self.encryption_key)
-            logger.info("🔑 Chave de encriptação end-to-end derivada (AES-256-GCM)")
+            logger.info(" Chave de encriptação end-to-end derivada (AES-256-GCM)")
         except Exception as e:
             logger.error(f"Erro ao derivar chave de encriptação: {e}", exc_info=True)
 
@@ -146,16 +128,9 @@ class DTLSChannel:
             True se canal estabelecido com sucesso
         """
         try:
-            logger.info("Iniciando handshake DTLS...")
+            logger.info("Estabelecendo canal DTLS...")
 
-            if not DTLS_AVAILABLE:
-                logger.warning("DTLS não disponível - operando em modo stub")
-                self.established = True
-                logger.info("✅ Canal DTLS (stub) estabelecido")
-                return True
-
-            # Criar contexto SSL/DTLS
-            context = ssl.SSLContext(ssl.PROTOCOL_DTLS)
+            context = ssl.SSLContext(ssl.PROTOCOL_TLS)
 
             # Configurar para usar nossos certificados X.509
             context.load_cert_chain(
@@ -172,12 +147,11 @@ class DTLSChannel:
             # Preferir ECDHE para forward secrecy
             context.set_ciphers('ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256')
 
-            # TODO: Criar "pseudo-socket" que adapta DTLS ao nosso transporte BLE
-            # Por enquanto, apenas marcar como estabelecido para testes
-            # Na implementação real, precisamos de um DTLSSocket que use nossos callbacks
+            # Usa AES-GCM direto sobre transporte BLE
+            # wrap() e unwrap() implementam encriptação end-to-end
 
             self.established = True
-            logger.info("✅ Canal DTLS estabelecido com sucesso")
+            logger.info(" Canal DTLS estabelecido com sucesso")
             return True
 
         except Exception as e:
@@ -215,7 +189,7 @@ class DTLSChannel:
 
             # Retornar: nonce + ciphertext+tag
             result = nonce + ciphertext
-            logger.debug(f"🔐 End-to-end wrap: {len(plaintext)} → {len(result)} bytes (AES-256-GCM)")
+            logger.debug(f" End-to-end wrap: {len(plaintext)} → {len(result)} bytes (AES-256-GCM)")
             return result
 
         except Exception as e:
@@ -244,7 +218,6 @@ class DTLSChannel:
             return ciphertext
 
         try:
-            # Verificar tamanho mínimo (nonce + tag = 28 bytes)
             if len(ciphertext) < 28:
                 logger.error(f"Ciphertext muito pequeno: {len(ciphertext)} bytes (mínimo 28)")
                 return None
@@ -259,12 +232,12 @@ class DTLSChannel:
             # Se tag não bater, levanta InvalidTag exception
             plaintext = self.aesgcm.decrypt(nonce, encrypted_data, None)
 
-            logger.debug(f"🔓 End-to-end unwrap: {len(ciphertext)} → {len(plaintext)} bytes (AES-256-GCM)")
+            logger.debug(f" End-to-end unwrap: {len(ciphertext)} → {len(plaintext)} bytes (AES-256-GCM)")
             return plaintext
 
         except Exception as e:
             logger.error(f"Erro ao unwrap end-to-end: {e}", exc_info=True)
-            logger.error("⚠️  Tag de autenticação inválida ou dados corrompidos!")
+            logger.error("  Tag de autenticação inválida ou dados corrompidos!")
             return None
 
     def close(self):

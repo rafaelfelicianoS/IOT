@@ -13,7 +13,6 @@ import time
 from pathlib import Path
 from typing import Optional
 
-# Adicionar diretório raiz ao PYTHONPATH
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from node.iot_node import IoTNode
@@ -27,9 +26,9 @@ class InteractiveNodeCLI(cmd.Cmd):
     """CLI interativa para controle do Node Device."""
 
     intro = """
-╔═══════════════════════════════════════════════════════════════╗
-║              IoT Node - Interactive CLI                      ║
-╚═══════════════════════════════════════════════════════════════╝
+===================================================================
+              IoT Node - Interactive CLI                      
+===================================================================
 
 Digite 'help' para ver comandos disponíveis.
 Digite 'exit' ou Ctrl+D para sair.
@@ -65,36 +64,36 @@ Comandos principais:
 
         Uso: status
         """
-        print("\n╔═══════════════════════════════════════════════════════════════╗")
+        print("\n===================================================================")
         hop_str = str(self.node.hop_count) if self.node.hop_count >= 0 else "?"
-        print(f"║              IoT Node - Status (hop={hop_str})                    ║")
-        print("╚═══════════════════════════════════════════════════════════════╝\n")
+        print(f"              IoT Node - Status (hop={hop_str})                    ")
+        print("===================================================================\n")
 
         # Uptime
         uptime_s = time.time() - self.start_time
         uptime_str = self._format_uptime(uptime_s)
-        print(f"⏱️  UPTIME: {uptime_str}\n")
+        print(f"  UPTIME: {uptime_str}\n")
 
         # Uplink
-        print("🔼 UPLINK:")
+        print(" UPLINK:")
         if self.node.uplink_connection and self.node.uplink_connection.is_connected:
-            print(f"   Status: 🟢 Conectado")
+            print(f"   Status:  Conectado")
             if self.node.uplink_nid:
                 print(f"   NID: {str(self.node.uplink_nid)[:16]}...")
             if self.node.uplink_device:
                 print(f"   Address: {self.node.uplink_device.address}")
-            print(f"   Authenticated: {'✅' if self.node.authenticated else '❌'}")
+            print(f"   Authenticated: {'Sim' if self.node.authenticated else 'Nao'}")
             with self.node.hop_count_lock:
                 print(f"   Meu hop: {self.node.hop_count}")
         else:
-            print("   Status: 🔴 Desconectado")
-            print("   💡 Use 'scan' e 'connect' para estabelecer uplink")
+            print("   Status:  Desconectado")
+            print("    Use 'scan' e 'connect' para estabelecer uplink")
         print()
 
         # Downlinks
         with self.node.downlinks_lock:
             n_downlinks = len(self.node.downlinks)
-            print(f"🔽 DOWNLINKS: {n_downlinks} node(s)")
+            print(f" DOWNLINKS: {n_downlinks} node(s)")
             if n_downlinks > 0:
                 for address, nid in self.node.downlinks.items():
                     nid_short = str(nid)[:8]
@@ -102,15 +101,15 @@ Comandos principais:
         print()
 
         # Autenticação
-        print("🔐 AUTENTICAÇÃO:")
-        print(f"   Uplink: {'🟢 Autenticado' if self.node.authenticated else '🔴 Não autenticado'}")
+        print(" AUTENTICAÇÃO:")
+        print(f"   Uplink: {'Autenticado' if self.node.authenticated else 'Nao autenticado'}")
         with self.node.uplink_session_key_lock:
             has_key = self.node.uplink_session_key is not None
-            print(f"   Session Key: {'✅ Estabelecida' if has_key else '❌ Não estabelecida'}")
+            print(f"   Session Key: {'Estabelecida' if has_key else 'Nao estabelecida'}")
         print()
 
         # Heartbeats
-        print("💓 HEARTBEATS:")
+        print(" HEARTBEATS:")
         if self.node.last_heartbeat_time > 0:
             time_since = time.time() - self.node.last_heartbeat_time
             print(f"   Último recebido: {time_since:.1f}s atrás")
@@ -120,11 +119,11 @@ Comandos principais:
         print()
 
         # Rede
-        print("📡 REDE:")
+        print(" REDE:")
         print(f"   Meu NID: {str(self.node.my_nid)[:16]}...")
         print(f"   Adapter: hci{self.node.adapter_index}")
-        print(f"   GATT Server: {'✅ Ativo' if self.node.app else '❌ Inativo'}")
-        print(f"   GATT Client: ✅ Ativo")
+        print(f"   GATT Server: {'Ativo' if self.node.app else 'Inativo'}")
+        print(f"   GATT Client: Ativo")
         print()
 
     def do_uplink(self, arg):
@@ -133,14 +132,14 @@ Comandos principais:
 
         Uso: uplink
         """
-        print("\n🔼 UPLINK DETALHADO\n")
+        print("\n UPLINK DETALHADO\n")
 
         if not self.node.uplink_connection or not self.node.uplink_connection.is_connected:
-            print("Status: 🔴 Desconectado\n")
-            print("⚠️  Sem uplink conectado. Use 'scan' e 'connect' para estabelecer uplink.\n")
+            print("Status:  Desconectado\n")
+            print("  Sem uplink conectado. Use 'scan' e 'connect' para estabelecer uplink.\n")
             return
 
-        print("Status: 🟢 Conectado\n")
+        print("Status:  Conectado\n")
 
         if self.node.uplink_device:
             print(f"Address: {self.node.uplink_device.address}")
@@ -150,7 +149,7 @@ Comandos principais:
         if self.node.uplink_nid:
             print(f"NID: {self.node.uplink_nid}")
 
-        print(f"Authenticated: {'✅ Sim' if self.node.authenticated else '❌ Não'}")
+        print(f"Authenticated: {'Sim' if self.node.authenticated else 'Nao'}")
 
         with self.node.hop_count_lock:
             print(f"Meu hop count: {self.node.hop_count}")
@@ -167,25 +166,25 @@ Comandos principais:
 
         Uso: downlinks
         """
-        print("\n🔽 DOWNLINKS CONECTADOS\n")
+        print("\n DOWNLINKS CONECTADOS\n")
 
         with self.node.downlinks_lock:
             if not self.node.downlinks:
                 print("(nenhum node conectado)\n")
                 return
 
-            print("┌─────────────────────┬────────────────────┬──────────────┐")
-            print("│ Address             │ NID                │ Has Session  │")
-            print("├─────────────────────┼────────────────────┼──────────────┤")
+            print("+---------------------+--------------------+--------------+")
+            print("| Address             | NID                | Has Session  |")
+            print("+---------------------+--------------------+--------------+")
 
             for address, nid in self.node.downlinks.items():
                 nid_str = str(nid)[:16] + "..."
                 with self.node.downlink_session_keys_lock:
-                    has_session = "✅" if nid in self.node.downlink_session_keys else "❌"
-                print(f"│ {address:19} │ {nid_str:18} │ {has_session:12} │")
+                    has_session = "Sim" if nid in self.node.downlink_session_keys else "Nao"
+                print(f"| {address:19} | {nid_str:18} | {has_session:12} |")
 
-            print("└─────────────────────┴────────────────────┴──────────────┘")
-            print(f"\n📊 Total: {len(self.node.downlinks)} downlink(s)\n")
+            print("+---------------------+--------------------+--------------+")
+            print(f"\n Total: {len(self.node.downlinks)} downlink(s)\n")
 
     def do_my_nid(self, arg):
         """
@@ -193,7 +192,7 @@ Comandos principais:
 
         Uso: my_nid
         """
-        print(f"\n📍 Meu NID: {self.node.my_nid}\n")
+        print(f"\n Meu NID: {self.node.my_nid}\n")
 
     # ========================================================================
     # COMANDOS DE CONEXÃO
@@ -211,10 +210,10 @@ Comandos principais:
         try:
             timeout = int(arg) if arg else 10
         except ValueError:
-            print("\n❌ Erro: argumento deve ser um número\n")
+            print("\n Erro: argumento deve ser um número\n")
             return
 
-        print(f"\n🔍 A fazer scan por {timeout}s...\n")
+        print(f"\n A fazer scan por {timeout}s...\n")
 
         # Fazer scan usando o ble_client diretamente para obter todos os dispositivos
         import time
@@ -224,18 +223,17 @@ Comandos principais:
         while time.time() < end_time:
             devices = self.node.ble_client.scan_iot_devices(duration_ms=5000)
 
-            # Adicionar novos dispositivos (evitar duplicados por endereço)
             for device in devices:
                 if not any(d.address == device.address for d in self.discovered_devices):
                     self.discovered_devices.append(device)
 
         if not self.discovered_devices:
-            print("⚠️  Nenhum Sink/Node encontrado\n")
-            print("💡 Certifique-se que há um Sink ou Node a fazer advertising\n")
+            print("  Nenhum Sink/Node encontrado\n")
+            print(" Certifique-se que há um Sink ou Node a fazer advertising\n")
             return
 
         # Mostrar lista de dispositivos encontrados
-        print(f"✅ Encontrados {len(self.discovered_devices)} dispositivo(s):\n")
+        print(f" Encontrados {len(self.discovered_devices)} dispositivo(s):\n")
 
         for i, device in enumerate(self.discovered_devices, 1):
             device_type = "?"
@@ -252,7 +250,7 @@ Comandos principais:
             print(f"  {i}. {device.address:20} | Type: {device_type:4} | Hop: {str(hop_count):3} | RSSI: {rssi_str}")
 
         print()
-        print(f"💡 Use 'connect <número>' ou 'connect <endereço>' para conectar\n")
+        print(f" Use 'connect <número>' ou 'connect <endereço>' para conectar\n")
 
     def do_connect(self, arg):
         """
@@ -267,7 +265,7 @@ Comandos principais:
         Nota: Primeiro execute 'scan' para descobrir dispositivos.
         """
         if not self.discovered_devices:
-            print("\n⚠️  Nenhum dispositivo descoberto\n")
+            print("\n  Nenhum dispositivo descoberto\n")
             print("   Use 'scan' primeiro para descobrir dispositivos\n")
             return
 
@@ -276,7 +274,7 @@ Comandos principais:
 
         if not arg:
             device_to_connect = self.discovered_devices[0]
-            print(f"\n💡 Nenhum dispositivo especificado, conectando ao primeiro...\n")
+            print(f"\n Nenhum dispositivo especificado, conectando ao primeiro...\n")
         else:
             # Tentar interpretar como número (índice)
             try:
@@ -284,7 +282,7 @@ Comandos principais:
                 if 0 <= index < len(self.discovered_devices):
                     device_to_connect = self.discovered_devices[index]
                 else:
-                    print(f"\n❌ Índice inválido. Use um número entre 1 e {len(self.discovered_devices)}\n")
+                    print(f"\n Índice inválido. Use um número entre 1 e {len(self.discovered_devices)}\n")
                     return
             except ValueError:
                 # Não é um número, tentar como endereço
@@ -294,33 +292,33 @@ Comandos principais:
                         break
 
                 if not device_to_connect:
-                    print(f"\n❌ Dispositivo {arg} não encontrado na lista\n")
+                    print(f"\n Dispositivo {arg} não encontrado na lista\n")
                     print("   Use 'scan' para atualizar a lista\n")
                     return
 
         # Armazenar o dispositivo escolhido no node
         self.node.sink_device = device_to_connect
 
-        print(f"🔗 A conectar a {device_to_connect.address}...\n")
+        print(f" A conectar a {device_to_connect.address}...\n")
 
         # Conectar
         if not self.node.connect_to_sink():
-            print("❌ Falha ao conectar\n")
+            print(" Falha ao conectar\n")
             return
 
-        print("✅ Conectado via GATT\n")
+        print(" Conectado via GATT\n")
 
         # Atualizar hop count
         self.node._update_hop_count_from_uplink()
 
         # Autenticar
-        print("🔐 A autenticar...\n")
+        print(" A autenticar...\n")
         if not self.node.authenticate_with_sink():
-            print("❌ Falha na autenticação\n")
+            print(" Falha na autenticação\n")
             return
 
-        print("✅ Autenticado com sucesso!\n")
-        print(f"💡 Hop count: {self.node.hop_count}\n")
+        print(" Autenticado com sucesso!\n")
+        print(f" Hop count: {self.node.hop_count}\n")
 
     def do_disconnect(self, arg):
         """
@@ -329,17 +327,17 @@ Comandos principais:
         Uso: disconnect
         """
         if not self.node.uplink_connection or not self.node.uplink_connection.is_connected:
-            print("\n⚠️  Não conectado a nenhum uplink\n")
+            print("\n  Não conectado a nenhum uplink\n")
             return
 
-        print("\n🔌 A desconectar do uplink...\n")
+        print("\n A desconectar do uplink...\n")
 
         self.node.uplink_connection.disconnect()
         self.node.authenticated = False
         with self.node.uplink_session_key_lock:
             self.node.uplink_session_key = None
 
-        print("✅ Desconectado\n")
+        print(" Desconectado\n")
 
     def do_reconnect(self, arg):
         """
@@ -347,7 +345,7 @@ Comandos principais:
 
         Uso: reconnect
         """
-        print("\n🔄 A reconectar...\n")
+        print("\n A reconectar...\n")
 
         # Desconectar
         if self.node.uplink_connection and self.node.uplink_connection.is_connected:
@@ -358,7 +356,7 @@ Comandos principais:
         if hasattr(self.node, 'sink_device') and self.node.sink_device:
             self.do_connect("")
         else:
-            print("⚠️  Nenhum dispositivo salvo. Use 'scan' e 'connect' primeiro\n")
+            print("  Nenhum dispositivo salvo. Use 'scan' e 'connect' primeiro\n")
 
     # ========================================================================
     # COMANDOS DE COMUNICAÇÃO
@@ -374,29 +372,29 @@ Comandos principais:
             send Hello from Node!
         """
         if not arg:
-            print("\n❌ Erro: mensagem não especificada\n")
+            print("\n Erro: mensagem não especificada\n")
             print("   Uso: send <message>\n")
             return
 
         if not self.node.uplink_connection or not self.node.uplink_connection.is_connected:
-            print("\n⚠️  Não conectado ao uplink\n")
+            print("\n  Não conectado ao uplink\n")
             print("   Use 'connect' primeiro\n")
             return
 
         if not self.node.authenticated:
-            print("\n⚠️  Não autenticado\n")
+            print("\n  Não autenticado\n")
             return
 
-        print(f"\n📤 Enviando mensagem ao Sink...")
+        print(f"\n Enviando mensagem ao Sink...")
         print(f"   Mensagem: {arg}\n")
 
         # Enviar
         success = self.node.send_message(arg.encode('utf-8'))
 
         if success:
-            print("✅ Mensagem enviada com sucesso!\n")
+            print(" Mensagem enviada com sucesso!\n")
         else:
-            print("❌ Falha ao enviar mensagem\n")
+            print(" Falha ao enviar mensagem\n")
 
     def do_ping(self, arg):
         """
@@ -410,14 +408,14 @@ Comandos principais:
         try:
             count = int(arg) if arg else 4
         except ValueError:
-            print("\n❌ Erro: argumento deve ser um número\n")
+            print("\n Erro: argumento deve ser um número\n")
             return
 
         if not self.node.uplink_connection or not self.node.uplink_connection.is_connected:
-            print("\n⚠️  Não conectado ao uplink\n")
+            print("\n  Não conectado ao uplink\n")
             return
 
-        print(f"\n🏓 Enviando {count} pings ao Sink...\n")
+        print(f"\n Enviando {count} pings ao Sink...\n")
 
         for i in range(count):
             start = time.time()
@@ -425,9 +423,9 @@ Comandos principais:
             latency = (time.time() - start) * 1000  # ms
 
             if success:
-                print(f"  {i+1}. ✅ {latency:.1f}ms")
+                print(f"  {i+1}.  {latency:.1f}ms")
             else:
-                print(f"  {i+1}. ❌ Falhou")
+                print(f"  {i+1}.  Falhou")
 
             if i < count - 1:
                 time.sleep(1)
@@ -445,9 +443,9 @@ Comandos principais:
 
     def do_exit(self, arg):
         """Sai do CLI (e para o Node)."""
-        print("\n⚠️  Parando Node Device...")
+        print("\n  Parando Node Device...")
         self.node.stop()
-        print("👋 Até logo!\n")
+        print(" Até logo!\n")
         return True
 
     def do_quit(self, arg):
@@ -499,7 +497,6 @@ def main():
 
     args = parser.parse_args()
 
-    # Criar Node Device
     try:
         node = IoTNode(
             cert_path=args.cert,
@@ -514,7 +511,7 @@ def main():
 
         node.running = True
 
-        logger.info("✅ Node Device iniciado - CLI interativo pronto")
+        logger.info(" Node Device iniciado - CLI interativo pronto")
 
         # Iniciar CLI interativa
         cli = InteractiveNodeCLI(node)
@@ -541,15 +538,14 @@ def main():
             while node.running:
                 time.sleep(1)
 
-                # Verificar se ainda está conectado
                 current_connected = node.uplink_connection and node.uplink_connection.is_connected
 
                 # Detectar mudança de estado (conectado -> desconectado)
                 if last_connection_state and not current_connected:
                     # Mudou de conectado para desconectado - mostrar mensagem UMA VEZ
                     if not disconnect_message_shown[0]:
-                        logger.warning("⚠️  Conexão perdida com Sink")
-                        print("\n⚠️  Conexão perdida com Sink - desconectado do uplink\n")
+                        logger.warning("  Conexão perdida com Sink")
+                        print("\n  Conexão perdida com Sink - desconectado do uplink\n")
                         disconnect_message_shown[0] = True
                         # Limpar estado de uplink
                         node.authenticated = False
@@ -562,17 +558,16 @@ def main():
 
                 last_connection_state = current_connected
 
-                # Verificar timeout de heartbeat (apenas se conectado)
                 if node.uplink_connection and node.uplink_connection.is_connected and node.last_heartbeat_time > 0:
                     time_since_heartbeat = time.time() - node.last_heartbeat_time
                     if time_since_heartbeat > 15:
                         logger.error(
-                            f"❌ Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s "
+                            f" Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s "
                             f"(último seq={node.heartbeat_sequence})"
                         )
-                        logger.warning("⚠️  Desconectando do uplink devido a timeout de heartbeat...")
-                        print(f"\n❌ Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s")
-                        print("⚠️  Desconectado do uplink automaticamente\n")
+                        logger.warning("  Desconectando do uplink devido a timeout de heartbeat...")
+                        print(f"\n Timeout de heartbeat! Sem heartbeat há {time_since_heartbeat:.1f}s")
+                        print("  Desconectado do uplink automaticamente\n")
                         # Desconectar
                         if node.uplink_connection:
                             node.uplink_connection.disconnect()
@@ -582,7 +577,7 @@ def main():
                         node.disconnect_all_downlinks()
                     elif time_since_heartbeat > 10:
                         logger.warning(
-                            f"⚠️  Sem heartbeat há {time_since_heartbeat:.1f}s "
+                            f"  Sem heartbeat há {time_since_heartbeat:.1f}s "
                             f"(último seq={node.heartbeat_sequence})"
                         )
 

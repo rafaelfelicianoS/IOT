@@ -136,7 +136,6 @@ class PacketManager:
         # Obter próximo sequence number
         sequence = self._get_next_sequence()
 
-        # Criar pacote (MAC placeholder)
         packet = Packet.create(
             source=self.local_nid,
             destination=destination,
@@ -173,12 +172,10 @@ class PacketManager:
         Returns:
             True se pacote válido, False caso contrário
         """
-        # Verificar TTL
         if packet.ttl == 0:
             logger.warning(f"Pacote com TTL=0 descartado (seq={packet.sequence})")
             return False
 
-        # Verificar MAC
         if not self._validate_mac(packet):
             logger.warning(f"Pacote com MAC inválido descartado (seq={packet.sequence})")
             return False
@@ -213,7 +210,6 @@ class PacketManager:
         Returns:
             True se pacote foi processado, False se foi descartado
         """
-        # Validar pacote
         if not self.validate_packet(packet):
             return False
 

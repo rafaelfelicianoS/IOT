@@ -82,7 +82,7 @@ class RouterDaemon:
         # Running state
         self.running = False
 
-        logger.info(f"🔀 Router Daemon inicializado para NID={str(my_nid)[:8]}...")
+        logger.info(f" Router Daemon inicializado para NID={str(my_nid)[:8]}...")
 
     def set_send_callback(self, callback: Callable[[str, bytes], bool]):
         """
@@ -93,7 +93,7 @@ class RouterDaemon:
                      port_id: "uplink" ou BLE address
         """
         self.send_callback = callback
-        logger.debug("✅ Send callback configurado")
+        logger.debug(" Send callback configurado")
 
     def register_local_handler(self, msg_type: MessageType, handler: Callable[[Packet], None]):
         """
@@ -108,7 +108,7 @@ class RouterDaemon:
 
         # MessageType pode ser int ou enum, handle both
         type_name = _get_msg_type_name(msg_type)
-        logger.debug(f"✅ Handler registado para {type_name}")
+        logger.debug(f" Handler registado para {type_name}")
 
     def set_session_key(self, port_id: str, session_key: bytes):
         """
@@ -120,14 +120,14 @@ class RouterDaemon:
         """
         with self.session_keys_lock:
             self.session_keys[port_id] = session_key
-        logger.debug(f"🔑 Session key configurada para porta {port_id}")
+        logger.debug(f" Session key configurada para porta {port_id}")
 
     def remove_session_key(self, port_id: str):
         """Remove session key quando porta desconecta."""
         with self.session_keys_lock:
             if port_id in self.session_keys:
                 del self.session_keys[port_id]
-        logger.debug(f"🔑 Session key removida para porta {port_id}")
+        logger.debug(f" Session key removida para porta {port_id}")
 
     def receive_packet(self, port_id: str, packet_bytes: bytes):
         """
@@ -144,7 +144,7 @@ class RouterDaemon:
             packet = Packet.from_bytes(packet_bytes)
 
             logger.debug(
-                f"📥 Pacote recebido de {port_id}: "
+                f" Pacote recebido de {port_id}: "
                 f"{packet.source} → {packet.destination} "
                 f"(type={_get_msg_type_name(packet.msg_type)}, ttl={packet.ttl})"
             )
@@ -152,7 +152,7 @@ class RouterDaemon:
             # 1. Verificar replay protection
             if not self.replay_protection.check_and_update(packet.source, packet.sequence):
                 logger.warning(
-                    f"⚠️  REPLAY ATTACK detectado! "
+                    f"  REPLAY ATTACK detectado! "
                     f"Source={packet.source}, Seq={packet.sequence}"
                 )
                 with self.stats_lock:
@@ -161,7 +161,7 @@ class RouterDaemon:
 
             # 2. Verificar MAC da porta de entrada
             if not self._verify_packet_mac(packet, port_id):
-                logger.error(f"❌ MAC inválido no pacote de {port_id}")
+                logger.error(f" MAC inválido no pacote de {port_id}")
                 with self.stats_lock:
                     self.packets_dropped += 1
                 return
@@ -170,7 +170,7 @@ class RouterDaemon:
             # Pacote veio de port_id, então para chegar a packet.source
             # devemos enviar para port_id
             self.forwarding_table.learn(packet.source, port_id)
-            logger.debug(f"📚 Aprendido: {str(packet.source)[:8]}... → {port_id}")
+            logger.debug(f" Aprendido: {str(packet.source)[:8]}... → {port_id}")
 
             # 4. Decidir: forward ou entregar localmente?
             # HEARTBEAT packets são broadcast - sempre entregar localmente E forward
@@ -222,7 +222,7 @@ class RouterDaemon:
 
             if not is_valid:
                 logger.error(
-                    f"❌ HEARTBEAT MAC verification failed (DEFAULT_HMAC_KEY)\n"
+                    f" HEARTBEAT MAC verification failed (DEFAULT_HMAC_KEY)\n"
                     f"   Source: {packet.source}\n"
                     f"   Dest: {packet.destination}\n"
                     f"   Seq: {packet.sequence}"
@@ -235,15 +235,14 @@ class RouterDaemon:
             session_key = self.session_keys.get(port_id)
 
         if not session_key:
-            logger.warning(f"⚠️  Sem session key para porta {port_id}")
+            logger.warning(f"  Sem session key para porta {port_id}")
             return False
 
-        # Verificar MAC com session key
         is_valid = verify_hmac(mac_data, packet.mac, session_key)
 
         if not is_valid:
             logger.error(
-                f"❌ MAC verification failed for packet from {port_id}\n"
+                f" MAC verification failed for packet from {port_id}\n"
                 f"   Source: {packet.source}\n"
                 f"   Dest: {packet.destination}\n"
                 f"   Type: {_get_msg_type_name(packet.msg_type)}\n"
@@ -260,7 +259,7 @@ class RouterDaemon:
             packet: Pacote destinado a este dispositivo
         """
         logger.info(
-            f"📨 Entregando localmente: {packet.source} → {packet.destination} "
+            f" Entregando localmente: {packet.source} → {packet.destination} "
             f"(type={_get_msg_type_name(packet.msg_type)}, {len(packet.payload)} bytes)"
         )
 
@@ -276,7 +275,7 @@ class RouterDaemon:
             except Exception as e:
                 logger.error(f"Erro ao processar pacote localmente: {e}", exc_info=True)
         else:
-            logger.warning(f"⚠️  Sem handler para tipo {_get_msg_type_name(packet.msg_type)}")
+            logger.warning(f"  Sem handler para tipo {_get_msg_type_name(packet.msg_type)}")
 
     def _forward_packet(self, packet: Packet, incoming_port: str):
         """
@@ -288,7 +287,7 @@ class RouterDaemon:
         """
         # 1. Verificar TTL
         if packet.ttl <= 1:
-            logger.warning(f"⚠️  Pacote descartado - TTL expirou")
+            logger.warning(f"  Pacote descartado - TTL expirou")
             with self.stats_lock:
                 self.packets_dropped += 1
             return
@@ -301,7 +300,7 @@ class RouterDaemon:
 
         if not next_port:
             logger.warning(
-                f"⚠️  Rota desconhecida para {str(packet.destination)[:8]}... - descartando"
+                f"  Rota desconhecida para {str(packet.destination)[:8]}... - descartando"
             )
             with self.stats_lock:
                 self.packets_dropped += 1
@@ -310,7 +309,7 @@ class RouterDaemon:
         # 4. Não enviar de volta pela porta de entrada
         if next_port == incoming_port:
             logger.warning(
-                f"⚠️  Loop detectado - next_port == incoming_port ({next_port})"
+                f"  Loop detectado - next_port == incoming_port ({next_port})"
             )
             with self.stats_lock:
                 self.packets_dropped += 1
@@ -335,7 +334,7 @@ class RouterDaemon:
                 next_session_key = self.session_keys.get(next_port)
 
             if not next_session_key:
-                logger.error(f"❌ Sem session key para porta {next_port}")
+                logger.error(f" Sem session key para porta {next_port}")
                 with self.stats_lock:
                     self.packets_dropped += 1
                 return
@@ -344,21 +343,21 @@ class RouterDaemon:
 
         # 6. Enviar via callback
         if not self.send_callback:
-            logger.error("❌ Send callback não configurado!")
+            logger.error(" Send callback não configurado!")
             return
 
         success = self.send_callback(next_port, packet.to_bytes())
 
         if success:
             logger.info(
-                f"🔀 Forwarded: {str(packet.source)[:8]}... → "
+                f" Forwarded: {str(packet.source)[:8]}... → "
                 f"{str(packet.destination)[:8]}... via {next_port} "
                 f"(ttl={packet.ttl})"
             )
             with self.stats_lock:
                 self.packets_routed += 1
         else:
-            logger.error(f"❌ Falha ao enviar pacote para {next_port}")
+            logger.error(f" Falha ao enviar pacote para {next_port}")
             with self.stats_lock:
                 self.packets_dropped += 1
 
@@ -383,7 +382,6 @@ class RouterDaemon:
         Returns:
             True se enviou com sucesso
         """
-        # Criar pacote
         packet = Packet.create(
             source=self.my_nid,
             destination=destination,
@@ -396,7 +394,7 @@ class RouterDaemon:
         next_port = self.forwarding_table.lookup(destination)
 
         if not next_port:
-            logger.error(f"❌ Rota desconhecida para {str(destination)[:8]}...")
+            logger.error(f" Rota desconhecida para {str(destination)[:8]}...")
             return False
 
         # Calcular MAC para porta de saída
@@ -404,7 +402,7 @@ class RouterDaemon:
             session_key = self.session_keys.get(next_port)
 
         if not session_key:
-            logger.error(f"❌ Sem session key para porta {next_port}")
+            logger.error(f" Sem session key para porta {next_port}")
             return False
 
         # Construir dados para MAC
@@ -418,16 +416,15 @@ class RouterDaemon:
 
         packet.mac = calculate_hmac(mac_data, session_key)
 
-        # Enviar via callback
         if not self.send_callback:
-            logger.error("❌ Send callback não configurado!")
+            logger.error(" Send callback não configurado!")
             return False
 
         success = self.send_callback(next_port, packet.to_bytes())
 
         if success:
             logger.info(
-                f"📤 Enviado: {str(destination)[:8]}... via {next_port} "
+                f" Enviado: {str(destination)[:8]}... via {next_port} "
                 f"(type={_get_msg_type_name(msg_type)})"
             )
 
@@ -461,9 +458,9 @@ class RouterDaemon:
     def start(self):
         """Inicia o daemon."""
         self.running = True
-        logger.info("✅ Router Daemon iniciado")
+        logger.info(" Router Daemon iniciado")
 
     def stop(self):
         """Para o daemon."""
         self.running = False
-        logger.info("🛑 Router Daemon parado")
+        logger.info(" Router Daemon parado")

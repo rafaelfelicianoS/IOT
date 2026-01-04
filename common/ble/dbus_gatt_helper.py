@@ -81,7 +81,7 @@ class DBusGATTHelper:
                     characteristics_found.append((path, uuid))
 
                     if uuid == char_uuid_lower:
-                        logger.debug(f"✅ Característica encontrada: {path}")
+                        logger.debug(f" Característica encontrada: {path}")
                         return path
 
             # Debug: mostrar características encontradas
@@ -111,7 +111,6 @@ class DBusGATTHelper:
             device_obj = self.bus.get_object(self.BLUEZ_SERVICE, device_path)
             device_props = dbus.Interface(device_obj, "org.freedesktop.DBus.Properties")
 
-            # Verificar se ServicesResolved já é True
             services_resolved = device_props.Get(self.DEVICE_IFACE, "ServicesResolved")
             logger.debug(f"ServicesResolved antes: {services_resolved}")
 
@@ -176,7 +175,7 @@ class DBusGATTHelper:
             logger.debug(f"A escrever {len(data)} bytes em {char_uuid}...")
             char_iface.WriteValue(list(data), {})
 
-            logger.debug(f"✅ Escrita bem-sucedida via D-Bus!")
+            logger.debug(f" Escrita bem-sucedida via D-Bus!")
             return True
 
         except dbus.exceptions.DBusException as e:
@@ -221,7 +220,7 @@ class DBusGATTHelper:
             value = char_iface.ReadValue({})
             data = bytes(value)
 
-            logger.debug(f"✅ Leitura bem-sucedida via D-Bus: {len(data)} bytes")
+            logger.debug(f" Leitura bem-sucedida via D-Bus: {len(data)} bytes")
             return data
 
         except dbus.exceptions.DBusException as e:

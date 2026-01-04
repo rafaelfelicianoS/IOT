@@ -392,15 +392,12 @@ class Application(dbus.service.Object):
 
         response = {}
 
-        # Adicionar todos os services
         for service in self.services:
             response[service.get_path()] = service.get_properties()
 
-            # Adicionar características do service
             for chrc in service.get_characteristics():
                 response[chrc.get_path()] = chrc.get_properties()
 
-                # Adicionar descriptors da characteristic
                 for desc in chrc.get_descriptors():
                     response[desc.get_path()] = desc.get_properties()
 
@@ -454,8 +451,8 @@ def register_application(
     gatt_manager.RegisterApplication(
         application.get_path(),
         {},
-        reply_handler=lambda: logger.info("✅ GATT application registada com sucesso!"),
-        error_handler=lambda e: logger.error(f"❌ Falha ao registar application: {e}"),
+        reply_handler=lambda: logger.info(" GATT application registada com sucesso!"),
+        error_handler=lambda e: logger.error(f" Falha ao registar application: {e}"),
     )
 
     return mainloop

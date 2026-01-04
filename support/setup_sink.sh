@@ -13,11 +13,11 @@ echo ""
 
 # 1. Criar CA (se não existir)
 if [ ! -f "$PROJECT_DIR/certs/ca_certificate.pem" ]; then
-    echo "⚠️  CA não existe, a criar..."
+    echo "CA não existe, a criar..."
     python3 "$SCRIPT_DIR/ca.py"
     echo ""
 else
-    echo "✅ CA já existe"
+    echo " CA já existe"
     echo ""
 fi
 
@@ -48,7 +48,7 @@ fi
 export PYTHONPATH="$PROJECT_DIR:\$PYTHONPATH"
 
 echo "A iniciar Sink no adaptador \$ADAPTER..."
-sudo -E PYTHONPATH="\$PYTHONPATH" "\$PYTHON" "$PROJECT_DIR/sink/sink_device.py" "\$ADAPTER" \\
+sudo -E PYTHONPATH="\$PYTHONPATH" "\$PYTHON" "$PROJECT_DIR/sync/sink_device.py" "\$ADAPTER" \\
     --cert "$SINK_CERT" \\
     --key "$SINK_KEY" \\
     --ca-cert "$CA_CERT"
@@ -57,7 +57,7 @@ EOF
 
     echo ""
     echo "========================================================"
-    echo "✅ Setup do Sink concluído!"
+    echo " Setup do Sink concluído!"
     echo "========================================================"
     echo ""
     echo "Para executar o Sink:"
@@ -68,6 +68,6 @@ EOF
 else
     echo ""
     echo "========================================================"
-    echo "✅ Setup do Sink concluído!"
+    echo " Setup do Sink concluído!"
     echo "========================================================"
 fi

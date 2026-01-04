@@ -81,7 +81,6 @@ def fragment_message(data: bytes) -> List[bytes]:
     """
     if len(data) <= FRAGMENT_PAYLOAD_SIZE:
         # Mensagem pequena, não precisa fragmentar
-        # Enviar como fragmento único (FIRST | LAST)
         fragment = Fragment(
             flags=FLAG_FIRST | FLAG_LAST,
             sequence=0,
@@ -167,7 +166,6 @@ class FragmentReassembler:
             self.total_fragments = fragment.total
             self.received_count = 0
 
-        # Verificar se total bate
         if self.total_fragments is None:
             logger.warning("Recebido fragmento mas não foi inicializado (falta FIRST)")
             return False, None
@@ -180,7 +178,6 @@ class FragmentReassembler:
             self.reset()
             return False, None
 
-        # Verificar sequência
         if fragment.sequence >= self.total_fragments:
             logger.error(
                 f"Sequência inválida: {fragment.sequence} >= {self.total_fragments}"
@@ -196,12 +193,11 @@ class FragmentReassembler:
                 f"({self.received_count} de {self.total_fragments} recebidos)"
             )
 
-        # Verificar se está completo
         if self.received_count == self.total_fragments:
             # Reconstruir mensagem
             reassembled = b''.join(self.fragments)
             logger.info(
-                f"✅ Mensagem reconstruída: {len(reassembled)} bytes "
+                f" Mensagem reconstruída: {len(reassembled)} bytes "
                 f"({self.total_fragments} fragmentos)"
             )
 

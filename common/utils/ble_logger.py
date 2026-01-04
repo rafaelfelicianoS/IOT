@@ -36,7 +36,6 @@ class BLEOperationLogger:
         self.device_address = device_address or "unknown"
         self.session_id = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-        # Criar ficheiro de log específico para este dispositivo
         log_filename = f"ble_operations_{self.device_address.replace(':', '')}_{self.session_id}.log"
         self.log_file = config.logs_dir / log_filename
 
@@ -54,7 +53,6 @@ class BLEOperationLogger:
             # Garantir que o diretório existe
             config.ensure_directories_exist()
 
-            # Adicionar sink específico para operações BLE
             logger.add(
                 self.log_file,
                 format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level: <8} | {message}",
@@ -474,7 +472,6 @@ def get_ble_logger(device_address: Optional[str] = None) -> BLEOperationLogger:
 # ============================================================================
 
 if __name__ == '__main__':
-    # Criar logger
     ble_log = BLEOperationLogger("E0:D3:62:D6:EE:A0")
 
     # Exemplos de logging
