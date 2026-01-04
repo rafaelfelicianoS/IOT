@@ -51,18 +51,16 @@ venv.bak/
 # Environment variables (contém secrets!)
 .env
 
-# Certificados e chaves privadas (NUNCA fazer commit!)
-# EXCETO ca_certificate.pem que é público
+# Certificados e chaves privadas
+# Para ambiente de desenvolvimento, commitamos CA (pública + privada)
+# mas NÃO os certificados de dispositivos individuais
 certs/*
 !certs/ca_certificate.pem
+!certs/ca_private_key.pem
 keys/
 *.key
 *.crt
 *.csr
-
-# Ignorar chaves privadas .pem (incluindo ca_private_key.pem)
-certs/*_key.pem
-certs/ca_private_key.pem
 
 # Ignorar certificados de dispositivos (sink, node)
 certs/sink_*.pem
