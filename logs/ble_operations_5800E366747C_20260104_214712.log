@@ -1,0 +1,88 @@
+2026-01-04 21:47:12.431 | INFO     | BLE Operation Logger iniciado: ble_operations_5800E366747C_20260104_214712.log
+2026-01-04 21:47:12.431 | INFO     | Scanner BLE iniciado: hci0 (58:00:E3:66:74:7C)
+2026-01-04 21:47:12.432 | INFO     | BLE Client iniciado
+2026-01-04 21:47:12.432 | DEBUG    | FragmentReassembler inicializado
+2026-01-04 21:47:12.432 | INFO     | ReplayProtection iniciado (window_size=100)
+2026-01-04 21:47:12.433 | INFO     |  Router Daemon inicializado para NID=a40543fa...
+2026-01-04 21:47:12.433 | DEBUG    |  Send callback configurado
+2026-01-04 21:47:12.433 | DEBUG    |  Handler registado para MessageType(1)
+2026-01-04 21:47:12.433 | DEBUG    |  Handler registado para MessageType(2)
+2026-01-04 21:47:12.433 | INFO     | IoT Node inicializado (adapter=hci0)
+2026-01-04 21:47:12.434 | INFO     |  Router Daemon integrado
+2026-01-04 21:47:12.434 | INFO     | A configurar GATT Server...
+2026-01-04 21:47:12.435 | INFO     | Application criada: /
+2026-01-04 21:47:12.436 | INFO     | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 21:47:12.436 | INFO     | A criar IoTNetworkService...
+2026-01-04 21:47:12.436 | DEBUG    | Characteristic criada: /0/char0 (UUID: 12340001-0000-1000-8000-00805f9b34fb, flags: ['write', 'notify'])
+2026-01-04 21:47:12.436 | INFO     | NetworkPacketCharacteristic criada
+2026-01-04 21:47:12.437 | DEBUG    | Characteristic criada: /0/char1 (UUID: 12340002-0000-1000-8000-00805f9b34fb, flags: ['read'])
+2026-01-04 21:47:12.437 | INFO     | DeviceInfoCharacteristic criada: NID=a40543fa..., type=node
+2026-01-04 21:47:12.437 | DEBUG    | Characteristic criada: /0/char2 (UUID: 12340003-0000-1000-8000-00805f9b34fb, flags: ['read', 'notify'])
+2026-01-04 21:47:12.437 | INFO     | NeighborTableCharacteristic criada
+2026-01-04 21:47:12.438 | DEBUG    | Characteristic criada: /0/char3 (UUID: 12340004-0000-1000-8000-00805f9b34fb, flags: ['write', 'indicate'])
+2026-01-04 21:47:12.438 | INFO     | AuthCharacteristic criada
+2026-01-04 21:47:12.438 | DEBUG    | Characteristic adicionada a /0: /0/char0
+2026-01-04 21:47:12.438 | DEBUG    | Characteristic adicionada a /0: /0/char1
+2026-01-04 21:47:12.438 | DEBUG    | Characteristic adicionada a /0: /0/char2
+2026-01-04 21:47:12.439 | DEBUG    | Characteristic adicionada a /0: /0/char3
+2026-01-04 21:47:12.439 | INFO     |  IoTNetworkService criado com sucesso!
+2026-01-04 21:47:12.439 | INFO     | Service adicionado à aplicação: /0
+2026-01-04 21:47:12.439 | DEBUG    | Packet callback definido
+2026-01-04 21:47:12.439 | DEBUG    | Auth callback definido
+2026-01-04 21:47:12.439 | INFO     | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 21:47:12.440 | INFO     |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 21:47:12.440 | INFO     |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 21:47:12.441 | DEBUG    | Local name definido: IoT-Node-a40543fa
+2026-01-04 21:47:12.441 | DEBUG    | Manufacturer data adicionado: ID=65535
+2026-01-04 21:47:12.441 | INFO     |  Advertising contínuo configurado (duration=0)
+2026-01-04 21:47:12.441 | INFO     |  GATT Server configurado
+2026-01-04 21:47:12.442 | INFO     | A iniciar GATT Server...
+2026-01-04 21:47:12.445 | INFO     |  GATT Server iniciado em thread separada
+2026-01-04 21:47:12.446 | DEBUG    | GetManagedObjects called
+2026-01-04 21:47:12.446 | DEBUG    | GetManagedObjects returning 5 objects
+2026-01-04 21:47:12.445 | INFO     |  Node Device iniciado - CLI interativo pronto
+2026-01-04 21:47:12.451 | INFO     |  GATT application registada!
+2026-01-04 21:47:12.452 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2026-01-04 21:47:12.452 | INFO     |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 21:47:12.555 | INFO     |  Advertisement registado!
+2026-01-04 21:48:58.548 | INFO     | Cliente :1.328 subscreveu notificações de pacotes
+2026-01-04 21:48:58.633 | DEBUG    | DeviceInfo lida: NID=a40543fa..., hops=-1, type=0
+2026-01-04 21:48:58.722 | INFO     | Cliente :1.328 subscreveu auth indications
+2026-01-04 21:48:58.817 | DEBUG    | Auth data recebida de :1.328: 183 bytes
+2026-01-04 21:48:58.817 | DEBUG    | FragmentReassembler inicializado
+2026-01-04 21:48:58.818 | DEBUG    | Criado reassembler para cliente :1.328
+2026-01-04 21:48:58.818 | DEBUG    | Fragmento recebido: seq=0, total=5, payload=180 bytes, flags=0x01
+2026-01-04 21:48:58.819 | INFO     | Iniciando recepção de 5 fragmentos
+2026-01-04 21:48:58.821 | DEBUG    | Fragmento 1/5 armazenado (1 de 5 recebidos)
+2026-01-04 21:48:58.822 | DEBUG    | Aguardando mais fragmentos de :1.328
+2026-01-04 21:48:58.997 | DEBUG    | Auth data recebida de :1.328: 183 bytes
+2026-01-04 21:48:58.997 | DEBUG    | Fragmento recebido: seq=1, total=5, payload=180 bytes, flags=0x00
+2026-01-04 21:48:58.998 | DEBUG    | Fragmento 2/5 armazenado (2 de 5 recebidos)
+2026-01-04 21:48:58.999 | DEBUG    | Aguardando mais fragmentos de :1.328
+2026-01-04 21:48:59.177 | DEBUG    | Auth data recebida de :1.328: 183 bytes
+2026-01-04 21:48:59.178 | DEBUG    | Fragmento recebido: seq=2, total=5, payload=180 bytes, flags=0x00
+2026-01-04 21:48:59.178 | DEBUG    | Fragmento 3/5 armazenado (3 de 5 recebidos)
+2026-01-04 21:48:59.179 | DEBUG    | Aguardando mais fragmentos de :1.328
+2026-01-04 21:48:59.357 | DEBUG    | Auth data recebida de :1.328: 183 bytes
+2026-01-04 21:48:59.358 | DEBUG    | Fragmento recebido: seq=3, total=5, payload=180 bytes, flags=0x00
+2026-01-04 21:48:59.359 | DEBUG    | Fragmento 4/5 armazenado (4 de 5 recebidos)
+2026-01-04 21:48:59.359 | DEBUG    | Aguardando mais fragmentos de :1.328
+2026-01-04 21:48:59.537 | DEBUG    | Auth data recebida de :1.328: 173 bytes
+2026-01-04 21:48:59.538 | DEBUG    | Fragmento recebido: seq=4, total=5, payload=170 bytes, flags=0x02
+2026-01-04 21:48:59.539 | DEBUG    | Fragmento 5/5 armazenado (5 de 5 recebidos)
+2026-01-04 21:48:59.539 | INFO     |  Mensagem reconstruída: 890 bytes (5 fragmentos)
+2026-01-04 21:48:59.541 | DEBUG    | FragmentReassembler resetado
+2026-01-04 21:48:59.542 | INFO     | Mensagem completa recebida de :1.328: 890 bytes
+2026-01-04 21:48:59.543 | INFO     |  Mensagem de autenticação recebida de downlink (sender: :1.328)
+2026-01-04 21:48:59.545 | WARNING  |   Autenticação de downlinks não totalmente implementada - usando placeholder
+2026-01-04 21:48:59.556 | INFO     |  Enviando resposta AUTH_SUCCESS placeholder (autenticação aceite sem validação)
+2026-01-04 21:48:59.558 | DEBUG    | Mensagem pequena (3 bytes), 1 fragmento
+2026-01-04 21:48:59.559 | DEBUG    | Enviando fragmento 1/1 da resposta
+2026-01-04 21:48:59.562 | DEBUG    | Auth response indicada
+2026-01-04 21:48:59.564 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2026-01-04 21:48:59.565 | INFO     |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 21:48:59.567 | WARNING  |   Falha ao re-registar advertising: org.bluez.Error.Failed: Failed to register advertisement
+2026-01-04 21:49:19.069 | INFO     | A parar Node...
+2026-01-04 21:49:19.071 | INFO     | A parar GATT Server...
+2026-01-04 21:49:19.074 | INFO     |  GATT Server parado
+2026-01-04 21:49:19.075 | INFO     |  Node parado
