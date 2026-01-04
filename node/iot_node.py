@@ -516,6 +516,7 @@ class IoTNode:
         como cliente. Isto garante que permanecemos visíveis para outros Nodes.
         """
         import dbus
+        import time
 
         try:
             logger.debug("🔄 Re-registando advertising após conexão uplink...")
@@ -524,8 +525,16 @@ class IoTNode:
                 'org.bluez.LEAdvertisingManager1'
             )
 
-            # Desregistar e re-registar
-            adv_manager.UnregisterAdvertisement(self.advertisement.get_path())
+            # Tentar desregistar (pode já não estar registado)
+            try:
+                adv_manager.UnregisterAdvertisement(self.advertisement.get_path())
+                logger.debug("✅ Advertisement desregistado")
+                # Dar tempo ao BlueZ para processar
+                time.sleep(0.1)
+            except Exception as e:
+                logger.debug(f"Advertisement já não estava registado: {e}")
+
+            # Re-registar
             adv_manager.RegisterAdvertisement(
                 self.advertisement.get_path(),
                 {},
