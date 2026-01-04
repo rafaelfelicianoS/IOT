@@ -494,6 +494,8 @@ def main():
     parser.add_argument('--key', required=True, help="Chave privada do Node")
     parser.add_argument('--ca-cert', required=True, help="Certificado CA")
     parser.add_argument('--adapter', type=int, default=0, help="Índice do adaptador BLE")
+    parser.add_argument('--peripheral-only', action='store_true',
+                        help="Modo peripheral-only: não procura uplink, apenas aceita conexões")
 
     args = parser.parse_args()
 
@@ -503,6 +505,7 @@ def main():
             key_path=args.key,
             ca_cert_path=args.ca_cert,
             adapter_index=args.adapter,
+            peripheral_only=args.peripheral_only,
         )
 
         # Setup GATT Server
