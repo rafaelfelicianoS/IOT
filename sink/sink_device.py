@@ -135,7 +135,7 @@ class SinkDevice:
         )
 
         # Downlinks conectados (address -> client_nid)
-        self.downlinks: Dict[str, NID] = {}
+        self.downlinks: Dict[NID, str] = {}  # NID → D-Bus sender address
         self.downlinks_lock = threading.Lock()
 
         # Mapeamento D-Bus sender -> client_nid (para cleanup em desconexões)
@@ -310,9 +310,9 @@ class SinkDevice:
                     # Guardar session key
                     self._store_session_key(client_nid, session_key)
 
-                    # Adicionar a lista de downlinks
+                    # Adicionar a lista de downlinks (usar NID como chave para evitar colisões de D-Bus sender)
                     with self.downlinks_lock:
-                        self.downlinks[client_address] = client_nid
+                        self.downlinks[client_nid] = client_address
 
                     # Mapear D-Bus sender para NID (para cleanup em desconexões)
                     with self.sender_to_nid_lock:
@@ -469,18 +469,11 @@ class SinkDevice:
                 del self.session_keys[client_nid]
                 logger.info(f"   ✅ Session key removida para {str(client_nid)[:8]}...")
 
-        # Remover de downlinks (encontrar address por NID)
+        # Remover de downlinks (agora usa NID como chave)
         with self.downlinks_lock:
-            # Encontrar endereço do cliente por NID
-            client_address = None
-            for addr, nid in list(self.downlinks.items()):
-                if nid == client_nid:
-                    client_address = addr
-                    break
-
-            if client_address:
-                del self.downlinks[client_address]
-                logger.info(f"   ✅ Downlink removido: {client_address}")
+            if client_nid in self.downlinks:
+                client_address = self.downlinks.pop(client_nid)
+                logger.info(f"   ✅ Downlink removido: {client_address} (NID={str(client_nid)[:8]}...)")
 
         # Remover canal DTLS
         if hasattr(self, 'dtls_manager'):
@@ -543,7 +536,7 @@ class SinkDevice:
                     if self.heartbeat_blocked_nodes:
                         # Converter NIDs bloqueados em endereços de clientes
                         with self.downlinks_lock:
-                            for client_addr, client_nid in self.downlinks.items():
+                            for client_nid, client_addr in self.downlinks.items():
                                 if client_nid in self.heartbeat_blocked_nodes:
                                     exclude_clients.add(client_addr)
 

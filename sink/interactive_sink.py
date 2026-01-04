@@ -69,7 +69,7 @@ Digite 'exit' ou Ctrl+D para sair.
             n_downlinks = len(self.sink.downlinks)
             print(f"🔽 DOWNLINKS: {n_downlinks} node(s) conectado(s)")
             if n_downlinks > 0:
-                for address, nid in self.sink.downlinks.items():
+                for nid, address in self.sink.downlinks.items():
                     nid_short = str(nid)[:8]
                     print(f"   • {address} (NID: {nid_short}...)")
         print()
@@ -107,7 +107,7 @@ Digite 'exit' ou Ctrl+D para sair.
             print("│ Address             │ NID                │ Has Session  │")
             print("├─────────────────────┼────────────────────┼──────────────┤")
 
-            for address, nid in self.sink.downlinks.items():
+            for nid, address in self.sink.downlinks.items():
                 nid_str = str(nid)[:16] + "..."
                 has_session = "✅" if nid in self.sink.session_keys else "❌"
                 print(f"│ {address:19} │ {nid_str:18} │ {has_session:12} │")
@@ -220,7 +220,7 @@ Digite 'exit' ou Ctrl+D para sair.
         # Procurar NID que começa com o prefix
         target_nid = None
         with self.sink.downlinks_lock:
-            for nid in self.sink.downlinks.values():
+            for nid in self.sink.downlinks.keys():
                 if str(nid).lower().startswith(nid_prefix):
                     target_nid = nid
                     break
@@ -320,7 +320,7 @@ Digite 'exit' ou Ctrl+D para sair.
         try:
             index = int(arg.strip())
             with self.sink.downlinks_lock:
-                downlinks_list = list(self.sink.downlinks.values())
+                downlinks_list = list(self.sink.downlinks.keys())
                 if 0 < index <= len(downlinks_list):
                     target_nid = downlinks_list[index - 1]
                 else:
@@ -332,7 +332,7 @@ Digite 'exit' ou Ctrl+D para sair.
 
             # Procurar NID que comece com a string fornecida
             with self.sink.downlinks_lock:
-                for nid in self.sink.downlinks.values():
+                for nid in self.sink.downlinks.keys():
                     if str(nid).startswith(nid_str):
                         target_nid = nid
                         break
@@ -445,7 +445,7 @@ Digite 'exit' ou Ctrl+D para sair.
                 print("   (nenhum node conectado)")
                 return
 
-            for idx, (addr, nid) in enumerate(self.sink.downlinks.items(), 1):
+            for idx, (nid, addr) in enumerate(self.sink.downlinks.items(), 1):
                 nid_short = str(nid)[:16]
                 print(f"   {idx}. {nid_short}... (addr: {addr})")
 
