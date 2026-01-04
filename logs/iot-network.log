@@ -19725,3 +19725,42 @@ Sinal 2 recebido, a parar...
 2026-01-04 20:59:37.782 | WARNING  | __main__:monitor_heartbeat:547 |   Conexão perdida com Sink
 2026-01-04 20:59:37.784 | INFO     | node.iot_node:stop:1201 |  Node parado
 >>>>>>> abbddb9 (.)
+2026-01-04 21:17:32.833 | INFO     | node.iot_node:__init__:90 | A carregar certificados...
+2026-01-04 21:17:32.836 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para a40543fa...
+2026-01-04 21:17:32.836 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-04 21:17:32.836 | INFO     | node.iot_node:__init__:119 |  Certificados carregados com sucesso
+2026-01-04 21:17:32.836 | INFO     | node.iot_node:__init__:126 | Node NID: a40543fa...
+2026-01-04 21:17:32.837 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 21:17:32.837 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 21:17:32.848 | INFO     | common.utils.ble_logger:__init__:48 | BLE Operation Logger iniciado: ble_operations_5800E366747C_20260104_211732.log
+2026-01-04 21:17:32.848 | INFO     | common.ble.gatt_client:__init__:148 | Scanner BLE iniciado: hci0 (58:00:E3:66:74:7C)
+2026-01-04 21:17:32.849 | INFO     | common.ble.gatt_client:__init__:616 | BLE Client iniciado
+2026-01-04 21:17:32.849 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 21:17:32.849 | INFO     | common.network.router_daemon:__init__:85 |  Router Daemon inicializado para NID=a40543fa...
+2026-01-04 21:17:32.850 | INFO     | node.iot_node:__init__:195 | IoT Node inicializado (adapter=hci0)
+2026-01-04 21:17:32.851 | INFO     | node.iot_node:__init__:196 |  Router Daemon integrado
+2026-01-04 21:17:32.851 | INFO     | node.iot_node:setup_gatt_server:200 | A configurar GATT Server...
+2026-01-04 21:17:32.853 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 21:17:32.853 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 21:17:32.853 | INFO     | common.ble.gatt_services:__init__:580 | A criar IoTNetworkService...
+2026-01-04 21:17:32.854 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 21:17:32.854 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=a40543fa..., type=node
+2026-01-04 21:17:32.855 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 21:17:32.856 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 21:17:32.856 | INFO     | common.ble.gatt_services:__init__:593 |  IoTNetworkService criado com sucesso!
+2026-01-04 21:17:32.857 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 21:17:32.857 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 21:17:32.858 | INFO     | common.ble.advertising:add_service_uuid:108 |  Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 21:17:32.858 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 21:17:32.858 | INFO     | node.iot_node:setup_gatt_server:242 |  Advertising contínuo configurado (duration=0)
+2026-01-04 21:17:32.859 | INFO     | node.iot_node:setup_gatt_server:244 |  GATT Server configurado
+2026-01-04 21:17:32.859 | INFO     | node.iot_node:start_gatt_server:248 | A iniciar GATT Server...
+2026-01-04 21:17:32.863 | INFO     | node.iot_node:start_gatt_server:284 |  GATT Server iniciado em thread separada
+2026-01-04 21:17:32.865 | INFO     | __main__:main:517 |  Node Device iniciado - CLI interativo pronto
+2026-01-04 21:17:32.870 | INFO     | node.iot_node:<lambda>:260 |  GATT application registada!
+2026-01-04 21:17:32.870 | INFO     | common.ble.advertising:get_properties:162 |  Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 21:17:32.974 | INFO     | node.iot_node:<lambda>:276 |  Advertisement registado!
+2026-01-04 21:20:11.277 | INFO     | node.iot_node:stop:1205 | A parar Node...
+2026-01-04 21:20:11.279 | INFO     | node.iot_node:stop_gatt_server:288 | A parar GATT Server...
+2026-01-04 21:20:11.283 | INFO     | node.iot_node:stop_gatt_server:296 |  GATT Server parado
+2026-01-04 21:20:11.284 | INFO     | node.iot_node:stop:1218 |  Node parado
