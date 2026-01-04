@@ -269,6 +269,14 @@ class IoTNode:
 
         # Registar advertisement
         ad_manager = dbus.Interface(adapter_obj, 'org.bluez.LEAdvertisingManager1')
+
+        # Tentar desregistar primeiro (caso exista de execução anterior)
+        try:
+            ad_manager.UnregisterAdvertisement(self.advertisement.get_path())
+            logger.debug("🧹 Advertisement anterior desregistado")
+        except Exception:
+            pass  # Ignorar se não existir
+
         ad_manager.RegisterAdvertisement(
             self.advertisement.get_path(), {},
             reply_handler=lambda: logger.info("✅ Advertisement registado!"),
