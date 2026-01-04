@@ -83,6 +83,12 @@ class Advertisement(dbus.service.Object):
         self.include_tx_power = False
         self.discoverable = True
 
+        # Configuração para manter advertising durante conexões ativas
+        # Valores baixos de intervalo = mais visível mesmo com conexões
+        self.min_interval = None  # Em milliseconds (None = usar default do BlueZ)
+        self.max_interval = None  # Em milliseconds (None = usar default do BlueZ)
+        self.duration = 0  # 0 = advertising contínuo (não para)
+
         dbus.service.Object.__init__(self, bus, self.path)
         logger.info(f"Advertisement criado: {self.path} (type: {advertising_type})")
 
@@ -187,6 +193,17 @@ class Advertisement(dbus.service.Object):
 
         # Discoverable - importante para aparecer no scan!
         properties['Discoverable'] = dbus.Boolean(self.discoverable)
+
+        # Duration: 0 = advertising contínuo (mesmo durante conexões)
+        if self.duration is not None:
+            properties['Duration'] = dbus.UInt16(self.duration)
+
+        # MinInterval e MaxInterval para controlar frequência do advertising
+        if self.min_interval is not None:
+            properties['MinInterval'] = dbus.UInt16(self.min_interval)
+
+        if self.max_interval is not None:
+            properties['MaxInterval'] = dbus.UInt16(self.max_interval)
 
         return {
             'org.bluez.LEAdvertisement1': properties
