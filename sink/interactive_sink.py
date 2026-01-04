@@ -297,16 +297,19 @@ Digite 'exit' ou Ctrl+D para sair.
 
     def do_stop_heartbeat(self, arg):
         """
-        Para envio de heartbeats para um node específico (simula link failure).
+        [LIMITAÇÃO] Tenta parar heartbeats para um node (NÃO FUNCIONA devido a D-Bus GATT).
 
         Uso: stop_heartbeat <NID ou índice>
 
-        Exemplos:
-          stop_heartbeat 1                    # Para heartbeats para o primeiro node da lista
-          stop_heartbeat abc123...            # Para heartbeats para node com NID específico
+        ⚠️  LIMITAÇÃO TÉCNICA: D-Bus GATT PropertiesChanged é sempre broadcast.
+        Não é possível enviar notificações seletivas (unicast) a clientes específicos.
+        Este comando marca o NID como "bloqueado" mas o heartbeat é enviado na mesma.
 
-        NOTA: Isto NÃO desconecta o node, apenas para de enviar heartbeats.
-        Após 3 heartbeats perdidos (~15s), o node detectará link failure.
+        Para simular link failure, use 'disconnect <NID>' em vez deste comando.
+
+        Exemplos:
+          stop_heartbeat 1                    # TENTA bloquear (não funciona)
+          disconnect 1                        # RECOMENDADO: desconecta o node
         """
         if not arg:
             print("\n❌ Erro: Especifique o NID ou índice do node\n")
@@ -343,11 +346,13 @@ Digite 'exit' ou Ctrl+D para sair.
                 self._list_downlinks_with_index()
                 return
 
-        # Bloquear heartbeats para o node
+        # Bloquear heartbeats para o node (NÃO funciona devido a D-Bus GATT broadcast)
         self.sink.block_heartbeat(target_nid)
         nid_short = str(target_nid)[:16]
-        print(f"\n🚫 Heartbeats BLOQUEADOS para {nid_short}...")
-        print(f"   O node detectará link failure após ~15s (3 heartbeats perdidos)\n")
+        print(f"\n⚠️  NID {nid_short}... marcado como 'bloqueado'")
+        print(f"   ATENÇÃO: D-Bus GATT envia heartbeats para TODOS os clientes (broadcast)")
+        print(f"   Este comando NÃO para heartbeats realmente!")
+        print(f"\n💡 Para simular link failure, use: disconnect {arg}\n")
 
     def do_resume_heartbeat(self, arg):
         """

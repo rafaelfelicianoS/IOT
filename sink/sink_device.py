@@ -530,23 +530,19 @@ class SinkDevice:
                     sequence=self.heartbeat_sequence,
                 )
 
-                # Determinar clientes a excluir (NIDs bloqueados -> endereços)
-                exclude_clients = set()
-                with self.heartbeat_blocked_lock:
-                    if self.heartbeat_blocked_nodes:
-                        # Converter NIDs bloqueados em endereços de clientes
-                        with self.downlinks_lock:
-                            for client_nid, client_addr in self.downlinks.items():
-                                if client_nid in self.heartbeat_blocked_nodes:
-                                    exclude_clients.add(client_addr)
+                # NOTA: D-Bus GATT não suporta notificações seletivas (unicast)
+                # PropertiesChanged é sempre broadcast para todos os clientes subscritos
+                # Para bloquear heartbeats de um NID específico, seria necessário:
+                #   1. Desconectar o cliente (não desejado)
+                #   2. Adicionar campo de destinatários no heartbeat packet
+                #   3. Usar characteristic individual por cliente (impraticável)
+                #
+                # Por agora, heartbeats bloqueados são sempre enviados mas podem
+                # ser filtrados no lado do Node se necessário
 
-                # Enviar via notificação NETWORK_PACKET (excluindo clientes bloqueados)
-                self.packet_char.notify_packet(heartbeat_packet.to_bytes(), exclude_clients=exclude_clients)
-
-                if exclude_clients:
-                    logger.debug(f"💓 Heartbeat enviado (seq={self.heartbeat_sequence}, {len(exclude_clients)} bloqueados)")
-                else:
-                    logger.debug(f"💓 Heartbeat enviado (seq={self.heartbeat_sequence})")
+                # Enviar heartbeat para todos os clientes
+                self.packet_char.notify_packet(heartbeat_packet.to_bytes())
+                logger.debug(f"💓 Heartbeat broadcast (seq={self.heartbeat_sequence})")
 
             except Exception as e:
                 logger.error(f"Erro ao enviar heartbeat: {e}", exc_info=True)
