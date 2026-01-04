@@ -17,6 +17,8 @@ from pathlib import Path
 from typing import Optional, Dict, List
 import threading
 import time
+import dbus
+import dbus.mainloop.glib
 
 # Adicionar diretório raiz ao PYTHONPATH
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -326,6 +328,23 @@ class SinkDevice:
                         # Derivar chave de encriptação a partir da session key
                         dtls_channel.derive_encryption_key(session_key)
                         logger.info(f"🔑 Chave de encriptação end-to-end derivada para {str(client_nid)[:8]}...")
+
+                        # WORKAROUND: BlueZ para advertising após conexão mesmo com duration=0
+                        # Re-registar advertising para manter visibilidade para outros Nodes
+                        try:
+                            adv_manager = dbus.Interface(
+                                self.bus.get_object('org.bluez', '/org/bluez/hci1'),
+                                'org.bluez.LEAdvertisingManager1'
+                            )
+                            adv_manager.UnregisterAdvertisement(self.advertisement.get_path())
+                            adv_manager.RegisterAdvertisement(
+                                self.advertisement.get_path(),
+                                {},
+                                reply_handler=lambda: logger.info("🔄 Advertising re-registado após conexão"),
+                                error_handler=lambda e: logger.warning(f"⚠️  Falha ao re-registar advertising: {e}")
+                            )
+                        except Exception as e:
+                            logger.warning(f"⚠️  Erro ao re-registar advertising: {e}")
 
             # Retornar resposta (fragmentação/envio é feito pela AuthCharacteristic)
             return response if response else b''
