@@ -73,8 +73,8 @@ cd iot
 # 2. Instale dependências (automaticamente)
 sudo bash install_deps.sh
 
-# 3. Gerar certificados (cada máquina precisa dos seus)
-python3 support/ca.py  # Criar CA (se não existir)
+# 3. Gerar certificados de dispositivo (cada máquina precisa dos seus)
+# A CA já está no repo, só precisa gerar certificados para sink/node
 python3 support/provision_device.py --type sink --nid $(uuidgen)  # Para Sink
 python3 support/provision_device.py --type node --nid $(uuidgen)  # Para Node
 ```
@@ -469,21 +469,11 @@ sudo bash install_deps.sh
 
 ### Configuração de Certificados
 
-O certificado da CA (público) já está no repositório em `certs/ca_certificate.pem`. Cada máquina deve gerar seus próprios certificados de dispositivo (Sink ou Node):
+A CA já está no repositório em `certs/` (`ca_certificate.pem` + `ca_private_key.pem`). Cada máquina deve gerar seus próprios certificados de dispositivo (Sink ou Node):
 
-#### 1. Criar CA (Primeira Vez)
+> **⚠️ Nota de Segurança**: Para ambiente de **desenvolvimento/académico**, a CA privada está no repositório para facilitar testes em múltiplas máquinas. Em **produção**, a CA privada deve estar num servidor seguro e NUNCA em Git!
 
-Se a CA não existir localmente, cria-a:
-
-```bash
-python3 support/ca.py
-# Cria: certs/ca_certificate.pem (público, já no repo)
-#       certs/ca_private_key.pem (privado, NÃO commitado)
-```
-
-> **Nota**: A CA privada (`ca_private_key.pem`) deve ser mantida em segurança e **nunca** commitada ao Git.
-
-#### 2. Gerar Certificado para Sink
+#### 1. Gerar Certificado para Sink
 
 ```bash
 python3 support/provision_device.py --type sink --nid $(uuidgen)
@@ -492,7 +482,7 @@ python3 support/provision_device.py --type sink --nid $(uuidgen)
 # ✅ Certificado guardado: certs/sink_4e127252_cert.pem
 ```
 
-#### 3. Gerar Certificado para Node
+#### 2. Gerar Certificado para Node
 
 ```bash
 python3 support/provision_device.py --type node --nid $(uuidgen)
@@ -501,7 +491,7 @@ python3 support/provision_device.py --type node --nid $(uuidgen)
 # ✅ Certificado guardado: certs/node_a1b2c3d4_cert.pem
 ```
 
-#### 4. Verificar Certificados
+#### 3. Verificar Certificados
 
 ```bash
 # Listar todos os certificados
@@ -512,9 +502,9 @@ openssl x509 -in certs/sink_4e127252_cert.pem -text -noout
 ```
 
 > **Importante**:
+> - A CA (`ca_certificate.pem` + `ca_private_key.pem`) está no repositório
 > - Certificados de dispositivos (`sink_*`, `node_*`) são **locais** e **não** commitados ao Git
-> - Apenas `ca_certificate.pem` (público) está no repositório
-> - Cada máquina deve gerar seus próprios certificados usando os comandos acima
+> - Cada máquina deve gerar seus próprios certificados de dispositivo usando os comandos acima
 
 ### Executar Sink
 
