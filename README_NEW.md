@@ -878,8 +878,10 @@ Extrair routing para `common/network/router_daemon.py` conforme Section 5.7 da e
 - Bleak como fallback para write
 - Transição transparente em `BLEConnection.write_characteristic()`
 
-### Issue 2: BlueZ "br-connection-unknown"
-**Problema:** Erro ao tentar conectar a dispositivo BLE.
+### Issue 2: Scan BLE não encontra dispositivos
+**Problema:** `node> scan` ou `bluetoothctl scan on` não encontra nenhum dispositivo, mesmo com Sink/Nodes a correr noutros PCs.
+
+**Causa:** Adaptador Bluetooth em modo **BR/EDR + LE** simultâneo causa conflitos no scan BLE.
 
 **Solução:**
 ```bash
@@ -888,9 +890,23 @@ sudo btmgmt -i hci0 power off
 sudo btmgmt -i hci0 bredr off
 sudo btmgmt -i hci0 le on
 sudo btmgmt -i hci0 power on
+
+# Verificar configuração
+sudo btmgmt -i hci0 info | grep "current settings"
+# Deve mostrar "le" (sem "br/edr")
 ```
 
-### Issue 3: Advertising Intermitente
+**⚠️ Nota:** Esta configuração não persiste após reboot. Para facilitar, use o script:
+```bash
+sudo bash fix_bluetooth.sh
+```
+
+### Issue 3: BlueZ "br-connection-unknown"
+**Problema:** Erro ao tentar conectar a dispositivo BLE após scan bem-sucedido.
+
+**Solução:** Mesma do Issue 2 - configurar adaptador em modo LE-only.
+
+### Issue 4: Advertising Intermitente
 **Problema:** Dispositivo aparece/desaparece no scan.
 
 **Causas:**
