@@ -529,18 +529,42 @@ class IoTNode:
             try:
                 adv_manager.UnregisterAdvertisement(self.advertisement.get_path())
                 logger.debug("✅ Advertisement desregistado")
-                # Dar tempo ao BlueZ para processar
-                time.sleep(0.1)
             except Exception as e:
                 logger.debug(f"Advertisement já não estava registado: {e}")
 
-            # Re-registar
-            adv_manager.RegisterAdvertisement(
-                self.advertisement.get_path(),
-                {},
-                reply_handler=lambda: logger.info("🔄 Advertising re-registado após conexão uplink"),
-                error_handler=lambda e: logger.warning(f"⚠️  Falha ao re-registar advertising: {e}")
-            )
+            # Alguns adaptadores precisam de mais tempo - tentar com delays crescentes
+            # NOTA: Alguns adaptadores BLE (especialmente dongles USB) podem precisar de
+            # mais tempo para limpar o estado interno após UnregisterAdvertisement
+            delays = [0.15, 0.3, 0.6]  # segundos
+            success = False
+
+            for attempt in range(1, len(delays) + 1):
+                time.sleep(delays[attempt - 1])
+
+                # Definir callbacks com attempt fixo
+                def make_reply_handler(attempt_num):
+                    return lambda: logger.info(f"🔄 Advertising re-registado após conexão uplink (tentativa {attempt_num})")
+
+                def make_error_handler(attempt_num):
+                    return lambda e: logger.debug(f"⚠️  Tentativa {attempt_num} falhou: {e}")
+
+                try:
+                    adv_manager.RegisterAdvertisement(
+                        self.advertisement.get_path(),
+                        {},
+                        reply_handler=make_reply_handler(attempt),
+                        error_handler=make_error_handler(attempt)
+                    )
+                    # Se chegou aqui, a chamada foi feita (sucesso será reportado via callback)
+                    logger.debug(f"RegisterAdvertisement chamado (tentativa {attempt}, delay {delays[attempt-1]}s)")
+                    success = True
+                    break
+                except Exception as e:
+                    logger.debug(f"Tentativa {attempt} com delay {delays[attempt-1]}s falhou: {e}")
+
+            if not success:
+                logger.warning(f"⚠️  Falha ao re-registar advertising após {len(delays)} tentativas")
+
         except Exception as e:
             logger.warning(f"⚠️  Erro ao re-registar advertising após uplink: {e}")
 
