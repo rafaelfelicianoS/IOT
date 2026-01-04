@@ -508,6 +508,33 @@ class IoTNode:
         logger.info("📤 Enviando resposta AUTH_SUCCESS placeholder (autenticação aceite sem validação)")
         return b"\x04\x00\x00"  # AUTH_SUCCESS com payload vazio
 
+    def _restart_advertising_after_uplink_connection(self):
+        """
+        Re-registar advertising após conectar ao Sink como cliente.
+
+        WORKAROUND: Alguns adaptadores BLE param de fazer advertising quando atuam
+        como cliente. Isto garante que permanecemos visíveis para outros Nodes.
+        """
+        import dbus
+
+        try:
+            logger.debug("🔄 Re-registando advertising após conexão uplink...")
+            adv_manager = dbus.Interface(
+                self.bus.get_object('org.bluez', f'/org/bluez/{self.adapter_name}'),
+                'org.bluez.LEAdvertisingManager1'
+            )
+
+            # Desregistar e re-registar
+            adv_manager.UnregisterAdvertisement(self.advertisement.get_path())
+            adv_manager.RegisterAdvertisement(
+                self.advertisement.get_path(),
+                {},
+                reply_handler=lambda: logger.info("🔄 Advertising re-registado após conexão uplink"),
+                error_handler=lambda e: logger.warning(f"⚠️  Falha ao re-registar advertising: {e}")
+            )
+        except Exception as e:
+            logger.warning(f"⚠️  Erro ao re-registar advertising após uplink: {e}")
+
     def discover_sink(self, timeout_s: int = 10) -> Optional[ScannedDevice]:
         """
         Descobre o Sink fazendo scan BLE.
@@ -864,6 +891,11 @@ class IoTNode:
                             if session_key:
                                 self.dtls_channel.derive_encryption_key(session_key)
                                 logger.info("🔑 Chave de encriptação end-to-end derivada")
+
+                        # WORKAROUND: Re-registar advertising após conectar ao Sink como cliente
+                        # Alguns adaptadores BLE param de fazer advertising quando atuam como cliente
+                        # Precisamos manter visibilidade para permitir que outros Nodes se conectem a nós
+                        self._restart_advertising_after_uplink_connection()
 
                         self.authenticated = True
                         return True
