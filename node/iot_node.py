@@ -521,20 +521,32 @@ class IoTNode:
                 logger.debug(f"Advertisement já não estava registado: {e}")
 
             # Alguns adaptadores precisam de mais tempo - tentar com delays crescentes
-            # NOTA: Alguns adaptadores BLE (especialmente dongles USB) podem precisar de
-            # mais tempo para limpar o estado interno após UnregisterAdvertisement
-            delays = [0.15, 0.3, 0.6]  # segundos
+            # NOTA: Alguns adaptadores BLE (especialmente adaptadores integrados sem dongle)
+            # podem ter dificuldade em advertising simultâneo com conexão client.
+            # Aumentamos delays e tentativas para dar mais hipóteses.
+            delays = [0.3, 0.8, 1.5, 2.5]  # segundos - delays maiores para adaptadores problemáticos
             success = False
 
             for attempt in range(1, len(delays) + 1):
                 time.sleep(delays[attempt - 1])
 
-                # Definir callbacks com attempt fixo
+                # Event para aguardar resultado assíncrono
+                result_event = threading.Event()
+                error_msg = [None]  # Lista para permitir modificação em callback
+
+                # Definir callbacks que sinalizam o event
                 def make_reply_handler(attempt_num):
-                    return lambda: logger.info(f" Advertising re-registado após conexão uplink (tentativa {attempt_num})")
+                    def handler():
+                        logger.info(f"✅ Advertising re-registado após conexão uplink (tentativa {attempt_num})")
+                        result_event.set()
+                    return handler
 
                 def make_error_handler(attempt_num):
-                    return lambda e: logger.debug(f"  Tentativa {attempt_num} falhou: {e}")
+                    def handler(e):
+                        error_msg[0] = str(e)
+                        logger.debug(f"❌ Tentativa {attempt_num} falhou: {e}")
+                        result_event.set()
+                    return handler
 
                 try:
                     adv_manager.RegisterAdvertisement(
@@ -543,12 +555,20 @@ class IoTNode:
                         reply_handler=make_reply_handler(attempt),
                         error_handler=make_error_handler(attempt)
                     )
-                    # Se chegou aqui, a chamada foi feita (sucesso será reportado via callback)
                     logger.debug(f"RegisterAdvertisement chamado (tentativa {attempt}, delay {delays[attempt-1]}s)")
-                    success = True
-                    break
+
+                    # Aguardar resultado (timeout 3s) - CRÍTICO: esperar antes de retry!
+                    if result_event.wait(timeout=3.0):
+                        if error_msg[0] is None:
+                            # Sucesso!
+                            success = True
+                            break
+                        # Erro reportado via callback - continuar para próxima tentativa
+                    else:
+                        logger.debug(f"⏱️ Tentativa {attempt} timeout (sem resposta em 3s)")
+
                 except Exception as e:
-                    logger.debug(f"Tentativa {attempt} com delay {delays[attempt-1]}s falhou: {e}")
+                    logger.debug(f"❌ Tentativa {attempt} com delay {delays[attempt-1]}s falhou imediatamente: {e}")
 
             if not success:
                 logger.warning(f"  Falha ao re-registar advertising após {len(delays)} tentativas")
