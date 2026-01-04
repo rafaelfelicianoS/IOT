@@ -8743,3 +8743,82 @@ Sinal 2 recebido, a parar...
 2026-01-04 03:06:53.655 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
 2026-01-04 03:06:53.659 | INFO     | node.iot_node:stop_gatt_server:289 | ✅ GATT Server parado
 2026-01-04 03:06:53.661 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
+2026-01-04 03:08:26.481 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-04 03:08:26.481 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-04 03:08:26.481 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 03:08:26.487 | INFO     | node.iot_node:__init__:89 | A carregar certificados...
+2026-01-04 03:08:26.489 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para a40543fa...
+2026-01-04 03:08:26.489 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-04 03:08:26.490 | INFO     | node.iot_node:__init__:119 | ✅ Certificados carregados com sucesso
+2026-01-04 03:08:26.490 | INFO     | node.iot_node:__init__:127 | Node NID: a40543fa...
+2026-01-04 03:08:26.490 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 03:08:26.490 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 03:08:26.499 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_5800E366747C_20260104_030826.log
+2026-01-04 03:08:26.500 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (58:00:E3:66:74:7C)
+2026-01-04 03:08:26.500 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2026-01-04 03:08:26.501 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 03:08:26.501 | INFO     | common.network.router_daemon:__init__:85 | 🔀 Router Daemon inicializado para NID=a40543fa...
+2026-01-04 03:08:26.502 | INFO     | node.iot_node:__init__:196 | IoT Node inicializado (adapter=hci0)
+2026-01-04 03:08:26.502 | INFO     | node.iot_node:__init__:197 | ✅ Router Daemon integrado
+2026-01-04 03:08:26.502 | INFO     | node.iot_node:setup_gatt_server:201 | A configurar GATT Server...
+2026-01-04 03:08:26.504 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 03:08:26.504 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 03:08:26.504 | INFO     | common.ble.gatt_services:__init__:582 | A criar IoTNetworkService...
+2026-01-04 03:08:26.505 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 03:08:26.505 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=a40543fa..., type=node
+2026-01-04 03:08:26.506 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 03:08:26.506 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 03:08:26.507 | INFO     | common.ble.gatt_services:__init__:596 | ✅ IoTNetworkService criado com sucesso!
+2026-01-04 03:08:26.508 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 03:08:26.508 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 03:08:26.509 | INFO     | common.ble.advertising:add_service_uuid:108 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 03:08:26.509 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 03:08:26.509 | INFO     | node.iot_node:setup_gatt_server:244 | ✅ GATT Server configurado
+2026-01-04 03:08:26.510 | INFO     | node.iot_node:start_gatt_server:248 | A iniciar GATT Server...
+2026-01-04 03:08:26.511 | INFO     | node.iot_node:start_gatt_server:277 | ✅ GATT Server iniciado em thread separada
+2026-01-04 03:08:26.511 | INFO     | __main__:main:517 | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-04 03:08:26.519 | INFO     | node.iot_node:<lambda>:260 | ✅ GATT application registada!
+2026-01-04 03:08:26.520 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 03:08:26.623 | INFO     | node.iot_node:<lambda>:268 | ✅ Advertisement registado!
+2026-01-04 03:08:27.825 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 03:08:27.826 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_030826-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 03:08:32.942 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2026-01-04 03:08:32.943 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_030826-0002] SCAN_RESULT | Devices_Found: 0
+2026-01-04 03:08:32.943 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 03:08:32.943 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_030826-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 03:08:37.964 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2026-01-04 03:08:37.967 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_030826-0004] SCAN_RESULT | Devices_Found: 1
+2026-01-04 03:08:43.512 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 03:08:43.513 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_030826-0005] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 03:08:48.631 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 2 dispositivos encontrados
+2026-01-04 03:08:48.631 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_030826-0006] SCAN_RESULT | Devices_Found: 2
+2026-01-04 03:08:48.632 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 03:08:48.632 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_030826-0007] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 03:08:53.653 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2026-01-04 03:08:53.656 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_030826-0008] SCAN_RESULT | Devices_Found: 1
+2026-01-04 03:09:00.301 | INFO     | node.iot_node:connect_to_sink:524 | A conectar ao Sink E0:D3:62:D7:47:03...
+2026-01-04 03:09:00.303 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D7:47:03...
+2026-01-04 03:09:00.304 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20260104_030826-0009] CONNECT_ATTEMPT | Local: 58:00:E3:66:74:7C | Remote: E0:D3:62:D7:47:03
+2026-01-04 03:09:13.518 | ERROR    | common.ble.gatt_client:connect:287 | Erro ao conectar a E0:D3:62:D7:47:03: The requested operation has failed.
+2026-01-04 03:09:13.520 | ERROR    | common.utils.ble_logger:log_connection_failed:172 | [OP-20260104_030826-0010] CONNECT_FAILED | Remote: E0:D3:62:D7:47:03 | Error: The requested operation has failed.
+2026-01-04 03:09:15.531 | ERROR    | common.ble.gatt_client:connect_to_device:704 | Falha ao conectar a E0:D3:62:D7:47:03 após todas as tentativas
+2026-01-04 03:09:15.533 | ERROR    | node.iot_node:connect_to_sink:530 | ❌ Falha ao conectar ao Sink
+2026-01-04 03:09:19.792 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 03:09:19.793 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_030826-0011] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 03:09:24.816 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
+2026-01-04 03:09:24.817 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_030826-0012] SCAN_RESULT | Devices_Found: 0
+2026-01-04 03:09:24.818 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 03:09:24.819 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_030826-0013] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 03:09:29.835 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2026-01-04 03:09:29.835 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_030826-0014] SCAN_RESULT | Devices_Found: 1
+2026-01-04 03:09:34.322 | INFO     | node.iot_node:connect_to_sink:524 | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2026-01-04 03:09:34.324 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D6:EE:A0...
+2026-01-04 03:09:34.326 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20260104_030826-0015] CONNECT_ATTEMPT | Local: 58:00:E3:66:74:7C | Remote: E0:D3:62:D6:EE:A0
+2026-01-04 03:09:58.409 | ERROR    | common.ble.gatt_client:connect:287 | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2026-01-04 03:09:58.410 | ERROR    | common.utils.ble_logger:log_connection_failed:172 | [OP-20260104_030826-0016] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
+2026-01-04 03:10:00.424 | ERROR    | common.ble.gatt_client:connect_to_device:704 | Falha ao conectar a E0:D3:62:D6:EE:A0 após todas as tentativas
+2026-01-04 03:10:00.425 | ERROR    | node.iot_node:connect_to_sink:530 | ❌ Falha ao conectar ao Sink
+2026-01-04 03:10:12.518 | INFO     | node.iot_node:stop:1091 | A parar Node...
+2026-01-04 03:10:12.520 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
+2026-01-04 03:10:12.524 | INFO     | node.iot_node:stop_gatt_server:289 | ✅ GATT Server parado
+2026-01-04 03:10:12.525 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
