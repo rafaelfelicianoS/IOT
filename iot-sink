@@ -1,290 +1,123 @@
-#!/usr/bin/env python3
-"""
-CLI para controlar o IoT Sink Device.
+#!/bin/bash
+# Wrapper script para iot-sink com auto-detecção de certificados
 
-Comandos disponíveis:
-  start         - Inicia o Sink
-  interactive   - Inicia o Sink com CLI interativo
-  status        - Verifica status do Sink
-  logs          - Mostra logs do Sink
+set -e
 
-Exemplos:
-  ./iot-sink start hci0
-  ./iot-sink interactive hci0
-  ./iot-sink start hci0 --cert-index 2
-  ./iot-sink logs --tail 50
-  ./iot-sink logs --follow
-"""
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CERTS_DIR="$SCRIPT_DIR/certs"
 
-import sys
-import subprocess
-import argparse
-from pathlib import Path
+# Ativar venv se existir
+if [ -f "$SCRIPT_DIR/venv/bin/activate" ]; then
+    source "$SCRIPT_DIR/venv/bin/activate"
+fi
 
-# Diretório base do projeto
-BASE_DIR = Path(__file__).parent.absolute()
-SINK_SCRIPT = BASE_DIR / "sink" / "sink_device.py"
-INTERACTIVE_SINK_SCRIPT = BASE_DIR / "sink" / "interactive_sink.py"
-LOG_FILE = BASE_DIR / "logs" / "iot-network.log"
+# Auto-detectar certificados
+echo "============================================================"
+echo "  Iniciando IoT Sink Device (Interactive Mode)"
+echo "============================================================"
+echo ""
 
-# Adicionar diretório base ao PYTHONPATH
-sys.path.insert(0, str(BASE_DIR))
+# Primeiro argumento pode ser "interactive" ou adaptador
+ADAPTER="hci0"
+START_INDEX=1
 
-def cmd_start(args):
-    """Inicia o Sink Device."""
-    print("="*60)
-    print("  Iniciando IoT Sink Device")
-    print("="*60)
-    print()
+if [ "$1" == "interactive" ]; then
+    # Se primeiro argumento é "interactive", segundo deve ser o adaptador
+    if [ -n "$2" ]; then
+        ADAPTER="$2"
+        START_INDEX=3
+    else
+        START_INDEX=2
+    fi
+else
+    # Primeiro argumento é o adaptador (ou nada)
+    if [ -n "$1" ]; then
+        ADAPTER="$1"
+        START_INDEX=2
+    fi
+fi
 
-    # Auto-detectar certificados no diretório certs/
-    certs_dir = BASE_DIR / "certs"
+# Procurar certificado CA
+CA_CERT="$CERTS_DIR/ca_certificate.pem"
+if [ ! -f "$CA_CERT" ]; then
+    echo "❌ Certificado CA não encontrado: $CA_CERT"
+    exit 1
+fi
 
-    # Procurar certificado do Sink
-    sink_certs = list(certs_dir.glob("sink_*_cert.pem"))
-    sink_keys = list(certs_dir.glob("sink_*_key.pem"))
-    ca_cert = certs_dir / "ca_certificate.pem"
+# Procurar certificados de Sink
+SINK_CERTS=()
+SINK_KEYS=()
 
-    if not sink_certs:
-        print(f"❌ Nenhum certificado de Sink encontrado em {certs_dir}/")
-        print("   Esperado: sink_*_cert.pem")
-        return 1
+# Procurar formato antigo
+for cert in "$CERTS_DIR"/sink_*_cert.pem; do
+    [ -f "$cert" ] || continue
+    basename=$(basename "$cert" _cert.pem)
+    key="$CERTS_DIR/${basename}_key.pem"
+    if [ -f "$key" ]; then
+        SINK_CERTS+=("$cert")
+        SINK_KEYS+=("$key")
+    fi
+done
 
-    if not sink_keys:
-        print(f"❌ Nenhuma chave privada de Sink encontrada em {certs_dir}/")
-        print("   Esperado: sink_*_key.pem")
-        return 1
+# Procurar formato novo (UUID directories)
+for dir in "$CERTS_DIR"/*/; do
+    [ -d "$dir" ] || continue
+    cert="$dir/certificate.pem"
+    key="$dir/private_key.pem"
+    if [ -f "$cert" ] && [ -f "$key" ]; then
+        # Verificar se é Sink (tem "Sink" no subject)
+        if openssl x509 -in "$cert" -noout -subject 2>/dev/null | grep -q "Sink"; then
+            SINK_CERTS+=("$cert")
+            SINK_KEYS+=("$key")
+        fi
+    fi
+done
 
-    if not ca_cert.exists():
-        print(f"❌ Certificado CA não encontrado: {ca_cert}")
-        return 1
+# Verificar se encontrou certificados
+if [ ${#SINK_CERTS[@]} -eq 0 ]; then
+    echo "❌ Nenhum certificado de Sink encontrado em $CERTS_DIR/"
+    echo "   Esperado: sink_*_cert.pem ou <UUID>/certificate.pem com Sink no subject"
+    echo ""
+    echo "💡 Crie um certificado com:"
+    echo "   python -m support.provision_device --nid \$(uuidgen) --type sink"
+    exit 1
+fi
 
-    # Usar o primeiro encontrado (ou permitir seleção se múltiplos)
-    if len(sink_certs) > 1:
-        print(f"\n⚠️  Múltiplos certificados Sink encontrados:")
-        for i, cert in enumerate(sink_certs, 1):
-            print(f"  {i}. {cert.name}")
+# Se houver múltiplos, mostrar e usar o primeiro
+CERT_INDEX=0
+if [ ${#SINK_CERTS[@]} -gt 1 ]; then
+    echo ""
+    echo "⚠️  Múltiplos certificados Sink encontrados:"
+    for i in "${!SINK_CERTS[@]}"; do
+        basename=$(basename "${SINK_CERTS[$i]}")
+        echo "  $((i+1)). $basename"
+    done
+    echo ""
+    echo "Usando o primeiro: $(basename "${SINK_CERTS[0]}")"
+    echo "(Use --cert e --key para escolher outro)"
+    echo ""
+fi
 
-        if args.cert_index is not None and 0 < args.cert_index <= len(sink_certs):
-            cert_to_use = sink_certs[args.cert_index - 1]
-            key_to_use = sink_keys[args.cert_index - 1]
-        else:
-            print(f"\nUsando o primeiro: {sink_certs[0].name}")
-            print("(Use --cert-index N para escolher outro)")
-            cert_to_use = sink_certs[0]
-            key_to_use = sink_keys[0]
-    else:
-        cert_to_use = sink_certs[0]
-        key_to_use = sink_keys[0]
+SELECTED_CERT="${SINK_CERTS[$CERT_INDEX]}"
+SELECTED_KEY="${SINK_KEYS[$CERT_INDEX]}"
 
-    print(f"\n✅ Certificados encontrados:")
-    print(f"   Cert: {cert_to_use.name}")
-    print(f"   Key:  {key_to_use.name}")
-    print(f"   CA:   {ca_cert.name}")
-    print()
+echo "✅ Certificados encontrados:"
+echo "   Cert: $SELECTED_CERT"
+echo "   Key:  $SELECTED_KEY"
+echo "   CA:   $CA_CERT"
+echo "   Adapter: $ADAPTER"
+echo ""
 
-    # Construir comando com os certificados
-    cmd = [
-        sys.executable, str(SINK_SCRIPT),
-        args.adapter,
-        "--cert", str(cert_to_use),
-        "--key", str(key_to_use),
-        "--ca-cert", str(ca_cert)
-    ]
+# Preparar argumentos extras
+EXTRA_ARGS=()
+if [ $START_INDEX -le $# ]; then
+    EXTRA_ARGS=("${@:$START_INDEX}")
+fi
 
-    try:
-        subprocess.run(cmd, cwd=str(BASE_DIR))
-    except KeyboardInterrupt:
-        print("\n\n✅ Sink parado pelo utilizador")
-        return 0
-    except Exception as e:
-        print(f"\n❌ Erro ao iniciar Sink: {e}")
-        return 1
-
-    return 0
-
-def cmd_interactive(args):
-    """Inicia o Sink Device com CLI interativo."""
-    print("="*60)
-    print("  Iniciando IoT Sink Device (Interactive Mode)")
-    print("="*60)
-    print()
-
-    # Auto-detectar certificados no diretório certs/
-    certs_dir = BASE_DIR / "certs"
-
-    # Procurar certificado do Sink
-    sink_certs = list(certs_dir.glob("sink_*_cert.pem"))
-    sink_keys = list(certs_dir.glob("sink_*_key.pem"))
-    ca_cert = certs_dir / "ca_certificate.pem"
-
-    if not sink_certs:
-        print(f"❌ Nenhum certificado de Sink encontrado em {certs_dir}/")
-        print("   Esperado: sink_*_cert.pem")
-        return 1
-
-    if not sink_keys:
-        print(f"❌ Nenhuma chave privada de Sink encontrada em {certs_dir}/")
-        print("   Esperado: sink_*_key.pem")
-        return 1
-
-    if not ca_cert.exists():
-        print(f"❌ Certificado CA não encontrado: {ca_cert}")
-        return 1
-
-    # Usar o primeiro encontrado (ou permitir seleção se múltiplos)
-    if len(sink_certs) > 1:
-        print(f"\n⚠️  Múltiplos certificados Sink encontrados:")
-        for i, cert in enumerate(sink_certs, 1):
-            print(f"  {i}. {cert.name}")
-
-        if args.cert_index is not None and 0 < args.cert_index <= len(sink_certs):
-            cert_to_use = sink_certs[args.cert_index - 1]
-            key_to_use = sink_keys[args.cert_index - 1]
-        else:
-            print(f"\nUsando o primeiro: {sink_certs[0].name}")
-            print("(Use --cert-index N para escolher outro)")
-            cert_to_use = sink_certs[0]
-            key_to_use = sink_keys[0]
-    else:
-        cert_to_use = sink_certs[0]
-        key_to_use = sink_keys[0]
-
-    print(f"\n✅ Certificados encontrados:")
-    print(f"   Cert: {cert_to_use.name}")
-    print(f"   Key:  {key_to_use.name}")
-    print(f"   CA:   {ca_cert.name}")
-    print()
-
-    # Construir comando com os certificados
-    cmd = [
-        sys.executable, str(INTERACTIVE_SINK_SCRIPT),
-        args.adapter,
-        "--cert", str(cert_to_use),
-        "--key", str(key_to_use),
-        "--ca-cert", str(ca_cert)
-    ]
-
-    try:
-        subprocess.run(cmd, cwd=str(BASE_DIR))
-    except KeyboardInterrupt:
-        print("\n\n✅ Sink parado pelo utilizador")
-        return 0
-    except Exception as e:
-        print(f"\n❌ Erro ao iniciar Sink: {e}")
-        return 1
-
-    return 0
-
-def cmd_logs(args):
-    """Mostra logs do Sink."""
-    if not LOG_FILE.exists():
-        print(f"❌ Arquivo de log não encontrado: {LOG_FILE}")
-        return 1
-    
-    try:
-        if args.follow:
-            # Seguir logs em tempo real
-            print("📋 Monitorando logs (Ctrl+C para parar)...")
-            print()
-            subprocess.run(["tail", "-f", str(LOG_FILE)])
-        elif args.tail:
-            # Mostrar últimas N linhas
-            subprocess.run(["tail", "-n", str(args.tail), str(LOG_FILE)])
-        elif args.grep:
-            # Filtrar logs
-            subprocess.run(["grep", "-i", "--color=auto", args.grep, str(LOG_FILE)])
-        else:
-            # Mostrar últimas 50 linhas por padrão
-            subprocess.run(["tail", "-n", "50", str(LOG_FILE)])
-    except KeyboardInterrupt:
-        print("\n\n✅ Monitoramento parado")
-        return 0
-    
-    return 0
-
-def cmd_status(args):
-    """Verifica status do Sink."""
-    print("="*60)
-    print("  Status do IoT Sink Device")
-    print("="*60)
-    print()
-    
-    # Verificar se o log existe
-    if LOG_FILE.exists():
-        print(f"✅ Log file: {LOG_FILE}")
-        
-        # Mostrar últimas linhas relevantes
-        print("\n📋 Últimas atividades:")
-        print("-"*60)
-        subprocess.run([
-            "grep", "-E", 
-            "A iniciar|iniciado|conectado|Autenticação|Session key|Heartbeat",
-            str(LOG_FILE)
-        ], stderr=subprocess.DEVNULL)
-    else:
-        print(f"⚠️  Nenhum log encontrado em {LOG_FILE}")
-    
-    return 0
-
-def main():
-    parser = argparse.ArgumentParser(
-        description="CLI para controlar o IoT Sink Device",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Exemplos de uso:
-  %(prog)s start hci0                   Inicia o Sink no adaptador hci0
-  %(prog)s interactive hci0             Inicia Sink com CLI interativo
-  %(prog)s start hci0 --cert-index 2    Usa 2º certificado (se múltiplos)
-  %(prog)s logs                         Mostra últimos logs
-  %(prog)s logs --tail 100              Mostra últimas 100 linhas
-  %(prog)s logs --follow                Segue logs em tempo real
-  %(prog)s logs --grep heartbeat        Filtra logs por padrão
-  %(prog)s status                       Verifica status do Sink
-        """
-    )
-    
-    subparsers = parser.add_subparsers(dest='command', help='Comando a executar')
-    
-    # Comando: start
-    parser_start = subparsers.add_parser('start', help='Inicia o Sink Device')
-    parser_start.add_argument('adapter', help='Adaptador BLE (ex: hci0)')
-    parser_start.add_argument('--cert-index', type=int, metavar='N',
-                             help='Índice do certificado a usar (se múltiplos)')
-
-    # Comando: interactive
-    parser_interactive = subparsers.add_parser('interactive', help='Inicia Sink com CLI interativo')
-    parser_interactive.add_argument('adapter', help='Adaptador BLE (ex: hci0)')
-    parser_interactive.add_argument('--cert-index', type=int, metavar='N',
-                                   help='Índice do certificado a usar (se múltiplos)')
-    
-    # Comando: logs
-    parser_logs = subparsers.add_parser('logs', help='Mostra logs do Sink')
-    parser_logs.add_argument('--tail', type=int, metavar='N', 
-                            help='Mostra últimas N linhas')
-    parser_logs.add_argument('--follow', '-f', action='store_true',
-                            help='Segue logs em tempo real')
-    parser_logs.add_argument('--grep', type=str, metavar='PATTERN',
-                            help='Filtra logs por padrão')
-    
-    # Comando: status
-    parser_status = subparsers.add_parser('status', help='Verifica status do Sink')
-    
-    args = parser.parse_args()
-    
-    if not args.command:
-        parser.print_help()
-        return 1
-    
-    # Executar comando
-    commands = {
-        'start': cmd_start,
-        'interactive': cmd_interactive,
-        'logs': cmd_logs,
-        'status': cmd_status,
-    }
-    
-    return commands[args.command](args)
-
-if __name__ == '__main__':
-    sys.exit(main())
+# Executar o Sink interativo
+exec python3 "$SCRIPT_DIR/sink/interactive_sink.py" \
+    "$ADAPTER" \
+    --cert "$SELECTED_CERT" \
+    --key "$SELECTED_KEY" \
+    --ca-cert "$CA_CERT" \
+    "${EXTRA_ARGS[@]}"

@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 2025-12-31 01:35:53.192 | INFO     | __main__:__init__:82 | A carregar certificados...
 2025-12-31 01:35:53.194 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para c5c55ab2...
 2025-12-31 01:35:53.195 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
@@ -7837,3 +7839,136 @@ Sinal 2 recebido, a parar...
 2026-01-03 19:15:49.603 | INFO     | common.security.certificate_manager:verify_signature:390 | ✅ Assinatura verificada com sucesso!
 2026-01-03 19:15:52.879 | INFO     | node.iot_node:stop:1091 | A parar Node...
 2026-01-03 19:15:52.881 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
+2026-01-03 21:53:55.140 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-03 21:53:55.142 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-03 21:53:55.143 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-03 21:55:50.631 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-03 21:55:50.631 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-03 21:55:50.632 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-03 21:56:42.089 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-03 21:56:42.089 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-03 21:56:42.090 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-03 21:56:42.097 | INFO     | node.iot_node:__init__:89 | A carregar certificados...
+2026-01-03 21:56:42.100 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 74383752...
+2026-01-03 21:56:42.100 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-03 21:56:42.100 | INFO     | node.iot_node:__init__:119 | ✅ Certificados carregados com sucesso
+2026-01-03 21:56:42.101 | INFO     | node.iot_node:__init__:127 | Node NID: 74383752...
+2026-01-03 21:56:42.101 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-03 21:56:42.101 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-03 21:56:42.114 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_5800E366747C_20260103_215642.log
+2026-01-03 21:56:42.115 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (58:00:E3:66:74:7C)
+2026-01-03 21:56:42.115 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2026-01-03 21:56:42.116 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-03 21:56:42.116 | INFO     | common.network.router_daemon:__init__:85 | 🔀 Router Daemon inicializado para NID=74383752...
+2026-01-03 21:56:42.118 | INFO     | node.iot_node:__init__:196 | IoT Node inicializado (adapter=hci0)
+2026-01-03 21:56:42.119 | INFO     | node.iot_node:__init__:197 | ✅ Router Daemon integrado
+2026-01-03 21:56:42.119 | INFO     | node.iot_node:setup_gatt_server:201 | A configurar GATT Server...
+2026-01-03 21:56:42.121 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-03 21:56:42.121 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-03 21:56:42.122 | INFO     | common.ble.gatt_services:__init__:582 | A criar IoTNetworkService...
+2026-01-03 21:56:42.124 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-03 21:56:42.124 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=74383752..., type=node
+2026-01-03 21:56:42.125 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-03 21:56:42.126 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-03 21:56:42.128 | INFO     | common.ble.gatt_services:__init__:596 | ✅ IoTNetworkService criado com sucesso!
+2026-01-03 21:56:42.128 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-03 21:56:42.129 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-03 21:56:42.129 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-03 21:56:42.130 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-03 21:56:42.130 | INFO     | node.iot_node:setup_gatt_server:244 | ✅ GATT Server configurado
+2026-01-03 21:56:42.130 | INFO     | node.iot_node:start_gatt_server:248 | A iniciar GATT Server...
+2026-01-03 21:56:42.132 | INFO     | node.iot_node:start_gatt_server:277 | ✅ GATT Server iniciado em thread separada
+2026-01-03 21:56:42.134 | INFO     | __main__:main:517 | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-03 21:56:42.178 | INFO     | node.iot_node:<lambda>:260 | ✅ GATT application registada!
+2026-01-03 21:56:42.179 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-03 21:56:42.271 | INFO     | node.iot_node:<lambda>:268 | ✅ Advertisement registado!
+2026-01-03 21:56:46.752 | INFO     | node.iot_node:stop:1091 | A parar Node...
+2026-01-03 21:56:46.753 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
+2026-01-03 21:56:46.755 | INFO     | node.iot_node:stop_gatt_server:289 | ✅ GATT Server parado
+2026-01-03 21:56:46.756 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
+2026-01-03 21:57:57.101 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-03 21:57:57.102 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-03 21:57:57.102 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-03 21:57:57.108 | INFO     | node.iot_node:__init__:89 | A carregar certificados...
+2026-01-03 21:57:57.111 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 74383752...
+2026-01-03 21:57:57.111 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-03 21:57:57.111 | INFO     | node.iot_node:__init__:119 | ✅ Certificados carregados com sucesso
+2026-01-03 21:57:57.112 | INFO     | node.iot_node:__init__:127 | Node NID: 74383752...
+2026-01-03 21:57:57.112 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-03 21:57:57.112 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-03 21:57:57.124 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_5800E366747C_20260103_215757.log
+2026-01-03 21:57:57.124 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (58:00:E3:66:74:7C)
+2026-01-03 21:57:57.124 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2026-01-03 21:57:57.126 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-03 21:57:57.127 | INFO     | common.network.router_daemon:__init__:85 | 🔀 Router Daemon inicializado para NID=74383752...
+2026-01-03 21:57:57.128 | INFO     | node.iot_node:__init__:196 | IoT Node inicializado (adapter=hci0)
+2026-01-03 21:57:57.129 | INFO     | node.iot_node:__init__:197 | ✅ Router Daemon integrado
+2026-01-03 21:57:57.129 | INFO     | node.iot_node:setup_gatt_server:201 | A configurar GATT Server...
+2026-01-03 21:57:57.131 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-03 21:57:57.132 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-03 21:57:57.132 | INFO     | common.ble.gatt_services:__init__:582 | A criar IoTNetworkService...
+2026-01-03 21:57:57.133 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-03 21:57:57.133 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=74383752..., type=node
+2026-01-03 21:57:57.134 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-03 21:57:57.135 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-03 21:57:57.136 | INFO     | common.ble.gatt_services:__init__:596 | ✅ IoTNetworkService criado com sucesso!
+2026-01-03 21:57:57.136 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-03 21:57:57.137 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-03 21:57:57.138 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-03 21:57:57.138 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-03 21:57:57.139 | INFO     | node.iot_node:setup_gatt_server:244 | ✅ GATT Server configurado
+2026-01-03 21:57:57.139 | INFO     | node.iot_node:start_gatt_server:248 | A iniciar GATT Server...
+2026-01-03 21:57:57.141 | INFO     | node.iot_node:start_gatt_server:277 | ✅ GATT Server iniciado em thread separada
+2026-01-03 21:57:57.141 | INFO     | __main__:main:517 | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-03 21:57:57.148 | INFO     | node.iot_node:<lambda>:260 | ✅ GATT application registada!
+2026-01-03 21:57:57.150 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-03 21:57:57.248 | INFO     | node.iot_node:<lambda>:268 | ✅ Advertisement registado!
+2026-01-03 21:57:59.454 | INFO     | node.iot_node:stop:1091 | A parar Node...
+2026-01-03 21:57:59.458 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
+2026-01-03 21:57:59.462 | INFO     | node.iot_node:stop_gatt_server:289 | ✅ GATT Server parado
+2026-01-03 21:57:59.464 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
+2026-01-03 21:58:08.824 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-03 21:58:08.824 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-03 21:58:08.824 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-03 21:58:08.839 | INFO     | sink.sink_device:__init__:86 | A carregar certificados...
+2026-01-03 21:58:08.842 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 69f0365f...
+2026-01-03 21:58:08.843 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-03 21:58:08.843 | INFO     | sink.sink_device:__init__:116 | ✅ Certificados carregados com sucesso
+2026-01-03 21:58:08.843 | INFO     | sink.sink_device:__init__:124 | Sink NID: 69f0365f...
+2026-01-03 21:58:08.844 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-03 21:58:08.844 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-03 21:58:08.844 | INFO     | common.security.dtls_wrapper:__init__:310 | DTLSManager inicializado
+2026-01-03 21:58:08.844 | INFO     | sink.sink_device:__init__:166 | Sink Device inicializado (adapter=hci0)
+2026-01-03 21:58:08.845 | INFO     | sink.sink_device:setup_gatt_server:170 | A configurar GATT Server...
+2026-01-03 21:58:08.846 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-03 21:58:08.846 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-03 21:58:08.847 | INFO     | common.ble.gatt_services:__init__:582 | A criar IoTNetworkService...
+2026-01-03 21:58:08.847 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-03 21:58:08.847 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=69f0365f..., type=sink
+2026-01-03 21:58:08.847 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-03 21:58:08.847 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-03 21:58:08.848 | INFO     | common.ble.gatt_services:__init__:596 | ✅ IoTNetworkService criado com sucesso!
+2026-01-03 21:58:08.848 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-03 21:58:08.848 | INFO     | sink.sink_device:setup_gatt_server:209 | ✅ GATT Server configurado
+2026-01-03 21:58:08.848 | INFO     | sink.sink_device:setup_advertising:213 | A configurar BLE Advertising...
+2026-01-03 21:58:08.849 | INFO     | common.ble.advertising:__init__:87 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-03 21:58:08.849 | INFO     | common.ble.advertising:add_service_uuid:102 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-03 21:58:08.849 | INFO     | common.ble.advertising:add_service_uuid:103 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-03 21:58:08.850 | INFO     | sink.sink_device:setup_advertising:224 | ✅ BLE Advertising configurado
+2026-01-03 21:58:08.850 | INFO     | sink.sink_device:start_heartbeat_service:497 | 💓 A iniciar serviço de heartbeat...
+2026-01-03 21:58:08.851 | INFO     | sink.sink_device:start_heartbeat_service:541 | ✅ Serviço de heartbeat iniciado
+2026-01-03 21:58:08.852 | INFO     | __main__:main:553 | ✅ Sink Device iniciado - CLI interativo pronto
+2026-01-03 21:58:08.859 | INFO     | __main__:<lambda>:524 | ✅ GATT application registada!
+2026-01-03 21:58:08.859 | INFO     | common.ble.advertising:get_properties:156 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-03 21:58:08.968 | INFO     | __main__:<lambda>:532 | ✅ Advertisement registado!
+2026-01-03 21:58:13.931 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-03 21:58:13.933 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 69f0365f0b4744498c75558f4537cf85
+2026-01-03 21:58:13.934 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767477493.9315603
+2026-01-03 21:58:13.935 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 69f0365f0b4744498c75558f4537cf8541da56643d7b9eaf
+2026-01-03 21:58:13.936 | INFO     | common.security.certificate_manager:sign_data:348 | ✍️  Assinando dados:
+2026-01-03 21:58:13.936 | INFO     | common.security.certificate_manager:sign_data:349 |    Data: 24 bytes | 69f0365f0b4744498c75558f4537cf8541da56643d7b9eaf...
+2026-01-03 21:58:13.940 | INFO     | common.security.certificate_manager:sign_data:356 |    Signature: 138 bytes | 308187024175b810c1e231da1f74c0a3e31bab36d06cc59b9e4da9490fe6b171...
+2026-01-03 21:58:13.940 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-03 21:58:14.225 | INFO     | sink.sink_device:stop:599 | A parar Sink Device...
+2026-01-03 21:58:14.227 | INFO     | sink.sink_device:stop:611 | ✅ Sink Device parado
+>>>>>>> f82979d (Fix: Correção completa do setup e scripts)

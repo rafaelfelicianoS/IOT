@@ -71,11 +71,13 @@ git clone <seu-repo>
 cd iot
 
 # 2. Instale dependências (automaticamente)
-./install_deps.sh
+sudo bash install_deps.sh
 
 # 3. Certificados já estão provisionados em certs/!
 ls certs/  # → Sink e Nodes já configurados
 ```
+
+**Pronto!** Os scripts `iot-node` e `iot-sink` ativam o venv automaticamente.
 
 ### Execução
 
@@ -86,7 +88,10 @@ ls certs/  # → Sink e Nodes já configurados
 
 **Terminal 2 (Node - PC2):**
 ```bash
-./iot-node interactive hci1
+./iot-node interactive
+
+# O script detecta automaticamente os certificados
+# Se houver múltiplos, usa o primeiro (você pode especificar com --cert e --key)
 
 # No CLI do Node:
 node> scan
@@ -450,19 +455,15 @@ sudo apt-get install -y libssl-dev
 git clone <seu-repo-url>
 cd iot
 
-# 2. Criar virtual environment (recomendado)
-python3 -m venv venv
-source venv/bin/activate
+# 2. Instalar dependências (automaticamente)
+sudo bash install_deps.sh
 
-# 3. Instalar dependências Python
-pip install -r requirements.txt
-
-# OU usar script automático:
-./install_deps.sh
-
-# 4. Verificar instalação
-python -c "import simpleble; from cryptography import x509; print('✅ OK')"
+# 3. Verificar instalação (o venv é ativado automaticamente pelos scripts)
+./iot-node --help
+./iot-sink --help
 ```
+
+**Nota:** Os scripts `iot-node` e `iot-sink` ativam automaticamente o virtual environment. Não é necessário executar `source venv/bin/activate` manualmente.
 
 ### Configuração de Certificados
 
@@ -505,8 +506,11 @@ sink> help                # Ajuda completa
 ### Executar Node
 
 ```bash
-# Modo interativo (recomendado)
-./iot-node interactive hci1
+# Modo interativo (recomendado) - auto-detecta certificados
+./iot-node interactive
+
+# Especificar certificado manualmente (se tiver múltiplos)
+./iot-node interactive --cert certs/meu_node_cert.pem --key certs/meu_node_key.pem
 
 # Comandos disponíveis no CLI:
 node> scan                      # Procurar Sink/Nodes

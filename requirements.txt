@@ -7,9 +7,11 @@
 # BLE (Bluetooth Low Energy)
 # ----------------------------------------------------------------------------
 # SimpleBLE - Cliente BLE (recomendado no projeto)
-# Nota: Pode requerer instalação de dependências do sistema
-# sudo apt-get install cmake build-essential libdbus-1-dev
-simpleble>=0.0.5
+# Nota: Instalação manual necessária - veja: https://github.com/OpenBluetoothToolbox/SimpleBLE
+# simpleble>=0.0.5
+
+# Bleak - Alternativa BLE que funciona bem no Linux
+bleak>=0.21.0
 
 # D-Bus - Para GATT Server (interface com BlueZ)
 dbus-python>=1.3.2
@@ -25,7 +27,7 @@ cryptography>=41.0.0
 
 # PyDTLS - DTLS para comunicação end-to-end
 # Nota: Se tiver problemas, podemos implementar DTLS manualmente com cryptography
-pyDTLS>=1.3.0; platform_system != "Windows"
+# pyDTLS>=1.3.0; platform_system != "Windows"
 
 # ----------------------------------------------------------------------------
 # Networking & Serialização
