@@ -225,7 +225,7 @@ class SinkDevice:
         # Duration=0 significa que o advertising NÃO para quando aceita conexões
         # Isto permite que múltiplos Nodes descubram e conectem ao Sink simultaneamente
         self.advertisement.duration = 0  # Advertising contínuo (não para com conexões)
-        logger.debug("🔄 Advertising contínuo configurado (duration=0)")
+        logger.info("🔄 Advertising contínuo configurado (duration=0)")
 
         logger.info("✅ BLE Advertising configurado")
 
