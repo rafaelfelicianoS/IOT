@@ -72,3 +72,7 @@
 2026-01-04 00:07:55.215 | INFO     | Scan concluído: 1 dispositivos encontrados
 2026-01-04 00:07:55.216 | INFO     | [OP-20260104_000702-0012] SCAN_RESULT | Devices_Found: 1
 2026-01-04 00:07:55.217 | DEBUG    | [OP-20260104_000702-0012]   Device_1: Name: IoT-Sink-54c225f2 | Address: E0:D3:62:D7:47:03 | RSSI: -56 dBm | Services: 1
+2026-01-04 00:08:49.339 | INFO     | A parar Node...
+2026-01-04 00:08:49.352 | INFO     | A parar GATT Server...
+2026-01-04 00:08:49.355 | INFO     | ✅ GATT Server parado
+2026-01-04 00:08:49.356 | INFO     | ✅ Node parado
