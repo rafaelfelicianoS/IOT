@@ -52,12 +52,24 @@ venv.bak/
 .env
 
 # Certificados e chaves privadas (NUNCA fazer commit!)
-certs/
+# EXCETO ca_certificate.pem que é público
+certs/*
+!certs/ca_certificate.pem
 keys/
-*.pem
 *.key
 *.crt
 *.csr
+
+# Ignorar chaves privadas .pem (incluindo ca_private_key.pem)
+certs/*_key.pem
+certs/ca_private_key.pem
+
+# Ignorar certificados de dispositivos (sink, node)
+certs/sink_*.pem
+certs/node_*.pem
+
+# Ignorar diretórios UUID de dispositivos
+certs/*/
 
 # Logs
 #logs/
