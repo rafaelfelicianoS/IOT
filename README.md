@@ -39,15 +39,51 @@ Topologia em árvore com Sink central e nós IoT como sensores/routers.
 - Python 3.8+
 - BlueZ
 
-### Setup
+### Setup em PC Novo
 
+**1. Instalar dependências**
 ```bash
-# Instalar dependências
-sudo bash install_deps.sh
+sudo ./install_deps.sh
+```
 
-# Gerar certificados
-python3 support/provision_device.py --type sink --nid $(uuidgen)
-python3 support/provision_device.py --type node --nid $(uuidgen)
+**2. Configurar adaptador Bluetooth (importante!)**
+```bash
+# Configurar adaptador em modo LE-only e limpar cache
+sudo ./setup_bluetooth.sh hci0
+```
+
+**3. Gerar certificados**
+
+Se és o **primeiro PC (Sink)**:
+```bash
+# Criar CA e certificado do Sink
+./support/setup_sink.sh
+```
+
+Se és um **Node** e a CA já existe noutro PC:
+```bash
+# 1. Copiar certificados CA do PC que tem o Sink:
+#    certs/ca_certificate.pem
+#    certs/ca_private_key.pem
+
+# 2. Criar certificado do Node
+./support/setup_node.sh
+```
+
+### Setup Rede Multi-PC
+
+Para testar com múltiplos PCs:
+
+**PC 1 (Sink):**
+```bash
+./support/setup_sink.sh
+# Copiar certs/ca_*.pem para os outros PCs
+```
+
+**PC 2, 3, ... (Nodes):**
+```bash
+# Copiar ca_certificate.pem e ca_private_key.pem para certs/
+./support/setup_node.sh
 ```
 
 ---
@@ -56,22 +92,52 @@ python3 support/provision_device.py --type node --nid $(uuidgen)
 
 ### Sink
 ```bash
-./iot-sink interactive hci0
+# Modo interativo
+sudo ./iot-sink interactive hci0
+
+# Comandos disponíveis
+sink> status       # Ver estado do Sink
+sink> downlinks    # Listar Nodes conectados
+sink> inbox        # Ver mensagens recebidas
 ```
 
 ### Node
 ```bash
+# Modo interativo
 ./iot-node interactive
 
-node> scan
-node> connect 1
-node> send Hello!
+# Comandos no CLI
+node> scan         # Procurar Sink/Nodes
+node> connect 1    # Conectar ao dispositivo #1
+node> status       # Ver estado (hop count, uplink, downlinks)
+node> send Hello!  # Enviar mensagem ao Sink
 ```
 
-### Verificar mensagem
+### Teste Multi-Hop (2 máquinas com 2 adaptadores BLE)
+
+**Máquina 1 (Sink + Node intermediário):**
 ```bash
-sink> inbox
+# Terminal 1: Sink
+sudo ./iot-sink interactive hci0
+
+# Terminal 2: Node intermediário
+./iot-node interactive --adapter 1
+node> scan
+node> connect <sink>
 ```
+
+**Máquina 2 (Node final):**
+```bash
+./iot-node interactive
+node> scan
+node> connect <node_intermediario>
+node> send teste multihop
+```
+
+**Verificar:**
+- Node intermediário verá `hop=0`, Node final verá `hop=1`
+- Heartbeats são forwarded (ver logs: "Flooding heartbeat para X downlink(s)")
+- Mensagem do Node final chega ao Sink via Node intermediário
 
 ---
 
@@ -110,11 +176,14 @@ iot/
 │   ├── protocol/   # Heartbeat
 │   └── utils/      # NID, Logger, Constants
 ├── support/        # CA e provisioning
-│   ├── ca.py
-│   └── provision_device.py
+│   ├── ca.py                 # Certificate Authority
+│   ├── provision_device.py   # Criar certificados manualmente
+│   ├── setup_sink.sh         # Setup completo do Sink
+│   └── setup_node.sh         # Setup completo do Node
 ├── certs/          # Certificados gerados
 ├── keys/           # Chaves (vazia)
 ├── logs/           # Logs de execução
+├── archive/        # Exemplos e docs de desenvolvimento
 └── docs/           # Documentação
     └── specs/      # Especificação do projeto
 ```
@@ -153,13 +222,20 @@ iot/
 
 ## Limitações
 
-- DATA multi-hop: Node→Sink direto funcional, forwarding intermediário básico implementado
+- DATA multi-hop: Forwarding implementado mas requer testes adicionais com 3+ dispositivos
 - Heartbeat forwarding: Totalmente funcional
-- RouterDaemon: Implementado com forwarding table
+- RouterDaemon: Implementado com forwarding table e learning switch
+- Autenticação de downlinks: Placeholder (aceita sem validação real)
 
 ---
 
 ## Autores
 
-Grupo X - SIC 2025/2026
+**SIC 2025/2026**
+
+- 118655 - Pedro Laredo
+- 119638 - Rafael Soares
+- 119401 - Tomás Cruz
+- 119867 - Guilherme Tavares
+- 119806 - João Abrunhosa
 

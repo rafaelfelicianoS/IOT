@@ -70,8 +70,8 @@ certs/node_*.pem
 certs/*/
 
 # Logs
-#logs/
-#*.log
+logs/
+*.log
 
 # Databases (se necessário no futuro)
 *.db
@@ -83,3 +83,4 @@ certs/*/
 # ----------------------------------------------------------------------------
 .DS_Store
 Thumbs.db
+run_sink.sh
