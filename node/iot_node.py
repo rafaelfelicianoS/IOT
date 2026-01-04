@@ -230,8 +230,12 @@ class IoTNode:
         self.advertisement.set_local_name(f"IoT-Node-{str(self.my_nid)[:8]}")
 
         # Manufacturer data: tipo=1 (Node), hop_count (atualizado dinamicamente)
+        # NOTA: hop=254 indica peripheral-only (sempre downlink, nunca uplink)
         with self.hop_count_lock:
-            hop_byte = self.hop_count if self.hop_count >= 0 else 255
+            if self.peripheral_only:
+                hop_byte = 254  # Valor especial: peripheral-only, sempre aceita como downlink
+            else:
+                hop_byte = self.hop_count if self.hop_count >= 0 else 255
         manufacturer_data = bytes([1, hop_byte])  # type=1 (Node)
         self.advertisement.add_manufacturer_data(0xFFFF, manufacturer_data)
 
@@ -432,6 +436,10 @@ class IoTNode:
         """Atualiza o hop_count no advertisement."""
         if not self.advertisement:
             return
+
+        # Em modo peripheral-only, sempre usa hop=254 (nunca atualiza)
+        if self.peripheral_only:
+            return  # Não atualizar - manter hop=254
 
         with self.hop_count_lock:
             hop_byte = self.hop_count if self.hop_count >= 0 else 255
