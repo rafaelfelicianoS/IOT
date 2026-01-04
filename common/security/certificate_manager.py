@@ -232,9 +232,16 @@ class CertificateManager:
         # 2. Verificar validade temporal
         now = datetime.now(timezone.utc)
 
-        # Converter para timezone-aware se necessário
-        not_before = cert.not_valid_before_utc
-        not_after = cert.not_valid_after_utc
+        # Suporte para versões antigas e novas da cryptography
+        # Versões novas (>= 42.0.0): usam not_valid_before_utc (timezone-aware)
+        # Versões antigas: usam not_valid_before (naive datetime)
+        try:
+            not_before = cert.not_valid_before_utc
+            not_after = cert.not_valid_after_utc
+        except AttributeError:
+            # Fallback para versões antigas (< 42.0.0)
+            not_before = cert.not_valid_before.replace(tzinfo=timezone.utc)
+            not_after = cert.not_valid_after.replace(tzinfo=timezone.utc)
 
         if now < not_before:
             logger.warning(f"❌ Certificado ainda não é válido (válido a partir de {not_before})")
