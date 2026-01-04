@@ -64,6 +64,7 @@ class IoTNode:
         key_path: str,
         ca_cert_path: str,
         adapter_index: int = 0,
+        peripheral_only: bool = False,
     ):
         """
         Inicializa o IoT Node.
@@ -73,8 +74,10 @@ class IoTNode:
             key_path: Caminho para chave privada do Node
             ca_cert_path: Caminho para certificado da CA
             adapter_index: Índice do adaptador BLE (0 = hci0, 1 = hci1, etc.)
+            peripheral_only: Se True, não procura uplink (apenas aceita conexões downlink)
         """
         self.adapter_index = adapter_index
+        self.peripheral_only = peripheral_only
         self.running = False
 
         # Armazenar paths dos certificados (necessário para DTLS)
@@ -1107,7 +1110,11 @@ class IoTNode:
     def run(self):
         """Loop principal do Node."""
         logger.info("=" * 60)
-        logger.info("  A iniciar IoT Node (dual-mode)")
+        if self.peripheral_only:
+            logger.info("  A iniciar IoT Node (PERIPHERAL-ONLY mode)")
+            logger.info("  Modo: Apenas aceita conexões, não procura uplink")
+        else:
+            logger.info("  A iniciar IoT Node (dual-mode)")
         logger.info("=" * 60)
 
         self.running = True
@@ -1117,6 +1124,16 @@ class IoTNode:
             self.setup_gatt_server()
             self.start_gatt_server()
             logger.info(" GATT Server ativo - aguardando downlinks")
+
+            # Se modo peripheral-only, não procurar uplink
+            if self.peripheral_only:
+                logger.info(" Modo peripheral-only ativo")
+                logger.info(" Advertising ativo - aguardando conexões de outros nodes")
+
+                # Loop apenas como server
+                while self.running:
+                    time.sleep(1)
+                return
 
             # 1. Descobrir uplink (Sink ou outro Node)
             self.sink_device = self.discover_sink(timeout_s=30)
@@ -1225,6 +1242,11 @@ def main():
         default=0,
         help='Índice do adaptador BLE (default: 0 = hci0)'
     )
+    parser.add_argument(
+        '--peripheral-only',
+        action='store_true',
+        help='Modo peripheral-only: não procura uplink, apenas aceita conexões downlink'
+    )
 
     args = parser.parse_args()
 
@@ -1234,6 +1256,7 @@ def main():
             key_path=args.key,
             ca_cert_path=args.ca_cert,
             adapter_index=args.adapter,
+            peripheral_only=args.peripheral_only,
         )
 
         # Signal handlers
