@@ -470,6 +470,8 @@ class IoTNode:
             data: Dados da mensagem de autenticação
             sender: D-Bus sender ID do cliente que enviou a mensagem
         """
+        import dbus
+
         logger.info(f"🔐 Mensagem de autenticação recebida de downlink (sender: {sender})")
         logger.warning("⚠️  Autenticação de downlinks não totalmente implementada - usando placeholder")
         # TODO: Implementar autenticação mutual com downlinks
