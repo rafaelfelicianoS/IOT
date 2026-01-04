@@ -493,10 +493,12 @@ class IoTNode:
         except Exception as e:
             logger.warning(f"⚠️  Erro ao re-registar advertising: {e}")
 
-        # PLACEHOLDER: Retornar resposta de sucesso temporária (1 byte = 0x00)
+        # PLACEHOLDER: Retornar mensagem AUTH_SUCCESS vazia
+        # Formato AuthMessage: type(1) + payload_length(2) + payload(N)
+        # type=0x04 (AUTH_SUCCESS), payload_length=0x0000, payload=vazio
         # Isto permite que a conexão seja estabelecida sem autenticação real
-        logger.info("📤 Enviando resposta placeholder (autenticação aceite sem validação)")
-        return b"\x00"
+        logger.info("📤 Enviando resposta AUTH_SUCCESS placeholder (autenticação aceite sem validação)")
+        return b"\x04\x00\x00"  # AUTH_SUCCESS com payload vazio
 
     def discover_sink(self, timeout_s: int = 10) -> Optional[ScannedDevice]:
         """
