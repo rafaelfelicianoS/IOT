@@ -73,8 +73,10 @@ cd iot
 # 2. Instale dependências (automaticamente)
 sudo bash install_deps.sh
 
-# 3. Certificados já estão provisionados em certs/!
-ls certs/  # → Sink e Nodes já configurados
+# 3. Gerar certificados (cada máquina precisa dos seus)
+python3 support/ca.py  # Criar CA (se não existir)
+python3 support/provision_device.py --type sink --nid $(uuidgen)  # Para Sink
+python3 support/provision_device.py --type node --nid $(uuidgen)  # Para Node
 ```
 
 **Pronto!** Os scripts `iot-node` e `iot-sink` ativam o venv automaticamente.
@@ -90,8 +92,8 @@ ls certs/  # → Sink e Nodes já configurados
 ```bash
 ./iot-node interactive
 
-# O script detecta automaticamente os certificados
-# Se houver múltiplos, usa o primeiro (você pode especificar com --cert e --key)
+# O script detecta automaticamente os certificados gerados
+# Se houver múltiplos, usa o primeiro node_* (ou especifique com --cert e --key)
 
 # No CLI do Node:
 node> scan
@@ -467,24 +469,52 @@ sudo bash install_deps.sh
 
 ### Configuração de Certificados
 
-Os certificados já estão provisionados em `certs/`, mas se precisares gerar novos:
+O certificado da CA (público) já está no repositório em `certs/ca_certificate.pem`. Cada máquina deve gerar seus próprios certificados de dispositivo (Sink ou Node):
+
+#### 1. Criar CA (Primeira Vez)
+
+Se a CA não existir localmente, cria-a:
 
 ```bash
-# Ver certificados existentes
-ls -la certs/
-
-# Gerar novo certificado para Node
-python -m support.provision_device \
-    --nid $(uuidgen) \
-    --type node \
-    --output certs/
-
-# Gerar certificado para Sink
-python -m support.provision_device \
-    --nid $(uuidgen) \
-    --type sink \
-    --output certs/
+python3 support/ca.py
+# Cria: certs/ca_certificate.pem (público, já no repo)
+#       certs/ca_private_key.pem (privado, NÃO commitado)
 ```
+
+> **Nota**: A CA privada (`ca_private_key.pem`) deve ser mantida em segurança e **nunca** commitada ao Git.
+
+#### 2. Gerar Certificado para Sink
+
+```bash
+python3 support/provision_device.py --type sink --nid $(uuidgen)
+# Exemplo de saída:
+# ✅ Chave privada guardada: certs/sink_4e127252_key.pem
+# ✅ Certificado guardado: certs/sink_4e127252_cert.pem
+```
+
+#### 3. Gerar Certificado para Node
+
+```bash
+python3 support/provision_device.py --type node --nid $(uuidgen)
+# Exemplo de saída:
+# ✅ Chave privada guardada: certs/node_a1b2c3d4_key.pem
+# ✅ Certificado guardado: certs/node_a1b2c3d4_cert.pem
+```
+
+#### 4. Verificar Certificados
+
+```bash
+# Listar todos os certificados
+ls -lh certs/
+
+# Ver detalhes de um certificado
+openssl x509 -in certs/sink_4e127252_cert.pem -text -noout
+```
+
+> **Importante**:
+> - Certificados de dispositivos (`sink_*`, `node_*`) são **locais** e **não** commitados ao Git
+> - Apenas `ca_certificate.pem` (público) está no repositório
+> - Cada máquina deve gerar seus próprios certificados usando os comandos acima
 
 ### Executar Sink
 
