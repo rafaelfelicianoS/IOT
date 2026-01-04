@@ -1,0 +1,71 @@
+2026-01-04 01:37:51.558 | INFO     | BLE Operation Logger iniciado: ble_operations_5800E366747C_20260104_013751.log
+2026-01-04 01:37:51.558 | INFO     | Scanner BLE iniciado: hci0 (58:00:E3:66:74:7C)
+2026-01-04 01:37:51.558 | INFO     | BLE Client iniciado
+2026-01-04 01:37:51.559 | DEBUG    | FragmentReassembler inicializado
+2026-01-04 01:37:51.559 | INFO     | ReplayProtection iniciado (window_size=100)
+2026-01-04 01:37:51.559 | INFO     | 🔀 Router Daemon inicializado para NID=a40543fa...
+2026-01-04 01:37:51.560 | DEBUG    | ✅ Send callback configurado
+2026-01-04 01:37:51.560 | DEBUG    | ✅ Handler registado para MessageType(1)
+2026-01-04 01:37:51.560 | DEBUG    | ✅ Handler registado para MessageType(2)
+2026-01-04 01:37:51.560 | INFO     | IoT Node inicializado (adapter=hci0)
+2026-01-04 01:37:51.560 | INFO     | ✅ Router Daemon integrado
+2026-01-04 01:37:51.561 | INFO     | A configurar GATT Server...
+2026-01-04 01:37:51.562 | INFO     | Application criada: /
+2026-01-04 01:37:51.562 | INFO     | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 01:37:51.562 | INFO     | A criar IoTNetworkService...
+2026-01-04 01:37:51.563 | DEBUG    | Characteristic criada: /0/char0 (UUID: 12340001-0000-1000-8000-00805f9b34fb, flags: ['write', 'notify'])
+2026-01-04 01:37:51.563 | INFO     | NetworkPacketCharacteristic criada
+2026-01-04 01:37:51.563 | DEBUG    | Characteristic criada: /0/char1 (UUID: 12340002-0000-1000-8000-00805f9b34fb, flags: ['read'])
+2026-01-04 01:37:51.564 | INFO     | DeviceInfoCharacteristic criada: NID=a40543fa..., type=node
+2026-01-04 01:37:51.564 | DEBUG    | Characteristic criada: /0/char2 (UUID: 12340003-0000-1000-8000-00805f9b34fb, flags: ['read', 'notify'])
+2026-01-04 01:37:51.564 | INFO     | NeighborTableCharacteristic criada
+2026-01-04 01:37:51.564 | DEBUG    | Characteristic criada: /0/char3 (UUID: 12340004-0000-1000-8000-00805f9b34fb, flags: ['write', 'indicate'])
+2026-01-04 01:37:51.564 | INFO     | AuthCharacteristic criada
+2026-01-04 01:37:51.565 | DEBUG    | Characteristic adicionada a /0: /0/char0
+2026-01-04 01:37:51.565 | DEBUG    | Characteristic adicionada a /0: /0/char1
+2026-01-04 01:37:51.565 | DEBUG    | Characteristic adicionada a /0: /0/char2
+2026-01-04 01:37:51.565 | DEBUG    | Characteristic adicionada a /0: /0/char3
+2026-01-04 01:37:51.565 | INFO     | ✅ IoTNetworkService criado com sucesso!
+2026-01-04 01:37:51.566 | INFO     | Service adicionado à aplicação: /0
+2026-01-04 01:37:51.566 | DEBUG    | Packet callback definido
+2026-01-04 01:37:51.566 | DEBUG    | Auth callback definido
+2026-01-04 01:37:51.566 | INFO     | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 01:37:51.567 | INFO     | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 01:37:51.567 | INFO     |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 01:37:51.568 | DEBUG    | Local name definido: IoT-Node-a40543fa
+2026-01-04 01:37:51.568 | DEBUG    | Manufacturer data adicionado: ID=65535
+2026-01-04 01:37:51.568 | INFO     | ✅ GATT Server configurado
+2026-01-04 01:37:51.568 | INFO     | A iniciar GATT Server...
+2026-01-04 01:37:51.571 | INFO     | ✅ GATT Server iniciado em thread separada
+2026-01-04 01:37:51.572 | INFO     | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-04 01:37:51.575 | DEBUG    | GetManagedObjects called
+2026-01-04 01:37:51.575 | DEBUG    | GetManagedObjects returning 5 objects
+2026-01-04 01:37:51.577 | INFO     | ✅ GATT application registada!
+2026-01-04 01:37:51.578 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2026-01-04 01:37:51.578 | INFO     | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 01:37:51.682 | INFO     | ✅ Advertisement registado!
+2026-01-04 01:38:21.869 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 01:38:21.871 | INFO     | [OP-20260104_013751-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 01:38:26.990 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-04 01:38:26.992 | INFO     | [OP-20260104_013751-0002] SCAN_RESULT | Devices_Found: 0
+2026-01-04 01:38:26.993 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 01:38:26.994 | INFO     | [OP-20260104_013751-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 01:38:32.114 | DEBUG    |   Encontrado: Unknown (E0:D3:62:D6:EE:A0) RSSI: -60 dBm
+2026-01-04 01:38:32.114 | INFO     | Scan concluído: 1 dispositivos encontrados
+2026-01-04 01:38:32.117 | INFO     | [OP-20260104_013751-0004] SCAN_RESULT | Devices_Found: 1
+2026-01-04 01:38:32.118 | DEBUG    | [OP-20260104_013751-0004]   Device_1: Name: Unknown | Address: E0:D3:62:D6:EE:A0 | RSSI: -60 dBm | Services: 1
+2026-01-04 01:38:37.931 | INFO     | A conectar ao Sink E0:D3:62:D6:EE:A0...
+2026-01-04 01:38:37.933 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2026-01-04 01:38:37.933 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2026-01-04 01:38:37.935 | INFO     | [OP-20260104_013751-0005] CONNECT_ATTEMPT | Local: 58:00:E3:66:74:7C | Remote: E0:D3:62:D6:EE:A0
+2026-01-04 01:38:57.464 | ERROR    | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2026-01-04 01:38:57.465 | ERROR    | [OP-20260104_013751-0006] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
+2026-01-04 01:38:57.467 | DEBUG    | Conexão falhou, tentando refresh do cache e retry...
+2026-01-04 01:38:59.479 | DEBUG    | Peripheral refreshed, tentando conectar novamente...
+2026-01-04 01:38:59.480 | DEBUG    | BLEConnection criada para E0:D3:62:D6:EE:A0
+2026-01-04 01:38:59.480 | INFO     | A conectar a E0:D3:62:D6:EE:A0...
+2026-01-04 01:38:59.484 | INFO     | [OP-20260104_013751-0007] CONNECT_ATTEMPT | Local: 58:00:E3:66:74:7C | Remote: E0:D3:62:D6:EE:A0
+2026-01-04 01:39:18.728 | ERROR    | Erro ao conectar a E0:D3:62:D6:EE:A0: The requested operation has failed.
+2026-01-04 01:39:18.730 | ERROR    | [OP-20260104_013751-0008] CONNECT_FAILED | Remote: E0:D3:62:D6:EE:A0 | Error: The requested operation has failed.
+2026-01-04 01:39:18.732 | ERROR    | Falha ao conectar a E0:D3:62:D6:EE:A0 após todas as tentativas
+2026-01-04 01:39:18.733 | ERROR    | ❌ Falha ao conectar ao Sink
