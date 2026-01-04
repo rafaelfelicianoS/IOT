@@ -821,3 +821,8 @@
 2026-01-04 21:49:21.821 | INFO     |  GATT Server parado
 2026-01-04 21:49:23.787 | INFO     | Desconectado de 58:00:E3:66:74:7C
 2026-01-04 21:49:23.789 | INFO     | [OP-20260104_214722-0102] DISCONNECT | Remote: 58:00:E3:66:74:7C | Reason: normal
+2026-01-04 21:49:41.768 | ERROR    | Erro ao desconectar de E0:D3:62:D7:47:03: org.freedesktop.DBus.Error.NoReply: Message recipient disconnected from message bus without replying
+[687] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D7_47_03 org.bluez.Device1 Disconnect
+2026-01-04 21:49:41.769 | INFO     | [OP-20260104_214722-0103] DISCONNECT | Remote: E0:D3:62:D7:47:03 | Reason: error: org.freedesktop.DBus.Error.NoReply: Message recipient disconnected from message bus without replying
+[687] method call[(null)->org.bluez] /org/bluez/hci0/dev_E0_D3_62_D7_47_03 org.bluez.Device1 Disconnect
+2026-01-04 21:49:41.769 | INFO     |  Node parado
