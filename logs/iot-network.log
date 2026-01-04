@@ -8213,3 +8213,453 @@ Sinal 2 recebido, a parar...
 2026-01-04 01:12:51.032 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D7:47:03
 2026-01-04 01:12:51.037 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20260104_011151-0030] DISCONNECT | Remote: E0:D3:62:D7:47:03 | Reason: normal
 2026-01-04 01:12:51.041 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
+2026-01-04 01:31:56.781 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-04 01:31:56.782 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-04 01:31:56.782 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 01:31:56.883 | INFO     | node.iot_node:__init__:89 | A carregar certificados...
+2026-01-04 01:31:57.150 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 0abd8260...
+2026-01-04 01:31:57.150 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-04 01:31:57.151 | INFO     | node.iot_node:__init__:119 | ✅ Certificados carregados com sucesso
+2026-01-04 01:31:57.152 | INFO     | node.iot_node:__init__:127 | Node NID: 0abd8260...
+2026-01-04 01:31:57.152 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 01:31:57.153 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 01:31:57.191 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D6EEA0_20260104_013157.log
+2026-01-04 01:31:57.192 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (E0:D3:62:D6:EE:A0)
+2026-01-04 01:31:57.193 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2026-01-04 01:31:57.195 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 01:31:57.196 | INFO     | common.network.router_daemon:__init__:85 | 🔀 Router Daemon inicializado para NID=0abd8260...
+2026-01-04 01:31:57.197 | INFO     | node.iot_node:__init__:196 | IoT Node inicializado (adapter=hci0)
+2026-01-04 01:31:57.198 | INFO     | node.iot_node:__init__:197 | ✅ Router Daemon integrado
+2026-01-04 01:31:57.198 | INFO     | node.iot_node:setup_gatt_server:201 | A configurar GATT Server...
+2026-01-04 01:31:57.203 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 01:31:57.204 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 01:31:57.204 | INFO     | common.ble.gatt_services:__init__:582 | A criar IoTNetworkService...
+2026-01-04 01:31:57.206 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 01:31:57.207 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=0abd8260..., type=node
+2026-01-04 01:31:57.208 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 01:31:57.209 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 01:31:57.212 | INFO     | common.ble.gatt_services:__init__:596 | ✅ IoTNetworkService criado com sucesso!
+2026-01-04 01:31:57.212 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 01:31:57.213 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 01:31:57.214 | INFO     | common.ble.advertising:add_service_uuid:108 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 01:31:57.215 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 01:31:57.216 | INFO     | node.iot_node:setup_gatt_server:244 | ✅ GATT Server configurado
+2026-01-04 01:31:57.217 | INFO     | node.iot_node:start_gatt_server:248 | A iniciar GATT Server...
+2026-01-04 01:31:57.219 | INFO     | node.iot_node:start_gatt_server:277 | ✅ GATT Server iniciado em thread separada
+2026-01-04 01:31:57.219 | INFO     | __main__:main:517 | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-04 01:31:57.506 | INFO     | node.iot_node:<lambda>:260 | ✅ GATT application registada!
+2026-01-04 01:31:57.507 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 01:31:57.609 | INFO     | node.iot_node:<lambda>:268 | ✅ Advertisement registado!
+2026-01-04 01:32:06.046 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 01:32:06.047 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_013157-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 01:32:11.173 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2026-01-04 01:32:11.174 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_013157-0002] SCAN_RESULT | Devices_Found: 1
+2026-01-04 01:32:11.175 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 01:32:11.176 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_013157-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 01:32:16.298 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2026-01-04 01:32:16.299 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_013157-0004] SCAN_RESULT | Devices_Found: 1
+2026-01-04 01:32:20.437 | INFO     | node.iot_node:connect_to_sink:524 | A conectar ao Sink E0:D3:62:D7:47:03...
+2026-01-04 01:32:20.438 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D7:47:03...
+2026-01-04 01:32:20.439 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20260104_013157-0005] CONNECT_ATTEMPT | Local: E0:D3:62:D6:EE:A0 | Remote: E0:D3:62:D7:47:03
+2026-01-04 01:32:26.930 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D7:47:03
+2026-01-04 01:32:26.931 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20260104_013157-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D7:47:03 | Time: 6487.27ms
+2026-01-04 01:32:26.932 | INFO     | node.iot_node:connect_to_sink:537 | ✅ Conectado ao Sink via GATT
+2026-01-04 01:32:26.944 | INFO     | node.iot_node:connect_to_sink:550 | ✅ Serviço IoT Network encontrado
+2026-01-04 01:32:26.946 | INFO     | node.iot_node:_subscribe_to_notifications:563 | A subscrever a notificações...
+2026-01-04 01:32:27.368 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:27.369 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20260104_013157-0007] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:27.370 | INFO     | node.iot_node:_subscribe_to_notifications:572 | ✅ Subscrito a NETWORK_PACKET
+2026-01-04 01:32:27.457 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20260104_013157-0009] READ_RESPONSE | Remote: E0:D3:62:D7:47:03 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b17ff01 | ASCII: N.rR..LP...].>{...
+2026-01-04 01:32:27.458 | INFO     | node.iot_node:_update_hop_count_from_uplink:995 | ✅ Conectado ao Sink - hop_count=0
+2026-01-04 01:32:27.459 | INFO     | node.iot_node:authenticate_with_sink:727 | 🔐 A iniciar autenticação com Sink...
+2026-01-04 01:32:27.547 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:27.549 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20260104_013157-0010] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:27.550 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 0abd8260...
+2026-01-04 01:32:27.552 | INFO     | node.iot_node:authenticate_with_sink:758 | 📤 Enviando certificado...
+2026-01-04 01:32:27.552 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2026-01-04 01:32:27.596 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 887 bytes
+2026-01-04 01:32:27.597 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 890 bytes em 5 fragmentos
+2026-01-04 01:32:27.606 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013157-0011] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100050103772d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949435954434341634b674177494241674955425269314a556f385272 | ASCII: .....w-----BEGIN CERTIFICATE-----.MIICYTCCAcKgAwIBAgIUBRi1JUo8Rr [TRUNCATED]
+2026-01-04 01:32:27.681 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013157-0012] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:27.783 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013157-0013] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001054d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774e4441774e5463784e566f580a44544d324d4445774d6a41774e5463 | ASCII: ...MDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwNDAwNTcxNVoX.DTM2MDEwMjAwNTc [TRUNCATED]
+2026-01-04 01:32:27.861 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013157-0014] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:27.964 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013157-0015] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000205675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241415a47726f48704c3249416f6e354f56414d2f534c41433941790a | ASCII: ...gZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAAZGroHpL2IAon5OVAM/SLAC9Ay. [TRUNCATED]
+2026-01-04 01:32:28.041 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013157-0016] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:28.144 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013157-0017] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000305594d574c6568665250740a4e64354f775453414a4e694f3069637059514f355a614d344d44597744415944565230544151482f424149774144414f4267 | ASCII: ...YMWLehfRPt.Nd5OwTSAJNiO0icpYQO5ZaM4MDYwDAYDVR0TAQH/BAIwADAOBg [TRUNCATED]
+2026-01-04 01:32:28.221 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013157-0018] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:28.324 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013157-0019] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 173 bytes | Hex: 020405653836677866637859446f747047433179376761726a6850680a547133775375714333506b30754371454b3853702f5345435167456a385939726a546f | ASCII: ...e86gxfcxYDotpGC1y7garjhPh.Tq3wSuqC3Pk0uCqEK8Sp/SECQgEj8Y9rjTo [TRUNCATED]
+2026-01-04 01:32:28.448 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013157-0020] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:28.448 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0021] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100060203b00000038c2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943634443434164476741774942416749554847374f5a74 | ASCII: ..........-----BEGIN CERTIFICATE-----.MIICcDCCAdGgAwIBAgIUHG7OZt [TRUNCATED]
+2026-01-04 01:32:28.453 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 6 fragmentos
+2026-01-04 01:32:28.537 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0022] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001065642414d4d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774e4441774e44517a4e466f580a44544d324d4445774d6a41 | ASCII: ...VBAMMDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwNDAwNDQzNFoX.DTM2MDEwMjA [TRUNCATED]
+2026-01-04 01:32:28.629 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0023] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0002064d5463784454414c42674e564241734d42464e70626d7377675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241416965 | ASCII: ...MTcxDTALBgNVBAsMBFNpbmswgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAAie [TRUNCATED]
+2026-01-04 01:32:28.719 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0024] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000306744e5338774d764f4b683338524e0a68474a6a584d4c4678794e3148747658795a6a6b546f6e452f454b6d542f4f2f676e544b3246515946364d344d44 | ASCII: ...tNS8wMvOKh38RN.hGJjXMLFxyN1HtvXyZjkTonE/EKmT/O/gnTK2FQYF6M4MD [TRUNCATED]
+2026-01-04 01:32:28.809 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0025] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0004067147634b4e4f617968672f445975705336566f6269315549565972784e0a6b5258466b4e49746558616456426f6d324b326a397350446f307978766142 | ASCII: ...qGcKNOayhg/DYupS6Vobi1UIVYrxN.kRXFkNIteXadVBom2K2j9sPDo0yxvaB [TRUNCATED]
+2026-01-04 01:32:28.897 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0026] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 50 bytes | Hex: 0205065254494649434154452d2d2d2d2d0ae8279179dc3c2ac2b7762eb081f437b6e380213150233838701f3c41f56248ea | ASCII: ...RTIFICATE-----..'.y.<*..v....7...!1P#88p.<A.bH.
+2026-01-04 01:32:28.898 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 947 bytes (6 fragmentos)
+2026-01-04 01:32:29.052 | INFO     | common.security.authentication:handle_challenge:221 | 🎲 Challenge recebido - processando certificado + challenge...
+2026-01-04 01:32:29.053 | INFO     | common.security.authentication:handle_challenge:240 | 📜 Extraindo certificado do peer do payload...
+2026-01-04 01:32:29.159 | INFO     | common.security.certificate_manager:validate_certificate:269 | ✅ Certificado validado com sucesso
+2026-01-04 01:32:29.160 | INFO     | common.security.authentication:handle_challenge:253 | ✅ Certificado do peer validado!
+2026-01-04 01:32:29.161 | INFO     | common.security.authentication:handle_challenge:254 |    Peer NID: 4e127252...
+2026-01-04 01:32:29.162 | INFO     | common.security.authentication:handle_challenge:255 |    Peer tipo: SINK
+2026-01-04 01:32:29.163 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 01:32:29.164 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 32 bytes | e8279179dc3c2ac2b7762eb081f437b6e380213150233838701f3c41f56248ea...
+2026-01-04 01:32:29.182 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 30818702415b43401d7fda1aa73992579fa21e65a19c573a3d5c38b48a529c51...
+2026-01-04 01:32:29.183 | INFO     | common.security.authentication:handle_challenge:271 | ✍️  Response gerada: 138 bytes
+2026-01-04 01:32:29.186 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013157-0027] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 144 bytes | Hex: 03000103008a30818702415b43401d7fda1aa73992579fa21e65a19c573a3d5c38b48a529c51dd2476de98f30841fc3c4740a4fda01f38938c6024282feb04fd | ASCII: ......0...A[C@.....9.W...e..W:=\8..R.Q.$v....A.<G@....8..`$(/... [TRUNCATED]
+2026-01-04 01:32:29.257 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013157-0028] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:32:29.258 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0029] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 6 bytes | Hex: 030001040000 | ASCII: ......
+2026-01-04 01:32:29.259 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 1 fragmentos
+2026-01-04 01:32:29.259 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 3 bytes (1 fragmentos)
+2026-01-04 01:32:29.759 | INFO     | common.security.authentication:handle_auth_success:331 | ✅ Peer confirmou autenticação bem sucedida!
+2026-01-04 01:32:29.761 | INFO     | node.iot_node:authenticate_with_sink:790 | ✅ Autenticação bem-sucedida!
+2026-01-04 01:32:29.843 | INFO     | node.iot_node:authenticate_with_sink:797 | 🔑 Session key estabelecida
+2026-01-04 01:32:29.844 | INFO     | node.iot_node:authenticate_with_sink:801 | 🔀 Session key configurada no Router Daemon
+2026-01-04 01:32:29.845 | INFO     | node.iot_node:authenticate_with_sink:809 | ✅ Certificado do Sink armazenado para verificação de heartbeats
+2026-01-04 01:32:29.846 | INFO     | common.security.dtls_wrapper:__init__:96 | DTLSChannel criado (client) com certificado node_0abd8260_cert.pem
+2026-01-04 01:32:29.846 | INFO     | common.security.dtls_wrapper:establish:149 | Iniciando handshake DTLS...
+2026-01-04 01:32:29.846 | WARNING  | common.security.dtls_wrapper:establish:152 | DTLS não disponível - operando em modo stub
+2026-01-04 01:32:29.847 | INFO     | common.security.dtls_wrapper:establish:154 | ✅ Canal DTLS (stub) estabelecido
+2026-01-04 01:32:29.848 | INFO     | node.iot_node:authenticate_with_sink:820 | 🔐 Canal DTLS end-to-end estabelecido com Sink
+2026-01-04 01:32:29.848 | INFO     | common.security.dtls_wrapper:derive_encryption_key:137 | 🔑 Chave de encriptação end-to-end derivada (AES-256-GCM)
+2026-01-04 01:32:29.849 | INFO     | node.iot_node:authenticate_with_sink:825 | 🔑 Chave de encriptação end-to-end derivada
+2026-01-04 01:32:31.598 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0030] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b170201000000066da5bc77b246ccc4c0e57da89a019a55e487c66c3563a9d39193 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.......m..w.F....}....U...l5c.... [TRUNCATED]
+2026-01-04 01:32:31.600 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:32:31.601 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:32:31.601 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:32:31.601 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490351.4932556
+2026-01-04 01:32:31.602 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5670cbdf9180
+2026-01-04 01:32:31.603 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:32:31.603 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5670cbdf9180...
+2026-01-04 01:32:31.604 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 30818802420187cffc0eebd56ff47031012c07be503723a80d3b31526b67fa5b...
+2026-01-04 01:32:31.605 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:32:36.593 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013157-0031] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000007687b2ab33bdae43f082ef77f3d3d79767e148eaae74d08a66136 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.......h{*.;..?....==yv~....M..a6 [TRUNCATED]
+2026-01-04 01:32:36.596 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:32:36.598 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:32:36.599 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:32:36.600 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490356.4960146
+2026-01-04 01:32:36.602 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5670cd1fbeb4
+2026-01-04 01:32:36.603 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:32:36.603 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5670cd1fbeb4...
+2026-01-04 01:32:36.604 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 308188024201b8aa52121609c6a3ce01f018d54344463d3ae9537851dc3980a4...
+2026-01-04 01:32:36.609 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:32:42.225 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D7:47:03
+2026-01-04 01:32:42.227 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20260104_013157-0032] DISCONNECT | Remote: E0:D3:62:D7:47:03 | Reason: normal
+2026-01-04 01:32:43.225 | WARNING  | __main__:monitor_heartbeat:551 | ⚠️  Conexão perdida com Sink
+2026-01-04 01:36:18.410 | INFO     | node.iot_node:stop:1091 | A parar Node...
+2026-01-04 01:36:18.412 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
+2026-01-04 01:36:18.415 | INFO     | node.iot_node:stop_gatt_server:289 | ✅ GATT Server parado
+2026-01-04 01:36:18.417 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
+2026-01-04 01:37:44.625 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-04 01:37:44.625 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
+2026-01-04 01:37:44.625 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 01:37:44.633 | INFO     | node.iot_node:__init__:89 | A carregar certificados...
+2026-01-04 01:37:44.637 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 0abd8260...
+2026-01-04 01:37:44.638 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
+2026-01-04 01:37:44.638 | INFO     | node.iot_node:__init__:119 | ✅ Certificados carregados com sucesso
+2026-01-04 01:37:44.638 | INFO     | node.iot_node:__init__:127 | Node NID: 0abd8260...
+2026-01-04 01:37:44.638 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 01:37:44.639 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 01:37:44.657 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D6EEA0_20260104_013744.log
+2026-01-04 01:37:44.657 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (E0:D3:62:D6:EE:A0)
+2026-01-04 01:37:44.658 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
+2026-01-04 01:37:44.659 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 01:37:44.659 | INFO     | common.network.router_daemon:__init__:85 | 🔀 Router Daemon inicializado para NID=0abd8260...
+2026-01-04 01:37:44.660 | INFO     | node.iot_node:__init__:196 | IoT Node inicializado (adapter=hci0)
+2026-01-04 01:37:44.661 | INFO     | node.iot_node:__init__:197 | ✅ Router Daemon integrado
+2026-01-04 01:37:44.661 | INFO     | node.iot_node:setup_gatt_server:201 | A configurar GATT Server...
+2026-01-04 01:37:44.663 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 01:37:44.663 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 01:37:44.664 | INFO     | common.ble.gatt_services:__init__:582 | A criar IoTNetworkService...
+2026-01-04 01:37:44.664 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 01:37:44.665 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=0abd8260..., type=node
+2026-01-04 01:37:44.666 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 01:37:44.667 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 01:37:44.669 | INFO     | common.ble.gatt_services:__init__:596 | ✅ IoTNetworkService criado com sucesso!
+2026-01-04 01:37:44.669 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 01:37:44.671 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 01:37:44.673 | INFO     | common.ble.advertising:add_service_uuid:108 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 01:37:44.673 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 01:37:44.674 | INFO     | node.iot_node:setup_gatt_server:244 | ✅ GATT Server configurado
+2026-01-04 01:37:44.674 | INFO     | node.iot_node:start_gatt_server:248 | A iniciar GATT Server...
+2026-01-04 01:37:44.677 | INFO     | node.iot_node:start_gatt_server:277 | ✅ GATT Server iniciado em thread separada
+2026-01-04 01:37:44.678 | INFO     | __main__:main:517 | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-04 01:37:44.753 | INFO     | node.iot_node:<lambda>:260 | ✅ GATT application registada!
+2026-01-04 01:37:44.755 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 01:37:44.856 | INFO     | node.iot_node:<lambda>:268 | ✅ Advertisement registado!
+2026-01-04 01:37:46.794 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 01:37:46.794 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_013744-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 01:37:51.916 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 1 dispositivos encontrados
+2026-01-04 01:37:51.917 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_013744-0002] SCAN_RESULT | Devices_Found: 1
+2026-01-04 01:37:51.919 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
+2026-01-04 01:37:51.921 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_013744-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 01:37:56.956 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 2 dispositivos encontrados
+2026-01-04 01:37:56.957 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_013744-0004] SCAN_RESULT | Devices_Found: 2
+2026-01-04 01:38:00.700 | INFO     | node.iot_node:connect_to_sink:524 | A conectar ao Sink E0:D3:62:D7:47:03...
+2026-01-04 01:38:00.703 | INFO     | common.ble.gatt_client:connect:262 | A conectar a E0:D3:62:D7:47:03...
+2026-01-04 01:38:00.704 | INFO     | common.utils.ble_logger:log_connection_attempt:142 | [OP-20260104_013744-0005] CONNECT_ATTEMPT | Local: E0:D3:62:D6:EE:A0 | Remote: E0:D3:62:D7:47:03
+2026-01-04 01:38:04.707 | INFO     | common.ble.gatt_client:connect:272 | ✅ Conectado a E0:D3:62:D7:47:03
+2026-01-04 01:38:04.709 | INFO     | common.utils.ble_logger:log_connection_success:157 | [OP-20260104_013744-0006] CONNECT_SUCCESS | Remote: E0:D3:62:D7:47:03 | Time: 4000.10ms
+2026-01-04 01:38:04.710 | INFO     | node.iot_node:connect_to_sink:537 | ✅ Conectado ao Sink via GATT
+2026-01-04 01:38:04.718 | INFO     | node.iot_node:connect_to_sink:550 | ✅ Serviço IoT Network encontrado
+2026-01-04 01:38:04.721 | INFO     | node.iot_node:_subscribe_to_notifications:563 | A subscrever a notificações...
+2026-01-04 01:38:05.139 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:05.140 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20260104_013744-0007] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:05.142 | INFO     | node.iot_node:_subscribe_to_notifications:572 | ✅ Subscrito a NETWORK_PACKET
+2026-01-04 01:38:05.230 | INFO     | common.utils.ble_logger:log_read_response:236 | [OP-20260104_013744-0009] READ_RESPONSE | Remote: E0:D3:62:D7:47:03 | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b17ff01 | ASCII: N.rR..LP...].>{...
+2026-01-04 01:38:05.231 | INFO     | node.iot_node:_update_hop_count_from_uplink:995 | ✅ Conectado ao Sink - hop_count=0
+2026-01-04 01:38:05.232 | INFO     | node.iot_node:authenticate_with_sink:727 | 🔐 A iniciar autenticação com Sink...
+2026-01-04 01:38:05.318 | INFO     | common.ble.gatt_client:subscribe_notifications:562 | ✅ Subscrito a notificações: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:05.319 | INFO     | common.utils.ble_logger:log_subscribe:348 | [OP-20260104_013744-0010] SUBSCRIBE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:05.320 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 0abd8260...
+2026-01-04 01:38:05.320 | INFO     | node.iot_node:authenticate_with_sink:758 | 📤 Enviando certificado...
+2026-01-04 01:38:05.321 | INFO     | common.security.authentication:start_authentication:135 | 🔐 Iniciando autenticação - enviando certificado...
+2026-01-04 01:38:05.322 | INFO     | common.security.authentication:start_authentication:146 |    Certificado: 887 bytes
+2026-01-04 01:38:05.324 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 890 bytes em 5 fragmentos
+2026-01-04 01:38:05.328 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013744-0011] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100050103772d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949435954434341634b674177494241674955425269314a556f385272 | ASCII: .....w-----BEGIN CERTIFICATE-----.MIICYTCCAcKgAwIBAgIUBRi1JUo8Rr [TRUNCATED]
+2026-01-04 01:38:05.407 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013744-0012] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:05.510 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013744-0013] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001054d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774e4441774e5463784e566f580a44544d324d4445774d6a41774e5463 | ASCII: ...MDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwNDAwNTcxNVoX.DTM2MDEwMjAwNTc [TRUNCATED]
+2026-01-04 01:38:05.589 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013744-0014] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:05.591 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0015] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000005b422c945dfb6f34315df982da617ea4fa9c989856aceab45725c | ASCII: N.rR..LP...].>{.N.rR..LP...].>{........".E...C...-...O....j..Er\ [TRUNCATED]
+2026-01-04 01:38:05.593 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:05.594 | INFO     | node.iot_node:_handle_heartbeat:605 | Sink NID identificado: 4e127252...
+2026-01-04 01:38:05.596 | WARNING  | common.protocol.heartbeat:verify_signature:190 | ⚠️  Certificado do Sink não disponível para verificação
+2026-01-04 01:38:05.598 | ERROR    | node.iot_node:_handle_heartbeat:620 | ❌ Assinatura de heartbeat inválida!
+2026-01-04 01:38:05.692 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013744-0016] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000205675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241415a47726f48704c3249416f6e354f56414d2f534c41433941790a | ASCII: ...gZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAAZGroHpL2IAon5OVAM/SLAC9Ay. [TRUNCATED]
+2026-01-04 01:38:05.768 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013744-0017] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:05.870 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013744-0018] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000305594d574c6568665250740a4e64354f775453414a4e694f3069637059514f355a614d344d44597744415944565230544151482f424149774144414f4267 | ASCII: ...YMWLehfRPt.Nd5OwTSAJNiO0icpYQO5ZaM4MDYwDAYDVR0TAQH/BAIwADAOBg [TRUNCATED]
+2026-01-04 01:38:05.947 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013744-0019] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:06.050 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013744-0020] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 173 bytes | Hex: 020405653836677866637859446f747047433179376761726a6850680a547133775375714333506b30754371454b3853702f5345435167456a385939726a546f | ASCII: ...e86gxfcxYDotpGC1y7garjhPh.Tq3wSuqC3Pk0uCqEK8Sp/SECQgEj8Y9rjTo [TRUNCATED]
+2026-01-04 01:38:06.174 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013744-0021] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:06.175 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0022] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100060203b00000038c2d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d494943634443434164476741774942416749554847374f5a74 | ASCII: ..........-----BEGIN CERTIFICATE-----.MIICcDCCAdGgAwIBAgIUHG7OZt [TRUNCATED]
+2026-01-04 01:38:06.177 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 6 fragmentos
+2026-01-04 01:38:06.263 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0023] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001065642414d4d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774e4441774e44517a4e466f580a44544d324d4445774d6a41 | ASCII: ...VBAMMDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwNDAwNDQzNFoX.DTM2MDEwMjA [TRUNCATED]
+2026-01-04 01:38:06.356 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0024] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0002064d5463784454414c42674e564241734d42464e70626d7377675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241416965 | ASCII: ...MTcxDTALBgNVBAsMBFNpbmswgZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAAie [TRUNCATED]
+2026-01-04 01:38:06.446 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0025] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000306744e5338774d764f4b683338524e0a68474a6a584d4c4678794e3148747658795a6a6b546f6e452f454b6d542f4f2f676e544b3246515946364d344d44 | ASCII: ...tNS8wMvOKh38RN.hGJjXMLFxyN1HtvXyZjkTonE/EKmT/O/gnTK2FQYF6M4MD [TRUNCATED]
+2026-01-04 01:38:06.536 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0026] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0004067147634b4e4f617968672f445975705336566f6269315549565972784e0a6b5258466b4e49746558616456426f6d324b326a397350446f307978766142 | ASCII: ...qGcKNOayhg/DYupS6Vobi1UIVYrxN.kRXFkNIteXadVBom2K2j9sPDo0yxvaB [TRUNCATED]
+2026-01-04 01:38:06.626 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0027] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 50 bytes | Hex: 0205065254494649434154452d2d2d2d2d0a96842f989a2a95087df20932c51d4ab6bd20581147c657c828c24eb7cded4be5 | ASCII: ...RTIFICATE-----.../..*..}..2..J.. X.G.W.(.N...K.
+2026-01-04 01:38:06.627 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 947 bytes (6 fragmentos)
+2026-01-04 01:38:06.776 | INFO     | common.security.authentication:handle_challenge:221 | 🎲 Challenge recebido - processando certificado + challenge...
+2026-01-04 01:38:06.777 | INFO     | common.security.authentication:handle_challenge:240 | 📜 Extraindo certificado do peer do payload...
+2026-01-04 01:38:06.781 | INFO     | common.security.certificate_manager:validate_certificate:269 | ✅ Certificado validado com sucesso
+2026-01-04 01:38:06.781 | INFO     | common.security.authentication:handle_challenge:253 | ✅ Certificado do peer validado!
+2026-01-04 01:38:06.782 | INFO     | common.security.authentication:handle_challenge:254 |    Peer NID: 4e127252...
+2026-01-04 01:38:06.783 | INFO     | common.security.authentication:handle_challenge:255 |    Peer tipo: SINK
+2026-01-04 01:38:06.783 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 01:38:06.784 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 32 bytes | 96842f989a2a95087df20932c51d4ab6bd20581147c657c828c24eb7cded4be5...
+2026-01-04 01:38:06.786 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024201d615715d390b9d5b30ef59050f88aaea7d347d914fb253a4508b...
+2026-01-04 01:38:06.786 | INFO     | common.security.authentication:handle_challenge:271 | ✍️  Response gerada: 139 bytes
+2026-01-04 01:38:06.789 | INFO     | common.utils.ble_logger:log_write_request:270 | [OP-20260104_013744-0028] WRITE_REQUEST | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 145 bytes | Hex: 03000103008b308188024201d615715d390b9d5b30ef59050f88aaea7d347d914fb253a4508bcf1154c508744cf797e5488191418bab2be5233702a265f2b33f | ASCII: ......0...B...q]9..[0.Y.....}4}.O.S.P...T..tL...H..A..+.#7..e..? [TRUNCATED]
+2026-01-04 01:38:06.847 | INFO     | common.utils.ble_logger:log_write_response:296 | [OP-20260104_013744-0029] WRITE_SUCCESS | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 01:38:06.849 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0030] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 6 bytes | Hex: 030001040000 | ASCII: ......
+2026-01-04 01:38:06.850 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 1 fragmentos
+2026-01-04 01:38:06.850 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 3 bytes (1 fragmentos)
+2026-01-04 01:38:07.350 | INFO     | common.security.authentication:handle_auth_success:331 | ✅ Peer confirmou autenticação bem sucedida!
+2026-01-04 01:38:07.351 | INFO     | node.iot_node:authenticate_with_sink:790 | ✅ Autenticação bem-sucedida!
+2026-01-04 01:38:07.357 | INFO     | node.iot_node:authenticate_with_sink:797 | 🔑 Session key estabelecida
+2026-01-04 01:38:07.359 | INFO     | node.iot_node:authenticate_with_sink:801 | 🔀 Session key configurada no Router Daemon
+2026-01-04 01:38:07.362 | INFO     | node.iot_node:authenticate_with_sink:809 | ✅ Certificado do Sink armazenado para verificação de heartbeats
+2026-01-04 01:38:07.364 | INFO     | common.security.dtls_wrapper:__init__:96 | DTLSChannel criado (client) com certificado node_0abd8260_cert.pem
+2026-01-04 01:38:07.366 | INFO     | common.security.dtls_wrapper:establish:149 | Iniciando handshake DTLS...
+2026-01-04 01:38:07.367 | WARNING  | common.security.dtls_wrapper:establish:152 | DTLS não disponível - operando em modo stub
+2026-01-04 01:38:07.367 | INFO     | common.security.dtls_wrapper:establish:154 | ✅ Canal DTLS (stub) estabelecido
+2026-01-04 01:38:07.368 | INFO     | node.iot_node:authenticate_with_sink:820 | 🔐 Canal DTLS end-to-end estabelecido com Sink
+2026-01-04 01:38:07.368 | INFO     | common.security.dtls_wrapper:derive_encryption_key:137 | 🔑 Chave de encriptação end-to-end derivada (AES-256-GCM)
+2026-01-04 01:38:07.371 | INFO     | node.iot_node:authenticate_with_sink:825 | 🔑 Chave de encriptação end-to-end derivada
+2026-01-04 01:38:10.583 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0031] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b170201000000062e0777022bc864de4965822bbf448e2600a4f9cf0b4d4691ff4e | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.........w.+.d.Ie.+.D.&.....MF..N [TRUNCATED]
+2026-01-04 01:38:10.584 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:10.586 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:10.586 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:10.587 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490690.4945085
+2026-01-04 01:38:10.587 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671209fa607
+2026-01-04 01:38:10.588 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:10.588 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671209fa607...
+2026-01-04 01:38:10.589 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 138 bytes | 3081870242011077799fd0cf8f259aee44f9e87203fead17fdf92507848df592...
+2026-01-04 01:38:10.591 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:15.580 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0032] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b170201000000071e2052f40b24077011573d7a2d88928d39ce3ae3b79d19ce3e48 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{........ R..$.p.W=z-...9.:.....>H [TRUNCATED]
+2026-01-04 01:38:15.582 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:15.585 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:15.586 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:15.589 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490695.4958937
+2026-01-04 01:38:15.591 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da567121dfbcb9
+2026-01-04 01:38:15.592 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:15.593 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567121dfbcb9...
+2026-01-04 01:38:15.597 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 308188024201fef23001a63838982c6b12ebf537a0365747e572cdcc70c730ec...
+2026-01-04 01:38:15.601 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:20.575 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0033] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b170201000000080d73bb0afad7cab07571357d1b8155f775a5ec4f1b9d439b3615 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{........s......uq5}..U.u..O..C.6. [TRUNCATED]
+2026-01-04 01:38:20.578 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:20.580 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:20.581 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:20.584 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490700.4959865
+2026-01-04 01:38:20.585 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671231fbe3e
+2026-01-04 01:38:20.586 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:20.587 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671231fbe3e...
+2026-01-04 01:38:20.588 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 308188024200aad3eb729cb45a9a524cf6da64ad5697ce38e6f4169be53fc8c8...
+2026-01-04 01:38:20.596 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:25.571 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0034] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b1702010000000928e75d493d2538cca28edbb097997e0ae75cc40ee07d17845bbb | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.......(.]I=%8.......~..\...}..[. [TRUNCATED]
+2026-01-04 01:38:25.573 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:25.575 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:25.576 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:25.577 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490705.4959733
+2026-01-04 01:38:25.579 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671245fbe07
+2026-01-04 01:38:25.579 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:25.580 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671245fbe07...
+2026-01-04 01:38:25.581 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 137 bytes | 30818602414f746f7663debaa07cc39519afa47a11b42535f8fb29bd4935d219...
+2026-01-04 01:38:25.586 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:30.565 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0035] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b1702010000000a815f383be461dfd581753035d7ea57035e83c5f7f112d38da486 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{........_8;.a...u05..W.^......... [TRUNCATED]
+2026-01-04 01:38:30.568 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:30.570 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:30.571 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:30.572 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490710.4954739
+2026-01-04 01:38:30.573 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671259fb5d8
+2026-01-04 01:38:30.574 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:30.575 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671259fb5d8...
+2026-01-04 01:38:30.576 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 138 bytes | 30818702420188c573ddffc037b79ac2f31beced09d6d53c03d488422551d9cf...
+2026-01-04 01:38:30.582 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:35.606 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0036] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b1702010000000beed8d262a04524b6c79ad165760b7a71cc0adfd0b87c3b3e2d66 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{..........b.E$....ev.zq.....|;>-f [TRUNCATED]
+2026-01-04 01:38:35.608 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:35.610 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:35.611 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:35.611 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490715.4960942
+2026-01-04 01:38:35.612 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da567126dfc002
+2026-01-04 01:38:35.614 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:35.615 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567126dfc002...
+2026-01-04 01:38:35.616 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 308188024200a400e3d38294e4dfe5c512071306752b97deffab8bf18a0d4095...
+2026-01-04 01:38:35.619 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:40.601 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0037] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b1702010000000c51a5f11cb6f5b91a7511facfa1916e0783a91183cfb3685bf6b3 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.......Q.......u.....n.......h[.. [TRUNCATED]
+2026-01-04 01:38:40.603 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:40.605 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:40.606 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:40.607 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490720.4909496
+2026-01-04 01:38:40.610 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671281f6bb8
+2026-01-04 01:38:40.612 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:40.613 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671281f6bb8...
+2026-01-04 01:38:40.614 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 30818802420127c51cf27f3bf72e0668f3865f7a99f4e1867e0cc78a06774023...
+2026-01-04 01:38:40.619 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:45.595 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0038] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b1702010000000d8694b9ee0d4354d644e54282bd4b77fe36a4a30931f65c48c682 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{............CT.D.B..Kw.6...1.\H.. [TRUNCATED]
+2026-01-04 01:38:45.598 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:45.600 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:45.601 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:45.603 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490725.4924595
+2026-01-04 01:38:45.605 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671295f8475
+2026-01-04 01:38:45.606 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:45.610 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671295f8475...
+2026-01-04 01:38:45.611 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 3081880242014f84d942f5cdb89d9e562e6963ed297e694bfbec94aad90e1b73...
+2026-01-04 01:38:45.614 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:50.590 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0039] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b1702010000000e66ef15776c0d041cbb9b2875d6057fd42b7e8ef1cc7af349db06 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.......f..wl.....(u....+~...z.I.. [TRUNCATED]
+2026-01-04 01:38:50.593 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:50.595 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:50.596 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:50.597 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490730.4959142
+2026-01-04 01:38:50.600 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da56712a9fbd0f
+2026-01-04 01:38:50.601 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:50.602 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56712a9fbd0f...
+2026-01-04 01:38:50.603 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 138 bytes | 308187024200c98177956149e7f0177ae64532b3b9777c4efd6759edc19617d1...
+2026-01-04 01:38:50.608 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:38:55.586 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0040] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b1702010000000faadeb8ef936ed39989c4c0d29093231c3573fbb8178aa8475421 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{............n........#.5s.....GT! [TRUNCATED]
+2026-01-04 01:38:55.589 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:38:55.591 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:38:55.592 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:38:55.593 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490735.491433
+2026-01-04 01:38:55.594 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da56712bdf73a3
+2026-01-04 01:38:55.596 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:38:55.597 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56712bdf73a3...
+2026-01-04 01:38:55.598 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 308188024201c81c4f899d0fb7f567f3149214f8c8822d8485ab9f6ac645db29...
+2026-01-04 01:38:55.605 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:00.581 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0041] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000010edfd00fd85f7f3101b5254f15d46f0b916fb1fd85398f5fd3563 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{................RT.]F......S...5c [TRUNCATED]
+2026-01-04 01:39:00.583 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:00.585 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:00.586 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:00.589 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490740.4954226
+2026-01-04 01:39:00.590 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da56712d1fb501
+2026-01-04 01:39:00.591 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:00.592 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56712d1fb501...
+2026-01-04 01:39:00.593 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 3081880242009f8f768065e0d88f3a372399cc12e110ec4bc7c35c5cd99fd2ec...
+2026-01-04 01:39:00.599 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:05.575 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0042] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000011276525ed4ac8c0874c40e03aea5496b4388d1ab47ba6625093d1 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.......'e%.J...L@.:.T..8...{.bP.. [TRUNCATED]
+2026-01-04 01:39:05.578 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:05.580 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:05.581 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:05.582 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490745.4959517
+2026-01-04 01:39:05.583 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da56712e5fbdac
+2026-01-04 01:39:05.584 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:05.585 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56712e5fbdac...
+2026-01-04 01:39:05.586 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 30818802420108ac359ef2bd936e967a198579c8cdb53fb18fb3a171f5089039...
+2026-01-04 01:39:05.592 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:10.570 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0043] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000012a490124bcbe1bc94d7bc22ff26a7506b86c5e2122ffebdde07fc | ASCII: N.rR..LP...].>{.N.rR..LP...].>{..........K......".&.Pk..../..... [TRUNCATED]
+2026-01-04 01:39:10.573 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:10.575 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:10.576 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:10.579 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490750.4953544
+2026-01-04 01:39:10.582 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da56712f9fb3e3
+2026-01-04 01:39:10.585 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:10.586 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56712f9fb3e3...
+2026-01-04 01:39:10.588 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 308188024200ec6a3cd0ca1a0b83456acb2c0e24e6e6bfc93a1f7010d560ec9d...
+2026-01-04 01:39:10.593 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:15.700 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0044] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000013d04f4bdcb8809a6dcda5729e5dcce7f35c68b183de82e2f0ee0b | ASCII: N.rR..LP...].>{.N.rR..LP...].>{........OK....m..r.]...\h........ [TRUNCATED]
+2026-01-04 01:39:15.703 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:15.705 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:15.706 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:15.708 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490755.4959888
+2026-01-04 01:39:15.709 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da567130dfbe48
+2026-01-04 01:39:15.710 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:15.711 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567130dfbe48...
+2026-01-04 01:39:15.712 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 137 bytes | 308186024175d38711396813cd9aadaedba7f623ad462fd8428b0189a5964e8a...
+2026-01-04 01:39:15.719 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:20.605 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0045] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b1702010000001447165126a4d87669913999bf925896701f3a0ed005ab168f7b59 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.......G.Q&..vi.9...X.p.:......{Y [TRUNCATED]
+2026-01-04 01:39:20.608 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:20.610 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:20.611 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:20.612 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490760.4949708
+2026-01-04 01:39:20.614 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671321fad9a
+2026-01-04 01:39:20.615 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:20.617 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671321fad9a...
+2026-01-04 01:39:20.618 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 30818802420160a0d3e96e5efad1c0ee176de7fe176be9b3d97aaf457068a8c6...
+2026-01-04 01:39:20.623 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:25.600 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0046] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000015fc911edad34d2ee8de7eba7337e32dbfe60db96250c0acf686d4 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{............M...~.s7.-....bP..... [TRUNCATED]
+2026-01-04 01:39:25.603 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:25.605 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:25.605 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:25.606 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490765.4959335
+2026-01-04 01:39:25.607 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671335fbd60
+2026-01-04 01:39:25.609 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:25.610 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671335fbd60...
+2026-01-04 01:39:25.612 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 138 bytes | 308187024160a7e4c93a30b3e7d6c8e3e5d708d5f9032efc24d7f45d413e1efb...
+2026-01-04 01:39:25.620 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:30.595 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0047] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b170201000000166b0a02de548cdd7e899d31facd63df55953a57b3bfe18dcbfe07 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.......k...T..~..1..c.U.:W....... [TRUNCATED]
+2026-01-04 01:39:30.598 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:30.600 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:30.601 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:30.602 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490770.4959142
+2026-01-04 01:39:30.603 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671349fbd0f
+2026-01-04 01:39:30.604 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:30.605 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671349fbd0f...
+2026-01-04 01:39:30.607 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 138 bytes | 308187024201565a7d6287201d7e849615b669f84d9192ea26a76c761bb5af76...
+2026-01-04 01:39:30.612 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:35.589 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0048] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000017c332d5239fdda95166ba209c46526d233e325c4ae7e739994441 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{........2.#...Qf. .FRm#>2\J..9.DA [TRUNCATED]
+2026-01-04 01:39:35.590 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:35.592 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:35.593 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:35.595 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490775.4959404
+2026-01-04 01:39:35.597 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da567135dfbd7d
+2026-01-04 01:39:35.598 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:35.599 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567135dfbd7d...
+2026-01-04 01:39:35.599 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 138 bytes | 308187024157ebe57d6dd889166068a0305dc5bd869a99227b1a11be31944287...
+2026-01-04 01:39:35.604 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:40.586 | INFO     | common.utils.ble_logger:log_notification:324 | [OP-20260104_013744-0049] NOTIFICATION | Remote: E0:D3:62:D7:47:03 | Char: 12340001-0000-1000-8000-00805f9b34fb | Data: 236 bytes | Hex: 4e127252bd1a4c50860cf05dce3e7b174e127252bd1a4c50860cf05dce3e7b17020100000018fe0f51f8a56b226b525c5a1b097a897057efe5c3aad7586d9b55 | ASCII: N.rR..LP...].>{.N.rR..LP...].>{.........Q..k"kR\Z..z.pW.....Xm.U [TRUNCATED]
+2026-01-04 01:39:40.588 | INFO     | common.network.router_daemon:_deliver_locally:262 | 📨 Entregando localmente: 4e127252... → 4e127252... (type=MessageType(2), 166 bytes)
+2026-01-04 01:39:40.590 | INFO     | common.protocol.heartbeat:verify_signature:214 | 💓 Verificando heartbeat:
+2026-01-04 01:39:40.591 | INFO     | common.protocol.heartbeat:verify_signature:215 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 01:39:40.594 | INFO     | common.protocol.heartbeat:verify_signature:216 |    Timestamp: 1767490780.4949167
+2026-01-04 01:39:40.597 | INFO     | common.protocol.heartbeat:verify_signature:217 |    Data to verify: 4e127252bd1a4c50860cf05dce3e7b1741da5671371facb7
+2026-01-04 01:39:40.601 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 01:39:40.602 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5671371facb7...
+2026-01-04 01:39:40.603 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 138 bytes | 308187024201e1e074094450c70674983dc2c911bb7ce39456d8e2cb214cd99b...
+2026-01-04 01:39:40.606 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 01:39:45.019 | INFO     | node.iot_node:stop:1091 | A parar Node...
+2026-01-04 01:39:45.021 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
+2026-01-04 01:39:45.024 | INFO     | node.iot_node:stop_gatt_server:289 | ✅ GATT Server parado
+2026-01-04 01:39:47.255 | INFO     | common.ble.gatt_client:disconnect:297 | Desconectado de E0:D3:62:D7:47:03
+2026-01-04 01:39:47.257 | INFO     | common.utils.ble_logger:log_disconnection:187 | [OP-20260104_013744-0050] DISCONNECT | Remote: E0:D3:62:D7:47:03 | Reason: normal
+2026-01-04 01:39:47.260 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
