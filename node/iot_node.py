@@ -241,6 +241,12 @@ class IoTNode:
         manufacturer_data = bytes([1, hop_byte])  # type=1 (Node)
         self.advertisement.add_manufacturer_data(0xFFFF, manufacturer_data)
 
+        # IMPORTANTE: Configurar advertising contínuo para suportar múltiplas conexões
+        # Duration=0 significa que o advertising NÃO para quando aceita conexões
+        # Isto permite que múltiplos Nodes descubram e conectem a este Node simultaneamente
+        self.advertisement.duration = 0  # Advertising contínuo (não para com conexões)
+        logger.info("🔄 Advertising contínuo configurado (duration=0)")
+
         logger.info("✅ GATT Server configurado")
 
     def start_gatt_server(self):
@@ -456,16 +462,37 @@ class IoTNode:
         except Exception as e:
             logger.error(f"Erro ao processar pacote de downlink: {e}")
 
-    def _on_downlink_auth_message(self, data: bytes):
+    def _on_downlink_auth_message(self, data: bytes, sender: str):
         """
         Callback quando recebe mensagem de autenticação de um downlink.
 
         Args:
             data: Dados da mensagem de autenticação
+            sender: D-Bus sender ID do cliente que enviou a mensagem
         """
-        logger.info("🔐 Mensagem de autenticação recebida de downlink")
+        logger.info(f"🔐 Mensagem de autenticação recebida de downlink (sender: {sender})")
         logger.warning("⚠️  Autenticação de downlinks não totalmente implementada - usando placeholder")
         # TODO: Implementar autenticação mutual com downlinks
+
+        # WORKAROUND: BlueZ para advertising após conexão mesmo com duration=0
+        # Re-registar advertising para manter visibilidade para outros Nodes
+        try:
+            adv_manager = dbus.Interface(
+                self.bus.get_object('org.bluez', f'/org/bluez/{self.adapter_name}'),
+                'org.bluez.LEAdvertisingManager1'
+            )
+            adv_manager.UnregisterAdvertisement(self.advertisement.get_path())
+            adv_manager.RegisterAdvertisement(
+                self.advertisement.get_path(),
+                {},
+                reply_handler=lambda: logger.info("🔄 Advertising re-registado após conexão downlink"),
+                error_handler=lambda e: logger.warning(f"⚠️  Falha ao re-registar advertising: {e}")
+            )
+        except Exception as e:
+            logger.warning(f"⚠️  Erro ao re-registar advertising: {e}")
+
+        # Por enquanto, retornar resposta vazia para não bloquear
+        return b""
 
     def discover_sink(self, timeout_s: int = 10) -> Optional[ScannedDevice]:
         """
