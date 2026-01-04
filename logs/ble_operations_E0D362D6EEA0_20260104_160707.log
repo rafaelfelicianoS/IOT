@@ -1,0 +1,179 @@
+2026-01-04 16:07:07.515 | INFO     | BLE Operation Logger iniciado: ble_operations_E0D362D6EEA0_20260104_160707.log
+2026-01-04 16:07:07.516 | INFO     | Scanner BLE iniciado: hci0 (E0:D3:62:D6:EE:A0)
+2026-01-04 16:07:07.516 | INFO     | BLE Client iniciado
+2026-01-04 16:07:07.517 | DEBUG    | FragmentReassembler inicializado
+2026-01-04 16:07:07.517 | INFO     | ReplayProtection iniciado (window_size=100)
+2026-01-04 16:07:07.518 | INFO     | 🔀 Router Daemon inicializado para NID=0abd8260...
+2026-01-04 16:07:07.519 | DEBUG    | ✅ Send callback configurado
+2026-01-04 16:07:07.519 | DEBUG    | ✅ Handler registado para MessageType(1)
+2026-01-04 16:07:07.519 | DEBUG    | ✅ Handler registado para MessageType(2)
+2026-01-04 16:07:07.519 | INFO     | IoT Node inicializado (adapter=hci0)
+2026-01-04 16:07:07.520 | INFO     | ✅ Router Daemon integrado
+2026-01-04 16:07:07.521 | INFO     | A configurar GATT Server...
+2026-01-04 16:07:07.523 | INFO     | Application criada: /
+2026-01-04 16:07:07.524 | INFO     | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 16:07:07.525 | INFO     | A criar IoTNetworkService...
+2026-01-04 16:07:07.526 | DEBUG    | Characteristic criada: /0/char0 (UUID: 12340001-0000-1000-8000-00805f9b34fb, flags: ['write', 'notify'])
+2026-01-04 16:07:07.526 | INFO     | NetworkPacketCharacteristic criada
+2026-01-04 16:07:07.527 | DEBUG    | Characteristic criada: /0/char1 (UUID: 12340002-0000-1000-8000-00805f9b34fb, flags: ['read'])
+2026-01-04 16:07:07.527 | INFO     | DeviceInfoCharacteristic criada: NID=0abd8260..., type=node
+2026-01-04 16:07:07.528 | DEBUG    | Characteristic criada: /0/char2 (UUID: 12340003-0000-1000-8000-00805f9b34fb, flags: ['read', 'notify'])
+2026-01-04 16:07:07.528 | INFO     | NeighborTableCharacteristic criada
+2026-01-04 16:07:07.528 | DEBUG    | Characteristic criada: /0/char3 (UUID: 12340004-0000-1000-8000-00805f9b34fb, flags: ['write', 'indicate'])
+2026-01-04 16:07:07.528 | INFO     | AuthCharacteristic criada
+2026-01-04 16:07:07.529 | DEBUG    | Characteristic adicionada a /0: /0/char0
+2026-01-04 16:07:07.529 | DEBUG    | Characteristic adicionada a /0: /0/char1
+2026-01-04 16:07:07.530 | DEBUG    | Characteristic adicionada a /0: /0/char2
+2026-01-04 16:07:07.530 | DEBUG    | Characteristic adicionada a /0: /0/char3
+2026-01-04 16:07:07.530 | INFO     | ✅ IoTNetworkService criado com sucesso!
+2026-01-04 16:07:07.530 | INFO     | Service adicionado à aplicação: /0
+2026-01-04 16:07:07.532 | DEBUG    | Packet callback definido
+2026-01-04 16:07:07.532 | DEBUG    | Auth callback definido
+2026-01-04 16:07:07.533 | INFO     | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 16:07:07.535 | INFO     | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 16:07:07.536 | INFO     |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 16:07:07.536 | DEBUG    | Local name definido: IoT-Node-0abd8260
+2026-01-04 16:07:07.537 | DEBUG    | Manufacturer data adicionado: ID=65535
+2026-01-04 16:07:07.537 | INFO     | 🔄 Advertising contínuo configurado (duration=0)
+2026-01-04 16:07:07.538 | INFO     | ✅ GATT Server configurado
+2026-01-04 16:07:07.539 | INFO     | A iniciar GATT Server...
+2026-01-04 16:07:07.541 | INFO     | ✅ GATT Server iniciado em thread separada
+2026-01-04 16:07:07.542 | INFO     | ✅ Node Device iniciado - CLI interativo pronto
+2026-01-04 16:07:07.548 | DEBUG    | GetManagedObjects called
+2026-01-04 16:07:07.549 | DEBUG    | GetManagedObjects returning 5 objects
+2026-01-04 16:07:07.616 | INFO     | ✅ GATT application registada!
+2026-01-04 16:07:07.617 | DEBUG    | GetAll called on /org/bluez/iot/advertisement0
+2026-01-04 16:07:07.618 | INFO     | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 16:07:07.719 | INFO     | ✅ Advertisement registado!
+2026-01-04 16:07:11.198 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 16:07:11.199 | INFO     | [OP-20260104_160707-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 16:07:16.409 | DEBUG    |   Encontrado: IoT-Node-a40543fa (58:00:E3:66:74:7C) RSSI: -52 dBm
+2026-01-04 16:07:16.410 | INFO     | Scan concluído: 1 dispositivos encontrados
+2026-01-04 16:07:16.410 | INFO     | [OP-20260104_160707-0002] SCAN_RESULT | Devices_Found: 1
+2026-01-04 16:07:16.411 | DEBUG    | [OP-20260104_160707-0002]   Device_1: Name: IoT-Node-a40543fa | Address: 58:00:E3:66:74:7C | RSSI: -52 dBm | Services: 1
+2026-01-04 16:07:16.411 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 16:07:16.412 | INFO     | [OP-20260104_160707-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 16:07:21.527 | DEBUG    |   Encontrado: IoT-Node-a40543fa (58:00:E3:66:74:7C) RSSI: -56 dBm
+2026-01-04 16:07:21.530 | INFO     | Scan concluído: 1 dispositivos encontrados
+2026-01-04 16:07:21.531 | INFO     | [OP-20260104_160707-0004] SCAN_RESULT | Devices_Found: 1
+2026-01-04 16:07:21.531 | DEBUG    | [OP-20260104_160707-0004]   Device_1: Name: IoT-Node-a40543fa | Address: 58:00:E3:66:74:7C | RSSI: -56 dBm | Services: 1
+2026-01-04 16:07:23.110 | INFO     | A conectar ao Sink 58:00:E3:66:74:7C...
+2026-01-04 16:07:23.111 | DEBUG    | BLEConnection criada para 58:00:E3:66:74:7C
+2026-01-04 16:07:23.112 | INFO     | A conectar a 58:00:E3:66:74:7C...
+2026-01-04 16:07:23.114 | INFO     | [OP-20260104_160707-0005] CONNECT_ATTEMPT | Local: E0:D3:62:D6:EE:A0 | Remote: 58:00:E3:66:74:7C
+2026-01-04 16:07:34.698 | ERROR    | Erro ao conectar a 58:00:E3:66:74:7C: The requested operation has failed.
+2026-01-04 16:07:34.699 | ERROR    | [OP-20260104_160707-0006] CONNECT_FAILED | Remote: 58:00:E3:66:74:7C | Error: The requested operation has failed.
+2026-01-04 16:07:34.700 | DEBUG    | Conexão falhou, tentando refresh do cache e retry...
+2026-01-04 16:07:36.712 | ERROR    | Falha ao conectar a 58:00:E3:66:74:7C após todas as tentativas
+2026-01-04 16:07:36.713 | ERROR    | ❌ Falha ao conectar ao Sink
+2026-01-04 16:07:40.278 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 16:07:40.279 | INFO     | [OP-20260104_160707-0007] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 16:07:45.295 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-04 16:07:45.296 | INFO     | [OP-20260104_160707-0008] SCAN_RESULT | Devices_Found: 0
+2026-01-04 16:07:45.299 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 16:07:45.301 | INFO     | [OP-20260104_160707-0009] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 16:07:50.316 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-04 16:07:50.319 | INFO     | [OP-20260104_160707-0010] SCAN_RESULT | Devices_Found: 0
+2026-01-04 16:07:52.378 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 16:07:52.380 | INFO     | [OP-20260104_160707-0011] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 16:07:57.399 | DEBUG    |   Encontrado: IoT-Node-a40543fa (58:00:E3:66:74:7C) RSSI: -56 dBm
+2026-01-04 16:07:57.399 | INFO     | Scan concluído: 1 dispositivos encontrados
+2026-01-04 16:07:57.400 | INFO     | [OP-20260104_160707-0012] SCAN_RESULT | Devices_Found: 1
+2026-01-04 16:07:57.401 | DEBUG    | [OP-20260104_160707-0012]   Device_1: Name: IoT-Node-a40543fa | Address: 58:00:E3:66:74:7C | RSSI: -56 dBm | Services: 1
+2026-01-04 16:07:57.402 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 16:07:57.403 | INFO     | [OP-20260104_160707-0013] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 16:08:02.425 | INFO     | Scan concluído: 0 dispositivos encontrados
+2026-01-04 16:08:02.426 | INFO     | [OP-20260104_160707-0014] SCAN_RESULT | Devices_Found: 0
+2026-01-04 16:08:03.885 | INFO     | A conectar ao Sink 58:00:E3:66:74:7C...
+2026-01-04 16:08:03.886 | DEBUG    | Peripheral 58:00:E3:66:74:7C não está em cache, fazendo scan rápido...
+2026-01-04 16:08:05.900 | ERROR    | Dispositivo 58:00:E3:66:74:7C não encontrado mesmo após scan
+2026-01-04 16:08:05.902 | ERROR    | ❌ Falha ao conectar ao Sink
+2026-01-04 16:08:08.393 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 16:08:08.396 | INFO     | [OP-20260104_160707-0015] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 16:08:13.573 | DEBUG    |   Encontrado: IoT-Node-a40543fa (58:00:E3:66:74:7C) RSSI: -58 dBm
+2026-01-04 16:08:13.573 | INFO     | Scan concluído: 1 dispositivos encontrados
+2026-01-04 16:08:13.575 | INFO     | [OP-20260104_160707-0016] SCAN_RESULT | Devices_Found: 1
+2026-01-04 16:08:13.576 | DEBUG    | [OP-20260104_160707-0016]   Device_1: Name: IoT-Node-a40543fa | Address: 58:00:E3:66:74:7C | RSSI: -58 dBm | Services: 1
+2026-01-04 16:08:13.577 | INFO     | A fazer scan BLE durante 5000ms...
+2026-01-04 16:08:13.579 | INFO     | [OP-20260104_160707-0017] SCAN_START | Duration: 5000ms | Filter_IoT: True
+2026-01-04 16:08:18.702 | DEBUG    |   Encontrado: IoT-Node-a40543fa (58:00:E3:66:74:7C) RSSI: -54 dBm
+2026-01-04 16:08:18.705 | INFO     | Scan concluído: 1 dispositivos encontrados
+2026-01-04 16:08:18.706 | INFO     | [OP-20260104_160707-0018] SCAN_RESULT | Devices_Found: 1
+2026-01-04 16:08:18.708 | DEBUG    | [OP-20260104_160707-0018]   Device_1: Name: IoT-Node-a40543fa | Address: 58:00:E3:66:74:7C | RSSI: -54 dBm | Services: 1
+2026-01-04 16:08:20.305 | INFO     | A conectar ao Sink 58:00:E3:66:74:7C...
+2026-01-04 16:08:20.306 | DEBUG    | BLEConnection criada para 58:00:E3:66:74:7C
+2026-01-04 16:08:20.307 | INFO     | A conectar a 58:00:E3:66:74:7C...
+2026-01-04 16:08:20.308 | INFO     | [OP-20260104_160707-0019] CONNECT_ATTEMPT | Local: E0:D3:62:D6:EE:A0 | Remote: 58:00:E3:66:74:7C
+2026-01-04 16:08:24.668 | INFO     | ✅ Conectado a 58:00:E3:66:74:7C
+2026-01-04 16:08:24.669 | INFO     | [OP-20260104_160707-0020] CONNECT_SUCCESS | Remote: 58:00:E3:66:74:7C | Time: 4356.62ms
+2026-01-04 16:08:24.670 | DEBUG    | ✅ Conexão estabelecida. Operações GATT usarão D-Bus se necessário.
+2026-01-04 16:08:24.671 | INFO     | ✅ Conectado ao Sink via GATT
+2026-01-04 16:08:24.674 | DEBUG    | Descobertos 3 serviços
+2026-01-04 16:08:24.679 | DEBUG    | Serviço 12340000-0000-1000-8000-00805f9b34fb encontrado
+2026-01-04 16:08:24.680 | INFO     | ✅ Serviço IoT Network encontrado
+2026-01-04 16:08:24.681 | DEBUG    | 🔄 Timestamp de heartbeat resetado para nova conexão
+2026-01-04 16:08:24.682 | INFO     | A subscrever a notificações...
+2026-01-04 16:08:25.163 | INFO     | ✅ Subscrito a notificações: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.164 | INFO     | [OP-20260104_160707-0021] SUBSCRIBE_SUCCESS | Remote: 58:00:E3:66:74:7C | Char: 12340001-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.165 | INFO     | ✅ Subscrito a NETWORK_PACKET
+2026-01-04 16:08:25.166 | DEBUG    | [OP-20260104_160707-0022] READ_REQUEST | Remote: 58:00:E3:66:74:7C | Service: 12340000-0000-1000-8000-00805f9b34fb | Char: 12340002-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.252 | DEBUG    | Read 12340002-0000-1000-8000-00805f9b34fb: 18 bytes
+2026-01-04 16:08:25.252 | INFO     | [OP-20260104_160707-0023] READ_RESPONSE | Remote: 58:00:E3:66:74:7C | Char: 12340002-0000-1000-8000-00805f9b34fb | Data: 18 bytes | Hex: a40543face324331ad8d4798037bfbc7ff00 | ASCII: ..C..2C1..G..{....
+2026-01-04 16:08:25.253 | INFO     | ✅ Conectado ao Sink - hop_count=0
+2026-01-04 16:08:25.254 | INFO     | 🔐 A iniciar autenticação com Sink...
+2026-01-04 16:08:25.255 | DEBUG    | 📡 A subscrever a AUTH characteristic...
+2026-01-04 16:08:25.341 | INFO     | ✅ Subscrito a notificações: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.342 | INFO     | [OP-20260104_160707-0024] SUBSCRIBE_SUCCESS | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.343 | DEBUG    | ✅ Subscrito a AUTH indications
+2026-01-04 16:08:25.343 | INFO     | AuthenticationProtocol inicializado para 0abd8260...
+2026-01-04 16:08:25.344 | INFO     | 📤 Enviando certificado...
+2026-01-04 16:08:25.346 | INFO     | 🔐 Iniciando autenticação - enviando certificado...
+2026-01-04 16:08:25.347 | INFO     |    Certificado: 887 bytes
+2026-01-04 16:08:25.347 | DEBUG    |    Estado: IDLE → CERT_SENT
+2026-01-04 16:08:25.348 | INFO     | Fragmentando mensagem de 890 bytes em 5 fragmentos
+2026-01-04 16:08:25.349 | DEBUG    |   Fragmento 1/5: 180 bytes, flags=0x01
+2026-01-04 16:08:25.349 | DEBUG    |   Fragmento 2/5: 180 bytes, flags=0x00
+2026-01-04 16:08:25.349 | DEBUG    |   Fragmento 3/5: 180 bytes, flags=0x00
+2026-01-04 16:08:25.350 | DEBUG    |   Fragmento 4/5: 180 bytes, flags=0x00
+2026-01-04 16:08:25.350 | DEBUG    |   Fragmento 5/5: 170 bytes, flags=0x02
+2026-01-04 16:08:25.350 | DEBUG    | Enviando mensagem auth: 890 bytes em 5 fragmento(s)
+2026-01-04 16:08:25.352 | INFO     | [OP-20260104_160707-0025] WRITE_REQUEST | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0100050103772d2d2d2d2d424547494e2043455254494649434154452d2d2d2d2d0a4d4949435954434341634b674177494241674955425269314a556f385272 | ASCII: .....w-----BEGIN CERTIFICATE-----.MIICYTCCAcKgAwIBAgIUBRi1JUo8Rr [TRUNCATED]
+2026-01-04 16:08:25.430 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2026-01-04 16:08:25.431 | INFO     | [OP-20260104_160707-0026] WRITE_SUCCESS | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.431 | DEBUG    |   Fragmento 1/5 enviado
+2026-01-04 16:08:25.533 | INFO     | [OP-20260104_160707-0027] WRITE_REQUEST | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 0001054d446b6c765643424f5a58523362334a7249454e424d423458445449324d4445774e4441774e5463784e566f580a44544d324d4445774d6a41774e5463 | ASCII: ...MDklvVCBOZXR3b3JrIENBMB4XDTI2MDEwNDAwNTcxNVoX.DTM2MDEwMjAwNTc [TRUNCATED]
+2026-01-04 16:08:25.610 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2026-01-04 16:08:25.611 | INFO     | [OP-20260104_160707-0028] WRITE_SUCCESS | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.612 | DEBUG    |   Fragmento 2/5 enviado
+2026-01-04 16:08:25.713 | INFO     | [OP-20260104_160707-0029] WRITE_REQUEST | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000205675a7377454159484b6f5a497a6a3043415159464b34454541434d44675959414241415a47726f48704c3249416f6e354f56414d2f534c41433941790a | ASCII: ...gZswEAYHKoZIzj0CAQYFK4EEACMDgYYABAAZGroHpL2IAon5OVAM/SLAC9Ay. [TRUNCATED]
+2026-01-04 16:08:25.790 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2026-01-04 16:08:25.790 | INFO     | [OP-20260104_160707-0030] WRITE_SUCCESS | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.791 | DEBUG    |   Fragmento 3/5 enviado
+2026-01-04 16:08:25.893 | INFO     | [OP-20260104_160707-0031] WRITE_REQUEST | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 183 bytes | Hex: 000305594d574c6568665250740a4e64354f775453414a4e694f3069637059514f355a614d344d44597744415944565230544151482f424149774144414f4267 | ASCII: ...YMWLehfRPt.Nd5OwTSAJNiO0icpYQO5ZaM4MDYwDAYDVR0TAQH/BAIwADAOBg [TRUNCATED]
+2026-01-04 16:08:25.970 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (183 bytes)
+2026-01-04 16:08:25.971 | INFO     | [OP-20260104_160707-0032] WRITE_SUCCESS | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:25.971 | DEBUG    |   Fragmento 4/5 enviado
+2026-01-04 16:08:26.074 | INFO     | [OP-20260104_160707-0033] WRITE_REQUEST | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 173 bytes | Hex: 020405653836677866637859446f747047433179376761726a6850680a547133775375714333506b30754371454b3853702f5345435167456a385939726a546f | ASCII: ...e86gxfcxYDotpGC1y7garjhPh.Tq3wSuqC3Pk0uCqEK8Sp/SECQgEj8Y9rjTo [TRUNCATED]
+2026-01-04 16:08:26.151 | DEBUG    | ✅ Write via SimpleBLE: 12340004-0000-1000-8000-00805f9b34fb (173 bytes)
+2026-01-04 16:08:26.151 | INFO     | [OP-20260104_160707-0034] WRITE_SUCCESS | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb
+2026-01-04 16:08:26.152 | DEBUG    |   Fragmento 5/5 enviado
+2026-01-04 16:08:26.152 | INFO     | [OP-20260104_160707-0035] NOTIFICATION | Remote: 58:00:E3:66:74:7C | Char: 12340004-0000-1000-8000-00805f9b34fb | Data: 6 bytes | Hex: 030001040000 | ASCII: ......
+2026-01-04 16:08:26.153 | DEBUG    | 🔐 AUTH indication recebida: 6 bytes
+2026-01-04 16:08:26.153 | DEBUG    | Fragmento recebido: seq=0, total=1, payload=3 bytes, flags=0x03
+2026-01-04 16:08:26.154 | INFO     | Iniciando recepção de 1 fragmentos
+2026-01-04 16:08:26.154 | DEBUG    | Fragmento 1/1 armazenado (1 de 1 recebidos)
+2026-01-04 16:08:26.155 | INFO     | ✅ Mensagem reconstruída: 3 bytes (1 fragmentos)
+2026-01-04 16:08:26.155 | DEBUG    | FragmentReassembler resetado
+2026-01-04 16:08:26.155 | DEBUG    | 🔐 AUTH mensagem completa: 3 bytes
+2026-01-04 16:08:26.252 | DEBUG    | Autenticação round 1/10
+2026-01-04 16:08:26.753 | DEBUG    | Resposta auth lida do buffer: 3 bytes
+2026-01-04 16:08:26.753 | DEBUG    | 📨 Recebido: AuthMessage(type=AUTH_SUCCESS, payload=0 bytes)
+2026-01-04 16:08:26.754 | INFO     | ✅ Peer confirmou autenticação bem sucedida!
+2026-01-04 16:08:26.755 | INFO     | ✅ Autenticação bem-sucedida!
+2026-01-04 16:08:26.756 | ERROR    | Certificados não disponíveis para derivar session key
+2026-01-04 16:08:26.756 | INFO     | DTLSChannel criado (client) com certificado node_0abd8260_cert.pem
+2026-01-04 16:08:26.756 | INFO     | Iniciando handshake DTLS...
+2026-01-04 16:08:26.757 | WARNING  | DTLS não disponível - operando em modo stub
+2026-01-04 16:08:26.757 | INFO     | ✅ Canal DTLS (stub) estabelecido
+2026-01-04 16:08:26.758 | INFO     | 🔐 Canal DTLS end-to-end estabelecido com Sink
+2026-01-04 16:08:51.802 | ERROR    | Erro: destination deve ser um NID
