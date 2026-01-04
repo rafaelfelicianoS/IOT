@@ -514,6 +514,13 @@ def main():
 
         node.running = True
 
+        if node.peripheral_only:
+            logger.info("=" * 60)
+            logger.info("  Node em modo PERIPHERAL-ONLY")
+            logger.info("  Advertising ativo - aguardando conexões de outros nodes")
+            logger.info("  NÃO procura uplink automaticamente")
+            logger.info("=" * 60)
+
         logger.info(" Node Device iniciado - CLI interativo pronto")
 
         # Iniciar CLI interativa
