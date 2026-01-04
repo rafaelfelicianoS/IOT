@@ -9362,76 +9362,407 @@ Sinal 2 recebido, a parar...
 2026-01-04 03:12:02.024 | INFO     | node.iot_node:stop_gatt_server:289 | ✅ GATT Server parado
 2026-01-04 03:12:02.026 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
 >>>>>>> 7ed6d37 (.)
-2026-01-04 03:23:24.234 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
-2026-01-04 03:23:24.235 | WARNING  | common.security.dtls_wrapper:<module>:48 |    Instale com: pip install python3-dtls
-2026-01-04 03:23:24.236 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
-2026-01-04 03:23:24.360 | INFO     | node.iot_node:__init__:89 | A carregar certificados...
-2026-01-04 03:23:24.614 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 0abd8260...
-2026-01-04 03:23:24.615 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafa/IOT/IOT/certs
-2026-01-04 03:23:24.615 | INFO     | node.iot_node:__init__:119 | ✅ Certificados carregados com sucesso
-2026-01-04 03:23:24.616 | INFO     | node.iot_node:__init__:127 | Node NID: 0abd8260...
-2026-01-04 03:23:24.617 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
-2026-01-04 03:23:24.617 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
-2026-01-04 03:23:24.651 | INFO     | common.utils.ble_logger:__init__:49 | BLE Operation Logger iniciado: ble_operations_E0D362D6EEA0_20260104_032324.log
-2026-01-04 03:23:24.652 | INFO     | common.ble.gatt_client:__init__:151 | Scanner BLE iniciado: hci0 (E0:D3:62:D6:EE:A0)
-2026-01-04 03:23:24.652 | INFO     | common.ble.gatt_client:__init__:619 | BLE Client iniciado
-2026-01-04 03:23:24.653 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
-2026-01-04 03:23:24.654 | INFO     | common.network.router_daemon:__init__:85 | 🔀 Router Daemon inicializado para NID=0abd8260...
-2026-01-04 03:23:24.656 | INFO     | node.iot_node:__init__:196 | IoT Node inicializado (adapter=hci0)
-2026-01-04 03:23:24.656 | INFO     | node.iot_node:__init__:197 | ✅ Router Daemon integrado
-2026-01-04 03:23:24.657 | INFO     | node.iot_node:setup_gatt_server:201 | A configurar GATT Server...
-2026-01-04 03:23:24.660 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
-2026-01-04 03:23:24.661 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
-2026-01-04 03:23:24.661 | INFO     | common.ble.gatt_services:__init__:582 | A criar IoTNetworkService...
-2026-01-04 03:23:24.663 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
-2026-01-04 03:23:24.664 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=0abd8260..., type=node
-2026-01-04 03:23:24.665 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
-2026-01-04 03:23:24.666 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
-2026-01-04 03:23:24.667 | INFO     | common.ble.gatt_services:__init__:596 | ✅ IoTNetworkService criado com sucesso!
-2026-01-04 03:23:24.669 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
-2026-01-04 03:23:24.670 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
-2026-01-04 03:23:24.672 | INFO     | common.ble.advertising:add_service_uuid:108 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
-2026-01-04 03:23:24.672 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
-2026-01-04 03:23:24.674 | INFO     | node.iot_node:setup_gatt_server:244 | ✅ GATT Server configurado
-2026-01-04 03:23:24.676 | INFO     | node.iot_node:start_gatt_server:248 | A iniciar GATT Server...
-2026-01-04 03:23:24.679 | INFO     | node.iot_node:start_gatt_server:277 | ✅ GATT Server iniciado em thread separada
-2026-01-04 03:23:24.680 | INFO     | __main__:main:517 | ✅ Node Device iniciado - CLI interativo pronto
-2026-01-04 03:23:25.198 | INFO     | node.iot_node:<lambda>:260 | ✅ GATT application registada!
-2026-01-04 03:23:25.199 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
-2026-01-04 03:23:25.304 | INFO     | node.iot_node:<lambda>:268 | ✅ Advertisement registado!
-2026-01-04 03:24:30.599 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2026-01-04 03:24:30.601 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_032324-0001] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2026-01-04 03:24:35.719 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
-2026-01-04 03:24:35.721 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_032324-0002] SCAN_RESULT | Devices_Found: 0
-2026-01-04 03:24:35.722 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2026-01-04 03:24:35.722 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_032324-0003] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2026-01-04 03:24:40.739 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
-2026-01-04 03:24:40.740 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_032324-0004] SCAN_RESULT | Devices_Found: 0
-2026-01-04 03:24:45.114 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2026-01-04 03:24:45.116 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_032324-0005] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2026-01-04 03:24:50.328 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
-2026-01-04 03:24:50.329 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_032324-0006] SCAN_RESULT | Devices_Found: 0
-2026-01-04 03:24:50.330 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2026-01-04 03:24:50.332 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_032324-0007] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2026-01-04 03:24:55.452 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
-2026-01-04 03:24:55.453 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_032324-0008] SCAN_RESULT | Devices_Found: 0
-2026-01-04 03:25:01.425 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2026-01-04 03:25:01.427 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_032324-0009] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2026-01-04 03:25:06.636 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
-2026-01-04 03:25:06.636 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_032324-0010] SCAN_RESULT | Devices_Found: 0
-2026-01-04 03:25:06.638 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2026-01-04 03:25:06.638 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_032324-0011] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2026-01-04 03:25:11.655 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
-2026-01-04 03:25:11.656 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_032324-0012] SCAN_RESULT | Devices_Found: 0
-2026-01-04 03:25:56.045 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2026-01-04 03:25:56.136 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_032324-0013] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2026-01-04 03:26:01.255 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
-2026-01-04 03:26:01.255 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_032324-0014] SCAN_RESULT | Devices_Found: 0
-2026-01-04 03:26:01.257 | INFO     | common.ble.gatt_client:scan:178 | A fazer scan BLE durante 5000ms...
-2026-01-04 03:26:01.258 | INFO     | common.utils.ble_logger:log_scan_start:105 | [OP-20260104_032324-0015] SCAN_START | Duration: 5000ms | Filter_IoT: True
-2026-01-04 03:26:06.274 | INFO     | common.ble.gatt_client:scan:218 | Scan concluído: 0 dispositivos encontrados
-2026-01-04 03:26:06.274 | INFO     | common.utils.ble_logger:log_scan_result:120 | [OP-20260104_032324-0016] SCAN_RESULT | Devices_Found: 0
-2026-01-04 03:26:20.391 | INFO     | node.iot_node:stop:1091 | A parar Node...
-2026-01-04 03:26:20.394 | INFO     | node.iot_node:stop_gatt_server:281 | A parar GATT Server...
-2026-01-04 03:26:20.484 | INFO     | node.iot_node:stop_gatt_server:289 | ✅ GATT Server parado
-2026-01-04 03:26:20.485 | INFO     | node.iot_node:stop:1104 | ✅ Node parado
+2026-01-04 03:23:02.463 | WARNING  | common.security.dtls_wrapper:<module>:43 | ⚠️  Biblioteca python3-dtls não disponível
+2026-01-04 03:23:02.463 | WARNING  | common.security.dtls_wrapper:<module>:45 |    Causa: OpenSSL 1.1 não encontrado (sistema tem OpenSSL 3.0)
+2026-01-04 03:23:02.463 | WARNING  | common.security.dtls_wrapper:<module>:46 |    Solução: sudo apt-get install libssl1.1
+2026-01-04 03:23:02.463 | INFO     | common.security.dtls_wrapper:<module>:49 |    DTLS continuará em modo stub (estrutura presente, criptografia desabilitada)
+2026-01-04 03:23:02.473 | INFO     | sink.sink_device:__init__:86 | A carregar certificados...
+2026-01-04 03:23:02.474 | INFO     | common.security.certificate_manager:__init__:57 | CertificateManager inicializado para 4e127252...
+2026-01-04 03:23:02.475 | INFO     | common.security.certificate_manager:__init__:58 |    Diretório de certificados: /home/rafael/repos/iot/certs
+2026-01-04 03:23:02.475 | INFO     | sink.sink_device:__init__:116 | ✅ Certificados carregados com sucesso
+2026-01-04 03:23:02.475 | INFO     | sink.sink_device:__init__:124 | Sink NID: 4e127252...
+2026-01-04 03:23:02.475 | INFO     | common.security.auth_handler:__init__:40 | AuthenticationHandler inicializado
+2026-01-04 03:23:02.475 | INFO     | common.security.replay_protection:__init__:45 | ReplayProtection iniciado (window_size=100)
+2026-01-04 03:23:02.475 | INFO     | common.security.dtls_wrapper:__init__:310 | DTLSManager inicializado
+2026-01-04 03:23:02.475 | INFO     | sink.sink_device:__init__:166 | Sink Device inicializado (adapter=hci1)
+2026-01-04 03:23:02.475 | INFO     | sink.sink_device:setup_gatt_server:170 | A configurar GATT Server...
+2026-01-04 03:23:02.476 | INFO     | common.ble.gatt_server:__init__:372 | Application criada: /
+2026-01-04 03:23:02.476 | INFO     | common.ble.gatt_server:__init__:309 | Service criado: /0 (UUID: 12340000-0000-1000-8000-00805f9b34fb, primary: True)
+2026-01-04 03:23:02.476 | INFO     | common.ble.gatt_services:__init__:582 | A criar IoTNetworkService...
+2026-01-04 03:23:02.476 | INFO     | common.ble.gatt_services:__init__:76 | NetworkPacketCharacteristic criada
+2026-01-04 03:23:02.476 | INFO     | common.ble.gatt_services:__init__:245 | DeviceInfoCharacteristic criada: NID=4e127252..., type=sink
+2026-01-04 03:23:02.476 | INFO     | common.ble.gatt_services:__init__:319 | NeighborTableCharacteristic criada
+2026-01-04 03:23:02.477 | INFO     | common.ble.gatt_services:__init__:447 | AuthCharacteristic criada
+2026-01-04 03:23:02.477 | INFO     | common.ble.gatt_services:__init__:596 | ✅ IoTNetworkService criado com sucesso!
+2026-01-04 03:23:02.477 | INFO     | common.ble.gatt_server:add_service:381 | Service adicionado à aplicação: /0
+2026-01-04 03:23:02.477 | INFO     | sink.sink_device:setup_gatt_server:209 | ✅ GATT Server configurado
+2026-01-04 03:23:02.477 | INFO     | sink.sink_device:setup_advertising:213 | A configurar BLE Advertising...
+2026-01-04 03:23:02.477 | INFO     | common.ble.advertising:__init__:93 | Advertisement criado: /org/bluez/iot/advertisement0 (type: peripheral)
+2026-01-04 03:23:02.477 | INFO     | common.ble.advertising:add_service_uuid:108 | ✅ Service UUID adicionado ao advertising: 12340000-0000-1000-8000-00805f9b34fb
+2026-01-04 03:23:02.477 | INFO     | common.ble.advertising:add_service_uuid:109 |    Lista atual de UUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 03:23:02.477 | INFO     | sink.sink_device:setup_advertising:224 | ✅ BLE Advertising configurado
+2026-01-04 03:23:02.478 | INFO     | sink.sink_device:start_heartbeat_service:497 | 💓 A iniciar serviço de heartbeat...
+2026-01-04 03:23:02.478 | INFO     | sink.sink_device:start_heartbeat_service:541 | ✅ Serviço de heartbeat iniciado
+2026-01-04 03:23:02.478 | INFO     | __main__:main:553 | ✅ Sink Device iniciado - CLI interativo pronto
+2026-01-04 03:23:02.484 | INFO     | __main__:<lambda>:524 | ✅ GATT application registada!
+2026-01-04 03:23:02.484 | INFO     | common.ble.advertising:get_properties:162 | 📡 Advertising com ServiceUUIDs: ['12340000-0000-1000-8000-00805f9b34fb']
+2026-01-04 03:23:02.584 | INFO     | __main__:<lambda>:532 | ✅ Advertisement registado!
+2026-01-04 03:23:07.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:07.497 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:07.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767496987.4959426
+2026-01-04 03:23:07.498 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da567746dfbd86
+2026-01-04 03:23:07.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:07.500 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567746dfbd86...
+2026-01-04 03:23:07.504 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024201fc9f4b9e7e11f36b8435b945e9d2c24c30804b6fe1ff5768a517...
+2026-01-04 03:23:07.504 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:23:12.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:12.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:12.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767496992.495878
+2026-01-04 03:23:12.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677481fbc77
+2026-01-04 03:23:12.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:12.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677481fbc77...
+2026-01-04 03:23:12.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200d0226564cd7afb876d14f6c2dfe000cb57d753e777d498b53000...
+2026-01-04 03:23:12.500 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:23:17.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:17.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:17.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767496997.4959412
+2026-01-04 03:23:17.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677495fbd80
+2026-01-04 03:23:17.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:17.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677495fbd80...
+2026-01-04 03:23:17.498 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200857ae5117a88d2b78e805a73327b6f78393bca87fd81bc03cf36...
+2026-01-04 03:23:17.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:23:22.491 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:22.492 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:22.492 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497002.4915283
+2026-01-04 03:23:22.493 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56774a9f7533
+2026-01-04 03:23:22.493 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:22.493 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56774a9f7533...
+2026-01-04 03:23:22.495 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 3081880242008f73e80d5952bb20303e77b1b32cb5f6f4b7b87e4e8a3d16a418...
+2026-01-04 03:23:22.495 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:23:27.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:27.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:27.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497007.4959543
+2026-01-04 03:23:27.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56774bdfbdb7
+2026-01-04 03:23:27.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:27.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56774bdfbdb7...
+2026-01-04 03:23:27.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 30818802420174fc217f0bc503c007145e5ccbe0c3fb8ee6c969257ca206c005...
+2026-01-04 03:23:27.501 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:23:32.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:32.495 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:32.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497012.4954336
+2026-01-04 03:23:32.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56774d1fb52f
+2026-01-04 03:23:32.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:32.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56774d1fb52f...
+2026-01-04 03:23:32.499 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024201d766926842caa29a14e033fa3c6f00d27db5bef6dbaafb4c0ceb...
+2026-01-04 03:23:32.500 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:23:37.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:37.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:37.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497017.4959533
+2026-01-04 03:23:37.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56774e5fbdb3
+2026-01-04 03:23:37.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:37.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56774e5fbdb3...
+2026-01-04 03:23:37.499 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200e5795a5762d104de06d42ea2287ff1edb0f5d06f84697f1d0f33...
+2026-01-04 03:23:37.500 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:23:42.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:42.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:42.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497022.4959612
+2026-01-04 03:23:42.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56774f9fbdd4
+2026-01-04 03:23:42.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:42.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56774f9fbdd4...
+2026-01-04 03:23:42.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024201e283cace71e75d2abd16b5ee022cbbe9c60b5de125fcb5f01205...
+2026-01-04 03:23:42.500 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:23:47.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:47.495 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:47.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497027.4952836
+2026-01-04 03:23:47.496 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da567750dfb2ba
+2026-01-04 03:23:47.496 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:47.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567750dfb2ba...
+2026-01-04 03:23:47.498 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024201cf02c6178655ed21185b206a195d4a40cfdfae0f54d72b2976bf...
+2026-01-04 03:23:47.498 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:23:52.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:52.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:52.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497032.495993
+2026-01-04 03:23:52.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677521fbe59
+2026-01-04 03:23:52.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:52.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677521fbe59...
+2026-01-04 03:23:52.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024201c6472bafc52d8561485dbcd0735c5eac8c093c6ca1c0b12f00e1...
+2026-01-04 03:23:52.500 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:23:57.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:23:57.497 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:23:57.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497037.495994
+2026-01-04 03:23:57.498 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677535fbe5e
+2026-01-04 03:23:57.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:23:57.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677535fbe5e...
+2026-01-04 03:23:57.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024201fb649f76deda48791bbe0bcf14b467d60cba36c74307e5ab9439...
+2026-01-04 03:23:57.500 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:24:02.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:02.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:02.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497042.4957442
+2026-01-04 03:24:02.496 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677549fba46
+2026-01-04 03:24:02.496 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:02.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677549fba46...
+2026-01-04 03:24:02.498 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024201cb9851bba1fc7b2525d5a303f9a243d18dd685e7873097ae91f1...
+2026-01-04 03:24:02.498 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:24:07.491 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:07.492 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:07.493 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497047.491497
+2026-01-04 03:24:07.493 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da567755df74b0
+2026-01-04 03:24:07.493 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:07.494 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567755df74b0...
+2026-01-04 03:24:07.495 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 30818702414cebf941587606c23e4f5e2dcbf597a510a30b01071a4305af6ee4...
+2026-01-04 03:24:07.496 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:24:12.331 | INFO     | common.ble.gatt_services:StartNotify:131 | Cliente :1.4 subscreveu notificações de pacotes
+2026-01-04 03:24:12.491 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:12.491 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:12.492 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497052.4910114
+2026-01-04 03:24:12.492 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677571f6cbb
+2026-01-04 03:24:12.493 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:12.495 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677571f6cbb...
+2026-01-04 03:24:12.496 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200fbb11f77edb832562580329b8c105add2c2162fe47355f4221ee...
+2026-01-04 03:24:12.496 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:24:12.509 | INFO     | common.ble.gatt_services:StartNotify:512 | Cliente :1.4 subscreveu auth indications
+2026-01-04 03:24:12.693 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 5 fragmentos
+2026-01-04 03:24:13.458 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 890 bytes (5 fragmentos)
+2026-01-04 03:24:13.459 | INFO     | common.ble.gatt_services:WriteValue:486 | Mensagem completa recebida de :1.4: 890 bytes
+2026-01-04 03:24:13.460 | INFO     | sink.sink_device:_on_auth_message:285 | 🔐 Mensagem de autenticação recebida de :1.4: 890 bytes
+2026-01-04 03:24:13.461 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de :1.4: 890 bytes
+2026-01-04 03:24:13.461 | INFO     | common.security.auth_handler:get_or_create_session:71 | Nova sessão de autenticação para cliente: :1.4
+2026-01-04 03:24:13.461 | INFO     | common.security.authentication:__init__:126 | AuthenticationProtocol inicializado para 4e127252...
+2026-01-04 03:24:13.461 | INFO     | common.security.authentication:handle_cert_offer:163 | 📜 Certificado do peer recebido - validando...
+2026-01-04 03:24:13.463 | INFO     | common.security.certificate_manager:validate_certificate:269 | ✅ Certificado validado com sucesso
+2026-01-04 03:24:13.463 | INFO     | common.security.authentication:handle_cert_offer:181 | ✅ Certificado válido!
+2026-01-04 03:24:13.464 | INFO     | common.security.authentication:handle_cert_offer:182 |    Peer NID: a40543fa...
+2026-01-04 03:24:13.464 | INFO     | common.security.authentication:handle_cert_offer:183 |    Peer tipo: NODE
+2026-01-04 03:24:13.464 | INFO     | common.security.authentication:handle_cert_offer:198 | 🎲 Enviando certificado + challenge: 84cc4369a42e3937559ba009ddfeb102...
+2026-01-04 03:24:13.464 | INFO     | common.ble.fragmentation:fragment_message:98 | Fragmentando mensagem de 947 bytes em 6 fragmentos
+2026-01-04 03:24:14.267 | INFO     | common.ble.fragmentation:add_fragment:165 | Iniciando recepção de 1 fragmentos
+2026-01-04 03:24:14.268 | INFO     | common.ble.fragmentation:add_fragment:203 | ✅ Mensagem reconstruída: 142 bytes (1 fragmentos)
+2026-01-04 03:24:14.268 | INFO     | common.ble.gatt_services:WriteValue:486 | Mensagem completa recebida de :1.4: 142 bytes
+2026-01-04 03:24:14.269 | INFO     | sink.sink_device:_on_auth_message:285 | 🔐 Mensagem de autenticação recebida de :1.4: 142 bytes
+2026-01-04 03:24:14.269 | INFO     | common.security.auth_handler:handle_auth_message:89 | 📨 Mensagem de autenticação de :1.4: 142 bytes
+2026-01-04 03:24:14.270 | INFO     | common.security.authentication:handle_response:289 | 🔍 Response recebida - verificando assinatura...
+2026-01-04 03:24:14.271 | INFO     | common.security.certificate_manager:verify_signature:387 | 🔍 Verificando assinatura:
+2026-01-04 03:24:14.271 | INFO     | common.security.certificate_manager:verify_signature:388 |    Data: 32 bytes | 84cc4369a42e3937559ba009ddfeb102af94c9120e40d257272bbad47a076177...
+2026-01-04 03:24:14.271 | INFO     | common.security.certificate_manager:verify_signature:389 |    Signature: 139 bytes | 308188024201ce4bcebe93491e1e3674655ac50fc4919d489c376cd2d9d5d290...
+2026-01-04 03:24:14.273 | INFO     | common.security.certificate_manager:verify_signature:397 | ✅ Assinatura verificada com sucesso!
+2026-01-04 03:24:14.273 | INFO     | common.security.authentication:handle_response:311 | ✅ Assinatura válida - AUTENTICAÇÃO BEM SUCEDIDA!
+2026-01-04 03:24:14.274 | INFO     | common.security.authentication:handle_response:312 |    Peer a40543fa... autenticado com sucesso
+2026-01-04 03:24:14.274 | INFO     | common.security.auth_handler:handle_auth_message:102 | ✅ Cliente :1.4 AUTENTICADO!
+2026-01-04 03:24:14.274 | INFO     | sink.sink_device:_on_auth_message:293 | ✅ Cliente :1.4 autenticado com sucesso!
+2026-01-04 03:24:14.275 | INFO     | sink.sink_device:_on_auth_message:313 | 🔑 Session key armazenada para a40543fa...
+2026-01-04 03:24:14.276 | INFO     | common.security.dtls_wrapper:__init__:96 | DTLSChannel criado (server) com certificado sink_4e127252_cert.pem
+2026-01-04 03:24:14.276 | INFO     | common.security.dtls_wrapper:create_channel:331 | Canal DTLS criado para Node a40543fa...
+2026-01-04 03:24:14.276 | INFO     | common.security.dtls_wrapper:establish:149 | Iniciando handshake DTLS...
+2026-01-04 03:24:14.276 | WARNING  | common.security.dtls_wrapper:establish:152 | DTLS não disponível - operando em modo stub
+2026-01-04 03:24:14.276 | INFO     | common.security.dtls_wrapper:establish:154 | ✅ Canal DTLS (stub) estabelecido
+2026-01-04 03:24:14.276 | INFO     | sink.sink_device:_on_auth_message:318 | 🔐 Canal DTLS estabelecido com a40543fa...
+2026-01-04 03:24:14.276 | INFO     | common.security.dtls_wrapper:derive_encryption_key:137 | 🔑 Chave de encriptação end-to-end derivada (AES-256-GCM)
+2026-01-04 03:24:14.277 | INFO     | sink.sink_device:_on_auth_message:322 | 🔑 Chave de encriptação end-to-end derivada para a40543fa...
+2026-01-04 03:24:17.494 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:17.494 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:17.495 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497057.4940631
+2026-01-04 03:24:17.495 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677585f9ebb
+2026-01-04 03:24:17.496 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:17.496 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677585f9ebb...
+2026-01-04 03:24:17.497 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 30818702413b8cede9aefaca4dc2f04f11a4e9eab31a4166b4c0f1e27a006210...
+2026-01-04 03:24:17.497 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:24:22.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:22.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:22.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497062.4951236
+2026-01-04 03:24:22.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677599fb01b
+2026-01-04 03:24:22.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:22.500 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677599fb01b...
+2026-01-04 03:24:22.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 3081880242012305bfad64ac414789cf85e1ba1f942a109d438437c0db578fc9...
+2026-01-04 03:24:22.501 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:24:27.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:27.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:27.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497067.4959495
+2026-01-04 03:24:27.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56775adfbda3
+2026-01-04 03:24:27.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:27.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56775adfbda3...
+2026-01-04 03:24:27.499 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024152d3be17397e0918427074b510ee59b8ab8ab4f8616cbc8c57704a...
+2026-01-04 03:24:27.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:24:32.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:32.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:32.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497072.4958997
+2026-01-04 03:24:32.496 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56775c1fbcd2
+2026-01-04 03:24:32.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:32.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56775c1fbcd2...
+2026-01-04 03:24:32.498 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 137 bytes | 3081860241635fc0b40161e6a75d1266c29ee9dbeb64bf0a7d013a3bc29bdc38...
+2026-01-04 03:24:32.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 137 bytes (padded para 142)
+2026-01-04 03:24:37.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:37.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:37.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497077.4957728
+2026-01-04 03:24:37.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56775d5fbabe
+2026-01-04 03:24:37.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:37.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56775d5fbabe...
+2026-01-04 03:24:37.498 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 3081880242008bbceddb9deac557c25a3f839a8b70f7b13007ddfe1240b74515...
+2026-01-04 03:24:37.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:24:42.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:42.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:42.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497082.4959464
+2026-01-04 03:24:42.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56775e9fbd96
+2026-01-04 03:24:42.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:42.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56775e9fbd96...
+2026-01-04 03:24:42.499 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024156726ca0f81e2ad7740c35803fae40ca9c82429f1bdd3961854321...
+2026-01-04 03:24:42.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:24:47.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:47.495 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:47.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497087.4952962
+2026-01-04 03:24:47.496 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56775fdfb2ef
+2026-01-04 03:24:47.496 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:47.496 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56775fdfb2ef...
+2026-01-04 03:24:47.497 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024201364803ae3dda3982698f3e48fbff47f1d1d3cd6bd67638991a7b...
+2026-01-04 03:24:47.497 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:24:52.492 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:52.493 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:52.493 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497092.49242
+2026-01-04 03:24:52.494 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677611f83cf
+2026-01-04 03:24:52.494 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:52.495 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677611f83cf...
+2026-01-04 03:24:52.497 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024131bd609fde607d9f2e133f28af55f05c0e2c41a5794e8a93e2bc6e...
+2026-01-04 03:24:52.497 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:24:57.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:24:57.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:24:57.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497097.4959419
+2026-01-04 03:24:57.498 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677625fbd83
+2026-01-04 03:24:57.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:24:57.499 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677625fbd83...
+2026-01-04 03:24:57.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024201f434619b3706c4d88cd485d0e6ad83e8999d74359c0ba522db82...
+2026-01-04 03:24:57.500 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:02.494 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:02.494 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:02.494 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497102.4939723
+2026-01-04 03:25:02.494 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677639f9d3e
+2026-01-04 03:25:02.495 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:02.495 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677639f9d3e...
+2026-01-04 03:25:02.497 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024201fe73b005004f871ad953a7991b0a03a827e501090e171e414dcd...
+2026-01-04 03:25:02.497 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:07.492 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:07.493 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:07.493 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497107.492505
+2026-01-04 03:25:07.493 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da567764df8534
+2026-01-04 03:25:07.494 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:07.494 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567764df8534...
+2026-01-04 03:25:07.495 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 3081880242016a07a21b9956537c99e523382f388b812dbbab3ea63a84128216...
+2026-01-04 03:25:07.495 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:12.491 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:12.492 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:12.492 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497112.4915204
+2026-01-04 03:25:12.493 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677661f7512
+2026-01-04 03:25:12.494 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:12.495 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677661f7512...
+2026-01-04 03:25:12.496 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 3081870242008d39a48180e10387018d7947b036a5c4d3db4d5166e8842090d5...
+2026-01-04 03:25:12.496 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:25:17.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:17.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:17.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497117.4957876
+2026-01-04 03:25:17.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677675fbafc
+2026-01-04 03:25:17.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:17.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677675fbafc...
+2026-01-04 03:25:17.499 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024201fd63b6a61d0c8e1140acb2ab90a76bc120e733ee47afb5d04227...
+2026-01-04 03:25:17.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:22.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:22.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:22.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497122.4954634
+2026-01-04 03:25:22.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677689fb5ac
+2026-01-04 03:25:22.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:22.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677689fb5ac...
+2026-01-04 03:25:22.499 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200b8b594ebfeba3ef06b95b7267cb04617b1a87d9c8d1f046e7df7...
+2026-01-04 03:25:22.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:27.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:27.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:27.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497127.4959111
+2026-01-04 03:25:27.496 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da567769dfbd02
+2026-01-04 03:25:27.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:27.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567769dfbd02...
+2026-01-04 03:25:27.498 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200bd19d50302232498795b69897b794e0a727ff7947cad71ebff8e...
+2026-01-04 03:25:27.498 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:32.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:32.495 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:32.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497132.4953077
+2026-01-04 03:25:32.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56776b1fb31f
+2026-01-04 03:25:32.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:32.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56776b1fb31f...
+2026-01-04 03:25:32.499 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200a7ef0431ae47f368be06ea43c1fad149d965b89cf9b0aab9de41...
+2026-01-04 03:25:32.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:37.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:37.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:37.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497137.4957678
+2026-01-04 03:25:37.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56776c5fbaa9
+2026-01-04 03:25:37.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:37.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56776c5fbaa9...
+2026-01-04 03:25:37.499 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 137 bytes | 30818602400a5b5d2f8808de7a1fd37b70969763549505f95b414d2983d3dfdf...
+2026-01-04 03:25:37.499 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 137 bytes (padded para 142)
+2026-01-04 03:25:42.493 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:42.494 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:42.494 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497142.4933424
+2026-01-04 03:25:42.494 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56776d9f92ec
+2026-01-04 03:25:42.495 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:42.495 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56776d9f92ec...
+2026-01-04 03:25:42.496 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024201e19383dcf97369eebe4f90c0780400fca12ecccc1fa47e41f02a...
+2026-01-04 03:25:42.496 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:25:47.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:47.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:47.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497147.4958835
+2026-01-04 03:25:47.496 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da56776edfbc8e
+2026-01-04 03:25:47.496 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:47.497 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da56776edfbc8e...
+2026-01-04 03:25:47.498 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200ee6bdf6d7057aaa8ba2456c47b3480c73b2ce965dedc11c9e28a...
+2026-01-04 03:25:47.498 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:52.491 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:52.492 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:52.493 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497152.49148
+2026-01-04 03:25:52.493 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677701f7469
+2026-01-04 03:25:52.493 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:52.495 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677701f7469...
+2026-01-04 03:25:52.496 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200bf0ba24ea3a014035f308d133bd1c8631984e0a45f3ebc851be6...
+2026-01-04 03:25:52.497 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:25:57.492 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:25:57.493 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:25:57.493 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497157.49244
+2026-01-04 03:25:57.494 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677715f8423
+2026-01-04 03:25:57.494 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:25:57.495 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677715f8423...
+2026-01-04 03:25:57.497 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200ddd2e449d1eba144a889e3c80800fbaef784060b3b5c4e6e4e48...
+2026-01-04 03:25:57.497 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:26:02.492 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:26:02.493 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:26:02.493 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497162.4924693
+2026-01-04 03:26:02.493 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677729f849e
+2026-01-04 03:26:02.494 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:26:02.494 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677729f849e...
+2026-01-04 03:26:02.495 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 3081880242008c9f84b3244e259080a6698ecc838a4d3668298c801275a27808...
+2026-01-04 03:26:02.495 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:26:07.491 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:26:07.492 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:26:07.493 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497167.4915109
+2026-01-04 03:26:07.494 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da567773df74ea
+2026-01-04 03:26:07.494 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:26:07.495 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567773df74ea...
+2026-01-04 03:26:07.496 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024200936397e1de6c1567394423db10aa9703fc799ac98197f4215925...
+2026-01-04 03:26:07.497 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:26:12.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:26:12.495 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:26:12.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497172.4950223
+2026-01-04 03:26:12.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677751fae72
+2026-01-04 03:26:12.497 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:26:12.499 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677751fae72...
+2026-01-04 03:26:12.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 3081880242017bb3c19bbf288372ea18ec49682941839737cdf9c624a0cbebf3...
+2026-01-04 03:26:12.501 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:26:17.495 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:26:17.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:26:17.496 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497177.4958413
+2026-01-04 03:26:17.496 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677765fbbdd
+2026-01-04 03:26:17.496 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:26:17.496 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677765fbbdd...
+2026-01-04 03:26:17.496 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 3081870242010d9ed10d0cc355f8c6c334917f2c8cc4fac35ab225d72a11d8b5...
+2026-01-04 03:26:17.497 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:26:22.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:26:22.496 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:26:22.497 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497182.496
+2026-01-04 03:26:22.497 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da5677779fbe77
+2026-01-04 03:26:22.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:26:22.498 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da5677779fbe77...
+2026-01-04 03:26:22.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 139 bytes | 308188024200c0d7ee350501a565cedf40a70628a5501f1421e03069cd26507b...
+2026-01-04 03:26:22.501 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 139 bytes (padded para 142)
+2026-01-04 03:26:27.496 | INFO     | common.protocol.heartbeat:sign:160 | 💓 Assinando heartbeat:
+2026-01-04 03:26:27.497 | INFO     | common.protocol.heartbeat:sign:161 |    Sink NID: 4e127252bd1a4c50860cf05dce3e7b17
+2026-01-04 03:26:27.498 | INFO     | common.protocol.heartbeat:sign:162 |    Timestamp: 1767497187.4960454
+2026-01-04 03:26:27.498 | INFO     | common.protocol.heartbeat:sign:163 |    Data to sign: 4e127252bd1a4c50860cf05dce3e7b1741da567778dfbf35
+2026-01-04 03:26:27.498 | INFO     | common.security.certificate_manager:sign_data:355 | ✍️  Assinando dados:
+2026-01-04 03:26:27.499 | INFO     | common.security.certificate_manager:sign_data:356 |    Data: 24 bytes | 4e127252bd1a4c50860cf05dce3e7b1741da567778dfbf35...
+2026-01-04 03:26:27.500 | INFO     | common.security.certificate_manager:sign_data:363 |    Signature: 138 bytes | 308187024200c619bcc43edba39598d5df9af7fb52d4945990baa8ed2cea0de8...
+2026-01-04 03:26:27.500 | INFO     | common.protocol.heartbeat:sign:176 | ✅ Heartbeat assinado: 138 bytes (padded para 142)
+2026-01-04 03:26:30.872 | INFO     | sink.sink_device:stop:599 | A parar Sink Device...
+2026-01-04 03:26:30.872 | INFO     | sink.sink_device:stop:611 | ✅ Sink Device parado

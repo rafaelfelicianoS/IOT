@@ -221,6 +221,12 @@ class SinkDevice:
         manufacturer_data = bytes([0, 255])
         self.advertisement.add_manufacturer_data(0xFFFF, manufacturer_data)
 
+        # IMPORTANTE: Configurar advertising contínuo para suportar múltiplas conexões
+        # Duration=0 significa que o advertising NÃO para quando aceita conexões
+        # Isto permite que múltiplos Nodes descubram e conectem ao Sink simultaneamente
+        self.advertisement.duration = 0  # Advertising contínuo (não para com conexões)
+        logger.debug("🔄 Advertising contínuo configurado (duration=0)")
+
         logger.info("✅ BLE Advertising configurado")
 
     def _on_packet_received(self, data: bytes, client_address: Optional[str] = None):
