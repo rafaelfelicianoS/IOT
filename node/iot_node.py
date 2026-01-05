@@ -548,14 +548,14 @@ class IoTNode:
                 # Definir callbacks que sinalizam o event
                 def make_reply_handler(attempt_num):
                     def handler():
-                        logger.info(f"✅ Advertising re-registado após conexão uplink (tentativa {attempt_num})")
+                        logger.info(f"Advertising re-registado após conexão uplink (tentativa {attempt_num})")
                         result_event.set()
                     return handler
 
                 def make_error_handler(attempt_num):
                     def handler(e):
                         error_msg[0] = str(e)
-                        logger.debug(f"❌ Tentativa {attempt_num} falhou: {e}")
+                        logger.debug(f"Tentativa {attempt_num} falhou: {e}")
                         result_event.set()
                     return handler
 
@@ -576,10 +576,10 @@ class IoTNode:
                             break
                         # Erro reportado via callback - continuar para próxima tentativa
                     else:
-                        logger.debug(f"⏱️ Tentativa {attempt} timeout (sem resposta em 3s)")
+                        logger.debug(f"Tentativa {attempt} timeout (sem resposta em 3s)")
 
                 except Exception as e:
-                    logger.debug(f"❌ Tentativa {attempt} com delay {delays[attempt-1]}s falhou imediatamente: {e}")
+                    logger.debug(f"Tentativa {attempt} com delay {delays[attempt-1]}s falhou imediatamente: {e}")
 
             if not success:
                 logger.warning(f"  Falha ao re-registar advertising após {len(delays)} tentativas")

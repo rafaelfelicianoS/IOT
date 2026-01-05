@@ -176,14 +176,12 @@ iot/
 │   ├── protocol/   # Heartbeat
 │   └── utils/      # NID, Logger, Constants
 ├── support/        # CA e provisioning
-│   ├── ca.py                 # Certificate Authority
-│   ├── provision_device.py   # Criar certificados manualmente
-│   ├── setup_sink.sh         # Setup completo do Sink
-│   └── setup_node.sh         # Setup completo do Node
+│   ├── ca.py                 
+│   ├── provision_device.py   
+│   ├── setup_sink.sh         
+│   └── setup_node.sh         
 ├── certs/          # Certificados gerados
-├── keys/           # Chaves (vazia)
 ├── logs/           # Logs de execução
-├── archive/        # Exemplos e docs de desenvolvimento
 └── docs/           # Documentação
     └── specs/      # Especificação do projeto
 ```
@@ -222,10 +220,8 @@ iot/
 
 ## Limitações
 
-- DATA multi-hop: Forwarding implementado mas requer testes adicionais com 3+ dispositivos
-- Heartbeat forwarding: Totalmente funcional
-- RouterDaemon: Implementado com forwarding table e learning switch
 - Autenticação de downlinks: Placeholder (aceita sem validação real)
+- Teste em larga escala (10+ dispositivos) não realizado
 
 ---
 
